@@ -4,15 +4,13 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 
 ## Objective
 
-- Turn `Cato-WisdomEngine` from a working MVP foundation into a stronger phase-2 research engine with richer extraction, synthesis, and reporting.
+- Turn `Cato-WisdomEngine` from a working research runtime into a stronger belief/state/decision engine for investment work.
 
 ## Plan
 
-1. Improve extraction depth, especially for PDFs, richer web captures, and image-aware notes.
-2. Add stronger reporting workflows beyond the current memo path.
-3. Decide how LLM-assisted synthesis should plug into the CLI versus remaining an external agent workflow.
-4. Expand finance-specific note types and surveillance workflows.
-5. Harden repo snapshot ingest, figure extraction, watch profiles, operator launchers, and promotion logic as the corpus grows.
+1. Maintain the new belief/state/decision layers without letting them drift into noisy generated surfaces.
+2. Decide how much deterministic logic to keep versus where model-assisted compile passes should eventually enter.
+3. Keep improving finance-specific note quality and operator usability without breaking source-grounded discipline.
 
 ## Tasks
 
@@ -34,6 +32,10 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - [x] Add a first launcher layer for common Windows + Obsidian workflows.
 - [x] Add watch profiles as persistent instruction objects that drive surveillance and topic retrieval.
 - [x] Add a GPT/Codex-to-Cato research handoff flow so live web research can be captured as durable Cato evidence and outputs.
+- [x] Add an atomic claim ledger with claim pages, snapshots, diffs, and belief briefs.
+- [x] Add a state/regime engine with state pages, state diffs, and regime briefs.
+- [x] Add a PM decision layer with meeting briefs, decision notes, red-team outputs, and market-change briefs.
+- [x] Extend the launcher layer for the new belief/state/decision surfaces.
 - [ ] Decide whether to embed external LLM execution into the CLI or keep the repo agent-driven.
 
 ## Validation
@@ -49,6 +51,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
   - First live research-run validation on 2026-04-03 covering a real weekly macro brief, 16 imported live sources, source-note creation, watch refresh, synthesis promotion, and zero-issue lint after ingest
   - Ontology-noise validation on 2026-04-03 covering candidate concept filtering, stale concept retirement, full test pass, live compile, and zero-issue lint after tightening concept generation
   - Legacy source-note refresh validation on 2026-04-03 covering empty-frontmatter round-trip protection, refreshed source-note candidate concepts, live compile, and zero-issue lint after rewriting the existing corpus notes
+  - Claim/state/decision validation on 2026-04-03 covering `claims-refresh`, `claim-diff`, `why-believe`, `state-refresh`, `state-diff`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, full test pass, and zero-issue live lint after regenerating superseded outputs
   - Ongoing validation expectations:
     - rerun tests after CLI or schema changes
     - keep live repo lint at zero or explain any deliberate exceptions
@@ -73,6 +76,10 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-03, the first real live-research macro bundle was captured into Cato, producing 16 new source notes, a `Global Macro` surveillance refresh, a weekly investment meeting report, and a promoted synthesis note.
 - On 2026-04-03, concept generation was tightened so compile now filters out low-value macro-table jargon, retires stale generated concept pages from active retrieval, and leaves the live repo at zero lint issues after recompilation.
 - On 2026-04-03, the existing source-note corpus and metadata sidecars were refreshed to remove legacy candidate-concept suggestions, repair empty scalar frontmatter fields, and align the live markdown library with the new concept-quality rules.
+- On 2026-04-03, the repo gained an atomic claim ledger under `wiki/claims/` plus `manifests/claims.jsonl`, claim snapshots, diffs, and `why-believe` output.
+- On 2026-04-03, the repo gained a state/regime engine under `wiki/states/` and `wiki/regimes/`, with state history stored in `manifests/state_history.jsonl`.
+- On 2026-04-03, the repo gained a PM decision layer under `wiki/decisions/` plus `outputs/meeting-briefs/` and new decision-support briefs.
+- On 2026-04-03, the launcher layer was extended for claims, state refresh, regime briefs, decision notes, meeting briefs, red-team briefs, and market-change briefs.
 
 ## Open Risks / Next Steps
 
@@ -81,4 +88,5 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - Repo snapshots and figure extraction are now materially better, but semantic repo understanding, richer figure interpretation, and deeper dataset/table workflows are still partial rather than mature.
 - Watch profiles now expand topic retrieval, but the underlying search engine is still mostly lexical rather than fully semantic; frontier-model-assisted routing remains an open upgrade path.
 - The correct live-research model is now explicit, but it still depends on Codex/GPT producing the research bundle; the CLI is intentionally not trying to impersonate a frontier web-research model.
+- Claim extraction and state inference are now useful but still deterministic; a later model-assisted pass may improve claim quality and contradiction handling.
 - The next build phase needs discipline so it does not jump too early into fine-tuning or heavyweight retrieval before the corpus and workflows justify it.

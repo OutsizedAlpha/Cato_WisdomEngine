@@ -10,17 +10,33 @@ function isRetiredStatus(frontmatter) {
 }
 
 function noteKindRelative(relativePath) {
-  if (relativePath.endsWith("/index.md") || relativePath.endsWith("/README.md")) {
+  if (
+    relativePath.endsWith("/index.md") ||
+    relativePath.endsWith("/README.md") ||
+    relativePath === "wiki/claims/contested.md"
+  ) {
     return null;
   }
   if (relativePath.startsWith("wiki/source-notes/")) {
     return "source-note";
+  }
+  if (relativePath.startsWith("wiki/claims/")) {
+    return "claim-page";
   }
   if (relativePath.startsWith("wiki/concepts/")) {
     return "concept-page";
   }
   if (relativePath.startsWith("wiki/entities/")) {
     return "entity-page";
+  }
+  if (relativePath.startsWith("wiki/states/")) {
+    return "state-page";
+  }
+  if (relativePath.startsWith("wiki/regimes/")) {
+    return "regime-page";
+  }
+  if (relativePath.startsWith("wiki/decisions/")) {
+    return "decision-note";
   }
   if (relativePath.startsWith("wiki/theses/")) {
     return "thesis-page";
@@ -125,6 +141,14 @@ function lintProject(root) {
 
     if ((kind === "principle-note" || kind === "portfolio-philosophy-note") && !sectionContent(body, "What Would Falsify It")) {
       issues.push({ severity: "warning", file: relative, message: "Principle note is missing falsifier content." });
+    }
+
+    if (kind === "state-page" && !sectionContent(body, "Managed Snapshot")) {
+      issues.push({ severity: "warning", file: relative, message: "State page is missing a managed snapshot block." });
+    }
+
+    if (kind === "decision-note" && !sectionContent(body, "Managed Strongest Counter-Case")) {
+      issues.push({ severity: "warning", file: relative, message: "Decision note is missing a counter-case block." });
     }
 
     for (const link of extractWikiLinks(content)) {

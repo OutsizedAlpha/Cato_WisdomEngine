@@ -4,8 +4,10 @@ const os = require("node:os");
 const path = require("node:path");
 
 const { askQuestion } = require("../src/ask");
+const { diffLatestClaimSnapshots, refreshClaims, writeWhyBelieve } = require("../src/claims");
 const { extractCandidateConcepts } = require("../src/concept-quality");
 const { compileProject } = require("../src/compile");
+const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("../src/decisions");
 const { writeDeck } = require("../src/deck");
 const { runDoctor } = require("../src/doctor");
 const { ingest } = require("../src/ingest");
@@ -18,6 +20,7 @@ const { captureResearch } = require("../src/research-handoff");
 const { writeReport } = require("../src/report");
 const { searchCorpus } = require("../src/search");
 const { selfIngest } = require("../src/self-ingest");
+const { refreshState, writeRegimeBrief, writeStateDiff } = require("../src/states");
 const { writeSurveillance } = require("../src/surveil");
 const { createWatchProfile, listActiveWatchProfiles } = require("../src/watch");
 const { parseFrontmatter, renderMarkdown } = require("../src/markdown");
@@ -672,6 +675,147 @@ The Federal Reserve issued a fresh FOMC statement covering rates and inflation.`
     const results = searchCorpus(root, "Federal Reserve statement", { limit: 10 });
     assert.ok(results.some((result) => result.relativePath.startsWith("wiki/source-notes/")));
     assert.ok(results.every((result) => !result.relativePath.startsWith("wiki/_templates/")));
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("claim ledger refresh builds claim pages, snapshots, and why-believe output", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+    fs.copyFileSync(fixturePath("sample-article.md"), path.join(root, "inbox", "drop_here", "sample-article.md"));
+    fs.copyFileSync(fixturePath("sample-note.txt"), path.join(root, "inbox", "drop_here", "sample-note.txt"));
+
+    ingest(root);
+    compileProject(root, { promoteCandidates: true });
+    writeReport(root, "passive flows and liquidity");
+    const refresh = refreshClaims(root, { writeSnapshot: true });
+    const whyBelieve = writeWhyBelieve(root, "passive flows");
+
+    assert.ok(refresh.claims >= 1);
+    assert.ok(fs.existsSync(path.join(root, "manifests", "claims.jsonl")));
+    assert.ok(fs.existsSync(path.join(root, "wiki", "claims", "index.md")));
+    assert.ok(fs.existsSync(path.join(root, refresh.snapshotPath)));
+    assert.ok(fs.existsSync(path.join(root, whyBelieve.outputPath)));
+
+    const claimIndex = fs.readFileSync(path.join(root, "wiki", "claims", "index.md"), "utf8");
+    const whyBelieveContent = fs.readFileSync(path.join(root, whyBelieve.outputPath), "utf8");
+
+    assert.match(claimIndex, /Claim Index/);
+    assert.match(whyBelieveContent, /## Active Claims/);
+    assert.match(whyBelieveContent, /## Why Believe This/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("state engine refreshes state pages, diffs snapshots, and writes regime briefs", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+    fs.copyFileSync(fixturePath("sample-article.md"), path.join(root, "inbox", "drop_here", "sample-article.md"));
+    fs.writeFileSync(
+      path.join(root, "inbox", "drop_here", "market-structure-follow-up.md"),
+      `# Dealer gamma and passive flows\n\nDealer gamma remained supportive but passive flows increased crowding risk.\n`,
+      "utf8"
+    );
+
+    ingest(root);
+    compileProject(root, { promoteCandidates: true });
+    writeReport(root, "passive flows and liquidity");
+    refreshClaims(root, { writeSnapshot: true });
+
+    const firstState = refreshState(root, "Market Structure");
+    fs.writeFileSync(
+      path.join(root, "outputs", "reports", "manual-follow-up.md"),
+      renderMarkdown(
+        {
+          id: "REPORT-2026-MANUALFOLLOW",
+          kind: "research-report",
+          title: "Market structure follow-up",
+          created_at: new Date().toISOString(),
+          sources: ["wiki/source-notes/sample-article.md"],
+          generation_mode: "test"
+        },
+        `# Market structure follow-up
+
+## Executive Summary
+
+Passive flows remain supportive for index stability, but crowding risk has increased and dealer gamma may turn less helpful into expiry.
+`
+      ),
+      "utf8"
+    );
+    refreshClaims(root, { writeSnapshot: true });
+    const secondState = refreshState(root, "Market Structure");
+    const diff = writeStateDiff(root, "Market Structure");
+    const regime = writeRegimeBrief(root, {
+      subjects: "Market Structure,Global Macro",
+      set: "test-regime"
+    });
+
+    assert.ok(fs.existsSync(path.join(root, firstState.statePath)));
+    assert.ok(fs.existsSync(path.join(root, secondState.statePath)));
+    assert.ok(fs.existsSync(path.join(root, diff.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, regime.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, regime.regimePath)));
+
+    const stateContent = fs.readFileSync(path.join(root, secondState.statePath), "utf8");
+    const diffContent = fs.readFileSync(path.join(root, diff.outputPath), "utf8");
+
+    assert.match(stateContent, /## Managed Snapshot/);
+    assert.match(stateContent, /## Managed Strengthened/);
+    assert.match(diffContent, /## Added Claims/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("decision layer writes meeting briefs, decision notes, red-team briefs, and market-change briefs", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+    fs.mkdirSync(path.join(root, "inbox", "self"), { recursive: true });
+    fs.copyFileSync(fixturePath("sample-article.md"), path.join(root, "inbox", "drop_here", "sample-article.md"));
+    fs.copyFileSync(fixturePath("sample-note.txt"), path.join(root, "inbox", "drop_here", "sample-note.txt"));
+    fs.copyFileSync(fixturePath("self-principle.txt"), path.join(root, "inbox", "self", "satellite-principle.txt"));
+
+    ingest(root);
+    selfIngest(root);
+    compileProject(root, { promoteCandidates: true });
+    writeReport(root, "passive flows and liquidity");
+    refreshClaims(root, { writeSnapshot: true });
+    refreshState(root, "Market Structure");
+    refreshState(root, "Global Macro");
+
+    const meetingBrief = writeMeetingBrief(root, "Weekly investment meeting brief", {
+      subjects: "Market Structure,Global Macro"
+    });
+    const decisionNote = writeDecisionNote(root, "passive flows");
+    const redTeam = writeRedTeam(root, "passive flows");
+    const changed = writeWhatChangedForMarkets(root, {
+      subjects: "Market Structure,Global Macro"
+    });
+
+    assert.ok(fs.existsSync(path.join(root, meetingBrief.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, decisionNote.notePath)));
+    assert.ok(fs.existsSync(path.join(root, redTeam.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, changed.outputPath)));
+
+    const meetingContent = fs.readFileSync(path.join(root, meetingBrief.outputPath), "utf8");
+    const decisionContent = fs.readFileSync(path.join(root, decisionNote.notePath), "utf8");
+    const redTeamContent = fs.readFileSync(path.join(root, redTeam.outputPath), "utf8");
+
+    assert.match(meetingContent, /## Portfolio Implications/);
+    assert.match(meetingContent, /## Strongest Counter-Case/);
+    assert.match(decisionContent, /## Managed De-Risk Triggers/);
+    assert.match(decisionContent, /## Managed Self-Model Lens/);
+    assert.match(redTeamContent, /## Strongest Counter-Case/);
+    assert.match(redTeamContent, /## Likely Blind Spots/);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

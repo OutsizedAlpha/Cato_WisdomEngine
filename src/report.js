@@ -7,6 +7,8 @@ const {
   synthesisParagraphs,
   writeOutputDocument
 } = require("./research");
+const { searchClaims } = require("./claims");
+const { refreshState } = require("./states");
 const { resolveWatchSubject } = require("./watch");
 const GROUNDED_EXCLUDE_PREFIXES = [
   "outputs/",
@@ -37,7 +39,19 @@ function buildWatchContextBlock(watch) {
 `;
 }
 
-function buildReportBody(topic, results, watch) {
+function buildClaimContextBlock(claims, state) {
+  return `
+## Claim Ledger
+
+- Current state label: ${state ? state.stateLabel : "not refreshed"}
+- Current state page: ${state ? `[[${state.statePath.replace(/^wiki\//, "").replace(/\.md$/i, "")}|${state.subject}]]` : "none"}
+- Claims surfaced: ${claims.length}
+
+${claims.length ? claims.slice(0, 6).map((claim) => `- ${claim.claim_text}`).join("\n") : "- No relevant claims surfaced yet."}
+`;
+}
+
+function buildReportBody(topic, results, watch, claims, state) {
   if (!results.length) {
     return `
 # ${topic}
@@ -56,6 +70,8 @@ The current local corpus does not yet support a grounded report on this topic.
 - None.
 
 ${buildWatchContextBlock(watch)}
+
+${buildClaimContextBlock(claims, state)}
 
 ## Synthesis
 
@@ -94,6 +110,8 @@ ${evidenceBullets(results, 280)}
 
 ${buildWatchContextBlock(watch)}
 
+${buildClaimContextBlock(claims, state)}
+
 ## Synthesis
 
 ${synthesis.summary}
@@ -122,6 +140,14 @@ ${results.map((result) => `- ${renderResultReference(result)}`).join("\n")}
 
 function writeReport(root, topic, options = {}) {
   const watch = resolveWatchSubject(root, topic);
+  const claims = searchClaims(root, watch.query, {
+    limit: Number(options.claimLimit || 8),
+    statuses: ["active", "contested", "stale"]
+  });
+  const state = refreshState(root, topic, {
+    claimLimit: options.claimLimit,
+    evidenceLimit: options.evidenceLimit
+  });
   const results = selectEvidence(root, watch.query, {
     limit: Number(options.limit || 10),
     excerptLength: 300,
@@ -134,12 +160,14 @@ function writeReport(root, topic, options = {}) {
     title: topic,
     outputDir: "outputs/reports",
     fileSlug: topic,
-    body: buildReportBody(topic, results, watch),
+    body: buildReportBody(topic, results, watch, claims, state),
     sources: results.map((result) => result.relativePath),
     frontmatter: {
       report_topic: topic,
       generation_mode: "grounded_report",
-      watch_profile: watch.profile ? watch.profile.relativePath : ""
+      watch_profile: watch.profile ? watch.profile.relativePath : "",
+      state_path: state.statePath,
+      claim_count: claims.length
     }
   });
 

@@ -1,6 +1,6 @@
 param(
   [Parameter(Mandatory = $true)]
-  [ValidateSet("open-vault", "refresh", "capture-research", "report", "ask", "deck", "surveil", "watch", "watch-refresh", "reflect", "doctor", "open-latest-report")]
+  [ValidateSet("open-vault", "refresh", "capture-research", "report", "ask", "deck", "surveil", "watch", "watch-refresh", "claims", "state", "regime", "decision", "meeting-brief", "red-team", "market-changes", "reflect", "doctor", "open-latest-report")]
   [string]$Action,
   [string]$Prompt,
   [string]$Context,
@@ -143,6 +143,70 @@ switch ($Action) {
     }
     if (-not $SkipOpen) {
       $latest = Get-LatestMarkdown (Join-Path $RepoRoot "logs\report_runs")
+      if ($latest) {
+        Open-InObsidian $latest.FullName
+      }
+    }
+  }
+  "claims" {
+    Invoke-CatoCommand -CommandArgs @("claims-refresh", "--snapshot")
+    if (-not $SkipOpen) {
+      Open-InObsidian (Join-Path $RepoRoot "wiki\claims\index.md")
+    }
+  }
+  "state" {
+    $subject = Resolve-InteractivePrompt $Prompt "State subject"
+    Invoke-CatoCommand -CommandArgs @("state-refresh", $subject)
+    if (-not $SkipOpen) {
+      $statePath = Join-Path $RepoRoot ("wiki\states\" + ($subject.ToLower() -replace "[^a-z0-9]+", "-").Trim("-") + ".md")
+      if (Test-Path -LiteralPath $statePath) {
+        Open-InObsidian $statePath
+      }
+    }
+  }
+  "regime" {
+    Invoke-CatoCommand -CommandArgs @("regime-brief", "--set", "weekly-investment-meeting")
+    if (-not $SkipOpen) {
+      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "outputs\briefs")
+      if ($latest) {
+        Open-InObsidian $latest.FullName
+      }
+    }
+  }
+  "decision" {
+    $topic = Resolve-InteractivePrompt $Prompt "Decision topic"
+    Invoke-CatoCommand -CommandArgs @("decision-note", $topic)
+    if (-not $SkipOpen) {
+      $decisionPath = Join-Path $RepoRoot ("wiki\decisions\" + ($topic.ToLower() -replace "[^a-z0-9]+", "-").Trim("-") + ".md")
+      if (Test-Path -LiteralPath $decisionPath) {
+        Open-InObsidian $decisionPath
+      }
+    }
+  }
+  "meeting-brief" {
+    $title = Resolve-InteractivePrompt $Prompt "Meeting brief title"
+    Invoke-CatoCommand -CommandArgs @("meeting-brief", $title)
+    if (-not $SkipOpen) {
+      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "outputs\meeting-briefs")
+      if ($latest) {
+        Open-InObsidian $latest.FullName
+      }
+    }
+  }
+  "red-team" {
+    $topic = Resolve-InteractivePrompt $Prompt "Red-team topic"
+    Invoke-CatoCommand -CommandArgs @("red-team", $topic)
+    if (-not $SkipOpen) {
+      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "outputs\briefs")
+      if ($latest) {
+        Open-InObsidian $latest.FullName
+      }
+    }
+  }
+  "market-changes" {
+    Invoke-CatoCommand -CommandArgs @("what-changed-for-markets")
+    if (-not $SkipOpen) {
+      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "outputs\briefs")
       if ($latest) {
         Open-InObsidian $latest.FullName
       }

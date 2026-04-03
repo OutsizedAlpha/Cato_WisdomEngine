@@ -22,6 +22,9 @@ Cato is a local research operating system with five layers:
 4. `wiki/`
    This is the maintained knowledge layer:
    - `source-notes/` for one-note-per-source grounding
+   - `claims/` for atomic belief units
+   - `states/` and `regimes/` for canonical current-world-model surfaces
+   - `decisions/` for durable PM-facing decision notes
    - `watch-profiles/` for durable topic-watch instructions
    - `concepts/`, `entities/`, `timelines/`, `theses/`, `surveillance/`
    - `self/` for principles, heuristics, biases, and postmortems
@@ -29,8 +32,10 @@ Cato is a local research operating system with five layers:
 5. `outputs/`
    This is where generated artefacts land:
    - `memos/`
+   - `briefs/`
    - `reports/`
    - `decks/`
+   - `meeting-briefs/`
 
 `logs/` and `manifests/` provide auditability around what happened and when.
 
@@ -48,6 +53,11 @@ The default loop is:
    - `ask` for a memo
    - `report` for a stronger write-up
    - `deck` for slides
+   - `claims-refresh` when you want the belief ledger rebuilt and snapshotted
+   - `why-believe` when you want a belief-led explanation of why the repo currently holds a view
+   - `state-refresh` when you want a current state page for a topic or regime subject
+   - `regime-brief` when you want a world-model summary across a chosen state basket
+   - `meeting-brief`, `decision-note`, `red-team`, and `what-changed-for-markets` for PM-facing outputs
    - `capture-research` when Codex has already done live web research and you want the sources plus the final artefact persisted into Cato
    - `watch` to persist a live topic and its instruction profile
    - `surveil` for a persistent watch page
@@ -94,7 +104,16 @@ This keeps the live intelligence with GPT and the durable structure with Cato.
   Converts rough personal notes into structured self-model notes.
 
 - `compile`
-  Rebuilds concept/entity pages, indices, timelines, contradiction candidates, and synthesis candidates from the current corpus.
+  Rebuilds concept/entity pages, claim pages, indices, timelines, contradiction candidates, and synthesis candidates from the current corpus.
+
+- `claims-refresh`
+  Rebuilds the atomic claim ledger, writes `manifests/claims.jsonl`, refreshes `wiki/claims/`, and can snapshot the ledger for later diffs.
+
+- `claim-diff`
+  Compares the latest two claim snapshots so the repo can answer what has changed in the belief set rather than only what exists.
+
+- `why-believe`
+  Writes a belief brief that explains why the current repo believes something, using active claims, contested claims, and the grounded evidence map together.
 
 - `ask`
   Writes a grounded memo from the current local corpus.
@@ -108,6 +127,15 @@ This keeps the live intelligence with GPT and the durable structure with Cato.
 - `surveil`
   Maintains a durable watch page for a live topic, thesis, company, or regime.
 
+- `state-refresh`
+  Maintains a canonical state page in `wiki/states/` for subjects such as Global Macro, US Inflation, or Geopolitical Risk.
+
+- `state-diff`
+  Compares the last two snapshots for a state so you can see what strengthened, weakened, and stayed the same.
+
+- `regime-brief`
+  Writes a cross-subject brief and refreshes the corresponding canonical page in `wiki/regimes/`.
+
 - `watch`
   Creates or updates a persistent watch profile. The watch profile is the standing instruction object that tells Cato what the topic means, why it matters, which aliases/entities/concepts belong to it, and which triggers to keep in view.
 
@@ -116,6 +144,18 @@ This keeps the live intelligence with GPT and the durable structure with Cato.
 
 - `reflect`
   Reviews the self-model and updates the tension register.
+
+- `meeting-brief`
+  Writes a PM-facing brief that combines refreshed state pages, claim changes, and the self-model.
+
+- `decision-note`
+  Writes or refreshes a durable decision-support note in `wiki/decisions/`.
+
+- `red-team`
+  Writes the strongest counter-case, likely blind spots, and invalidation triggers for a topic.
+
+- `what-changed-for-markets`
+  Writes a state-led market-change brief so the repo can answer what shifted, not just what new documents landed.
 
 - `principles`
   Writes a current snapshot of active principle notes.
@@ -177,6 +217,18 @@ The intended operating model is:
 
 Grounded output commands treat watch profiles, surveillance pages, unresolved registers, and prior generated outputs as control surfaces rather than evidence. They route toward source notes, extracted text, concept pages, entity pages, and other source-grounded material instead of feeding on their own previous artefacts.
 
+## Belief -> State -> Decision Stack
+
+The new operating order is:
+
+1. source notes and reports provide grounded material
+2. `claims-refresh` decomposes that into atomic claims
+3. `state-refresh` turns the claim set into a current-state page
+4. `regime-brief` aggregates states into a world-model surface
+5. decision outputs use claims + states + self-model together
+
+That is the core architectural upgrade. Cato no longer stops at notes and reports; it now maintains beliefs, current states, and mandate-aware decision surfaces.
+
 ## Suggested Launchers
 
 The current launcher set in `commands/` covers the first useful operator surface:
@@ -193,6 +245,13 @@ The current launcher set in `commands/` covers the first useful operator surface
 - `Run-Reflect.cmd`
 - `Run-Doctor.cmd`
 - `Open-Latest-Report.cmd`
+- `Run-Claims.cmd`
+- `Refresh-State.cmd`
+- `Write-Regime-Brief.cmd`
+- `Write-Decision-Note.cmd`
+- `Write-Meeting-Brief.cmd`
+- `Run-Red-Team.cmd`
+- `Run-Market-Changes.cmd`
 
 These are the right first launchers because they match the repeatable motions:
 

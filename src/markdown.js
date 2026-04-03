@@ -111,6 +111,8 @@ function stripMarkdownFormatting(content) {
     .replace(/```[\s\S]*?```/g, " ")
     .replace(/`([^`]+)`/g, "$1")
     .replace(/!\[[^\]]*]\([^)]*\)/g, " ")
+    .replace(/\[\[([^|\]]+)\|([^\]]+)]]/g, "$2")
+    .replace(/\[\[([^\]]+)]]/g, "$1")
     .replace(/\[([^\]]+)]\(([^)]+)\)/g, "$1")
     .replace(/^>\s*/gm, "")
     .replace(/^#+\s*/gm, "")

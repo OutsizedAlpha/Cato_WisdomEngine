@@ -29,8 +29,29 @@ function readJson(filePath, fallback = null) {
   return JSON.parse(readText(filePath));
 }
 
+function readJsonl(filePath, fallback = []) {
+  if (!fs.existsSync(filePath)) {
+    return fallback;
+  }
+  const lines = readText(filePath)
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean);
+  if (!lines.length) {
+    return fallback;
+  }
+  return lines.map((line) => JSON.parse(line));
+}
+
 function writeJson(filePath, data) {
   writeText(filePath, `${JSON.stringify(data, null, 2)}\n`);
+}
+
+function writeJsonl(filePath, rows) {
+  writeText(
+    filePath,
+    `${(Array.isArray(rows) ? rows : []).map((row) => JSON.stringify(row)).join("\n")}${rows?.length ? "\n" : ""}`
+  );
 }
 
 function appendJsonl(filePath, data) {
@@ -149,6 +170,7 @@ module.exports = {
   moveFile,
   nowIso,
   readJson,
+  readJsonl,
   readText,
   relativeToRoot,
   slugify,
@@ -158,5 +180,6 @@ module.exports = {
   truncate,
   uniquePath,
   writeJson,
+  writeJsonl,
   writeText
 };

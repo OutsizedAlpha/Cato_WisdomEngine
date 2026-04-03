@@ -7,6 +7,9 @@ Cato_WisdomEngine is a local, file-based research operating system for building 
 - preserves raw source evidence
 - extracts machine-usable artefacts
 - treats repo snapshots and figures as evidence-bearing sources rather than second-class metadata
+- decomposes source notes and major outputs into an auditable claim ledger
+- maintains explicit state and regime pages for live macro, geopolitical, and market-structure monitoring
+- produces PM-facing decision notes, meeting briefs, red-team outputs, and market-change briefs
 - compiles source notes, concepts, entities, timelines, theses, and self-model notes
 - maintains watch profiles as persistent instructions for live surveillance topics
 - generates markdown-first outputs such as briefs, reports, decks, and memos
@@ -24,6 +27,9 @@ Raw evidence is immutable. Derived knowledge lives in the `wiki/` layer. Outputs
 - `manifests/` = source manifests and hash tracking
 - `extracted/` = text, metadata, figures, and tables derived from raw evidence
 - `wiki/` = compiled knowledge layer and self-model
+- `wiki/claims/` = atomic claim ledger
+- `wiki/states/` and `wiki/regimes/` = canonical current-state surfaces
+- `wiki/decisions/` = durable decision-support notes
 - `outputs/` = generated answer artefacts
 - `logs/` = lint and workflow logs
 - `cache/` = disposable local cache
@@ -40,7 +46,10 @@ Raw evidence is immutable. Derived knowledge lives in the `wiki/` layer. Outputs
 6. Run `.\cato.cmd search "your topic"`.
 7. Run `.\cato.cmd ask "your question"`.
 8. Run `.\cato.cmd report "your topic"` or `.\cato.cmd surveil "your topic"` when you need a stronger output or a live watch page.
-9. Run `.\cato.cmd lint`.
+9. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger updated and diffable.
+10. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
+11. Run `.\cato.cmd meeting-brief "Weekly investment meeting brief"` or `.\cato.cmd decision-note "topic"` when you want mandate-facing output.
+12. Run `.\cato.cmd lint`.
 
 For live web research through GPT/Codex:
 
@@ -65,6 +74,13 @@ If you prefer double-click launchers instead of typing commands, use the wrapper
 - `commands\Create-Watch.cmd`
 - `commands\Refresh-Watches.cmd`
 - `commands\Import-Research-Bundle.cmd`
+- `commands\Run-Claims.cmd`
+- `commands\Refresh-State.cmd`
+- `commands\Write-Regime-Brief.cmd`
+- `commands\Write-Decision-Note.cmd`
+- `commands\Write-Meeting-Brief.cmd`
+- `commands\Run-Red-Team.cmd`
+- `commands\Run-Market-Changes.cmd`
 
 See `docs/operator_guide.md` for the operating model behind those launchers.
 See `docs/research_handoff.md` for the exact GPT/Codex-to-Cato handoff flow and bundle shape.
@@ -103,7 +119,10 @@ Resolution order:
 - `.\cato.cmd ingest --url "https://..."` = fetch a web page into the ingest pipeline without manual clipping
 - `.\cato.cmd capture-research .\path\to\bundle.json` = import a GPT/Codex research bundle, download the cited web sources, ingest them as proper evidence, compile the repo, optionally refresh a watch, and write the supplied memo/report/deck into `outputs/`
 - `.\cato.cmd self-ingest` = convert self-authored notes into structured self-model notes
-- `.\cato.cmd compile` = rebuild indices, maps, managed evidence blocks, and unresolved registers
+- `.\cato.cmd compile` = rebuild indices, maps, claim pages, managed evidence blocks, and unresolved registers
+- `.\cato.cmd claims-refresh --snapshot` = rebuild the atomic claim ledger and optionally write a diffable snapshot
+- `.\cato.cmd claim-diff --topic "..."` = compare the latest two claim snapshots
+- `.\cato.cmd why-believe "topic"` = write a belief brief grounded in the current claim ledger plus source evidence
 - `.\cato.cmd search "query"` = rank relevant notes and extracted artefacts
 - `.\cato.cmd ask "question"` = produce a grounded markdown memo from the current corpus
 - `.\cato.cmd report "topic"` = produce a stronger report-style output in `outputs/reports/`
@@ -112,6 +131,13 @@ Resolution order:
 - `.\cato.cmd watch "topic"` = create or update a persistent watch profile and refresh the related surveillance page
 - `.\cato.cmd watch-refresh` = refresh one or all active watch profiles
 - `.\cato.cmd watch-list` = list active watch profiles
+- `.\cato.cmd state-refresh "subject"` = refresh a canonical state page in `wiki/states/`
+- `.\cato.cmd state-diff "subject"` = compare the last two state snapshots for that subject
+- `.\cato.cmd regime-brief --set weekly-investment-meeting` = write a regime brief and refresh the corresponding canonical regime page
+- `.\cato.cmd meeting-brief "title"` = write a PM-facing meeting brief into `outputs/meeting-briefs/`
+- `.\cato.cmd decision-note "topic"` = refresh a durable decision-support note in `wiki/decisions/`
+- `.\cato.cmd red-team "topic"` = write a counter-case and blind-spot brief
+- `.\cato.cmd what-changed-for-markets` = write a state-led change brief across the chosen market subjects
 - `.\cato.cmd reflect` = summarise the current self-model and refresh the tension register
 - `.\cato.cmd principles` = write a current principles snapshot from the self-model layer
 - `.\cato.cmd postmortem "title"` = create a structured self postmortem note
@@ -123,8 +149,11 @@ Run `.\cato.cmd help` for command options.
 ## Design Notes
 
 - The CLI handles deterministic plumbing and repository maintenance.
-- The CLI now supports memo, report, deck, surveillance, watch-profile, self-reflection, doctor, and promotion workflows directly over the local corpus.
+- The CLI now supports memo, report, deck, surveillance, watch-profile, claim-ledger, state/regime, decision-support, self-reflection, doctor, and promotion workflows directly over the local corpus.
 - Live internet research should come from GPT/Codex itself; Cato now provides a handoff layer so researched sources and LLM-authored outputs become durable repo artefacts instead of ephemeral chat-only work.
+- The claim ledger is now the belief layer between source notes and higher-order outputs.
+- State pages and regime briefs are now canonical current-world-model surfaces rather than ad hoc reports.
+- Decision outputs now combine claims, states, watch context, and the self-model so Cato can answer mandate-aware questions instead of only summarising evidence.
 - Obsidian is the reading and navigation layer, not the truth layer.
 - Git should be used from day one to preserve diffs and rollback.
 - `docs/operator_guide.md` explains the daily loop and what the launcher layer is actually automating.

@@ -1,6 +1,8 @@
 const path = require("node:path");
 const { askQuestion } = require("./ask");
+const { diffLatestClaimSnapshots, refreshClaims, writeWhyBelieve } = require("./claims");
 const { compileProject } = require("./compile");
+const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("./decisions");
 const { writeDeck } = require("./deck");
 const { runDoctor } = require("./doctor");
 const { ingest } = require("./ingest");
@@ -13,6 +15,7 @@ const { captureResearch } = require("./research-handoff");
 const { writeReport } = require("./report");
 const { searchCorpus } = require("./search");
 const { selfIngest } = require("./self-ingest");
+const { refreshState, writeRegimeBrief, writeStateDiff } = require("./states");
 const { writeSurveillance } = require("./surveil");
 const {
   createWatchProfile,
@@ -64,6 +67,16 @@ Usage:
   .\\cato.cmd watch "topic" [--context "..."] [--aliases "..."] [--entities "..."] [--concepts "..."] [--triggers "..."]
   .\\cato.cmd watch-refresh [--topic "topic"] [--limit 10]
   .\\cato.cmd watch-list
+  .\\cato.cmd claims-refresh [--snapshot]
+  .\\cato.cmd claim-diff [--topic "topic"]
+  .\\cato.cmd why-believe "topic" [--limit 10]
+  .\\cato.cmd state-refresh "subject" [--claim-limit 12] [--evidence-limit 8]
+  .\\cato.cmd state-diff "subject"
+  .\\cato.cmd regime-brief [--set weekly-investment-meeting] [--subjects "Global Macro,US Inflation"]
+  .\\cato.cmd meeting-brief "title" [--subjects "Global Macro,US Inflation"]
+  .\\cato.cmd decision-note "topic"
+  .\\cato.cmd red-team "topic"
+  .\\cato.cmd what-changed-for-markets [--subjects "Global Macro,Geopolitical Risk"]
   .\\cato.cmd reflect [--promote]
   .\\cato.cmd principles
   .\\cato.cmd postmortem "title" [--notes "..."] [--from file]
@@ -78,6 +91,7 @@ Options:
   --promote             File the generated output back into wiki/synthesis.
   --no-surveil          Skip surveillance refresh during capture-research even if the bundle includes watch data.
   --no-refresh          Create/update the watch profile without refreshing surveillance.
+  --snapshot            Write a timestamped claim snapshot during claims-refresh.
 `);
 }
 
@@ -295,6 +309,130 @@ function runCli(argv) {
     case "watch-list": {
       const profiles = listActiveWatchProfiles(root);
       printWatchProfiles(profiles);
+      return;
+    }
+    case "claims-refresh": {
+      const result = refreshClaims(root, {
+        writeSnapshot: Boolean(parsed.options.snapshot)
+      });
+      console.log(`Claims refreshed: ${result.claims}`);
+      console.log(`Contested claims: ${result.contested}`);
+      if (result.snapshotPath) {
+        console.log(`Snapshot: ${result.snapshotPath}`);
+      }
+      if (result.diffReportPath) {
+        console.log(`Diff report: ${result.diffReportPath}`);
+      }
+      return;
+    }
+    case "claim-diff": {
+      const result = diffLatestClaimSnapshots(root, {
+        topic: parsed.options.topic || parsed.positionals.join(" ").trim()
+      });
+      if (!result.reportPath) {
+        console.log("Not enough claim snapshots to diff.");
+        return;
+      }
+      console.log(`Claim diff: ${result.reportPath}`);
+      console.log(`Added: ${result.added}, Removed: ${result.removed}, Contested: ${result.contested}`);
+      return;
+    }
+    case "why-believe": {
+      const topic = parsed.positionals.join(" ").trim();
+      if (!topic) {
+        throw new Error('Why-believe requires a topic. Example: .\\cato.cmd why-believe "US inflation"');
+      }
+      const result = writeWhyBelieve(root, topic, {
+        limit: parsed.options.limit
+      });
+      console.log(`Wrote belief brief to ${result.outputPath}`);
+      console.log(`Claims used: ${result.claims}`);
+      console.log(`Evidence used: ${result.evidence}`);
+      return;
+    }
+    case "state-refresh": {
+      const subject = parsed.positionals.join(" ").trim();
+      if (!subject) {
+        throw new Error('State-refresh requires a subject. Example: .\\cato.cmd state-refresh "Global Macro"');
+      }
+      const result = refreshState(root, subject, {
+        claimLimit: parsed.options["claim-limit"],
+        evidenceLimit: parsed.options["evidence-limit"]
+      });
+      console.log(`Updated state page at ${result.statePath}`);
+      console.log(`State label: ${result.stateLabel}`);
+      console.log(`Confidence: ${result.confidence}`);
+      return;
+    }
+    case "state-diff": {
+      const subject = parsed.positionals.join(" ").trim();
+      if (!subject) {
+        throw new Error('State-diff requires a subject. Example: .\\cato.cmd state-diff "Global Macro"');
+      }
+      const result = writeStateDiff(root, subject);
+      console.log(`Wrote state diff to ${result.outputPath}`);
+      console.log(`Changed claims: ${result.changed}`);
+      return;
+    }
+    case "regime-brief": {
+      const result = writeRegimeBrief(root, {
+        set: parsed.options.set,
+        title: parsed.options.title,
+        subjects: parsed.options.subjects,
+        noRefresh: Boolean(parsed.options["no-refresh"]),
+        claimLimit: parsed.options["claim-limit"],
+        evidenceLimit: parsed.options["evidence-limit"]
+      });
+      console.log(`Wrote regime brief to ${result.outputPath}`);
+      console.log(`Updated regime page at ${result.regimePath}`);
+      return;
+    }
+    case "meeting-brief": {
+      const title = parsed.positionals.join(" ").trim() || "Weekly investment meeting brief";
+      const result = writeMeetingBrief(root, title, {
+        subjects: parsed.options.subjects,
+        claimLimit: parsed.options["claim-limit"],
+        evidenceLimit: parsed.options["evidence-limit"]
+      });
+      console.log(`Wrote meeting brief to ${result.outputPath}`);
+      console.log(`Subjects covered: ${result.subjects.join(", ")}`);
+      return;
+    }
+    case "decision-note": {
+      const topic = parsed.positionals.join(" ").trim();
+      if (!topic) {
+        throw new Error('Decision-note requires a topic. Example: .\\cato.cmd decision-note "Middle East"');
+      }
+      const result = writeDecisionNote(root, topic, {
+        claimLimit: parsed.options["claim-limit"],
+        evidenceLimit: parsed.options["evidence-limit"]
+      });
+      console.log(`Updated decision note at ${result.notePath}`);
+      console.log(`Linked state page: ${result.statePath}`);
+      return;
+    }
+    case "red-team": {
+      const topic = parsed.positionals.join(" ").trim();
+      if (!topic) {
+        throw new Error('Red-team requires a topic. Example: .\\cato.cmd red-team "US inflation"');
+      }
+      const result = writeRedTeam(root, topic, {
+        claimLimit: parsed.options["claim-limit"],
+        evidenceLimit: parsed.options["evidence-limit"]
+      });
+      console.log(`Wrote red-team brief to ${result.outputPath}`);
+      console.log(`Contested claims surfaced: ${result.contestedClaims}`);
+      return;
+    }
+    case "what-changed-for-markets": {
+      const result = writeWhatChangedForMarkets(root, {
+        title: parsed.options.title,
+        subjects: parsed.options.subjects,
+        claimLimit: parsed.options["claim-limit"],
+        evidenceLimit: parsed.options["evidence-limit"]
+      });
+      console.log(`Wrote market-change brief to ${result.outputPath}`);
+      console.log(`Subjects covered: ${result.subjects.join(", ")}`);
       return;
     }
     case "reflect": {

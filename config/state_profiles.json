@@ -1,0 +1,99 @@
+{
+  "states": [
+    {
+      "title": "Global Macro",
+      "aliases": ["macro climate", "macro regime", "overall macro"],
+      "concepts": ["growth", "inflation", "liquidity", "policy regimes"],
+      "entities": ["Federal Reserve", "European Central Bank", "Bank of England", "Bank of Japan", "China"],
+      "watch_profile": "Global Macro",
+      "focus": "Cross-asset macro regime and the balance between growth resilience, inflation pressure, and liquidity conditions.",
+      "market_lens": "rates, FX, global equities, credit"
+    },
+    {
+      "title": "US Growth",
+      "aliases": ["us activity", "u.s. growth", "american growth"],
+      "concepts": ["growth", "labor market", "manufacturing", "trade"],
+      "entities": ["United States", "Federal Reserve"],
+      "focus": "Growth resilience, labour-market trend, and whether the U.S. is accelerating or rolling over.",
+      "market_lens": "rates, dollar, cyclicals"
+    },
+    {
+      "title": "US Inflation",
+      "aliases": ["u.s. inflation", "american inflation"],
+      "concepts": ["inflation", "wages", "energy prices"],
+      "entities": ["United States", "Federal Reserve"],
+      "focus": "Inflation impulse, wage pressure, and whether policy can ease cleanly.",
+      "market_lens": "front-end rates, breakevens, duration"
+    },
+    {
+      "title": "Europe Macro",
+      "aliases": ["euro area", "european macro", "germany and europe"],
+      "concepts": ["growth", "inflation", "manufacturing"],
+      "entities": ["Euro Area", "Germany", "France", "Italy", "Spain", "European Central Bank"],
+      "focus": "Industrial breadth, consumer softness, and imported-cost pressure across Europe.",
+      "market_lens": "bunds, euro, European cyclicals"
+    },
+    {
+      "title": "UK Macro",
+      "aliases": ["britain", "united kingdom macro", "uk growth and inflation"],
+      "concepts": ["growth", "inflation", "current account"],
+      "entities": ["United Kingdom", "Bank of England"],
+      "focus": "Imported inflation, domestic stagnation, and policy awkwardness in the UK.",
+      "market_lens": "gilts, sterling, UK defensives"
+    },
+    {
+      "title": "Japan Macro",
+      "aliases": ["japan", "japanese macro"],
+      "concepts": ["capex", "energy prices", "growth"],
+      "entities": ["Japan", "Bank of Japan"],
+      "focus": "Domestic resilience versus imported-energy vulnerability and capex follow-through.",
+      "market_lens": "yen, JGBs, exporters"
+    },
+    {
+      "title": "China Demand",
+      "aliases": ["china", "chinese demand", "em asia demand"],
+      "concepts": ["growth", "manufacturing", "external demand"],
+      "entities": ["China", "South Korea", "Brazil"],
+      "focus": "Official and private demand signals across China and the broader EM growth complex.",
+      "market_lens": "commodities, EMFX, cyclicals"
+    },
+    {
+      "title": "Geopolitical Risk",
+      "aliases": ["geopolitics", "middle east", "war risk"],
+      "concepts": ["oil risk", "shipping disruption", "escalation risk"],
+      "entities": ["Middle East", "Iran", "Israel", "Red Sea"],
+      "focus": "Conflict-driven inflation pressure and cross-asset risk transmission.",
+      "market_lens": "oil, shipping, defense, duration"
+    },
+    {
+      "title": "Market Structure",
+      "aliases": ["flows", "positioning", "dealer gamma", "passive flows"],
+      "concepts": ["dealer gamma", "passive flows", "funding stress", "options expiry effects"],
+      "entities": [],
+      "focus": "Flow, positioning, and plumbing effects shaping market transmission.",
+      "market_lens": "index behaviour, vol, cross-asset positioning"
+    }
+  ],
+  "regime_sets": {
+    "global-risk-regime": [
+      "Global Macro",
+      "US Growth",
+      "US Inflation",
+      "Europe Macro",
+      "China Demand",
+      "Geopolitical Risk",
+      "Market Structure"
+    ],
+    "weekly-investment-meeting": [
+      "Global Macro",
+      "US Growth",
+      "US Inflation",
+      "Europe Macro",
+      "UK Macro",
+      "Japan Macro",
+      "China Demand",
+      "Geopolitical Risk",
+      "Market Structure"
+    ]
+  }
+}

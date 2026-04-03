@@ -16,6 +16,13 @@ This folder now contains simple Windows launchers for the most common Cato opera
 - `Run-Reflect.cmd` = refresh the self-reflection memo and open it
 - `Run-Doctor.cmd` = run repo health checks and open the latest doctor report
 - `Open-Latest-Report.cmd` = open the newest report without generating a new one
+- `Run-Claims.cmd` = rebuild the claim ledger, snapshot it, and open the claim index
+- `Refresh-State.cmd` = ask for a subject, refresh the state page, and open it
+- `Write-Regime-Brief.cmd` = refresh the default regime brief and open the newest brief
+- `Write-Decision-Note.cmd` = ask for a topic, refresh the decision note, and open it
+- `Write-Meeting-Brief.cmd` = ask for a title, write a meeting brief, and open it
+- `Run-Red-Team.cmd` = ask for a topic, write a red-team brief, and open it
+- `Run-Market-Changes.cmd` = write the current market-change brief and open it
 
 ## Shared Script
 

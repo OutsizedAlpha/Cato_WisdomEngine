@@ -15,8 +15,9 @@ This file turns the user's long-form conversation into the current working brief
 - Core layers in scope: acquisition/inbox, immutable raw evidence, extracted artefacts, compiled wiki, outputs, manifests/logs, config/policies/prompts, and CLI tooling.
 - Core workflows in scope: `init`, `ingest`, `compile`, `lint`, and `ask`.
 - Phase-2 workflows now in scope and implemented locally: `report`, `deck`, `surveil`, `watch`, `watch-refresh`, `watch-list`, `doctor`, `self-ingest`, `reflect`, `principles`, and `postmortem`.
+- Phase-3 knowledge and decision layers are now in scope and implemented locally: `claims-refresh`, `claim-diff`, `why-believe`, `state-refresh`, `state-diff`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, and `what-changed-for-markets`.
 - GPT/Codex-to-Cato handoff is now in scope: Codex does the live web research and authored synthesis, while Cato imports the cited sources plus the finished artefact through `capture-research`.
-- Knowledge objects in scope: source notes, concept pages, entity pages, timeline pages, thesis pages, watch profiles, surveillance pages, question pages, synthesis pages, and self-model notes.
+- Knowledge objects in scope: source notes, claim pages, concept pages, entity pages, state pages, regime pages, decision notes, timeline pages, thesis pages, watch profiles, surveillance pages, question pages, synthesis pages, and self-model notes.
 
 ## Constraints
 
@@ -48,12 +49,12 @@ This file turns the user's long-form conversation into the current working brief
 
 - MVP foundation implemented.
 - The repository now includes the first working local runtime, repo structure, templates, policies, fixture data, and test coverage for the core workflow.
-- Immediate goal shifts from repo bootstrap to phase-2 hardening and integration: stronger synthesis quality, richer reporting, first-class repo/figure ingest, durable watch profiles, operator launchers, and a clean GPT/Codex-to-Cato handoff model for live research.
+- Immediate goal shifts from repo bootstrap to phase-3 hardening and integration: stronger claim quality, cleaner state/regime surfaces, sharper PM decision outputs, and continued GPT/Codex-to-Cato handoff discipline for live research.
 
 ## Open Decisions
 
 - Whether to keep the runtime permanently Node-first or add a parallel Python tool layer once Python is reliably available on the machine.
 - Manifest format details and stable ID scheme for ingested sources.
 - Whether to add API-backed LLM execution inside the CLI or keep LLM synthesis as an external Codex/ChatGPT agent workflow over the repo.
-- How far to push deterministic concept/entity extraction before adding optional model-assisted compile passes.
-- How aggressive watch-profile-driven retrieval should become before introducing richer semantic indexing or embedded model passes.
+- How far to push deterministic claim extraction and state inference before adding optional model-assisted compile passes.
+- How aggressive watch-profile-driven retrieval and state routing should become before introducing richer semantic indexing or embedded model passes.

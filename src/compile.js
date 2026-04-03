@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { refreshClaims } = require("./claims");
 const {
   buildConceptOntologyIndex,
   isMeaningfulCandidateConcept,
@@ -511,6 +512,18 @@ function buildCollectionIndex(root, relativeDir, title) {
   return notes.length;
 }
 
+function countCollectionNotes(root, relativeDir, options = {}) {
+  return loadNotes(root, relativeDir).filter((note) => {
+    if (/\/index\.md$/i.test(note.relativePath)) {
+      return false;
+    }
+    if (options.exclude && options.exclude.test(note.relativePath)) {
+      return false;
+    }
+    return true;
+  }).length;
+}
+
 function updateHomePage(root, stats) {
   const homePath = path.join(root, "wiki", "_maps", "home.md");
   const current = readText(homePath);
@@ -518,9 +531,14 @@ function updateHomePage(root, stats) {
 ## Managed Overview
 
 - Source notes: ${stats.sourceNotes}
+- Claims: ${stats.claims}
+- Contested claims: ${stats.contestedClaims}
 - Concepts: ${stats.concepts}
 - Entities: ${stats.entities}
 - Timelines: ${stats.timelines}
+- States: ${stats.states}
+- Regimes: ${stats.regimes}
+- Decisions: ${stats.decisions}
 - Thesis pages: ${stats.theses}
 - Watch profiles: ${stats.watchProfiles}
 - Surveillance pages: ${stats.surveillance}
@@ -544,10 +562,15 @@ function compileProject(root, options = {}) {
   upsertConceptPages(root, conceptMap);
   retireStaleConceptPages(root, conceptMap);
   upsertEntityPages(root, entityMap);
+  const claimSummary = refreshClaims(root, { writeSnapshot: false });
   buildSelfModelIndex(root);
   buildTimelineIndex(root, sourceNotes);
   buildDomainMaps(root, sourceNotes);
   const unresolved = buildUnresolvedRegisters(root, sourceNotes, conceptMap);
+  const claimCount = countCollectionNotes(root, "wiki/claims", { exclude: /\/contested\.md$/i });
+  const stateCount = buildCollectionIndex(root, "wiki/states", "State Index");
+  const regimeCount = buildCollectionIndex(root, "wiki/regimes", "Regime Index");
+  const decisionCount = buildCollectionIndex(root, "wiki/decisions", "Decision Index");
   const thesisCount = buildCollectionIndex(root, "wiki/theses", "Thesis Index");
   const watchProfileCount = buildCollectionIndex(root, "wiki/watch-profiles", "Watch Profile Index");
   const surveillanceCount = buildCollectionIndex(root, "wiki/surveillance", "Surveillance Index");
@@ -557,9 +580,14 @@ function compileProject(root, options = {}) {
 
   updateHomePage(root, {
     sourceNotes: sourceNotes.length,
+    claims: claimCount,
+    contestedClaims: claimSummary.contested,
     concepts: conceptMap.size,
     entities: entityMap.size,
     timelines: fs.existsSync(path.join(root, "wiki", "timelines", "source-chronology.md")) ? 1 : 0,
+    states: stateCount,
+    regimes: regimeCount,
+    decisions: decisionCount,
     theses: thesisCount,
     watchProfiles: watchProfileCount,
     surveillance: surveillanceCount,
@@ -570,9 +598,14 @@ function compileProject(root, options = {}) {
 
   return {
     sourceNotes: sourceNotes.length,
+    claims: claimCount,
+    contestedClaims: claimSummary.contested,
     concepts: conceptMap.size,
     entities: entityMap.size,
     timelines: 1,
+    statePages: stateCount,
+    regimePages: regimeCount,
+    decisionPages: decisionCount,
     thesisPages: thesisCount,
     watchProfiles: watchProfileCount,
     surveillancePages: surveillanceCount,

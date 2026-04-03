@@ -13,6 +13,10 @@ const {
 const { makeId, relativeToRoot, slugify, writeText } = require("./utils");
 const GROUNDED_EXCLUDE_PREFIXES = [
   "outputs/",
+  "wiki/claims/",
+  "wiki/states/",
+  "wiki/regimes/",
+  "wiki/decisions/",
   "wiki/surveillance/",
   "wiki/_indices/",
   "wiki/_maps/",

@@ -14,10 +14,15 @@ function loadSettings(root) {
       selfInbox: "inbox/self",
       sourceNotes: "wiki/source-notes",
       selfRoot: "wiki/self",
+      claims: "wiki/claims",
       concepts: "wiki/concepts",
       entities: "wiki/entities",
+      states: "wiki/states",
+      regimes: "wiki/regimes",
+      decisions: "wiki/decisions",
       memos: "outputs/memos",
       reports: "outputs/reports",
+      meetingBriefs: "outputs/meeting-briefs",
       decks: "outputs/decks",
       surveillance: "wiki/surveillance",
       watchProfiles: "wiki/watch-profiles",
@@ -34,6 +39,8 @@ function ensureProjectStructure(root) {
 
   ensureFile(path.join(root, "manifests", "sources.jsonl"), "");
   ensureFile(path.join(root, "manifests", "self_notes.jsonl"), "");
+  ensureFile(path.join(root, "manifests", "claims.jsonl"), "");
+  ensureFile(path.join(root, "manifests", "state_history.jsonl"), "");
   ensureFile(path.join(root, "manifests", "file_hashes.json"), "{}\n");
   ensureFile(
     path.join(root, "commands", "README.md"),
@@ -41,11 +48,18 @@ function ensureProjectStructure(root) {
   );
   ensureFile(path.join(root, "logs", "actions", "ingest.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "self_ingest.jsonl"), "");
+  ensureFile(path.join(root, "logs", "actions", "claims_refresh.jsonl"), "");
+  ensureFile(path.join(root, "logs", "actions", "state_refresh.jsonl"), "");
+  ensureFile(path.join(root, "logs", "actions", "decision_runs.jsonl"), "");
   ensureFile(path.join(root, "wiki", "_indices", "sources.md"), "# Source Index\n");
+  ensureFile(path.join(root, "wiki", "_indices", "claims.md"), "# Claim Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "concepts.md"), "# Concept Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "entities.md"), "# Entity Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "self-model.md"), "# Self-Model Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "watch-profiles.md"), "# Watch Profile Index\n");
+  ensureFile(path.join(root, "wiki", "_indices", "states.md"), "# State Index\n");
+  ensureFile(path.join(root, "wiki", "_indices", "regimes.md"), "# Regime Index\n");
+  ensureFile(path.join(root, "wiki", "_indices", "decisions.md"), "# Decision Index\n");
   ensureFile(path.join(root, "wiki", "synthesis", "index.md"), "# Synthesis Index\n");
   ensureFile(path.join(root, "wiki", "timelines", "source-chronology.md"), "# Source Chronology\n");
   ensureFile(
@@ -67,6 +81,11 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "wiki", "macro", "index.md"), "# Macro\n");
   ensureFile(path.join(root, "wiki", "market-structure", "index.md"), "# Market Structure\n");
   ensureFile(path.join(root, "wiki", "derivatives", "index.md"), "# Derivatives\n");
+  ensureFile(path.join(root, "wiki", "claims", "index.md"), "# Claim Index\n");
+  ensureFile(path.join(root, "wiki", "claims", "contested.md"), "# Contested Claims\n");
+  ensureFile(path.join(root, "wiki", "states", "index.md"), "# State Index\n");
+  ensureFile(path.join(root, "wiki", "regimes", "index.md"), "# Regime Index\n");
+  ensureFile(path.join(root, "wiki", "decisions", "index.md"), "# Decision Index\n");
   ensureFile(path.join(root, "wiki", "watch-profiles", "index.md"), "# Watch Profile Index\n");
   ensureFile(path.join(root, "wiki", "theses", "index.md"), "# Thesis Index\n");
   ensureFile(path.join(root, "wiki", "surveillance", "index.md"), "# Surveillance Index\n");

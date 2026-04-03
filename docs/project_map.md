@@ -31,6 +31,16 @@ This file records the current local truth of the repository, not the full intend
 - Create or update a watch profile: `node .\bin\cato.js watch "topic" --context "..."`
 - Refresh active watch profiles: `node .\bin\cato.js watch-refresh`
 - List active watch profiles: `node .\bin\cato.js watch-list`
+- Refresh the claim ledger: `node .\bin\cato.js claims-refresh --snapshot`
+- Compare recent claim snapshots: `node .\bin\cato.js claim-diff --topic "topic"`
+- Write a claim-led belief brief: `node .\bin\cato.js why-believe "topic"`
+- Refresh a state page: `node .\bin\cato.js state-refresh "Global Macro"`
+- Compare recent state snapshots: `node .\bin\cato.js state-diff "Global Macro"`
+- Write a regime brief: `node .\bin\cato.js regime-brief --set weekly-investment-meeting`
+- Write a meeting brief: `node .\bin\cato.js meeting-brief "Weekly investment meeting brief"`
+- Refresh a decision note: `node .\bin\cato.js decision-note "topic"`
+- Write a red-team brief: `node .\bin\cato.js red-team "topic"`
+- Write a market-change brief: `node .\bin\cato.js what-changed-for-markets`
 - Reflect on the self-model: `node .\bin\cato.js reflect`
 - Snapshot active principles: `node .\bin\cato.js principles`
 - Create a postmortem note: `node .\bin\cato.js postmortem "title"`
@@ -55,6 +65,9 @@ This file records the current local truth of the repository, not the full intend
 - [`src/extraction.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/extraction.js) = handles text extraction, PDF stream parsing, repo snapshot manifests, figure reference extraction, SVG text capture, and Windows OCR handoff for raster images
 - [`src/self-ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/self-ingest.js) = converts rough self-authored notes into structured self-model notes
 - [`src/compile.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/compile.js) = rebuilds indices, unresolved registers, and managed evidence blocks
+- [`src/claims.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/claims.js) = decomposes source and report material into atomic claims, writes `manifests/claims.jsonl`, and maintains `wiki/claims/`
+- [`src/states.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/states.js) = turns claims plus grounded evidence into current-state pages, state diffs, and regime briefs
+- [`src/decisions.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/decisions.js) = writes meeting briefs, decision notes, red-team outputs, and market-change briefs from states, claims, and self-model context
 - [`src/concept-quality.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/concept-quality.js) = shared concept-normalisation and concept-quality heuristics used to keep promoted ontology terms domain-meaningful
 - [`src/search.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/search.js) = token-based corpus search over markdown and extracted text
 - [`src/ask.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ask.js) = generates grounded markdown memos and optional question pages
@@ -79,7 +92,7 @@ This file records the current local truth of the repository, not the full intend
 - `CLAUDE.md` is a thin loader pointing to `AGENTS.md`.
 - [`INVESTMENT_RESEARCH.md`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/INVESTMENT_RESEARCH.md) acts as the domain overlay for investment-research-specific behaviour.
 - The repo now includes the first full operating tree: `config/`, `inbox/`, `raw/`, `manifests/`, `extracted/`, `wiki/`, `outputs/`, `logs/`, `cache/`, `src/`, `tests/`, and root wrapper commands.
-- The CLI now covers deterministic repo maintenance plus grounded memo, report, deck, watch-profile, surveillance, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
+- The CLI now covers deterministic repo maintenance plus grounded memo, report, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
 - The live-research split is now explicit: GPT/Codex is expected to perform web research and author the synthesis, while Cato captures the cited sources and final artefacts through `capture-research`.
 - `ingest` now treats repo directories and repo archives as first-class evidence objects instead of only plain files.
 - `ingest` now writes figure notes into `extracted/figures/` for standalone images and markdown/HTML sources with image references.
@@ -87,9 +100,12 @@ This file records the current local truth of the repository, not the full intend
 - Grounded output workflows also exclude surveillance pages, prior outputs, generic indices/maps, unresolved registers, and self-model pages from evidence selection so reports and surveillance stay source-grounded.
 - `wiki/_indices/` and managed blocks are generated surfaces. Concept and entity pages are updatable knowledge objects with generated evidence sections.
 - Candidate concept extraction is now ontology-aware and phrase-biased rather than raw token-frequency-driven; compile retires stale generated concept pages instead of letting weak concepts keep leaking into retrieval.
+- Compile now also refreshes the atomic claim ledger, so the repo maintains a belief layer between source notes and higher-order outputs.
+- State pages are canonical current-world-model surfaces built from claims plus grounded evidence, with their own history in `manifests/state_history.jsonl`.
+- Decision outputs are now explicitly mandate-facing and combine claims, states, watch context, and the self-model rather than only summarising search results.
 - Markdown frontmatter rendering now quotes empty scalar values, so refreshed source-note frontmatter round-trips without mutating empty strings into YAML-array placeholders.
 - `compile` now also refreshes timeline, domain-index, synthesis-candidate, contradiction, thesis-index, watch-profile index/ontology, surveillance-index, and self-index surfaces.
-- `commands/` now contains a launcher layer for common double-click workflows and Obsidian opening.
+- `commands/` now contains a launcher layer for common double-click workflows, including the new claim, state, regime, meeting, decision, and red-team surfaces.
 - `commands/research-capture.example.json` provides the bundle shape for Codex-to-Cato research handoff.
 - `docs/research_handoff.md` is the operator-facing reference for the research handoff contract.
 

@@ -1,5 +1,6 @@
 const path = require("node:path");
 const fs = require("node:fs");
+const { searchClaims } = require("./claims");
 const {
   confidenceLabel,
   renderResultReference,
@@ -59,6 +60,10 @@ function writeSurveillance(root, subject, options = {}) {
     excerptLength: 260,
     excludePrefixes: GROUNDED_EXCLUDE_PREFIXES
   });
+  const claims = searchClaims(root, watch.query, {
+    limit: Number(options.claimLimit || 8),
+    statuses: ["active", "contested", "stale"]
+  });
   const surveillancePath = path.join(root, "wiki", "surveillance", `${slugify(subject).slice(0, 80) || "surveillance"}.md`);
   const frontmatter = {
     id: makeId("SURVEIL", slugify(subject).padEnd(12, "s")),
@@ -96,8 +101,14 @@ ${watch.profile
 
 - Last refreshed: ${nowIso()}
 - Corpus confidence: ${confidenceLabel(results)}
+- Claim count: ${claims.length}
 - Primary route: ${results.slice(0, 3).map((result) => result.title).join("; ") || "none"}
 - Summary: ${synthesis.summary}
+`,
+    claims: `
+## Managed Claim Ledger
+
+${claims.length ? claims.slice(0, 6).map((claim) => `- [[claims/${String(claim.id).toLowerCase()}|${claim.claim_text.slice(0, 96)}]]`).join("\n") : "- No relevant claims surfaced yet."}
 `,
     changed: `
 ## What Changed Since Last Checkpoint
@@ -131,7 +142,8 @@ ${catalystLines(results)}
   return {
     notePath: relativeToRoot(root, surveillancePath),
     profilePath: watch.profile ? watch.profile.relativePath : "",
-    results
+    results,
+    claims
   };
 }
 
