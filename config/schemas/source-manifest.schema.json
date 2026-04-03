@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cato source manifest entry",
+  "type": "object",
+  "required": [
+    "id",
+    "title",
+    "source_type",
+    "ingested_at",
+    "raw_path",
+    "checksum"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "title": { "type": "string" },
+    "source_type": { "type": "string" },
+    "source_url": { "type": ["string", "null"] },
+    "origin_url": { "type": ["string", "null"] },
+    "capture_source": { "type": ["string", "null"] },
+    "captured_at": { "type": ["string", "null"] },
+    "search_query": { "type": ["string", "null"] },
+    "search_engine": { "type": ["string", "null"] },
+    "search_rank": { "type": ["integer", "string", "null"] },
+    "capture_notes": { "type": ["string", "null"] },
+    "ingested_at": { "type": "string" },
+    "raw_path": { "type": "string" },
+    "extracted_text_path": { "type": ["string", "null"] },
+    "table_preview_path": { "type": ["string", "null"] },
+    "figure_note_path": { "type": ["string", "null"] },
+    "figure_count": { "type": ["integer", "null"] },
+    "extraction_status": { "type": ["string", "null"] },
+    "extraction_method": { "type": ["string", "null"] },
+    "extraction_notes": {
+      "type": ["array", "null"],
+      "items": { "type": "string" }
+    },
+    "metadata_path": { "type": ["string", "null"] },
+    "note_path": { "type": "string" },
+    "checksum": { "type": "string" },
+    "status": { "type": "string" }
+  }
+}

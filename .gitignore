@@ -1,0 +1,10 @@
+.DS_Store
+Thumbs.db
+.env
+.env.*
+.venv/
+node_modules/
+cache/
+logs/
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json

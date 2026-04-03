@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cato research handoff bundle",
+  "type": "object",
+  "properties": {
+    "topic": { "type": "string" },
+    "question": { "type": "string" },
+    "watch_topic": { "type": "string" },
+    "watch": {
+      "type": "object",
+      "properties": {
+        "subject": { "type": "string" },
+        "context": { "type": "string" },
+        "aliases": { "type": ["array", "string"], "items": { "type": "string" } },
+        "entities": { "type": ["array", "string"], "items": { "type": "string" } },
+        "concepts": { "type": ["array", "string"], "items": { "type": "string" } },
+        "triggers": { "type": ["array", "string"], "items": { "type": "string" } },
+        "priority": { "type": "string" },
+        "cadence": { "type": "string" },
+        "status": { "type": "string" }
+      }
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["url"],
+        "properties": {
+          "url": { "type": "string" },
+          "title": { "type": "string" },
+          "author": { "type": "string" },
+          "date": { "type": "string" },
+          "publisher": { "type": "string" },
+          "tags": { "type": ["array", "string"], "items": { "type": "string" } },
+          "entities": { "type": ["array", "string"], "items": { "type": "string" } },
+          "concepts": { "type": ["array", "string"], "items": { "type": "string" } },
+          "notes": { "type": "string" }
+        }
+      }
+    },
+    "output": {
+      "type": "object",
+      "properties": {
+        "kind": { "type": "string" },
+        "title": { "type": "string" },
+        "promote": { "type": "boolean" },
+        "body": { "type": "string" }
+      }
+    }
+  }
+}

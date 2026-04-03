@@ -1,0 +1,61 @@
+{
+  "brief": {
+    "sections": [
+      "Question",
+      "Working answer",
+      "Evidence base",
+      "Counterpoints",
+      "Gaps and next reads"
+    ]
+  },
+  "memo": {
+    "sections": [
+      "Executive summary",
+      "Context",
+      "Evidence",
+      "Synthesis",
+      "Counter-case",
+      "What would change the view",
+      "Source map"
+    ]
+  },
+  "report": {
+    "sections": [
+      "Executive summary",
+      "Context",
+      "Evidence",
+      "Synthesis",
+      "Counter-case",
+      "Open questions"
+    ]
+  },
+  "deck": {
+    "sections": [
+      "Title slide",
+      "Executive summary",
+      "Key evidence",
+      "Synthesis",
+      "Counter-case",
+      "Next questions"
+    ]
+  },
+  "surveillance": {
+    "sections": [
+      "What changed",
+      "Evidence supporting thesis",
+      "Evidence weakening thesis",
+      "Catalysts",
+      "Tripwires",
+      "Action implications"
+    ]
+  },
+  "reflection": {
+    "sections": [
+      "Executive summary",
+      "Active principles and heuristics",
+      "Biases and anti-patterns",
+      "Tension register summary",
+      "What to add next"
+    ]
+  }
+}

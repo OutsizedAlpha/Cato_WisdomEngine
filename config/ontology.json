@@ -1,0 +1,80 @@
+{
+  "domains": {
+    "macro": [
+      "growth",
+      "inflation",
+      "labour",
+      "fiscal",
+      "liquidity",
+      "central banks",
+      "policy regimes",
+      "cross-asset confirmation"
+    ],
+    "market_structure": [
+      "dealer gamma",
+      "vanna",
+      "charm",
+      "vol supply and demand",
+      "passive flows",
+      "ETF create redeem mechanics",
+      "rebalancing",
+      "index inclusion",
+      "CTA flows",
+      "funding stress",
+      "options expiry effects"
+    ],
+    "equities_company_work": [
+      "business model",
+      "unit economics",
+      "TAM realism",
+      "margins",
+      "ROIC",
+      "pricing power",
+      "capital allocation",
+      "accounting quality",
+      "AI disruption exposure",
+      "valuation framework"
+    ],
+    "derivatives": [
+      "surface behaviour",
+      "skew",
+      "term structure",
+      "realised versus implied",
+      "structured product supply",
+      "hedging pressure",
+      "convexity flows"
+    ],
+    "portfolio_process": [
+      "theses",
+      "watchlists",
+      "catalysts",
+      "regime dashboards",
+      "sizing rationale",
+      "tripwire logs",
+      "postmortems"
+    ],
+    "meta_methods": [
+      "valuation methods",
+      "attribution methods",
+      "factor diagnostics",
+      "signal design",
+      "data caveats"
+    ]
+  },
+  "selfModel": {
+    "categories": [
+      "principles",
+      "heuristics",
+      "anti-patterns",
+      "decision-rules",
+      "portfolio-philosophy",
+      "postmortems",
+      "bias-watch",
+      "communication-style"
+    ],
+    "guardrails": [
+      "Use the self-model to shape reasoning routes, not to pre-decide conclusions.",
+      "High-stakes outputs should include counter-case, falsifiers, and what the user may be underweighting."
+    ]
+  }
+}

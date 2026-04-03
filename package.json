@@ -1,0 +1,16 @@
+{
+  "name": "cato-wisdom-engine",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Local file-based research operating system for evidence-backed knowledge work.",
+  "bin": {
+    "cato": "./bin/cato.js"
+  },
+  "scripts": {
+    "cato": "node ./bin/cato.js",
+    "test": "node ./tests/cato.test.js"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

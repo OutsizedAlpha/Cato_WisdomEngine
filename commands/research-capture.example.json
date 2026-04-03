@@ -1,0 +1,75 @@
+{
+  "topic": "Weekly investment meeting brief",
+  "question": "What changed across geopolitics and macro that matters for tomorrow's investment meeting?",
+  "watch_topic": "Global Macro",
+  "watch": {
+    "subject": "Global Macro",
+    "context": "Use this watch to keep the investment meeting brief current across macro prints, geopolitics, and cross-asset risk transmission.",
+    "aliases": [
+      "macro",
+      "global macro",
+      "investment meeting"
+    ],
+    "entities": [
+      "Federal Reserve",
+      "Bank of England",
+      "ECB",
+      "Japan",
+      "Emerging Markets"
+    ],
+    "concepts": [
+      "inflation",
+      "rates",
+      "growth",
+      "geopolitics",
+      "risk sentiment"
+    ],
+    "triggers": [
+      "major CPI surprise",
+      "central-bank policy shift",
+      "geopolitical escalation"
+    ],
+    "priority": "high",
+    "cadence": "weekly"
+  },
+  "sources": [
+    {
+      "url": "https://example.com/source-one",
+      "title": "Example source one",
+      "date": "2026-04-03",
+      "tags": [
+        "macro",
+        "llm-handoff"
+      ],
+      "entities": [
+        "Federal Reserve"
+      ],
+      "concepts": [
+        "inflation"
+      ],
+      "notes": "Why this source matters to the meeting brief."
+    },
+    {
+      "url": "https://example.com/source-two",
+      "title": "Example source two",
+      "date": "2026-04-03",
+      "tags": [
+        "geopolitics",
+        "llm-handoff"
+      ],
+      "entities": [
+        "Middle East"
+      ],
+      "concepts": [
+        "oil risk"
+      ],
+      "notes": "Why this source matters to the meeting brief."
+    }
+  ],
+  "output": {
+    "kind": "report",
+    "title": "Weekly investment meeting brief",
+    "promote": true,
+    "body": "# Weekly investment meeting brief\n\n## Executive Summary\n\nWrite the actual GPT/Codex-authored brief here.\n\n## Evidence\n\nSummarise the live web research here.\n\n## What Changed\n\nHighlight the deltas that matter.\n\n## Action Implications\n\nSet out what matters for the meeting.\n"
+  }
+}

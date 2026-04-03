@@ -1,0 +1,24 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Cato self-model note",
+  "type": "object",
+  "required": [
+    "id",
+    "kind",
+    "title",
+    "status",
+    "confidence"
+  ],
+  "properties": {
+    "id": { "type": "string" },
+    "kind": { "type": "string" },
+    "title": { "type": "string" },
+    "status": { "type": "string" },
+    "confidence": { "type": "string" },
+    "declared_by": { "type": ["string", "null"] },
+    "derived_from": {
+      "type": "array",
+      "items": { "type": "string" }
+    }
+  }
+}

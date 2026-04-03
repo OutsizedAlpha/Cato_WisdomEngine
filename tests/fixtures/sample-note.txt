@@ -1,0 +1,2 @@
+Dealer positioning and passive flows can both matter at the same time.
+When everyone wants a single clean explanation, the right answer is often "multiple plumbing mechanisms are interacting".
