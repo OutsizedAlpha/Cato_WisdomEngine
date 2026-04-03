@@ -1,5 +1,7 @@
 # Cato_WisdomEngine
 
+*Cato* (traditionally linked to the Latin *catus*): wise, shrewd, discerning, clear-sighted. The name points toward judgment sharpened by experience rather than ornament, which is the spirit this project is trying to carry into research, memory, and decision-making.
+
 Cato_WisdomEngine is a local, file-based research operating system for building and maintaining an evidence-backed markdown knowledge base with LLM assistance.
 
 ## In Plain English
