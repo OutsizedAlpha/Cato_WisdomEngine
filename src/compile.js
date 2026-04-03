@@ -1,6 +1,12 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const {
+  buildConceptOntologyIndex,
+  isMeaningfulCandidateConcept,
+  isMeaningfulExplicitConcept,
+  normalizeConceptLabel
+} = require("./concept-quality");
+const {
   parseFrontmatter,
   renderMarkdown,
   sectionContent,
@@ -78,20 +84,49 @@ function buildSourceIndex(root, sourceNotes) {
 function buildConceptRecords(sourceNotes, options = {}) {
   const conceptMap = new Map();
   const candidateCounts = new Map();
+  const candidateLabels = new Map();
+  const ontologyIndex = options.ontologyIndex || buildConceptOntologyIndex();
 
   for (const note of sourceNotes) {
     for (const concept of normalizeList(note.frontmatter.candidate_concepts)) {
-      candidateCounts.set(concept, (candidateCounts.get(concept) || 0) + 1);
+      if (!isMeaningfulCandidateConcept(concept, ontologyIndex)) {
+        continue;
+      }
+      const key = normalizeConceptLabel(concept);
+      if (!key) {
+        continue;
+      }
+      candidateCounts.set(key, (candidateCounts.get(key) || 0) + 1);
+      if (!candidateLabels.has(key)) {
+        candidateLabels.set(key, key);
+      }
     }
   }
 
   for (const note of sourceNotes) {
-    const explicitConcepts = normalizeList(note.frontmatter.concepts);
+    const explicitConcepts = normalizeList(note.frontmatter.concepts).filter((concept) =>
+      isMeaningfulExplicitConcept(concept, ontologyIndex)
+    );
     const promotedCandidates = options.promoteCandidates
-      ? normalizeList(note.frontmatter.candidate_concepts).filter((concept) => (candidateCounts.get(concept) || 0) >= 2)
+      ? normalizeList(note.frontmatter.candidate_concepts)
+          .filter((concept) => isMeaningfulCandidateConcept(concept, ontologyIndex))
+          .map((concept) => normalizeConceptLabel(concept))
+          .filter((concept) => concept && (candidateCounts.get(concept) || 0) >= 2)
+          .map((concept) => candidateLabels.get(concept) || concept)
       : [];
 
-    for (const concept of [...new Set([...explicitConcepts, ...promotedCandidates])]) {
+    const concepts = [];
+    const seenConcepts = new Set();
+    for (const concept of [...explicitConcepts, ...promotedCandidates]) {
+      const key = normalizeConceptLabel(concept);
+      if (!key || seenConcepts.has(key)) {
+        continue;
+      }
+      seenConcepts.add(key);
+      concepts.push(concept);
+    }
+
+    for (const concept of concepts) {
       if (!conceptMap.has(concept)) {
         conceptMap.set(concept, []);
       }
@@ -116,12 +151,47 @@ function buildEntityRecords(sourceNotes) {
 }
 
 function ensureManagedNote(filePath, frontmatter, title, baseBody, managedBlocks) {
-  const initialContent = renderMarkdown(frontmatter, baseBody);
-  let content = fs.existsSync(filePath) ? readText(filePath) : initialContent;
+  let content = renderMarkdown(frontmatter, baseBody);
+  if (fs.existsSync(filePath)) {
+    const parsed = parseFrontmatter(readText(filePath));
+    const mergedFrontmatter = {
+      ...frontmatter,
+      ...parsed.frontmatter
+    };
+    for (const key of Object.keys(frontmatter)) {
+      mergedFrontmatter[key] = frontmatter[key];
+    }
+    content = renderMarkdown(mergedFrontmatter, parsed.body || baseBody);
+  }
   for (const [name, blockContent] of Object.entries(managedBlocks)) {
     content = upsertManagedBlock(content, name, blockContent);
   }
   writeText(filePath, content);
+}
+
+function retireStaleConceptPages(root, conceptMap) {
+  const activeConcepts = new Set([...conceptMap.keys()].map((concept) => normalizeConceptLabel(concept)));
+  const conceptNotes = loadNotes(root, "wiki/concepts").filter((note) => !/\/index\.md$/i.test(note.relativePath));
+  let retired = 0;
+
+  for (const note of conceptNotes) {
+    if (note.frontmatter.kind !== "concept-page") {
+      continue;
+    }
+    const normalizedTitle = normalizeConceptLabel(note.frontmatter.title || note.title);
+    if (!normalizedTitle || activeConcepts.has(normalizedTitle)) {
+      continue;
+    }
+
+    const frontmatter = {
+      ...note.frontmatter,
+      status: "retired"
+    };
+    writeText(note.path, renderMarkdown(frontmatter, note.body));
+    retired += 1;
+  }
+
+  return retired;
 }
 
 function upsertConceptPages(root, conceptMap) {
@@ -465,11 +535,14 @@ function updateHomePage(root, stats) {
 function compileProject(root, options = {}) {
   ensureProjectStructure(root);
   const sourceNotes = loadNotes(root, "wiki/source-notes");
+  const ontology = readJson(path.join(root, "config", "ontology.json"), {});
+  const ontologyIndex = buildConceptOntologyIndex(ontology);
   buildSourceIndex(root, sourceNotes);
 
-  const conceptMap = buildConceptRecords(sourceNotes, options);
+  const conceptMap = buildConceptRecords(sourceNotes, { ...options, ontologyIndex });
   const entityMap = buildEntityRecords(sourceNotes);
   upsertConceptPages(root, conceptMap);
+  retireStaleConceptPages(root, conceptMap);
   upsertEntityPages(root, entityMap);
   buildSelfModelIndex(root);
   buildTimelineIndex(root, sourceNotes);

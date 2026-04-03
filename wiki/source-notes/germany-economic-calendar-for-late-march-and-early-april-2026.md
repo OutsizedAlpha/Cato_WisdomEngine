@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/germany/calendar
 origin_url: https://tradingeconomics.com/germany/calendar
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:19.058Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: "Used for German retail sales, labor-market, and manufacturing release checks."
-author: 
+author: ""
 date: 2026-04-03
 ingested_at: 2026-04-03T17:10:38.791Z
 raw_path: raw/web/SRC-2026-28A1E9DAABE7__07-germany-economic-calendar-for-late-march-and-early-april-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","germany","calendar","llm-handoff"]
 entities: ["Germany"]
 concepts: ["retail sales","labor market","manufacturing"]
 related: []
-candidate_concepts: ["previous","actual","consensus","forecast","april","prices","inflation","calendar"]
+candidate_concepts: ["inflation rate","inflation","growth","labour","cpi","fiscal","harmonised inflation rate","current account"]
 checksum: 28a1e9daabe7db35aeda324c4359a3ea96b0e35f4f620da96506f48967d33998
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Germany Calendar Calendar News Markets Commodities Indexes Shares Currencies Cry
 
 ## Related Concepts
 
-- previous
-- actual
-- consensus
-- forecast
-- april
-- prices
+- inflation rate
 - inflation
-- calendar
+- growth
+- labour
+- cpi
+- fiscal
+- harmonised inflation rate
+- current account
 
 ## Provenance / Extraction Notes
 

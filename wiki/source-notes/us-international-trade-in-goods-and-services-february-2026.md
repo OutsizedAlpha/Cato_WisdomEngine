@@ -7,11 +7,11 @@ source_url: https://www.bea.gov/news/2026/us-international-trade-goods-and-servi
 origin_url: https://www.bea.gov/news/2026/us-international-trade-goods-and-services-february-2026
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:10.936Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Official release for the February U.S. trade balance used in the report.
-author: 
+author: ""
 date: 2026-04-02
 ingested_at: 2026-04-03T17:10:38.731Z
 raw_path: raw/web/SRC-2026-7DD7B91D4D02__02-us-international-trade-in-goods-and-services-february-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","us","trade","official","llm-handoff"]
 entities: ["United States"]
 concepts: ["trade deficit","global trade"]
 related: []
-candidate_concepts: ["goods","services","billion","exports","trade","census","imports","statistics"]
+candidate_concepts: ["services","trade in","in goods","international trade","seasonally adjusted","trade in goods","census basis","s international"]
 checksum: 7dd7b91d4d026b0dca197a480d678e85257ce6c8c6469b25557fb2b386e2ed39
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ U.S. International Trade in Goods and Services, February 2026 | U.S. Bureau of E
 
 ## Related Concepts
 
-- goods
 - services
-- billion
-- exports
-- trade
-- census
-- imports
-- statistics
+- trade in
+- in goods
+- international trade
+- seasonally adjusted
+- trade in goods
+- census basis
+- s international
 
 ## Provenance / Extraction Notes
 

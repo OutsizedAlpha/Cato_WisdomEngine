@@ -42,14 +42,14 @@
     "manufacturing"
   ],
   "candidate_concepts": [
-    "france",
-    "manufacturing",
-    "prices",
-    "production",
-    "points",
+    "manufacturing pmi",
+    "france manufacturing pmi",
+    "france manufacturing",
     "inflation",
-    "output",
-    "index"
+    "growth",
+    "natural gas",
+    "natural gas stocks",
+    "gas stocks"
   ],
   "figure_count": 6,
   "summary": "France Manufacturing PMI Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Countries Indicators Members &nbsp;DATA PLANS Download historical data for 20 million indicators using your browser. Subscription Plans | Features API GATEWAY Direct access to our data from your apps using any programing language. Featur…",

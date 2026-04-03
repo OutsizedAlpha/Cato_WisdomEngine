@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/euro-area/calendar
 origin_url: https://tradingeconomics.com/euro-area/calendar
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:16.927Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: "Main source for euro area CPI, core CPI, PMI, and unemployment actual versus consensus."
-author: 
+author: ""
 date: 2026-04-03
 ingested_at: 2026-04-03T17:10:38.779Z
 raw_path: raw/web/SRC-2026-8031900B9C3F__06-euro-area-economic-calendar-for-late-march-and-early-april-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","euro-area","calendar","llm-handoff"]
 entities: ["Euro Area","ECB"]
 concepts: ["inflation","labor market","manufacturing"]
 related: []
-candidate_concepts: ["previous","actual","consensus","forecast","april","inflation","calendar","indicators"]
+candidate_concepts: ["inflation","euro area","inflation rate","growth","labour","current account","gdp growth","p global"]
 checksum: 8031900b9c3f5271dc5814c3d03bec87fa1a08fc32c7dac32e71eeb588b68304
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Euro Area Calendar Calendar News Markets Commodities Indexes Shares Currencies C
 
 ## Related Concepts
 
-- previous
-- actual
-- consensus
-- forecast
-- april
 - inflation
-- calendar
-- indicators
+- euro area
+- inflation rate
+- growth
+- labour
+- current account
+- gdp growth
+- p global
 
 ## Provenance / Extraction Notes
 

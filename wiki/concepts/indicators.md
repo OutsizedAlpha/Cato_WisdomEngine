@@ -2,7 +2,7 @@
 id: CONCEPT-2026-INDICATORS
 kind: concept-page
 title: indicators
-status: active
+status: retired
 tags: []
 related: []
 ---

@@ -7,11 +7,11 @@ source_url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/qua
 origin_url: https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:12.258Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Official source for UK Q4 2025 GDP final estimates.
-author: 
+author: ""
 date: 2026-03-31
 ingested_at: 2026-04-03T17:10:38.746Z
 raw_path: raw/web/SRC-2026-4A45F1B16C06__03-uk-quarterly-national-accounts-october-to-december-2025.html
@@ -23,7 +23,7 @@ tags: ["macro","uk","gdp","official","llm-handoff"]
 entities: ["United Kingdom"]
 concepts: ["growth","gdp"]
 related: []
-candidate_concepts: ["quarter","growth","national","quarterly","gross","accounts","increased","refers"]
+candidate_concepts: ["national accounts","gdp","growth in","per head","growth","gross domestic product","domestic product","gross domestic"]
 checksum: 4a45f1b16c06805ee148fd543a92a90e005ffe0de261fcea2715b686cedc16ae
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ GDP quarterly national accounts, UK - Office for National Statistics Cookies on 
 
 ## Related Concepts
 
-- quarter
+- national accounts
+- gdp
+- growth in
+- per head
 - growth
-- national
-- quarterly
-- gross
-- accounts
-- increased
-- refers
+- gross domestic product
+- domestic product
+- gross domestic
 
 ## Provenance / Extraction Notes
 

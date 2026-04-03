@@ -6,5 +6,4 @@ Thumbs.db
 node_modules/
 cache/
 logs/
-.obsidian/workspace.json
-.obsidian/workspace-mobile.json
+.obsidian/

@@ -26,7 +26,6 @@ related: []
 <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 ## Managed Evidence
 
-- [[source-notes/bank-of-japan-tankan-summary-march-2026-survey|Bank of Japan Tankan summary, March 2026 survey]]
 - [[source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026|Euro area economic calendar for late March and early April 2026]]
 - [[source-notes/france-manufacturing-pmi|France manufacturing PMI]]
 - [[source-notes/germany-economic-calendar-for-late-march-and-early-april-2026|Germany economic calendar for late March and early April 2026]]
@@ -40,7 +39,6 @@ related: []
 <!-- CATO:BEGIN_MANAGED_BLOCK synthesis -->
 ## Managed Synthesis
 
-- Bank of Japan Tankan summary, March 2026 survey: Tankan Outline (March 2026) : 日本銀行 Bank of Japan Skip to main content 日本語 English Home About the Bank About the Bank Outline of the Bank Outline of the Bank History List of Govern…
 - Euro area economic calendar for late March and early April 2026: Euro Area Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Cou…
 - France manufacturing PMI: France Manufacturing PMI Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bon…
 - Germany economic calendar for late March and early April 2026: Germany Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Count…
@@ -54,8 +52,6 @@ related: []
 <!-- CATO:BEGIN_MANAGED_BLOCK entities -->
 ## Managed Related Entities
 
-- [[entities/bank-of-japan|Bank of Japan]]
-- [[entities/japan|Japan]]
 - [[entities/euro-area|Euro Area]]
 - [[entities/ecb|ECB]]
 - [[entities/france|France]]
@@ -71,7 +67,6 @@ related: []
 <!-- CATO:BEGIN_MANAGED_BLOCK chronology -->
 ## Managed Chronology
 
-- 2026-04-01: [[source-notes/bank-of-japan-tankan-summary-march-2026-survey|Bank of Japan Tankan summary, March 2026 survey]]
 - 2026-04-01: [[source-notes/france-manufacturing-pmi|France manufacturing PMI]]
 - 2026-04-01: [[source-notes/italy-manufacturing-pmi|Italy manufacturing PMI]]
 - 2026-04-01: [[source-notes/purchasing-managers-index-for-march-2026|Purchasing Managers Index for March 2026]]

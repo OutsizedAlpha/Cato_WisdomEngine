@@ -2,7 +2,7 @@
 id: CONCEPT-2026-QUARTER
 kind: concept-page
 title: quarter
-status: active
+status: retired
 tags: []
 related: []
 ---

@@ -7,11 +7,11 @@ source_url: https://www.bankofengland.co.uk/decision-maker-panel/2026/march-2026
 origin_url: https://www.bankofengland.co.uk/decision-maker-panel/2026/march-2026
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:14.817Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Used to anchor the report discussion on rising UK inflation expectations and own-price intentions.
-author: 
+author: ""
 date: 2026-04-02
 ingested_at: 2026-04-03T17:10:38.767Z
 raw_path: raw/web/SRC-2026-A52E1E7C7BC7__05-bank-of-england-decision-maker-panel-march-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","uk","inflation expectations","official","llm-handoff"]
 entities: ["Bank of England","United Kingdom"]
 concepts: ["inflation expectations","pricing power","energy prices"]
 related: []
-candidate_concepts: ["march","cookies","decision","maker","panel","england","monthly","three"]
+candidate_concepts: ["decision maker panel","decision maker","maker panel","main menu","sub menu back","menu back","sub menu","inflation"]
 checksum: a52e1e7c7bc7d8a2683e9240647828665323d9153b2d4fa51688a7f95b9bf266
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Monthly Decision Maker Panel data - March 2026 | Bank of England Our use of cook
 
 ## Related Concepts
 
-- march
-- cookies
-- decision
-- maker
-- panel
-- england
-- monthly
-- three
+- decision maker panel
+- decision maker
+- maker panel
+- main menu
+- sub menu back
+- menu back
+- sub menu
+- inflation
 
 ## Provenance / Extraction Notes
 

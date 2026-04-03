@@ -2,7 +2,7 @@
 id: CONCEPT-2026-BILLION
 kind: concept-page
 title: billion
-status: active
+status: retired
 tags: []
 related: []
 ---

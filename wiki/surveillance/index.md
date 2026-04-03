@@ -2,4 +2,4 @@
 
 Generated: 2026-04-03
 
-- None yet.
+- [[surveillance/global-macro|Global Macro]]

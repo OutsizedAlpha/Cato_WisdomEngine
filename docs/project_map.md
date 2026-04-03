@@ -55,6 +55,7 @@ This file records the current local truth of the repository, not the full intend
 - [`src/extraction.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/extraction.js) = handles text extraction, PDF stream parsing, repo snapshot manifests, figure reference extraction, SVG text capture, and Windows OCR handoff for raster images
 - [`src/self-ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/self-ingest.js) = converts rough self-authored notes into structured self-model notes
 - [`src/compile.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/compile.js) = rebuilds indices, unresolved registers, and managed evidence blocks
+- [`src/concept-quality.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/concept-quality.js) = shared concept-normalisation and concept-quality heuristics used to keep promoted ontology terms domain-meaningful
 - [`src/search.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/search.js) = token-based corpus search over markdown and extracted text
 - [`src/ask.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ask.js) = generates grounded markdown memos and optional question pages
 - [`src/report.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/report.js) = writes stronger report-style grounded outputs
@@ -85,6 +86,8 @@ This file records the current local truth of the repository, not the full intend
 - Watch profiles live in `wiki/watch-profiles/`; they are instruction objects, not evidence. Search now excludes them from retrieval so reports and surveillance do not cite watch instructions back as source material.
 - Grounded output workflows also exclude surveillance pages, prior outputs, generic indices/maps, unresolved registers, and self-model pages from evidence selection so reports and surveillance stay source-grounded.
 - `wiki/_indices/` and managed blocks are generated surfaces. Concept and entity pages are updatable knowledge objects with generated evidence sections.
+- Candidate concept extraction is now ontology-aware and phrase-biased rather than raw token-frequency-driven; compile retires stale generated concept pages instead of letting weak concepts keep leaking into retrieval.
+- Markdown frontmatter rendering now quotes empty scalar values, so refreshed source-note frontmatter round-trips without mutating empty strings into YAML-array placeholders.
 - `compile` now also refreshes timeline, domain-index, synthesis-candidate, contradiction, thesis-index, watch-profile index/ontology, surveillance-index, and self-index surfaces.
 - `commands/` now contains a launcher layer for common double-click workflows and Obsidian opening.
 - `commands/research-capture.example.json` provides the bundle shape for Codex-to-Cato research handoff.
@@ -93,7 +96,7 @@ This file records the current local truth of the repository, not the full intend
 ## Environment / Dependency Notes
 
 - Git is initialised in the current folder.
-- `.obsidian/` exists as the vault-ready config folder, but no Obsidian-generated workspace files are committed.
+- `.obsidian/` may exist locally for vault settings, but user-specific Obsidian state is not version-controlled.
 - The current shell has `node` and `git` available.
 - The current shell does not have `python` on `PATH`, so the executable runtime is Node-first for now.
 - PowerShell execution policy can block `.ps1` wrappers; the repo therefore provides `cato.cmd` and direct `node` entrypoints.

@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/italy/manufacturing-pmi
 origin_url: https://tradingeconomics.com/italy/manufacturing-pmi
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:23.654Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Used to show Italy remained on the improving side of the European manufacturing picture.
-author: 
+author: ""
 date: 2026-04-01
 ingested_at: 2026-04-03T17:10:38.807Z
 raw_path: raw/web/SRC-2026-561EED62FC64__09-italy-manufacturing-pmi.html
@@ -23,7 +23,7 @@ tags: ["macro","italy","pmi","llm-handoff"]
 entities: ["Italy"]
 concepts: ["manufacturing"]
 related: []
-candidate_concepts: ["italy","manufacturing","prices","inflation","points","production","percent","indicators"]
+candidate_concepts: ["italy manufacturing","manufacturing pmi","italy manufacturing pmi","inflation","growth","natural gas","natural gas stocks","gas stocks"]
 checksum: 561eed62fc64d2e8818e152b7a119d4e5e9d40960112a91b4b504ca42d722074
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Italy Manufacturing PMI Calendar News Markets Commodities Indexes Shares Currenc
 
 ## Related Concepts
 
-- italy
-- manufacturing
-- prices
+- italy manufacturing
+- manufacturing pmi
+- italy manufacturing pmi
 - inflation
-- points
-- production
-- percent
-- indicators
+- growth
+- natural gas
+- natural gas stocks
+- gas stocks
 
 ## Provenance / Extraction Notes
 

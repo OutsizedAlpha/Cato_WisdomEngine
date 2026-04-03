@@ -4,6 +4,7 @@ const os = require("node:os");
 const path = require("node:path");
 
 const { askQuestion } = require("../src/ask");
+const { extractCandidateConcepts } = require("../src/concept-quality");
 const { compileProject } = require("../src/compile");
 const { writeDeck } = require("../src/deck");
 const { runDoctor } = require("../src/doctor");
@@ -19,6 +20,7 @@ const { searchCorpus } = require("../src/search");
 const { selfIngest } = require("../src/self-ingest");
 const { writeSurveillance } = require("../src/surveil");
 const { createWatchProfile, listActiveWatchProfiles } = require("../src/watch");
+const { parseFrontmatter, renderMarkdown } = require("../src/markdown");
 
 const repoRoot = path.resolve(__dirname, "..");
 
@@ -92,6 +94,36 @@ runTest("init seeds the project structure and generated indices", () => {
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
+});
+
+runTest("markdown frontmatter preserves empty scalar values on render and parse", () => {
+  const rendered = renderMarkdown(
+    {
+      title: "Frontmatter Roundtrip",
+      search_query: "",
+      author: "",
+      search_rank: ""
+    },
+    "# Frontmatter Roundtrip"
+  );
+  const parsed = parseFrontmatter(rendered);
+  assert.equal(parsed.frontmatter.search_query, "");
+  assert.equal(parsed.frontmatter.author, "");
+  assert.equal(parsed.frontmatter.search_rank, "");
+});
+
+runTest("candidate concept extraction rejects abbreviation-heavy table shorthand", () => {
+  const ontology = JSON.parse(fs.readFileSync(path.join(repoRoot, "config", "ontology.json"), "utf8"));
+  const candidates = extractCandidateConcepts(
+    "United States macro calendar",
+    "UTC UTC PM US EIA AM US MBA YOY MAR actual previous forecast consensus inflation rate labor market crude oil jobless claims inflation rate labor market crude oil jobless claims",
+    ontology
+  );
+  assert.ok(candidates.includes("inflation"));
+  assert.ok(!candidates.includes("utc utc"));
+  assert.ok(!candidates.includes("pm us eia"));
+  assert.ok(!candidates.includes("am us mba"));
+  assert.ok(!candidates.includes("yoy mar"));
 });
 
 runTest("ingest, compile, search, ask, and lint produce a working research loop", () => {
@@ -531,6 +563,92 @@ This is the imported GPT-authored meeting brief.
 
     assert.equal(secondRun.ingested, 1);
     assert.equal(secondRun.watch, null);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("compile promotes domain concepts while retiring noisy generated concepts", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+
+    fs.writeFileSync(
+      path.join(root, "inbox", "drop_here", "macro-week-1.md"),
+      `---
+title: Labour market and energy prices week one
+date: 2026-04-03
+---
+
+# Labour market and energy prices week one
+
+The labor market remains firm and energy prices remain elevated.
+The labor market and energy prices are the key macro transmission channels this week.
+Actual previous forecast consensus points billion actual previous forecast consensus.
+`,
+      "utf8"
+    );
+
+    fs.writeFileSync(
+      path.join(root, "inbox", "drop_here", "macro-week-2.md"),
+      `---
+title: Labour market and energy prices week two
+date: 2026-04-04
+---
+
+# Labour market and energy prices week two
+
+Energy prices remain sensitive while the labor market remains steady.
+This note again focuses on the labor market and energy prices.
+Actual previous forecast consensus points billion actual previous forecast consensus.
+`,
+      "utf8"
+    );
+
+    const staleConceptPath = path.join(root, "wiki", "concepts", "actual.md");
+    fs.mkdirSync(path.dirname(staleConceptPath), { recursive: true });
+    fs.writeFileSync(
+      staleConceptPath,
+      renderMarkdown(
+        {
+          id: "CONCEPT-2026-ACTUAL",
+          kind: "concept-page",
+          title: "actual",
+          status: "active"
+        },
+        `# actual
+
+## Definition
+`
+      ),
+      "utf8"
+    );
+
+    ingest(root);
+    compileProject(root, { promoteCandidates: true });
+
+    assert.ok(fs.existsSync(path.join(root, "wiki", "concepts", "labor-market.md")));
+    assert.ok(fs.existsSync(path.join(root, "wiki", "concepts", "energy-prices.md")));
+    assert.ok(!fs.existsSync(path.join(root, "wiki", "concepts", "forecast.md")));
+    assert.ok(!fs.existsSync(path.join(root, "wiki", "concepts", "previous.md")));
+    assert.ok(!fs.existsSync(path.join(root, "wiki", "concepts", "points.md")));
+    assert.ok(!fs.existsSync(path.join(root, "wiki", "concepts", "billion.md")));
+
+    const retiredConcept = parseFrontmatter(fs.readFileSync(staleConceptPath, "utf8"));
+    assert.equal(retiredConcept.frontmatter.status, "retired");
+
+    const conceptIndex = fs.readFileSync(path.join(root, "wiki", "_indices", "concepts.md"), "utf8");
+    assert.match(conceptIndex, /labor market/i);
+    assert.match(conceptIndex, /energy prices/i);
+    assert.doesNotMatch(conceptIndex, /\[\[concepts\/actual\|actual\]\]/i);
+    assert.doesNotMatch(conceptIndex, /\[\[concepts\/forecast\|forecast\]\]/i);
+
+    const actualResults = searchCorpus(root, "actual", { limit: 20 });
+    assert.ok(actualResults.every((result) => result.relativePath !== "wiki/concepts/actual.md"));
+
+    const lintResult = lintProject(root);
+    assert.ok(lintResult.issues.every((issue) => issue.file !== "wiki/concepts/actual.md"));
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

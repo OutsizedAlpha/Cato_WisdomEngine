@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/japan/calendar
 origin_url: https://tradingeconomics.com/japan/calendar
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:29.068Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Calendar cross-check for the Japan release window and supplementary Japan data.
-author: 
+author: ""
 date: 2026-04-03
 ingested_at: 2026-04-03T17:10:38.836Z
 raw_path: raw/web/SRC-2026-43CBDAEA5E65__12-japan-economic-calendar-for-late-march-and-early-april-2026.html
@@ -21,9 +21,9 @@ status: draft
 confidence: medium
 tags: ["macro","japan","calendar","llm-handoff"]
 entities: ["Japan","Bank of Japan"]
-concepts: ["survey data","housing","macro calendar"]
+concepts: ["housing"]
 related: []
-candidate_concepts: ["previous","actual","consensus","forecast","april","index","inflation","japan"]
+candidate_concepts: ["inflation","growth","inflation rate","tankan large","gdp","fiscal","labour","current account"]
 checksum: 43cbdaea5e65be4f2b494cada33470604bbabab7d368e1a6f18ca237bc2cd9f5
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Japan Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypt
 
 ## Related Concepts
 
-- previous
-- actual
-- consensus
-- forecast
-- april
-- index
 - inflation
-- japan
+- growth
+- inflation rate
+- tankan large
+- gdp
+- fiscal
+- labour
+- current account
 
 ## Provenance / Extraction Notes
 

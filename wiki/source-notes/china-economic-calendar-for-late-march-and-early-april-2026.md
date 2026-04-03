@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/china/calendar
 origin_url: https://tradingeconomics.com/china/calendar
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:35.010Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Used to align China official data with consensus and prior readings.
-author: 
+author: ""
 date: 2026-04-03
 ingested_at: 2026-04-03T17:10:38.853Z
 raw_path: raw/web/SRC-2026-CA6D805D453E__14-china-economic-calendar-for-late-march-and-early-april-2026.html
@@ -21,9 +21,9 @@ status: draft
 confidence: medium
 tags: ["macro","china","calendar","llm-handoff"]
 entities: ["China"]
-concepts: ["pmi","calendar","consensus"]
+concepts: ["pmi"]
 related: []
-candidate_concepts: ["previous","actual","consensus","forecast","april","china","production","calendar"]
+candidate_concepts: ["growth","inflation","labour","inflation rate","gdp growth","fiscal","liquidity","gdp"]
 checksum: ca6d805d453eec2d67c17c53f622d0c5a2e5bac592116fd735d71cce3d18f9ab
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ China Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypt
 
 ## Related Concepts
 
-- previous
-- actual
-- consensus
-- forecast
-- april
-- china
-- production
-- calendar
+- growth
+- inflation
+- labour
+- inflation rate
+- gdp growth
+- fiscal
+- liquidity
+- gdp
 
 ## Provenance / Extraction Notes
 

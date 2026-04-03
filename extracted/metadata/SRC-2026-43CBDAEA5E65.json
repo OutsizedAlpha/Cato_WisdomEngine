@@ -40,19 +40,17 @@
     "Bank of Japan"
   ],
   "concepts": [
-    "survey data",
-    "housing",
-    "macro calendar"
+    "housing"
   ],
   "candidate_concepts": [
-    "previous",
-    "actual",
-    "consensus",
-    "forecast",
-    "april",
-    "index",
     "inflation",
-    "japan"
+    "growth",
+    "inflation rate",
+    "tankan large",
+    "gdp",
+    "fiscal",
+    "labour",
+    "current account"
   ],
   "figure_count": 9,
   "summary": "Japan Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Countries Indicators Members &nbsp;DATA PLANS Download historical data for 20 million indicators using your browser. Subscription Plans | Features API GATEWAY Direct access to our data from your apps using any programing language. Features | Docs…",
@@ -75,9 +73,7 @@
       "Bank of Japan"
     ],
     "concepts": [
-      "survey data",
-      "housing",
-      "macro calendar"
+      "housing"
     ],
     "capture_notes": "Calendar cross-check for the Japan release window and supplementary Japan data.",
     "publisher": "Trading Economics"

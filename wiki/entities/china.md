@@ -20,8 +20,6 @@ related: []
 ## Managed Linked Concepts
 
 - [[concepts/pmi|pmi]]
-- [[concepts/calendar|calendar]]
-- [[concepts/consensus|consensus]]
 - [[concepts/manufacturing|manufacturing]]
 - [[concepts/services|services]]
 - [[concepts/official-activity|official activity]]

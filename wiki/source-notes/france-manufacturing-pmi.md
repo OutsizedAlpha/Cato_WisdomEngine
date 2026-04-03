@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/france/manufacturing-pmi
 origin_url: https://tradingeconomics.com/france/manufacturing-pmi
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:21.173Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Used to position France near the expansion threshold in Europe.
-author: 
+author: ""
 date: 2026-04-01
 ingested_at: 2026-04-03T17:10:38.799Z
 raw_path: raw/web/SRC-2026-736F27210F77__08-france-manufacturing-pmi.html
@@ -23,7 +23,7 @@ tags: ["macro","france","pmi","llm-handoff"]
 entities: ["France"]
 concepts: ["manufacturing"]
 related: []
-candidate_concepts: ["france","manufacturing","prices","production","points","inflation","output","index"]
+candidate_concepts: ["manufacturing pmi","france manufacturing pmi","france manufacturing","inflation","growth","natural gas","natural gas stocks","gas stocks"]
 checksum: 736f27210f773f9903de1ac363ef945dc47685b90982584c0019aeb3810c9f56
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ France Manufacturing PMI Calendar News Markets Commodities Indexes Shares Curren
 
 ## Related Concepts
 
-- france
-- manufacturing
-- prices
-- production
-- points
+- manufacturing pmi
+- france manufacturing pmi
+- france manufacturing
 - inflation
-- output
-- index
+- growth
+- natural gas
+- natural gas stocks
+- gas stocks
 
 ## Provenance / Extraction Notes
 

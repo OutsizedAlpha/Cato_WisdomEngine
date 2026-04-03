@@ -47,6 +47,8 @@ Use this file for active or recently completed non-trivial work. Keep it concise
   - Watch-profile validation on 2026-04-03 covering profile creation, watch ontology generation, and watch-driven surveillance/report retrieval in `tests/cato.test.js`
   - GPT/Codex handoff validation on 2026-04-03 covering `capture-research`, imported-source notes, watch refresh, template exclusion, and CLI smoke against public web pages
   - First live research-run validation on 2026-04-03 covering a real weekly macro brief, 16 imported live sources, source-note creation, watch refresh, synthesis promotion, and zero-issue lint after ingest
+  - Ontology-noise validation on 2026-04-03 covering candidate concept filtering, stale concept retirement, full test pass, live compile, and zero-issue lint after tightening concept generation
+  - Legacy source-note refresh validation on 2026-04-03 covering empty-frontmatter round-trip protection, refreshed source-note candidate concepts, live compile, and zero-issue lint after rewriting the existing corpus notes
   - Ongoing validation expectations:
     - rerun tests after CLI or schema changes
     - keep live repo lint at zero or explain any deliberate exceptions
@@ -69,6 +71,8 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-03, watch profiles were added under `wiki/watch-profiles/`, a derived watch ontology was added under `wiki/glossary/watch-ontology.md`, and watch-driven retrieval was wired into surveillance/report/deck generation.
 - On 2026-04-03, the temporary built-in search-provider research path was removed from the operator workflow and replaced with `capture-research`, which lets GPT/Codex do live web research and then hand the sources plus authored output into Cato for durable ingestion, compilation, and storage.
 - On 2026-04-03, the first real live-research macro bundle was captured into Cato, producing 16 new source notes, a `Global Macro` surveillance refresh, a weekly investment meeting report, and a promoted synthesis note.
+- On 2026-04-03, concept generation was tightened so compile now filters out low-value macro-table jargon, retires stale generated concept pages from active retrieval, and leaves the live repo at zero lint issues after recompilation.
+- On 2026-04-03, the existing source-note corpus and metadata sidecars were refreshed to remove legacy candidate-concept suggestions, repair empty scalar frontmatter fields, and align the live markdown library with the new concept-quality rules.
 
 ## Open Risks / Next Steps
 

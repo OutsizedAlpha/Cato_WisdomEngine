@@ -21,9 +21,7 @@ related: []
 
 - [[concepts/business-conditions|business conditions]]
 - [[concepts/capex|capex]]
-- [[concepts/survey-data|survey data]]
 - [[concepts/housing|housing]]
-- [[concepts/macro-calendar|macro calendar]]
 <!-- CATO:END_MANAGED_BLOCK concepts -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->

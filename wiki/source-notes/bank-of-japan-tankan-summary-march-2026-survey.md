@@ -7,11 +7,11 @@ source_url: https://www.boj.or.jp/en/statistics/tk/yoshi/tk2603.htm
 origin_url: https://www.boj.or.jp/en/statistics/tk/yoshi/tk2603.htm
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:26.959Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Official Tankan summary used for Japan business conditions and FY2026 capex plans.
-author: 
+author: ""
 date: 2026-04-01
 ingested_at: 2026-04-03T17:10:38.823Z
 raw_path: raw/web/SRC-2026-BD50ACFF7C7D__11-bank-of-japan-tankan-summary-march-2026-survey.htm
@@ -23,7 +23,7 @@ tags: ["macro","japan","tankan","official","llm-handoff"]
 entities: ["Bank of Japan","Japan"]
 concepts: ["business conditions","capex"]
 related: []
-candidate_concepts: ["enterprises","forecast","change","march","survey","table","revision","manufacturing"]
+candidate_concepts: ["revision rate","enterprises table","large enterprises","small enterprises","manufacturing nonmanufacturing","research papers","medium sized enterprises","revision rate fy"]
 checksum: bd50acff7c7d128465816b85e86e602b15540c30f760ac54dc724e6a0ae5e76f
 extraction_status: extracted
 extraction_method: html_text
@@ -70,16 +70,19 @@ Tankan Outline (March 2026) : 日本銀行 Bank of Japan Skip to main content �
 - What concepts should this source strengthen?
 - What is still ambiguous or unverified?
 
+zed enterprises
+- revision rate fy
+
 ## Related Concepts
 
-- enterprises
-- forecast
-- change
-- march
-- survey
-- table
-- revision
-- manufacturing
+- revision rate
+- enterprises table
+- large enterprises
+- small enterprises
+- manufacturing nonmanufacturing
+- research papers
+- medium sized enterprises
+- revision rate fy
 
 ## Provenance / Extraction Notes
 

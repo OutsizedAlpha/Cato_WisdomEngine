@@ -5,6 +5,10 @@ const { extractWikiLinks, normalizeWikiTarget, parseFrontmatter, sectionContent 
 const { ensureProjectStructure, listMarkdownNotes } = require("./project");
 const { nowIso, readText, relativeToRoot, timestampStamp, writeText } = require("./utils");
 
+function isRetiredStatus(frontmatter) {
+  return ["inactive", "obsolete", "retired"].includes(String(frontmatter.status || "").toLowerCase());
+}
+
 function noteKindRelative(relativePath) {
   if (relativePath.endsWith("/index.md") || relativePath.endsWith("/README.md")) {
     return null;
@@ -81,6 +85,9 @@ function lintProject(root) {
     const relative = relativeToRoot(root, filePath);
     const content = readText(filePath);
     const { frontmatter, body } = parseFrontmatter(content);
+    if (isRetiredStatus(frontmatter)) {
+      continue;
+    }
     const kind = noteKindRelative(relative);
 
     if (kind && Object.keys(frontmatter).length === 0) {
@@ -129,7 +136,15 @@ function lintProject(root) {
   }
 
   for (const filePath of listMarkdownNotes(root, "wiki/concepts").concat(listMarkdownNotes(root, "wiki/entities"))) {
-    const relative = relativeToRoot(root, filePath).replace(/\.md$/i, "");
+    const rawRelative = relativeToRoot(root, filePath);
+    if (/\/(?:index|README)\.md$/i.test(rawRelative)) {
+      continue;
+    }
+    const { frontmatter } = parseFrontmatter(readText(filePath));
+    if (isRetiredStatus(frontmatter)) {
+      continue;
+    }
+    const relative = rawRelative.replace(/\.md$/i, "");
     const withoutWiki = relative.replace(/^wiki\//, "");
     const stem = path.basename(relative);
     const inbound = (inboundCounts.get(relative) || 0) + (inboundCounts.get(withoutWiki) || 0) + (inboundCounts.get(stem) || 0);

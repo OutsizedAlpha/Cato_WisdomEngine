@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/united-states/calendar/news/536485
 origin_url: https://tradingeconomics.com/united-states/calendar/news/536485
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:09.552Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: "Primary weekly table for U.S. actual, consensus, and prior data points used in the report."
-author: 
+author: ""
 date: 2026-04-03
 ingested_at: 2026-04-03T17:10:38.718Z
 raw_path: raw/web/SRC-2026-5A7326140C0D__01-united-states-economic-calendar-week-of-march-30-april-3-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","us","calendar","llm-handoff"]
 entities: ["United States","Federal Reserve"]
 concepts: ["labor market","manufacturing","trade"]
 related: []
-candidate_concepts: ["change","previous","actual","april","consensus","forecast","index","auction"]
+candidate_concepts: ["crude oil","inflation","jobless claims","mortgage rate","oil stocks","growth","crude oil stocks","baker hughes"]
 checksum: 5a7326140c0de6dccf6745acf7813fe00a90bdaf0a3f85c2705036687470b101
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Calendar - Calendar Calendar News Markets Commodities Indexes Shares Currencies 
 
 ## Related Concepts
 
-- change
-- previous
-- actual
-- april
-- consensus
-- forecast
-- index
-- auction
+- crude oil
+- inflation
+- jobless claims
+- mortgage rate
+- oil stocks
+- growth
+- crude oil stocks
+- baker hughes
 
 ## Provenance / Extraction Notes
 

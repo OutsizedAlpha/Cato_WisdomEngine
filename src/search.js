@@ -51,7 +51,11 @@ function buildCorpus(root) {
         continue;
       }
       const isMarkdown = extension === ".md";
-      const content = isMarkdown ? stripMarkdownFormatting(parseFrontmatter(rawContent).body) : rawContent;
+      const parsed = isMarkdown ? parseFrontmatter(rawContent) : { frontmatter: {}, body: rawContent };
+      if (["inactive", "obsolete", "retired"].includes(String(parsed.frontmatter.status || "").toLowerCase())) {
+        continue;
+      }
+      const content = isMarkdown ? stripMarkdownFormatting(parsed.body) : rawContent;
       const title = isMarkdown
         ? noteTitleFromContent(rawContent, titleFromFilename(filePath))
         : titleFromFilename(filePath);

@@ -2,7 +2,7 @@
 id: CONCEPT-2026-PRODUCTION
 kind: concept-page
 title: production
-status: active
+status: retired
 tags: []
 related: []
 ---

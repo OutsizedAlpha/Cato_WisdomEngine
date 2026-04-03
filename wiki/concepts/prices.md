@@ -2,7 +2,7 @@
 id: CONCEPT-2026-PRICES
 kind: concept-page
 title: prices
-status: active
+status: retired
 tags: []
 related: []
 ---

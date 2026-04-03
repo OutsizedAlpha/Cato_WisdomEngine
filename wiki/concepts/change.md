@@ -2,7 +2,7 @@
 id: CONCEPT-2026-CHANGE
 kind: concept-page
 title: change
-status: active
+status: retired
 tags: []
 related: []
 ---

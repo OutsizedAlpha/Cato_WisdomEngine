@@ -2,7 +2,7 @@
 id: CONCEPT-2026-MACRO-CALENDAR
 kind: concept-page
 title: macro calendar
-status: active
+status: retired
 tags: []
 related: []
 ---

@@ -2,7 +2,7 @@
 id: CONCEPT-2026-POINTS
 kind: concept-page
 title: points
-status: active
+status: retired
 tags: []
 related: []
 ---

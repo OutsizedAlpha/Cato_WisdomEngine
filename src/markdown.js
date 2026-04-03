@@ -84,8 +84,8 @@ function formatScalar(value) {
     return String(value);
   }
   const stringValue = String(value ?? "");
-  if (!stringValue) {
-    return "";
+  if (stringValue === "") {
+    return '""';
   }
   if (/^[A-Za-z0-9_./:@ -]+$/.test(stringValue) && !stringValue.includes(": ")) {
     return stringValue;

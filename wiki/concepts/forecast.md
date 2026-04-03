@@ -2,7 +2,7 @@
 id: CONCEPT-2026-FORECAST
 kind: concept-page
 title: forecast
-status: active
+status: retired
 tags: []
 related: []
 ---

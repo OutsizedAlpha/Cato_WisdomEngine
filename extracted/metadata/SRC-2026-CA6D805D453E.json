@@ -39,19 +39,17 @@
     "China"
   ],
   "concepts": [
-    "pmi",
-    "calendar",
-    "consensus"
+    "pmi"
   ],
   "candidate_concepts": [
-    "previous",
-    "actual",
-    "consensus",
-    "forecast",
-    "april",
-    "china",
-    "production",
-    "calendar"
+    "growth",
+    "inflation",
+    "labour",
+    "inflation rate",
+    "gdp growth",
+    "fiscal",
+    "liquidity",
+    "gdp"
   ],
   "figure_count": 9,
   "summary": "China Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Countries Indicators Members &nbsp;DATA PLANS Download historical data for 20 million indicators using your browser. Subscription Plans | Features API GATEWAY Direct access to our data from your apps using any programing language. Features | Docs…",
@@ -73,9 +71,7 @@
       "China"
     ],
     "concepts": [
-      "pmi",
-      "calendar",
-      "consensus"
+      "pmi"
     ],
     "capture_notes": "Used to align China official data with consensus and prior readings.",
     "publisher": "Trading Economics"

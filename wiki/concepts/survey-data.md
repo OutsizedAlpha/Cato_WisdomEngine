@@ -2,7 +2,7 @@
 id: CONCEPT-2026-SURVEY-DATA
 kind: concept-page
 title: survey data
-status: active
+status: retired
 tags: []
 related: []
 ---

@@ -2,7 +2,7 @@
 id: CONCEPT-2026-ACTUAL
 kind: concept-page
 title: actual
-status: active
+status: retired
 tags: []
 related: []
 ---

@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { RAW_SUBDIR_BY_SOURCE_TYPE, SOURCE_TYPE_BY_EXTENSION, STOPWORDS } = require("./constants");
 const { renderMarkdown } = require("./markdown");
+const { extractCandidateConcepts, isMeaningfulExplicitConcept, buildConceptOntologyIndex } = require("./concept-quality");
 const { extractContent } = require("./extraction");
 const { ensureProjectStructure, loadSettings } = require("./project");
 const { downloadWebSource } = require("./web-import");
@@ -294,22 +295,6 @@ function normalizeList(value) {
   return [];
 }
 
-function candidateConcepts(title, extractedText) {
-  const counts = new Map();
-  const combined = `${title}\n${extractedText}`.toLowerCase();
-  for (const token of combined.split(/[^a-z0-9]+/)) {
-    if (!token || token.length < 5 || STOPWORDS.has(token)) {
-      continue;
-    }
-    counts.set(token, (counts.get(token) || 0) + 1);
-  }
-
-  return [...counts.entries()]
-    .sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]))
-    .slice(0, 8)
-    .map(([token]) => token);
-}
-
 function summaryFromExtractedText(extractedText, sourceType) {
   if (!extractedText.trim()) {
     if (sourceType === "paper") {
@@ -530,6 +515,8 @@ ${extractionNotes}
 function ingest(root, options = {}) {
   ensureProjectStructure(root);
   const settings = loadSettings(root);
+  const ontology = readJson(path.join(root, "config", "ontology.json"), {});
+  const ontologyIndex = buildConceptOntologyIndex(ontology);
   const inboxDir = path.join(root, options.from || settings.paths.inbox || "inbox/drop_here");
   const copyMode = Boolean(options.copy);
   if (options.url) {
@@ -577,7 +564,9 @@ function ingest(root, options = {}) {
       );
     }
 
-    const concepts = normalizeList(importedFrontmatter.concepts);
+    const concepts = normalizeList(importedFrontmatter.concepts).filter((concept) =>
+      isMeaningfulExplicitConcept(concept, ontologyIndex)
+    );
     const entities = normalizeList(importedFrontmatter.entities);
     const tags = normalizeList(importedFrontmatter.tags);
     const record = {
@@ -611,7 +600,7 @@ function ingest(root, options = {}) {
       tags,
       entities,
       concepts,
-      candidate_concepts: candidateConcepts(title, extraction.extractedText),
+      candidate_concepts: extractCandidateConcepts(title, extraction.extractedText, ontology),
       figure_count: (extraction.figureRefs || []).length,
       summary: summaryFromExtractedText(extraction.extractedText, sourceType)
     };

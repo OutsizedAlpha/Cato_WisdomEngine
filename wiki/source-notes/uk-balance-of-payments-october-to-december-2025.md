@@ -7,11 +7,11 @@ source_url: https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/bu
 origin_url: https://www.ons.gov.uk/economy/nationalaccounts/balanceofpayments/bulletins/balanceofpayments/octobertodecember2025
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:13.653Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Official source for UK current-account figures used in the report.
-author: 
+author: ""
 date: 2026-03-31
 ingested_at: 2026-04-03T17:10:38.758Z
 raw_path: raw/web/SRC-2026-5EA51C2BF319__04-uk-balance-of-payments-october-to-december-2025.html
@@ -23,7 +23,7 @@ tags: ["macro","uk","external","official","llm-handoff"]
 entities: ["United Kingdom"]
 concepts: ["current account","external balance"]
 related: []
-candidate_concepts: ["quarter","billion","trade","account","balance","payments","investment","current"]
+candidate_concepts: ["current account","trade in","precious metals","excluding precious metals","excluding precious","international investment","trade in services","account deficit"]
 checksum: 5ea51c2bf3194f22f648f85e9334aa9be788ebc7c7c8c78a8952c76a141d2f66
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Balance of payments, UK - Office for National Statistics Cookies on ons.gov.uk C
 
 ## Related Concepts
 
-- quarter
-- billion
-- trade
-- account
-- balance
-- payments
-- investment
-- current
+- current account
+- trade in
+- precious metals
+- excluding precious metals
+- excluding precious
+- international investment
+- trade in services
+- account deficit
 
 ## Provenance / Extraction Notes
 

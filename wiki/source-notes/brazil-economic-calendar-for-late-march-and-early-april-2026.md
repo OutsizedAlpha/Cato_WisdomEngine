@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/brazil/calendar
 origin_url: https://tradingeconomics.com/brazil/calendar
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:38.682Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Used to keep a Brazil EM demand marker in the weekly scan.
-author: 
+author: ""
 date: 2026-04-03
 ingested_at: 2026-04-03T17:10:38.881Z
 raw_path: raw/web/SRC-2026-F16BD246F379__16-brazil-economic-calendar-for-late-march-and-early-april-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","brazil","calendar","em","llm-handoff"]
 entities: ["Brazil"]
 concepts: ["retail sales","domestic demand"]
 related: []
-candidate_concepts: ["previous","actual","consensus","forecast","april","calendar","brazil","indicators"]
+candidate_concepts: ["inflation","growth","labour","inflation rate","gdp","brazil economic","gdp growth","bcb focus market"]
 checksum: f16bd246f379ad558e475b3ee1f8fd9c4b35707de51b2287709762a914079263
 extraction_status: extracted
 extraction_method: html_text
@@ -70,16 +70,20 @@ Brazil Calendar Calendar News Markets Commodities Indexes Shares Currencies Cryp
 - What concepts should this source strengthen?
 - What is still ambiguous or unverified?
 
+zil economic
+- gdp growth
+- bcb focus market
+
 ## Related Concepts
 
-- previous
-- actual
-- consensus
-- forecast
-- april
-- calendar
-- brazil
-- indicators
+- inflation
+- growth
+- labour
+- inflation rate
+- gdp
+- brazil economic
+- gdp growth
+- bcb focus market
 
 ## Provenance / Extraction Notes
 

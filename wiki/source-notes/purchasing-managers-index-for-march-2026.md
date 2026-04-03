@@ -7,11 +7,11 @@ source_url: https://www.stats.gov.cn/english/PressRelease/202604/t20260401_19629
 origin_url: https://www.stats.gov.cn/english/PressRelease/202604/t20260401_1962920.html
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:33.022Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Official China PMI release used for the March rebound in manufacturing and non-manufacturing activity.
-author: 
+author: ""
 date: 2026-04-01
 ingested_at: 2026-04-03T17:10:38.843Z
 raw_path: raw/web/SRC-2026-32DEAA5F7FB5__13-purchasing-managers-index-for-march-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","china","official-pmi","official","llm-handoff"]
 entities: ["China"]
 concepts: ["manufacturing","services","official activity"]
 related: []
-candidate_concepts: ["index","manufacturing","industry","month","percentage","previous","points","increase"]
+candidate_concepts: ["non manufacturing","purchasing managers","manufacturing industry","business activity","manufacturing","delivery time","supplier delivery time","manufacturing pmi"]
 checksum: 32deaa5f7fb52691585ca5caffb29ad1e79d21a20d70e7f097ff193e279c73fa
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Purchasing Managers’ Index for March 2026 Chinese(GB) RSS Organizational Chart
 
 ## Related Concepts
 
-- index
+- non manufacturing
+- purchasing managers
+- manufacturing industry
+- business activity
 - manufacturing
-- industry
-- month
-- percentage
-- previous
-- points
-- increase
+- delivery time
+- supplier delivery time
+- manufacturing pmi
 
 ## Provenance / Extraction Notes
 

@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/south-korea/calendar
 origin_url: https://tradingeconomics.com/south-korea/calendar
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:36.749Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: "Used for Korea exports, imports, trade balance, PMI, and CPI as the clearest external-Asia read-through this week."
-author: 
+author: ""
 date: 2026-04-03
 ingested_at: 2026-04-03T17:10:38.869Z
 raw_path: raw/web/SRC-2026-E1F6B1D23992__15-south-korea-economic-calendar-for-late-march-and-early-april-2026.html
@@ -23,7 +23,7 @@ tags: ["macro","south-korea","calendar","em","llm-handoff"]
 entities: ["South Korea"]
 concepts: ["exports","trade","inflation","manufacturing"]
 related: []
-candidate_concepts: ["previous","actual","consensus","forecast","april","south","korea","calendar"]
+candidate_concepts: ["south korea","inflation","growth","gdp growth","inflation rate","gdp","fiscal","labour"]
 checksum: e1f6b1d2399290be81787540391e8a529f66e56804f95bcb13765dadad6810ae
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ South Korea Calendar Calendar News Markets Commodities Indexes Shares Currencies
 
 ## Related Concepts
 
-- previous
-- actual
-- consensus
-- forecast
-- april
-- south
-- korea
-- calendar
+- south korea
+- inflation
+- growth
+- gdp growth
+- inflation rate
+- gdp
+- fiscal
+- labour
 
 ## Provenance / Extraction Notes
 

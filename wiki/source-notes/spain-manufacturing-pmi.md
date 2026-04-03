@@ -7,11 +7,11 @@ source_url: https://tradingeconomics.com/spain/manufacturing-pmi
 origin_url: https://tradingeconomics.com/spain/manufacturing-pmi
 capture_source: llm_research_handoff
 captured_at: 2026-04-03T17:10:25.580Z
-search_query: 
-search_engine: 
-search_rank: 
+search_query: ""
+search_engine: ""
+search_rank: ""
 capture_notes: Used to show Spain diverged lower and slipped back into contraction.
-author: 
+author: ""
 date: 2026-04-01
 ingested_at: 2026-04-03T17:10:38.816Z
 raw_path: raw/web/SRC-2026-9555CA26D695__10-spain-manufacturing-pmi.html
@@ -23,7 +23,7 @@ tags: ["macro","spain","pmi","llm-handoff"]
 entities: ["Spain"]
 concepts: ["manufacturing"]
 related: []
-candidate_concepts: ["spain","manufacturing","production","prices","points","inflation","since","indicators"]
+candidate_concepts: ["manufacturing pmi","spain manufacturing","spain manufacturing pmi","inflation","growth","natural gas","natural gas stocks","gas stocks"]
 checksum: 9555ca26d695c8fa7e67ab59c56a336706a1a625295073797173daad03fcdfb0
 extraction_status: extracted
 extraction_method: html_text
@@ -72,14 +72,14 @@ Spain Manufacturing PMI Calendar News Markets Commodities Indexes Shares Currenc
 
 ## Related Concepts
 
-- spain
-- manufacturing
-- production
-- prices
-- points
+- manufacturing pmi
+- spain manufacturing
+- spain manufacturing pmi
 - inflation
-- since
-- indicators
+- growth
+- natural gas
+- natural gas stocks
+- gas stocks
 
 ## Provenance / Extraction Notes
 

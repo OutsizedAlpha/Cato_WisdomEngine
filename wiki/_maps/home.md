@@ -21,14 +21,14 @@ Core domains:
 ## Managed Overview
 
 - Source notes: 16
-- Concepts: 39
+- Concepts: 22
 - Entities: 15
 - Timelines: 1
 - Thesis pages: 0
-- Watch profiles: 0
-- Surveillance pages: 0
+- Watch profiles: 1
+- Surveillance pages: 1
 - Self notes: 2
 - Contradiction candidates: 0
-- Synthesis candidates: 15
-- Last compiled: 2026-04-03T17:10:38.966Z
+- Synthesis candidates: 2
+- Last compiled: 2026-04-03T17:57:08.340Z
 <!-- CATO:END_MANAGED_BLOCK overview -->
