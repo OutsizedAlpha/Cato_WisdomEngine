@@ -46,6 +46,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
   - Launcher smoke on 2026-04-03 covering `doctor` and `report` through `commands/Cato-Launcher.ps1`
   - Watch-profile validation on 2026-04-03 covering profile creation, watch ontology generation, and watch-driven surveillance/report retrieval in `tests/cato.test.js`
   - GPT/Codex handoff validation on 2026-04-03 covering `capture-research`, imported-source notes, watch refresh, template exclusion, and CLI smoke against public web pages
+  - First live research-run validation on 2026-04-03 covering a real weekly macro brief, 16 imported live sources, source-note creation, watch refresh, synthesis promotion, and zero-issue lint after ingest
   - Ongoing validation expectations:
     - rerun tests after CLI or schema changes
     - keep live repo lint at zero or explain any deliberate exceptions
@@ -67,6 +68,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-03, a launcher layer was added under `commands/` for refresh, report, ask, deck, surveillance, reflection, doctor, and Obsidian opening.
 - On 2026-04-03, watch profiles were added under `wiki/watch-profiles/`, a derived watch ontology was added under `wiki/glossary/watch-ontology.md`, and watch-driven retrieval was wired into surveillance/report/deck generation.
 - On 2026-04-03, the temporary built-in search-provider research path was removed from the operator workflow and replaced with `capture-research`, which lets GPT/Codex do live web research and then hand the sources plus authored output into Cato for durable ingestion, compilation, and storage.
+- On 2026-04-03, the first real live-research macro bundle was captured into Cato, producing 16 new source notes, a `Global Macro` surveillance refresh, a weekly investment meeting report, and a promoted synthesis note.
 
 ## Open Risks / Next Steps
 

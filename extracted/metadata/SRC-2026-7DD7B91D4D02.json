@@ -1,0 +1,100 @@
+{
+  "id": "SRC-2026-7DD7B91D4D02",
+  "title": "U.S. International Trade in Goods and Services, February 2026",
+  "source_type": "web",
+  "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-february-2026",
+  "origin_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-february-2026",
+  "capture_source": "llm_research_handoff",
+  "captured_at": "2026-04-03T17:10:10.936Z",
+  "search_query": "",
+  "search_engine": "",
+  "search_rank": "",
+  "search_snippet": "",
+  "capture_notes": "Official release for the February U.S. trade balance used in the report.",
+  "author": "",
+  "date": "2026-04-02",
+  "ingested_at": "2026-04-03T17:10:38.731Z",
+  "raw_path": "raw/web/SRC-2026-7DD7B91D4D02__02-us-international-trade-in-goods-and-services-february-2026.html",
+  "extracted_text_path": "extracted/text/SRC-2026-7DD7B91D4D02.txt",
+  "table_preview_path": "",
+  "figure_note_path": "extracted/figures/SRC-2026-7DD7B91D4D02.md",
+  "metadata_path": "extracted/metadata/SRC-2026-7DD7B91D4D02.json",
+  "note_path": "wiki/source-notes/us-international-trade-in-goods-and-services-february-2026.md",
+  "checksum": "7dd7b91d4d026b0dca197a480d678e85257ce6c8c6469b25557fb2b386e2ed39",
+  "status": "processed",
+  "duplicate_of": "",
+  "extraction_status": "extracted",
+  "extraction_method": "html_text",
+  "extraction_notes": [
+    "Stripped HTML markup into plain text.",
+    "Indexed 2 image or figure reference(s) from HTML markup."
+  ],
+  "tags": [
+    "macro",
+    "us",
+    "trade",
+    "official",
+    "llm-handoff"
+  ],
+  "entities": [
+    "United States"
+  ],
+  "concepts": [
+    "trade deficit",
+    "global trade"
+  ],
+  "candidate_concepts": [
+    "goods",
+    "services",
+    "billion",
+    "exports",
+    "trade",
+    "census",
+    "imports",
+    "statistics"
+  ],
+  "figure_count": 2,
+  "summary": "U.S. International Trade in Goods and Services, February 2026 | U.S. Bureau of Economic Analysis (BEA) Skip to main content An official website of the United States government Toggle navigation Main navigation Data by Topic by Place by Economic Account Tools Interactive Data Application Programming Interface (API) Country Facts BEARFACTS Industry Facts Trade in Value Added (TiVA) Table Builder GDP &amp; Personal Inc…",
+  "imported_frontmatter": {
+    "title": "U.S. International Trade in Goods and Services, February 2026",
+    "source_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-february-2026",
+    "origin_url": "https://www.bea.gov/news/2026/us-international-trade-goods-and-services-february-2026",
+    "capture_source": "llm_research_handoff",
+    "fetched_at": "2026-04-03T17:10:10.936Z",
+    "author": "",
+    "date": "2026-04-02",
+    "tags": [
+      "macro",
+      "us",
+      "trade",
+      "official",
+      "llm-handoff"
+    ],
+    "entities": [
+      "United States"
+    ],
+    "concepts": [
+      "trade deficit",
+      "global trade"
+    ],
+    "capture_notes": "Official release for the February U.S. trade balance used in the report.",
+    "publisher": "BEA"
+  },
+  "figure_refs": [
+    {
+      "src": "/sites/default/files/favicon-57.png",
+      "alt": "U.S. flag",
+      "caption": "",
+      "title": "",
+      "label": "U.S. flag"
+    },
+    {
+      "src": "/system/files/trad0226-chart.png",
+      "alt": "Goods and Services Trade Deficit: Seasonally adjusted",
+      "caption": "",
+      "title": "",
+      "label": "Goods and Services Trade Deficit: Seasonally adjusted"
+    }
+  ],
+  "target_kind": "file"
+}

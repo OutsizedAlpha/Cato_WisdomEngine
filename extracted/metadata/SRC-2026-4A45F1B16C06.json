@@ -1,0 +1,205 @@
+{
+  "id": "SRC-2026-4A45F1B16C06",
+  "title": "UK quarterly national accounts, October to December 2025",
+  "source_type": "web",
+  "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025",
+  "origin_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025",
+  "capture_source": "llm_research_handoff",
+  "captured_at": "2026-04-03T17:10:12.258Z",
+  "search_query": "",
+  "search_engine": "",
+  "search_rank": "",
+  "search_snippet": "",
+  "capture_notes": "Official source for UK Q4 2025 GDP final estimates.",
+  "author": "",
+  "date": "2026-03-31",
+  "ingested_at": "2026-04-03T17:10:38.746Z",
+  "raw_path": "raw/web/SRC-2026-4A45F1B16C06__03-uk-quarterly-national-accounts-october-to-december-2025.html",
+  "extracted_text_path": "extracted/text/SRC-2026-4A45F1B16C06.txt",
+  "table_preview_path": "",
+  "figure_note_path": "extracted/figures/SRC-2026-4A45F1B16C06.md",
+  "metadata_path": "extracted/metadata/SRC-2026-4A45F1B16C06.json",
+  "note_path": "wiki/source-notes/uk-quarterly-national-accounts-october-to-december-2025.md",
+  "checksum": "4a45f1b16c06805ee148fd543a92a90e005ffe0de261fcea2715b686cedc16ae",
+  "status": "processed",
+  "duplicate_of": "",
+  "extraction_status": "extracted",
+  "extraction_method": "html_text",
+  "extraction_notes": [
+    "Stripped HTML markup into plain text.",
+    "Indexed 17 image or figure reference(s) from HTML markup."
+  ],
+  "tags": [
+    "macro",
+    "uk",
+    "gdp",
+    "official",
+    "llm-handoff"
+  ],
+  "entities": [
+    "United Kingdom"
+  ],
+  "concepts": [
+    "growth",
+    "gdp"
+  ],
+  "candidate_concepts": [
+    "quarter",
+    "growth",
+    "national",
+    "quarterly",
+    "gross",
+    "accounts",
+    "increased",
+    "refers"
+  ],
+  "figure_count": 17,
+  "summary": "GDP quarterly national accounts, UK - Office for National Statistics Cookies on ons.gov.uk Cookies are small files stored on your device when you visit a website. We use some essential cookies to make this website work. We would like to set additional cookies to remember your settings and understand how you use the site. This helps us to improve our services. Accept additional cookies Reject additional cookies Manag…",
+  "imported_frontmatter": {
+    "title": "UK quarterly national accounts, October to December 2025",
+    "source_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025",
+    "origin_url": "https://www.ons.gov.uk/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025",
+    "capture_source": "llm_research_handoff",
+    "fetched_at": "2026-04-03T17:10:12.258Z",
+    "author": "",
+    "date": "2026-03-31",
+    "tags": [
+      "macro",
+      "uk",
+      "gdp",
+      "official",
+      "llm-handoff"
+    ],
+    "entities": [
+      "United Kingdom"
+    ],
+    "concepts": [
+      "growth",
+      "gdp"
+    ],
+    "capture_notes": "Official source for UK Q4 2025 GDP final estimates.",
+    "publisher": "ONS"
+  },
+  "figure_refs": [
+    {
+      "src": "https://cdn.ons.gov.uk/assets/images/ons-logo/v2/ons-logo.png",
+      "alt": "Office for National Statistics logo - Homepage",
+      "caption": "",
+      "title": "",
+      "label": "Office for National Statistics logo - Homepage"
+    },
+    {
+      "src": "https://cdn.ons.gov.uk/assets/images/ons-logo/v2/ons-logo.svg",
+      "alt": "Office for National Statistics logo - Homepage",
+      "caption": "",
+      "title": "",
+      "label": "Office for National Statistics logo - Homepage"
+    },
+    {
+      "src": "https://cdn.ons.gov.uk/assets/images/census-logo/logo-census-2021-white-landscape.svg",
+      "alt": "",
+      "caption": "",
+      "title": "Census 2021",
+      "label": "Census 2021"
+    },
+    {
+      "src": "https://cdn.ons.gov.uk/assets/images/ons-logo/kitemark/v2/uksa-kitemark-en.svg",
+      "alt": "These are accredited official statistics. Click for information about types of official statistics.",
+      "caption": "",
+      "title": "",
+      "label": "These are accredited official statistics. Click for information about types of official statistics."
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/2e5108dc&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "2e5108dc&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/58539c3d&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "58539c3d&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/0ba48d63&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "0ba48d63&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/9f103be6&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "9f103be6&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/8f8a5dd8&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "8f8a5dd8&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/72768720&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "72768720&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/a3f435d9&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "a3f435d9&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/45f5734a&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "45f5734a&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/8f629b28&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "8f629b28&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/644f796a&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "644f796a&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/4d97ec45&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "4d97ec45&width=&hideSource=true"
+    },
+    {
+      "src": "/chartimage?uri=/economy/grossdomesticproductgdp/bulletins/quarterlynationalaccounts/octobertodecember2025/08c32825&width=&hideSource=true",
+      "alt": "",
+      "caption": "",
+      "title": "",
+      "label": "08c32825&width=&hideSource=true"
+    },
+    {
+      "src": "https://cdn.ons.gov.uk/assets/images/logo-ogl-footer.svg",
+      "alt": "OGL",
+      "caption": "",
+      "title": "",
+      "label": "OGL"
+    }
+  ],
+  "target_kind": "file"
+}

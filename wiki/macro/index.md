@@ -8,10 +8,12 @@ Use this area for growth, inflation, liquidity, central-bank, and regime notes.
 Generated: 2026-04-03
 
 ## growth
-- None yet.
+- [[source-notes/uk-quarterly-national-accounts-october-to-december-2025|UK quarterly national accounts, October to December 2025]]
 
 ## inflation
-- None yet.
+- [[source-notes/bank-of-england-decision-maker-panel-march-2026|Bank of England Decision Maker Panel, March 2026]]
+- [[source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026|Euro area economic calendar for late March and early April 2026]]
+- [[source-notes/south-korea-economic-calendar-for-late-march-and-early-april-2026|South Korea economic calendar for late March and early April 2026]]
 
 ## labour
 - None yet.

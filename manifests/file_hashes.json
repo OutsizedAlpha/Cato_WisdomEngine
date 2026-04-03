@@ -1,1 +1,82 @@
-{}
+{
+  "5a7326140c0de6dccf6745acf7813fe00a90bdaf0a3f85c2705036687470b101": {
+    "id": "SRC-2026-5A7326140C0D",
+    "raw_path": "raw/web/SRC-2026-5A7326140C0D__01-united-states-economic-calendar-week-of-march-30-april-3-2026.html",
+    "note_path": "wiki/source-notes/united-states-economic-calendar-week-of-march-30-april-3-2026.md"
+  },
+  "7dd7b91d4d026b0dca197a480d678e85257ce6c8c6469b25557fb2b386e2ed39": {
+    "id": "SRC-2026-7DD7B91D4D02",
+    "raw_path": "raw/web/SRC-2026-7DD7B91D4D02__02-us-international-trade-in-goods-and-services-february-2026.html",
+    "note_path": "wiki/source-notes/us-international-trade-in-goods-and-services-february-2026.md"
+  },
+  "4a45f1b16c06805ee148fd543a92a90e005ffe0de261fcea2715b686cedc16ae": {
+    "id": "SRC-2026-4A45F1B16C06",
+    "raw_path": "raw/web/SRC-2026-4A45F1B16C06__03-uk-quarterly-national-accounts-october-to-december-2025.html",
+    "note_path": "wiki/source-notes/uk-quarterly-national-accounts-october-to-december-2025.md"
+  },
+  "5ea51c2bf3194f22f648f85e9334aa9be788ebc7c7c8c78a8952c76a141d2f66": {
+    "id": "SRC-2026-5EA51C2BF319",
+    "raw_path": "raw/web/SRC-2026-5EA51C2BF319__04-uk-balance-of-payments-october-to-december-2025.html",
+    "note_path": "wiki/source-notes/uk-balance-of-payments-october-to-december-2025.md"
+  },
+  "a52e1e7c7bc7d8a2683e9240647828665323d9153b2d4fa51688a7f95b9bf266": {
+    "id": "SRC-2026-A52E1E7C7BC7",
+    "raw_path": "raw/web/SRC-2026-A52E1E7C7BC7__05-bank-of-england-decision-maker-panel-march-2026.html",
+    "note_path": "wiki/source-notes/bank-of-england-decision-maker-panel-march-2026.md"
+  },
+  "8031900b9c3f5271dc5814c3d03bec87fa1a08fc32c7dac32e71eeb588b68304": {
+    "id": "SRC-2026-8031900B9C3F",
+    "raw_path": "raw/web/SRC-2026-8031900B9C3F__06-euro-area-economic-calendar-for-late-march-and-early-april-2026.html",
+    "note_path": "wiki/source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026.md"
+  },
+  "28a1e9daabe7db35aeda324c4359a3ea96b0e35f4f620da96506f48967d33998": {
+    "id": "SRC-2026-28A1E9DAABE7",
+    "raw_path": "raw/web/SRC-2026-28A1E9DAABE7__07-germany-economic-calendar-for-late-march-and-early-april-2026.html",
+    "note_path": "wiki/source-notes/germany-economic-calendar-for-late-march-and-early-april-2026.md"
+  },
+  "736f27210f773f9903de1ac363ef945dc47685b90982584c0019aeb3810c9f56": {
+    "id": "SRC-2026-736F27210F77",
+    "raw_path": "raw/web/SRC-2026-736F27210F77__08-france-manufacturing-pmi.html",
+    "note_path": "wiki/source-notes/france-manufacturing-pmi.md"
+  },
+  "561eed62fc64d2e8818e152b7a119d4e5e9d40960112a91b4b504ca42d722074": {
+    "id": "SRC-2026-561EED62FC64",
+    "raw_path": "raw/web/SRC-2026-561EED62FC64__09-italy-manufacturing-pmi.html",
+    "note_path": "wiki/source-notes/italy-manufacturing-pmi.md"
+  },
+  "9555ca26d695c8fa7e67ab59c56a336706a1a625295073797173daad03fcdfb0": {
+    "id": "SRC-2026-9555CA26D695",
+    "raw_path": "raw/web/SRC-2026-9555CA26D695__10-spain-manufacturing-pmi.html",
+    "note_path": "wiki/source-notes/spain-manufacturing-pmi.md"
+  },
+  "bd50acff7c7d128465816b85e86e602b15540c30f760ac54dc724e6a0ae5e76f": {
+    "id": "SRC-2026-BD50ACFF7C7D",
+    "raw_path": "raw/web/SRC-2026-BD50ACFF7C7D__11-bank-of-japan-tankan-summary-march-2026-survey.htm",
+    "note_path": "wiki/source-notes/bank-of-japan-tankan-summary-march-2026-survey.md"
+  },
+  "43cbdaea5e65be4f2b494cada33470604bbabab7d368e1a6f18ca237bc2cd9f5": {
+    "id": "SRC-2026-43CBDAEA5E65",
+    "raw_path": "raw/web/SRC-2026-43CBDAEA5E65__12-japan-economic-calendar-for-late-march-and-early-april-2026.html",
+    "note_path": "wiki/source-notes/japan-economic-calendar-for-late-march-and-early-april-2026.md"
+  },
+  "32deaa5f7fb52691585ca5caffb29ad1e79d21a20d70e7f097ff193e279c73fa": {
+    "id": "SRC-2026-32DEAA5F7FB5",
+    "raw_path": "raw/web/SRC-2026-32DEAA5F7FB5__13-purchasing-managers-index-for-march-2026.html",
+    "note_path": "wiki/source-notes/purchasing-managers-index-for-march-2026.md"
+  },
+  "ca6d805d453eec2d67c17c53f622d0c5a2e5bac592116fd735d71cce3d18f9ab": {
+    "id": "SRC-2026-CA6D805D453E",
+    "raw_path": "raw/web/SRC-2026-CA6D805D453E__14-china-economic-calendar-for-late-march-and-early-april-2026.html",
+    "note_path": "wiki/source-notes/china-economic-calendar-for-late-march-and-early-april-2026.md"
+  },
+  "e1f6b1d2399290be81787540391e8a529f66e56804f95bcb13765dadad6810ae": {
+    "id": "SRC-2026-E1F6B1D23992",
+    "raw_path": "raw/web/SRC-2026-E1F6B1D23992__15-south-korea-economic-calendar-for-late-march-and-early-april-2026.html",
+    "note_path": "wiki/source-notes/south-korea-economic-calendar-for-late-march-and-early-april-2026.md"
+  },
+  "f16bd246f379ad558e475b3ee1f8fd9c4b35707de51b2287709762a914079263": {
+    "id": "SRC-2026-F16BD246F379",
+    "raw_path": "raw/web/SRC-2026-F16BD246F379__16-brazil-economic-calendar-for-late-march-and-early-april-2026.html",
+    "note_path": "wiki/source-notes/brazil-economic-calendar-for-late-march-and-early-april-2026.md"
+  }
+}
