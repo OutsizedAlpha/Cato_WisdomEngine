@@ -27,7 +27,7 @@ related: ["extracted/text/SRC-2026-7DD7B91D4D02.txt","extracted/text/SRC-2026-BD
 <!-- CATO:BEGIN_MANAGED_BLOCK snapshot -->
 ## Managed Snapshot
 
-- Last refreshed: 2026-04-03T18:41:09.238Z
+- Last refreshed: 2026-04-03T19:05:52.272Z
 - State label: contested
 - Confidence: high
 - Claim count: 12

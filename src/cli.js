@@ -5,6 +5,7 @@ const { compileProject } = require("./compile");
 const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("./decisions");
 const { writeDeck } = require("./deck");
 const { runDoctor } = require("./doctor");
+const { captureFrontier, writeFrontierPack } = require("./frontier");
 const { ingest } = require("./ingest");
 const { initProject } = require("./init");
 const { lintProject } = require("./lint");
@@ -60,6 +61,8 @@ Usage:
   .\\cato.cmd compile [--promote-candidates]
   .\\cato.cmd search "query" [--limit 8]
   .\\cato.cmd capture-research path\\to\\bundle.json [--promote] [--no-surveil]
+  .\\cato.cmd frontier-pack "topic" [--mode decision|belief|state|meeting] [--kind report|brief|meeting-brief|deck] [--subjects "Global Macro,Geopolitical Risk"]
+  .\\cato.cmd capture-frontier path\\to\\bundle.json [--promote] [--no-surveil]
   .\\cato.cmd ask "question" [--limit 6] [--save-question] [--promote]
   .\\cato.cmd report "topic" [--limit 10] [--promote]
   .\\cato.cmd deck "topic" [--limit 8] [--promote]
@@ -89,7 +92,7 @@ Options:
   --save-question       Also create a question page in wiki/questions.
   --promote-candidates  Promote repeated candidate concepts into concept pages.
   --promote             File the generated output back into wiki/synthesis.
-  --no-surveil          Skip surveillance refresh during capture-research even if the bundle includes watch data.
+  --no-surveil          Skip surveillance refresh during capture-research or capture-frontier even if the bundle includes watch data.
   --no-refresh          Create/update the watch profile without refreshing surveillance.
   --snapshot            Write a timestamped claim snapshot during claims-refresh.
 `);
@@ -187,6 +190,49 @@ function runCli(argv) {
       }
       if (result.failures.length) {
         console.log(`Capture failures: ${result.failures.length}`);
+      }
+      return;
+    }
+    case "frontier-pack": {
+      const seed = parsed.positionals.join(" ").trim() || parsed.options.title || "";
+      if (!seed) {
+        throw new Error('Frontier-pack requires a topic or title. Example: .\\cato.cmd frontier-pack "Global Macro" --mode decision');
+      }
+      const result = writeFrontierPack(root, seed, {
+        mode: parsed.options.mode,
+        kind: parsed.options.kind,
+        title: parsed.options.title,
+        subjects: parsed.options.subjects,
+        question: parsed.options.question,
+        set: parsed.options.set,
+        regimeTitle: parsed.options["regime-title"],
+        marketChangesTitle: parsed.options["market-title"],
+        claimLimit: parsed.options["claim-limit"],
+        evidenceLimit: parsed.options["evidence-limit"]
+      });
+      console.log(`Frontier pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Local sources: ${result.localSources}`);
+      console.log(`Claims: ${result.claims}, Evidence: ${result.evidence}`);
+      return;
+    }
+    case "capture-frontier": {
+      const bundlePath = parsed.positionals.join(" ").trim();
+      if (!bundlePath) {
+        throw new Error('Capture-frontier requires a bundle path. Example: .\\cato.cmd capture-frontier .\\cache\\frontier-packs\\...-capture.json');
+      }
+      const result = captureFrontier(root, bundlePath, {
+        promote: Boolean(parsed.options.promote),
+        noSurveil: Boolean(parsed.options["no-surveil"])
+      });
+      console.log(`Captured frontier bundle: ${bundlePath}`);
+      console.log(`Captured sources ingested: ${result.ingested}`);
+      if (result.outputResult) {
+        console.log(`Wrote output to ${result.outputResult.outputPath}`);
+        if (result.outputResult.promotedPath) {
+          console.log(`Promoted synthesis note to ${result.outputResult.promotedPath}`);
+        }
       }
       return;
     }

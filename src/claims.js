@@ -423,6 +423,14 @@ function claimPagePath(root, claim) {
   return path.join(root, "wiki", "claims", `${claim.id.toLowerCase()}.md`);
 }
 
+function renderClaimSourceReference(source) {
+  const normalized = String(source || "").replace(/\\/g, "/");
+  const isNoteLikeMarkdown =
+    normalized.toLowerCase().endsWith(".md") &&
+    (normalized.startsWith("wiki/") || normalized.startsWith("outputs/"));
+  return isNoteLikeMarkdown ? toWikiLink(normalized) : `\`${normalized}\``;
+}
+
 function writeClaimPage(root, claim, claimIndex) {
   const pagePath = claimPagePath(root, claim);
   const contradictions = claim.contradicting_claim_ids
@@ -431,12 +439,7 @@ function writeClaimPage(root, claim, claimIndex) {
     .map((other) => `- ${toWikiLink(relativeToRoot(root, claimPagePath(root, other)), truncate(other.claim_text, 96))}`)
     .join("\n");
   const support = claim.supporting_sources
-    .map((source) => {
-      if (String(source).toLowerCase().endsWith(".md")) {
-        return `- ${toWikiLink(source)}`;
-      }
-      return `- \`${source}\``;
-    })
+    .map((source) => `- ${renderClaimSourceReference(source)}`)
     .join("\n");
   const concepts = claim.concepts.length ? claim.concepts.map((value) => `- ${value}`).join("\n") : "- None linked.";
   const entities = claim.entities.length ? claim.entities.map((value) => `- ${value}`).join("\n") : "- None linked.";
@@ -800,7 +803,7 @@ ${contested.length ? contested.map((claim) => `- ${claim.claim_text}`).join("\n"
 
 ${claims
   .slice(0, 6)
-  .map((claim) => `- ${claim.claim_text}\n  - Support: ${claim.supporting_sources.map((source) => (source.endsWith(".md") ? toWikiLink(source) : `\`${source}\``)).join(", ")}`)
+  .map((claim) => `- ${claim.claim_text}\n  - Support: ${claim.supporting_sources.map((source) => renderClaimSourceReference(source)).join(", ")}`)
   .join("\n")}
 
 ## What Would Change The View

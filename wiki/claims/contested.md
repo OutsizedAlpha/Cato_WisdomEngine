@@ -70,7 +70,7 @@ Generated: 2026-04-03
 ## Japan is steady, but energy sensitivity remains a live risk.
 - Claim: [[claims/claim-2026-4833746fdda4|Japan is steady, but energy sensitivity remains a live risk.]]
 - Origin: [[outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]]
-- Contradictions: [[claims/claim-2026-00a1fc15c7d3|CLAIM-2026-00A1FC15C7D3]]
+- Contradictions: [[claims/claim-2026-00a1fc15c7d3|CLAIM-2026-00A1FC15C7D3]], [[claims/claim-2026-dd624a5c23f6|CLAIM-2026-DD624A5C23F6]]
 
 ## Japan was not weak, but it was not a clean reflation boom either.
 - Claim: [[claims/claim-2026-5673f9a66505|Japan was not weak, but it was not a clean reflation boom either.]]
@@ -141,6 +141,11 @@ Generated: 2026-04-03
 - Claim: [[claims/claim-2026-fc060b000e20|The U.S. week was hawkish in growth terms, only partly offset by softer wages.]]
 - Origin: [[outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]]
 - Contradictions: [[claims/claim-2026-345e39584a35|CLAIM-2026-345E39584A35]], [[claims/claim-2026-7db2bd48f562|CLAIM-2026-7DB2BD48F562]]
+
+## This live smoke confirms the frontier handoff path works on the current repo without embe…
+- Claim: [[claims/claim-2026-dd624a5c23f6|This live smoke confirms the frontier handoff path works on the current repo without embe…]]
+- Origin: [[outputs/reports/2026-04-03T19-04-41.351Z-global-macro-frontier-decision-brief|Global Macro frontier decision brief]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
 
 ## Used to position France near the expansion threshold in Europe.
 - Claim: [[claims/claim-2026-0f6c133346d9|Used to position France near the expansion threshold in Europe.]]

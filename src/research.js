@@ -169,7 +169,11 @@ function renderSourceList(sources) {
   return sources
     .map((source) => {
       if (typeof source === "string") {
-        return source.toLowerCase().endsWith(".md") ? `- ${toWikiLink(source)}` : `- \`${source}\``;
+        const normalized = source.replace(/\\/g, "/");
+        const isNoteLikeMarkdown =
+          normalized.toLowerCase().endsWith(".md") &&
+          (normalized.startsWith("wiki/") || normalized.startsWith("outputs/"));
+        return isNoteLikeMarkdown ? `- ${toWikiLink(normalized)}` : `- \`${normalized}\``;
       }
       return `- ${renderResultReference(source)}`;
     })

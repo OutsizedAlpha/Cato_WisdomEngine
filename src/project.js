@@ -51,6 +51,7 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "logs", "actions", "claims_refresh.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "state_refresh.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "decision_runs.jsonl"), "");
+  ensureFile(path.join(root, "logs", "actions", "frontier_runs.jsonl"), "");
   ensureFile(path.join(root, "wiki", "_indices", "sources.md"), "# Source Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "claims.md"), "# Claim Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "concepts.md"), "# Concept Index\n");

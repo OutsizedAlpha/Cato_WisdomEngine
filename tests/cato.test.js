@@ -10,6 +10,7 @@ const { compileProject } = require("../src/compile");
 const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("../src/decisions");
 const { writeDeck } = require("../src/deck");
 const { runDoctor } = require("../src/doctor");
+const { captureFrontier, writeFrontierPack } = require("../src/frontier");
 const { ingest } = require("../src/ingest");
 const { initProject } = require("../src/init");
 const { lintProject } = require("../src/lint");
@@ -816,6 +817,64 @@ runTest("decision layer writes meeting briefs, decision notes, red-team briefs, 
     assert.match(decisionContent, /## Managed Self-Model Lens/);
     assert.match(redTeamContent, /## Strongest Counter-Case/);
     assert.match(redTeamContent, /## Likely Blind Spots/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("frontier pack prepares Codex-ready context and capture-frontier files the authored output back into Cato", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+    fs.mkdirSync(path.join(root, "inbox", "self"), { recursive: true });
+    fs.copyFileSync(fixturePath("sample-article.md"), path.join(root, "inbox", "drop_here", "sample-article.md"));
+    fs.copyFileSync(fixturePath("sample-note.txt"), path.join(root, "inbox", "drop_here", "sample-note.txt"));
+    fs.copyFileSync(fixturePath("self-principle.txt"), path.join(root, "inbox", "self", "satellite-principle.txt"));
+
+    ingest(root);
+    selfIngest(root);
+    compileProject(root, { promoteCandidates: true });
+
+    const pack = writeFrontierPack(root, "passive flows", {
+      mode: "decision",
+      kind: "report"
+    });
+
+    assert.ok(fs.existsSync(path.join(root, pack.packPath)));
+    assert.ok(fs.existsSync(path.join(root, pack.promptPath)));
+    assert.ok(fs.existsSync(path.join(root, pack.capturePath)));
+
+    const packPayload = JSON.parse(fs.readFileSync(path.join(root, pack.packPath), "utf8"));
+    const prompt = fs.readFileSync(path.join(root, pack.promptPath), "utf8");
+    assert.equal(packPayload.mode, "decision");
+    assert.ok(packPayload.local_sources.some((source) => source.path.startsWith("wiki/states/")));
+    assert.ok(packPayload.local_sources.some((source) => source.path.startsWith("wiki/decisions/")));
+    assert.match(prompt, /capture-frontier/i);
+
+    const capturePath = path.join(root, pack.capturePath);
+    const captureBundle = JSON.parse(fs.readFileSync(capturePath, "utf8"));
+    captureBundle.output.body = `# Passive flows frontier decision brief
+
+## Executive Summary
+
+Codex used the claim, state, and decision context pack to write this final brief.
+
+## Portfolio Implications
+
+- Keep an eye on crowding and liquidity transmission.
+`;
+    fs.writeFileSync(capturePath, `${JSON.stringify(captureBundle, null, 2)}\n`, "utf8");
+
+    const capture = captureFrontier(root, pack.capturePath, { promote: true });
+    assert.ok(capture.outputResult);
+    assert.equal(capture.localSources.length >= 1, true);
+    assert.ok(fs.existsSync(path.join(root, capture.outputResult.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, capture.outputResult.promotedPath)));
+
+    const output = fs.readFileSync(path.join(root, capture.outputResult.outputPath), "utf8");
+    assert.match(output, /generation_mode: frontier_handoff/);
+    assert.match(output, /## Local Context Capture/);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

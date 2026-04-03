@@ -21,6 +21,8 @@ This file records the current local truth of the repository, not the full intend
 - Initialise/repair structure: `node .\bin\cato.js init`
 - Ingest evidence: `node .\bin\cato.js ingest`
 - Import a GPT/Codex research bundle: `node .\bin\cato.js capture-research .\path\to\bundle.json`
+- Prepare a frontier reasoning pack: `node .\bin\cato.js frontier-pack "topic" --mode decision`
+- Capture a frontier-authored bundle: `node .\bin\cato.js capture-frontier .\path\to\bundle.json`
 - Ingest self-notes: `node .\bin\cato.js self-ingest`
 - Compile indices/concepts/entities: `node .\bin\cato.js compile`
 - Search corpus: `node .\bin\cato.js search "query"`
@@ -61,6 +63,7 @@ This file records the current local truth of the repository, not the full intend
 
 - [`src/ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ingest.js) = archives inbox files, runs format-aware extraction, writes metadata, and drafts source notes
 - [`src/research-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research-handoff.js) = imports GPT/Codex research bundles, downloads cited sources, ingests them, compiles the repo, and writes the supplied output artefact
+- [`src/frontier.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/frontier.js) = prepares zero-API frontier reasoning packs from claim/state/decision surfaces and captures Codex-authored frontier bundles back into Cato
 - [`src/web-import.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/web-import.js) = Windows-first web download/provenance helper used for URL ingest and research handoff capture
 - [`src/extraction.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/extraction.js) = handles text extraction, PDF stream parsing, repo snapshot manifests, figure reference extraction, SVG text capture, and Windows OCR handoff for raster images
 - [`src/self-ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/self-ingest.js) = converts rough self-authored notes into structured self-model notes
@@ -94,6 +97,7 @@ This file records the current local truth of the repository, not the full intend
 - The repo now includes the first full operating tree: `config/`, `inbox/`, `raw/`, `manifests/`, `extracted/`, `wiki/`, `outputs/`, `logs/`, `cache/`, `src/`, `tests/`, and root wrapper commands.
 - The CLI now covers deterministic repo maintenance plus grounded memo, report, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
 - The live-research split is now explicit: GPT/Codex is expected to perform web research and author the synthesis, while Cato captures the cited sources and final artefacts through `capture-research`.
+- The zero-API frontier split is also explicit: Cato prepares deterministic claim/state/decision context through `frontier-pack`, Codex performs the deeper reasoning, and Cato stores the final authored artefact through `capture-frontier`.
 - `ingest` now treats repo directories and repo archives as first-class evidence objects instead of only plain files.
 - `ingest` now writes figure notes into `extracted/figures/` for standalone images and markdown/HTML sources with image references.
 - Watch profiles live in `wiki/watch-profiles/`; they are instruction objects, not evidence. Search now excludes them from retrieval so reports and surveillance do not cite watch instructions back as source material.
@@ -107,7 +111,9 @@ This file records the current local truth of the repository, not the full intend
 - `compile` now also refreshes timeline, domain-index, synthesis-candidate, contradiction, thesis-index, watch-profile index/ontology, surveillance-index, and self-index surfaces.
 - `commands/` now contains a launcher layer for common double-click workflows, including the new claim, state, regime, meeting, decision, and red-team surfaces.
 - `commands/research-capture.example.json` provides the bundle shape for Codex-to-Cato research handoff.
+- `commands/frontier-capture.example.json` provides the bundle shape for Codex-to-Cato frontier handoff.
 - `docs/research_handoff.md` is the operator-facing reference for the research handoff contract.
+- `docs/frontier_handoff.md` is the operator-facing reference for the zero-API frontier reasoning contract.
 
 ## Environment / Dependency Notes
 

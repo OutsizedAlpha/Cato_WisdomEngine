@@ -73,6 +73,7 @@ const STRUCTURE_DIRS = [
   "logs/report_runs",
   "cache",
   "cache/claim-snapshots",
+  "cache/frontier-packs",
   "tests",
   "tests/fixtures"
 ];

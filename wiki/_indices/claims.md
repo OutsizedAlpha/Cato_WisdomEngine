@@ -96,6 +96,7 @@ Generated: 2026-04-03
 - [[claims/claim-2026-d0ea574a0654|The signal is not clean disinflationary weakness.]] (inference, high)
 - [[claims/claim-2026-e82787d9d197|Europe is harder because the manufacturing rebound is colliding with input-cost pressure.]] (inference, high)
 - [[claims/claim-2026-fc060b000e20|The U.S. week was hawkish in growth terms, only partly offset by softer wages.]] (inference, high)
+- [[claims/claim-2026-dd624a5c23f6|This live smoke confirms the frontier handoff path works on the current repo without embedded A…]] (inference, high)
 - [[claims/claim-2026-0f6c133346d9|Used to position France near the expansion threshold in Europe.]] (fact, medium-high)
 - [[claims/claim-2026-d1edd67bb63d|Used to show Spain diverged lower and slipped back into contraction.]] (fact, medium-high)
 

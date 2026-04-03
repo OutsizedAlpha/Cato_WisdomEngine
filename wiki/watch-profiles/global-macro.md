@@ -23,10 +23,10 @@ related: []
 <!-- CATO:BEGIN_MANAGED_BLOCK brief -->
 ## Managed Watch Brief
 
-- Priority: high
-- Cadence: weekly
+- Priority: medium
+- Cadence: ad-hoc
 - Status: active
-- Why this watch exists: Use this watch to track macro releases, geopolitical spillovers, and cross-asset transmission relevant to weekly investment meetings.
+- Why this watch exists: Global Macro
 <!-- CATO:END_MANAGED_BLOCK brief -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK scope -->
@@ -91,6 +91,4 @@ related: []
 
 <!-- CATO:BEGIN_MANAGED_BLOCK instructions -->
 ## Managed Reporting Instructions
-
-- Use grounded surveillance framing and emphasise actionable changes, catalysts, and de-risking implications.
 <!-- CATO:END_MANAGED_BLOCK instructions -->

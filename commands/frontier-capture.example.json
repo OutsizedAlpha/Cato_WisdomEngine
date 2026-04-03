@@ -1,0 +1,46 @@
+{
+  "mode": "decision",
+  "topic": "Global Macro",
+  "question": "What matters most now for the portfolio and what should change my view?",
+  "pack_path": "cache/frontier-packs/2026-04-03T00-00-00.000Z-decision-global-macro-pack.json",
+  "watch_topic": "Global Macro",
+  "watch": {
+    "subject": "Global Macro",
+    "context": "Track this for portfolio decisions, de-risking thresholds, and weekly investment meeting prep."
+  },
+  "local_sources": [
+    {
+      "path": "wiki/states/global-macro.md",
+      "title": "Global Macro state page",
+      "role": "state-page"
+    },
+    {
+      "path": "wiki/decisions/global-macro.md",
+      "title": "Global Macro decision note",
+      "role": "decision-note"
+    },
+    {
+      "path": "outputs/briefs/2026-04-03T00-00-00.000Z-global-macro-frontier-belief-brief.md",
+      "title": "Global Macro belief brief",
+      "role": "belief-brief"
+    }
+  ],
+  "sources": [
+    {
+      "url": "https://example.com/fresh-source",
+      "title": "Fresh live source",
+      "date": "2026-04-03",
+      "tags": [
+        "macro",
+        "frontier-handoff"
+      ],
+      "notes": "Optional live web source discovered during Codex research."
+    }
+  ],
+  "output": {
+    "kind": "report",
+    "title": "Global Macro frontier decision brief",
+    "promote": true,
+    "body": "# Global Macro frontier decision brief\n\nReplace this placeholder with the GPT/Codex-authored output.\n"
+  }
+}

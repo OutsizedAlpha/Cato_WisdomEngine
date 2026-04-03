@@ -35,6 +35,11 @@ const OUTPUT_KINDS = {
     idPrefix: "BRIEF",
     kind: "research-brief",
     outputDir: "outputs/briefs"
+  },
+  "meeting-brief": {
+    idPrefix: "MEETING",
+    kind: "meeting-brief",
+    outputDir: "outputs/meeting-briefs"
   }
 };
 
@@ -64,6 +69,40 @@ function normalizeList(value) {
 
 function uniqueList(values) {
   return [...new Set(normalizeList(values))];
+}
+
+function resolveLocalSources(root, bundle) {
+  const rawSources = Array.isArray(bundle.local_sources) ? bundle.local_sources : [];
+  const seen = new Set();
+  const localSources = [];
+
+  for (const source of rawSources) {
+    const candidatePath =
+      typeof source === "string"
+        ? source
+        : source?.path || source?.relative_path || source?.note_path || source?.file_path || "";
+    if (!candidatePath) {
+      continue;
+    }
+    const absolutePath = path.isAbsolute(candidatePath) ? candidatePath : path.join(root, candidatePath);
+    if (!fs.existsSync(absolutePath)) {
+      continue;
+    }
+    const relativePath = relativeToRoot(root, absolutePath);
+    if (seen.has(relativePath)) {
+      continue;
+    }
+    seen.add(relativePath);
+    localSources.push({
+      path: relativePath,
+      title:
+        (typeof source === "object" && (source.title || source.label)) ||
+        path.basename(absolutePath, path.extname(absolutePath)),
+      role: typeof source === "object" ? source.role || "local-context" : "local-context"
+    });
+  }
+
+  return localSources;
 }
 
 function stageResearchSources(root, bundle, options = {}) {
@@ -132,11 +171,11 @@ function inferOutputKind(bundle) {
   return OUTPUT_KINDS[requested] ? requested : "report";
 }
 
-function normalizeOutputPayload(bundle, stagedSummary = "") {
+function normalizeOutputPayload(bundle, captureSummary = "") {
   const body = String(bundle.output?.body || "").trim();
   if (!body) {
     return {
-      body: `# ${inferOutputTitle(bundle)}\n\nNo output body was provided in the research handoff bundle.\n${stagedSummary}`,
+      body: `# ${inferOutputTitle(bundle)}\n\nNo output body was provided in the research handoff bundle.\n${captureSummary}`,
       frontmatter: {}
     };
   }
@@ -144,20 +183,20 @@ function normalizeOutputPayload(bundle, stagedSummary = "") {
   const parsed = parseFrontmatter(body);
   const cleanedBody = parsed.frontmatter && Object.keys(parsed.frontmatter).length ? parsed.body.trim() : body;
   const frontmatter = parsed.frontmatter && Object.keys(parsed.frontmatter).length ? parsed.frontmatter : {};
-  if (!stagedSummary) {
+  if (!captureSummary) {
     return {
       body: cleanedBody,
       frontmatter
     };
   }
-  if (sectionContent(cleanedBody, "Imported Source Capture")) {
+  if (sectionContent(cleanedBody, "Imported Source Capture") || sectionContent(cleanedBody, "Local Context Capture")) {
     return {
       body: cleanedBody,
       frontmatter
     };
   }
   return {
-    body: `${cleanedBody}\n\n${stagedSummary}`.trim(),
+    body: `${cleanedBody}\n\n${captureSummary}`.trim(),
     frontmatter
   };
 }
@@ -172,6 +211,20 @@ function renderImportedSourceSection(ingestedResults) {
 
 ${ingestedResults
   .map((record) => `- ${record.title} (\`${record.note_path}\`)${record.source_url ? ` - ${record.source_url}` : ""}`)
+  .join("\n")}
+`;
+}
+
+function renderLocalSourceSection(localSources) {
+  if (!localSources.length) {
+    return "";
+  }
+
+  return `
+## Local Context Capture
+
+${localSources
+  .map((source) => `- \`${source.path}\`${source.title ? ` (${source.title})` : ""}${source.role ? ` - ${source.role}` : ""}`)
   .join("\n")}
 `;
 }
@@ -206,6 +259,7 @@ function captureResearch(root, bundleInput, options = {}) {
   ensureProjectStructure(root);
   const bundle = resolveBundle(root, bundleInput);
   const staged = stageResearchSources(root, bundle, options);
+  const localSources = resolveLocalSources(root, bundle);
   const ingestResult = staged.staged.length
     ? ingest(root, {
         from: relativeToRoot(root, staged.handoffDir),
@@ -219,7 +273,9 @@ function captureResearch(root, bundleInput, options = {}) {
   if (bundle.output) {
     const outputKind = inferOutputKind(bundle);
     const config = OUTPUT_KINDS[outputKind];
-    const outputPayload = normalizeOutputPayload(bundle, renderImportedSourceSection(ingestResult.results));
+    const captureSummary = [renderImportedSourceSection(ingestResult.results), renderLocalSourceSection(localSources)].filter(Boolean).join("\n\n");
+    const outputPayload = normalizeOutputPayload(bundle, captureSummary);
+    const outputSources = [...new Set(localSources.map((source) => source.path).concat(ingestResult.results.map((record) => record.note_path)))];
     const output = writeOutputDocument(root, {
       idPrefix: config.idPrefix,
       kind: config.kind,
@@ -227,14 +283,16 @@ function captureResearch(root, bundleInput, options = {}) {
       outputDir: config.outputDir,
       fileSlug: inferOutputTitle(bundle),
       body: outputPayload.body,
-      sources: ingestResult.results.map((record) => record.note_path),
+      sources: outputSources,
       frontmatter: {
         ...outputPayload.frontmatter,
         ...config.frontmatter,
-        generation_mode: "llm_handoff",
+        generation_mode: bundle.output?.generation_mode || bundle.generation_mode || options.generationMode || "llm_handoff",
         handoff_topic: bundle.topic || "",
         handoff_question: bundle.question || "",
+        handoff_pack_path: bundle.pack_path || "",
         watch_profile: watch?.watchResult?.profilePath || "",
+        local_context_sources: localSources.length,
         imported_sources: ingestResult.results.length,
         imported_failures: staged.failures.length
       }
@@ -244,7 +302,7 @@ function captureResearch(root, bundleInput, options = {}) {
     if (options.promote || bundle.output.promote) {
       promotedPath = promoteOutputToSynthesis(root, output.outputPath, {
         title: inferOutputTitle(bundle),
-        sources: ingestResult.results.map((record) => record.note_path),
+        sources: outputSources,
         reason: "Promoted from LLM handoff workflow for durable reuse."
       });
     }
@@ -263,6 +321,7 @@ function captureResearch(root, bundleInput, options = {}) {
     requested_sources: Array.isArray(bundle.sources) ? bundle.sources.length : 0,
     staged_sources: staged.staged.length,
     ingested_sources: ingestResult.ingested,
+    local_context_sources: localSources.length,
     failures: staged.failures.length,
     output_path: outputResult?.outputPath || "",
     watch_subject: watch?.subject || ""
@@ -270,6 +329,7 @@ function captureResearch(root, bundleInput, options = {}) {
 
   return {
     stagedSources: staged.staged,
+    localSources,
     failures: staged.failures,
     ingested: ingestResult.ingested,
     ingestedResults: ingestResult.results,

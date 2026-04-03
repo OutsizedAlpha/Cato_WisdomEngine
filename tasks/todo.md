@@ -36,6 +36,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - [x] Add a state/regime engine with state pages, state diffs, and regime briefs.
 - [x] Add a PM decision layer with meeting briefs, decision notes, red-team outputs, and market-change briefs.
 - [x] Extend the launcher layer for the new belief/state/decision surfaces.
+- [x] Add a zero-API frontier-pack bridge so Codex can reason over claim/state/decision context and capture the final output back into Cato.
 - [ ] Decide whether to embed external LLM execution into the CLI or keep the repo agent-driven.
 
 ## Validation
@@ -52,6 +53,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
   - Ontology-noise validation on 2026-04-03 covering candidate concept filtering, stale concept retirement, full test pass, live compile, and zero-issue lint after tightening concept generation
   - Legacy source-note refresh validation on 2026-04-03 covering empty-frontmatter round-trip protection, refreshed source-note candidate concepts, live compile, and zero-issue lint after rewriting the existing corpus notes
   - Claim/state/decision validation on 2026-04-03 covering `claims-refresh`, `claim-diff`, `why-believe`, `state-refresh`, `state-diff`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, full test pass, and zero-issue live lint after regenerating superseded outputs
+  - Frontier-pack validation on 2026-04-03 covering `frontier-pack`, `capture-frontier`, local-context bundle capture, full test pass, real live smoke against the current repo, and zero-issue lint after a real frontier-authored output capture
   - Ongoing validation expectations:
     - rerun tests after CLI or schema changes
     - keep live repo lint at zero or explain any deliberate exceptions
@@ -80,6 +82,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-03, the repo gained a state/regime engine under `wiki/states/` and `wiki/regimes/`, with state history stored in `manifests/state_history.jsonl`.
 - On 2026-04-03, the repo gained a PM decision layer under `wiki/decisions/` plus `outputs/meeting-briefs/` and new decision-support briefs.
 - On 2026-04-03, the launcher layer was extended for claims, state refresh, regime briefs, decision notes, meeting briefs, red-team briefs, and market-change briefs.
+- On 2026-04-03, the repo gained a zero-API frontier-pack bridge so Codex can consume structured claim/state/decision context, optionally add fresh web research, and file the final authored output back into Cato.
 
 ## Open Risks / Next Steps
 
@@ -89,4 +92,5 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - Watch profiles now expand topic retrieval, but the underlying search engine is still mostly lexical rather than fully semantic; frontier-model-assisted routing remains an open upgrade path.
 - The correct live-research model is now explicit, but it still depends on Codex/GPT producing the research bundle; the CLI is intentionally not trying to impersonate a frontier web-research model.
 - Claim extraction and state inference are now useful but still deterministic; a later model-assisted pass may improve claim quality and contradiction handling.
+- The CLI still does not invoke the frontier model directly. The repo now has a zero-API bridge instead, which is the correct operating model for the current user workflow.
 - The next build phase needs discipline so it does not jump too early into fine-tuning or heavyweight retrieval before the corpus and workflows justify it.

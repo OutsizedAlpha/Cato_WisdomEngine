@@ -1,9 +1,10 @@
 param(
   [Parameter(Mandatory = $true)]
-  [ValidateSet("open-vault", "refresh", "capture-research", "report", "ask", "deck", "surveil", "watch", "watch-refresh", "claims", "state", "regime", "decision", "meeting-brief", "red-team", "market-changes", "reflect", "doctor", "open-latest-report")]
+  [ValidateSet("open-vault", "refresh", "capture-research", "frontier-pack", "capture-frontier", "report", "ask", "deck", "surveil", "watch", "watch-refresh", "claims", "state", "regime", "decision", "meeting-brief", "red-team", "market-changes", "reflect", "doctor", "open-latest-report")]
   [string]$Action,
   [string]$Prompt,
   [string]$Context,
+  [string]$Mode,
   [switch]$SkipPromote,
   [switch]$SkipOpen,
   [string]$BundlePath
@@ -68,6 +69,32 @@ switch ($Action) {
     Invoke-CatoCommand -CommandArgs @("capture-research", $bundle)
     if (-not $SkipOpen) {
       Open-InObsidian (Join-Path $RepoRoot "wiki\_indices\sources.md")
+    }
+  }
+  "frontier-pack" {
+    $topic = Resolve-InteractivePrompt $Prompt "Frontier pack topic or title"
+    $packMode = if ($Mode) { $Mode } else { "decision" }
+    Invoke-CatoCommand -CommandArgs @("frontier-pack", $topic, "--mode", $packMode)
+    if (-not $SkipOpen) {
+      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "cache\frontier-packs")
+      if ($latest) {
+        Open-InObsidian $latest.FullName
+      }
+    }
+  }
+  "capture-frontier" {
+    $bundleSeed = if ($BundlePath) { $BundlePath } else { $Prompt }
+    $bundle = Resolve-InteractivePrompt $bundleSeed "Path to frontier capture bundle JSON"
+    $commandArgs = @("capture-frontier", $bundle)
+    if (-not $SkipPromote) {
+      $commandArgs += "--promote"
+    }
+    Invoke-CatoCommand -CommandArgs $commandArgs
+    if (-not $SkipOpen) {
+      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "outputs\reports")
+      if ($latest) {
+        Open-InObsidian $latest.FullName
+      }
     }
   }
   "report" {

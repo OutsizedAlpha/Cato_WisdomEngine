@@ -59,6 +59,15 @@ For live web research through GPT/Codex:
 
 That keeps GPT as the live researcher and Cato as the durable ingestion, provenance, wiki, and output layer.
 
+For frontier-quality claim/state/decision reasoning without embedded API access:
+
+1. Run `.\cato.cmd frontier-pack "topic" --mode decision` or `.\cato.cmd frontier-pack "Weekly investment meeting brief" --mode meeting`.
+2. Let Codex/GPT read the generated files in `cache/frontier-packs/`.
+3. Fill the generated `...-capture.json` bundle with the final authored output and any fresh web sources Codex discovered.
+4. Run `.\cato.cmd capture-frontier .\cache\frontier-packs\...\...-capture.json --promote`.
+
+That keeps Codex as the frontier reasoning layer while Cato remains the durable structure, provenance, and memory layer.
+
 For persistent live topics:
 
 1. Run `.\cato.cmd watch "topic" --context "why this matters"`.
@@ -74,6 +83,8 @@ If you prefer double-click launchers instead of typing commands, use the wrapper
 - `commands\Create-Watch.cmd`
 - `commands\Refresh-Watches.cmd`
 - `commands\Import-Research-Bundle.cmd`
+- `commands\Prepare-Frontier-Pack.cmd`
+- `commands\Import-Frontier-Bundle.cmd`
 - `commands\Run-Claims.cmd`
 - `commands\Refresh-State.cmd`
 - `commands\Write-Regime-Brief.cmd`
@@ -83,7 +94,8 @@ If you prefer double-click launchers instead of typing commands, use the wrapper
 - `commands\Run-Market-Changes.cmd`
 
 See `docs/operator_guide.md` for the operating model behind those launchers.
-See `docs/research_handoff.md` for the exact GPT/Codex-to-Cato handoff flow and bundle shape.
+See `docs/research_handoff.md` for the exact GPT/Codex-to-Cato research handoff flow and bundle shape.
+See `docs/frontier_handoff.md` for the zero-API frontier-assist flow over the claim/state/decision stack.
 
 For personal thinking and PM process notes:
 
@@ -118,6 +130,8 @@ Resolution order:
 - `.\cato.cmd ingest` = archive evidence from `inbox/drop_here/`, extract text from notes/web/PDFs, apply image OCR when available, ingest repo directories/archives, and draft source notes with figure/table sidecars where relevant
 - `.\cato.cmd ingest --url "https://..."` = fetch a web page into the ingest pipeline without manual clipping
 - `.\cato.cmd capture-research .\path\to\bundle.json` = import a GPT/Codex research bundle, download the cited web sources, ingest them as proper evidence, compile the repo, optionally refresh a watch, and write the supplied memo/report/deck into `outputs/`
+- `.\cato.cmd frontier-pack "topic"` = refresh the deterministic claim/state/decision scaffolding and write a frontier-ready context pack, prompt, and starter capture bundle into `cache/frontier-packs/`
+- `.\cato.cmd capture-frontier .\path\to\bundle.json` = capture a Codex-authored frontier output back into Cato with both local context sources and any new live web sources preserved
 - `.\cato.cmd self-ingest` = convert self-authored notes into structured self-model notes
 - `.\cato.cmd compile` = rebuild indices, maps, claim pages, managed evidence blocks, and unresolved registers
 - `.\cato.cmd claims-refresh --snapshot` = rebuild the atomic claim ledger and optionally write a diffable snapshot
@@ -151,12 +165,14 @@ Run `.\cato.cmd help` for command options.
 - The CLI handles deterministic plumbing and repository maintenance.
 - The CLI now supports memo, report, deck, surveillance, watch-profile, claim-ledger, state/regime, decision-support, self-reflection, doctor, and promotion workflows directly over the local corpus.
 - Live internet research should come from GPT/Codex itself; Cato now provides a handoff layer so researched sources and LLM-authored outputs become durable repo artefacts instead of ephemeral chat-only work.
+- Claim/state/decision quality can now be frontier-assisted without API embedding through the `frontier-pack -> Codex reasoning -> capture-frontier` loop.
 - The claim ledger is now the belief layer between source notes and higher-order outputs.
 - State pages and regime briefs are now canonical current-world-model surfaces rather than ad hoc reports.
 - Decision outputs now combine claims, states, watch context, and the self-model so Cato can answer mandate-aware questions instead of only summarising evidence.
 - Obsidian is the reading and navigation layer, not the truth layer.
 - Git should be used from day one to preserve diffs and rollback.
 - `docs/operator_guide.md` explains the daily loop and what the launcher layer is actually automating.
+- `docs/frontier_handoff.md` explains the zero-API frontier-assist contract.
 
 ## Current Runtime
 

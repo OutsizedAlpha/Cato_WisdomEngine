@@ -59,6 +59,8 @@ The default loop is:
    - `regime-brief` when you want a world-model summary across a chosen state basket
    - `meeting-brief`, `decision-note`, `red-team`, and `what-changed-for-markets` for PM-facing outputs
    - `capture-research` when Codex has already done live web research and you want the sources plus the final artefact persisted into Cato
+   - `frontier-pack` when you want Codex to use the claim/state/decision stack as frontier-quality reasoning scaffolding without embedded API access
+   - `capture-frontier` when the Codex-authored final output is ready to be written back into Cato
    - `watch` to persist a live topic and its instruction profile
    - `surveil` for a persistent watch page
    - `reflect` for self-model review
@@ -94,6 +96,32 @@ Cato then:
 6. writes the supplied memo/report/deck into `outputs/`
 
 This keeps the live intelligence with GPT and the durable structure with Cato.
+
+## Frontier-Assisted Claim / State / Decision Reasoning
+
+The deterministic claim ledger, state engine, and PM decision layer are now bridged into Codex through a frontier pack workflow.
+
+The split is:
+
+- Cato prepares structured context from claims, states, decisions, watches, and evidence.
+- Codex/GPT does the deeper analytical reasoning.
+- Cato captures the final authored output back into the repo.
+
+The commands are:
+
+- `frontier-pack "topic" --mode decision`
+- `frontier-pack "subject" --mode state`
+- `frontier-pack "topic" --mode belief`
+- `frontier-pack "Weekly investment meeting brief" --mode meeting`
+- `capture-frontier .\path\to\generated-capture.json`
+
+Each frontier pack writes three files into `cache/frontier-packs/`:
+
+- `...-pack.json` = structured context for Codex
+- `...-prompt.md` = operator prompt and exact next-step instructions
+- `...-capture.json` = starter bundle to fill with the final Codex-authored output
+
+This is the zero-API bridge. There is no fake embedded model call inside the CLI. Codex is the frontier model, and Cato gives it structured scaffolding plus a durable landing path.
 
 ## What Each Core Command Means
 
@@ -141,6 +169,12 @@ This keeps the live intelligence with GPT and the durable structure with Cato.
 
 - `capture-research`
   Imports a GPT/Codex research bundle. This is the bridge between live web research and the durable Cato corpus.
+
+- `frontier-pack`
+  Refreshes the deterministic claim/state/decision context, then writes a Codex-ready pack, prompt, and starter capture bundle.
+
+- `capture-frontier`
+  Imports a Codex-authored frontier bundle that may reference both local Cato sources and newly researched web URLs.
 
 - `reflect`
   Reviews the self-model and updates the tension register.
@@ -227,6 +261,12 @@ The new operating order is:
 4. `regime-brief` aggregates states into a world-model surface
 5. decision outputs use claims + states + self-model together
 
+When you want frontier-quality reasoning on top of that stack, the next layer is:
+
+6. `frontier-pack` prepares the structured context for Codex
+7. Codex reasons over it, optionally does fresh web work, and writes the final bundle
+8. `capture-frontier` stores that final output back into Cato
+
 That is the core architectural upgrade. Cato no longer stops at notes and reports; it now maintains beliefs, current states, and mandate-aware decision surfaces.
 
 ## Suggested Launchers
@@ -242,6 +282,8 @@ The current launcher set in `commands/` covers the first useful operator surface
 - `Create-Watch.cmd`
 - `Refresh-Watches.cmd`
 - `Import-Research-Bundle.cmd`
+- `Prepare-Frontier-Pack.cmd`
+- `Import-Frontier-Bundle.cmd`
 - `Run-Reflect.cmd`
 - `Run-Doctor.cmd`
 - `Open-Latest-Report.cmd`

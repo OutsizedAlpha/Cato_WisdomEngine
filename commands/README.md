@@ -13,6 +13,8 @@ This folder now contains simple Windows launchers for the most common Cato opera
 - `Create-Watch.cmd` = ask for a watch subject and context, create/update the watch profile, refresh surveillance, and open it
 - `Refresh-Watches.cmd` = refresh all active watch profiles and open the refresh report
 - `Import-Research-Bundle.cmd` = import a GPT/Codex research bundle so its cited sources and authored output become durable Cato artefacts
+- `Prepare-Frontier-Pack.cmd` = refresh claim/state/decision scaffolding and generate a Codex-ready frontier pack plus starter capture bundle
+- `Import-Frontier-Bundle.cmd` = capture a Codex-authored frontier bundle back into Cato
 - `Run-Reflect.cmd` = refresh the self-reflection memo and open it
 - `Run-Doctor.cmd` = run repo health checks and open the latest doctor report
 - `Open-Latest-Report.cmd` = open the newest report without generating a new one
@@ -31,6 +33,7 @@ This folder now contains simple Windows launchers for the most common Cato opera
 ## Research Bundle Reference
 
 - `research-capture.example.json` = example GPT/Codex handoff bundle for `capture-research`
+- `frontier-capture.example.json` = example Codex frontier handoff bundle for `capture-frontier`
 
 ## Notes
 

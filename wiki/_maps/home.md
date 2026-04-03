@@ -23,7 +23,7 @@ Core domains:
 - Source notes: 16
 - Claims: 117
 - Contested claims: 30
-- Concepts: 22
+- Concepts: 31
 - Entities: 15
 - Timelines: 1
 - States: 9
@@ -34,6 +34,6 @@ Core domains:
 - Surveillance pages: 1
 - Self notes: 2
 - Contradiction candidates: 0
-- Synthesis candidates: 2
-- Last compiled: 2026-04-03T18:43:52.847Z
+- Synthesis candidates: 14
+- Last compiled: 2026-04-03T19:04:40.276Z
 <!-- CATO:END_MANAGED_BLOCK overview -->
