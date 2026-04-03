@@ -87,7 +87,7 @@ This file records the current local truth of the repository, not the full intend
 - [`src/markdown.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/markdown.js) = frontmatter, wiki-link, and managed-block helpers
 - [`src/utils.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/utils.js) = filesystem and path helpers
 - [`src/research.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research.js) = shared evidence selection, output writing, and promotion helpers
-- [`commands/Cato-Launcher.ps1`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/commands/Cato-Launcher.ps1) = one-click Windows launcher for report, deck, watch creation, watch refresh, surveillance, research-bundle import, reflection, doctor, refresh, and Obsidian opening
+- [`commands/Cato-Launcher.ps1`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/commands/Cato-Launcher.ps1) = one-click Windows launcher for refresh, reports, decks, surveillance, watch creation, watch refresh, research-bundle import, frontier-pack prep, frontier-bundle import, claims, state refresh, regime briefs, decision notes, meeting briefs, red-team briefs, market-change briefs, reflection, doctor, latest-report opening, and Obsidian opening
 
 ## Architecture Notes
 

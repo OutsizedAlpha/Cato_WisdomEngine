@@ -39,6 +39,27 @@ Cato is a local research operating system with five layers:
 
 `logs/` and `manifests/` provide auditability around what happened and when.
 
+## Terminal vs Obsidian
+
+The intended control surface is the terminal:
+
+- PowerShell / WSL / Codex = where you operate the system
+- Obsidian = where you read and navigate the markdown comfortably
+
+You do not need to “use Obsidian instead” of the terminal. Obsidian is optional as the viewing layer.
+
+## Is This Just Memory?
+
+Not exactly.
+
+It is fair to call Cato an extended memory layer, but the more accurate description is:
+
+- structured external memory
+- evidence-backed research memory
+- a local operating system for durable reasoning
+
+That distinction matters because Cato does not merely remember. It also organises, grounds, refreshes, and promotes knowledge into claims, states, regimes, and decisions.
+
 ## Daily Loop
 
 The default loop is:

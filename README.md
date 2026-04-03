@@ -2,6 +2,85 @@
 
 Cato_WisdomEngine is a local, file-based research operating system for building and maintaining an evidence-backed markdown knowledge base with LLM assistance.
 
+## In Plain English
+
+Cato is not “just a folder of notes” and it is not “just chat with files.”
+
+It is a structured external memory and research runtime that sits underneath Codex/GPT or Claude:
+
+- you feed it evidence
+- it preserves the raw source material
+- it turns that material into source notes, claims, states, decisions, and reports
+- it lets a frontier model reason over that accumulated structure instead of starting from scratch every time
+
+If you want the shortest possible definition:
+
+- `Codex/GPT/Claude` = the thinking engine
+- `Cato` = the durable memory, evidence store, audit trail, and markdown knowledge system
+
+## What Problem It Solves
+
+Using a frontier model on its own is excellent for one-off work, but weak at durable accumulation unless you manually curate everything.
+
+Typical failure modes of chat-only knowledge work:
+
+- good work stays trapped in chat history
+- raw sources and later interpretation get mixed together
+- you cannot easily see what changed in the belief set
+- the model redoes context-building work repeatedly
+- surveillance and meeting prep become recurring manual labour
+- there is no durable map from evidence to claims to state to decision
+
+Cato solves that by making every useful interaction land in a structured local system.
+
+## Why Use This Instead Of Just Using Codex Or Claude Alone?
+
+Because a frontier model by itself is an extraordinary analyst, but not a durable institution.
+
+What frontier chat alone gives you:
+
+- excellent reasoning
+- live web research
+- strong synthesis
+- flexible conversation
+
+What Cato adds on top:
+
+- preserved raw evidence
+- one-note-per-source grounding
+- claim ledger
+- state and regime tracking
+- PM-facing decision surfaces
+- watch profiles and surveillance history
+- structured self-model context
+- durable markdown outputs you can revisit, compare, diff, and build on later
+
+So the point is not to replace Codex, GPT, or Claude.
+
+The point is to stop losing work between sessions and to make future reasoning start from a better base.
+
+## Is This “Extended Memory”?
+
+Yes, but not in the vague marketing sense.
+
+The most accurate description is:
+
+- structured external memory
+- evidence-backed working memory for research
+- durable reasoning scaffolding for frontier models
+
+It is more than a memory layer because it does not just store past material. It also organises that material into:
+
+- source notes
+- claims
+- state pages
+- regime surfaces
+- decision notes
+- watch profiles
+- synthesis artefacts
+
+So “extended memory” is true, but incomplete. Cato is better understood as a research operating system with persistent memory.
+
 ## What It Does
 
 - preserves raw source evidence
@@ -14,6 +93,28 @@ Cato_WisdomEngine is a local, file-based research operating system for building 
 - maintains watch profiles as persistent instructions for live surveillance topics
 - generates markdown-first outputs such as briefs, reports, decks, and memos
 - keeps the knowledge base healthier over time through linting, indexing, and search
+
+## How It Actually Helps In Practice
+
+If you are doing serious research, Cato improves the workflow in a few concrete ways:
+
+- it separates raw truth from later interpretation, which reduces silent drift and self-referential nonsense
+- it turns repeated research into reusable assets instead of disposable chat output
+- it gives frontier models a better starting context for follow-up work
+- it makes meeting prep, surveillance, and briefing work faster because the repo already knows the topic structure
+- it preserves provenance, which matters when you need to explain why you believe something
+- it lets your own principles and PM style shape output framing without automatically hard-coding conclusions
+
+## What Cato Is Not
+
+- not a replacement for Codex/GPT/Claude
+- not a vector database product
+- not a fine-tuned model
+- not a hidden long-context trick
+- not just a markdown vault
+- not just a RAG layer
+
+It is the structured local system those tools can think through and write into.
 
 ## Core Rule
 
@@ -38,7 +139,7 @@ Raw evidence is immutable. Derived knowledge lives in the `wiki/` layer. Outputs
 
 ## Quick Start
 
-1. Open this folder in Obsidian as a vault.
+1. Open a terminal in this folder.
 2. Run `.\cato.cmd init`.
 3. Drop source files into `inbox/drop_here/`.
 4. Run `.\cato.cmd ingest`.
@@ -50,6 +151,8 @@ Raw evidence is immutable. Derived knowledge lives in the `wiki/` layer. Outputs
 10. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
 11. Run `.\cato.cmd meeting-brief "Weekly investment meeting brief"` or `.\cato.cmd decision-note "topic"` when you want mandate-facing output.
 12. Run `.\cato.cmd lint`.
+
+Obsidian is optional. It is the reading and navigation layer, not the control surface. You can run the whole workflow from PowerShell/WSL and use Obsidian only when you want to browse the markdown corpus comfortably.
 
 For live web research through GPT/Codex:
 
@@ -67,6 +170,23 @@ For frontier-quality claim/state/decision reasoning without embedded API access:
 4. Run `.\cato.cmd capture-frontier .\cache\frontier-packs\...\...-capture.json --promote`.
 
 That keeps Codex as the frontier reasoning layer while Cato remains the durable structure, provenance, and memory layer.
+
+## Core Operating Model
+
+There are now two complementary loops:
+
+1. Local evidence loop
+- you add files manually
+- Cato ingests them
+- Cato builds source notes and the wiki
+- you ask questions or generate outputs from the local corpus
+
+2. Frontier-assisted loop
+- Cato prepares structured local context
+- Codex/GPT does the harder reasoning and optional live web work
+- Cato captures the final result back into the repo with provenance
+
+This is the intended symbiosis.
 
 For persistent live topics:
 
@@ -173,6 +293,20 @@ Run `.\cato.cmd help` for command options.
 - Git should be used from day one to preserve diffs and rollback.
 - `docs/operator_guide.md` explains the daily loop and what the launcher layer is actually automating.
 - `docs/frontier_handoff.md` explains the zero-API frontier-assist contract.
+
+## Why This Matters For Serious Research
+
+The real value is not “the model answers questions about my files.”
+
+The real value is:
+
+- evidence becomes structured knowledge
+- structured knowledge becomes claims
+- claims become a current state view
+- current state becomes decision support
+- the whole thing remains inspectable and reusable
+
+That is the difference between an archive and a thinking instrument.
 
 ## Current Runtime
 
