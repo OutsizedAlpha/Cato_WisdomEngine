@@ -5,6 +5,9 @@ Generated: 2026-04-05
 ## article
 - [[source-notes/trump-hormuz-and-the-end-of-the-free-ride|Trump, Hormuz and the End of the Free Ride]]
 
+## paper
+- [[source-notes/mi-guide-to-the-markets-uk|MI Guide to the Markets UK]]
+
 ## web
 - [[source-notes/bank-of-england-decision-maker-panel-march-2026|Bank of England Decision Maker Panel, March 2026]] (2026-04-02)
 - [[source-notes/bank-of-japan-tankan-summary-march-2026-survey|Bank of Japan Tankan summary, March 2026 survey]] (2026-04-01)

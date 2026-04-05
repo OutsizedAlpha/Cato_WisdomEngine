@@ -116,7 +116,17 @@ The normal local loop is:
    - `reflect`
 5. Run `lint` and `doctor` when you want confidence in structural health and environment readiness.
 
-## Three Working Loops
+## Staging And Commit Boundaries
+
+Operate with a clean boundary between staging and canonical state:
+
+- `inbox/drop_here/` and `inbox/self/` are staging queues
+- `cache/` and `logs/` are operator/runtime artefacts
+- canonical repo state starts after intentional ingest or capture into `raw/`, `extracted/`, `wiki/`, and `manifests/`
+
+Do not treat inbox files or temporary handoff packs as durable knowledge just because they exist on disk.
+
+## Four Working Loops
 
 ### Local Evidence Loop
 
@@ -135,6 +145,18 @@ Use this when Codex/GPT has already done live web research.
 2. save the cited URLs and authored output into a bundle
 3. run `capture-research`
 4. let Cato download, ingest, compile, and store the result durably
+
+### PDF Vision Handoff Loop
+
+Use this when the PDF is image-heavy, chart-heavy, table-heavy, or otherwise too degraded for the built-in parser to be trusted.
+
+1. run `pdf-pack`
+2. let Codex/GPT inspect the rendered page images and, if useful, the original PDF path directly
+3. replace the placeholder text in the generated `authored-extraction.md` files and update the generated capture bundle
+4. run `capture-pdf`
+5. let Cato ingest, compile, and store the result through the normal source-note path
+
+This is the preferred route for scanned or visually dense PDFs. Do not force those documents through plain `ingest` if the baseline extract is visibly weak.
 
 ### Frontier Handoff Loop
 
@@ -218,6 +240,8 @@ Monitoring and decisions:
 
 Handoffs:
 
+- `pdf-pack` = prepare rendered-page PDF review pack plus capture bundle for Codex/GPT vision work
+- `capture-pdf` = ingest a Codex-authored PDF extraction bundle back through the normal source-note pipeline
 - `capture-research` = import external research bundle
 - `frontier-pack` = prepare structured context for Codex/GPT
 - `capture-frontier` = write Codex-authored frontier output back into the repo

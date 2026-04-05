@@ -87,6 +87,13 @@ function formatScalar(value) {
   if (stringValue === "") {
     return '""';
   }
+  if (stringValue !== stringValue.trim()) {
+    return JSON.stringify(stringValue);
+  }
+  const reparsed = parseScalar(stringValue);
+  if (typeof reparsed !== "string" || reparsed !== stringValue) {
+    return JSON.stringify(stringValue);
+  }
   if (/^[A-Za-z0-9_./:@ -]+$/.test(stringValue) && !stringValue.includes(": ")) {
     return stringValue;
   }

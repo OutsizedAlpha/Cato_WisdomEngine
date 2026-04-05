@@ -8,3 +8,7 @@ Only durable, repo-specific lessons and guardrails belong here. Do not record tr
 - Navigation/index pages under domain folders are map surfaces, not typed thesis/surveillance/self notes, and linting should treat them accordingly.
 - Keep append-and-review material in `wiki/drafts/` and exclude it from grounded retrieval by default; draft notes are workspace, not canonical evidence.
 - When maintenance standards tighten, backfill the live corpus through compile/refresh before trusting lint output; otherwise lint mostly reports legacy-shape debt instead of current regressions.
+- Quote numeric-looking frontmatter strings on render and fall back from weak PDF-derived titles to the filename; otherwise valid source notes can reload with non-string titles and break downstream sort paths.
+- From Node child-process workflows on Windows, prefer the real `py` / `python` launchers over repo-local `.cmd` shims; the shims are fine in an interactive repo shell but are not a reliable renderer bridge for pack-generation code.
+- Treat `inbox/` as a git-ignored staging queue and `cache/pdf-packs/` as disposable operator artefacts; commit intentional ingested state and workflow code, not transient PDF handoff inputs.
+- For image-heavy PDFs, use `pdf-pack` plus `capture-pdf` instead of trusting plain `ingest`; the baseline extractor is a fallback aid, not the final truth surface for visual documents.

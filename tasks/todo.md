@@ -43,6 +43,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - [x] Add a draft or append-and-review workspace distinct from canonical wiki surfaces.
 - [x] Add structured query/backlink/tag surfaces as a file-first sidecar catalog without rewriting storage away from markdown.
 - [x] Decide whether to embed external LLM execution into the CLI or keep the repo agent-driven.
+- [x] Add a zero-API PDF vision handoff so Codex/GPT can perform OCR, chart, and table extraction for image-heavy PDFs and feed the result back through normal Cato ingest.
 
 ## Validation
 
@@ -63,6 +64,8 @@ Use this file for active or recently completed non-trivial work. Keep it concise
   - Environment-hardening validation on 2026-04-05 covering enhanced `doctor` checks for repo-local Python, Playwright, Puppeteer, and OCR readiness plus a full test pass
   - External architecture review on 2026-04-05 covering full reads of Karpathy `llm-wiki` and Garry Tan `GBrain.md`, Karpathy comment review, revision review for both gists, and capture of the resulting design recommendations into `docs/architecture_review_llm_wiki_gbrain_2026-04-05.md`
   - Architecture-ingestion implementation on 2026-04-05 covering semantic document routing, append-and-review drafts, retrieval budgets, structured catalog/backlink/tag indices, counter-argument/data-gap blocks, full test pass, live compile/state/decision refresh, zero-issue lint, and zero-issue doctor
+  - PDF vision handoff implementation on 2026-04-05 covering `pdf-pack`, `capture-pdf`, rendered-page pack generation through Python PDF tooling, authored-extraction bundle capture back into normal ingest, full test pass, live CLI help, live one-document pack generation, and zero-issue live lint
+  - Documentation hardening on 2026-04-05 covering README, operator guide, project map, lessons, and the dedicated PDF handoff guide so the new PDF workflow, staging boundaries, and commit hygiene are explicit before larger batch runs
   - Ongoing validation expectations:
     - rerun tests after CLI or schema changes
     - keep live repo lint at zero or explain any deliberate exceptions
@@ -97,6 +100,8 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-05, those architecture learnings were implemented directly into Cato: ingest now assigns semantic `document_class` routing, creates append-and-review draft notes, grounded workflows now follow explicit retrieval budgets, claim/state/decision pages now carry counter-argument and data-gap sections, and compile/lint now maintain a structured catalog with tags, backlinks, freshness, and open-thread audit.
 - On 2026-04-05, the live repo corpus was backfilled and refreshed so the stricter maintenance checks still pass at zero live lint issues instead of only working for newly generated notes.
 - On 2026-04-05, the remaining architecture decision was closed explicitly: keep the repo agent-driven, preserve the zero-API handoff model, and do not embed external LLM execution directly into the CLI.
+- On 2026-04-05, the repo gained a zero-API PDF vision bridge so Codex/GPT can review rendered page images or raw PDF paths, author a clean extraction bundle, and feed that extraction back into normal Cato ingest without adding a model API client to the CLI.
+- On 2026-04-05, the operator documentation was tightened so the repo now states clearly which folders are staging-only, which artefacts are disposable, and where the durable PDF handoff output begins.
 
 ## Open Risks / Next Steps
 
@@ -105,6 +110,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - Repo snapshots and figure extraction are now materially better, but semantic repo understanding, richer figure interpretation, and deeper dataset/table workflows are still partial rather than mature.
 - Watch profiles now expand topic retrieval, but the underlying search engine is still mostly lexical rather than fully semantic; frontier-model-assisted routing remains an open upgrade path.
 - The correct live-research model is now explicit, but it still depends on Codex/GPT producing the research bundle; the CLI is intentionally not trying to impersonate a frontier web-research model.
+- The new PDF vision loop removes the weakest current OCR bottleneck, but it is still a human-or-agent-authored handoff rather than a fully automatic model invocation inside the CLI.
 - Claim extraction and state inference are now useful but still deterministic; a later model-assisted pass may improve claim quality and contradiction handling.
 - The CLI still does not invoke the frontier model directly. The repo now has a zero-API bridge instead, which is the correct operating model for the current user workflow.
 - Retrieval discipline, draft/workspace separation, and maintenance audit are now materially stronger, but the search engine is still lexical and should not be mistaken for a full semantic query layer.

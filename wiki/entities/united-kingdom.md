@@ -37,6 +37,7 @@ related: []
 ## Managed Related Sources
 
 - [[source-notes/bank-of-england-decision-maker-panel-march-2026|Bank of England Decision Maker Panel, March 2026]]
+- [[source-notes/mi-guide-to-the-markets-uk|MI Guide to the Markets UK]]
 - [[source-notes/trump-hormuz-and-the-end-of-the-free-ride|Trump, Hormuz and the End of the Free Ride]]
 - [[source-notes/uk-balance-of-payments-october-to-december-2025|UK Balance of Payments, October to December 2025]]
 - [[source-notes/uk-quarterly-national-accounts-october-to-december-2025|UK quarterly national accounts, October to December 2025]]

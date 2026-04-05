@@ -1,0 +1,27 @@
+{
+  "pack_path": "cache/pdf-packs/2026-04-05T00-00-00.000Z-pdf-vision-pack/2026-04-05T00-00-00.000Z-pdf-vision-pack-pack.json",
+  "capture_source": "codex_pdf_vision_handoff",
+  "model": "gpt-5.4 xhigh via Codex",
+  "notes": "Use Codex/GPT vision over rendered page images or the raw PDF, then feed the extraction back into Cato.",
+  "documents": [
+    {
+      "source_path": "inbox/drop_here/mi-guide-to-the-markets-uk.pdf",
+      "title": "MI Guide to the Markets UK",
+      "author": "J.P. Morgan Asset Management",
+      "date": "2026-03-31",
+      "document_class": "research_note",
+      "source_url": "",
+      "origin_url": "",
+      "capture_notes": "Vision-assisted extraction from rendered PDF pages.",
+      "tags": ["macro", "chartpack"],
+      "entities": ["United Kingdom"],
+      "concepts": ["asset allocation"],
+      "extracted_text_path": "cache/pdf-packs/2026-04-05T00-00-00.000Z-pdf-vision-pack/documents/01-mi-guide-to-the-markets-uk/authored-extraction.md",
+      "extraction_method": "llm_vision_handoff",
+      "extraction_notes": [
+        "Reviewed rendered pages and corrected the weak baseline OCR by handoff through Codex/GPT vision."
+      ],
+      "figure_refs": []
+    }
+  ]
+}

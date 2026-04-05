@@ -51,6 +51,11 @@ Generated: 2026-04-05
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
+## Append And Review: MI Guide to the Markets UK
+- Note: [[drafts/append-review/mi-guide-to-the-markets-uk|Append And Review: MI Guide to the Markets UK]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
 ## Append And Review: Purchasing Managers Index for March 2026
 - Note: [[drafts/append-review/purchasing-managers-index-for-march-2026|Append And Review: Purchasing Managers Index for March 2026]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
@@ -148,9 +153,11 @@ Generated: 2026-04-05
 
 ## China Demand
 - Note: [[states/china-demand|China Demand]]
+- Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
 - Managed What Would Flip It: China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse.
 - Managed What Would Flip It: China recovered officially, while external Asia gave the better trade signal.
 - Managed What Would Flip It: Used to position France near the expansion threshold in Europe.
+- Managed What Would Flip It: Used to show Spain diverged lower and slipped back into contraction.
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
@@ -250,6 +257,7 @@ Generated: 2026-04-05
 
 ## Geopolitical Risk
 - Note: [[states/geopolitical-risk|Geopolitical Risk]]
+- Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
 - Managed What Would Flip It: The data this week did not create that risk; they reduced the market's ability to ignore it.
 - Managed What Would Flip It: In Europe, softer core CPI argues the other way, but headline CPI and input-cost risk complicate the dovish case.
 - Managed What Would Flip It: Japan is steady, but energy sensitivity remains a live risk.
@@ -364,11 +372,19 @@ Generated: 2026-04-05
 
 ## Market Structure
 - Note: [[states/market-structure|Market Structure]]
+- Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
 - Managed What Would Flip It: China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse.
 - Managed What Would Flip It: A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and the UK are more exposed to imported energy than the U.S. is.
 - Managed What Would Flip It: The data this week did not create that risk; they reduced the market's ability to ignore it.
+- Managed What Would Flip It: Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower easing path than a weak market tape alone might imply.
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
+
+## MI Guide to the Markets UK
+- Note: [[source-notes/mi-guide-to-the-markets-uk|MI Guide to the Markets UK]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## natural gas
 - Note: [[concepts/natural-gas|natural gas]]
@@ -526,6 +542,7 @@ Generated: 2026-04-05
 
 ## US Growth
 - Note: [[states/us-growth|US Growth]]
+- Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
 - Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
 - Managed What Would Flip It: The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
 - Managed What Would Flip It: The UK growth numbers were too soft to justify complacency, yet the BoE's firm-level survey showed rising CPI and own-price expectations tied to recent energy-price moves.
@@ -535,6 +552,7 @@ Generated: 2026-04-05
 
 ## US Inflation
 - Note: [[states/us-inflation|US Inflation]]
+- Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
 - Managed What Would Flip It: If energy pressure persists, inflation breakevens and credit spreads become the channels to watch.
 - Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
 - Managed What Would Flip It: The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.

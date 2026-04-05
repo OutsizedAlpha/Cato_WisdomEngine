@@ -8,3 +8,5 @@ cache/
 logs/
 .obsidian/
 .codex
+inbox/drop_here/*
+inbox/self/*

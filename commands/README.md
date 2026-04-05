@@ -56,6 +56,11 @@ Frontier handoff:
 - `Prepare-Frontier-Pack.cmd`
 - `Import-Frontier-Bundle.cmd`
 
+PDF vision handoff:
+
+- use `.\cato.cmd pdf-pack` to prepare a rendered-page PDF review pack
+- use `.\cato.cmd capture-pdf` to import the authored extraction bundle back into Cato
+
 Self-model and health:
 
 - `Run-Reflect.cmd`
@@ -71,6 +76,7 @@ This is the central PowerShell implementation used by the `.cmd` wrappers.
 
 - `research-capture.example.json` = example bundle for `capture-research`
 - `frontier-capture.example.json` = example bundle for `capture-frontier`
+- `pdf-capture.example.json` = example bundle for `capture-pdf`
 
 ## Notes
 

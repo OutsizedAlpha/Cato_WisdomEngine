@@ -22,6 +22,8 @@ This file records the current local truth of the repository, not the full intend
 - Run CLI help: `node .\bin\cato.js help` or `.\cato.cmd help`
 - Initialise/repair structure: `node .\bin\cato.js init`
 - Ingest evidence: `node .\bin\cato.js ingest`
+- Prepare a PDF vision handoff pack: `node .\bin\cato.js pdf-pack --from inbox/drop_here --limit 8 --dpi 144 --max-pages 0`
+- Capture a Codex-authored PDF extraction bundle: `node .\bin\cato.js capture-pdf .\path\to\bundle.json`
 - Import a GPT/Codex research bundle: `node .\bin\cato.js capture-research .\path\to\bundle.json`
 - Prepare a frontier reasoning pack: `node .\bin\cato.js frontier-pack "topic" --mode decision`
 - Capture a frontier-authored bundle: `node .\bin\cato.js capture-frontier .\path\to\bundle.json`
@@ -65,6 +67,7 @@ This file records the current local truth of the repository, not the full intend
 
 - [`src/ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ingest.js) = archives inbox files, runs format-aware extraction, writes metadata, and drafts source notes
 - [`src/source-routing.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/source-routing.js) = semantic document-class routing plus append-and-review draft note scaffolding
+- [`src/pdf-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/pdf-handoff.js) = prepares zero-API PDF vision packs from inbox PDFs and captures Codex-authored extraction bundles back into normal Cato ingest
 - [`src/research-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research-handoff.js) = imports GPT/Codex research bundles, downloads cited sources, ingests them, compiles the repo, and writes the supplied output artefact
 - [`src/frontier.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/frontier.js) = prepares zero-API frontier reasoning packs from claim/state/decision surfaces and captures Codex-authored frontier bundles back into Cato
 - [`src/web-import.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/web-import.js) = Windows-first web download/provenance helper used for URL ingest and research handoff capture
@@ -92,6 +95,7 @@ This file records the current local truth of the repository, not the full intend
 - [`src/utils.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/utils.js) = filesystem and path helpers
 - [`src/research.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research.js) = shared evidence selection, output writing, and promotion helpers
 - [`src/wiki-catalog.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/wiki-catalog.js) = structured catalog, tag summary, backlink graph, freshness, and open-thread extraction for maintenance
+- [`tools/render_pdf_pages.py`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/tools/render_pdf_pages.py) = Python helper used by `pdf-pack` to render PDF pages into image files for Codex/GPT vision review
 - [`commands/Cato-Launcher.ps1`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/commands/Cato-Launcher.ps1) = one-click Windows launcher for refresh, reports, decks, surveillance, watch creation, watch refresh, research-bundle import, frontier-pack prep, frontier-bundle import, claims, state refresh, regime briefs, decision notes, meeting briefs, red-team briefs, market-change briefs, reflection, doctor, latest-report opening, and Obsidian opening
 
 ## Architecture Notes
@@ -102,6 +106,7 @@ This file records the current local truth of the repository, not the full intend
 - The repo now includes the first full operating tree: `config/`, `inbox/`, `raw/`, `manifests/`, `extracted/`, `wiki/`, `outputs/`, `logs/`, `cache/`, `src/`, `tests/`, and root wrapper commands.
 - The CLI now covers deterministic repo maintenance plus grounded memo, report, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
 - The live-research split is now explicit: GPT/Codex is expected to perform web research and author the synthesis, while Cato captures the cited sources and final artefacts through `capture-research`.
+- The PDF-vision split is now explicit: `pdf-pack` prepares rendered-page review packs for image-rich PDFs, Codex/GPT performs OCR/vision/chart extraction over those artefacts, and `capture-pdf` feeds the authored extraction back into normal Cato ingest.
 - The zero-API frontier split is also explicit: Cato prepares deterministic claim/state/decision context through `frontier-pack`, Codex performs the deeper reasoning, and Cato stores the final authored artefact through `capture-frontier`.
 - The repo will keep repo agent-driven operation rather than embedding external LLM execution directly into the CLI; handoff commands remain the integration boundary.
 - `ingest` now treats repo directories and repo archives as first-class evidence objects instead of only plain files.
@@ -130,6 +135,8 @@ This file records the current local truth of the repository, not the full intend
 - `.obsidian/` may exist locally for vault settings, but user-specific Obsidian state is not version-controlled.
 - The current shell has `node` and `git` available.
 - Repo-local Python shims are available at the root: `python.cmd` and `py.cmd`. In this workspace, `python --version` and `py --version` resolve successfully from the repo shell even though no in-repo Python environment manager is configured.
+- `pdf-pack` currently relies on the real Python launcher (`py` / `python`) plus the already-available `PyMuPDF`/`fitz`, `pypdfium2`, and `Pillow` packages for live page rendering.
+- PDF handoff packs are generated under `cache/pdf-packs/`, which is a disposable operator surface rather than canonical repo state.
 - Global browser automation is available outside the repo: `npx playwright` resolves to Playwright `1.59.1`, Playwright-managed browsers are installed under `%LOCALAPPDATA%\ms-playwright\`, and a headless Chromium launch was validated locally on 2026-04-05.
 - `npx puppeteer` is also callable in the current shell, but neither Playwright nor Puppeteer is vendored as an in-repo dependency.
 - The executable runtime is still Node-first for now; do not assume a separate global Python toolchain outside the repo-root wrapper path.
@@ -138,10 +145,13 @@ This file records the current local truth of the repository, not the full intend
 - URL ingest currently relies on PowerShell `Invoke-WebRequest`, which is pragmatic for Windows-first operation but not yet a cross-platform fetch abstraction.
 - No `.env` file or external API integration is configured yet.
 - Launcher scripts call the Node CLI directly from PowerShell rather than shelling through `cato.cmd`, because batch argument forwarding was unreliable from inside the PowerShell wrapper.
+- Node child-process workflows should prefer the real Python launcher over repo-local `.cmd` shims when they need a machine-usable interpreter path.
 
 ## Conventions
 
 - Use the repo as the source of truth; Obsidian is intended to be a frontend, not the underlying truth layer.
+- Treat `inbox/drop_here/` and `inbox/self/` as git-ignored staging queues rather than durable repo state.
+- Treat `cache/` and `logs/` as disposable operator artefacts; commit the workflow code and docs, not transient handoff packs.
 - Keep raw evidence separate from derived knowledge once those layers are created.
 - Keep draft append-and-review notes out of grounded retrieval unless the task explicitly needs workspace material.
 - Maintain project memory in `docs/` and `tasks/` rather than relying on chat history.

@@ -28,6 +28,7 @@ The current product is already more than an MVP scaffold. It now includes:
 - state pages, state diffs, and regime briefs
 - decision notes, meeting briefs, red-team briefs, and market-change briefs
 - watch profiles and surveillance pages for persistent live topics
+- zero-API PDF vision handoff for image-heavy or chart-heavy PDFs
 - GPT/Codex research handoff into the repo
 - zero-API frontier handoff over the claim/state/decision stack
 - retrieval-budget discipline from maps to canonical notes to evidence notes to raw extracts
@@ -74,6 +75,8 @@ The last point is deliberate. Cato prepares context, captures outputs, and maint
 ### 1. Ingest And Route
 
 You drop material into `inbox/drop_here/`.
+
+That inbox is a staging queue, not durable repo state. It is meant to stay uncommitted until the material has been intentionally ingested.
 
 Cato:
 
@@ -134,7 +137,7 @@ Those pages now explicitly include:
 
 ### 5. Use The Right Loop
 
-There are three main loops.
+There are four main loops.
 
 Local evidence loop:
 
@@ -149,6 +152,14 @@ Research handoff loop:
 2. save the researched sources and final authored output into a bundle
 3. run `capture-research`
 4. let Cato ingest, compile, refresh watches, and store the output durably
+
+PDF vision handoff loop:
+
+1. run `pdf-pack`
+2. let Codex/GPT inspect the rendered page images and, if useful, the raw PDF paths directly
+3. replace the generated `authored-extraction.md` placeholders and update the capture bundle
+4. run `capture-pdf`
+5. let Cato ingest and compile the PDF through the normal source-note pipeline
 
 Frontier handoff loop:
 
@@ -179,19 +190,31 @@ Frontier handoff loop:
 - `src/` = Node implementation
 - `tests/` = verification
 
+## Version-Control Hygiene
+
+Some folders are intentionally operational rather than canonical:
+
+- `inbox/drop_here/` and `inbox/self/` are staging queues and should remain uncommitted
+- `cache/` contains disposable handoff packs, snapshots, and runtime artefacts
+- `logs/` contains operator reports and health traces
+
+The durable knowledge system begins after intentional ingest. That is when evidence moves into `raw/`, `extracted/`, `wiki/`, and `manifests/`.
+
 ## Quick Start
 
 1. Open a terminal in the repo root.
 2. Run `.\cato.cmd init`.
 3. Drop evidence into `inbox/drop_here/`.
-4. Run `.\cato.cmd ingest`.
-5. Run `.\cato.cmd compile`.
-6. Run `.\cato.cmd search "your topic"`.
-7. Run `.\cato.cmd ask "your question"` or `.\cato.cmd report "your topic"`.
-8. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
-9. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
-10. Run `.\cato.cmd decision-note "topic"` or `.\cato.cmd meeting-brief "Weekly investment meeting brief"` for decision-facing outputs.
-11. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
+4. Treat `inbox/` as a staging queue, not as committed repo state.
+5. For text-first evidence, run `.\cato.cmd ingest`.
+6. For image-heavy PDFs, run `.\cato.cmd pdf-pack`, complete the authored extraction bundle, then run `.\cato.cmd capture-pdf`.
+7. Run `.\cato.cmd compile` when you used plain `ingest`.
+8. Run `.\cato.cmd search "your topic"`.
+9. Run `.\cato.cmd ask "your question"` or `.\cato.cmd report "your topic"`.
+10. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
+11. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
+12. Run `.\cato.cmd decision-note "topic"` or `.\cato.cmd meeting-brief "Weekly investment meeting brief"` for decision-facing outputs.
+13. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
 
 ## Core Commands
 
@@ -199,6 +222,8 @@ Foundation:
 
 - `.\cato.cmd init`
 - `.\cato.cmd ingest`
+- `.\cato.cmd pdf-pack`
+- `.\cato.cmd capture-pdf`
 - `.\cato.cmd self-ingest`
 - `.\cato.cmd compile`
 - `.\cato.cmd search`
@@ -230,6 +255,8 @@ Decision and monitoring:
 
 Handoffs:
 
+- `.\cato.cmd pdf-pack --from inbox/drop_here --limit 8 --dpi 144 --max-pages 0`
+- `.\cato.cmd capture-pdf .\path\to\bundle.json`
 - `.\cato.cmd capture-research .\path\to\bundle.json`
 - `.\cato.cmd frontier-pack "topic" --mode decision`
 - `.\cato.cmd capture-frontier .\path\to\bundle.json --promote`
@@ -246,7 +273,7 @@ Run `.\cato.cmd help` for arguments and options.
 
 Obsidian is optional. It is the reading and navigation layer, not the control surface.
 
-The runtime is Node-first. Repo-local Python wrappers exist so Python-dependent utilities can still be reached from the repo shell. Browser automation is treated as an environment capability, not as an in-repo dependency, and `doctor` verifies Playwright/Puppeteer readiness when needed.
+The runtime is Node-first. Repo-local Python wrappers exist so Python-dependent utilities can still be reached from the repo shell, and the PDF vision handoff uses the machine's real Python launcher plus available PDF-rendering libraries to generate page images for Codex/GPT review. Browser automation is treated as an environment capability, not as an in-repo dependency, and `doctor` verifies Playwright/Puppeteer readiness when needed.
 
 ## What Cato Is Not
 
@@ -277,6 +304,7 @@ Use this mental model:
 If you need the deeper operating detail, read:
 
 - [docs/operator_guide.md](docs/operator_guide.md)
+- [docs/pdf_handoff.md](docs/pdf_handoff.md)
 - [docs/research_handoff.md](docs/research_handoff.md)
 - [docs/frontier_handoff.md](docs/frontier_handoff.md)
 - [docs/project_map.md](docs/project_map.md)

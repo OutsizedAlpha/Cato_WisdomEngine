@@ -76,6 +76,7 @@ const STRUCTURE_DIRS = [
   "cache",
   "cache/claim-snapshots",
   "cache/frontier-packs",
+  "cache/pdf-packs",
   "tests",
   "tests/fixtures"
 ];

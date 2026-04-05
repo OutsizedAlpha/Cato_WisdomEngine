@@ -14,6 +14,7 @@ const { captureFrontier, writeFrontierPack } = require("../src/frontier");
 const { ingest } = require("../src/ingest");
 const { initProject } = require("../src/init");
 const { lintProject } = require("../src/lint");
+const { capturePdf, writePdfPack } = require("../src/pdf-handoff");
 const { createPostmortem } = require("../src/postmortem");
 const { writePrinciplesSnapshot } = require("../src/principles");
 const { writeReflection } = require("../src/reflect");
@@ -117,6 +118,21 @@ runTest("markdown frontmatter preserves empty scalar values on render and parse"
   assert.equal(parsed.frontmatter.search_rank, "");
 });
 
+runTest("markdown frontmatter preserves numeric-looking strings on render and parse", () => {
+  const rendered = renderMarkdown(
+    {
+      title: "2",
+      search_rank: "7",
+      source_id: "00123"
+    },
+    "# Numeric String Roundtrip"
+  );
+  const parsed = parseFrontmatter(rendered);
+  assert.equal(parsed.frontmatter.title, "2");
+  assert.equal(parsed.frontmatter.search_rank, "7");
+  assert.equal(parsed.frontmatter.source_id, "00123");
+});
+
 runTest("candidate concept extraction rejects abbreviation-heavy table shorthand", () => {
   const ontology = JSON.parse(fs.readFileSync(path.join(repoRoot, "config", "ontology.json"), "utf8"));
   const candidates = extractCandidateConcepts(
@@ -214,6 +230,100 @@ runTest("ingest extracts readable text from PDFs and OCRs raster images", () => 
     assert.match(imageText, /passive/i);
     assert.match(imageText, /liquidity/i);
     assert.match(figureNote, /OCR \/ Visible Text/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("ingest falls back to filename titles when PDF extraction yields a weak numeric title", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+
+    const pdfPath = path.join(root, "inbox", "drop_here", "mi-guide-to-the-markets-uk.pdf");
+    createSimplePdf(pdfPath, "2");
+
+    const result = ingest(root);
+    assert.equal(result.ingested, 1);
+
+    const pdfRecord = result.results[0];
+    assert.equal(pdfRecord.source_type, "paper");
+    assert.notEqual(pdfRecord.title, "2");
+    assert.match(pdfRecord.title, /guide to the markets/i);
+    assert.match(pdfRecord.note_path, /guide-to-the-markets/i);
+    assert.doesNotThrow(() => compileProject(root, { promoteCandidates: false }));
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("pdf vision handoff packs PDFs and captures authored extraction back into Cato", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+
+    const pdfPath = path.join(root, "inbox", "drop_here", "mi-guide-to-the-markets-uk.pdf");
+    createSimplePdf(pdfPath, "2");
+
+    const pack = writePdfPack(root, {
+      from: "inbox/drop_here",
+      limit: 1,
+      maxPages: 1,
+      renderRunner: (_root, _pdfPath, outputDir) => {
+        fs.mkdirSync(outputDir, { recursive: true });
+        createPngFixture(path.join(outputDir, "page-001.png"));
+        return {
+          ok: true,
+          renderer: "stub-renderer",
+          page_count: 1,
+          metadata: {
+            title: "MI Guide to the Markets UK",
+            author: "J.P. Morgan Asset Management"
+          },
+          rendered_pages: [{ page: 1, path: "page-001.png", width: 1, height: 1 }]
+        };
+      }
+    });
+
+    assert.ok(fs.existsSync(path.join(root, pack.packPath)));
+    assert.ok(fs.existsSync(path.join(root, pack.promptPath)));
+    assert.ok(fs.existsSync(path.join(root, pack.capturePath)));
+
+    const bundlePath = path.join(root, pack.capturePath);
+    const bundle = JSON.parse(fs.readFileSync(bundlePath, "utf8"));
+    const authoredPath = path.join(root, bundle.documents[0].extracted_text_path);
+    fs.writeFileSync(
+      authoredPath,
+      "# MI Guide to the Markets UK\n\n## Clean Extracted Text\n\nThis chart pack summarises asset-class performance and macro context for UK allocators.\n",
+      "utf8"
+    );
+    bundle.model = "gpt-5.4 xhigh via Codex";
+    bundle.documents[0].title = "MI Guide to the Markets UK";
+    bundle.documents[0].document_class = "research_note";
+    bundle.documents[0].entities = ["United Kingdom"];
+    bundle.documents[0].concepts = ["asset allocation"];
+    fs.writeFileSync(bundlePath, `${JSON.stringify(bundle, null, 2)}\n`, "utf8");
+
+    const result = capturePdf(root, bundlePath);
+    assert.equal(result.ingested, 1);
+    assert.equal(result.failures.length, 0);
+    assert.equal(result.results[0].title, "MI Guide to the Markets UK");
+    assert.equal(result.results[0].extraction_method, "llm_vision_handoff");
+    assert.match(result.results[0].note_path, /mi-guide-to-the-markets-uk\.md$/);
+
+    const notePath = path.join(root, result.results[0].note_path);
+    const metadataPath = path.join(root, result.results[0].metadata_path);
+    const note = fs.readFileSync(notePath, "utf8");
+    const metadata = JSON.parse(fs.readFileSync(metadataPath, "utf8"));
+    assert.match(note, /MI Guide to the Markets UK/);
+    assert.equal(metadata.extraction_method, "llm_vision_handoff");
+    assert.deepEqual(metadata.entities, ["United Kingdom"]);
+
+    const lintResult = lintProject(root);
+    const errorCount = lintResult.issues.filter((issue) => issue.severity === "error").length;
+    assert.equal(errorCount, 0);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

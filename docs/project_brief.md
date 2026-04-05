@@ -23,6 +23,7 @@ Implemented and in scope now:
 - decision notes, meeting briefs, red-team briefs, and market-change briefs
 - watch profiles, surveillance pages, and derived watch ontology
 - GPT/Codex research handoff via `capture-research`
+- zero-API PDF vision handoff via `pdf-pack` and `capture-pdf`
 - zero-API frontier handoff via `frontier-pack` and `capture-frontier`
 - structured sidecar catalog, backlink/tag/open-thread surfaces, and maintenance linting
 
@@ -65,7 +66,9 @@ Implemented and in scope now:
 - Keep the runtime Node-first for now.
 - Keep the product markdown-first and file-first.
 - Keep external frontier reasoning outside the CLI.
+- Keep heavy PDF OCR / chart extraction in the handoff model rather than pretending the built-in parser is enough for image-rich research documents.
 - Use `capture-research` and `capture-frontier` as the integration boundary.
+- Use `pdf-pack` and `capture-pdf` as the integration boundary for vision-assisted PDF extraction.
 - Keep draft append-and-review notes distinct from canonical knowledge and exclude them from grounded retrieval by default.
 
 ## Open Decisions

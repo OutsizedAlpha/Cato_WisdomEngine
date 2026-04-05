@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05T15:47:41.038Z",
+  "generated_at": "2026-04-05T16:51:18.415Z",
   "notes": [
     {
       "relative_path": "wiki/claims/claim-2026-00a1fc15c7d3.md",
@@ -16,7 +16,8 @@
         "wiki/claims/claim-2026-7025d85d8e3c.md",
         "wiki/claims/claim-2026-953cfb6d41c3.md",
         "wiki/claims/contested.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/market-structure.md"
       ],
       "summary": "The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised b… Claim The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised bo…",
       "document_class": "",
@@ -25,6 +26,23 @@
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
         "ageDays": 1
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-00cced186906.md",
+      "title": "Link this source into concepts, entities, or theses once reviewed.",
+      "kind": "claim-page",
+      "status": "superseded",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Link this source into concepts, entities, or theses once reviewed. Claim Link this source into concepts, entities, or theses once reviewed. Classification - Type: fact - Status: active - Polarity: ne…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T16:43:45.754Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -70,6 +88,7 @@
         "wiki/states/geopolitical-risk.md",
         "wiki/states/global-macro.md",
         "wiki/states/japan-macro.md",
+        "wiki/states/market-structure.md",
         "wiki/states/uk-macro.md",
         "wiki/states/us-growth.md",
         "wiki/states/us-inflation.md",
@@ -140,7 +159,8 @@
         "wiki/claims/claim-2026-d0ea574a0654.md",
         "wiki/claims/contested.md",
         "wiki/claims/index.md",
-        "wiki/states/china-demand.md"
+        "wiki/states/china-demand.md",
+        "wiki/states/market-structure.md"
       ],
       "summary": "China recovered officially, while external Asia gave the better trade signal. Claim China recovered officially, while external Asia gave the better trade signal. Classification - Type: inference - St…",
       "document_class": "",
@@ -162,6 +182,7 @@
         "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
         "wiki/claims/index.md",
+        "wiki/states/market-structure.md",
         "wiki/states/us-growth.md",
         "wiki/states/us-inflation.md"
       ],
@@ -205,7 +226,8 @@
       "backlinks": [
         "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/market-structure.md"
       ],
       "summary": "The key Murphy-style point is that the bond market has not been given a clean reason to dismiss… Claim The key Murphy-style point is that the bond market has not been given a clean reason to dismiss…",
       "document_class": "",
@@ -253,7 +275,8 @@
         "wiki/claims/claim-2026-e82787d9d197.md",
         "wiki/claims/contested.md",
         "wiki/claims/index.md",
-        "wiki/states/china-demand.md"
+        "wiki/states/china-demand.md",
+        "wiki/states/market-structure.md"
       ],
       "summary": "Used to position France near the expansion threshold in Europe. Claim Used to position France near the expansion threshold in Europe. Classification - Type: fact - Status: contested - Polarity: posit…",
       "document_class": "",
@@ -306,6 +329,7 @@
         "wiki/decisions/global-macro.md",
         "wiki/states/geopolitical-risk.md",
         "wiki/states/japan-macro.md",
+        "wiki/states/market-structure.md",
         "wiki/surveillance/global-macro.md",
         "wiki/synthesis/global-macro-frontier-decision-brief.md"
       ],
@@ -542,8 +566,7 @@
       "status": "superseded",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
-        "wiki/states/market-structure.md"
+        "wiki/_indices/backlinks.md"
       ],
       "summary": "The current corpus supports a report-level synthesis route anchored to passive flows; Market St… Claim The current corpus supports a report-level synthesis route anchored to passive flows; Market Str…",
       "document_class": "",
@@ -582,8 +605,7 @@
       "status": "superseded",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
-        "wiki/states/market-structure.md"
+        "wiki/_indices/backlinks.md"
       ],
       "summary": "The current corpus supports a report-level synthesis route anchored to Market Structure; Deriva… Claim The current corpus supports a report-level synthesis route anchored to Market Structure; Derivat…",
       "document_class": "",
@@ -601,10 +623,7 @@
       "kind": "claim-page",
       "status": "superseded",
       "tags": [],
-      "backlinks": [
-        "wiki/states/us-growth.md",
-        "wiki/states/us-inflation.md"
-      ],
+      "backlinks": [],
       "summary": "Refine this note after review or a frontier-model synthesis pass. Claim Refine this note after review or a frontier-model synthesis pass. Classification - Type: fact - Status: active - Polarity: neut…",
       "document_class": "",
       "freshness": {
@@ -628,6 +647,7 @@
         "wiki/claims/claim-2026-dd624a5c23f6.md",
         "wiki/claims/index.md",
         "wiki/decisions/global-macro.md",
+        "wiki/states/us-inflation.md",
         "wiki/surveillance/global-macro.md",
         "wiki/synthesis/global-macro-frontier-decision-brief.md"
       ],
@@ -689,6 +709,26 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-32a31555e864.md",
+      "title": "Link this source into concepts, entities, or theses once reviewed.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Link this source into concepts, entities, or theses once reviewed. Claim Link this source into concepts, entities, or theses once reviewed. Classification - Type: fact - Status: active - Polarity: ne…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T16:43:45.754Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-345e39584a35.md",
       "title": "The UK growth numbers were too soft to justify complacency, yet the BoE's firm-level survey sho…",
       "kind": "claim-page",
@@ -721,9 +761,7 @@
       "kind": "claim-page",
       "status": "superseded",
       "tags": [],
-      "backlinks": [
-        "wiki/states/china-demand.md"
-      ],
+      "backlinks": [],
       "summary": "Refine this note after review or a frontier-model synthesis pass. Claim Refine this note after review or a frontier-model synthesis pass. Classification - Type: fact - Status: active - Polarity: neut…",
       "document_class": "",
       "freshness": {
@@ -926,6 +964,7 @@
         "wiki/states/global-macro.md",
         "wiki/states/japan-macro.md",
         "wiki/states/uk-macro.md",
+        "wiki/states/us-growth.md",
         "wiki/surveillance/global-macro.md",
         "wiki/synthesis/global-macro-frontier-decision-brief.md"
       ],
@@ -1030,8 +1069,7 @@
       "status": "superseded",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
-        "wiki/states/market-structure.md"
+        "wiki/_indices/backlinks.md"
       ],
       "summary": "Recurring themes include none, yet, market, structure, cato, corpus. Claim Recurring themes include none, yet, market, structure, cato, corpus. Classification - Type: inference - Status: active - Pol…",
       "document_class": "",
@@ -1091,7 +1129,8 @@
       "tags": [],
       "backlinks": [
         "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/market-structure.md"
       ],
       "summary": "Used for German retail sales, labor-market, and manufacturing release checks. Claim Used for German retail sales, labor-market, and manufacturing release checks. Classification - Type: fact - Status:…",
       "document_class": "",
@@ -1191,6 +1230,7 @@
         "wiki/states/global-macro.md",
         "wiki/states/japan-macro.md",
         "wiki/states/uk-macro.md",
+        "wiki/states/us-inflation.md",
         "wiki/surveillance/global-macro.md",
         "wiki/synthesis/global-macro-frontier-decision-brief.md"
       ],
@@ -1336,8 +1376,7 @@
       "status": "superseded",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
-        "wiki/states/market-structure.md"
+        "wiki/_indices/backlinks.md"
       ],
       "summary": "The evidence base currently spans 2 sources, so the result should be treated as grounded but st… Claim The evidence base currently spans 2 sources, so the result should be treated as grounded but sti…",
       "document_class": "",
@@ -1356,8 +1395,7 @@
       "status": "superseded",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
-        "wiki/states/market-structure.md"
+        "wiki/_indices/backlinks.md"
       ],
       "summary": "Confidence is low because the answer is retrieval-grounded and constrained by the local repo. Claim Confidence is low because the answer is retrieval-grounded and constrained by the local repo. Class…",
       "document_class": "",
@@ -1654,8 +1692,7 @@
       "status": "superseded",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
-        "wiki/states/market-structure.md"
+        "wiki/_indices/backlinks.md"
       ],
       "summary": "Recurring themes include none, yet, market, structure, cato, dealer. Claim Recurring themes include none, yet, market, structure, cato, dealer. Classification - Type: inference - Status: active - Pol…",
       "document_class": "",
@@ -2058,7 +2095,8 @@
         "wiki/claims/claim-2026-292b0283a637.md",
         "wiki/claims/claim-2026-833112a64b26.md",
         "wiki/claims/contested.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/market-structure.md"
       ],
       "summary": "Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower e… Claim Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower ea…",
       "document_class": "",
@@ -2160,7 +2198,8 @@
         "wiki/claims/claim-2026-0f6c133346d9.md",
         "wiki/claims/claim-2026-8c921eae317b.md",
         "wiki/claims/contested.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/china-demand.md"
       ],
       "summary": "Used to show Spain diverged lower and slipped back into contraction. Claim Used to show Spain diverged lower and slipped back into contraction. Classification - Type: fact - Status: contested - Polar…",
       "document_class": "",
@@ -2206,7 +2245,8 @@
       "backlinks": [
         "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/geopolitical-risk.md"
       ],
       "summary": "The note argues that Trump is deliberately withholding an automatic US security guarantee in th… Claim The note argues that Trump is deliberately withholding an automatic US security guarantee in the…",
       "document_class": "",
@@ -2306,7 +2346,8 @@
       "tags": [],
       "backlinks": [
         "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/china-demand.md"
       ],
       "summary": "If payrolls had missed badly and claims had rolled over, the rates market could have looked thr… Claim If payrolls had missed badly and claims had rolled over, the rates market could have looked thro…",
       "document_class": "",
@@ -2473,7 +2514,8 @@
       "tags": [],
       "backlinks": [
         "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/china-demand.md"
       ],
       "summary": "Used to show Italy remained on the improving side of the European manufacturing picture. Claim Used to show Italy remained on the improving side of the European manufacturing picture. Classification…",
       "document_class": "",
@@ -2652,7 +2694,8 @@
         "wiki/claims/claim-2026-345e39584a35.md",
         "wiki/claims/claim-2026-7db2bd48f562.md",
         "wiki/claims/contested.md",
-        "wiki/claims/index.md"
+        "wiki/claims/index.md",
+        "wiki/states/us-growth.md"
       ],
       "summary": "The U.S. week was hawkish in growth terms, only partly offset by softer wages. Claim The U.S. week was hawkish in growth terms, only partly offset by softer wages. Classification - Type: inference -…",
       "document_class": "",
@@ -2891,6 +2934,7 @@
         "wiki/_indices/backlinks.md",
         "wiki/_indices/concepts.md",
         "wiki/entities/brazil.md",
+        "wiki/states/china-demand.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "domestic demand Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Braz…",
@@ -2941,6 +2985,7 @@
         "wiki/entities/strait-of-hormuz.md",
         "wiki/entities/united-kingdom.md",
         "wiki/entities/united-states.md",
+        "wiki/states/geopolitical-risk.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "energy security Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Trum…",
@@ -3111,6 +3156,7 @@
         "outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro.md",
         "wiki/_indices/backlinks.md",
         "wiki/_indices/concepts.md",
+        "wiki/decisions/global-macro.md",
         "wiki/entities/united-states.md",
         "wiki/unresolved/open-threads.md"
       ],
@@ -3134,6 +3180,7 @@
         "wiki/_indices/backlinks.md",
         "wiki/_indices/concepts.md",
         "wiki/entities/united-kingdom.md",
+        "wiki/states/us-growth.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "growth Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - UK quarterly…",
@@ -3161,6 +3208,7 @@
         "wiki/entities/strait-of-hormuz.md",
         "wiki/entities/united-kingdom.md",
         "wiki/entities/united-states.md",
+        "wiki/states/geopolitical-risk.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "hard power Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Trump, Ho…",
@@ -3247,6 +3295,7 @@
         "wiki/_indices/concepts.md",
         "wiki/entities/bank-of-england.md",
         "wiki/entities/united-kingdom.md",
+        "wiki/states/us-inflation.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "inflation expectations Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence…",
@@ -3291,6 +3340,7 @@
         "wiki/entities/ecb.md",
         "wiki/entities/euro-area.md",
         "wiki/entities/south-korea.md",
+        "wiki/states/us-inflation.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "inflation Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Euro area…",
@@ -3312,11 +3362,14 @@
       "backlinks": [
         "wiki/_indices/backlinks.md",
         "wiki/_indices/concepts.md",
+        "wiki/decisions/global-macro.md",
         "wiki/entities/ecb.md",
         "wiki/entities/euro-area.md",
         "wiki/entities/federal-reserve.md",
         "wiki/entities/germany.md",
         "wiki/entities/united-states.md",
+        "wiki/states/market-structure.md",
+        "wiki/states/us-growth.md",
         "wiki/synthesis/index.md",
         "wiki/unresolved/open-threads.md",
         "wiki/unresolved/synthesis-candidates.md"
@@ -3399,6 +3452,7 @@
       "backlinks": [
         "wiki/_indices/backlinks.md",
         "wiki/_indices/concepts.md",
+        "wiki/decisions/global-macro.md",
         "wiki/entities/china.md",
         "wiki/entities/ecb.md",
         "wiki/entities/euro-area.md",
@@ -3409,6 +3463,12 @@
         "wiki/entities/south-korea.md",
         "wiki/entities/spain.md",
         "wiki/entities/united-states.md",
+        "wiki/states/china-demand.md",
+        "wiki/states/europe-macro.md",
+        "wiki/states/global-macro.md",
+        "wiki/states/japan-macro.md",
+        "wiki/states/uk-macro.md",
+        "wiki/states/us-growth.md",
         "wiki/synthesis/index.md",
         "wiki/unresolved/open-threads.md",
         "wiki/unresolved/synthesis-candidates.md"
@@ -3732,6 +3792,7 @@
         "wiki/entities/strait-of-hormuz.md",
         "wiki/entities/united-kingdom.md",
         "wiki/entities/united-states.md",
+        "wiki/states/geopolitical-risk.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "shipping Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Trump, Horm…",
@@ -3899,7 +3960,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Bank of England Decision Maker Panel, March 2026 Working Capture Monthly Decision Maker Panel data - March 2026 | Bank of England Our use of cookies We use necessary cookies to mak…",
       "document_class": "meeting_notes",
       "freshness": {
@@ -3925,7 +3990,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Bank of Japan Tankan summary, March 2026 survey Working Capture Tankan Outline (March 2026) : 日本銀行 Bank of Japan Skip to main content 日本語 English Home About the Bank About the Bank…",
       "document_class": "meeting_notes",
       "freshness": {
@@ -3951,7 +4020,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Brazil economic calendar for late March and early April 2026 Working Capture Bra Document Route - Document class: macrodatarelease - Review lens: Validate units, sample period, pro…",
       "document_class": "macro_data_release",
       "freshness": {
@@ -3977,7 +4050,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: China economic calendar for late March and early April 2026 Working Capture China Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicat…",
       "document_class": "macro_data_release",
       "freshness": {
@@ -4003,7 +4080,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Euro area economic calendar for late March and early April 2026 Working Capture Euro Area Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings…",
       "document_class": "meeting_notes",
       "freshness": {
@@ -4029,7 +4110,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: France manufacturing PMI Working Capture France Manufacturing PMI Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts C…",
       "document_class": "macro_data_release",
       "freshness": {
@@ -4055,7 +4140,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Germany economic calendar for late March and early April 2026 Working Capture Germany Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Ind…",
       "document_class": "macro_data_release",
       "freshness": {
@@ -4082,7 +4171,7 @@
       "status": "",
       "tags": [],
       "backlinks": [],
-      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - No draft workspace notes are open.",
+      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - Append And Review: Bank of England Decision Maker Panel, March 2026 (meetingnotes) - Append And Review: Bank of Japan Tankan summ…",
       "document_class": "",
       "freshness": {
         "stale": false,
@@ -4098,7 +4187,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Italy manufacturing PMI Working Capture Italy Manufacturing PMI Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Com…",
       "document_class": "macro_data_release",
       "freshness": {
@@ -4124,7 +4217,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Japan economic calendar for late March and early April 2026 Working Capture Japan Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicat…",
       "document_class": "internal_memo",
       "freshness": {
@@ -4145,12 +4242,46 @@
       ]
     },
     {
+      "relative_path": "wiki/drafts/append-review/mi-guide-to-the-markets-uk.md",
+      "title": "Append And Review: MI Guide to the Markets UK",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: MI Guide to the Markets UK Working Capture 2 UK GT M L i l y G i l m o u r London Gl ob al Mar ke t In sigh ts Stra tegy T ea m en-US S h o g o M ae ka w a T ok y o Ker r y Cr ai g…",
+      "document_class": "macro_data_release",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T16:43:45.754Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/drafts/append-review/purchasing-managers-index-for-march-2026.md",
       "title": "Append And Review: Purchasing Managers Index for March 2026",
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Purchasing Managers Index for March 2026 Working Capture Purchasing Managers’ Index for March 2026 Chinese(GB) RSS Organi Document Route - Document class: filingorcompanyupdate - R…",
       "document_class": "filing_or_company_update",
       "freshness": {
@@ -4176,7 +4307,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: South Korea economic calendar for late March and early April 2026 Working Capture South Korea Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earn…",
       "document_class": "internal_memo",
       "freshness": {
@@ -4202,7 +4337,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Spain manufacturing PMI Working Capture Spain Manufacturing PMI Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Com…",
       "document_class": "macro_data_release",
       "freshness": {
@@ -4228,7 +4367,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: Trump, Hormuz and the End of the Free Ride Working Capture This is a user-provided geopolitical argument about Hormu Document Route - Document class: internalmemo - Review lens: Tr…",
       "document_class": "internal_memo",
       "freshness": {
@@ -4254,7 +4397,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: UK Balance of Payments, October to December 2025 Working Capture Balance of payments, UK - Office for National Statistics Cookies on ons.gov.uk Cookies are small files stored on yo…",
       "document_class": "internal_memo",
       "freshness": {
@@ -4280,7 +4427,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: UK quarterly national accounts, October to December 2025 Working Capture GDP quarterly national accounts, UK - Office for National Statistics Cookies on ons.gov.uk Cookies are smal…",
       "document_class": "filing_or_company_update",
       "freshness": {
@@ -4306,7 +4457,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: United States economic calendar week of March 30-April 3, 2026 Working Capture Calendar - Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings…",
       "document_class": "meeting_notes",
       "freshness": {
@@ -4332,7 +4487,11 @@
       "kind": "draft-note",
       "status": "open",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
       "summary": "Append And Review: U.S. International Trade in Goods and Services, February 2026 Working Capture U.S. International Trade in Goods and Services, February 2026 | U.S. Bureau of Economic Analysis (BEA)…",
       "document_class": "internal_memo",
       "freshness": {
@@ -4359,7 +4518,7 @@
       "status": "",
       "tags": [],
       "backlinks": [],
-      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - No draft workspace notes are open.",
+      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - Append And Review: Bank of England Decision Maker Panel, March 2026 (meetingnotes) - Append And Review: Bank of Japan Tankan summ…",
       "document_class": "",
       "freshness": {
         "stale": false,
@@ -4416,6 +4575,9 @@
         "wiki/concepts/march.md",
         "wiki/concepts/previous.md",
         "wiki/concepts/survey-data.md",
+        "wiki/states/europe-macro.md",
+        "wiki/states/global-macro.md",
+        "wiki/states/japan-macro.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "Bank of Japan What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - business conditions - capex - housing <!-- CATO:ENDMANAGEDBLOCK concepts --> <!-…",
@@ -4485,6 +4647,7 @@
         "wiki/concepts/previous.md",
         "wiki/concepts/production.md",
         "wiki/concepts/services.md",
+        "wiki/states/china-demand.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "China What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - pmi - manufacturing - services - official activity <!-- CATO:ENDMANAGEDBLOCK concepts --…",
@@ -4543,6 +4706,7 @@
         "wiki/concepts/labour.md",
         "wiki/concepts/manufacturing.md",
         "wiki/concepts/previous.md",
+        "wiki/states/market-structure.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "ECB What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - inflation - labor market - manufacturing <!-- CATO:ENDMANAGEDBLOCK concepts --> <!-- CATO:…",
@@ -4575,6 +4739,7 @@
         "wiki/concepts/labour.md",
         "wiki/concepts/manufacturing.md",
         "wiki/concepts/previous.md",
+        "wiki/states/market-structure.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "Euro Area What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - inflation - labor market - manufacturing <!-- CATO:ENDMANAGEDBLOCK concepts --> <!--…",
@@ -4631,6 +4796,8 @@
         "wiki/concepts/manufacturing.md",
         "wiki/concepts/previous.md",
         "wiki/concepts/trade.md",
+        "wiki/states/market-structure.md",
+        "wiki/states/us-inflation.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "Federal Reserve What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - labor market - manufacturing - trade <!-- CATO:ENDMANAGEDBLOCK concepts --> <!…",
@@ -4719,6 +4886,7 @@
         "wiki/concepts/policy-regimes.md",
         "wiki/concepts/shipping.md",
         "wiki/concepts/trade.md",
+        "wiki/states/geopolitical-risk.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "Iran What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - energy security - shipping - trade - policy regimes - hard power <!-- CATO:ENDMANAGEDBLOC…",
@@ -4817,6 +4985,7 @@
         "wiki/concepts/manufacturing.md",
         "wiki/concepts/previous.md",
         "wiki/concepts/trade.md",
+        "wiki/states/china-demand.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "South Korea What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - exports - trade - inflation - manufacturing <!-- CATO:ENDMANAGEDBLOCK concepts -->…",
@@ -4910,6 +5079,7 @@
         "wiki/concepts/shipping.md",
         "wiki/concepts/trade-in.md",
         "wiki/concepts/trade.md",
+        "wiki/states/uk-macro.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "United Kingdom What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - inflation expectations - pricing power - energy prices - energy security - ship…",
@@ -4948,6 +5118,9 @@
         "wiki/concepts/trade-deficit.md",
         "wiki/concepts/trade-in.md",
         "wiki/concepts/trade.md",
+        "wiki/decisions/global-macro.md",
+        "wiki/states/us-growth.md",
+        "wiki/states/us-inflation.md",
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "United States What It Is Why It Matters Open Issues <!-- CATO:BEGINMANAGEDBLOCK concepts --> Managed Linked Concepts - energy security - shipping - trade - policy regimes - hard power - trade deficit…",
@@ -5008,8 +5181,7 @@
         "wiki/claims/claim-2026-78e8f79a1b83.md",
         "wiki/claims/claim-2026-94c161ce2a64.md",
         "wiki/claims/claim-2026-a0483e8a88f2.md",
-        "wiki/claims/claim-2026-b136be6f2152.md",
-        "wiki/states/market-structure.md"
+        "wiki/claims/claim-2026-b136be6f2152.md"
       ],
       "summary": "Market Structure Use this area for flow mechanics, dealer positioning, passive flows, options plumbing, and funding notes. <!-- CATO:BEGINMANAGEDBLOCK index --> Market Structure Generated: 2026-04-05…",
       "document_class": "",
@@ -6222,6 +6394,37 @@
       ]
     },
     {
+      "relative_path": "wiki/source-notes/mi-guide-to-the-markets-uk.md",
+      "title": "MI Guide to the Markets UK",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-00cced186906.md",
+        "wiki/claims/claim-2026-32a31555e864.md",
+        "wiki/entities/united-kingdom.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "MI Guide to the Markets UK Summary 2 UK GT M L i l y G i l m o u r London Gl ob al Mar ke t In sigh ts Stra tegy T ea m en-US S h o g o M ae ka w a T ok y o Ker r y Cr ai g , CF A M el bo ur ne Ch ao…",
+      "document_class": "macro_data_release",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/source-notes/purchasing-managers-index-for-march-2026.md",
       "title": "Purchasing Managers Index for March 2026",
       "kind": "source-note",
@@ -7165,6 +7368,10 @@
       },
       "open_threads": [
         {
+          "heading": "Managed Data Gaps",
+          "text": "Create or link a watch profile so this state has explicit monitoring context."
+        },
+        {
           "heading": "Managed What Would Flip It",
           "text": "China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse."
         },
@@ -7175,6 +7382,10 @@
         {
           "heading": "Managed What Would Flip It",
           "text": "Used to position France near the expansion threshold in Europe."
+        },
+        {
+          "heading": "Managed What Would Flip It",
+          "text": "Used to show Spain diverged lower and slipped back into contraction."
         },
         {
           "heading": "Managed What Would Flip It",
@@ -7255,6 +7466,10 @@
         "ageDays": 1
       },
       "open_threads": [
+        {
+          "heading": "Managed Data Gaps",
+          "text": "Create or link a watch profile so this state has explicit monitoring context."
+        },
         {
           "heading": "Managed What Would Flip It",
           "text": "The data this week did not create that risk; they reduced the market's ability to ignore it."
@@ -7416,6 +7631,10 @@
       },
       "open_threads": [
         {
+          "heading": "Managed Data Gaps",
+          "text": "Create or link a watch profile so this state has explicit monitoring context."
+        },
+        {
           "heading": "Managed What Would Flip It",
           "text": "China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse."
         },
@@ -7426,6 +7645,10 @@
         {
           "heading": "Managed What Would Flip It",
           "text": "The data this week did not create that risk; they reduced the market's ability to ignore it."
+        },
+        {
+          "heading": "Managed What Would Flip It",
+          "text": "Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower easing path than a weak market tape alone might imply."
         },
         {
           "heading": "Managed What Would Flip It",
@@ -7514,6 +7737,10 @@
       },
       "open_threads": [
         {
+          "heading": "Managed Data Gaps",
+          "text": "Create or link a watch profile so this state has explicit monitoring context."
+        },
+        {
           "heading": "Managed What Would Flip It",
           "text": "It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying."
         },
@@ -7565,6 +7792,10 @@
         "ageDays": 1
       },
       "open_threads": [
+        {
+          "heading": "Managed Data Gaps",
+          "text": "Create or link a watch profile so this state has explicit monitoring context."
+        },
         {
           "heading": "Managed What Would Flip It",
           "text": "If energy pressure persists, inflation breakevens and credit spreads become the channels to watch."
@@ -7634,6 +7865,11 @@
       "backlinks": [
         "outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro.md",
         "wiki/_indices/backlinks.md",
+        "wiki/decisions/global-macro.md",
+        "wiki/states/europe-macro.md",
+        "wiki/states/global-macro.md",
+        "wiki/states/japan-macro.md",
+        "wiki/states/uk-macro.md",
         "wiki/synthesis/index.md"
       ],
       "summary": "Global Macro frontier decision brief Promoted From - Output artifact: outputs/reports/2026-04-03T19-04-41.351Z-global-macro-frontier-decision-brief.md - Promotion rationale: Promoted from LLM handoff…",
@@ -7665,6 +7901,11 @@
         "outputs/briefs/2026-04-03T18-33-46.708Z-why-believe-global-macro.md",
         "outputs/briefs/2026-04-03T19-04-23.953Z-why-believe-global-macro.md",
         "outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro.md",
+        "wiki/decisions/global-macro.md",
+        "wiki/states/europe-macro.md",
+        "wiki/states/global-macro.md",
+        "wiki/states/japan-macro.md",
+        "wiki/states/uk-macro.md",
         "wiki/synthesis/index.md"
       ],
       "summary": "Weekly Investment Meeting Macro Brief - 2026-04-03 Promoted From - Output artifact: outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md - Promotion rationale:…",
@@ -7728,8 +7969,10 @@
       "kind": "",
       "status": "",
       "tags": [],
-      "backlinks": [],
-      "summary": "Open Threads Generated: 2026-04-05 actual - Note: actual - Open Questions: <!-- CATO:BEGINMANAGEDBLOCK evidence --> april - Note: april - Open Questions: <!-- CATO:BEGINMANAGEDBLOCK evidence --> Bank…",
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Open Threads Generated: 2026-04-05 actual - Note: actual - Open Questions: <!-- CATO:BEGINMANAGEDBLOCK evidence --> Append And Review: Bank of England Decision Maker Panel, March 2026 - Note: Append…",
       "document_class": "",
       "freshness": null,
       "open_threads": []
@@ -7766,9 +8009,7 @@
       "kind": "",
       "status": "",
       "tags": [],
-      "backlinks": [
-        "wiki/_indices/backlinks.md"
-      ],
+      "backlinks": [],
       "summary": "Synthesis Candidates Generated: 2026-04-05 - manufacturing (8 sources) - labor market (3 sources) - trade (3 sources)",
       "document_class": "",
       "freshness": null,
@@ -7934,7 +8175,7 @@
         "wiki/_indices/backlinks.md",
         "wiki/_maps/home.md"
       ],
-      "summary": "Source Index Generated: 2026-04-05 article - Trump, Hormuz and the End of the Free Ride web - Bank of England Decision Maker Panel, March 2026 (2026-04-02) - Bank of Japan Tankan summary, March 2026…",
+      "summary": "Source Index Generated: 2026-04-05 article - Trump, Hormuz and the End of the Free Ride paper - MI Guide to the Markets UK web - Bank of England Decision Maker Panel, March 2026 (2026-04-02) - Bank o…",
       "document_class": "",
       "freshness": null,
       "open_threads": []
@@ -7957,7 +8198,9 @@
       "kind": "",
       "status": "",
       "tags": [],
-      "backlinks": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
       "summary": "Tag Index Generated: 2026-04-05 llm-handoff - Uses: 16 - bank-of-england-decision-maker-panel-march-2026 - bank-of-japan-tankan-summary-march-2026-survey - brazil-economic-calendar-for-late-march-and…",
       "document_class": "",
       "freshness": null,

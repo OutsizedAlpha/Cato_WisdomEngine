@@ -12,6 +12,7 @@ Generated: 2026-04-05
 - [[drafts/append-review/germany-economic-calendar-for-late-march-and-early-april-2026|Append And Review: Germany economic calendar for late March and early April 2026]] (macro_data_release)
 - [[drafts/append-review/italy-manufacturing-pmi|Append And Review: Italy manufacturing PMI]] (macro_data_release)
 - [[drafts/append-review/japan-economic-calendar-for-late-march-and-early-april-2026|Append And Review: Japan economic calendar for late March and early April 2026]] (internal_memo)
+- [[drafts/append-review/mi-guide-to-the-markets-uk|Append And Review: MI Guide to the Markets UK]] (macro_data_release)
 - [[drafts/append-review/purchasing-managers-index-for-march-2026|Append And Review: Purchasing Managers Index for March 2026]] (filing_or_company_update)
 - [[drafts/append-review/south-korea-economic-calendar-for-late-march-and-early-april-2026|Append And Review: South Korea economic calendar for late March and early April 2026]] (internal_memo)
 - [[drafts/append-review/spain-manufacturing-pmi|Append And Review: Spain manufacturing PMI]] (macro_data_release)

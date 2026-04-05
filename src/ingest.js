@@ -75,6 +75,16 @@ const REPO_CODE_EXTENSIONS = new Set([
 
 const INGEST_SKIP_DIRS = new Set([".git", "node_modules", ".venv", "__pycache__"]);
 const SOURCE_METADATA_SIDECAR_SUFFIX = ".cato-meta.json";
+const EXTRACTION_OVERRIDE_KEYS = new Set([
+  "extracted_text",
+  "extraction_status",
+  "extraction_method",
+  "extraction_notes",
+  "figure_refs",
+  "imported_frontmatter"
+]);
+const TITLE_CASE_LOWER_WORDS = new Set(["a", "an", "and", "at", "for", "in", "of", "on", "the", "to"]);
+const TITLE_CASE_UPPER_WORDS = new Set(["eu", "jp", "mi", "uk", "us"]);
 
 function detectSourceType(targetPath, targetKind = "file") {
   if (targetKind === "directory") {
@@ -181,12 +191,127 @@ function listIngestTargets(inboxDir) {
   return results.sort((left, right) => left.path.localeCompare(right.path));
 }
 
+function normalizeExplicitPaths(value) {
+  if (!value) {
+    return [];
+  }
+  if (Array.isArray(value)) {
+    return value.map((entry) => String(entry || "").trim()).filter(Boolean);
+  }
+  return String(value)
+    .split(/\r?\n|,/)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
+function listExplicitTargets(root, value) {
+  const candidates = normalizeExplicitPaths(value);
+  if (!candidates.length) {
+    return [];
+  }
+
+  const results = [];
+  const seen = new Set();
+
+  for (const candidate of candidates) {
+    const absolutePath = path.isAbsolute(candidate) ? candidate : path.join(root, candidate);
+    if (!fs.existsSync(absolutePath)) {
+      continue;
+    }
+    if (absolutePath.toLowerCase().endsWith(SOURCE_METADATA_SIDECAR_SUFFIX)) {
+      continue;
+    }
+
+    const stat = fs.statSync(absolutePath);
+    if (stat.isDirectory()) {
+      const nested = looksLikeRepoSnapshot(absolutePath) ? [{ path: absolutePath, kind: "directory" }] : listIngestTargets(absolutePath);
+      for (const target of nested) {
+        const key = `${target.kind}:${target.path}`;
+        if (seen.has(key)) {
+          continue;
+        }
+        seen.add(key);
+        results.push(target);
+      }
+      continue;
+    }
+
+    const key = `file:${absolutePath}`;
+    if (seen.has(key)) {
+      continue;
+    }
+    seen.add(key);
+    results.push({ path: absolutePath, kind: "file" });
+  }
+
+  return results.sort((left, right) => left.path.localeCompare(right.path));
+}
+
 function sidecarMetadataPath(targetPath) {
   return `${targetPath}${SOURCE_METADATA_SIDECAR_SUFFIX}`;
 }
 
 function readSourceSidecar(targetPath) {
   return readJson(sidecarMetadataPath(targetPath), {});
+}
+
+function splitSourceSidecar(sourceSidecar) {
+  const importedFrontmatter = {};
+  const extractionOverride = {};
+
+  for (const [key, value] of Object.entries(sourceSidecar || {})) {
+    if (EXTRACTION_OVERRIDE_KEYS.has(key)) {
+      extractionOverride[key] = value;
+    } else {
+      importedFrontmatter[key] = value;
+    }
+  }
+
+  return {
+    importedFrontmatter,
+    extractionOverride
+  };
+}
+
+function normalizeExtractionNotes(value, fallback = []) {
+  if (!value) {
+    return fallback;
+  }
+  if (Array.isArray(value)) {
+    const notes = value.map((entry) => String(entry || "").trim()).filter(Boolean);
+    return notes.length ? notes : fallback;
+  }
+  const note = String(value).trim();
+  return note ? [note] : fallback;
+}
+
+function applyExtractionOverride(extraction, extractionOverride = {}) {
+  if (!extractionOverride || !Object.keys(extractionOverride).length) {
+    return extraction;
+  }
+
+  const overrideText = typeof extractionOverride.extracted_text === "string" ? extractionOverride.extracted_text.trim() : "";
+  const usingOverrideText = Boolean(overrideText);
+  const overrideFrontmatter =
+    extractionOverride.imported_frontmatter && typeof extractionOverride.imported_frontmatter === "object"
+      ? extractionOverride.imported_frontmatter
+      : {};
+
+  return {
+    ...extraction,
+    extractedText: usingOverrideText ? overrideText : extraction.extractedText,
+    extractionStatus: extractionOverride.extraction_status || (usingOverrideText ? "extracted" : extraction.extractionStatus),
+    extractionMethod: extractionOverride.extraction_method || (usingOverrideText ? "llm_vision_handoff" : extraction.extractionMethod),
+    extractionNotes: normalizeExtractionNotes(
+      extractionOverride.extraction_notes,
+      usingOverrideText ? ["Applied model-authored extraction override from source sidecar."] : extraction.extractionNotes
+    ),
+    figureRefs: Array.isArray(extractionOverride.figure_refs) ? extractionOverride.figure_refs : extraction.figureRefs,
+    importedFrontmatter: {
+      ...extraction.importedFrontmatter,
+      ...overrideFrontmatter
+    }
+  };
 }
 
 function cleanupSourceSidecar(targetPath) {
@@ -268,17 +393,72 @@ function transferTarget(sourcePath, destinationPath, targetKind, copyMode) {
   }
 }
 
+function cleanTitleCandidate(value) {
+  return truncate(String(value || "").replace(/^#+\s*/, "").replace(/\s+/g, " ").trim(), 120);
+}
+
+function humanizeFilenameTitle(filePath) {
+  const baseTitle = titleFromFilename(filePath);
+  if (!baseTitle) {
+    return "";
+  }
+
+  return baseTitle
+    .split(/\s+/)
+    .filter(Boolean)
+    .map((part, index) => {
+      const lower = part.toLowerCase();
+      if (TITLE_CASE_UPPER_WORDS.has(lower)) {
+        return lower.toUpperCase();
+      }
+      if (index > 0 && TITLE_CASE_LOWER_WORDS.has(lower)) {
+        return lower;
+      }
+      return lower.charAt(0).toUpperCase() + lower.slice(1);
+    })
+    .join(" ");
+}
+
+function isWeakTitleCandidate(value) {
+  const candidate = cleanTitleCandidate(value);
+  if (!candidate) {
+    return true;
+  }
+  if (candidate.length < 4) {
+    return true;
+  }
+  if (!/[A-Za-z]/.test(candidate)) {
+    return true;
+  }
+  if (/^\d+([./-]\d+)*$/.test(candidate)) {
+    return true;
+  }
+
+  const words = candidate.split(/\s+/).filter(Boolean);
+  if (!words.length) {
+    return true;
+  }
+
+  const singleCharacterWords = words.filter((word) => word.length === 1).length;
+  if (words.length >= 6 && singleCharacterWords / words.length >= 0.3) {
+    return true;
+  }
+
+  return false;
+}
+
 function deriveTitle(filePath, importedFrontmatter, extractedText) {
   const heading = extractedText.match(/^#\s+(.+)$/m)?.[1]?.trim();
   const firstLine = extractedText.split(/\r?\n/).find((line) => line.trim());
-  const title =
-    importedFrontmatter.title ||
-    importedFrontmatter.name ||
-    heading ||
-    firstLine ||
-    titleFromFilename(filePath);
+  const candidates = [importedFrontmatter.title, importedFrontmatter.name, heading, firstLine, humanizeFilenameTitle(filePath)];
 
-  return truncate(title.replace(/^#+\s*/, ""), 120);
+  for (const candidate of candidates) {
+    if (!isWeakTitleCandidate(candidate)) {
+      return cleanTitleCandidate(candidate);
+    }
+  }
+
+  return cleanTitleCandidate(titleFromFilename(filePath));
 }
 
 function extractSourceUrl(frontmatter) {
@@ -520,11 +700,13 @@ function ingest(root, options = {}) {
   }
   const hashIndexPath = path.join(root, "manifests", "file_hashes.json");
   const hashIndex = readJson(hashIndexPath, {});
-  const targets = listIngestTargets(inboxDir);
+  const explicitTargets = listExplicitTargets(root, options.paths);
+  const targets = explicitTargets.length ? explicitTargets : listIngestTargets(inboxDir);
   const results = [];
 
   for (const target of targets) {
     const sourceSidecar = target.kind === "file" ? readSourceSidecar(target.path) : {};
+    const { importedFrontmatter: sourceSidecarFrontmatter, extractionOverride } = splitSourceSidecar(sourceSidecar);
     const sourceType = detectSourceType(target.path, target.kind);
     const checksum = target.kind === "directory" ? computeDirectoryHash(target.path) : computeHash(target.path);
     const rawSubdir = RAW_SUBDIR_BY_SOURCE_TYPE[sourceType] || "notes";
@@ -535,13 +717,16 @@ function ingest(root, options = {}) {
 
     transferTarget(target.path, rawDestination, target.kind, copyMode);
 
-    const extraction = extractContent(rawDestination, {
-      ...options,
-      targetKind: target.kind
-    });
+    const extraction = applyExtractionOverride(
+      extractContent(rawDestination, {
+        ...options,
+        targetKind: target.kind
+      }),
+      extractionOverride
+    );
     const importedFrontmatter = {
       ...extraction.importedFrontmatter,
-      ...sourceSidecar
+      ...sourceSidecarFrontmatter
     };
     const title = deriveTitle(rawDestination, importedFrontmatter, extraction.extractedText);
     const extractedTextPath = extraction.extractedText ? path.join(root, "extracted", "text", `${id}.txt`) : null;

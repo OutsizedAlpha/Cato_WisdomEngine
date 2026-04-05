@@ -9,6 +9,7 @@ const { captureFrontier, writeFrontierPack } = require("./frontier");
 const { ingest } = require("./ingest");
 const { initProject } = require("./init");
 const { lintProject } = require("./lint");
+const { capturePdf, writePdfPack } = require("./pdf-handoff");
 const { createPostmortem } = require("./postmortem");
 const { writePrinciplesSnapshot } = require("./principles");
 const { writeReflection } = require("./reflect");
@@ -57,12 +58,14 @@ Cato_WisdomEngine CLI
 Usage:
   .\\cato.cmd init
   .\\cato.cmd ingest [--from inbox/drop_here] [--copy]
+  .\\cato.cmd pdf-pack [--from inbox/drop_here] [--limit 8] [--dpi 144] [--max-pages 0]
   .\\cato.cmd self-ingest [--from inbox/self] [--type auto|principles|heuristics|...]
   .\\cato.cmd compile [--promote-candidates]
   .\\cato.cmd search "query" [--limit 8]
   .\\cato.cmd capture-research path\\to\\bundle.json [--promote] [--no-surveil]
   .\\cato.cmd frontier-pack "topic" [--mode decision|belief|state|meeting] [--kind report|brief|meeting-brief|deck] [--subjects "Global Macro,Geopolitical Risk"]
   .\\cato.cmd capture-frontier path\\to\\bundle.json [--promote] [--no-surveil]
+  .\\cato.cmd capture-pdf path\\to\\bundle.json [--copy] [--promote-candidates]
   .\\cato.cmd ask "question" [--limit 6] [--save-question] [--promote]
   .\\cato.cmd report "topic" [--limit 10] [--promote]
   .\\cato.cmd deck "topic" [--limit 8] [--promote]
@@ -89,6 +92,8 @@ Usage:
 Options:
   --root PATH           Use a different project root.
   --copy                Keep the original file in inbox after ingest.
+  --dpi N               Render PDF pack page images at this DPI. Default: 144.
+  --max-pages N         Limit rendered pages per PDF pack document. Default: 0 = all pages.
   --save-question       Also create a question page in wiki/questions.
   --promote-candidates  Promote repeated candidate concepts into concept pages.
   --promote             File the generated output back into wiki/synthesis.
@@ -142,6 +147,14 @@ function runCli(argv) {
     case "ingest": {
       const result = ingest(root, parsed.options);
       console.log(`Ingested ${result.ingested} file(s).`);
+      return;
+    }
+    case "pdf-pack": {
+      const result = writePdfPack(root, parsed.options);
+      console.log(`Prepared PDF vision pack for ${result.documents} document(s).`);
+      console.log(`Pack manifest: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
       return;
     }
     case "self-ingest": {
@@ -233,6 +246,19 @@ function runCli(argv) {
         if (result.outputResult.promotedPath) {
           console.log(`Promoted synthesis note to ${result.outputResult.promotedPath}`);
         }
+      }
+      return;
+    }
+    case "capture-pdf": {
+      const bundlePath = parsed.positionals.join(" ").trim();
+      if (!bundlePath) {
+        throw new Error('Capture-pdf requires a bundle path. Example: .\\cato.cmd capture-pdf .\\cache\\pdf-packs\\...-capture.json');
+      }
+      const result = capturePdf(root, bundlePath, parsed.options);
+      console.log(`PDF documents staged: ${result.staged.length}`);
+      console.log(`PDF documents ingested: ${result.ingested}`);
+      if (result.failures.length) {
+        console.log(`Capture failures: ${result.failures.length}`);
       }
       return;
     }

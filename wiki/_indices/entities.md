@@ -19,5 +19,5 @@ Generated: 2026-04-05
 - [[entities/south-korea|South Korea]] (1 sources)
 - [[entities/spain|Spain]] (1 sources)
 - [[entities/strait-of-hormuz|Strait of Hormuz]] (1 sources)
-- [[entities/united-kingdom|United Kingdom]] (4 sources)
+- [[entities/united-kingdom|United Kingdom]] (5 sources)
 - [[entities/united-states|United States]] (3 sources)

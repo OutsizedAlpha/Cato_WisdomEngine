@@ -60,6 +60,7 @@ Generated: 2026-04-05
 - [[claims/claim-2026-6226af13b4c9|Used for German retail sales, labor-market, and manufacturing release checks.]] (fact, medium-high)
 - [[claims/claim-2026-ec67dbf9ae24|Used to show Italy remained on the improving side of the European manufacturing picture.]] (fact, medium-high)
 - [[claims/claim-2026-497f71fb88cc|Calendar cross-check for the Japan release window and supplementary Japan data.]] (fact, medium-high)
+- [[claims/claim-2026-32a31555e864|Link this source into concepts, entities, or theses once reviewed.]] (fact, medium-high)
 - [[claims/claim-2026-68601464f21c|Official China PMI release used for the March rebound in manufacturing and non-manufacturing ac…]] (fact, medium-high)
 - [[claims/claim-2026-14ff7779ac2b|Used for Korea exports, imports, trade balance, PMI, and CPI as the clearest external-Asia read…]] (fact, medium-high)
 - [[claims/claim-2026-dc71f7079c6f|The note argues that Trump is deliberately withholding an automatic US security guarantee in th…]] (fact, medium-high)
