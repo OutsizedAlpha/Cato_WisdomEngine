@@ -6,6 +6,7 @@ Generated: 2026-04-05
 - 2026-03-31: [[source-notes/uk-quarterly-national-accounts-october-to-december-2025|UK quarterly national accounts, October to December 2025]] (web)
 - 2026-04-01: [[source-notes/bank-of-japan-tankan-summary-march-2026-survey|Bank of Japan Tankan summary, March 2026 survey]] (web)
 - 2026-04-01: [[source-notes/france-manufacturing-pmi|France manufacturing PMI]] (web)
+- 2026-04-01: [[source-notes/global-markets-chart-pack-apr-2026-snapshot|Global Markets Chart Pack (Apr 2026 snapshot)]] (paper)
 - 2026-04-01: [[source-notes/italy-manufacturing-pmi|Italy manufacturing PMI]] (web)
 - 2026-04-01: [[source-notes/purchasing-managers-index-for-march-2026|Purchasing Managers Index for March 2026]] (web)
 - 2026-04-01: [[source-notes/spain-manufacturing-pmi|Spain manufacturing PMI]] (web)

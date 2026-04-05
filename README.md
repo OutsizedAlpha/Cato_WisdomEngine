@@ -161,6 +161,8 @@ PDF vision handoff loop:
 4. run `capture-pdf`
 5. let Cato ingest and compile the PDF through the normal source-note pipeline
 
+For larger mixed batches, start in chunks of roughly 6-12 PDFs and isolate outlier chart decks instead of forcing one oversized pack.
+
 Frontier handoff loop:
 
 1. run `frontier-pack`

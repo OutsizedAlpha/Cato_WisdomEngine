@@ -1,0 +1,551 @@
+Bonds | 2nd April 2026
+BONDS FOCUS
+The retreat from sovereign bond duration
+• Supply/demand dynamics in long -dated sovereign debt markets are deteriorating , with demand from
+traditional sources waning and supply remaining strong. And now fiscal support in response to the Iran
+war may add further strain to public finances. This report outlines how debt managers are likely to
+respond to these developments and what it m eans for the yields of long -dated sovereign bonds.
+• As we laid out in a Focus last year, there has been a deterioration in the balance between the demand for,
+and supply of, long -dated government bonds across major DMs. While d emand from some traditional
+sources for these bonds appears to have waned , supply has been strong as governments have continued to
+run large fiscal deficits. This imbalance has been a recipe for a relative rise in the yields of these bonds
+and increased volatility at the very long end of the yield curve over recent years.
+• We expect th ese imbalance s to persist. Indeed, f iscal support to protect households and firms from rising
+energy costs from the war in the Middle East could become another supply pressure to add to a long list .
+• But one tool government s can use to manage the imbalance s and keep a lid on long -dated government
+bond yields is to shorten the duration of their debt issuance. As a result, we suspect government s are likely
+to favour shorter-dated bonds to meet their future funding needs . Indeed, having lengthened issuance mixes
+during the 2010s , debt managers, in some cases at least, have reversed course over the past couple of years .
+• Japan and the UK stand out as two countries that have already started to do this , which is perhaps
+unsurprising given both had been more reliant than most on longer -dated debt. If Japan ’s Ministry of
+Finance continues to reduce the maturity of its debt issuance , and Japan ’s debt-to-GDP ratio continues to
+decline, as we expect it will, the risk of further dislocation in the long-dated JGB market is likely to diminish.
+In the UK, the debt-to-GDP picture is less rosy , but the D ebt Management Office is nonetheless making
+good progress on reducing the maturity of the UK’s issuance mix.
+• The US may also shorten its debt issuance mix, despite it already relying comparatively heavily on short -
+term debt. This would help manage the expected deluge of Treasury supply in the co ming years and limit
+upward pressure on long -term Treasury yields. Supply pressures may also be amplified if the Fed starts
+shrinking its balance sheet again. Even if that doesn’t happen, the Fed appears to want to reduce the
+duration of its balance sheet , which is likely to incentivise the issuance of T-bills anyway .
+• In the euro-zone, we don’t see too much scope for long -dated Bunds yields to rise further even as Germany’s
+debt-to-GDP ratio is set to increase. We think t here is more cause for concern for long-dated French, and
+perhaps, Italian government bond yields given the significant future funding needs of these governments.
+• All told, further volatility in the yields of long-dated government bonds is likely as governments adapt to
+the new demand reality. But, a ll else equal, as they shift debt issuance away from long -term bonds in
+favour of short -term ones, downward pressure is likely to be put on long-dated government bond yields
+and the slope of yield curves.
+Joe Maher, Markets Economist, joe.maher@capitaleconomics.com
+Bonds Focus Page 1
+
+Bonds
+The retreat from sovereign bond duration
+Fiscal support to cushion the impact of rising energy returns of these bonds in recent years . (See Chart 3.)
+costs from the Iran War could add to the strains on Japan is the only place where volatility is lower in
+public finances across DMs . Meanwhile, demand the post -pandemic period , which may reflect the
+for long -dated government bonds is waning. This BoJ’s policy rate being at zero (and expected to
+Focus examines how debt managers are likely to remain there) until late 2023 as well as the BoJ’s yield
+respond to the deteriorati ng demand/supply curve control programme in the early 2020s .
+balances in long -dated government debt markets
+Chart 2: 30-Year/10-Year Government Bond Yield
+and what it means for the yields of these bonds .
+Spreads (bp)
+Introduction
+As we laid out in a Focus last year, there has been a
+deterioration in the balance between the demand
+for, and supply of, long-dated government bonds
+across major DMs . Demand from traditional sources
+for these bonds appears to have waned. Central
+banks have stepped back from government bond
+markets and demand from pension funds and life
+Sources: LSEG Data and Analytics, Capital Economics
+insurers, who could often be relied on to hoover up
+Chart 3: Annualised Volatility of Monthly Returns of
+these bonds , is in long-term decline. Picking up the
+Selected Datastream Government Bond Indices (%)
+slack has tended to be reserve managers, non -
+pension investment funds and banks, who are
+typically more sensitive to yields and prefer shorter-
+dated bonds. At the same time, bond supply has
+been strong as government s have continued to run
+large fiscal deficits (with the exception of Japan).
+(See Chart 1.)
+Chart 1: Fiscal Balances (% of GDP)
+Sources: LSEG Data and Analytics, Capital Economics
+We expect th is imbalance to persist. The demand
+from traditional sources for long -dated government
+debt is unlikely to come back anytime soon . At the
+same time, supply is also likely to remain strong in
+most places. Indeed, f iscal support to cushion the
+impact on households and firms from rising energy
+costs from the war in the Middle East could become
+Sources: IMF, Capital Economics
+another supply pressure to add to a long list.
+This imbalance has been a recipe for a relative rise
+Absent fiscal consolidation, we have argued in the
+in the yield s of longer-dated bonds. The spread , for
+past that governments will use financial repression
+example, between 30 -year and 10 -year government
+to keep a lid on bond yields. But perhaps a more
+bond yields is much higher now in many economies
+conventional tool is for debt managers to shorten
+than it was a few years ago . (See Chart 2.) It has also
+their debt issuance mixes . Indeed, having
+likely played a part in the rise in the volatility in the
+lengthened average issuance over the 2010s , debt
+Bonds Focus Page 2
+
+Bonds
+managers, in some case s, have reversed course over Chart 5: Share of Net Government Bond Issuance
+the past year. (See Chart 4.) With 10 Years Or More To Maturity (%)
+Chart 4: Weighted Average Maturity of Annual Gross
+Debt Issuance ( Years)
+Sources: LSEG Data & Analytics , Capital Economics
+What does all this mean for long-dated government
+Sources: LSEG Data and Analytics, Capital Economics
+bond yields? Further volatility in the yields of these
+bonds is likely as governments adapt to the new
+How large do the adjustments need to be to manage
+demand reality. The fragile balance between the
+the imbalance s? One simple rule of thumb is to stop
+demand/supply of long -dated bonds also raises the
+the stock of very long -dated government bonds
+risk of spillovers. Dislocation in one country’s bond
+(which we can define, for example, as those with
+market can often transmit to others, as these bonds
+more than ten years to maturity) rising relative to
+are close substitutes of one another, but the impact
+GDP , if we accept that economic actors are, on
+is likely amplified when there are common
+average, less willing to hold them than before.
+imbalances in long -dated government debt markets .
+On this basis, t he UK, U S and Germany stand out as
+All else equal, however, as government s shift debt
+countries where the adjustment s in issuance mixes
+issuance away from long -term bonds in favour of
+need to be the largest . (See Chart 5.) That said, the
+short-term ones , it is likely to put downward
+UK has already made good progress on this front .
+pressure on yields of long-dated government bonds
+What’s more, Germany could probably weather an
+and the slope of yield curves .
+increase in the stock of these bonds better than some
+other places, as it has a lower debt -to-GDP ratio than US
+most others. Japan has faced the most acute
+The US has historically relied much less on long -
+deterioration in this balance recently, but it has taken
+dated debt than other major countries. Reflecting this
+steps to mitigate it. G iven it will likely benefit from a
+the weighted average maturity (WAM) of its debt is
+falling debt-to-GDP ratio, its current issuance plans
+lower than that of most other DMs. (See Chart 6.)
+point to the volume of its long-dated debt falling as a
+share of GDP over the next decade without further Chart 6: Weighted Average Maturity of Outstanding
+Government Debt (Years, End -2025)
+adjustment in issuance.
+Sources: LSEG Data and Analytics, Capital Economics
+Bonds Focus Page 3
+
+Bonds
+This approach hasn’t changed under the current issuance to not overwhelm the private sector with
+administration . Admittedly, prior to taking office, supply and push term premia up further.
+Treasury Secretary Scott Bessent attack ed his
+Chart 9: Net Issuance of Treasuries & Change in
+predecessor Janet Yellen for issuing too many T -bills
+Holdings of Treasuries by Fed/Private Sector (Ex. Bills,
+and not lengthening the WAM of the US debt . (Fed % of GDP)
+Governor Stephen Miran , in a previous role, also
+labelled these policies as “activist Treasury issuance”
+and “stealth QE” ). However , since Bessent took over,
+the WA M of the US debt is little changed on net and
+the volume of T-bills as a share of outstanding debt
+has remained more than 20%. (See Chart s 7 and 8.)
+Chart 7: Weighted Average Maturity of US Treasury
+Debt (Years)
+Sources: LSEG Data and Analytics, Capital Economics
+Persistent fiscal deficits will keep upward pressure
+on Treasury supply . After all, t here appears little
+willingness across the political spectrum to put the
+public finances on a sustainable footing. We forecast
+the US’ debt to GDP ratio to rise from ~100% in
+2025 to 110% by 2035. With the traditional sources
+of demand for long -dated bonds not what they once
+Sources: US Treasury , Capital Economics were, a rising supply of these bonds risks upward
+Chart 8: Outstanding Volume of Treasury Bills (% of pressure on long -dated Treasury yields.
+Outstanding Marketable US Debt)
+A partial solution would be for the Treasury to
+further skew its issuance mix shorter . We estimate
+that the Treasury would have to almost hal ve the net
+issuance share of long -dated bonds in the overall
+mix, relative to the past decade , to keep the supply
+of these bonds constant as a share of GDP . (See Chart
+5 again.)
+Presumptive incoming Fed Chair Kevin Warsh ’s
+Sources: LSEG Data and Analytics, Capital Economics plans to shrink the Fed’s balance sheet would
+reinforce the case for a shorter issuance mix. The
+This is partly a symptom of the waning demand for
+main asset on the Fed’s balance sheet is Treasuries,
+long-dated Treasuries. Until recently the Fed had
+of which the largest share is those with maturities of
+been reducing its holdings of Treasuries . This
+more than 10 years. (See Chart 10.) Depending on
+increased the burden of supply to be absorbed by the
+the pace of balance sheet reduction, it would
+private sector, at a time when demand from financial
+presumably involve the Fed allowing long -dated
+institutions that had historically acted as stable
+Treasuries to roll off their books as they mature
+sources of demand for long-dated debt has waned.
+and/or outright selling them. Either way, the Treasury
+This has coincided with an increase in estimate s of
+would likely respond by issuing fewer long -dated
+the term premium component of the 10 -year
+bonds to offset the extra supply from the Fed.
+government bond. (See Chart 9.) As a result , the
+Treasury has likely kept a lid on long -dated debt
+Bonds Focus Page 4
+
+Bonds
+Chart 10: Federal Reserve Outright Holdings of alternative. (Stablecoins are fully asset -backed , while
+Treasuries By Maturity Bucket (% Of Total Holdings ) banks allocate only part of their balance sheets to T -
+bills/Treasuries). That said , Treasury Secretary
+Bessent’s recent suggestion that stablecoins could
+generate up to $2trn of demand for federal debt looks
+optimistic. (See here.)
+So far, there are no signs of the Treasury shortening
+its issuance mix further . The most recent Quarterly
+Refunding Announcement noted that proportional
+net issuance of long -dated Treasuries over the next
+Sources: Federal Reserve , Capital Economics
+year will remain similar to the past decade. That said,
+That said, Warsh’s plans may prove difficult to despite the already low WAM of the US debt by
+implement in practice . They would require the global standards , there is nonetheless scope for it to
+backing of a majority of the Fed Board of Governors , shorten its issuance mix (assuming it is willing to
+and it is not clear Warsh will be able to persuade the tolerate higher refinancing risk) without departing
+other policymakers . It is also unclear how shrinking too far from historical norms, should market pricing
+the balance sheet would square with the lower encourage such a move. After all, t he volume of T-
+Treasury yields that Warsh (and the President) bills as a share of the overall debt stock is in line with
+appears to want. its average since 1980, and the WAM of the US debt
+is well above where it was 15 years ago , for example .
+Nevertheless, the Fed is still adjusting its balance
+(See Charts 7 and 8 again.)
+sheet in ways that argue for a shorter -dated issuance
+mix. After all , it is reinvesting the proceeds from its Japan
+maturing mortgage -backed securities into T -bills.
+Our sense is that the supply/demand imbalance of
+Since September of last year it has also started to
+long-dated government debt has been the most
+increase the size of its balance sheet again, by buying
+acute in Japan. Investors seem to agree: the 30 -
+~$40bn a month of T -bills as part of its “reserve
+year/10-year government bond yield spread is larger
+management purchases ”. Admittedly, t hese
+in Japan than in other major DMs. (See Chart 2
+purchases are set to be sizeably pared back after the
+again.) The Bank of Japan still owns a much larger
+April tax deadline . But the Fed still appears to want
+share of its domestic bond market than most other
+to reduce the duration of its balance sheet to better
+major central banks do of theirs. But it is slowly
+match the overall Treasury market, which points to a
+shrinking its footprint, and the BoJ’s ownership share
+shifting of the balance sheet’s composition towards
+at the long end of the JGB market is the smallest in
+T-bills over time. (The WAM of the Fed’s holdings is
+more than a decade. (See Chart 11.)
+~8.5 years, versus ~5.3 years for outstanding
+Treasuries excluding the Fed’s holdings .) Chart 11: Bank of Japan Holdings of JGBs By Residual
+Maturity (% of Outstanding)
+A further incentive to shorten the issuance mix is
+the growth of Stablecoins . Issuers of do llar-backed
+stablecoins purchased $33 bn of US T -bills in 2025,
+according to a recent BIS report , bringing their
+estimated holdings to ~$150bn and making them
+one of the largest holders of T -bills. And i f
+stablecoins displace bank balance sheets in
+facilitating transactions, their growth probably
+increases demand for T -bills relative to the
+Sources: LSEG Data and Analytics, Capital Economics
+Bonds Focus Page 5
+
+Bonds
+As a result, the onus on the private sector to absorb imbalance over the past year . For one, the MoF
+JGBs has increased. (See Chart 12.) However , as in announced in December , following an earlier shift in
+other DMs, this demand has not been filled by buyers strategy in May, that the share of long-dated JGBs in
+who are more price -insensitive like pension fund s or overall JGB issuance (excluding short -term bills) in
+life insurers . Over the past year , foreign investors FY 2026 will be the lowest since FY 2007 . (See Chart
+have picked up most of the slack . (See here.) 14.) The BoJ has also retained the amount of long-
+dated JGBs it purchases, even as it has cut its overall
+Chart 12: Net Issuance of JGBs & Change in
+purchases. There are further steps the authorities
+BoJ/Private Sector JGB Holdings (% of GDP)
+could tak e such as allocating a larger share of public
+pension funds to domestic bonds . An improvement
+in the demand/supply balance may explain some of
+the fall in the 30 -year/10-year JGB yield spread in
+recent months. (See Chart 2 again.)
+Chart 14: Planned Issuance Of Long-Dated JGBs With
+More Than 10-Years Maturity By Fiscal Year
+Sources: LSEG Data and Analytics, Capital Economics
+On the supply side , the Ministry of Finance (MoF)
+had been skewing issuance towards the very long
+end for much of the past decade . (See Chart 13.) As
+a result, the WAM of the stock of Japan’s outstanding
+debt rose from 7 years in 2010 to ~10 years in 2025.
+Chart 13: Change in Share of JGBs Outstanding By Sources: LSEG Data and Analytics , Capital Economics
+Residual Maturity (%, Since End -2016)
+Meanwhile, we think Japan’s long -term fiscal
+health is improving . Concerns about the country’s
+fiscal position, which have intensified in some
+quarters after the election of Sanae Taka ichi are, in
+our view, overblown . Indeed, t he government likely
+only ran a small deficit last year. The return of
+inflation will also continue to be a boon for the
+public finances : tax revenues are now rising faster
+than government spending, helping to narrow the
+Sources: LSEG Data and Analytics, Capital Economics
+budget deficit. We forecast Japan’s gross debt as a
+This has likely contributed to recent volatility in the share of GDP to fall from 215% in 2025 to less than
+yields of these bonds . For example, a flaring up in 175% over the next decade .
+investors’ fiscal concerns following Takaichi ’s
+Based on these forecasts, the MoF would have to
+election win may have triggered the spike in long-
+increase the share of long -dated government bonds
+dated JGB yields in January , but it was likely
+in the overall mix to keep their ratio constant as a
+amplified by the delicate supply/demand balance in
+share of GDP over the next decade, not reduc e it as
+the JGB market.
+it is doing now . (See Chart 5 again.) As a result, the
+That said, w e think the risk of further dislocation in MoF’s current plans point to a fall in the size of the
+the long-dated JGB market has diminished. The long-dated JGB market relative to GDP. This is
+Japanese authorities have begun to address the sensible given that the already large pool of long -
+Bonds Focus Page 6
+
+Bonds
+dated JGBs means maintaining their share of GDP
+Chart 17: Gross Government Debt (% of GDP)
+may not alleviate the imbalance. (See Chart 1 5.)
+Chart 15: Stock of Government Debt With 10 -yrs or
+More Until Maturity (% of GDP, End -2025)
+Sources: LSEG Data and Analytics, Capital Economics
+In France, political dysfunction makes an
+improvement in the fiscal outlook unlikely in our
+Sources: LSEG Data and Analytics, Capital Economics
+view. We expect its debt to stay at ~110% of G DP .
+Euro-zone But this rests on the assumption that its budget deficit
+falls to 3% of GDP in the 2030s , which, given a win
+Budget deficits in parts of the euro -zone look set to
+for Rassemblement National in the 2027 election
+remain large over the next decade . Perhaps m ost
+looks like ly, may prove too optimistic . On the face
+notably, Germany has finally loosened its fiscal
+of it, t he picture isn’t so bleak in Italy . Meloni’s
+guardrails , which has coincided with long -dated
+government has managed to tighten fiscal policy and
+government bond yields in Germany rising more
+is on track to win the election next year. The
+than those elsewhere in the G7 other than Japan. (See
+convergence of French and Italian 30 -year sovereign
+Chart 16.) It’s on track for record debt issuance of
+bond yields may reflect the contrasting fortunes of
+over 500bn euros in 2026, up from 425bn in 2025.
+the two governments in grappling with the ir public
+And, o ver t he next decade, w e expect its debt to
+finances. (See Chart 18.)
+GDP ratio to rise from ~60% now to over 70%. (See
+Chart 17.) Chart 1 8: 30-Year Government Bond Yields (%)
+Chart 16: G7 Government Bond Yields
+(bp Change Since End -2024)
+Sources: LSEG Data and Analytics, Capital Economics
+Even so, w e suspect Italy’s debt-to-GDP ratio is likely
+Sources: LSEG Data and Analytics, Capital Economics
+to remain elevated at ~135% over the next decade.
+Such are the pressures on supply we estimate that the
+gross financing requirements , a proxy for gross bond
+issuance, in Italy and France will average over 20%
+of GDP out to 2035 . (See Chart 1 9 and our euro-zone
+debt sustainability monitor .)
+Bonds Focus Page 7
+
+Bonds
+Chart 1 9: Average Annual Gross Financing Needs, example, the ECB ’s holdings of these bonds are set
+2025 to 2035 (% of GDP) to shrink by €400bn in 2026.
+Despite all this, there has yet to be major changes in
+issuance mixes . Admittedly, Germany has slightly
+reduced the share of 15 - to 30 -year bonds in its
+issuance mix for 2026. (See Chart 21.) Netherlands
+has also lowered the target for the WAM of its debt
+from 8 to 7.5 years. But, overall, the “core” countries’
+issuance mixes for 2026 are in line with recent years.
+Sources: LSEG Data and Analytics, Capital Economics Chart 21: Planned Gross Issuance of Bunds & Bills
+(ex. Green Bonds Issuance)
+As the “core” members of the eurozone face record
+funding needs, they must also contend with the
+waning demand from one of the largest holders of
+European government debt. While t he Netherlands
+accounts for ~7% of the euro-zone’s economy, the
+assets of its pension system were around $1.7tn in
+2024 , more than half of all pension fund assets in the
+bloc. (See Chart 20.) And i ts holdings of European
+government debt totalled ~€300 billion in Q3 2025 .
+Sources: Deutsche Finanzagentur , Capital Economics
+Chart 20: Pension Funds’ Assets ( Trillions USD , 2024) That said, w e don’t think there’s too much scope for
+very long -dated Bund yields to rise further.
+Admittedly, if Germany wants to keep the volume of
+long-dated bonds constant as a share of GDP, we
+estimate that it may have to reduce the share of these
+bonds in its overall net issuance mix to 10% over the
+next decade . (See Chart 5 again.) But the volume of
+long-dated bonds as a share of GDP would only be
+rising from a low base . (See Chart 1 5 again.) While
+the so -called Bund “scarcity premium” may have
+Sources: OECD, LSEG Data and Analytics, Capital Economics
+disappeared (German swap spreads , for example,
+However, i t is in the middle of transforming from a
+have been negative since 2024 ), Germany’s
+defined benefit model to a defined contribution
+favourable starting position gives it more space to
+system, which is involving an unwinding of their
+increase its issuance without placing substantially
+long-dated bond holdings . The Dutch central bank
+more upward pressure on yields.
+forecasts that these reforms will lead to Dutch
+There is more scope for yields to rise in France and
+pension schemes reducing their holdings of
+Italy. Our estimates suggest that both countries
+European government bonds with maturities over 25
+would have to increase the net issuance share of
+years by €100bn -150bn over the course of the
+long-dated debt to keep the size of th ese markets
+transition (it is set to last until 2027), a large chunk of
+constant as a share of GDP , but the perilous state of
+the €900bn worth of such bonds outstanding.
+their public finances and significant funding needs
+Against this backdrop , ongoing QT by the ECB will
+over the next decade may result in higher bond
+expand the stock of European government bonds
+yields in both places.
+available for purchase by the private sector . For
+Bonds Focus Page 8
+
+Bonds
+The fiscal outlook is generally better in the other The Debt Management Office (DMO) is responding
+“peripheral” countries. Government debt ratios in by scaling back its sales of long -dated and inflatio n-
+many of these countries have declined rapidly over linked bond s and issuing more Gilts of maturities
+the past five years due to impressive economic between 5 and 15 years . (See Charts 23 and 24). In
+growth rates and, in some cases , budget surpluses. FY202 7, the DMO plans to issue the smallest
+We expect public debt ratios to keep falling in amount of bonds of more than 15 -years maturity
+Greece, Portugal and Spain over the next decade . since FY2008. And, w hereas long-dated Gilts made
+(See Chart 17 again.) As a result, we don’t see much up 40% of debt issuance in FY20 08, they will only
+scope for long-dated government bond yields in account for ~10% in FY2027. (See Chart 24 again.)
+these countries to rise .
+Chart 23: Gilt Issuance By Maturity (% of Total Gross
+UK Annual Issuance, ex. T -Bills)
+The UK has relied more than most DMs on long -
+dated debt issuance in recent decades. The WAM of
+the UK’s outstanding debt is ~14 years, well above
+that of other major DMs. (See Chart 6 again.)
+This reflect ed, in part, strong demand from the UK’s
+defined-benefit pension sector for long -dated (and
+inflation-linked) assets that match their long -term
+real liabilities. However, as many of these schemes
+Sources: DMO , Capital Economics
+mature and gradually transition toward defined -
+Chart 24: Planned Issuance Of Long-dated Gilts &
+contribution structures, this demand is softening. Inflation-Linked Gilts By Fiscal Year
+The supply/demand imbalance for long -dated Gilts
+has been compounded by the Bank of England’s QT
+programme. Unlike other central banks, the Bank of
+England has actively sold Gilts rather than just not
+replacing maturing ones on its balance sheet. This
+has increased the burden of private sector Gilt
+absorption, at a time when demand from those
+financial institutions the DMO could rely on to
+hoover up long-dated Gilts is waning . (See Chart 22.) Sources: DMO , Capital Economics
+(See here for more.)
+What’s more, a consultation by the DMO launched
+Chart 22: Net Gilt Issuance & Change in Private this year suggests T-bills may soon play a bigger role
+Sector Gilt Holdings (% of GDP)
+in financing deficit s. Bills currently makes up only
+4% of the UK’s outstanding debt, less than in other
+major DMs, particularly the US. (See Chart 25.)
+Sources: OBR , LSEG Data and Analytics, Capital Economics
+Bonds Focus Page 9
+
+Bonds
+Chart 25: Outstanding Debt With <1 year Until The fragile balance between the demand/supply of
+Maturity (% of Total Outstanding Debt , End 2025 ) long-dated bonds also raises the risk of spillovers.
+Dislocation in one country’s bond market can often
+transmit to others, as these bonds are close
+substitutes of one another, but the impact is likely
+amplified when there are these common imbalances
+in long -dated government debt markets .
+We expect these imbalances to persist. And the
+ongoing war in Iran may only make them worse if
+governments respond with fiscal support. To
+Sources: LSEG Data and Analytics, Capital Economics
+mitigate these imbalances , debt managers across the
+major DMs are likely to resort to shortening gradually
+The UK’s public finances may be in a poor state, but
+their issuance m ixes, if they haven’t already. More
+they are in a better spot than in parts of the euro-
+volatility in long -dated sovereign bond yields is
+zone and the US. Unlike in those places, w e forecast
+likely as governments adapt to the new demand
+debt to GDP to fall a touch , from 94.2% to 93.2%
+reality. But all else equal, this is likely to put
+over the next decade. Even so, based on our baseline
+downward pressure on the yields of long -dated
+debt to GDP forecast, the UK will have to make a
+government bonds and the slope of yield curves .
+large adjustment to its net issuance mix to keep the
+volume of long -dated bonds constant as a share of The UK and Japan stand out as two countries that
+GDP over the next decade . (See Chart 5 again.) And, have already drastically shortened their issuance
+given the already large outstanding pool of these mixes. We think Japan is also likely to benefit from a
+bonds, like in Japan (see Chart 13 again) , a more declining debt -to-GDP ratio . And so, w hile we can’t
+pronounced shortening of the issuance profile than rule out a further steady rise in long-dated JGB yields
+this may be required to address fully the imbalance . as the economy reflates, the risk of further dislocation
+in the long-dated JGB market is likely to diminish .
+What’s more , there is a good chance that fiscal
+The US Treasury already relies comparatively
+policy ends up looser than we expect given the risk
+heavily on shorter -dated debt issuance but may
+of a leftward lurch within the Labour Party , should
+shorten its issuance mix further to accommodate the
+Keir Starmer be ousted as PM. A win by one of t he
+expected deluge of Treasury supply in the coming
+populist parties , Reform or the Greens in the general
+years and prevent long -dated Treasury yields from
+election slated for 2029 would also likely have the
+rising. Supply pressure s could be amplified if the Fed
+same result b ased on what we know so far about
+shrinks its balance sheet . In the euro -zone, we don’t
+their policy programmes .
+see much scope for long -dated Bunds to rise even as
+its debt to GDP ratio increases, but we think there
+Nevertheless , the sharp shift in the issuance mix over
+are good reasons to be concerned about long -dated
+the past year suggests the UK is nonetheless heading
+French and Italian government bonds.
+in the right direction to manage the supply/demand
+imbalance at the long end of the Gilt curve. There are other tools available to governments,
+including financial repression . And, of course, they
+Conclusion
+could take action to reduce their budget deficits. For
+A deterioration in the balance between the demand
+the most part, though, it seems as like that will prove
+for, and supply of, long-dated government bond has
+a last resort and is unlikely to happen to a great
+been a recipe for a relative rise in the yield of these
+degree without yields rising somewhat further first .
+bonds and greater volatility in recent years .
+Bonds Focus Page 10
+
+Bonds
+Disclaimer: While every effort has been made to ensure that the data quoted and used for the research behind this document is reliable, t here is no guarantee
+that it is correct, and Capital Economics Limited and its subsidiaries can accept no liability whatsoever in respect of any errors or omissions. This document is
+a piece of economic research and is not intended to constitute investment advice, nor to solicit dealing in securities or inv estments.
+Distribution: Subscribers are free to make copies of our publications for their own use, and for the use of members of the subscribing team at their business
+location. No other form of copying or distribution of our publications is permitted without our explicit permis sion. This includes but is not limited to internal
+distribution to non -subscribing employees or teams.
+Email sales@capitaleconomics.com Visit www.capitaleconomics.com

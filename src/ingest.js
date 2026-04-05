@@ -314,6 +314,21 @@ function applyExtractionOverride(extraction, extractionOverride = {}) {
   };
 }
 
+function hasExtractionOverrideText(extractionOverride = {}) {
+  return typeof extractionOverride.extracted_text === "string" && extractionOverride.extracted_text.trim().length > 0;
+}
+
+function emptyExtractionResult(note = "") {
+  return {
+    extractedText: "",
+    extractionStatus: note ? "extracted" : "not_supported",
+    extractionMethod: note ? "provided_override" : "none",
+    extractionNotes: note ? [note] : [],
+    figureRefs: [],
+    importedFrontmatter: {}
+  };
+}
+
 function cleanupSourceSidecar(targetPath) {
   const sidecarPath = sidecarMetadataPath(targetPath);
   if (fs.existsSync(sidecarPath)) {
@@ -700,6 +715,7 @@ function ingest(root, options = {}) {
   }
   const hashIndexPath = path.join(root, "manifests", "file_hashes.json");
   const hashIndex = readJson(hashIndexPath, {});
+  const runExtraction = typeof options.extractor === "function" ? options.extractor : extractContent;
   const explicitTargets = listExplicitTargets(root, options.paths);
   const targets = explicitTargets.length ? explicitTargets : listIngestTargets(inboxDir);
   const results = [];
@@ -717,11 +733,14 @@ function ingest(root, options = {}) {
 
     transferTarget(target.path, rawDestination, target.kind, copyMode);
 
+    const extractionBase = hasExtractionOverrideText(extractionOverride)
+      ? emptyExtractionResult("Skipped built-in extraction because a source sidecar supplied extracted_text.")
+      : runExtraction(rawDestination, {
+          ...options,
+          targetKind: target.kind
+        });
     const extraction = applyExtractionOverride(
-      extractContent(rawDestination, {
-        ...options,
-        targetKind: target.kind
-      }),
+      extractionBase,
       extractionOverride
     );
     const importedFrontmatter = {

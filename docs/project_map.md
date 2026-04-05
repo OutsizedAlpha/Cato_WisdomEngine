@@ -65,9 +65,9 @@ This file records the current local truth of the repository, not the full intend
 
 ## Key Modules
 
-- [`src/ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ingest.js) = archives inbox files, runs format-aware extraction, writes metadata, and drafts source notes
+- [`src/ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ingest.js) = archives inbox files, runs format-aware extraction, writes metadata, drafts source notes, and now skips native extraction when a source sidecar already supplies `extracted_text`
 - [`src/source-routing.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/source-routing.js) = semantic document-class routing plus append-and-review draft note scaffolding
-- [`src/pdf-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/pdf-handoff.js) = prepares zero-API PDF vision packs from inbox PDFs and captures Codex-authored extraction bundles back into normal Cato ingest
+- [`src/pdf-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/pdf-handoff.js) = prepares zero-API PDF vision packs from inbox PDFs, dedupes retry note merges, and captures Codex-authored extraction bundles back into normal Cato ingest
 - [`src/research-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research-handoff.js) = imports GPT/Codex research bundles, downloads cited sources, ingests them, compiles the repo, and writes the supplied output artefact
 - [`src/frontier.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/frontier.js) = prepares zero-API frontier reasoning packs from claim/state/decision surfaces and captures Codex-authored frontier bundles back into Cato
 - [`src/web-import.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/web-import.js) = Windows-first web download/provenance helper used for URL ingest and research handoff capture
@@ -107,6 +107,8 @@ This file records the current local truth of the repository, not the full intend
 - The CLI now covers deterministic repo maintenance plus grounded memo, report, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
 - The live-research split is now explicit: GPT/Codex is expected to perform web research and author the synthesis, while Cato captures the cited sources and final artefacts through `capture-research`.
 - The PDF-vision split is now explicit: `pdf-pack` prepares rendered-page review packs for image-rich PDFs, Codex/GPT performs OCR/vision/chart extraction over those artefacts, and `capture-pdf` feeds the authored extraction back into normal Cato ingest.
+- When `capture-pdf` or another handoff writes `extracted_text` into a source sidecar, ingest now treats that as authoritative enough to bypass brittle native extraction instead of re-running the local parser first.
+- The current PDF batch operating rule is pragmatic rather than idealised: chunk larger runs, isolate heavy chart decks, and use a direct single-document capture bundle when `pdf-pack` still overflows on an outlier.
 - The zero-API frontier split is also explicit: Cato prepares deterministic claim/state/decision context through `frontier-pack`, Codex performs the deeper reasoning, and Cato stores the final authored artefact through `capture-frontier`.
 - The repo will keep repo agent-driven operation rather than embedding external LLM execution directly into the CLI; handoff commands remain the integration boundary.
 - `ingest` now treats repo directories and repo archives as first-class evidence objects instead of only plain files.

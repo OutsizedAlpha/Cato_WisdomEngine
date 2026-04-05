@@ -66,6 +66,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
   - Architecture-ingestion implementation on 2026-04-05 covering semantic document routing, append-and-review drafts, retrieval budgets, structured catalog/backlink/tag indices, counter-argument/data-gap blocks, full test pass, live compile/state/decision refresh, zero-issue lint, and zero-issue doctor
   - PDF vision handoff implementation on 2026-04-05 covering `pdf-pack`, `capture-pdf`, rendered-page pack generation through Python PDF tooling, authored-extraction bundle capture back into normal ingest, full test pass, live CLI help, live one-document pack generation, and zero-issue live lint
   - Documentation hardening on 2026-04-05 covering README, operator guide, project map, lessons, and the dedicated PDF handoff guide so the new PDF workflow, staging boundaries, and commit hygiene are explicit before larger batch runs
+  - 24-PDF batch ingestion on 2026-04-05 covering chunked `pdf-pack` / `capture-pdf` runs, Codex-authored title cleanup, a direct single-document capture workaround for `Markets Interactive Chart Pack.pdf`, a code fix so ingest skips native extraction when `extracted_text` is already supplied, a `capture-pdf` note-deduping fix for retries, a full test pass, and live lint with `0` errors, `0` warnings, and `62` infos
   - Ongoing validation expectations:
     - rerun tests after CLI or schema changes
     - keep live repo lint at zero or explain any deliberate exceptions
@@ -102,6 +103,9 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-05, the remaining architecture decision was closed explicitly: keep the repo agent-driven, preserve the zero-API handoff model, and do not embed external LLM execution directly into the CLI.
 - On 2026-04-05, the repo gained a zero-API PDF vision bridge so Codex/GPT can review rendered page images or raw PDF paths, author a clean extraction bundle, and feed that extraction back into normal Cato ingest without adding a model API client to the CLI.
 - On 2026-04-05, the operator documentation was tightened so the repo now states clearly which folders are staging-only, which artefacts are disposable, and where the durable PDF handoff output begins.
+- On 2026-04-05, the staged 24-PDF inbox batch was ingested into canonical Cato state through the PDF handoff path, and ingest was hardened so handoff-supplied `extracted_text` can bypass a failing native PDF parser on problematic chart decks.
+- On 2026-04-05, the PDF workflow gained explicit batch lessons: chunk larger runs, use `capture-pdf --copy` while debugging outliers, keep a direct one-document capture fallback for chart-deck failures, and do not mistake info-only lint growth for structural ingest breakage.
+- On 2026-04-05, retry safety in the PDF handoff flow was tightened so repeated capture attempts no longer duplicate operator note blocks, and the batch learnings were recorded in `docs/pdf_batch_retrospective_2026-04-05.md`.
 
 ## Open Risks / Next Steps
 

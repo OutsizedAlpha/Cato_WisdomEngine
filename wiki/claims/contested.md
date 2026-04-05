@@ -70,7 +70,7 @@ Generated: 2026-04-05
 ## Japan is steady, but energy sensitivity remains a live risk.
 - Claim: [[claims/claim-2026-4833746fdda4|Japan is steady, but energy sensitivity remains a live risk.]]
 - Origin: [[outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]]
-- Contradictions: [[claims/claim-2026-00a1fc15c7d3|CLAIM-2026-00A1FC15C7D3]], [[claims/claim-2026-dd624a5c23f6|CLAIM-2026-DD624A5C23F6]]
+- Contradictions: [[claims/claim-2026-00a1fc15c7d3|CLAIM-2026-00A1FC15C7D3]], [[claims/claim-2026-037708214029|CLAIM-2026-037708214029]], [[claims/claim-2026-05edf360f18f|CLAIM-2026-05EDF360F18F]], [[claims/claim-2026-07578d1791a0|CLAIM-2026-07578D1791A0]], [[claims/claim-2026-09b75d1530c4|CLAIM-2026-09B75D1530C4]], [[claims/claim-2026-11126fc335d9|CLAIM-2026-11126FC335D9]], [[claims/claim-2026-1554955d6ac6|CLAIM-2026-1554955D6AC6]], [[claims/claim-2026-4304b374fe37|CLAIM-2026-4304B374FE37]], [[claims/claim-2026-43d1b2ac4fc7|CLAIM-2026-43D1B2AC4FC7]], [[claims/claim-2026-48380e1cedfa|CLAIM-2026-48380E1CEDFA]], [[claims/claim-2026-4cc13d4ea5a1|CLAIM-2026-4CC13D4EA5A1]], [[claims/claim-2026-6ff6ddc972bd|CLAIM-2026-6FF6DDC972BD]], [[claims/claim-2026-790cb021e06f|CLAIM-2026-790CB021E06F]], [[claims/claim-2026-8b1c67fe8c65|CLAIM-2026-8B1C67FE8C65]], [[claims/claim-2026-8f07d800bd9b|CLAIM-2026-8F07D800BD9B]], [[claims/claim-2026-98f15d05c555|CLAIM-2026-98F15D05C555]], [[claims/claim-2026-9fe1293a90d8|CLAIM-2026-9FE1293A90D8]], [[claims/claim-2026-b6a2527a26bc|CLAIM-2026-B6A2527A26BC]], [[claims/claim-2026-d1b7f27a9d9f|CLAIM-2026-D1B7F27A9D9F]], [[claims/claim-2026-d21464d79747|CLAIM-2026-D21464D79747]], [[claims/claim-2026-d2e42f7edfe9|CLAIM-2026-D2E42F7EDFE9]], [[claims/claim-2026-dd624a5c23f6|CLAIM-2026-DD624A5C23F6]], [[claims/claim-2026-e90eb2a628a6|CLAIM-2026-E90EB2A628A6]], [[claims/claim-2026-f51bdf1328a4|CLAIM-2026-F51BDF1328A4]], [[claims/claim-2026-f5b4b7436920|CLAIM-2026-F5B4B7436920]]
 
 ## Japan was not weak, but it was not a clean reflation boom either.
 - Claim: [[claims/claim-2026-5673f9a66505|Japan was not weak, but it was not a clean reflation boom either.]]
@@ -147,12 +147,127 @@ Generated: 2026-04-05
 - Origin: [[outputs/reports/2026-04-03T19-04-41.351Z-global-macro-frontier-decision-brief|Global Macro frontier decision brief]]
 - Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
 
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-b6a2527a26bc|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/agent-behavioral-contracts-formal-specification-and-runtime-enforcement-for-reliable-autonomous-ai-agents|Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-1554955d6ac6|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/agentic-reasoning-for-large-language-models|Agentic Reasoning for Large Language Models]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-037708214029|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/application-software-we-move-to-a-neutral-view-as-ai-disruption-uncertainty-lingers|Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-790cb021e06f|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/automotive-potential-winners-and-losers-from-the-oil-price-spike|Automotive: Potential Winners and Losers From the Oil Price Spike]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-43d1b2ac4fc7|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/ce-capital-daily-02042026|CE Capital Daily 02.04.2026]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-f5b4b7436920|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/ce-capital-daily-31032026|CE Capital Daily 31.03.2026]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-d2e42f7edfe9|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/ce-equities-focus-ai-indices-mar-2026|CE Equities Focus: AI Indices (Mar. 2026)]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-09b75d1530c4|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/ce-global-economics-update-indirect-effects-apr-2026|CE Global Economics Update: Indirect Effects (Apr 2026)]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-4304b374fe37|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/ce-global-markets-focus-bond-supply-focus|CE Global Markets Focus: Bond Supply Focus]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-f51bdf1328a4|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/emerging-markets-capital-flows-monitor-mar-2026|Emerging Markets Capital Flows Monitor (Mar 2026)]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-07578d1791a0|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/exploring-the-diverse-opportunities-in-us-equities-mar-2026|Exploring the Diverse Opportunities in US Equities (Mar 2026)]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
 ## Used to position France near the expansion threshold in Europe.
 - Claim: [[claims/claim-2026-0f6c133346d9|Used to position France near the expansion threshold in Europe.]]
 - Origin: [[source-notes/france-manufacturing-pmi|France manufacturing PMI]]
 - Contradictions: [[claims/claim-2026-404ecd94ae08|CLAIM-2026-404ECD94AE08]], [[claims/claim-2026-c6e82f021d84|CLAIM-2026-C6E82F021D84]], [[claims/claim-2026-d1edd67bb63d|CLAIM-2026-D1EDD67BB63D]], [[claims/claim-2026-e82787d9d197|CLAIM-2026-E82787D9D197]]
 
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-48380e1cedfa|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/global-asset-allocation-april-2026|Global Asset Allocation (April 2026)]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-e90eb2a628a6|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/global-economics-chart-pack-iran-conflict-edition-apr-2026|Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-6ff6ddc972bd|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/global-economics-update-will-higher-energy-prices-undermine-ai-investment-mar-2026|Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-8f07d800bd9b|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/health-care-defensive-alternatives-in-a-volatile-energy-price-environment|Health Care: Defensive Alternatives in a Volatile Energy Price Environment]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-d1b7f27a9d9f|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/insurance-implications-from-the-conflict-with-iran|Insurance: Implications From the Conflict With Iran]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-98f15d05c555|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/large-language-model-reasoning-failures|Large Language Model Reasoning Failures]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-4cc13d4ea5a1|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/private-credit-hyperscaler-market-risk-exposure|Private Credit: Hyperscaler Market Risk Exposure]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-05edf360f18f|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/private-credit-negative-sentiment-whats-next|Private Credit: Negative Sentiment, What's Next?]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-8b1c67fe8c65|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/private-credit-tech-concentration-risk-how-much|Private Credit: Tech Concentration Risk, How Much?]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-d21464d79747|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/recursive-language-models|Recursive Language Models]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
 ## Used to show Spain diverged lower and slipped back into contraction.
 - Claim: [[claims/claim-2026-d1edd67bb63d|Used to show Spain diverged lower and slipped back into contraction.]]
 - Origin: [[source-notes/spain-manufacturing-pmi|Spain manufacturing PMI]]
 - Contradictions: [[claims/claim-2026-0f6c133346d9|CLAIM-2026-0F6C133346D9]], [[claims/claim-2026-8c921eae317b|CLAIM-2026-8C921EAE317B]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-11126fc335d9|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/technology-sector-implications-the-middle-east-conflict|Technology Sector Implications: The Middle East Conflict]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]
+
+## Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…
+- Claim: [[claims/claim-2026-9fe1293a90d8|Initial batch capture authored by Codex from the live PDF plus a stronger local text pass…]]
+- Origin: [[source-notes/the-fog-of-war|The fog of war]]
+- Contradictions: [[claims/claim-2026-4833746fdda4|CLAIM-2026-4833746FDDA4]]

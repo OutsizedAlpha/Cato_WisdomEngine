@@ -440,7 +440,26 @@ function writePdfPack(root, options = {}) {
 }
 
 function mergeNotes(...values) {
-  return values.map((value) => String(value || "").trim()).filter(Boolean).join("\n\n");
+  const merged = [];
+  const seen = new Set();
+
+  for (const value of values) {
+    const text = String(value || "").trim();
+    if (!text) {
+      continue;
+    }
+
+    const blocks = text.split(/\n\s*\n+/).map((block) => block.trim()).filter(Boolean);
+    for (const block of blocks) {
+      if (seen.has(block)) {
+        continue;
+      }
+      seen.add(block);
+      merged.push(block);
+    }
+  }
+
+  return merged.join("\n\n");
 }
 
 function capturePdf(root, bundleInput, options = {}) {

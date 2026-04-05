@@ -59,7 +59,7 @@ Implemented and in scope now:
 
 - The bootstrap phase is complete.
 - The repo is now in operational hardening and refinement.
-- The current focus is maintaining a clean belief/state/decision runtime, improving source and claim quality, and keeping the agent-driven handoff model disciplined.
+- The current focus is maintaining a clean belief/state/decision runtime, improving source and claim quality, hardening mixed-batch PDF handoff operation, and keeping the agent-driven handoff model disciplined.
 
 ## Settled Decisions
 

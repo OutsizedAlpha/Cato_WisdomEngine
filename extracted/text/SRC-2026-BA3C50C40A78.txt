@@ -1,0 +1,494 @@
+Power BI Desktop
+Global Markets Chart Pack
+This Global Markets Chart Pack is a snapshot of our live, interactive Chart
+Pack. The latest interactive version can always be viewed on our platform.
+Our full set of markets forecasts can be found here.
+The data in this Chart Pack were last updated 1st April 2026. Data from
+third-party index providers may be lagged by a day or more.
+
+Power BI Desktop
+Global Markets Chart Pack - Overview
+The spike in energy prices stemming from the conflict in the Middle East has ignited concerns of a stagflationary shock and put global equities and government bonds under
+severe pressure over the past month. However, hopes of a swift end to the conflict has spurred a recovery in recent days. In our baseline scenario, in which traffic through the
+Strait of Hormuz resumes by the end of April and oil prices fall back, we expect the AI-driven surge in equity markets to restart, with tech-heavy stock indices in the US and
+Asia outperforming. Meanwhile, government bonds such as Gilts that have suffered severely over the past month will likely rally by the most. If the conflict reignites,
+however, bonds and equities would likely come under renewed pressure, as tighter monetary policy combines with lower growth, but the dollar would likely rally further.
+Rolling One-Month Returns Global Equity & Bond Total Return Indices & US Dollar
+(%, US$) (1st January 2020 = 100)
+"Risky" assets "Safe" assets DXY US Dollar Index Global Equities Global Government Bonds
+60 250
+40
+200
+20
+150
+0
+100
+-20
+Ene In r g d y . Metals US T I T P r H S e Y a s C u o ri r e p I s G . B C o o n r d p s . B on d L s at A E m M $ E quities J U G S B s e quities E GBs G E M i D lt s M E M R E E A IT E s E u q r o u p iti e e s E P q ac u i i f t i i c e P s E re q c u i i o ti u E e M s s M A e s t i a a l s E quities 50
+2020 2021 2022 2023 2024 2025 2026
+Bonds are FTSE indices unless otherwise named, equities are MSCI US dollar indices Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Equities - Overview
+Equity markets around the world have sold off over the past month as the conflict in the Middle East has pushed up energy prices and raised the prospect of a return of
+stagflation. Stock markets of net energy exporting countries in Latin America and North America have generally fared less poorly than those of net importers. However,
+equities have rebounded in recent days and if the conflict continues to de-escalate, we anticipate energy-heavy equity indices will lag in the recovery as tech-heavy equity
+indices fare better. If the war drags on, however, equity markets globally would likely come under more pressure and we imagine that, for a while at least, the geographic
+patterns of relative performance seen recently would endure.
+MSCI Equity Total Return Indices Rolling One-Month Returns From MSCI Equity Indices
+(US$, January 2020 = 100) (US$, %)
+0
+EM World
+250
+-5
+200
+-10
+150
+-15
+100
+50 -20
+2021 2022 2023 2024 2025 2026 Latin America North America EMEA Europe Pacific Asia
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Equities - Developed Markets
+European and Japanese stock markets had borne the brunt of the deterioration in global risk sentiment since the war began, whereas equities in countries such as the US
+whose economies are less exposed to the conflict had been insulated somewhat. But if the conflict does not last for too much longer, as is our base case, we suspect
+European and Japanese stock markets would continue to recover over the rest of the year. Even so, we expect US equity outperformance to persist amid renewed investor
+enthusiasm for AI-related stocks.
+MSCI DM Equity Indices Rolling One-Month Returns From MSCI DM Equity Indices
+(US$, January 2020 = 100) (US$, %)
+Europe North America Pacific World Country index Regional index
+250 10
+200
+0
+150
+-10
+100
+50 N or w Po a r y tu gal Is D ra e e n l ma F r i k n N la o n r d th A U m S S e in ri g ca a p o A re ust C ri a a na d H W a o o n r g l d Kon gUK Italy S pa I i r n ela B n e d l giu E m ur A o N p u e e s w tr a Z N l e ia e a t l h an e d rlan d F s ranc S P e w ac it i z fi e c rlan d Ja G p e a r n ma S n w y e den
+2021 2022 2023 2024 2025 2026
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Equities - Emerging Markets
+EM equities sold off more sharply than those in DMs during the recent market turmoil. The markets that had rallied the most over the past year or so have slumped the most
+over the past month, a move that is hard to justify solely by rising energy prices and may also reflect some speculative froth coming out of markets such as Korea and South
+Africa. However, hopes of an end to the conflict have supported a recovery in EM equity markets, particularly tech-heavy markets in Asia, such as Korea and Taiwan. We think
+these stock markets have further to benefit from AI enthusiasm and will outperform other EM indices over the rest of the year, while a drop back in commodity prices may
+prove a headwind for those in Latin America.
+Month-To-Date Returns From MSCI EM Indices
+(US$, %)
+10
+0
+-10
+-20
+-30
+Sources: LSEG Data & Analytics, Capital Economics
+aibmoloC aibarA
+iduaS
+lizarB tiawuK aisyalaM aciremA
+nitaL
+…upeR
+hcezC
+rataQ dnaloP yekruT elihC anihC ocixeM AEME dnaliahT yragnuH ureP eceerG nawiaT ME senippilihP aisA aidnI aisenodnI .E.A.U acirfA
+htuoS
+tpygE aeroK
+MSCI EM Equity Indices
+(US$, January 2020 = 100)
+Asia EM EMEA Latin America Country index Regional index
+150
+100
+50
+2021 2022 2023 2024 2025 2026
+
+Power BI Desktop
+Global Markets Chart Pack - Equities - Sectoral Performance
+Given the recent jump in energy prices, it’s not surprising that the energy sectors in both the MSCI DM and EM indices have fared better than the rest over the past month. If
+the war rumbles on, we imagine that, for a while at least, the energy sector would keep faring the best and that the patterns of relative sectoral performance seen recently
+would endure. In our baseline scenario, however, we anticipate that the energy sector will underperform as oil prices drop back while the ‘big-tech’ sectors outperform amid
+renewed enthusiasm for AI.
+Rolling One-Month Returns From MSCI World (DM) Sectors Rolling One-Month Returns From MSCI EM Sectors
+(%) (%)
+Aggregate Sector Aggregate Sector
+10 10
+0 0
+-10 -10
+Ener gy Utilities IT Financials
+A g gre
+gate
+Real
+estate
+o m m.
+Serv
+C
+.
+ons.
+Disc
+H
+. ealthcar
+m
+e
+er sta
+ples Materials
+In
+dustrials Ener gy Utilitie
+m
+s
+er sta
+ples
+o m m.
+Serv
+R
+.
+eal
+estate Financials Healthcare
+A g gre
+gate
+C ons.
+Disc.
+In
+dustrials Materials IT
+C onsu onsu C
+C C
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Equities - Geographical & Factor Performance
+The sell-off in global equities over the past month has helped reverse a few recent equity market trends: the underperformance of the US equities relative to those in the rest
+of the world, developed market equities relative to emerging market equities, and large caps relative to small caps. A resumption of the AI rally and a continued de-
+escalation in the Middle East conflict, as is our base case, will likely reinforce these new trends over the rest of the year.
+Relative Performance Of MSCI Equity Indices Relative Performance Of MSCI World Equity Indices
+(January 2020 = 100) (January 2020 = 100)
+DMs vs. EMs USA vs. World ex. USA Growth vs. Value Large Caps vs. Small Caps
+160 160
+140 140
+120 120
+100 100
+80 80
+2021 2022 2023 2024 2025 2026 2021 2022 2023 2024 2025 2026
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Bonds - Overview
+Government bonds in the UK and euro-zone have come under the most pressure since the war in the Middle East began, whereas Treasuries haven’t suffered nearly as much.
+If the conflict continues to de-escalate then the rally in DM government bonds over recent days is likely to continue in most cases as investors row back on expectations of
+interest rate hikes. That said, we don’t think Treasuries have much further to rally given money markets are no longer pricing in interest rate hikes. And in a world in which the
+war re-escalates, bonds would likely come under renewed pressure, as central banks hike interest rates and the need for fiscal support drives up term premia.
+FTSE Bond Total Return Indices Rolling One-Month Changes In Yields Of FTSE Bond Indices
+(US$, January 2024 = 100) (bp)
+30
+EGBs EM$ Gilts HY Corp. Bonds IG Corp. Bonds JGBs TIPS US Treasuries
+150
+20
+10
+100
+0
+EM$ Gilts HY Corp. IG Corp. EGBs US JGBs TIPS
+2021 2022 2023 2024 2025 2026 Bonds Bonds Treasuries
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Bonds - DM Government
+DM government bond yields have risen since the war broke out as investors have shifted from anticipating interest rate cuts this year to discounting interest rate hikes in
+most places. Reflecting this, shorter-dated government bond yields have risen by more than long-dated government bond yields, culminated in a bear flattening of DM yield
+curves. As a result, if the conflict continues to de-escalate, we expect short-dated government bond yields would drop back more sharply than long-dated ones as investors
+unwind their bets on interest rate hikes.
+10-Year Government Bond Yields 10-Year/2-Year Yield Spreads
+(%) (bp)
+Geography Germany Japan UK US Germany Japan UK US
+200
+4
+100
+2
+0
+0
+-100
+2021 2022 2023 2024 2025 2026 2021 2022 2023 2024 2025 2026
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Bonds - DM Term & Risk Premia
+The fact that yield curves have mostly flattened – even in Europe – is perhaps evidence that the rise in yields is primarily reflective of an upward shift in rate expectations
+rather than rising term premia. Admittedly, the war does have the potential to hit governments’ fiscal positions: the rise in euro-zone bond spreads over the war is one sign
+investors are starting to get concerned. But we think governments will generally take a fairly cautious approach to fiscal policy in response to the war, in part because they
+have limited fiscal space in most cases. It could, nonetheless, expose some of those that came into it in more precarious positions, and it wouldn’t be surprising to see euro-
+zone spreads rise a bit further.
+Estimated US Treasury Term Premia Yield Spreads Over German Bunds
+(pp) (bp)
+2-year 5-year 10-year France Greece Italy Portugal Spain
+6 300
+4
+200
+2
+100
+0
+-2 0
+1970 1980 1990 2000 2010 2020 2021 2022 2023 2024 2025 2026
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Bonds - DM Corporate
+While option‑adjusted spreads on the FTSE Corporate Bond Indices remain tight by historical standards, they have widened over the past month, which perhaps reflect
+concerns about the impact on economic activity from the war in the Middle East. Spreads may rise further if the conflict rumbles on and investors’ concerns about how it may
+dampen growth grow but if something akin to our baseline scenario materialises then we expect spreads in Europe and the US will drop back as risk sentiment recovers and
+the economic impact from the conflict is contained.
+Option-Adjusted Spreads Of FTSE IG Corporate Bond Indices Rolling One-Month Changes In Option-Adjusted Spreads Of FTSE HY
+(bp) Corporate Bond Indices
+(bp)
+Euro zone UK US
+40
+600
+30
+400
+20
+200
+10
+0 0
+2005 2010 2015 2020 2025 Euro zone UK US
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Bonds - DM Policy Rates
+The jump in energy prices since the war broke out has resulted in a large upward swing in investors’ near-term interest rate expectations in most DMs. The biggest shift has
+come in the UK, where investors had been expecting quite a bit more monetary easing before war broke out, but rising energy prices and a hawkish tone struck by the MPC
+has put an end to those chances and investors now anticipate rate hikes. But we think the chances of policy tightening in the UK are overdone, and in our baseline scenario,
+in which inflation concerns ease as energy prices fall, we expect interest rate expectations to decline further.
+Rolling One-Month Changes In OIS-Implied Policy Rate Expectations For CE Policy Rate Forecasts For End-2026 Less OIS-Implied Rates
+End-2026 (bp)
+(bp)
+100
+0
+50
+-50
+0 -100
+UK
+Eur
+o-z one Cana da
+Ne
+w
+Zealan d US Australia
+S
+we den
+S
+witzerlan d Ja pan US Ja pan Australia
+S
+witzerlan d Cana da
+Eur
+o-z one
+S
+we den
+Ne
+w
+Zealan d UK
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Bonds - EM Local-Currency Government
+EM local-currency government bond yields have risen in most places as investors’ expectations for monetary easing have been scaled back. The biggest moves have come in
+parts of Latin America and Emerging Europe rather than in EM Asia, where easing cycles had already largely ended or were much more advanced than in the other regions.
+China is an outlier, with yields on its government bonds falling over the past month, likely reflecting the relative insulation from the conflict. We expect EM local-currency
+government bond yields to decline over the rest of the year as inflation concerns ease and the prospect of interest rate hikes dissipates in most places.
+10-Year Government Bond Yields 10-Year/2-Year Government Bond Yield Spreads
+(%) (bp)
+Brazil China India South Africa Brazil China India
+20 400
+15
+200
+10
+0
+5
+0 -200
+2021 2022 2023 2024 2025 2026 2021 2022 2023 2024 2025 2026
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Bonds - EM Dollar
+EM dollar bond spreads have risen over the past month. Unsurprisingly, spreads have increased the most in Africa and Europe, given their dependence on energy imports,
+followed by the Middle East which has been directly involved in the war. We suspect EM dollar bond spreads will fall back as the conflict de-escalates, but given they remain
+close to multi-year low we don’t think they have far to fall. However, a prolonged conflict would likely see spreads continue to widen. Meanwhile, upcoming elections in
+Brazil, Colombia and Hungary are likely to be closely contested and potential flashpoints for dollar bond spreads.
+Rolling One-Month Changes In Stripped Spreads Of JPM EMBI Indices Stripped Spreads Of JPM EMBI Bond Indices
+(bp) (bp)
+60
+Africa Asia Europe Latin America Middle East
+1,000
+40
+500
+20
+0 0
+Africa Europe Middle East Latin America Asia 2018 2020 2022 2024 2026
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - FX - Overview
+Safe‑haven demand and a US-positive terms of trade shock has boosted the dollar against all major currencies since the outbreak of war. We think that the upside for the US
+dollar is limited if the conflict continues to de-escalate as risk appetite improves and the favourable shift in the US terms of trade unwinds. But tailwinds from a shift in yield
+gaps in the dollar's favour and further US equity outperformance should still see it rally over the course of the year. But if the war were to rumble on, we think there is more
+scope for the dollar to rally as it benefits from a further US-positive shift in the terms of trade and increased demand for safe-havens.
+Federal Reserve US Dollar Indices Rolling One-Month Changes Vs. US Dollar
+(January 2006 = 100) (%)
+Developed Markets Emerging Markets
+140
+0
+120
+100 -5
+80
+2010 2015 2020 2025
+Sources: LSEG Data & Analytics, Capital Economics
+aibmoloC learsI anihC lizarB yekruT aisenodnI KU napaJ nawiaT adanaC enoz
+oruE
+yawroN ainamoR aidnI ailartsuA dnalreztiwS aihcezC dnaloP aisyalaM ocixeM ureP yragnuH dnalaeZ
+weN
+nedewS aeroK dnaliahT senippilihP elihC acirfA
+htuoS
+
+Power BI Desktop
+Global Markets Chart Pack - FX - Relative Yields
+The dollar has diverged somewhat from interest rate differentials thanks to increased demand for safe-havens and a favorable terms of trade shocks. Nominal rate
+differentials may have moved in favour of the euro and the pound, but in real terms, which factors in the larger jump in inflation expectations in the eurozone/UK vis-a-vis
+the US, they have shifted in the dollar’s favour. Yield differentials are likely to support the dollar this year, as we think the Fed will keep its policy rate on hold, whereas
+markets are pricing in some easing. At the same time, we doubt central banks in other DMs will deliver the amount of policy tightening which is priced into money markets.
+Rolling One-Month Changes In Currencies Vs. US$ & In US-Domestic 10-Year JPY Vs. USD & US-Japan Yield Gap
+Yield Gap
+Currency vs. USD (LHS) US yield less domestic yield (bp, RHS)
+0
+160
+400
+-2
+140
+200
+120 -4
+100 0
+Change in yield gap to US (bp) 2021 2022 2023 2024 2025 2026
+Sources: LSEG Data & Analytics, Capital Economics
+)%(
+DSU
+.sv
+ycnerruc
+ni
+egnahC
+Canada
+Japan UK Norway
+Euro zone
+Australia
+Switzerland
+Sweden
+New Zealand
+-20 -10 0 10 20 30
+
+Power BI Desktop
+Global Markets Chart Pack - FX - Real Effective Exchange Rates
+The dollar appears overvalued on most metrics we track. Although its real effective exchange rate is below its five-year median, it remains well above its long-term historical
+average. Despite this, we expect US equity outperformance and a shift in yield differentials in favour of the dollar to support a further appreciation of the greenback over the
+rest of the year. In contrast, the yen’s low valuation is one reason why we think it is likely to stage a recovery against the dollar this year.
+Real Effective Exchange Rate Valuations BIS Narrow Real Effective Exchange Rate Index - US
+(Deviations From 5-Year Averages, Percentile) (2020 = 100)
+100 120
+100
+50
+80
+0
+S
+we
+den
+S
+witzerlan
+d
+Eur o
+z
+one
+N
+or
+way UK Australia US
+Ne w
+Zealan
+d
+Ja
+pan
+Cana
+da
+1995 2000 2005 2010 2015 2020 2025
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Commodities - Overview
+Oil prices have surged over the past month thanks to the closure of the Strait of Hormuz and damage to energy infrastructure. Under our baseline scenario, in which
+shipments through the Strait resume by the end of the month, and any damage to oil-related infrastructure is limited and quickly repairable, oil exports recover fully in 2027.
+As a result, we expect the price of Brent crude to ease back this year and fall to its pre-war level by end-2027. That said, longer-lasting disruptions and more extensive
+damage to infrastructure would mean oil prices are in triple-digit territory both this year and next year.
+Rolling One-Month Total Returns From GSCI Commodity Indices GSCI Commodity Total Return Indices
+(%) (January 2020 = 100)
+Energy GSCI Industrial metals Precious metals
+40
+300
+20
+200
+0
+100
+-20
+0
+Brent crude Aluminium Natural Gas Zinc Lead Copper Gold 2021 2022 2023 2024 2025 2026
+oil
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - Commodities - Copper & Gold
+Gold has acted more like a risky asset than a safe-haven over the course of the conflict as its price has fallen even as geopolitical uncertainty has been ratcheted up. We
+suspect weaker structural demand for gold has left its price vulnerable to a pick-up in real yields and reduced risk appetite. Although gold prices have staged a bit of a
+recovery in recent days, perhaps on reports that the conflict may soon be over, we don’t think this is a sign of things to come. We think there is more exuberance to come
+out of the market which could trigger further price falls this year.
+Gold Price Index & US Real Yield Change In Copper Price
+(y/y, %)
+GSCI Gold Spot Index (LHS) 10-year TIPS yield (scaled by -1 to invert,%, RHS)
+2
+3K
+100
+0
+2K
+0
+-2
+1K
+0K -4 -100
+2010 2015 2020 2025 2010 2015 2020 2025
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - REITs- Overview
+The conflict in Iran has increased uncertainty and pushed up market interest rates raising concerns of a slowing in activity in the property market. This has weighed heavily
+on REITs globally, which have underperformed broader equity indices. In the US, although we doubt the conflict in Iran will have a lasting impact on the property market in
+our baseline scenario, we still expect REITs to underperform the broader equity market this year.
+Rolling One-Month Returns From FTSE NAREIT US Indices Rolling One-Month Returns From FTSE NAREIT & MSCI Equity Indices
+(%) (US$, %)
+0
+REIT indices Broad equity indices
+0
+-1
+-2
+-5
+-3
+-10
+-4
+-5
+-15
+-6
+-7 -20
+Office Retail Residential Industrial US World Asia Pacific Europe
+Sources: LSEG Data & Analytics, Capital Economics
+
+Power BI Desktop
+Global Markets Chart Pack - REITs - Relative Performance
+The trend of REITs outperforming the broader equity market has reversed since the outbreak of the conflict in Iran. And we expect this trend to continue over the next year,
+reflecting our bullish view on US equities and AI-related stocks in particular. Meanwhile, REITs have delivered better returns than commercial property for some time, and we
+do not think this outperformance will fade.
+Total Return Ratio Of World REIT Index To Broader Equity Index US NCREIF Commercial Property Total Return Index & FTSE NAREIT US Index
+(January 2020 = 100) (January 2000 = 100)
+Commercial Property REITs
+100
+1,000
+90
+80
+70 500
+60
+50 0
+2021 2022 2023 2024 2025 2026 2005 2010 2015 2020 2025
+Sources: LSEG Data & Analytics, Capital Economics

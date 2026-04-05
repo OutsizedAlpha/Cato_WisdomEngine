@@ -329,6 +329,123 @@ runTest("pdf vision handoff packs PDFs and captures authored extraction back int
   }
 });
 
+runTest("ingest skips native extraction when a source sidecar already provides extracted_text", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+
+    const pdfPath = path.join(root, "inbox", "drop_here", "markets-interactive-chart-pack.pdf");
+    createSimplePdf(pdfPath, "Power BI Desktop");
+    fs.writeFileSync(
+      `${pdfPath}.cato-meta.json`,
+      `${JSON.stringify(
+        {
+          title: "Global Markets Chart Pack (Apr 2026 snapshot)",
+          document_class: "chartpack_or_visual",
+          capture_source: "codex_pdf_vision_handoff",
+          extracted_text:
+            "Global Markets Chart Pack\nThis chart pack is a snapshot of a live interactive cross-asset chart pack updated on 1st April 2026.",
+          extraction_method: "llm_vision_handoff",
+          extraction_notes: [
+            "Supplied from a Codex-authored handoff bundle.",
+            "Built-in PDF extraction should be skipped for this source."
+          ]
+        },
+        null,
+        2
+      )}\n`,
+      "utf8"
+    );
+
+    const result = ingest(root, {
+      extractor: () => {
+        throw new Error("native extractor should not be called");
+      }
+    });
+
+    assert.equal(result.ingested, 1);
+    assert.equal(result.results[0].title, "Global Markets Chart Pack (Apr 2026 snapshot)");
+    assert.equal(result.results[0].extraction_method, "llm_vision_handoff");
+
+    const extractedText = fs.readFileSync(path.join(root, result.results[0].extracted_text_path), "utf8");
+    assert.match(extractedText, /Global Markets Chart Pack/);
+    assert.match(extractedText, /cross-asset chart pack/i);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("capture-pdf deduplicates capture notes when retrying a source with a stale sidecar", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+
+    const pdfPath = path.join(root, "inbox", "drop_here", "markets-chart-pack.pdf");
+    createSimplePdf(pdfPath, "Power BI Desktop");
+
+    const authoredPath = path.join(root, "cache", "manual-chart-pack-authored.md");
+    fs.mkdirSync(path.dirname(authoredPath), { recursive: true });
+    fs.writeFileSync(
+      authoredPath,
+      "Global Markets Chart Pack\nThis chart pack is a snapshot of a live interactive cross-asset chart pack.\n",
+      "utf8"
+    );
+
+    const sharedBundleNote =
+      "Direct capture created because the generic pack builder overflowed on this chart pack.";
+    const sharedDocumentNote =
+      "Treat numeric chart readings as reviewable until they are checked visually page by page.";
+    const bundlePath = path.join(root, "cache", "manual-chart-pack-capture.json");
+    fs.writeFileSync(
+      bundlePath,
+      `${JSON.stringify(
+        {
+          capture_source: "codex_pdf_vision_handoff",
+          model: "codex-cli direct capture",
+          notes: sharedBundleNote,
+          documents: [
+            {
+              source_path: path.relative(root, pdfPath).replace(/\\/g, "/"),
+              title: "Global Markets Chart Pack (Apr 2026 snapshot)",
+              document_class: "chartpack_or_visual",
+              capture_notes: sharedDocumentNote,
+              extracted_text_path: path.relative(root, authoredPath).replace(/\\/g, "/"),
+              extraction_method: "llm_vision_handoff",
+              extraction_notes: ["Direct capture retry path."]
+            }
+          ]
+        },
+        null,
+        2
+      )}\n`,
+      "utf8"
+    );
+
+    fs.writeFileSync(
+      `${pdfPath}.cato-meta.json`,
+      `${JSON.stringify(
+        {
+          capture_notes: `${sharedBundleNote}\n\n${sharedDocumentNote}`
+        },
+        null,
+        2
+      )}\n`,
+      "utf8"
+    );
+
+    const result = capturePdf(root, bundlePath, { copy: true });
+    const metadata = JSON.parse(fs.readFileSync(path.join(root, result.results[0].metadata_path), "utf8"));
+    assert.equal(
+      metadata.capture_notes,
+      `${sharedBundleNote}\n\n${sharedDocumentNote}`
+    );
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
 runTest("ingest treats repo directories as first-class repo snapshots", () => {
   const root = makeTempRepo();
   try {

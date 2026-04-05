@@ -1,0 +1,466 @@
+Equities Focus | 31st March 2026
+Mapping the next stage of the AI rally
+• While developments in the Middle East are the primary concern for markets right now , sentiment around
+AI remains a key factor too. We still think that renewed AI enthusiasm will boos t stock markets this year.
+• The S&P 500 “ big-tech” sectors have fared better than most since the war began . But it has nonetheless
+been a stiff headwind for them and, thanks in part to earlier turmoil in the software sector , they have now
+fallen further form their recent peaks than other sectors. That said, we don’t think either of these headwinds
+fundamentally undermine the broader optimism around AI that had boosted these sectors in recent years.
+• Investors seem to agree that the conflict has not darkened the outlook for tech earnings (which had largely
+driven the rally in recent years). Indeed, analyst earnings forecasts have continued to soar in recent weeks.
+And they also seem to share our view that the turmoil in the software sector is not necessarily bad news for
+other tech stocks, with AI -related stocks excluding software ones holding up well even as software sold off .
+• We would go further and say that the disruption facing the software industry is a net positive for the stock
+market. Of course, AI will create losses for some and may cause financial dislocation as those losses wash
+through the system. But it will create gains for others too. This is the historical pattern with general -purpose
+technologies , and we think the net benefits for the S&P 500 will outweigh the losses over the medium term .
+• Stepping back, we have not seen anything to change our mind that AI -related stocks have further upside.
+• We have also not seen anything to make us think that the main beneficiaries of renewed AI hype would
+be different to those that have benefited so far . Both our macro and markets analysis suggest that diffusion
+across economies is still at an early stage , with little sign of much broadening out over the past two years .
+• Accordingly, we continue to think stocks in the US, China, Korea, Taiwan and Japan are best set to benefit
+from AI enthusiasm. This is based on their exposures to “AI industries ” – which we identify by analysing
+the composition of the largest AI ETFs by AUM as of start -2026 – and on our CE AI Economic Impact Index.
+• We have recently revised down our end-2026 S&P 500 forecast given the assumed hit to global economic
+activity from war in the Middle East . But our new forecast of 7,500 (down from 8,000) is still optimistic
+and around the top of consensus forecasts. And we expect this rally to be led by stocks in AI industries .
+James Reilly , Senior Markets Economist , james.reilly@capitaleconomics.com
+Bonds Focus Page 1
+
+Equities Focus
+Mapping the next stage of the AI rally
+Between developments in the Middle East and the of two main factors. The first is the well-documented
+software sector, it has been a volatile first quarter for headwinds facing the software sector. We dig into
+AI-related stocks . This report uses our custom CE AI that in Section 1a but, in short, we don’t think it
+Equity Indice s to gauge the health of the rally and undermines the overall AI thesis. In fact, we think it
+consider how it might develop over the rest of 2026 . is more likely a positive than a negative in the
+medium-term. And investors seem to agree that these
+Section 1 considers what has driven the weakness in
+headwinds are not a major spanner in the broader AI
+AI-related stocks and whether these moves look
+works: our index of AI “users” excluding software
+justified to us. Section 2 assesses which parts of the
+continued to rally, on net, in the months prior to the
+market are likely to benefit most if the AI rally
+war. (See Chart 3.) (See the Appendix for the
+resumes, with a focus on whether share price gains
+methodology behind the indices used in this piece .)
+are set to broaden out beyond the “tech industries” .
+Chart 3: Changes In CE US AI Equity Indices
+Section 1: Taking stock of the sell -off
+(USD Total Returns, %)
+At face value the US ‘ big tech ’ sectors (consumer
+discretionary, IT, and communication services) have
+held up well relative to other sectors since the war in
+the Middle East began. But they are nonetheless the
+furthest from their peaks of the high -level sectors ,
+given that they had been heavily sold off coming
+into the conflict . (See Chart 1.) What’s more, the gap
+between the valuation of these sectors and the rest of
+the market has narrowed significantly . (See Chart 2.)
+Sources: LSEG, Capital Economics .
+Chart 1: S&P 500 Sector Indices Drawdowns (%)
+The second factor is the war in the Middle East.
+Again, we don’t think this undermines the broader
+AI thesis . Our baseline assumption is that the AI
+buildout will not be meaningfully impacted , and for
+the most part investors don’t seem to be factoring in
+much of a change to the outlook for tech stocks:
+indeed, earnings expectations have soared even as
+the war has escal ated. (See Chart 4.) It’s only
+valuations that have fallen amid surging bond yields.
+Sources: LSEG, Capital Economics .
+Chart 2: S&P 500 P/E Ratio* Premia (%) Chart 4: Change In S&P 500 Forward 12 Month (FTM)
+EPS Expectations 26th Feb. 2026 – 19th Mar. 2026 (%)
+Sources: LSEG, Capital Economics .
+This raises the question of whether AI enthusiasm is Sources: LSEG, Capital Economics . 19th March is latest published data.
+over. We think not. This tech weakness is the result
+Bonds Focus Page 2
+
+Equities Focus
+Clearly, a prolonged conflict – and the potential for think it will be complete re -run of last year’s
+a US recession – would eventually take a toll on the DeepSeek episode, when equities in the US
+earnings outlook for tech stocks. In our “adverse” semiconductor sector recovered swiftly. After all,
+war scenario, we project that the S&P 500 would end while the slump in software stocks has been
+this year at 6,000 and not rise in 2027 . But if our exacerbated by some specific news (e.g. releases by
+baseline assumption of a conclusion to the war Anthropic), it has been developing for many months.
+around end -April and limited long -lasting damage to
+Chart 6: Median 12 -Month Forward Price -to-Earnings
+major infrastructure were to materialise, we think the
+Ratio Of CE US AI Index Constituents
+conditions would be in place for the AI story to
+resume its place as the key driver of global equities.
+This report steps back from the conflict and assesses
+whether, in that state of the world, the AI story
+would fuel a further leg up in equities during 2026.
+1a: Struggling software
+The struggles of US software stocks since October
+2025 reflect growing concern that their business
+Sources: LSEG, Capital Economics .
+models may be disrupted by AI, not enhanced. This
+weakness has been broad -based, with cap -weighted And we doubt the recovery will be as broad -based
+and equal -weighted indices of US AI software stocks as the semiconductor one either – we expect there to
+plunging to their ‘Liberation -day’ lows. (See Chart 5.) be more differentiation between winners and losers
+in the software space than was the case among
+Chart 5: CE US AI Software Indices (End -24 = 100)
+semiconductor stocks last February. After all, more
+generic software offerings with seat -based models
+seem to be relatively vulnerable; but firms providing
+cybersecurity software, for example, may see more
+demand if AI makes generating cyberattacks simpler.
+1b: Wider impact of software’s sell -off
+Perhaps more importantly, though, we think this
+disruption is likely to prove a net positive for the
+Sources: LSEG, Capital Economics . broader US economy and stock market . Of course,
+AI will create losses for some and gains for others;
+Much has been written about exactly why software
+and it may also cause financial dislocation as those
+as a service (SaaS) is exposed to disruption. In short,
+losses wash through the system. This is the historical
+two key issues are as follows. First, AI agents’ ability
+pattern with general -purpose technologies. But on
+to use software tools means businesses need to pay
+net, we predict the winners will outweigh the losers.
+not only for fewer staff, but also fewer software
+licences (undermining traditional seat -based pricing Investors seem to be taking a neutral stance for now .
+models). Second, the barrier to entry for many Chart 3 showed that even as software stocks came
+software applications has arguably been eroded (or under pressure, non -software AI stocks had held up
+will be) now that quality products can be replicated . well. The upshot is that our overall indices of US AI
+stocks had only edged down slightly over that pre-
+Our sense is that the weakness in software stocks is
+war period, on net, both on a cap -weighted and
+probably a bit overdone, not least given how far and
+equal-weighted basis. To us, this looks indicative of
+how fast valuations have corrected relative to other
+enthusiasm stalling but not unwinding . (See Chart 7.)
+AI-related stocks . (See Chart 6.) That said , we don’t
+Bonds Focus Page 3
+
+Equities Focus
+Chart 7: CE US Overall* AI Equity Indices weighted terms, helping overall AI indices hold their
+(Start = 100) ground over the pre-war period. (See Charts 10&11. )
+Chart 10: CE Global AI Equity Indices (Start = 100)
+Sources: LSEG, Capital Economics .
+1c: Changes under the surface
+Chart 11: CE Global Equal -Weighted AI Equity Indices
+(Start = 100)
+While the AI rally was on pause at a high level, there
+were changes under the hood, with investors rotating
+from software stocks to semiconductor ones. At least,
+that’s what the relative performances of both suggest.
+(See Charts 8 & 9.) At times in the past, such a retreat
+from “users” to “enablers” of AI has been used as
+evidence of fading belief in the AI story . But as both
+charts show , non -software users held up well . So,
+there hasn’t been a wholesale shift away from users .
+Sources: LSEG, Capital Economics .
+Chart 8: CE US AI Equity Indices (Start = 100)
+In sum, we find little evidence that the recent
+weakness in tech stocks reflects a genuine souring
+of investors’ sentiment towards AI or its long-term
+transformative potential. We also find little
+evidence of much rotation within AI stocks, beyond
+a shift from software ones into semiconductor ones.
+Section 2: Who benefits is the AI rally resumes?
+If we’re right and investors’ AI enthusiasm returns,
+Chart 9: CE US AI Equity Indices (Start = 100) what parts of the stock market are likely to benefit ?
+2a. The status quo continues…
+Given that the AI narrative has not really changed too
+much over recent months, one conclusion is that
+those who were deemed best place d to benefit from
+AI enthusiasm coming into 2026 are probably still
+best placed to benefit if the AI rally were to resume .
+To analyse the characteristics of these winners, we
+look at the composition of major AI ETFs. Tables A1
+Sources: LSEG, Capital Economics .
+and A2 (Appendix) show a detailed GICS sector and
+The story outside of the US is similar: software industry group level breakdown , split by geography.
+stocks have come off the boil since last October; We consider the 12 industry groups with the largest
+semiconductor stocks have fared best; and other AI weighs in these AI ETFs to be “AI industries ”, best
+stocks have held their ground or rallied in equal - placed to benefit from a recovery in AI enthusiasm.
+Bonds Focus Page 4
+
+Equities Focus
+These industries can also be used to identify which Table 2: AI Exposures
+stocks markets look best placed to benefit if the AI AI Weight In Country CE AI
+MSCI Index Weight In AI Economic
+rally were to resume . The results are similar to
+(%) ETFs (%) Impact Index
+simply using the “big tech” sectors, though there are
+US 52 62.2 72
+differences: for example, the less-granular method South Korea 72 4.8 54
+overstates China’s exposure to AI enthusiasm and Taiwan 87 5.8 46
+Netherlands 56 0.8 44
+understates Sweden’s. (See Chart 12.) Given that
+Sweden 44 0.6 47
+parts of the communications services and consumer
+China 31 5.1 50
+discretionary sectors seem relatively unexposed to Japan 31 7.7 44
+AI, we think our AI industries paint a fairer picture . Germany 26 2.0 46
+UK 9 0.7 55
+Chart 12: AI Weights In MSCI Equity Indices (%) Switzerland 9 1.5 51
+France 27 0.5 42
+Canada 11 2.0 48
+Hong Kong 0 0.9 50
+Denmark 6 0.0 45
+Australia 6 0.7 45
+Italy 22 0.1 32
+India 22 0.0 30
+Spain 0 0.0 34
+Brazil 2 0.0 24
+South Africa 10 0.0 20
+Mexico 0 0.0 20
+Sources: LSEG, Capital Economics . “AI weight” is based on combined weights of
+Sources: LSEG, Capital Economics . “AI Industries Weight” is based on the top 12 industries in Table A2.
+combined weights of the top 12 industries in Table A2.
+Of course, sector composition is not the only factor 2b. New industries to benefit?
+that determines a stock market’s exposure to the AI
+Rather than the status quo persisting, it is possible the
+theme. Another key question is how well set an
+that rally broadens out. But there is little evidence of
+economy is to innovate, adapt , and/or diffuse the
+this happening so far . One way to gauge this is to
+technology across its economy. To quantify that, we
+look for signs of productivity boosts across different
+use our proprietary CE AI Economic Impact Index .
+sectors of the economy, which we do in detail here.
+(See Table 1, and our interactive dashboard for more).
+While the level of AI usage by firms is heading in the
+right direction, it remains low outside of the tech and
+Table 1: CE AI Economic Impact Index
+professional services sectors. And surveys suggest
+Innovation Diffusion Adapting Overall
+US 87 60 68 72 that most firms are still only using AI in a basic wa y.
+Singapore 40 73 65 59
+An alternative approach is to examine equity data,
+UK 36 64 65 55
+not macro data. Comparing the sector composition
+Korea 36 62 63 54
+Switzerland 28 67 57 51 of the largest AI ETFs at start -24 and start -26 gives a
+China 46 49 55 50 sense of whether investors (and/or ETF managers)
+Canada 34 60 51 48 think that the AI rally has broadened. Table 3 shows
+Sweden 25 63 53 47 the results. (See Tables A3 and A4 in the Appendix
+Taiwan 21 71 45 46
+for a geographic and industry level decomposition.)
+Germany 32 49 56 46
+Australia 18 63 53 45 The most notable observation is that these ETFs have
+Japan 30 54 48 44 in fact become more concentrated in the IT sector.
+Sources: LSEG, Capital Economics . This either reflects that investors are yet to become
+convinced that the benefits from AI will be felt
+Table 2 consolidates the data considered above:
+across other sectors to the same extent or , more
+inclusion in AI ETFs, index exposure to selected
+likely, they believe it will but for now are still unsure
+industries, and our CE AI Economic Impact Index.
+about which industries are the most likely to benefit.
+Clearly, the US and parts of Asia – including Korea,
+Taiwan, China and Japan – look like the big winners .
+Bonds Focus Page 5
+
+Equities Focus
+Supporting this idea is the fact that the sectors to have complicating comparisons . So, we would be wary of
+increased their presence in these ETFs are generally leaning on these data too hard to pick winning sectors.
+those thought of as enablers – real estate (data centre
+On balance, it may be too soon to guess where the
+REITs) and utilities. Even within the IT sector there
+next productivity breakthrough will come from. For
+has been a further concentration in semiconductors.
+some, the lack of evidence that AI enthusiasm is
+Table 3: Change In Major AI ETF Sector Compositions spreading across industries might ring alarm bells.
+(Start-2024 to Start -2026, % -pts) But in the same way software firms fell out of
+Unique Count Total Count Average fashion when headwinds appeared, we expect other
+IT 11.7 14.9 13.3
+industries to rally swiftly upon signs of AI finally
+Real Estate 1.7 1.4 1.6
+being deployed in a productivity -enhancing fashion.
+Financials 2.0 0.9 1.4
+And we think that is only a question of when, not if,
+Utilities 0.7 0.5 0.6
+AI will be used across most sectors of the economy .
+Energy 0.0 0.0 0.0
+2c. New countries to benefit?
+Cons. Stap. -0.3 -0.4 -0.4
+Health Care -0.1 -1.8 -1.0 What about signs of broadening out at the country
+Comms. -3.6 -1.0 -2.3
+level? Again, we took a detailed look at the macro
+Industrials -3.4 -9.3 -6.4
+evidence in the above-mentioned report: the upshot
+Cons. Disc. -7.8 -5.0 -6.4
+is that the biggest beneficiaries so far are the US,
+Sources: LSEG, Capital Economics . “Unique count” refers to the number of unique
+stocks featured in the 10 largest AI ETFs at start-2024 or start-2026. “Total count” where the bulk of the spending is occurring, and the
+sums up how many times each stock appears (e.g., Nvidia features in all 10 in 2026
+so is counted 10 times). ‘Average’ is a simple average of the other measures. major tech exporters including Taiwan . And e quity
+data paint a similar picture: the US has increased its
+Survey data can be useful when trying to identify
+weight in these ETFs over the past couple of years
+where this break might come from. For example, t he
+while m eaningful increases elsewhere are limited to
+US Census Bureau asks whether firms are planning
+the tech-heavy stock markets in Asia . (See Table 4.)
+to use AI in the production of goods and /or services
+within the next 6 months. The results are shown in Table 4: Country Shares Of Major AI ETFs
+Chart 1 3, which also shows how each industries’ Start-2024 (%) Start-2026 (%) Change (%-pts)
+answers have changed over the past two years or so. US 49.7 58.8 9.1
+Japan 12.1 8.2 -3.9
+Chart 1 3: Expected Uptake Of AI In The Production China 0.0 7.0 7.0
+Of Goods Or Services In Next 6 Months (%) Taiwan 3.4 6.1 2.8
+Korea 0.0 3.4 3.4
+Germany 3.0 2.2 -0.8
+Canada 3.7 2.2 -1.5
+Israel 1.9 1.5 -0.3
+Switzerland 1.5 1.4 -0.1
+Netherlands 2.2 1.1 -1.0
+Australia 0.8 1.0 0.3
+UK 1.1 1.0 -0.2
+Sources: LSEG, Capital Economics . Based on average of “Unique count” (each
+stock featured in the ETFs is counted once) and “Total count” (each stock is counted
+each time it appears in the ETFs ). See Table A1, Appendix for more detail.
+In sum – there is little sign of the rally in AI having
+broadened at either the industry or country level in
+recent years. This is consistent with the idea that the
+winners of AI, beyond those enabling it or most
+obviously embracing it in the tech sectors, have yet
+Sources: LSEG, Capital Economics .
+to become much clearer. While we think that it is
+That said, this exercise has limitations: these are only a matter of time before that happens , we think
+merely plans, and using AI does not ensure greater the recently favoured parts of the market – the 12
+productivity. What’s more, the Census Bureau AI industries we identify, and US/Asia Pacific at the
+changed the wording of its questionnaire in October , country level – remain likely to outperform in 2026 .
+Bonds Focus Page 6
+
+Equities Focus
+Appendix
+CE AI Equity Index Methodology
+Identifying an AI stock…
+To select our universe of AI stocks we defer to the judgement of major ETF providers. Specifically, our
+indices use all stocks featured in the top 10 AI ETFs by AUM (as defined by ETF.com) at the start of 2026.
+This approach does not mean every stock exposed to AI is considered. For example, Walmart is one stock
+that has rallied strongly in part seemingly because of investor enthusiasm around its use of AI – but it does
+not feature in any of these 10 ETFs. And there are plenty of stocks included that are increasingly seen as
+losers from AI: a lot of software stocks, for example. The reality is the perceived winners from the A I
+revolution are in constant flux, so no AI index will accurately gauge enthusiasm for the technology.
+Still, we think this a better approach than simply using the combined weight of the IT, consumer
+discretionary and communication services sectors. Granted, doing so makes sense for the US stock market
+on a cap -weighted basis because these GICS sectors are home to the ‘Magnificent Seven’ and other major
+US tech names. But it is not necessarily the case that the average US consumer discretionary firm is more
+exposed to AI than the average US industrial firm, for example. At least, that is what the sector
+compositions of these AI ETFs indicate. So, just using these three so -called “tech sectors” to quantify the
+exposure of non -US markets to the AI theme leaves room for improvement , in our view. Likewise using
+these sectors for US stocks doesn’t make much sense to us if you are looking on an equal -weighted basis.
+Creating sector/industry sub -indices…
+When it comes to creating AI sector/industry sub -indices, there are generally two approaches. The first
+camp (e.g. many active ETFs/indices) takes a discretionary approach to identifying software firms, either
+via proprietary screens or subjective decisions. The second camp relies on firm classifications made
+according to the GICS (Global Industry Classification Standa rd) or similar. Under this approach, firms
+involved in the software space may not feature in a software index if they are involved in other a ctivities.
+This creates the confusing situation where most of the mega cap US tech firms – many of which are seen
+to be involved in the software business in way or another – do not feature in software indices. Only
+Microsoft is classed as a software stock. (Chart A 3, Appendix, shows which GICS industry these mega
+caps sit in and their weight in each. It also shows the weight of each industry in the respective GICS
+sector, and the weight of each sector in the MSCI USA Index).
+For our CE AI equity Indices, we opt to use GICS classifications. Put simply, given the imperfections of
+both approaches, we think that the objectivity of using accepted classifications makes the indices – and
+the messages from them – easier to interpret.
+We define “enablers” as firms in the S emiconductor industry group plus those in the Utilities and Real
+Estate sectors. The remaining AI -related stocks are classed as “users” .
+Bonds Focus Page 7
+
+Equities Focus
+Table A1: ETF Sector Composition (% of ETFs)
+Global US Global Ex. US
+U C n o i u q n u t e C T o o u ta n l t C ET u F m W ul e a i t g iv h e t Ad A ju U s M te d Average U C n o i u q n u t e C T o o u ta n l t C W u ve m e i E u g T l h a F t t i Ad A ju U s M te d Average U C n o i u q n u t e C T o o u ta n l t C W u ve m e i E u g T l h a F t t i Ad A ju U s M te d Average
+IT 53.2 61.4 62.1 64.6 60.3 56.2 65.7 65.9 68.0 64.0 49.6 54.1 54.0 58.8 54.1
+Industrials 23.9 18.4 17.4 16.3 19.0 17.3 11.6 11.3 10.2 12.6 31.9 30.0 30.5 26.8 29.8
+Comms. 5.4 6.8 9.6 9.0 7.7 6.8 7.9 10.6 10.4 8.9 3.7 4.8 7.4 6.6 5.6
+Cons. Disc. 6.4 5.9 6.6 7.0 6.5 4.3 5.1 6.9 7.5 5.9 8.9 7.2 6.0 6.1 7.1
+Health Care 5.1 3.6 2.4 2.0 3.2 6.2 4.2 2.9 2.6 4.0 3.7 2.4 1.1 1.0 2.0
+Financials 3.0 1.6 0.6 0.4 1.4 4.9 2.3 0.9 0.4 2.1 0.7 0.5 0.1 0.2 0.4
+Real Estate 1.7 1.4 0.6 0.2 1.0 2.5 2.0 0.8 0.3 1.4 0.7 0.5 0.2 0.2 0.4
+Utilities 0.7 0.5 0.5 0.3 0.5 1.2 0.8 0.7 0.4 0.8 0.0 0.0 0.0 0.0 0.0
+Energy 0.7 0.4 0.3 0.2 0.4 0.6 0.3 0.1 0.1 0.3 0.7 0.5 0.7 0.4 0.6
+Sources: LSEG, Capital Economics . “Unique count” refers to the 297 stocks featured across these 10 ETFs. “Total count” sums up how many times each stock appe ars (e.g., a stock that
+featured in all 10 would be counted 10 times). “Cumulative ETF Weight” sums up each stock ’s weight in the ETFs , rather than just the occurrences. “AUM Adjusted” does the same but
+further adjusts for the size of the ETF ( so a 1% weight in the largest ETF is worth more than a 1% weight in the smallest ETF). “Average” is a simple average of the othe r four measures.
+Table A2: ETF Industry Composition (% of ETFs)
+Global US Global Ex. US
+U C n o i u q n u t e C T o o u ta n l t C ET u F m W ul e a i t g iv h e t Ad A ju U s M te d Average U C n o i u q n u t e C T o o u ta n l t C ET u F m W ul e a i t g iv h e t Ad A ju U s M te d Average U C n o i u q n u t e C T o o u ta n l t E C T u F m W ul e a i t g iv h e t Ad A ju U s M te d Average
+Semis 12.1 19.1 29.8 33.0 23.5 11.1 19.3 31.7 34.7 24.2 13.3 18.8 25.8 30.0 22.0
+Software 16.5 17.5 14.2 12.5 15.2 22.8 23.5 18.9 18.3 20.9 8.9 7.2 4.3 2.4 5.7
+Machinery 12.1 10.0 8.6 7.1 9.5 4.3 3.1 2.8 2.3 3.1 21.5 21.7 21.0 15.6 19.9
+Hardware 7.4 8.2 5.4 5.3 6.6 5.6 7.1 4.1 3.1 5.0 9.6 10.1 8.3 9.0 9.3
+Electronic. Eq. 8.1 7.1 5.1 5.6 6.5 5.6 4.5 2.2 2.0 3.6 11.1 11.6 11.2 11.7 11.4
+IT Services 6.7 7.3 5.6 5.7 6.3 7.4 8.2 6.1 6.0 6.9 5.9 5.8 4.3 5.3 5.3
+Int. Media 3.0 4.8 8.3 7.2 5.8 3.1 5.4 9.5 8.8 6.7 3.0 3.9 5.6 4.5 4.2
+Electrical Eq. 4.4 3.2 3.6 3.9 3.8 3.1 2.3 1.8 1.3 2.1 5.9 4.8 7.6 8.2 6.6
+Aero & Def 3.4 2.5 3.9 3.5 3.3 5.6 3.7 5.5 5.4 5.0 0.7 0.5 0.5 0.3 0.5
+Broad. Retail 1.3 1.8 3.2 3.2 2.4 0.6 1.7 3.2 3.1 2.2 2.2 1.9 3.4 3.4 2.8
+Comms. Eq, 2.4 2.1 2.0 2.6 2.3 3.7 3.1 2.9 3.9 3.4 0.7 0.5 0.1 0.3 0.4
+Automobiles 1.7 1.6 2.5 2.9 2.2 1.2 1.7 3.2 4.0 2.5 2.2 1.4 1.0 1.1 1.5
+Health Eq. 2.7 2.0 1.8 1.5 2.0 3.1 2.3 2.3 2.0 2.4 2.2 1.4 0.8 0.6 1.3
+Prof. Services 2.7 1.4 0.4 0.4 1.2 2.5 1.1 0.4 0.1 1.0 3.0 1.9 0.4 0.9 1.5
+Auto Parts 2.0 1.4 0.5 0.5 1.1 0.6 0.3 0.1 0.1 0.3 3.7 3.4 1.4 1.1 2.4
+Life Sciences 1.3 1.1 0.4 0.4 0.8 1.9 1.4 0.4 0.5 1.0 0.7 0.5 0.2 0.2 0.4
+Hotels/Leisure 1.0 0.9 0.3 0.3 0.6 1.2 1.1 0.3 0.2 0.7 0.7 0.5 0.2 0.5 0.5
+Media 1.0 0.9 0.2 0.4 0.6 1.9 1.4 0.2 0.6 1.0 0.0 0.0 0.0 0.0 0.0
+Fin. Services 1.3 0.7 0.1 0.1 0.6 1.9 0.8 0.1 0.0 0.7 0.7 0.5 0.1 0.2 0.4
+Entertainment 0.7 0.5 0.4 0.6 0.5 1.2 0.8 0.6 0.9 0.9 0.0 0.0 0.0 0.0 0.0
+Wireless Com. 0.3 0.4 0.6 0.8 0.5 0.0 0.0 0.0 0.0 0.0 0.7 1.0 1.8 2.1 1.4
+Ind. Cong. 0.3 0.4 0.4 0.7 0.4 0.0 0.0 0.0 0.0 0.0 0.7 1.0 1.1 1.8 1.2
+Health Serv. 0.7 0.4 0.1 0.1 0.3 0.6 0.3 0.2 0.1 0.3 0.7 0.5 0.1 0.1 0.4
+Sources: LSEG, Capital Economics . “Unique count” refers to the 297 stocks featured across these 10 ETFs. “Total count” sums up how many times each stock appe ars (e.g., a stock that
+featured in all 10 would be counted 10 times). “Cumulative ETF Weight” sums up each stock ’s weight in the ETFs , rather than just the occurrences. “AUM Adjusted” does the same but
+further adjusts for the size of the ETF ( so a 1% weight in the largest ETF is worth more than a 1% weight in the smallest ETF). “Average” is a simple average of the othe r four measures.
+Bonds Focus Page 8
+
+Equities Focus
+Table A3: Change In Major AI ETF Sector Compositions (Start -2024 to Start -2026, % -pts)
+Global US Global Ex. US
+Unique Count Total Count Average Unique Count Total Count Average Unique Count Total Count Average
+IT 11.7 14.9 13.3 17.2 10.2 13.7 13.6 18.3 15.9
+Real Estate 1.7 1.4 1.6 2.5 2.0 2.2 0.7 0.5 0.6
+Financials 2.0 0.9 1.4 -1.7 1.6 -0.1 -1.0 -0.3 -0.7
+Utilities 0.7 0.5 0.6 1.2 0.8 1.0 0.0 0.0 0.0
+Energy 0.0 0.0 0.0 -1.6 -0.1 -0.8 0.2 0.1 0.1
+Cons. Stap. -0.3 -0.4 -0.4 0.0 0.0 0.0 -0.6 -0.8 -0.7
+Health Care -0.1 -1.8 -1.0 -4.0 -2.3 -3.2 -0.4 -1.5 -0.9
+Comms. -3.6 -1.0 -2.3 -0.7 -0.7 -0.7 -5.0 -1.9 -3.4
+Industrials -3.4 -9.3 -6.4 -3.5 -7.0 -5.3 -0.1 -7.8 -4.0
+Cons. Disc. -7.8 -5.0 -6.4 -4.1 -3.2 -3.6 -7.4 -6.5 -7.0
+Sources: LSEG, Capital Economics . “Unique count” refers to the number of unique stocks featured in the 10 largest AI ETFs at start-2024 or start-2026. “Total count” sums up how many
+times each stock appears (e.g., a stock that featured in all 10 in 2026 would be counted 10 times). ‘Average’ is a simple average of the other measures.
+Table A4: Change In Major AI ETF Industry Compositions (Start -2024 to Start -2026, % -pts)
+Global US Global Ex. US
+Unique Count Total Count Average Unique Count Total Count Average Unique Count Total Count Average
+Hardware 4.8 4.8 4.8 3.2 3.3 3.2 4.8 6.9 5.8
+Semis 2.6 6.5 4.5 3.4 6.5 5.0 3.6 5.5 4.6
+Int. Media 3.0 4.8 3.9 3.1 5.4 4.2 3.0 3.9 3.4
+IT Services 0.8 3.4 2.1 3.6 4.4 4.0 -0.8 1.4 0.3
+Prof. Services 2.7 1.4 2.1 2.5 1.1 1.8 3.0 1.9 2.4
+Software 3.0 1.0 2.0 0.7 -3.7 -1.5 1.6 2.0 1.8
+Comms. Eq. 1.0 1.4 1.2 1.8 2.4 2.1 -0.5 -0.3 -0.4
+Hotels/Leisure 1.0 0.9 1.0 1.2 1.1 1.2 0.7 0.5 0.6
+Media 1.0 0.9 1.0 1.9 1.4 1.6 0.0 0.0 0.0
+Aero. & Def. 1.1 0.5 0.8 -1.2 0.6 -0.3 -0.5 -0.3 -0.4
+Fin. Services 1.0 0.5 0.8 1.9 0.8 1.4 0.1 0.1 0.1
+Health Serv. 0.7 0.4 0.5 0.6 0.3 0.5 0.7 0.5 0.6
+Wireless Com. 0.3 0.4 0.3 0.0 0.0 0.0 0.7 1.0 0.9
+Broad. Retail 0.0 0.5 0.3 -0.3 0.3 0.0 0.4 0.7 0.6
+Electronic Eq. 1.5 -1.0 0.3 1.2 -2.7 -0.7 3.2 1.9 2.6
+Life Sciences 0.0 -0.5 -0.3 -0.1 0.4 0.2 -0.5 -1.9 -1.2
+Health Eq. -0.3 -1.3 -0.8 -2.7 -2.9 -2.8 -0.2 0.2 0.0
+Ind. Cong. -0.7 -0.9 -0.8 -1.0 -1.0 -1.0 -0.5 -0.6 -0.6
+Entertainment -1.3 -0.7 -1.0 -0.2 0.2 0.0 0.0 0.0 0.0
+Electrical Eq. -1.2 -2.2 -1.7 -0.3 -2.2 -1.2 -0.2 -2.0 -1.1
+Sources: LSEG, Capital Economics . “Unique count” refers to the number of unique stocks featured in the 10 largest AI ETFs at start-2024 or start-2026. “Total count” sums up how many
+times each stock appears (e.g., Nvidia features in all 10 in 2026 so is counted 10 times). ‘Average’ is a simple average of the other measures.
+Bonds Focus Page 9
+
+Equities Focus
+Disclaimer: While every effort has been made to ensure that the data quoted and used for the research behind this document is reliable, t here is no guarantee
+that it is correct, and Capital Economics Limited and its subsidiaries can accept no liability whatsoever in respect of any errors or omissions. This document is
+a piece of economic research and is not intended to constitute investment advice, nor to solicit dealing in securities or inv estments.
+Distribution: Subscribers are free to make copies of our publications for their own use, and for the use of members of the subscribing team at their business
+location. No other form of copying or distribution of our publications is permitted without our explicit permis sion. This includes but is not limited to internal
+distribution to non -subscribing employees or teams.
+Email sales@capitaleconomics.com Visit www.capitaleconomics.com

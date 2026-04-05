@@ -1,0 +1,503 @@
+Thematic Research
+Thematic industry research based on proprietary analytics from CFRA
+Kenneth Leon
+cservices@cfraresearch.com
+Private Credit: Negative Sentiment, What’s Next?
+Key Takeaways
+- Private credit has gained a broad base of investors tied to Positive (+) or Negative (-) Implications
+pension, insurance, sovereign, and wealth.
+(-) Apollo Global Management Inc. (APO)
+- Market size for private credit is about $2.5-$3.0 trillion as
+of February 25 and is expected to grow to over $4.0 trillion (-) Ares Management Corporation (ARES)
+in the next five years.
+(-) Blackstone Inc. (BX)
+- The market is under increased scrutiny due to significant
+disparities between public and private funds concerning (-) Blue Owl Capital Inc. (OWL)
+liquidity, redemption rights, and net asset value (-) Brookfield Asset Management Ltd. (BAM)
+perspectives.
+(-) KKR & Co. Inc. (KKR)
+- To better align private credit with all types of investors,
+including wealth, we think there needs to be better education, transparency, and disclosures.
+- The leading firms with private credit concentration are APO, ARES, and OWL, while more diversified
+firms like BAM, BX, and KKR have significant private credit exposure. We see a buying opportunity
+on these stocks despite negative sentiment in the public equity market on private credit funds.
+Fundamental Context
+We think 2026 will test the private credit market. Some investors are skeptical as to whether this asset
+class faces its first credit cycle. There has been greater attention from the media on a wide range of issues
+and risks with investing in private credit, especially for individual investors. We have seen the alternative
+assets management (ALT) firms reap the benefits of this asset class with explosive growth, but increased
+complexity and elevated systemic importance to lending. We believe it is premature to categorize these
+issues as late-cycle behavior, especially considering the significant attention given to high-profile
+bankruptcies in late 2025, which contributed to looser lending standards and compressed spreads that
+negatively impacted private credit investment returns.
+Public investors have become skeptical about the private credit model for ALT firms. There is growing
+concern about direct investment in private credit funds and their contribution to the ALT enterprise. Limited
+regulatory guardrails, expanding retail participation, and opaque pricing in illiquid markets have caused
+transparency concerns. Recent concerns are arising that capital raised is exceeding quality deal flow, with
+some ALT managers unwisely expanding risk appetite, in our opinion.
+Many of the ALT share prices have come down significantly in the last 12 months (LTM). As of February
+24, the most concentrated players have sold off, with ARES down 31% and OWL down 51% in LTM, while
+more-diversified ALT firms were less affected, with APO down 23%, BX down 26%, BAM down 17%, and
+KKR down 27%. The dispersion among this group has something to do with enterprise size and
+diversification. The largest ALT firms have significant scale in other asset classes such as private equity, real
+estate, capital markets, insurance, and wealth management. Share price weakness for OWL and others can
+be tied to how their individual private credit funds have performed or their risk exposure. We will address
+some of these pressure points that have come up in their private funds often through the investment vehicle
+called business development companies (BDC), where public investors can see a more granular level of
+private credit activity.
+Thematic Research February 26, 2026 1
+
+Table 1: Global Private Credit Market Size ($ Billions)
+Distressed Total AUM
+Year Direct Lending Mezzanine Other
+Debt (Estimated)
+2000 10 10 10 10 40
+2005 80 40 30 50 200
+2010 120 60 50 100 330
+2015 250 90 70 150 560
+2020 600 150 100 250 1,100
+2021 750 170 120 300 1,340
+2022 900 190 140 350 1,580
+2023 1,100 210 160 400 1,870
+2024 1,300 230 180 450 2,160
+2025 (Est.) 1,500 250 200 500 2,450
+Source: CFRA.
+Private credit is no longer a niche market, but a formidable market outside of the traditional banking
+system. There are some industry sources that have the private credit market as high as $3.0 billion. Our ALT
+firms transact directly with borrowers to negotiate credit terms and originate privately held loans that do not
+trade in the public markets. We think ALT firms as private lenders have become the preferred lending
+partners given their level of sophistication in structuring private credit, flexibility, available capital to lend, and
+certainty of execution. Corporate borrowers have been willing to pay a premium for execution, agility, and
+customization that private credit lenders can offer, in our opinion. Corporate direct lending is the dominant
+segment of the private credit market, accounting for over 60% of current investments. Besides mezzanine
+and distressed debt, other areas that cover asset-backed lending, infrastructure debt and real estate debt
+are increasingly relevant and account for most of the remaining 20% of the market.
+Figure 1: How Private Credit Managers Plan to Develop Their Origination Channels
+Peer-to-peer platforms 7.0%
+In-house advisory 17.0%
+High net worth individuals 28.0%
+Banks/credit institution 28.0%
+Private equity firms 47.0%
+Other industry relationships 48.0%
+Direct relationship with a borrower 80.0%
+0.0% 20.0% 40.0% 60.0% 80.0% 100.0%
+Source: CFRA, Alternative Credit Council.
+Thematic Research February 26, 2026 2
+
+Private credit has been mostly a U.S. phenomenon to date. While there is currently U.S. investor
+skepticism on private credit, ALT firms are actively pursuing the rest of the world. On their recent earnings
+calls, some of the leading firms such as ARES and KKR mentioned opportunities for fundraising in Asia and
+the Middle East for private credit. The opportunity is issuance of new private credit funds dedicated to
+investing in these regions. As of December 31, 2025, the U.S. represents 65% to 70% of total global gross
+assets under management (AUM) in private credit.
+We could view the U.S. market as mature, as it works through the investment cycle of closing older private
+credit funds and issuing new funds. The next largest market is Europe, representing up to 25% of the total
+global private credit market, combining the gross AUM of U.K., France, Germany and the rest of the region.
+We find China to be a potential opportunity where we have seen record activity in public equity IPOs either
+through Hong Kong or mainland China exchanges. Private credit may be more problematic in China given
+worries about governance and regulation that are different than other developed countries.
+Figure 2: Private Credit 2025 Gross Assets Under Management ($ Billions)
+30
+55 12
+148
+158
+210
+315
+2,227
+USA UK France Germany Australia China Canada Japan
+Source: CFRA, Alternative Credit Council. Estimated data as of December 31, 2025.
+Figure 3: Private Credit Average Transaction Size ($ Billions)
+100%
+2.2%
+4.7%
+95%
+11.2%
+14.1% 13.2% 13.3%
+90%
+97.8%
+85% 95.3%
+88.8%
+80% 85.9% 86.8% 86.7%
+75%
+2020 2021 2022 2023 2024 2025
+Transactions less than $1 billion Transactions greater than $1 billion
+Source: CFRA, Alternative Credit Council. Data as of December 31, 2025.
+Thematic Research February 26, 2026 3
+
+Private credit average transaction size is getting larger. Whether this creates a higher credit loan risk
+exposure remains to be seen. We believe large private credit deals represent more concentrated exposure if
+at the wrong time of the credit cycle. There is no question that the size, complexity, and current market
+conditions create multiple areas for potential failure. We think any mega private loans in the fund present
+concentration risk in which a single loan of over $1 billion would be greater than 5% of the private credit fund,
+creating the risk of loan defaults. ALT firms are steadfast that loan loss exposure is in a normalized range of
+delinquent or potential default loans. Large transaction deals mostly originated in the 2023-2025 period at
+peak valuations or measures of EBTIDA multiples. Typical loan maturities are five to seven years, with a
+refinancing window from 2028 to 2030.
+Private credit pivots to investment grade credit issuance, which was $200 billion in 2025. APO
+management stated that private credit that started with small-to-midsize direct loans in the $100 million to
+$250 million range have moved to loans in the $500 million to $1 billion range. The key pivot is lending to
+investment grade credit borrowers, a $4 trillion market that is much larger than the non-investment grade or
+high yield market. Private credit may also be first lien loans or second lien loans that are secured by
+collateral of the borrower. There may also be asset-based loans (ABL) secured by working capital assets
+(e.g., inventory, receivables), which are more likely smaller loans. Our worries are megadeals in private credit
+to finance market leaders in software and technology or that have the most to lose from AI commoditization.
+This brings us back to credit risk for larger average transaction size.
+We think private credit transaction size could be disproportionately risky. Megadeals greater than $1
+billion carry several risks: concentration risk, where a single loan can impair an entire fund; complexity risk,
+as more sophisticated borrowers are harder to restructure; sector exposure risk, with larger deals
+concentrated in software vulnerable to AI disruption; valuation pressure, making it harder to mark down
+bigger potential losses; refinancing risk if there is less access to a 2027-2028 market downturn; and
+systemic risk, where larger defaults could trigger contagion and federal intervention.
+Figure 4: 2026 Outlook for Non-U.S. Private Credit Markets and Non-U.S. ALT Firms
+Opportunities:
+- European growth is expected to outpace U.S. on a percentage basis in 2026
+- Asia expansion as regional capital markets are likely to develop faster
+- Niche specialization (e.g., sector, geography) vs. competing on scale
+- Local regulatory advantages (e.g., ELTIF, AIFMD familiarity)
+Challenges:
+- Capital disadvantage – U.S. firms raising 5x-10x more
+- U.S. expansion into Europe – Ares, Apollo, and Blackstone building European teams
+- Talent wars – U.S. firms poaching European talent
+- Technology/data – U.S. firms investing more in origination platforms
+Source: CFRA.
+In the private credit market, U.S. firms continue to dominate, because they have a capital advantage,
+raising 5x to 10x compared to non-U.S. firms. The U.S.-based ALT firms have advantages in capital,
+distribution, and brand, with deal sizes of $100 million to $1+ billion, but face intense competition.
+Non-U.S. private credit firms exist and are growing. European firms like ICG plc (ICG GBP17 NR), Partners
+Group Holding AG (PGHN SW CHF852 **), and CVC Capital Partners plc (CVC EUR12 NR) are significant
+regional players, but none approach the scale of top five U.S. managers. The non-U.S. firms are in smaller
+private credit country markets in Europe that have advantages of local relationships, regulatory knowledge,
+and less-crowded, relationship-driven markets.
+Thematic Research February 26, 2026 4
+
+Brookfield is the exception, as a Canadian firm that has achieved top three global status through
+aggressive M&A (Oaktree) and leveraging its broader $1+ trillion alternatives platform. Its recent NYC
+headquarters move by BAM signals where the center of gravity lies for ALT including private credit.
+We think the best opportunities for non-U.S. firms are in regional specialization, local relationships, and
+sectors, where scale is not the primary competitive advantage, essentially playing a different game than the
+U.S. mega-managers.
+Figure 5: What Worries Public Investors About Private Credit?
+Non-Investment Grade Credit Risk: AI Disruptor to Technology Sector:
+Most ALT firms started private credit in high yield lower Private credit is a significant lender to software
+grade private credit, but large firms like APO have companies and digital infrastrucure. AI demand could
+pivoted to investment grade private credit, which is disrupt data center buildout to oversupply risk and
+much larger, with an estimated $4 trillion market. We tenant renewal leases. Software firms may face sharp
+believe underwriting discipline and borrower control market repricing of valuation from Anthropic's unveiled
+matter and affect investment returns and credit risk coding agents. Private credit activity in software is quite
+exposure. large in last decade.
+Market Price Volatility: Policy & Regulatory Risk:
+BDCs are showing some weakness in lower grade Level of opacity in private credit makes its challenging
+private credit where workouts are needed. Deployment for regulators to assess buildup of risks. A concern is
+pressure from retail capital inflows and redemption interconnection with banks, insurers, and private credit
+requests is pushing marginal credit in the market at the funds leading to contagion. Insurance companies are
+wrong time in the investment cycle. We think private major private credit investors seeking yield to match
+credit is a relationship and execution business. liabilities. Uncertain valuations could raise risk.
+Source: CFRA.
+Each of these worries featured in Figure 5 can use a deep dive of analysis. We plan to publish
+subsequent, more-detailed thematic reports on each of these subjects. For now, there is a large dislocation
+gap between private funds versus public pricing tied to private credit funds and what pressure points may
+accelerate further sell off. Private credit loans to software companies in the last decade face uncertainties
+with AI disruptors, while AI investment in data centers or related infrastructure shows outsized private credit
+funding with potential risks to the AI model of borrowers or refinancing risks longer term.
+We think there is not a direct parallel to the financial crisis in 2007. However, we see signs of worry. OWL
+froze withdrawals permanently, citing portfolio stress in certain funds, Treasury Secretary Bessent raised
+public concerns about private credit activity, and the public market are trying to assess whether any gating
+of redemptions by private credit funds is isolated or signals a systemic problem.
+Where is U.S. policy and regulation? In our view, the Federal Reserve and regulators are more aware of the
+potential risks to private credit, but the markets and the firms are less regulated than banks. Private credit is
+more opaque and less regulated than 2077 subprime. There is no supervisory role by the Fed.
+We could see more redemption requests, where allowed, for select private credit funds. There is a gating
+mechanism that limits how much redemption is required each quarter. The ALT firms with private credit
+funds specialized for technology or software companies present higher risk to limited partners or private
+investors.
+Thematic Research February 26, 2026 5
+
+Figure 6: What Investors Are Pricing in Public or Private Markets?
+Base Case Scenario (Market Consensus Forming)
+- Multiple private credit funds gate limit redemption size in the next two to three quarters
+- The secondary sponsor market takes on more resale activity, heavily discounting net asset values
+(NAV) compared to limited partners’ original cost basis
+- Mark to market comes down 10% to 15% on many private credit funds, varying in scope
+- Default rates spike to 4%-6% versus historical 1.5%-2% range, fee pressure from limited partners,
+regulatory intervention, or Fed supervision, and earnings headwinds ahead
+Bear Case Scenario (Tail Risk to Something Damaging or Systemic)
+- Cascading or triggering redemption gates one after another on private credit funds
+- Asset fire sales of illiquid assets, although most private credit funds do not have high or unlimited
+redemption rights in a short period of time
+- Bank credit line pullback creates a funding crisis at the ALT firm or private credit fund level
+- Insurance company capital impairment hurts sponsors
+- Systemic repricing of the $2 trillion private credit market across different products or fund types
+occurs.
+- ALT firm public stocks have sustained downside to 30% to 50% correction
+Bull Case Scenario (Contrarian View in Public Equity Market)
+- OWL or private ALT firms are isolated to specific funds or private credit strategy
+- Industry takes corrective medicine now and emerges stronger
+- Flight to quality benefits the largest and best global ALT firms as smaller firms fail
+- Distressed restructuring opportunities create new revenue streams
+- Overreaction by public equity market that leads to an enhanced buying opportunity on ALT
+equities. This is our investment view today.
+Source: CFRA.
+Table 2: ALT Firms’ Assets Under Management by Business Segments ($ Billions)
+Secondaries/
+Total Real Assets/ Private Private
+Company Ticker Insurance Hedge
+AUM Real Estate Credit Equity
+Funds/Other
+Apollo Global Mgmt. APO 938 n/a 749 (a) 189 n/a
+Ares Mgmt. ARES 622 139 407 n/a 25 51
+Brookfield Asset Mgmt. BAM 1,181 663 363 (b) 155 n/a
+Blackstone BX 1,270 319 443 (c) 416 92
+Blue Owl OWL 307 81 157 n/a 69 n/a
+KKR & Co. KKR 744 192 276 (d) 229 47
+Source: CFRA, company reports. AUM data as of December 31, 2025.
+(a) APO insurance reported in Retirement Services, with $292 billion net invested assets.
+(b) Brookfield Asset Management also reports Brookfield Wealth Solutions of $108 billion in fee-bearing capital, no AUM disclosure.
+(c) Blackstone reports private credit and insurance together.
+(d) KKR Insurance segment reported as separate operating business that references Global Atlantic subsidiary, with $219 billion AUM.
+Thematic Research February 26, 2026 6
+
+APO has the highest concentration in private credit, representing 80% of total AUM, followed by ARES
+(65%), OWL (51%), KKR (37%), BX (35%), and BAM (31%). We observed that there is no standard definition
+for each investment segment. There is a level of complexity as to how certain firms classify private credit
+with other activities. For example, KKR’s $219 billion AUM includes $164 billion in private credit and $58
+billion in sponsored reinsurance vehicles. This exercise highlights that the ALT firms can be viewed as
+idiosyncratic to what they disclose without standard reporting. We believe it is confusing when attempting to
+perform ALT peer analysis.
+Many in the ALT industry seek to have better alignment between private credit funds and investors.
+Most of these firms are trying to gain broader penetration of the wealth management market. We believe the
+fiduciary role to investor risk is paramount to wealth management clients that may or may not be as
+sophisticated as the institutions that have invested in private credit. Many industry observers recommend the
+ALT industry should have a higher level of transparency and reporting, better ways to disclose market data,
+enhanced communications, right structure of fees, and equitable ways to exercise redemptions.
+Table 3: Alternative Asset Managers – Stock Valuations Are Historically Low
+Price
+P/E
+Market Performance
+STARS Share
+Company Ticker Cap Five-
+Rating Price* Year- Last 12 Next 12
+($ Billions) Year
+to-Date Months Months
+Average
+Apollo Global APO 4 114 66.2 -21.2% -22.8% 12.0x 17.3x
+Ares ARES 4 117 38.4 -27.5 -30.6 18.3 31.6
+Brookfield Asset BAM 4 48 78.2 -8.1 -17.3 26.7 33.0
+Blackstone BX 5 116 143 -24.5 -25.9 17.3 28.5
+Blue Owl OWL 4 11 16.8 -28.8 -50.7 10.7 21.7
+KKR & Co. KKR 4 96 88.7 -24.9 -27.0 14.0 28.1
+Source: CFRA. *As of February 24, 2026.
+Stocks provide an enhanced buying opportunity, in our opinion. Individual stocks are trading at a
+significant discount to their five-year historical P/E multiple averages, with APO at a 31% discount, ARES
+42%, BAM 19%, BX 39%, OWL 51%, and KKR 50%. This opportunity comes with organic AUM growth
+averaging 15%-20% annually over the past five years (2021-2025). The equity risk premium reflects the
+transparency and quality of the book, especially in private credit. The current investor sentiment is negative
+following a repricing of risk after years of believing alternative funds could not fail and questioning the
+investment fund framework.
+There is a risk overhang on the private credit funds, where there is a gate (i.e., contractual limits to
+quarterly redemptions to curb disruption to the fund’s investments). Most of the private funds have penalties
+for early redemptions if allowed. We expect the private credit secondary sponsor market to accelerate in
+2026 as limited partnership holdings change ownership, selling at large losses to their investment cost basis.
+The current environment is likely to put a cloud on new fundraising for private credit funds in the U.S. market,
+while Asia and Europe are less developed.
+Education plays a critical role in expanding investor growth in private credit. The ALT industry needs to
+provide more education on the varied private credit strategies that are offered in their funds. Some of these
+credit strategies are very sensitive to economic and credit cycles, while other private credit funds are more
+opportunistic and transaction specific. Wealth managers need more clarity so they can sort not only the
+reputation risk of ALT firms but also the risk-reward in different funds offered. Education should fund
+selection in varied credit strategies and target different industry sectors and geographies.
+Thematic Research February 26, 2026 7
+
+Risk Factors
+Private credit faces many risks that range from their fund portfolio to investor redemptions. The broader
+risks are a major downturn on the investment cycle, lower fundraising, poor fund performance results, and
+difficulty valuing fund assets.
+We think it is hard to always get it right given private credit operates in a complex regulatory and tax
+environment that could restrict their business. A recession could hurt the operating fundamentals of the
+corporate borrowers, thereby negatively affecting operating cash flow that supports credit payments.
+A bear market could decrease the market value of debt instruments or investments held in private credit
+funds or significantly reduce market liquidity. On redemptions, investors may downsize their investment
+allocation to private credit funds or external events may compel institutions to rebalance their overall
+investment portfolio. ALT firms may also have conflicts of interest in co-investing with limited partner
+investors.
+Company Implications
+Company / Ticker 12-Month Target Price ($) STARS Rating
+Apollo Global Management Inc. / APO 165 4
+Ares Management Corporation / ARES 160 4
+Blackstone Inc. / BX 185 5
+Blue Owl Capital Inc. / OWL 20 4
+Brookfield Asset Management Ltd. / BAM 60 4
+KKR & Co. Inc. / KKR 130 4
+Source: CFRA.
+Relative Performance
+30.00%
+20.00%
+10.00%
+0.00%
+-10.00%
+-20.00%
+-30.00%
+-40.00%
+-50.00%
+-60.00%
+Apollo Global Management, Inc. (NYSE:APO) - Share Pricing
+Ares Management Corporation (NYSE:ARES) - Share Pricing
+Brookfield Asset Management Ltd. (TSX:BAM) - Share Pricing
+Blackstone Inc. (NYSE:BX) - Share Pricing
+Blue Owl Capital Inc. (NYSE:OWL) - Share Pricing
+KKR & Co. Inc. (NYSE:KKR) - Share Pricing
+Source: CFRA, S&P Global Market Intelligence. Data from February 2025 to February 2026.
+Thematic Research February 26, 2026 8
+
+Contact CFRA
+977 Seminole Trail, PMB 230
+Charlottesville, VA 22901-2824
+USA
+P: +1-800-220-0502
+cservices@cfraresearch.com
+www.cfraresearch.com
+Disclosures
+Stocks are ranked in accordance with the following ranking methodologies:
+STARS Stock Reports
+Qualitative STARS recommendations are determined and assigned by equity analysts. For reports containing STARS recommendations
+refer to the Glossary section of the report for detailed methodology and the definition of STARS rankings.
+Quantitative Stock Reports
+Quantitative recommendations are determined by ranking a universe of common stocks based on 5 measures or model categories:
+Valuation, Quality, Growth, Street Sentiment, and Price Momentum. In the U.S., a sixth sub-category for Financial Health will also be
+displayed. Percentile scores are used to compare each company to all other companies in the same universe for each model category.
+The five (six) model category scores are then weighted and rolled up into a single percentile ranking for that company. For reports
+containing quantitative recommendations refer to the Glossary section of the report for detailed methodology and the definition of
+Quantitative rankings.
+STARS Stock Reports and Quantitative Stock Reports
+The methodologies used in STARS Stock Reports and Quantitative Stock Reports (collectively, the "Research Reports") reflect
+different criteria, assumptions and analytical methods and may have differing recommendations. The methodologies and data used to
+generate the different types of Research Reports are believed by the author and distributor reasonable and appropriate. Generally,
+CFRA does not generate reports with different ranking methodologies for the same issuer. However, in the event that different
+methodologies or data are used on the analysis of an issuer, the methodologies may lead to different views or recommendations on the
+issuer, which may at times result in contradicting assessments of an issuer. CFRA reserves the right to alter, replace or vary models,
+methodologies, or assumptions from time to time and without notice to clients.
+Analyst Certification
+STARS Stock Reports are prepared by the equity research analysts of CFRA and its affiliates and subsidiaries. All of the views
+expressed in STARS Stock Reports accurately reflect the research analyst's personal views regarding any and all of the subject
+securities or issuers. Analysts generally update stock reports at least four times each year. No part of analyst, CFRA, or its affiliates or
+subsidiaries compensation was, is, or will be directly or indirectly related to the specific recommendations or views expressed in a
+STARS Stock Report.
+About CFRA Equity Research's Distributors
+This Research Report is published and originally distributed by Accounting Research & Analytics, LLC d/b/a CFRA (“CFRA US”), with
+the following exceptions: In the UK/EU/EEA, it is published and originally distributed by CFRA UK Limited (“CFRA UK”), which is
+regulated by the Financial Conduct Authority (No. 775151), and in Malaysia by CFRA MY Sdn Bhd (Company No. 683377-A). These
+parties and their subsidiaries maintain no responsibility for reports redistributed by third parties such as brokers or financial advisors.
+General Disclosure
+Notice to all jurisdictions:
+Where Research Reports are made available in a language other than English and in the case of inconsistencies between the English
+and translated versions of a Research Report, the English version will control and supersede any ambiguities associated with any part
+or section of a Research Report that has been issued in a foreign language. Neither CFRA nor its affiliates guarantee the accuracy of
+the translation. The content of this report and the opinions expressed herein are those of CFRA based upon publicly-available
+information that CFRA believes to be reliable and the opinions are subject to change without notice. This analysis has not been
+submitted to, nor received approval from, the United States Securities and Exchange Commission or any other regulatory body. While
+CFRA exercised due care in compiling this analysis, CFRA AND ALL RELATED ENTITIES SPECIFICALLY DISCLAIM ALL
+WARRANTIES, EXPRESS OR IMPLIED, to the full extent permitted by law, regarding the accuracy, completeness, or usefulness of this
+information and assumes no liability with respect to the consequences of relying on this information for investment or other purposes.
+No content (including ratings, credit-related analyses and data, valuations, model, software or other application or output therefrom) or
+Thematic Research February 26, 2026 9
+
+any part thereof (Content) may be modified, reverse engineered, reproduced or distributed in any form by any means, or stored in a
+database or retrieval system, without the prior written permission of CFRA. The Content shall not be used for any unlawful or
+unauthorized purposes. CFRA and any third-party providers, as well as their directors, officers, shareholders, employees, or agents do
+not guarantee the accuracy, completeness, timeliness or availability of the Content.
+Past performance is not necessarily indicative of future results.
+This document may contain forward-looking statements or forecasts; such forecasts are not a reliable indicator of future performance.
+This report is not intended to, and does not, constitute an offer or solicitation to buy and sell securities or engage in any investment
+activity. This report is for informational purposes only. Recommendations in this report are not made with respect to any particular
+investor or type of investor. Securities, financial instruments, or strategies mentioned herein may not be suitable for all investors and this
+material is not intended for any specific investor and does not take into account an investor's particular investment objectives, financial
+situations or needs. Before acting on any recommendation in this material, you should consider whether it is suitable for your particular
+circumstances and, if necessary, seek professional advice.
+CFRA may license certain intellectual property or provide services to, or otherwise have a business relationship with, certain issuers of
+securities that are the subject of CFRA research reports, including exchange-traded investments whose investment objective is to
+substantially replicate the returns of a proprietary index of CFRA. In cases where CFRA is paid fees that are tied to the amount of
+assets invested in a fund or the volume of trading activity in a fund, investment in the fund may result in CFRA receiving compensation in
+addition to the subscription fees or other compensation for services rendered by CFRA, however, no part of CFRA’s compensation for
+services is tied to any recommendation or rating. Additional information on a subject company may be available upon request.
+CFRA's financial data provider is S&P Global Market Intelligence. THIS DOCUMENT CONTAINS COPYRIGHTED AND TRADE SECRET
+MATERIAL DISTRIBUTED UNDER LICENSE FROM S&P GLOBAL MARKET INTELLIGENCE. FOR RECIPIENT'S INTERNAL USE ONLY.
+The Global Industry Classification Standard (GICS®) was developed by and/or is the exclusive property of MSCI, Inc. and S&P Global
+Market Intelligence. GICS is a service mark of MSCI and S&P Global Market Intelligence and has been licensed for use by CFRA.
+Other Disclaimers and Notice
+Certain information in this report is provided by S&P Global, Inc. and/or its affiliates and subsidiaries (collectively “S&P Global”). Such
+information is subject to the following disclaimers and notices: “Copyright © 2026, S&P Global Market Intelligence (and its affiliates as
+applicable). All rights reserved. Nothing contained herein is investment advice and a reference to a particular investment or security, a
+credit rating or any observation concerning a security or investment provided by S&P Global is not a recommendation to buy, sell or hold
+such investment or security or make any other investment decisions. This may contain information obtained from third parties, including
+ratings from credit ratings agencies. Reproduction and distribution of S&P Global’s information and third party content in any form is
+prohibited except with the prior written permission of S&P Global or the related third party, as applicable. Neither S&P Global nor its
+third party providers guarantee the accuracy, completeness, timeliness or availability of any information, including ratings, and are not
+responsible for any errors or omissions (negligent or otherwise), regardless of the cause, or for the results obtained from the use of
+such information or content. S&P GLOBAL AND ITS THIRD PARTY CONTENT PROVIDERS GIVE NO EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+PURPOSE OR USE AND ALL S&P INFORMATION IS PROVIDED ON AN AS-IS BASIS. S&P GLOBAL AND ITS THIRD PARTY
+CONTENT PROVIDERS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, EXEMPLARY, COMPENSATORY,
+PUNITIVE, SPECIAL OR CONSEQUENTIAL DAMAGES, COSTS, EXPENSES, LEGAL FEES, OR LOSSES (INCLUDING LOST INCOME
+OR PROFITS AND OPPORTUNITY COSTS OR LOSSES CAUSED BY NEGLIGENCE) IN CONNECTION WITH ANY USE OF THEIR
+INFORMATION OR CONTENT, INCLUDING RATINGS. Credit ratings are statements of opinions and are not statements of fact or
+recommendations to purchase, hold or sell securities. They do not address the suitability of securities or the suitability of securities for
+investment purposes, and should not be relied on as investment advice.”
+Certain information in this report may be provided by Securities Evaluations, Inc. (“SE”), a wholly owned subsidiary of Intercontinental
+Exchange. SE is a registered investment adviser with the United States Securities and Exchange Commission (SEC). SE’s advisory
+services include evaluated pricing and model valuation of fixed income securities, derivative valuations and Odd-Lot Pricing that
+consists of bid- and ask-side evaluated prices for U.S. Municipal and U.S. Corporate Securities (together called valuation services). Such
+information is subject to the following disclaimers and notices: “No content (including credit-related analyses and data, valuations,
+model, software or other application or output therefrom) or any part thereof (Content) may be modified, reverse engineered,
+reproduced or distributed in any form by any means, or stored in a database or retrieval system, without the prior written permission of
+SE. The Content shall not be used for any unlawful or unauthorized purposes. SE and any third-party providers, as well as their
+directors, officers, shareholders, employees or agents (collectively SE Parties) do not guarantee the accuracy, completeness, timeliness
+or availability of the Content. SE Parties are not responsible for any errors or omissions (negligent or otherwise), regardless of the
+cause, for the results obtained from the use of the Content, or for the security or maintenance of any data input by the user. The
+Content is provided on an “as is” basis. SE PARTIES DISCLAIM ANY AND ALL EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR USE, FREEDOM
+FROM BUGS, SOFTWARE ERRORS OR DEFECTS, THAT THE CONTENT’S FUNCTIONING WILL BE UNINTERRUPTED OR THAT
+THE CONTENT WILL OPERATE WITH ANY SOFTWARE OR HARDWARE CONFIGURATION. In no event shall SE Parties be liable to
+any party for any direct, indirect, incidental, exemplary, compensatory, punitive, special or consequential damages, costs, expenses,
+legal fees, or losses (including, without limitation, lost income or lost profits and opportunity costs or losses caused by negligence) in
+Thematic Research February 26, 2026 10
+
+connection with any use of the Content even if advised of the possibility of such damages. Credit-related and other analyses and
+statements in the Content are statements of opinion as of the date they are expressed and not statements of fact or recommendations
+to purchase, hold, or sell any securities or to make any investment decisions. SE assumes no obligation to update the Content following
+publication in any form or format. The Content should not be relied on and is not a substitute for the skill, judgment and experience of
+the user, its management, employees, advisors and/or clients when making investment and other business decisions. SE’s opinions and
+analyses do not address the suitability of any security. SE does not act as a fiduciary or an investment advisor. While SE has obtained
+information from sources it believes to be reliable, SE does not perform an audit and undertakes no duty of due diligence or
+independent verification of any information it receives. Valuations services are opinions and not statements of fact or recommendations
+to purchase, hold or sell any security or instrument, or to make any investment decisions. The information provided as part of valuations
+services should not be intended as an offer, promotion or solicitation for the purchase or sale of any security or other financial
+instrument nor should it be considered investment advice. Valuations services do not address the suitability of any security or
+instrument, and securities, financial instruments or strategies mentioned by SE may not be suitable for all investors. SE does not provide
+legal, accounting or tax advice, and clients and potential clients of valuation services should consult with an attorney and/or a tax or
+accounting professional regarding any specific legal, tax or accounting provision(s) applicable to their particular situations and in the
+countries and jurisdictions where they do business. SE has redistribution relationships that reflect evaluated pricing, derivative valuation
+and/or equity pricing services of other unaffiliated firms with which SE has contracted to distribute to its client base.
+Pricing and data provided by these third-party firms are the responsibilities of those firms, and not SE, and are produced under those
+firms' methodologies, policies and procedures. Valuations services provided by SE and products containing valuations services may not
+be available in all countries or jurisdictions. Copyright © 2026 by Intercontinental Exchange Inc. All rights reserved.”
+For residents of the European Union/European Economic Area
+Research reports are originally distributed by CFRA UK Limited (company number 08456139 registered in England & Wales with its
+registered office address at New Derwent House, 69-73 Theobalds Road, London, WC1X 8TA). CFRA UK Limited is regulated by the UK
+Financial Conduct Authority (No. 775151).
+For residents of Malaysia
+Research reports are originally produced and distributed by CFRA MY Sdn Bhd (Company No. 683377-A).
+For Residents of Singapore:
+This Research Report is distributed by CFRA UK Limited to its clients in Singapore who hold a financial advisers licence or is a person
+exempt from holding such licence (“SG Intermediary”). Recipients of this Research Report in Singapore should contact the SG
+Intermediary in respect to any matters arising from, or in connection with, the analysis in this report. Where the recipient is not an
+accredited, expert or institutional investor as defined by the Securities and Futures Act, the SG Intermediary accepts legal responsibility
+for the contents of this Research Report in accordance with applicable law. When reports are distributed by SG Intermediaries in
+Singapore, the SG Intermediary, and not CFRA, is solely responsible for ensuring that the recipients of the Research Reports
+understand the information contained in the Research Reports and that such information is suitable based on the customer's profile and
+investment objectives. This Research Report is intended for general circulation and no advice or recommendation is made herein or by
+CFRA to any particular person. CFRA does not assume any responsibility to advise on whether any particular product is suitable for any
+person, and the analysis herein does not take into account the specific investment objectives, financial situation or particular needs of
+any particular person, and should not be relied upon for any investment decision.
+For residents of all other countries
+Research reports are originally distributed Accounting Research & Analytics, LLC d/b/a CFRA.
+Copyright © 2026 CFRA. All rights reserved. CFRA and STARS are registered trademarks of CFRA.
+Thematic Research February 26, 2026 11

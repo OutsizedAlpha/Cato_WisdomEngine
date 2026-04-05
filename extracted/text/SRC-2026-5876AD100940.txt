@@ -1,0 +1,351 @@
+Thematic Research
+Thematic industry research based on proprietary analytics from CFRA
+Garrett Nelson
+cservices@cfraresearch.com
+Automotive: Potential Winners and Losers From the Oil
+Price Spike
+Key Takeaways
+- With the recent spike in crude oil prices, we comment on
+Positive (+) or Negative (-) Implications
+potential implications for automotive companies. Obviously,
+(+) Rivian Automotive Inc. (RIVN)
+the current macroeconomic situation is fluid, with a high
+degree of volatility across financial and energy markets, so the (+) Tesla Inc. (TSLA)
+purpose of this note is to help investors understand relative
+(-) Ford Motor Company (F)
+winners and losers depending on the direction of oil prices
+from here. (-) Magna International Inc. (MGA)
+- However, we emphasize that the spike in oil prices is likely to
+(-) THOR Industries Inc. (THO)
+raise the odds of recession, hurt consumer confidence, and
+(-) Winnebago Industries Inc. (WGO)
+negatively impact auto sales overall, noting that road
+transportation (i.e., passenger vehicles and trucking) is oil’s largest end market. A higher oil price
+environment could also re-stoke inflation and negatively impact the outlook for interest rates,
+reversing a key tailwind that has helped boost auto sales over the past several quarters.
+- In short, we think U.S. auto manufacturers with a high degree of truck/SUV exposure could be the
+most hurt from a financial perspective, particularly F. We believe various Asian auto manufacturers,
+such as Toyota Motor Corporation (TM 224 ***) and Honda Motor Co. Ltd. (HMC 28 ***), that
+generally produce more sedans, compact cars, and small SUVs (e.g., RAV4, CR-V) and also have a
+high degree of hybrid vehicle exposure could be relative outperformers in a higher energy price
+environment. Higher oil prices are also a big negative for RV manufacturers such as THO and WGO.
+- Higher fuel prices make the economics of electric vehicles (EVs) more attractive in the eyes of
+consumers as a way to avoid higher prices at the pump, potentially benefiting EV manufacturers
+such as TSLA, RIVN, Lucid Group Inc. (LCID 10 ***), and Polestar Automotive Holding UK PLC
+(PSNY 17 **).
+- We expect auto dealership equities to be more resilient than other automotive sub-industries, as
+their high-margin parts and service segments provide a degree of earnings stability.
+- We have growing concerns related to auto suppliers like MGA, as current dealership vehicle
+inventory levels are high, a problem that could be exacerbated by a drop in consumer demand and
+potentially lead to production cuts, thereby hurting financial results of these companies.
+Fundamental Context
+The auto industry was already struggling with high inventory levels prior to the oil price spike. As of
+January 30, U.S. new vehicle inventories stood at 98 days’ supply, according to Cox Automotive data, well
+above the historical average of 60 days that is considered ideal by many industry observers. The February
+data will be reported in the coming days, but we find the fact that inventory levels were so high prior to the
+recent oil price spike very concerning. Higher oil prices are likely to raise recessionary concerns, hurt
+consumer confidence, and negatively impact auto sales. A higher oil price environment could also re-stoke
+Thematic Research March 10, 2026 1
+
+inflation and negatively impact the outlook for interest rates, reversing a key tailwind that has helped boost
+auto sales over the past several quarters.
+We think F stands to lose the most from higher fuel prices. In 2025, trucks and SUVs accounted for 98.0%
+of F’s total U.S. vehicle sales of 2.20 million units, with the Mustang being its only non-truck or SUV model. By
+powertrain type, internal combustion engine (ICE) vehicles accounted for 85.8% of its total U.S. vehicle sales
+(1.89 million units), with hybrids accounting for 10.4% (228,000 units), and pure battery EVs for the remaining
+3.8% (84,000 units). Just a few weeks ago, F appeared to have a lot of positive momentum, coming off a
+year in which its U.S. vehicle sales jumped 6.0% in 2025, outperforming overall U.S. new vehicle sales growth
+of 2.2%. Sales of F’s profit-driving F-series pickups and SUV models (e.g., Explorer, Expedition, and Bronco)
+were poised to benefit from the combination of lower fuel prices and interest rates, but recent events have
+clouded its outlook. The Detroit Three all rank at the bottom of the industry in terms of real-world fuel
+economy, per the U.S. Environmental Protection Agency (EPA).
+EV manufacturers could benefit. When fuel prices spike, the economics of EVs become more attractive in
+the eyes of consumers seeking to avoid higher prices at the pump. Investor sentiment toward EVs has been
+depressed for several quarters now, particularly since it became clear that the U.S. government was going to
+eliminate federal EV subsidies following the 2024 election. For smaller EV manufacturers, concerns related
+to liquidity, balance sheet, and short interest have risen over this timeframe, and Q4 auto sales data showed
+a steep drop in U.S. EV sales (-36 % Y/Y) following the federal EV tax credit expiration on September 30,
+2025. Cash burn rates are high for smaller EV manufacturers (e.g., LCID, RIVN, PSNY), and short interest
+remains elevated, with ~33% of the float for LCID, 18% for RIVN, 5% for PSNY, and 2% for TSLA. Meanwhile,
+traditional automakers have announced the discontinuation of a number of EV models, reducing competition.
+As the bestselling U.S. EV manufacturer and a company whose investment-grade balance sheet provides a
+level of flexibility not afforded to many of their peers, we think TSLA could see an uptick in vehicle demand,
+although the company’s vehicle portfolio is in somewhat of a transition phase and it is in the process of
+phasing out the Model S and X. EV manufacturers are an automotive sub-group we believe would benefit
+from higher oil prices, and high short interest creates conditions that are potentially ripe for a short squeeze.
+Auto dealerships might not be as hurt by higher fuel prices as one might think. This is because dealers’
+high-margin parts and service segments – not their relatively low-margin vehicle sales businesses - account
+for the majority of their total gross profit. Parts and service results tend to be less cyclical, as demand is
+primarily driven by vehicle repair and maintenance activity. While we would expect dealers’ new vehicle sales
+to suffer in a higher fuel price environment and they would likely have to boost incentives to stimulate sales,
+most dealers sell used vehicles as well, which we think could see some benefit from consumers trading
+down.
+Auto suppliers could be hurt as well. The financial results of auto parts & equipment companies are highly
+correlated with automobile production rates. If there is a decline in new vehicle sales growth, auto
+manufacturers could potentially cut production, which would hurt parts demand. Over the past several
+decades, this has happened many times during industry downturns, with automakers often announcing plans
+to reduce production shifts, idle factory lines, lay off workers, or shutter entire plants. While 2025
+represented the domestic and global industry’s strongest year from a sales volume perspective since 2019,
+current inventory levels are well above average, which we think places auto suppliers at much greater risk
+than normal. Some of the larger-cap auto suppliers in our coverage universe include MGA, Aptiv PLC (APTV
+73 *****), Autoliv Inc. (ALV 109 ****), and BorgWarner Inc. (BWA 53 ***).
+A couple other big losers. RV manufacturers such as THO and WGO, which technically fall under the auto
+manufacturers sub-industry, are some of the most exposed to changes in fuel prices. After U.S. RV sales hit
+a record high of 660,240 units in 2021, before a precipitous decline over more than 50% to just 313,174 units
+in 2023, the industry was believed to be in the early stages of a recovery, with the RV Industry Association
+forecasting a 2.0% Y/Y sales volume increase to 349,000 units in 2026. The jump in oil prices clouds the
+outlook for RV demand, a sub-group of products considered among the most discretionary in the sector.
+Thematic Research March 10, 2026 2
+
+Risk Factors
+Risks to our analysis include, but are not limited to, global economic conditions given the highly cyclical
+nature of the automotive industry, interest rates, crude oil and gasoline prices, and raw material and labor
+costs. Currency rates could also be more or less favorable than we anticipate. Other risks to our thesis
+include changes in domestic and global automobile supply and demand, the impact of tariffs and other
+recent trade policy changes on financial results, and other economic and consumer-related factors,
+including, but not limited to, GDP growth, inflation, consumer confidence, employment statistics, wages,
+discretionary income, and crude oil/gasoline prices.
+Company Implications
+Ford Motor Company (F 12 ***) was the third-largest motor vehicle manufacturer in terms of U.S. sales
+volume in 2025 behind General Motors Company (GM 77 ***) and TM, accounting for 13.2% of U.S. new
+vehicle sales. F’s U.S. sales totaled 2.20 million vehicles (+6% Y/Y), comprising 1.89 million ICE vehicles,
+228,072 hybrid vehicles, and 84,113 EVs. F’s key brands include Ford and Lincoln. We have a Hold opinion
+and a 12-month price target of $16 on F shares, based on 9.1x our 2027 EPS estimate, an early-cycle
+premium to the stock’s five-year average forward P/E of 8.1x. We believe the stock’s valuation is justified by
+its strong position in the U.S. auto industry (particularly in the high-margin truck/ SUV market), attractive
+dividend yield, strong balance sheet, and globally recognized brand. F’s large union exposure, lower market
+share in non-U.S. countries, and long-term liabilities such as pension obligations are also important valuation
+considerations.
+Magna International Inc. (MGA 59 ***) is one of the world’s largest manufacturers of auto parts and
+equipment. In 2025, MGA generated total revenue of $42.0 billion, down from $42.8 billion in 2024. We have
+a Hold opinion and a 12-month price target of $75 on MGA. Our price target is based on a P/E of 10.6x our
+2027 EPS estimate, a slight discount to the stock’s 10-year average forward P/E of 10.7x. We view its
+valuation as justified by fundamental headwinds and competitive pressures in the space, broad and
+diversified base of auto parts, high degree of customer concentration (six customers accounted for 74% of
+total revenue in 2024), strong balance sheet, and cash returns to shareholders in the form of both dividends
+and buybacks. Historically, auto parts & equipment companies have proven to be highly cyclical, with sales
+and earnings reflecting auto production rates and other factors.
+Rivian Automotive Inc. (RIVN 17 ***) is an EV pure play that was founded in 2009 and is headquartered in
+California. In 2025, RIVN generated total revenue of $7.8 billion on global sales of 42,247 units of the
+R1T/R1S in 2025, down from 51,579 units in 2024, and 50,122 units in 2023. We have a Hold opinion and a
+12-month price target of $20 on RIVN. Our price target reflects a material premium to our DCF valuation and
+RIVN’s tangible book value of $3.68/share as of December 31, 2025. As a company with no profitability in
+sight, we see significant liquidity risk. However, we think RIVN’s balance sheet is in better shape than most
+other upstart EV manufacturers. As of December 31, 2025, RIVN had $6.1 billion of cash and cash
+equivalents and $5.0 billion of total debt, versus $7.7 billion of cash and $5.0 billion of debt on December 31,
+2024. The auto industry is notorious for its low margins, high barriers to entry, and high failure rate. In recent
+years, a number of other start-up EV manufacturers have declared bankruptcy, including Fisker Inc. and
+Lordstown Motors.
+Tesla Inc. (TSLA 401 **) is an EV pure play, with five non-commercial battery EV models currently available:
+the Cybertruck, Model Y, Model 3, Model X, and Model S. In 2025, TSLA generated total revenue of $94.8
+billion in global sales of approximately 1.64 million vehicles (-9% Y/Y), consisting of 1.59 million Model 3 and Y
+vehicles and 50,850 for the Model S, X, Cybertruck, and Semi. The geographic breakdown of TSLA’s total
+revenue in 2025 was: U.S. (50%), China (22%), and All Other (28%). TSLA has four reportable segments:
+Automotive sales (72% of total 2025 revenues), Automotive Leasing (2%), Services & Other (13%), and
+Energy Generation & Storage (13%). TSLA accounted for 46% of all U.S. EV sales in 2025, according to
+Kelley Blue Book data. The Model Y and Model 3 were the two bestselling U.S. EV models by a wide margin
+Thematic Research March 10, 2026 3
+
+last year, with estimated U.S. sales of approximately 358,000 units for the Model Y and 192,000 units for the
+Model 3. We have a Sell opinion and a 12-month price target of $360 on TSLA based on 126x our 2027 EPS
+estimate of $2.85. TSLA’s valuation premium relative to auto competitors reflects various technologies in
+development, including a ride-hailing app, a humanoid robot, AI computing, and fully self-driving vehicles.
+THOR Industries Inc. (THO 87 ***) is the world’s largest manufacturer of recreational vehicles. In FY 25 (Jul.),
+THO generated total revenue of $9.6 billion on North American Towable RV sales of 119,790 units (+6%
+Y/Y), North American Motorized RV sales of 17,153 units (-9%), and European RV sales of 44,445 units (-
+20%). We have a Hold opinion and a 12-month price target of $100 on THO, representing a justified early-
+cycle premium to THO’s 10-year average forward P/E of 15.2x and a material premium to RV manufacturer
+peers. We believe the stock’s valuation is justified by the highly cyclical nature of the industry, the
+discretionary nature of its products, geographic diversification (North America is 68% of FY 25 revenues and
+Europe is 32%), and 100% non-union work force. The company generates gross margins similar to those of
+most auto manufacturers.
+Winnebago Industries Inc. (WGO 35 ****) is one of the world’s largest manufacturers of recreational vehicles.
+In FY 25 (Aug.), WGO generated total revenue of $2.8 billion on Towable RV sales of 31,169 units (-3% Y/Y),
+Motorhome RV sales of 5,742 units (-15%), and Boat sales of 4,635 units (+12%). We have a Buy opinion and
+a 12-month price target of $60 on WGO. Our price target represents a justified early-cycle premium to
+WGO’s 10-year average forward P/E of 12.4x and a material discount to RV manufacturer peers. We believe
+the stock’s valuation is justified by the highly cyclical nature of the industry, the discretionary nature of its
+products, lack of geographic diversification (U.S. represented 94% of net revenues in FY 25), and 100% non-
+union workforce. The company generates gross margins similar to those of most auto manufacturers.
+Relative Performance
+140%
+120%
+100%
+80%
+60%
+40%
+20%
+0%
+-20%
+-40%
+Ford Motor Company (NYSE:F) Winnebago Industries, Inc. (NYSE:WGO)
+THOR Industries, Inc. (NYSE:THO) Magna International Inc. (TSX:MG)
+Tesla, Inc. (NasdaqGS:TSLA) Rivian Automotive, Inc. (NasdaqGS:RIVN) - Share Pricing
+Source: S&P Global Market Intelligence. Data from March 9, 2025 to March 9, 2026.
+Implications*
+Positive implications: CFRA sees an improvement in company fundamentals, which could include (but are not limited to)
+improved pricing, strengthening backlog, market share gains, cost improvements, a more favorable regulatory
+environment, or improving demographic trends, over the next 12 months.
+Negative implications: CFRA sees a weakening in the company’s fundamentals, which could include (but are not limited
+to) weaker pricing, reduced backlog visibility, market share losses, cost inflation, unfavorable regulatory climate, or
+demographic headwinds, over the next 12 months.
+Thematic Research March 10, 2026 4
+
+* The categorization of positive or negative implication may not include every qualitative or quantitative factor that is
+used to undertake a full analysis of a company’s financial picture as other factors may need to be analyzed, and is not
+intended to be investment advice and should not be interpreted as such. These categorizations represent the current
+good-faith views of the authors at the time of publication and these views are subject to change without notice of any
+kind.
+Contact CFRA
+977 Seminole Trail, PMB 230
+Charlottesville, VA 22901-2824
+USA
+P: +1-800-220-0502
+cservices@cfraresearch.com
+www.cfraresearch.com
+Disclosures
+Stocks are ranked in accordance with the following ranking methodologies:
+STARS Stock Reports
+Qualitative STARS recommendations are determined and assigned by equity analysts. For reports containing STARS recommendations
+refer to the Glossary section of the report for detailed methodology and the definition of STARS rankings.
+Quantitative Stock Reports
+Quantitative recommendations are determined by ranking a universe of common stocks based on 5 measures or model categories:
+Valuation, Quality, Growth, Street Sentiment, and Price Momentum. In the U.S., a sixth sub-category for Financial Health will also be
+displayed. Percentile scores are used to compare each company to all other companies in the same universe for each model category.
+The five (six) model category scores are then weighted and rolled up into a single percentile ranking for that company. For reports
+containing quantitative recommendations refer to the Glossary section of the report for detailed methodology and the definition of
+Quantitative rankings.
+STARS Stock Reports and Quantitative Stock Reports
+The methodologies used in STARS Stock Reports and Quantitative Stock Reports (collectively, the "Research Reports") reflect
+different criteria, assumptions and analytical methods and may have differing recommendations. The methodologies and data used to
+generate the different types of Research Reports are believed by the author and distributor reasonable and appropriate. Generally,
+CFRA does not generate reports with different ranking methodologies for the same issuer. However, in the event that different
+methodologies or data are used on the analysis of an issuer, the methodologies may lead to different views or recommendations on the
+issuer, which may at times result in contradicting assessments of an issuer. CFRA reserves the right to alter, replace or vary models,
+methodologies, or assumptions from time to time and without notice to clients.
+Analyst Certification
+STARS Stock Reports are prepared by the equity research analysts of CFRA and its affiliates and subsidiaries. All of the views
+expressed in STARS Stock Reports accurately reflect the research analyst's personal views regarding any and all of the subject
+securities or issuers. Analysts generally update stock reports at least four times each year. No part of analyst, CFRA, or its affiliates or
+subsidiaries compensation was, is, or will be directly or indirectly related to the specific recommendations or views expressed in a
+STARS Stock Report.
+About CFRA Equity Research's Distributors
+This Research Report is published and originally distributed by Accounting Research & Analytics, LLC d/b/a CFRA (“CFRA US”), with
+the following exceptions: In the UK/EU/EEA, it is published and originally distributed by CFRA UK Limited (“CFRA UK”), which is
+regulated by the Financial Conduct Authority (No. 775151), and in Malaysia by CFRA MY Sdn Bhd (Company No. 683377-A). These
+parties and their subsidiaries maintain no responsibility for reports redistributed by third parties such as brokers or financial advisors.
+General Disclosure
+Notice to all jurisdictions:
+Where Research Reports are made available in a language other than English and in the case of inconsistencies between the English
+and translated versions of a Research Report, the English version will control and supersede any ambiguities associated with any part
+or section of a Research Report that has been issued in a foreign language. Neither CFRA nor its affiliates guarantee the accuracy of
+Thematic Research March 10, 2026 5
+
+the translation. The content of this report and the opinions expressed herein are those of CFRA based upon publicly-available
+information that CFRA believes to be reliable and the opinions are subject to change without notice. This analysis has not been
+submitted to, nor received approval from, the United States Securities and Exchange Commission or any other regulatory body. While
+CFRA exercised due care in compiling this analysis, CFRA AND ALL RELATED ENTITIES SPECIFICALLY DISCLAIM ALL
+WARRANTIES, EXPRESS OR IMPLIED, to the full extent permitted by law, regarding the accuracy, completeness, or usefulness of this
+information and assumes no liability with respect to the consequences of relying on this information for investment or other purposes.
+No content (including ratings, credit-related analyses and data, valuations, model, software or other application or output therefrom) or
+any part thereof (Content) may be modified, reverse engineered, reproduced or distributed in any form by any means, or stored in a
+database or retrieval system, without the prior written permission of CFRA. The Content shall not be used for any unlawful or
+unauthorized purposes. CFRA and any third-party providers, as well as their directors, officers, shareholders, employees, or agents do
+not guarantee the accuracy, completeness, timeliness or availability of the Content.
+Past performance is not necessarily indicative of future results.
+This document may contain forward-looking statements or forecasts; such forecasts are not a reliable indicator of future performance.
+This report is not intended to, and does not, constitute an offer or solicitation to buy and sell securities or engage in any investment
+activity. This report is for informational purposes only. Recommendations in this report are not made with respect to any particular
+investor or type of investor. Securities, financial instruments, or strategies mentioned herein may not be suitable for all investors and this
+material is not intended for any specific investor and does not take into account an investor's particular investment objectives, financial
+situations or needs. Before acting on any recommendation in this material, you should consider whether it is suitable for your particular
+circumstances and, if necessary, seek professional advice.
+CFRA may license certain intellectual property or provide services to, or otherwise have a business relationship with, certain issuers of
+securities that are the subject of CFRA research reports, including exchange-traded investments whose investment objective is to
+substantially replicate the returns of a proprietary index of CFRA. In cases where CFRA is paid fees that are tied to the amount of
+assets invested in a fund or the volume of trading activity in a fund, investment in the fund may result in CFRA receiving compensation in
+addition to the subscription fees or other compensation for services rendered by CFRA, however, no part of CFRA’s compensation for
+services is tied to any recommendation or rating. Additional information on a subject company may be available upon request.
+CFRA's financial data provider is S&P Global Market Intelligence. THIS DOCUMENT CONTAINS COPYRIGHTED AND TRADE SECRET
+MATERIAL DISTRIBUTED UNDER LICENSE FROM S&P GLOBAL MARKET INTELLIGENCE. FOR RECIPIENT'S INTERNAL USE ONLY.
+The Global Industry Classification Standard (GICS®) was developed by and/or is the exclusive property of MSCI, Inc. and S&P Global
+Market Intelligence. GICS is a service mark of MSCI and S&P Global Market Intelligence and has been licensed for use by CFRA.
+Other Disclaimers and Notice
+Certain information in this report is provided by S&P Global, Inc. and/or its affiliates and subsidiaries (collectively “S&P Global”). Such
+information is subject to the following disclaimers and notices: “Copyright © 2026, S&P Global Market Intelligence (and its affiliates as
+applicable). All rights reserved. Nothing contained herein is investment advice and a reference to a particular investment or security, a
+credit rating or any observation concerning a security or investment provided by S&P Global is not a recommendation to buy, sell or hold
+such investment or security or make any other investment decisions. This may contain information obtained from third parties, including
+ratings from credit ratings agencies. Reproduction and distribution of S&P Global’s information and third party content in any form is
+prohibited except with the prior written permission of S&P Global or the related third party, as applicable. Neither S&P Global nor its
+third party providers guarantee the accuracy, completeness, timeliness or availability of any information, including ratings, and are not
+responsible for any errors or omissions (negligent or otherwise), regardless of the cause, or for the results obtained from the use of
+such information or content. S&P GLOBAL AND ITS THIRD PARTY CONTENT PROVIDERS GIVE NO EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+PURPOSE OR USE AND ALL S&P INFORMATION IS PROVIDED ON AN AS-IS BASIS. S&P GLOBAL AND ITS THIRD PARTY
+CONTENT PROVIDERS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, EXEMPLARY, COMPENSATORY,
+PUNITIVE, SPECIAL OR CONSEQUENTIAL DAMAGES, COSTS, EXPENSES, LEGAL FEES, OR LOSSES (INCLUDING LOST INCOME
+OR PROFITS AND OPPORTUNITY COSTS OR LOSSES CAUSED BY NEGLIGENCE) IN CONNECTION WITH ANY USE OF THEIR
+INFORMATION OR CONTENT, INCLUDING RATINGS. Credit ratings are statements of opinions and are not statements of fact or
+recommendations to purchase, hold or sell securities. They do not address the suitability of securities or the suitability of securities for
+investment purposes, and should not be relied on as investment advice.”
+Certain information in this report may be provided by Securities Evaluations, Inc. (“SE”), a wholly owned subsidiary of Intercontinental
+Exchange. SE is a registered investment adviser with the United States Securities and Exchange Commission (SEC). SE’s advisory
+services include evaluated pricing and model valuation of fixed income securities, derivative valuations and Odd-Lot Pricing that
+consists of bid- and ask-side evaluated prices for U.S. Municipal and U.S. Corporate Securities (together called valuation services). Such
+information is subject to the following disclaimers and notices: “No content (including credit-related analyses and data, valuations,
+model, software or other application or output therefrom) or any part thereof (Content) may be modified, reverse engineered,
+reproduced or distributed in any form by any means, or stored in a database or retrieval system, without the prior written permission of
+SE. The Content shall not be used for any unlawful or unauthorized purposes. SE and any third-party providers, as well as their
+directors, officers, shareholders, employees or agents (collectively SE Parties) do not guarantee the accuracy, completeness, timeliness
+or availability of the Content. SE Parties are not responsible for any errors or omissions (negligent or otherwise), regardless of the
+cause, for the results obtained from the use of the Content, or for the security or maintenance of any data input by the user. The
+Thematic Research March 10, 2026 6
+
+Content is provided on an “as is” basis. SE PARTIES DISCLAIM ANY AND ALL EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR USE, FREEDOM
+FROM BUGS, SOFTWARE ERRORS OR DEFECTS, THAT THE CONTENT’S FUNCTIONING WILL BE UNINTERRUPTED OR THAT
+THE CONTENT WILL OPERATE WITH ANY SOFTWARE OR HARDWARE CONFIGURATION. In no event shall SE Parties be liable to
+any party for any direct, indirect, incidental, exemplary, compensatory, punitive, special or consequential damages, costs, expenses,
+legal fees, or losses (including, without limitation, lost income or lost profits and opportunity costs or losses caused by negligence) in
+connection with any use of the Content even if advised of the possibility of such damages. Credit-related and other analyses and
+statements in the Content are statements of opinion as of the date they are expressed and not statements of fact or recommendations
+to purchase, hold, or sell any securities or to make any investment decisions. SE assumes no obligation to update the Content following
+publication in any form or format. The Content should not be relied on and is not a substitute for the skill, judgment and experience of
+the user, its management, employees, advisors and/or clients when making investment and other business decisions. SE’s opinions and
+analyses do not address the suitability of any security. SE does not act as a fiduciary or an investment advisor. While SE has obtained
+information from sources it believes to be reliable, SE does not perform an audit and undertakes no duty of due diligence or
+independent verification of any information it receives. Valuations services are opinions and not statements of fact or recommendations
+to purchase, hold or sell any security or instrument, or to make any investment decisions. The information provided as part of valuations
+services should not be intended as an offer, promotion or solicitation for the purchase or sale of any security or other financial
+instrument nor should it be considered investment advice. Valuations services do not address the suitability of any security or
+instrument, and securities, financial instruments or strategies mentioned by SE may not be suitable for all investors. SE does not provide
+legal, accounting or tax advice, and clients and potential clients of valuation services should consult with an attorney and/or a tax or
+accounting professional regarding any specific legal, tax or accounting provision(s) applicable to their particular situations and in the
+countries and jurisdictions where they do business. SE has redistribution relationships that reflect evaluated pricing, derivative valuation
+and/or equity pricing services of other unaffiliated firms with which SE has contracted to distribute to its client base.
+Pricing and data provided by these third-party firms are the responsibilities of those firms, and not SE, and are produced under those
+firms' methodologies, policies and procedures. Valuations services provided by SE and products containing valuations services may not
+be available in all countries or jurisdictions. Copyright © 2026 by Intercontinental Exchange Inc. All rights reserved.”
+For residents of the European Union/European Economic Area
+Research reports are originally distributed by CFRA UK Limited (company number 08456139 registered in England & Wales with its
+registered office address at New Derwent House, 69-73 Theobalds Road, London, WC1X 8TA). CFRA UK Limited is regulated by the UK
+Financial Conduct Authority (No. 775151).
+For residents of Malaysia
+Research reports are originally produced and distributed by CFRA MY Sdn Bhd (Company No. 683377-A).
+For Residents of Singapore:
+This Research Report is distributed by CFRA UK Limited to its clients in Singapore who hold a financial advisers licence or is a person
+exempt from holding such licence (“SG Intermediary”). Recipients of this Research Report in Singapore should contact the SG
+Intermediary in respect to any matters arising from, or in connection with, the analysis in this report. Where the recipient is not an
+accredited, expert or institutional investor as defined by the Securities and Futures Act, the SG Intermediary accepts legal responsibility
+for the contents of this Research Report in accordance with applicable law. When reports are distributed by SG Intermediaries in
+Singapore, the SG Intermediary, and not CFRA, is solely responsible for ensuring that the recipients of the Research Reports
+understand the information contained in the Research Reports and that such information is suitable based on the customer's profile and
+investment objectives. This Research Report is intended for general circulation and no advice or recommendation is made herein or by
+CFRA to any particular person. CFRA does not assume any responsibility to advise on whether any particular product is suitable for any
+person, and the analysis herein does not take into account the specific investment objectives, financial situation or particular needs of
+any particular person, and should not be relied upon for any investment decision.
+For residents of all other countries
+Research reports are originally distributed Accounting Research & Analytics, LLC d/b/a CFRA.
+Copyright © 2026 CFRA. All rights reserved. CFRA and STARS are registered trademarks of CFRA.
+Thematic Research March 10, 2026 7

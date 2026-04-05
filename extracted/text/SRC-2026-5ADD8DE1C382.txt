@@ -1,0 +1,365 @@
+Thematic Research
+Thematic industry research based on proprietary analytics from CFRA
+Angelo Zino, CFA
+cservices@cfraresearch.com
+Technology Sector Implications: The Middle East
+Conflict
+Key Takeaways
+- Oil price hikes/inflationary pressures are the biggest risk to
+Positive (+) or Negative (-) Implications
+technology spending implications as the conflict in Iran
+intensifies and is prolonged. (+) Advanced Micro Devices Inc. (AMD)
+- IT spending is expected to come down (IDC reduces to 9%
+(+) Broadcom Inc. (AVGO)
+from 10%) but remains very manageable. The bigger risk is
+a sustained super spike in oil prices for weeks or months, (+) CrowdStrike Holdings Inc. (CRWD)
+which would further compress technology multiples. (+) Micron Technology Inc. (MU)
+- Key pressures from oil price spikes for technology include
+(+) Microsoft Corp. (MSFT)
+greater operating costs for data centers, chip fabricators,
+and logistics; stubbornly higher interest rates that tighten (+) NVIDIA Corp. (NVDA)
+capital; and weaker consumer and business sentiment. (+) Palantir Technologies Inc. (PLTR)
+- Potential winners/more resilient areas of the technology
+(+) Palo Alto Networks Inc. (PANW)
+ecosystem include cybersecurity, data center AI spending,
+and select SaaS plays. (+) Salesforce Inc. (CRM)
+- The potential biggest losers are consumer/device-oriented
+(+) ServiceNow Inc. (NOW)
+companies, select supply chain companies, and
+(+) Zscaler Inc. (ZS)
+discretionary leveraged technology themes.
+(-) Apple Inc. (AAPL)
+Fundamental Context
+(-) Dell Technologies Inc. (DELL)
+Oil price hikes, if sustained, will have broad ripple effects
+(-) HP Inc. (HPQ)
+that can weigh on technology spending. Oil prices have risen
+(-) Microchip Technology Inc. (MCHP)
+more than 50% in less than two weeks amid the escalating
+conflict with Iran, with a potential for sustained $100-plus oil (-) Monolithic Power Systems Inc. (MPWR)
+prices in extended conflict scenarios. Higher oil prices from an
+(-) NXP Semiconductors N.V. (NXPI)
+Iran conflict pressure the Technology sector by raising
+(-) On Semiconductor Corp. (ON)
+operational costs for energy-intensive AI data centers,
+increasing logistics expenses, and fueling inflation that may (-) SAP SE (SAP)
+delay interest rate cuts. This environment squeezes profit
+(-) Workday Inc. (WDAY)
+margins, reduces discretionary IT spending, and creates
+volatility for technology stocks. IDC has already trimmed its baseline IT spending forecast to 9% from 10% in
+2026 but assumes Brent crude prices will be closer to $85-$95 (three-month conflict scenario). A sustained
+$100-plus level over this span could reduce IT spending by at least another 2 to 3 percentage points this
+year, but the impact on the sector won’t be felt equally and should be far less pronounced than most other
+cyclical segments of the market.
+The conflict in Iran is manageable but not inconsequential. While the near-term impact on global IT
+spending growth should be modest, the tail risk of extended conflict warrants consideration. Consumer-
+facing technology and discretionary enterprise spending would be most vulnerable. Cybersecurity and
+infrastructure resiliency solutions should hold up best. The structural trends toward digital sovereignty, multi-
+region cloud architecture, and AI deployment remain intact but may experience near-term pauses.
+Thematic Research March 9, 2026 1
+
+Table 1: Technology Considerations Under Varying Oil Price Levels
+Oil Price IT Spending Impact
+$85-$95 1%-pt impact to IT spending
+$100+ over 90-120 days 2-3%-pt impact
+$150+ super spike worst-case scenario if sustained; recessionary
+Source: CFRA, IDC.
+Under a sustained $85-$95 oil scenario, the major impact we see would be lower consumer device
+purchases and modest negative headwinds from higher energy/inflationary pressures. Still, the way IT
+spending is constituted these days, the impact should be relatively negligible even if these levels are
+sustained, which should lead to a broader recovery in the IT sector as we get greater clarity from the conflict
+in Iran in the coming days and weeks.
+If oil prices are sustained over $100 for more than 90 days, we would suspect a more severe impact from
+the consumer, a delayed interest rate normalization (could impact some buildout plans), and more severe
+impact on Middle East IT spending (less than 5% of total IT global spend). In this scenario, we expect
+enterprises to prioritize AI and cybersecurity spending.
+In a worst-case scenario of a super spike in oil that is sustained for weeks or months, it would create a
+recessionary environment that no company would be immune from. This would be the tail-end risk investors
+need to be mindful about. Should this probability rise, then the impact/multiple contraction on Technology
+stocks would undoubtedly be felt. Vice versa, if odds come down to such a scenario, we would suspect
+technology stocks to rebound strongly. It is also important to note that ad-based companies could feel
+greater pressure in this environment (e.g., Alphabet and Meta), which could finally create an environment
+where AI spend is cut.
+Table 2: Potential Winners – Beneficiaries/More Immune to Iran Conflict
+Area Reasoning Positive Implications
+- Structural spending growth across all
+scenarios
+Cybersecurity and CRWD, PANW, PLTR,
+- Government and enterprise budget
+Defense-Related AI/Analytics ZS
+prioritization
+- Insurance-driven risk mitigation investments
+- Large-scale service provider deployments
+continue
+- State-backed AI initiatives in Gulf NVDA, AMD, AVGO,
+Data Center AI Infrastructure
+- Sovereign cloud spend increases MRVL, MU
+- Near-term project delays possible during
+reassessment phase
+- More recurring based business models
+should hold up better in this environment
+Software as a Service (SaaS) than other aspects should oil prices endure CRM, MSFT, NOW
+an unsustainable super spike
+- Valuations have already been decimated
+Source: CFRA.
+Thematic Research March 9, 2026 2
+
+Table 3: Potential Losers from the Conflict in Iran/Rising Oil Prices
+Area Reasoning Negative Implications
+- Compounding inflation/memory pressures HPQ, DELL, AAPL
+- Delayed replacement cycles (although better
+Consumer Devices
+- More severe impact in MEA (smartphone- positioned than
+heavy spending mix) others)
+- Project deferrals in uncertain environment
+Discretionary Enterprise IT - Non-critical digital transformation initiatives SAP, WDAY
+- ROI scrutiny intensifies
+- Demand pressure from defense electronics
+- Supply chain risks, pricing power vs. volume
+uncertainty MPWR, MCHP, NXPI,
+Analog
+- Consumer tilted areas like autos/PCs with ON
+higher multiples could be more at risk
+- Memory more mixed as pricing elevated
+Source: CFRA.
+Below are high-level implications that we think will be most in the headlines as we consider Iran implications
+on technology in the coming weeks.
+- - Increased operating costs for data centers, semiconductor fabricators, logistics
+- - Delayed interest rate cuts tightening capital availability
+- - Consumer and business sentiment deterioration
+- - Potential reprioritization of AI and digital transformation initiatives
+Cloud infrastructure implications. The conflict in Iran marks the first time major cloud provider regions and
+availability zones are operating in an active conflict zone. In the current environment, IDC believes multi-
+region deployment becomes best practice for enterprises while risk modeling expands from country-level to
+regional resiliency frameworks. While long-term cloud investment should increase, near-term project pacing
+may slow as enterprises reassess architecture, creating a potential pause before acceleration. The Middle
+East focuses on sovereign cloud platforms and locally-owned datacenter investments. On a global basis,
+considerations in the future will likely need to be made for cloud recovery planning and geographic
+dispersion strategies amid high-risk areas of geopolitical turmoil.
+AI spending, the key to the technology bull market, is likely to hold up well. A short Middle East conflict
+won’t derail AI spending plans, as demand is strong and has proven resilient to external shocks (tariffs,
+geopolitical conflicts). AI remains highly prioritized with a focus on scale deployment. Although a longer
+conflict adds risk via available capital and resources, we anticipate that AI spending would likely be more
+resilient than other investment types, but not immune to worst-case scenarios. Some considerations that
+need to be monitored include memory availability, tighter access to capital, and higher energy/non-
+technology component costs. The tail risk we previously highlighted that will drive up inflationary pressures
+would be the one scenario where AI spending does finally feel the pinch. AI-driven investments could be big
+beneficiaries in the current environment when tied to defense-related AI/analytics (e.g., Palantir) and
+cybersecurity.
+There are supply chain implications, with memory as a top concern. The Strait of Hormuz carries a
+significant amount of global oil shipments and LNG flows. A prolonged disruption could create well-known
+risks, such as energy cost spikes, elevated logistics and air freight costs, component delivery delays, and an
+interruption to technology product flows into Africa and Europe. Recent manufacturing regionalization (e.g.,
+Lenovo's Saudi expansion) highlights the Middle East's growing role in global tech supply chains, creating
+new exposure points for logistics disruption through Gulf shipping routes, delays in new manufacturing hub
+ramp-ups, and increased insurance and freight costs. Although we were already starting to see constraints
+from the memory space pre-conflict, we expect to see further upward pressure on DRAM and NAND pricing.
+Thematic Research March 9, 2026 3
+
+This is partly due to greater consumption of advanced semiconductors and memory across the military
+space, which is an area of prioritization (i.e., smart munitions, drone systems, and defense electronics). The
+higher memory prices will drive rising AI accelerator memory configuration costs, enterprise storage
+infrastructure cost increases, and consumer device pricing pressure.
+Cybersecurity emerges as a relative beneficiary within overall IT spending, even if broader
+macroeconomic conditions soften. Even in extended conflict scenarios, security investments remain
+relatively resilient. Insurance costs for cyber coverage could rise. Security is typically the last IT budget cut in
+uncertain environments and is likely to expand in this environment across managed detection and response
+(MDR), security operations center (SOC) modernization, zero-trust architecture, endpoint detection and
+response (EDR), identity and access management (IAM), and cloud workload protection. We expect greater
+security investments across energy infrastructure, financial services, telecommunications, government
+systems, and cloud platforms/SaaS providers.
+Digital sovereignty was already a critical strategy across the Middle East, with the conflict only
+accelerating priorities for independence. Elevated military expenditures (billions within the first days)
+create budget trade-offs. The duration of the conflict determines whether sovereign IT investments
+accelerate or face temporary reprioritization. Capital-rich Gulf states will likely maintain momentum, but
+other regional participants may pause. Priority investments will include sovereign cloud platforms and
+enhanced cybersecurity systems, among other areas.
+The conflict in Iran will only add further pressure to consumer technology spending. Higher oil
+prices/greater inflationary pressure from components and supply chain disruption risk could further crimp
+demand. With device category prices already rising due to memory shortages, we expect consumers to
+delay PC, tablet, and smartphone replacements. Smartphone demand in MEA, as well as globally, was
+already expected to decline in 2026 and this will likely deteriorate further. Industries in the Middle East like
+travel and real estate could experience a spending freeze, hurting enterprise IT investments.
+Relative Performance
+1-YR Performance
+DELL
+NVDA
+CRWD
+AAPL
+MCHP
+MSFT
+PANW
+NXPI
+FTNT
+ZS
+NOW
+CRM
+HPQ
+-40% -30% -20% -10% 0% 10% 20% 30% 40% 50% 60%
+Source: S&P Global Market Intelligence. Data from March 9, 2025 to March 9, 2026.
+Thematic Research March 9, 2026 4
+
+Implications*
+Positive implications: CFRA sees an improvement in company fundamentals, which could include (but are not limited to) improved
+pricing, strengthening backlog, market share gains, cost improvements, a more favorable regulatory environment, or improving
+demographic trends, over the next 12 months.
+Negative implications: CFRA sees a weakening in the company’s fundamentals, which could include (but are not limited to) weaker
+pricing, reduced backlog visibility, market share losses, cost inflation, unfavorable regulatory climate, or demographic headwinds, over
+the next 12 months.
+* The categorization of positive or negative implication may not include every qualitative or quantitative factor that is used to undertake
+a full analysis of a company’s financial picture as other factors may need to be analyzed, and is not intended to be investment advice
+and should not be interpreted as such. These categorizations represent the current good-faith views of the authors at the time of
+publication and these views are subject to change without notice of any kind.
+Contact CFRA
+977 Seminole Trail, PMB 230
+Charlottesville, VA 22901-2824
+USA
+P: +1-800-220-0502
+cservices@cfraresearch.com
+www.cfraresearch.com
+Disclosures
+Stocks are ranked in accordance with the following ranking methodologies:
+STARS Stock Reports
+Qualitative STARS recommendations are determined and assigned by equity analysts. For reports containing STARS recommendations
+refer to the Glossary section of the report for detailed methodology and the definition of STARS rankings.
+Quantitative Stock Reports
+Quantitative recommendations are determined by ranking a universe of common stocks based on 5 measures or model categories:
+Valuation, Quality, Growth, Street Sentiment, and Price Momentum. In the U.S., a sixth sub-category for Financial Health will also be
+displayed. Percentile scores are used to compare each company to all other companies in the same universe for each model category.
+The five (six) model category scores are then weighted and rolled up into a single percentile ranking for that company. For reports
+containing quantitative recommendations refer to the Glossary section of the report for detailed methodology and the definition of
+Quantitative rankings.
+STARS Stock Reports and Quantitative Stock Reports
+The methodologies used in STARS Stock Reports and Quantitative Stock Reports (collectively, the "Research Reports") reflect
+different criteria, assumptions and analytical methods and may have differing recommendations. The methodologies and data used to
+generate the different types of Research Reports are believed by the author and distributor reasonable and appropriate. Generally,
+CFRA does not generate reports with different ranking methodologies for the same issuer. However, in the event that different
+methodologies or data are used on the analysis of an issuer, the methodologies may lead to different views or recommendations on the
+issuer, which may at times result in contradicting assessments of an issuer. CFRA reserves the right to alter, replace or vary models,
+methodologies, or assumptions from time to time and without notice to clients.
+Analyst Certification
+STARS Stock Reports are prepared by the equity research analysts of CFRA and its affiliates and subsidiaries. All of the views
+expressed in STARS Stock Reports accurately reflect the research analyst's personal views regarding any and all of the subject
+securities or issuers. Analysts generally update stock reports at least four times each year. No part of analyst, CFRA, or its affiliates or
+subsidiaries compensation was, is, or will be directly or indirectly related to the specific recommendations or views expressed in a
+STARS Stock Report.
+About CFRA Equity Research's Distributors
+This Research Report is published and originally distributed by Accounting Research & Analytics, LLC d/b/a CFRA (“CFRA US”), with
+the following exceptions: In the UK/EU/EEA, it is published and originally distributed by CFRA UK Limited (“CFRA UK”), which is
+regulated by the Financial Conduct Authority (No. 775151), and in Malaysia by CFRA MY Sdn Bhd (Company No. 683377-A). These
+parties and their subsidiaries maintain no responsibility for reports redistributed by third parties such as brokers or financial advisors.
+Thematic Research March 9, 2026 5
+
+General Disclosure
+Notice to all jurisdictions:
+Where Research Reports are made available in a language other than English and in the case of inconsistencies between the English
+and translated versions of a Research Report, the English version will control and supersede any ambiguities associated with any part
+or section of a Research Report that has been issued in a foreign language. Neither CFRA nor its affiliates guarantee the accuracy of
+the translation. The content of this report and the opinions expressed herein are those of CFRA based upon publicly-available
+information that CFRA believes to be reliable and the opinions are subject to change without notice. This analysis has not been
+submitted to, nor received approval from, the United States Securities and Exchange Commission or any other regulatory body. While
+CFRA exercised due care in compiling this analysis, CFRA AND ALL RELATED ENTITIES SPECIFICALLY DISCLAIM ALL
+WARRANTIES, EXPRESS OR IMPLIED, to the full extent permitted by law, regarding the accuracy, completeness, or usefulness of this
+information and assumes no liability with respect to the consequences of relying on this information for investment or other purposes.
+No content (including ratings, credit-related analyses and data, valuations, model, software or other application or output therefrom) or
+any part thereof (Content) may be modified, reverse engineered, reproduced or distributed in any form by any means, or stored in a
+database or retrieval system, without the prior written permission of CFRA. The Content shall not be used for any unlawful or
+unauthorized purposes. CFRA and any third-party providers, as well as their directors, officers, shareholders, employees, or agents do
+not guarantee the accuracy, completeness, timeliness or availability of the Content.
+Past performance is not necessarily indicative of future results.
+This document may contain forward-looking statements or forecasts; such forecasts are not a reliable indicator of future performance.
+This report is not intended to, and does not, constitute an offer or solicitation to buy and sell securities or engage in any investment
+activity. This report is for informational purposes only. Recommendations in this report are not made with respect to any particular
+investor or type of investor. Securities, financial instruments, or strategies mentioned herein may not be suitable for all investors and this
+material is not intended for any specific investor and does not take into account an investor's particular investment objectives, financial
+situations or needs. Before acting on any recommendation in this material, you should consider whether it is suitable for your particular
+circumstances and, if necessary, seek professional advice.
+CFRA may license certain intellectual property or provide services to, or otherwise have a business relationship with, certain issuers of
+securities that are the subject of CFRA research reports, including exchange-traded investments whose investment objective is to
+substantially replicate the returns of a proprietary index of CFRA. In cases where CFRA is paid fees that are tied to the amount of
+assets invested in a fund or the volume of trading activity in a fund, investment in the fund may result in CFRA receiving compensation in
+addition to the subscription fees or other compensation for services rendered by CFRA, however, no part of CFRA’s compensation for
+services is tied to any recommendation or rating. Additional information on a subject company may be available upon request.
+CFRA's financial data provider is S&P Global Market Intelligence. THIS DOCUMENT CONTAINS COPYRIGHTED AND TRADE SECRET
+MATERIAL DISTRIBUTED UNDER LICENSE FROM S&P GLOBAL MARKET INTELLIGENCE. FOR RECIPIENT'S INTERNAL USE ONLY.
+The Global Industry Classification Standard (GICS®) was developed by and/or is the exclusive property of MSCI, Inc. and S&P Global
+Market Intelligence. GICS is a service mark of MSCI and S&P Global Market Intelligence and has been licensed for use by CFRA.
+Other Disclaimers and Notice
+Certain information in this report is provided by S&P Global, Inc. and/or its affiliates and subsidiaries (collectively “S&P Global”). Such
+information is subject to the following disclaimers and notices: “Copyright © 2026, S&P Global Market Intelligence (and its affiliates as
+applicable). All rights reserved. Nothing contained herein is investment advice and a reference to a particular investment or security, a
+credit rating or any observation concerning a security or investment provided by S&P Global is not a recommendation to buy, sell or hold
+such investment or security or make any other investment decisions. This may contain information obtained from third parties, including
+ratings from credit ratings agencies. Reproduction and distribution of S&P Global’s information and third party content in any form is
+prohibited except with the prior written permission of S&P Global or the related third party, as applicable. Neither S&P Global nor its
+third party providers guarantee the accuracy, completeness, timeliness or availability of any information, including ratings, and are not
+responsible for any errors or omissions (negligent or otherwise), regardless of the cause, or for the results obtained from the use of
+such information or content. S&P GLOBAL AND ITS THIRD PARTY CONTENT PROVIDERS GIVE NO EXPRESS OR IMPLIED
+WARRANTIES, INCLUDING, BUT NOT LIMITED TO, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR
+PURPOSE OR USE AND ALL S&P INFORMATION IS PROVIDED ON AN AS-IS BASIS. S&P GLOBAL AND ITS THIRD PARTY
+CONTENT PROVIDERS SHALL NOT BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL, EXEMPLARY, COMPENSATORY,
+PUNITIVE, SPECIAL OR CONSEQUENTIAL DAMAGES, COSTS, EXPENSES, LEGAL FEES, OR LOSSES (INCLUDING LOST INCOME
+OR PROFITS AND OPPORTUNITY COSTS OR LOSSES CAUSED BY NEGLIGENCE) IN CONNECTION WITH ANY USE OF THEIR
+INFORMATION OR CONTENT, INCLUDING RATINGS. Credit ratings are statements of opinions and are not statements of fact or
+recommendations to purchase, hold or sell securities. They do not address the suitability of securities or the suitability of securities for
+investment purposes, and should not be relied on as investment advice.”
+Certain information in this report may be provided by Securities Evaluations, Inc. (“SE”), a wholly owned subsidiary of Intercontinental
+Exchange. SE is a registered investment adviser with the United States Securities and Exchange Commission (SEC). SE’s advisory
+services include evaluated pricing and model valuation of fixed income securities, derivative valuations and Odd-Lot Pricing that
+consists of bid- and ask-side evaluated prices for U.S. Municipal and U.S. Corporate Securities (together called valuation services). Such
+information is subject to the following disclaimers and notices: “No content (including credit-related analyses and data, valuations,
+Thematic Research March 9, 2026 6
+
+model, software or other application or output therefrom) or any part thereof (Content) may be modified, reverse engineered,
+reproduced or distributed in any form by any means, or stored in a database or retrieval system, without the prior written permission of
+SE. The Content shall not be used for any unlawful or unauthorized purposes. SE and any third-party providers, as well as their
+directors, officers, shareholders, employees or agents (collectively SE Parties) do not guarantee the accuracy, completeness, timeliness
+or availability of the Content. SE Parties are not responsible for any errors or omissions (negligent or otherwise), regardless of the
+cause, for the results obtained from the use of the Content, or for the security or maintenance of any data input by the user. The
+Content is provided on an “as is” basis. SE PARTIES DISCLAIM ANY AND ALL EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT
+NOT LIMITED TO, ANY WARRANTIES OF MERCHANTABILITY OR FITNESS FOR A PARTICULAR PURPOSE OR USE, FREEDOM
+FROM BUGS, SOFTWARE ERRORS OR DEFECTS, THAT THE CONTENT’S FUNCTIONING WILL BE UNINTERRUPTED OR THAT
+THE CONTENT WILL OPERATE WITH ANY SOFTWARE OR HARDWARE CONFIGURATION. In no event shall SE Parties be liable to
+any party for any direct, indirect, incidental, exemplary, compensatory, punitive, special or consequential damages, costs, expenses,
+legal fees, or losses (including, without limitation, lost income or lost profits and opportunity costs or losses caused by negligence) in
+connection with any use of the Content even if advised of the possibility of such damages. Credit-related and other analyses and
+statements in the Content are statements of opinion as of the date they are expressed and not statements of fact or recommendations
+to purchase, hold, or sell any securities or to make any investment decisions. SE assumes no obligation to update the Content following
+publication in any form or format. The Content should not be relied on and is not a substitute for the skill, judgment and experience of
+the user, its management, employees, advisors and/or clients when making investment and other business decisions. SE’s opinions and
+analyses do not address the suitability of any security. SE does not act as a fiduciary or an investment advisor. While SE has obtained
+information from sources it believes to be reliable, SE does not perform an audit and undertakes no duty of due diligence or
+independent verification of any information it receives. Valuations services are opinions and not statements of fact or recommendations
+to purchase, hold or sell any security or instrument, or to make any investment decisions. The information provided as part of valuations
+services should not be intended as an offer, promotion or solicitation for the purchase or sale of any security or other financial
+instrument nor should it be considered investment advice. Valuations services do not address the suitability of any security or
+instrument, and securities, financial instruments or strategies mentioned by SE may not be suitable for all investors. SE does not provide
+legal, accounting or tax advice, and clients and potential clients of valuation services should consult with an attorney and/or a tax or
+accounting professional regarding any specific legal, tax or accounting provision(s) applicable to their particular situations and in the
+countries and jurisdictions where they do business. SE has redistribution relationships that reflect evaluated pricing, derivative valuation
+and/or equity pricing services of other unaffiliated firms with which SE has contracted to distribute to its client base.
+Pricing and data provided by these third-party firms are the responsibilities of those firms, and not SE, and are produced under those
+firms' methodologies, policies and procedures. Valuations services provided by SE and products containing valuations services may not
+be available in all countries or jurisdictions. Copyright © 2026 by Intercontinental Exchange Inc. All rights reserved.”
+For residents of the European Union/European Economic Area
+Research reports are originally distributed by CFRA UK Limited (company number 08456139 registered in England & Wales with its
+registered office address at New Derwent House, 69-73 Theobalds Road, London, WC1X 8TA). CFRA UK Limited is regulated by the UK
+Financial Conduct Authority (No. 775151).
+For residents of Malaysia
+Research reports are originally produced and distributed by CFRA MY Sdn Bhd (Company No. 683377-A).
+For Residents of Singapore:
+This Research Report is distributed by CFRA UK Limited to its clients in Singapore who hold a financial advisers licence or is a person
+exempt from holding such licence (“SG Intermediary”). Recipients of this Research Report in Singapore should contact the SG
+Intermediary in respect to any matters arising from, or in connection with, the analysis in this report. Where the recipient is not an
+accredited, expert or institutional investor as defined by the Securities and Futures Act, the SG Intermediary accepts legal responsibility
+for the contents of this Research Report in accordance with applicable law. When reports are distributed by SG Intermediaries in
+Singapore, the SG Intermediary, and not CFRA, is solely responsible for ensuring that the recipients of the Research Reports
+understand the information contained in the Research Reports and that such information is suitable based on the customer's profile and
+investment objectives. This Research Report is intended for general circulation and no advice or recommendation is made herein or by
+CFRA to any particular person. CFRA does not assume any responsibility to advise on whether any particular product is suitable for any
+person, and the analysis herein does not take into account the specific investment objectives, financial situation or particular needs of
+any particular person, and should not be relied upon for any investment decision.
+For residents of all other countries
+Research reports are originally distributed Accounting Research & Analytics, LLC d/b/a CFRA.
+Copyright © 2026 CFRA. All rights reserved. CFRA and STARS are registered trademarks of CFRA.
+Thematic Research March 9, 2026 7

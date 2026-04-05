@@ -1,0 +1,91 @@
+Capital Daily | 2nd April 2026
+Treasuries offering little protection against stoc ks
+Yet another volatile 24hours in financial markets
+Chart 2: 2-Year Treasury Yield & S&P 500
+saw Treasuries offer little protection against falls
+in US equities, as has been the case throughout the
+war. We doubt it will suddenly become a more
+effective hedge against such moves any time soon.
+Having rallied yesterday, the S&P 500 fell over 1%
+in premarket trading before quickly recoup ing that
+ground at the open. This whipsawing price action
+comes as investors try to make sense of mixed
+messaging from officials in the US and elsewhere .
+Perceived uncertainty also remains high. Despite
+Chart 2: Correlation Between Daily Changes
+having fallen back over the past week or so , In S&P 500 & Selected Markets
+measures of option -implied volatility generally
+remain well above their pre -war level and their
+average of the past decade. (See Chart 1.) Similarly,
+recent options data shows net put and net call
+positions on the S&P 500 Index both climbing to
+multi-year extremes, indicative of investors
+clamouring to hedge upside and downside tailrisks.
+Chart 1: 1-Month Option Implied Volatility
+(Standard Deviations From 10 -Year Average)
+Sources: LSEG, Capital Economics .
+Other traditional hedges have also disappointed.
+Gold had already been increasingly acting as a risky
+asset and that positive correlation with US equities
+has only increased during the war. (See Chart 3
+again.) Underscoring this point, replicating Chart 2
+with the gold price wou ld show it tracking US
+equities closely once again over this latest period.
+A basket of “low beta ” G10 currencies against a
+Sources: LSEG, Capital Economics . basket of “high beta” peers has also provided little
+hedge during the war, despite previously displaying
+Against this backdrop , Treasuries offered relatively
+a strong negative correlation with US equity prices.
+little protection against this (short -lived) sell -off in
+equities, with Treasur ies generally moving in That said there have been some good hedges.
+tandem with equity prices . (See Chart 2.) That has Energy has unsurprisingly offered an effective
+generally been true throughout the conflict and counter to US equities, while defensive stocks have
+stands in stark in contrast to the negative lived up to their name relative to cyclical peers. The
+relationship between the returns of stocks and US dollar, which enjoys a time -varying relationship
+bonds in the months prior to the war. (See Chart 3.)
+with US equities, has benefited from the favourabl e
+In short, Treasuries are a good hedge against stocks shift in terms of trade and safe -haven demand on
+when demand is in the driving seat; but when days where stocks have faltered. Our sense is that
+inflation concerns dominate, that hedging value is these patterns generally make sense and would
+lost. Th e fact that foreign central banks appear to continue in our “adverse” scenario, which sees the
+have run down their holdings to the lowest level conflict rumble on for a few more months. That
+since 2012 in March, in part to defend currencies, said, we think energy equities – which have fared
+has also weighed on Treasuries . And this comes well so far – present negative asymmetry , with little
+amid a general worsening in the supply/demand scope to outperform in an adverse scenario and
+dynamic s of sovereign bonds. plenty of room to drop in a more positive scenario.
+James Reilly , Senior Markets Economist , james.reilly@capitaleconomics.com
+Page 1
+
+Capital Daily
+Key Insights From CE
+• This Bonds Focus outlines how debt managers might respond the potential for the Iran war to add further
+strain to public finances and the already deteriorating supply/demand dynamics in long -dated sovereign
+debt, as well as what this all means for yields.
+• Hawkish signals from the Bank of Japan and resilient Q1 data have increased our conviction that the Bank
+will hike interest rates this month – markets currently have a 2/3 chance priced in. Read more here.
+• We think that interest rate cuts this year are now off the table, but that only the adverse conflict scenario
+would see broad -based rate hikes across major central banks. Read more in the Iran Conflict Edition of our
+Global Economics Chart Pack .
+Economic Data & Events
+Date Country Release/Indicator/Event BST Previous* Median* CE Forecast*
+Fri 3rd US Change in Nonfarm Payrolls (Mar.) 13.30 -92,000 +51,000 +125,000
+US ISM Services Index (Mar.) 15.00 56.1 55.0 54.0
+Tue 7th EZ S&P Global Composite PMI (Mar., Final) 09.00 50.5p 50.5 50.5
+UK S&P Global Composite PMI (Mar., Final) 09.30 51.0p 50.5 51.0
+Wed 8th Jpn Current Account (Feb.) 00.50 +¥941.6bn - +¥2560bn
+NZ RBNZ Policy Announcement 03.00 2.25% 2.25% 2.25%
+Ind RBI Repo Rate 05.30 5.25% 5.25% 5.25%
+Thu 9th Ger Industrial Production (Feb.) 07.00 -0.5%( -1.2%) +0.3% +0.5%(+0.5%)
+US PCE Deflator (Feb.) 12.30 +0.4%(+3.1%) +0.4% +0.4%(+2.8%)
+Pol Interest Rate Announcement - 3.75% 3.75% 3.75%
+Fri 10th Per Interest Rate Announcement 00.00 4.25% - 4.25%
+Chn Consumer Prices (Mar.) 02.30 (+1.3%) (+1.2%) (+1.0%)
+US Consumer Prices (Mar.) 08.30 +0.3%(+2.4%) - +0.8%(+3.3%)
+*m/m(y/y) unless otherwise stated; p = provisional
+Disclaimer: While every effort has been made to ensure that the data quoted and used for the research behind this document is reliable, t here is no guarantee
+that it is correct, and Capital Economics Limited and its subsidiaries can accept no liability whatsoever in respect of any errors or omissions. This document is
+a piece of economic research and is not intended to constitute investment advice, nor to solicit dealing in securities or inv estments.
+Distribution: Subscribers are free to make copies of our publications for their own use, and for the use of members of the subscribing team at their business
+location. No other form of copying or distribution of our publications is permitted without our explicit permis sion. This includes but is not limited to internal
+distribution to non -subscribing employees or teams.
+Email sales@capitaleconomics.com Visit www.capitaleconomics.com

@@ -27,12 +27,14 @@ related: []
 ## Managed Evidence
 
 - [[source-notes/bank-of-england-decision-maker-panel-march-2026|Bank of England Decision Maker Panel, March 2026]]
+- [[source-notes/global-markets-chart-pack-apr-2026-snapshot|Global Markets Chart Pack (Apr 2026 snapshot)]]
 <!-- CATO:END_MANAGED_BLOCK evidence -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK synthesis -->
 ## Managed Synthesis
 
 - Bank of England Decision Maker Panel, March 2026: Monthly Decision Maker Panel data - March 2026 | Bank of England Our use of cookies We use necessary cookies to make our site work (for example, to manage your session). We&rsquo;…
+- Global Markets Chart Pack (Apr 2026 snapshot): Power BI Desktop Global Markets Chart Pack This Global Markets Chart Pack is a snapshot of our live, interactive Chart Pack. The latest interactive version can always be viewed on…
 <!-- CATO:END_MANAGED_BLOCK synthesis -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK entities -->
@@ -45,5 +47,6 @@ related: []
 <!-- CATO:BEGIN_MANAGED_BLOCK chronology -->
 ## Managed Chronology
 
+- 2026-04-01: [[source-notes/global-markets-chart-pack-apr-2026-snapshot|Global Markets Chart Pack (Apr 2026 snapshot)]]
 - 2026-04-02: [[source-notes/bank-of-england-decision-maker-panel-march-2026|Bank of England Decision Maker Panel, March 2026]]
 <!-- CATO:END_MANAGED_BLOCK chronology -->

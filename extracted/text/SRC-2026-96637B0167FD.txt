@@ -1,0 +1,71 @@
+Capital Daily | 31st March 2026
+Growth concerns take centre stage
+Notwithstanding some positivity in stock markets This marks a breakdown in what had been a pretty
+today, recent market moves – including a big rally tight correlation between stocks and bonds during
+in Treasuries and widening credit spreads – point this conflict so far. Indeed, the past few days are a
+to growing concerns around economic activity. startling outlier when compared to the relationship
+We expect these fears to ease over coming months. between both in the past six months. (See Chart 3.)
+Treasuries have continued to rally today, extending
+Chart 3: 3-Day Changes In 2Y UST Yield & S&P 500
+a move that began last Friday . The 2 -year yield has
+(Past 6 Months)
+now fallen by ~20bp over that period, one of its
+steepest declines in recent years . (See Chart 1.) This
+decline has reflected investors paring back bets on
+rate hikes and once again price in rate cuts, with
+~20bp of easing now priced for the next 18 months .
+Chart 1: 3-Day Change In 2Y UST Yield (bp)
+Sources: LSEG, Capital Economics .
+The idea that investors have become more worried
+by the growth outlook is also reflected in credit
+markets: the option-adjusted spreads of US high
+yield corporate bonds have generally risen by as
+Sources: LSEG, Capital Economics . much since Friday as they had since the war began.
+This reassessment may partly reflect comments Some of these market moves are consistent with our
+from Fed Chair Powell on Monday, in which he baseline forecast . For example, we think market
+said that the Fed could afford to wait and see what pricing for the Fed funds rate now looks about right.
+the impact of the war would be . He also noted that (See Chart 4.) But our forecasts are predicated on
+policymakers typically look past oil price shocks. inflation concerns easing, rather than growth fears
+escalating. (We set out our baseline scenario here).
+That said, this alone doesn’t explain the rally in
+Treasuries given that the move started on Friday and If these growth concerns persist, we doubt the stock
+has been far larger than comments like that would
+market would rally this year, despite our upbeat
+seem to warrant. Our sense is that the rally instead
+view on AI . But if something akin to our baseline
+partly reflects growing concerns about economic
+scenario materialises, we think there’s scope for
+activity . That is consistent with the lack of a rally in
+stocks and bonds to rally in tandem through 2026 .
+stocks in response to the fall in yields. (See Chart 2.)
+Chart 4: Fed Funds Rate (%)
+Chart 2: 2Y UST Yield & S&P 500 (Inverted RHS)
+Sources: LSEG, Capital Economics . Sources: LSEG , Capital Economics .
+James Reilly , Senior Markets Economist , james.reilly@capitaleconomics.com
+Page 1
+
+Capital Daily
+Key Insights From CE
+• Between developments in the Middle East and the software sector, it has been a volatile first quarter for AI -
+related stocks. This Equities Focus uses our propriety CE AI Equity Indices to gauge the health of the rally
+and consider how it might develop over the rest of 2026.
+• The direct effect of renewed strikes on shipping in the Red Sea on aggregate world trade is likely to be
+limited, but the impact on Asian economies that rely more heavily on oil imports from Saudi Arabia would
+be more significant. Read more in this Global Economics Update .
+• While the energy sector has been the best -performing sector of the S&P 500 since the conflict in the Middle
+East began, our baseline assumption is that most of this outperformance will unwind over the rest of the
+year. Read more in this Equities Update .
+Economic Data & Events
+Date Country Release/Indicator/Event BST Previous* Median* CE Forecast*
+Wed 1 st EZ S&P Global Manufacturing PMI (Mar., Final) 09.00 51.4p 51.4 51.4
+US Change in ADP Employment (Mar.) 13.15 +63,000 +40,000 +35,000
+US Retail Sales (Feb.) 13.30 -0.2% +0.4% +0.3%
+US Core Retail Sales (Feb.) 13.30 0.0% +0.3% +0.2%
+*m/m(y/y) unless otherwise stated; p = provisional
+Disclaimer: While every effort has been made to ensure that the data quoted and used for the research behind this document is reliable, t here is no guarantee
+that it is correct, and Capital Economics Limited and its subsidiaries can accept no liability whatsoever in respect of any errors or omissions. This document is
+a piece of economic research and is not intended to constitute investment advice, nor to solicit dealing in securities or inv estments.
+Distribution: Subscribers are free to make copies of our publications for their own use, and for the use of members of the subscribing team at their business
+location. No other form of copying or distribution of our publications is permitted without our explicit permis sion. This includes but is not limited to internal
+distribution to non -subscribing employees or teams.
+Email sales@capitaleconomics.com Visit www.capitaleconomics.com

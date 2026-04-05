@@ -274,6 +274,22 @@ Generated: 2026-04-05
 - Linked from [[claims/claim-2026-1492d4175eb2]]
 - Linked from [[claims/claim-2026-14f0db0c96fd]]
 
+## Japan is steady, but energy sensitivity remains a live risk.
+- Path: `wiki/claims/claim-2026-4833746fdda4.md`
+- Backlinks: 30
+- Linked from [[_indices/backlinks]]
+- Linked from [[_indices/claims]]
+- Linked from [[claims/claim-2026-00a1fc15c7d3]]
+- Linked from [[claims/claim-2026-037708214029]]
+- Linked from [[claims/claim-2026-05edf360f18f]]
+- Linked from [[claims/claim-2026-07578d1791a0]]
+- Linked from [[claims/claim-2026-09b75d1530c4]]
+- Linked from [[claims/claim-2026-11126fc335d9]]
+- Linked from [[claims/claim-2026-1554955d6ac6]]
+- Linked from [[claims/claim-2026-4304b374fe37]]
+- Linked from [[claims/claim-2026-43d1b2ac4fc7]]
+- Linked from [[claims/claim-2026-48380e1cedfa]]
+
 ## United States
 - Path: `wiki/entities/united-states.md`
 - Backlinks: 23
@@ -690,6 +706,21 @@ Generated: 2026-04-05
 - Linked from [[concepts/production]]
 - Linked from [[unresolved/open-threads]]
 
+## Global Markets Chart Pack (Apr 2026 snapshot)
+- Path: `wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md`
+- Backlinks: 11
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-0a96e659e0b8]]
+- Linked from [[claims/claim-2026-69acbe0d9485]]
+- Linked from [[claims/claim-2026-8b440df716cd]]
+- Linked from [[claims/claim-2026-a8e1b6fa7ebf]]
+- Linked from [[claims/claim-2026-d3a3258faa04]]
+- Linked from [[concepts/energy-prices]]
+- Linked from [[concepts/equities]]
+- Linked from [[concepts/global-markets]]
+- Linked from [[concepts/government-bonds]]
+- Linked from [[timelines/source-chronology]]
+
 ## Japan can tolerate a moderate global reflation pulse; it is much less comfortable if the pulse…
 - Path: `wiki/claims/claim-2026-14f0db0c96fd.md`
 - Backlinks: 11
@@ -789,19 +820,44 @@ Generated: 2026-04-05
 - Linked from [[states/us-growth]]
 - Linked from [[states/us-inflation]]
 
-## Used to position France near the expansion threshold in Europe.
-- Path: `wiki/claims/claim-2026-0f6c133346d9.md`
-- Backlinks: 10
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-404ecd94ae08]]
-- Linked from [[claims/claim-2026-c6e82f021d84]]
-- Linked from [[claims/claim-2026-d1edd67bb63d]]
-- Linked from [[claims/claim-2026-e82787d9d197]]
+## CE Capital Daily 31.03.2026
+- Path: `wiki/source-notes/ce-capital-daily-31032026.md`
+- Backlinks: 9
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-44d99219cbc4]]
+- Linked from [[claims/claim-2026-7fd37db22633]]
+- Linked from [[claims/claim-2026-c4bb4b295592]]
+- Linked from [[claims/claim-2026-f5b4b7436920]]
 - Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-- Linked from [[states/china-demand]]
-- Linked from [[states/market-structure]]
+- Linked from [[macro/index]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
+## CE Global Economics Update: Indirect Effects (Apr 2026)
+- Path: `wiki/source-notes/ce-global-economics-update-indirect-effects-apr-2026.md`
+- Backlinks: 9
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-09b75d1530c4]]
+- Linked from [[claims/claim-2026-4f91f409ed24]]
+- Linked from [[claims/claim-2026-98c456b56182]]
+- Linked from [[claims/claim-2026-da14d7cb5022]]
+- Linked from [[claims/contested]]
+- Linked from [[macro/index]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
+## CE Global Markets Focus: Bond Supply Focus
+- Path: `wiki/source-notes/ce-global-markets-focus-bond-supply-focus.md`
+- Backlinks: 9
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-4304b374fe37]]
+- Linked from [[claims/claim-2026-51d5866df3fc]]
+- Linked from [[claims/claim-2026-bf32aff5d272]]
+- Linked from [[claims/claim-2026-e598ffebf4f1]]
+- Linked from [[claims/contested]]
+- Linked from [[macro/index]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
 
 ## Geopolitical Risk
 - Path: `wiki/states/geopolitical-risk.md`
@@ -920,6 +976,19 @@ Generated: 2026-04-05
 - Linked from [[states/index]]
 - Linked from [[unresolved/open-threads]]
 
+## Used to position France near the expansion threshold in Europe.
+- Path: `wiki/claims/claim-2026-0f6c133346d9.md`
+- Backlinks: 9
+- Linked from [[_indices/claims]]
+- Linked from [[claims/claim-2026-404ecd94ae08]]
+- Linked from [[claims/claim-2026-c6e82f021d84]]
+- Linked from [[claims/claim-2026-d1edd67bb63d]]
+- Linked from [[claims/claim-2026-e82787d9d197]]
+- Linked from [[claims/contested]]
+- Linked from [[claims/index]]
+- Linked from [[states/china-demand]]
+- Linked from [[states/market-structure]]
+
 ## Weekly Investment Meeting Macro Brief - 2026-04-03
 - Path: `wiki/synthesis/weekly-investment-meeting-macro-brief-2026-04-03.md`
 - Backlinks: 9
@@ -932,6 +1001,78 @@ Generated: 2026-04-05
 - Linked from [[states/japan-macro]]
 - Linked from [[states/uk-macro]]
 - Linked from [[synthesis/index]]
+
+## Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents
+- Path: `wiki/source-notes/agent-behavioral-contracts-formal-specification-and-runtime-enforcement-for-reliable-autonomous-ai-agents.md`
+- Backlinks: 8
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-15414def2cdb]]
+- Linked from [[claims/claim-2026-4cf4553a66d3]]
+- Linked from [[claims/claim-2026-b6a2527a26bc]]
+- Linked from [[claims/claim-2026-f5deaf7a8044]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
+## Agentic Reasoning for Large Language Models
+- Path: `wiki/source-notes/agentic-reasoning-for-large-language-models.md`
+- Backlinks: 8
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-1554955d6ac6]]
+- Linked from [[claims/claim-2026-9593d31687c0]]
+- Linked from [[claims/claim-2026-d2b7084c5f9b]]
+- Linked from [[claims/claim-2026-ed1f15d94214]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
+## Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers
+- Path: `wiki/source-notes/application-software-we-move-to-a-neutral-view-as-ai-disruption-uncertainty-lingers.md`
+- Backlinks: 8
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-037708214029]]
+- Linked from [[claims/claim-2026-2a0c4a5f7357]]
+- Linked from [[claims/claim-2026-53d6b9c94dda]]
+- Linked from [[claims/claim-2026-92e97cb1fec6]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
+## Automotive: Potential Winners and Losers From the Oil Price Spike
+- Path: `wiki/source-notes/automotive-potential-winners-and-losers-from-the-oil-price-spike.md`
+- Backlinks: 8
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-64fece118c11]]
+- Linked from [[claims/claim-2026-790cb021e06f]]
+- Linked from [[claims/claim-2026-9861b4cd3d49]]
+- Linked from [[claims/claim-2026-b2ac97fb9f7c]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
+## CE Capital Daily 02.04.2026
+- Path: `wiki/source-notes/ce-capital-daily-02042026.md`
+- Backlinks: 8
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-43d1b2ac4fc7]]
+- Linked from [[claims/claim-2026-c03b170c3609]]
+- Linked from [[claims/claim-2026-c35bc25d9e50]]
+- Linked from [[claims/claim-2026-d5706d822854]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
+## CE Equities Focus: AI Indices (Mar. 2026)
+- Path: `wiki/source-notes/ce-equities-focus-ai-indices-mar-2026.md`
+- Backlinks: 8
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-9edeef204b36]]
+- Linked from [[claims/claim-2026-c20555cc8d58]]
+- Linked from [[claims/claim-2026-c50c1fc68737]]
+- Linked from [[claims/claim-2026-d2e42f7edfe9]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
 
 ## China recovered officially, while external Asia gave the better trade signal.
 - Path: `wiki/claims/claim-2026-0c8d2bd74c92.md`
@@ -969,6 +1110,18 @@ Generated: 2026-04-05
 - Linked from [[concepts/trade]]
 - Linked from [[unresolved/open-threads]]
 
+## Emerging Markets Capital Flows Monitor (Mar 2026)
+- Path: `wiki/source-notes/emerging-markets-capital-flows-monitor-mar-2026.md`
+- Backlinks: 8
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-07c7f64e635b]]
+- Linked from [[claims/claim-2026-4d6065686723]]
+- Linked from [[claims/claim-2026-66414216bfe3]]
+- Linked from [[claims/claim-2026-f51bdf1328a4]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
+- Linked from [[unresolved/open-threads]]
+
 ## Europe Macro
 - Path: `wiki/states/europe-macro.md`
 - Backlinks: 8
@@ -993,166 +1146,26 @@ Generated: 2026-04-05
 - Linked from [[concepts/trade]]
 - Linked from [[unresolved/open-threads]]
 
-## Global Macro frontier decision brief
-- Path: `wiki/synthesis/global-macro-frontier-decision-brief.md`
+## Exploring the Diverse Opportunities in US Equities (Mar 2026)
+- Path: `wiki/source-notes/exploring-the-diverse-opportunities-in-us-equities-mar-2026.md`
 - Backlinks: 8
-- Linked from [[outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro]]
-- Linked from [[_indices/backlinks]]
-- Linked from [[decisions/global-macro]]
-- Linked from [[states/europe-macro]]
-- Linked from [[states/global-macro]]
-- Linked from [[states/japan-macro]]
-- Linked from [[states/uk-macro]]
-- Linked from [[synthesis/index]]
-
-## global trade
-- Path: `wiki/concepts/global-trade.md`
-- Backlinks: 8
-- Linked from [[outputs/briefs/2026-04-03T18-33-46.708Z-why-believe-global-macro]]
-- Linked from [[outputs/briefs/2026-04-03T19-04-23.953Z-why-believe-global-macro]]
-- Linked from [[outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro]]
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/concepts]]
-- Linked from [[decisions/global-macro]]
-- Linked from [[entities/united-states]]
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-07578d1791a0]]
+- Linked from [[claims/claim-2026-15cb21f5f149]]
+- Linked from [[claims/claim-2026-90a4603ea5be]]
+- Linked from [[claims/claim-2026-ed2beb7e43d7]]
+- Linked from [[claims/contested]]
+- Linked from [[unresolved/classification-gaps]]
 - Linked from [[unresolved/open-threads]]
 
-## If energy pressure persists, inflation breakevens and credit spreads become the channels to wat…
-- Path: `wiki/claims/claim-2026-7025d85d8e3c.md`
+## Global Asset Allocation (April 2026)
+- Path: `wiki/source-notes/global-asset-allocation-april-2026.md`
 - Backlinks: 8
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-00a1fc15c7d3]]
-- Linked from [[claims/claim-2026-64e95553b988]]
-- Linked from [[claims/claim-2026-7db2bd48f562]]
+- Linked from [[_indices/sources]]
+- Linked from [[claims/claim-2026-4802ae6214d4]]
+- Linked from [[claims/claim-2026-48380e1cedfa]]
+- Linked from [[claims/claim-2026-69d758bfa04b]]
+- Linked from [[claims/claim-2026-906d45738b5c]]
 - Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-- Linked from [[states/us-inflation]]
-
-## In Europe, softer core CPI argues the other way, but headline CPI and input-cost risk complicat…
-- Path: `wiki/claims/claim-2026-404ecd94ae08.md`
-- Backlinks: 8
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-0f6c133346d9]]
-- Linked from [[claims/claim-2026-64e95553b988]]
-- Linked from [[claims/claim-2026-8c921eae317b]]
-- Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-- Linked from [[states/geopolitical-risk]]
-
-## Instead, the U.S. growth and labor data were good enough to make the market take the inflation…
-- Path: `wiki/claims/claim-2026-7c8fc0edf014.md`
-- Backlinks: 8
-- Linked from [[outputs/briefs/2026-04-03T18-31-55.802Z-state-diff-global-macro]]
-- Linked from [[outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-dd624a5c23f6]]
-- Linked from [[claims/index]]
-- Linked from [[states/uk-macro]]
-- Linked from [[states/us-growth]]
-- Linked from [[synthesis/global-macro-frontier-decision-brief]]
-
-## Market Structure
-- Path: `wiki/states/market-structure.md`
-- Backlinks: 8
-- Linked from [[outputs/briefs/2026-04-03T18-31-36.656Z-what-changed-for-markets]]
-- Linked from [[outputs/briefs/2026-04-03T18-31-38.031Z-weekly-investment-meeting-regime-brief]]
-- Linked from [[outputs/briefs/2026-04-03T18-33-48.078Z-what-changed-for-markets]]
-- Linked from [[outputs/briefs/2026-04-03T18-33-49.782Z-weekly-investment-meeting-regime-brief]]
-- Linked from [[outputs/meeting-briefs/2026-04-03T18-41-11.733Z-launcher-meeting-brief]]
-- Linked from [[_indices/backlinks]]
-- Linked from [[states/index]]
+- Linked from [[unresolved/classification-gaps]]
 - Linked from [[unresolved/open-threads]]
-
-## Strait of Hormuz
-- Path: `wiki/entities/strait-of-hormuz.md`
-- Backlinks: 8
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/entities]]
-- Linked from [[concepts/energy-security]]
-- Linked from [[concepts/hard-power]]
-- Linked from [[concepts/policy-regimes]]
-- Linked from [[concepts/shipping]]
-- Linked from [[concepts/trade]]
-- Linked from [[unresolved/open-threads]]
-
-## That is still positive, but it is not explosive, and it leaves Japan exposed if imported energy…
-- Path: `wiki/claims/claim-2026-1ce324bba4dd.md`
-- Backlinks: 8
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-00a1fc15c7d3]]
-- Linked from [[claims/claim-2026-370b44e6a1fb]]
-- Linked from [[claims/claim-2026-7db2bd48f562]]
-- Linked from [[claims/claim-2026-833112a64b26]]
-- Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-
-## That same dynamic is visible in the broader manufacturing complex: Europe recovered on activity…
-- Path: `wiki/claims/claim-2026-8c921eae317b.md`
-- Backlinks: 8
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-404ecd94ae08]]
-- Linked from [[claims/claim-2026-c6e82f021d84]]
-- Linked from [[claims/claim-2026-d1edd67bb63d]]
-- Linked from [[claims/claim-2026-e82787d9d197]]
-- Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-
-## The data this week did not create that risk; they reduced the market's ability to ignore it.
-- Path: `wiki/claims/claim-2026-3bd13f3eea67.md`
-- Backlinks: 8
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-1492d4175eb2]]
-- Linked from [[claims/claim-2026-2a9e200b5039]]
-- Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-- Linked from [[states/geopolitical-risk]]
-- Linked from [[states/market-structure]]
-
-## A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially whe…
-- Path: `wiki/claims/claim-2026-2a9e200b5039.md`
-- Backlinks: 7
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-3bd13f3eea67]]
-- Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-- Linked from [[states/geopolitical-risk]]
-- Linked from [[states/market-structure]]
-
-## Euro area core inflation softened, which is the cleanest dovish input of the week, but headline…
-- Path: `wiki/claims/claim-2026-e376e0fef91a.md`
-- Backlinks: 7
-- Linked from [[outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-dd624a5c23f6]]
-- Linked from [[claims/index]]
-- Linked from [[decisions/global-macro]]
-- Linked from [[surveillance/global-macro]]
-- Linked from [[synthesis/global-macro-frontier-decision-brief]]
-
-## Europe is harder because the manufacturing rebound is colliding with input-cost pressure.
-- Path: `wiki/claims/claim-2026-e82787d9d197.md`
-- Backlinks: 7
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-0f6c133346d9]]
-- Linked from [[claims/claim-2026-64e95553b988]]
-- Linked from [[claims/claim-2026-8c921eae317b]]
-- Linked from [[claims/contested]]
-- Linked from [[claims/index]]
-
-## In portfolio terms, that is a messier environment than a simple \"Europe weak, ECB cuts\" narrati…
-- Path: `wiki/claims/claim-2026-c6e82f021d84.md`
-- Backlinks: 7
-- Linked from [[_indices/backlinks]]
-- Linked from [[_indices/claims]]
-- Linked from [[claims/claim-2026-0f6c133346d9]]
-- Linked from [[claims/claim-2026-64e95553b988]]
-- Linked from [[claims/claim-2026-8c921eae317b]]
-- Linked from [[claims/contested]]
-- Linked from [[claims/index]]

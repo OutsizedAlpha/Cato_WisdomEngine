@@ -12,3 +12,10 @@ Only durable, repo-specific lessons and guardrails belong here. Do not record tr
 - From Node child-process workflows on Windows, prefer the real `py` / `python` launchers over repo-local `.cmd` shims; the shims are fine in an interactive repo shell but are not a reliable renderer bridge for pack-generation code.
 - Treat `inbox/` as a git-ignored staging queue and `cache/pdf-packs/` as disposable operator artefacts; commit intentional ingested state and workflow code, not transient PDF handoff inputs.
 - For image-heavy PDFs, use `pdf-pack` plus `capture-pdf` instead of trusting plain `ingest`; the baseline extractor is a fallback aid, not the final truth surface for visual documents.
+- If a handoff sidecar already supplies `extracted_text`, ingest must be able to skip native extraction; otherwise the exact PDFs that need the handoff path can still fail inside the local parser.
+- Large mixed PDF runs should be chunked by default; visually dense batches and high-page-count chart decks can overflow `pdf-pack` even when the general workflow is sound.
+- Keep a direct single-document capture fallback for outlier PDFs that still break `pdf-pack`; use the same `capture-pdf` contract rather than inventing a second ingestion path.
+- When retrying a problematic PDF workflow, prefer `capture-pdf --copy` until the run is stable; otherwise a failed attempt can move the staged file before debugging is finished.
+- Retry-safe PDF capture merges must dedupe note-like fields such as `capture_notes`; repeated attempts on the same source should not compound operator notes into duplicate paragraphs.
+- Pack-generated titles and `document_class` values are only first-pass hints; clean them in the capture bundle before capture when the inferred metadata is obviously weak.
+- Info-only lint spikes after a large ingest batch usually mean enrichment debt on new notes and claims, not a structural ingest failure, as long as errors and warnings remain at zero.

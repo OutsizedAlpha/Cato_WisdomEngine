@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-04-05T16:51:18.415Z",
+  "generated_at": "2026-04-05T18:33:56.535Z",
   "notes": [
     {
       "relative_path": "wiki/claims/claim-2026-00a1fc15c7d3.md",
@@ -25,7 +25,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -47,6 +47,109 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-037708214029.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.602Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-05819aaf9e52.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.414Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-05c659340933.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.547Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-05edf360f18f.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.410Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-07578d1791a0.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.403Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-077bd16f5ce2.md",
       "title": "France and Italy were near or above the manufacturing expansion threshold, but Spain fell back…",
       "kind": "claim-page",
@@ -63,7 +166,26 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-07c7f64e635b.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.401Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -100,7 +222,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-08313a601575.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.547Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -121,7 +260,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -142,7 +281,47 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-09b75d1530c4.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.656Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-0a96e659e0b8.md",
+      "title": "Direct capture created on 2026-04-05 because pdf-pack overflowed on this specific chart pack.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Direct capture created on 2026-04-05 because pdf-pack overflowed on this specific chart pack. Claim Direct capture created on 2026-04-05 because pdf-pack overflowed on this specific chart pack. Class…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-01",
+        "ageDays": 4
       },
       "open_threads": []
     },
@@ -168,7 +347,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -180,8 +359,6 @@
       "tags": [],
       "backlinks": [
         "wiki/_indices/backlinks.md",
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md",
         "wiki/states/market-structure.md",
         "wiki/states/us-growth.md",
         "wiki/states/us-inflation.md"
@@ -213,7 +390,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -235,7 +412,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -256,7 +433,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -267,7 +444,6 @@
       "status": "contested",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
         "wiki/claims/claim-2026-404ecd94ae08.md",
         "wiki/claims/claim-2026-c6e82f021d84.md",
@@ -285,6 +461,46 @@
         "thresholdDays": 180,
         "basis": "2026-04-01",
         "ageDays": 4
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-11126fc335d9.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.414Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-118efdf49f03.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.456Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -310,7 +526,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-14eafb155d1b.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.412Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -339,7 +572,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -350,8 +583,6 @@
       "status": "active",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md",
         "wiki/states/china-demand.md"
       ],
       "summary": "Used for Korea exports, imports, trade balance, PMI, and CPI as the clearest external-Asia read… Claim Used for Korea exports, imports, trade balance, PMI, and CPI as the clearest external-Asia read-…",
@@ -361,6 +592,69 @@
         "thresholdDays": 180,
         "basis": "2026-04-03",
         "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-15414def2cdb.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.586Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-1554955d6ac6.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.507Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-15cb21f5f149.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.403Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -380,7 +674,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -398,6 +692,25 @@
         "thresholdDays": 180,
         "basis": "2026-04-01",
         "ageDays": 4
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-17c67938a0a3.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.407Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -425,7 +738,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -445,7 +758,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -471,7 +784,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -491,7 +804,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -518,7 +831,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -538,7 +851,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -594,7 +907,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -614,6 +927,23 @@
         "thresholdDays": 180,
         "basis": "2026-04-03T14:48:37.081Z",
         "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-27de4d6fdb30.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.405Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -657,7 +987,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-29113bb05006.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.408Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -679,7 +1026,28 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-2a0c4a5f7357.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.602Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -690,7 +1058,6 @@
       "status": "contested",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
         "wiki/claims/claim-2026-3bd13f3eea67.md",
         "wiki/claims/contested.md",
@@ -704,7 +1071,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-306cfe98909b.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.408Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -714,10 +1098,7 @@
       "kind": "claim-page",
       "status": "active",
       "tags": [],
-      "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
-      ],
+      "backlinks": [],
       "summary": "Link this source into concepts, entities, or theses once reviewed. Claim Link this source into concepts, entities, or theses once reviewed. Classification - Type: fact - Status: active - Polarity: ne…",
       "document_class": "",
       "freshness": {
@@ -751,7 +1132,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -779,7 +1160,6 @@
       "status": "contested",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
         "wiki/claims/claim-2026-1ce324bba4dd.md",
         "wiki/claims/contested.md",
@@ -791,7 +1171,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -817,7 +1197,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-3dd7507f5e50.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.456Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -843,7 +1240,110 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-4304b374fe37.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.673Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-43d1b2ac4fc7.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.621Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-44d99219cbc4.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.632Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-473ecd5334c1.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.480Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-4802ae6214d4.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.405Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -878,7 +1378,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -892,7 +1392,30 @@
         "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
         "wiki/claims/claim-2026-00a1fc15c7d3.md",
+        "wiki/claims/claim-2026-037708214029.md",
+        "wiki/claims/claim-2026-05edf360f18f.md",
+        "wiki/claims/claim-2026-07578d1791a0.md",
+        "wiki/claims/claim-2026-09b75d1530c4.md",
+        "wiki/claims/claim-2026-11126fc335d9.md",
+        "wiki/claims/claim-2026-1554955d6ac6.md",
+        "wiki/claims/claim-2026-4304b374fe37.md",
+        "wiki/claims/claim-2026-43d1b2ac4fc7.md",
+        "wiki/claims/claim-2026-48380e1cedfa.md",
+        "wiki/claims/claim-2026-4cc13d4ea5a1.md",
+        "wiki/claims/claim-2026-6ff6ddc972bd.md",
+        "wiki/claims/claim-2026-790cb021e06f.md",
+        "wiki/claims/claim-2026-8b1c67fe8c65.md",
+        "wiki/claims/claim-2026-8f07d800bd9b.md",
+        "wiki/claims/claim-2026-98f15d05c555.md",
+        "wiki/claims/claim-2026-9fe1293a90d8.md",
+        "wiki/claims/claim-2026-b6a2527a26bc.md",
+        "wiki/claims/claim-2026-d1b7f27a9d9f.md",
+        "wiki/claims/claim-2026-d21464d79747.md",
+        "wiki/claims/claim-2026-d2e42f7edfe9.md",
         "wiki/claims/claim-2026-dd624a5c23f6.md",
+        "wiki/claims/claim-2026-e90eb2a628a6.md",
+        "wiki/claims/claim-2026-f51bdf1328a4.md",
+        "wiki/claims/claim-2026-f5b4b7436920.md",
         "wiki/claims/contested.md",
         "wiki/claims/index.md",
         "wiki/states/geopolitical-risk.md"
@@ -903,7 +1426,30 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-48380e1cedfa.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.405Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -933,10 +1479,7 @@
       "kind": "claim-page",
       "status": "active",
       "tags": [],
-      "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
-      ],
+      "backlinks": [],
       "summary": "Calendar cross-check for the Japan release window and supplementary Japan data. Claim Calendar cross-check for the Japan release window and supplementary Japan data. Classification - Type: fact - Sta…",
       "document_class": "",
       "freshness": {
@@ -974,7 +1517,149 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-4cc13d4ea5a1.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.408Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-4cf4553a66d3.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.586Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-4d6065686723.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.401Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-4f91f409ed24.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.656Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-4fba4cea193b.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.547Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-51d5866df3fc.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.673Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-53d6b9c94dda.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.602Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -997,7 +1682,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1017,7 +1702,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1058,7 +1743,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1097,7 +1782,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1117,7 +1802,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1128,8 +1813,6 @@
       "status": "active",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md",
         "wiki/states/market-structure.md"
       ],
       "summary": "Used for German retail sales, labor-market, and manufacturing release checks. Claim Used for German retail sales, labor-market, and manufacturing release checks. Classification - Type: fact - Status:…",
@@ -1139,6 +1822,23 @@
         "thresholdDays": 180,
         "basis": "2026-04-03",
         "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-644ce31aa811.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.405Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1171,7 +1871,28 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-64fece118c11.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.611Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1193,14 +1914,31 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-66414216bfe3.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.401Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-68601464f21c.md",
       "title": "Official China PMI release used for the March rebound in manufacturing and non-manufacturing ac…",
       "kind": "claim-page",
       "status": "active",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md",
         "wiki/states/china-demand.md"
       ],
       "summary": "Official China PMI release used for the March rebound in manufacturing and non-manufacturing ac… Claim Official China PMI release used for the March rebound in manufacturing and non-manufacturing act…",
@@ -1210,6 +1948,42 @@
         "thresholdDays": 180,
         "basis": "2026-04-01",
         "ageDays": 4
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-69acbe0d9485.md",
+      "title": "No page-by-page chart-number reconstruction was performed.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page chart-number reconstruction was performed. Claim No page-by-page chart-number reconstruction was performed. Classification - Type: fact - Status: active - Polarity: neutral - Confiden…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-01",
+        "ageDays": 4
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-69d758bfa04b.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.405Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1240,7 +2014,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1262,7 +2036,29 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-6ff6ddc972bd.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.408Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1288,7 +2084,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1308,7 +2104,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1328,7 +2124,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-74d6478bf6e8.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.456Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1338,10 +2151,7 @@
       "kind": "claim-page",
       "status": "active",
       "tags": [],
-      "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
-      ],
+      "backlinks": [],
       "summary": "Official source for UK Q4 2025 GDP final estimates. Claim Official source for UK Q4 2025 GDP final estimates. Classification - Type: estimate - Status: active - Polarity: neutral - Confidence: medium…",
       "document_class": "",
       "freshness": {
@@ -1389,6 +2199,40 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-782a46cb2423.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.405Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-78bef1ceeba5.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.408Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-78e8f79a1b83.md",
       "title": "Confidence is low because the answer is retrieval-grounded and constrained by the local repo.",
       "kind": "claim-page",
@@ -1404,6 +2248,46 @@
         "thresholdDays": 180,
         "basis": "2026-04-03T14:48:37.081Z",
         "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-790cb021e06f.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.611Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-7c5bb6ce1fed.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.408Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1429,7 +2313,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-7d16585b1efc.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.410Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1461,7 +2362,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1481,7 +2382,28 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-7fd37db22633.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.632Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1501,7 +2423,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1512,7 +2434,6 @@
       "status": "contested",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
         "wiki/claims/claim-2026-1ce324bba4dd.md",
         "wiki/claims/claim-2026-cd5a2a1ffedb.md",
@@ -1525,7 +2446,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1547,7 +2468,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1567,7 +2488,41 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-86c06b34b801.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.410Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-887b27e3b76a.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.412Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1585,6 +2540,45 @@
         "thresholdDays": 180,
         "basis": "2026-04-03",
         "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-8b1c67fe8c65.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.412Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-8b440df716cd.md",
+      "title": "Text was extracted locally with pdfplumber and reviewed by Codex at a high level.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was extracted locally with pdfplumber and reviewed by Codex at a high level. Claim Text was extracted locally with pdfplumber and reviewed by Codex at a high level. Classification - Type: fact -…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-01",
+        "ageDays": 4
       },
       "open_threads": []
     },
@@ -1612,7 +2606,6 @@
       "status": "contested",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/backlinks.md",
         "wiki/_indices/claims.md",
         "wiki/claims/claim-2026-404ecd94ae08.md",
         "wiki/claims/claim-2026-c6e82f021d84.md",
@@ -1627,7 +2620,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1649,6 +2642,66 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-8f07d800bd9b.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.410Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-906d45738b5c.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.405Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-90a4603ea5be.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.403Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-923348727348.md",
       "title": "The highest-quality conclusion from this week is not that the world has become cleanly stronger…",
       "kind": "claim-page",
@@ -1664,7 +2717,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1682,6 +2735,27 @@
         "thresholdDays": 180,
         "basis": "2026-03-31",
         "ageDays": 5
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-92e97cb1fec6.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.602Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1724,7 +2798,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1742,6 +2816,91 @@
         "thresholdDays": 180,
         "basis": "2026-04-03",
         "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-9593d31687c0.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.507Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-9861b4cd3d49.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.611Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-98c456b56182.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.656Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-98f15d05c555.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.547Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1766,7 +2925,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1790,6 +2949,44 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-9ed7fce60eed.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.412Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-9edeef204b36.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.643Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-9f0ae3ee1127.md",
       "title": "Sterling and the euro both face imported-energy vulnerability, and the yen is still hostage to…",
       "kind": "claim-page",
@@ -1805,7 +3002,29 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-9fe1293a90d8.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.456Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1825,7 +3044,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -1849,6 +3068,23 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-a091e59d2a05.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.480Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-a1fe9ae2b3af.md",
       "title": "The trade deficit widened to $57.3 billion in February, but the broader activity message was st…",
       "kind": "claim-page",
@@ -1864,7 +3100,26 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-a24f7814f1ee.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.407Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1884,7 +3139,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-a8e1b6fa7ebf.md",
+      "title": "Direct single-document capture used because the generic pack builder overflowed on this file.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Direct single-document capture used because the generic pack builder overflowed on this file. Claim Direct single-document capture used because the generic pack builder overflowed on this file. Class…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-01",
+        "ageDays": 4
       },
       "open_threads": []
     },
@@ -1904,7 +3176,24 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-ad41282cc41c.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.408Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1928,6 +3217,27 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-b2ac97fb9f7c.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.611Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-b607cafb5791.md",
       "title": "Wage growth cooled to 0.2% month over month and 3.5% year over year, which softened the labor-c…",
       "kind": "claim-page",
@@ -1943,7 +3253,47 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-b6a2527a26bc.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.586Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-b7896ad234f0.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.408Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -1969,6 +3319,27 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-bf32aff5d272.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.673Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-bfe86b6bba4e.md",
       "title": "The unemployment rate slipping to 4.3% and claims remaining near 200K says the labor market is…",
       "kind": "claim-page",
@@ -1984,7 +3355,49 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-c03b170c3609.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.621Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-c20555cc8d58.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.643Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -2004,7 +3417,87 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-c35bc25d9e50.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.621Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-c4bb4b295592.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.632Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-c50c1fc68737.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.643Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-c5e556de4d69.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.480Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -2029,7 +3522,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2056,7 +3549,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2080,7 +3573,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2104,7 +3597,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2124,7 +3617,26 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-cf0310861834.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.407Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -2148,7 +3660,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2187,6 +3699,28 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-d1b7f27a9d9f.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.405Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-d1edd67bb63d.md",
       "title": "Used to show Spain diverged lower and slipped back into contraction.",
       "kind": "claim-page",
@@ -2202,6 +3736,106 @@
         "wiki/states/china-demand.md"
       ],
       "summary": "Used to show Spain diverged lower and slipped back into contraction. Claim Used to show Spain diverged lower and slipped back into contraction. Classification - Type: fact - Status: contested - Polar…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-01",
+        "ageDays": 4
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-d21464d79747.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.480Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-d2b7084c5f9b.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.507Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-d2e42f7edfe9.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.643Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-d31b51fde81a.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.410Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-d3a3258faa04.md",
+      "title": "Treat numeric chart readings as reviewable until visually checked page by page.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Treat numeric chart readings as reviewable until visually checked page by page. Claim Treat numeric chart readings as reviewable until visually checked page by page. Classification - Type: fact - Sta…",
       "document_class": "",
       "freshness": {
         "stale": false,
@@ -2232,7 +3866,66 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-d5706d822854.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.621Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-d60385fd6d7b.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.410Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-da14d7cb5022.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.656Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -2244,8 +3937,6 @@
       "tags": [],
       "backlinks": [
         "wiki/_indices/backlinks.md",
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md",
         "wiki/states/geopolitical-risk.md"
       ],
       "summary": "The note argues that Trump is deliberately withholding an automatic US security guarantee in th… Claim The note argues that Trump is deliberately withholding an automatic US security guarantee in the…",
@@ -2274,7 +3965,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2334,7 +4025,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2355,7 +4046,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2375,7 +4066,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2400,7 +4091,45 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-e56984297c94.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.414Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-e598ffebf4f1.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.673Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -2420,7 +4149,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2445,7 +4174,30 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-e90eb2a628a6.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.407Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -2465,7 +4217,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2502,7 +4254,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2513,8 +4265,6 @@
       "status": "active",
       "tags": [],
       "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md",
         "wiki/states/china-demand.md"
       ],
       "summary": "Used to show Italy remained on the improving side of the European manufacturing picture. Claim Used to show Italy remained on the improving side of the European manufacturing picture. Classification…",
@@ -2528,15 +4278,69 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-ed1f15d94214.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.507Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-ed2a663ccd95.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.410Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-ed2beb7e43d7.md",
+      "title": "No page-by-page manual chart or table reconstruction was performed in this pass.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "No page-by-page manual chart or table reconstruction was performed in this pass. Claim No page-by-page manual chart or table reconstruction was performed in this pass. Classification - Type: fact - S…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.403Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-ed6305eeddc7.md",
       "title": "Official release for the February U.S. trade balance used in the report.",
       "kind": "claim-page",
       "status": "active",
       "tags": [],
-      "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
-      ],
+      "backlinks": [],
       "summary": "Official release for the February U.S. trade balance used in the report. Claim Official release for the February U.S. trade balance used in the report. Classification - Type: fact - Status: active -…",
       "document_class": "",
       "freshness": {
@@ -2553,10 +4357,7 @@
       "kind": "claim-page",
       "status": "active",
       "tags": [],
-      "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
-      ],
+      "backlinks": [],
       "summary": "Official source for UK current-account figures used in the report. Claim Official source for UK current-account figures used in the report. Classification - Type: fact - Status: active - Polarity: ne…",
       "document_class": "",
       "freshness": {
@@ -2583,7 +4384,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2603,7 +4404,74 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-f51bdf1328a4.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.401Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-f5b4b7436920.md",
+      "title": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi…",
+      "kind": "claim-page",
+      "status": "contested",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/claim-2026-4833746fdda4.md",
+        "wiki/claims/contested.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revi… Claim Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; revie…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.632Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-f5deaf7a8044.md",
+      "title": "Text was re-extracted with pdfplumber and normalised before capture.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/backlinks.md",
+        "wiki/_indices/claims.md",
+        "wiki/claims/index.md"
+      ],
+      "summary": "Text was re-extracted with pdfplumber and normalised before capture. Claim Text was re-extracted with pdfplumber and normalised before capture. Classification - Type: fact - Status: active - Polarity…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:04:37.586Z",
+        "ageDays": 0
       },
       "open_threads": []
     },
@@ -2646,15 +4514,46 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/claims/claim-2026-f83ff7e52f99.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:23:11.410Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
+      "relative_path": "wiki/claims/claim-2026-f94240b6a4b8.md",
+      "title": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path.",
+      "kind": "claim-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Claim Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Classification - Type: fact - Sta…",
+      "document_class": "",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 180,
+        "basis": "2026-04-05T18:27:16.414Z",
+        "ageDays": 0
+      },
+      "open_threads": []
+    },
+    {
       "relative_path": "wiki/claims/claim-2026-f9bf9421c69f.md",
       "title": "Main source for euro area CPI, core CPI, PMI, and unemployment actual versus consensus.",
       "kind": "claim-page",
       "status": "active",
       "tags": [],
-      "backlinks": [
-        "wiki/_indices/claims.md",
-        "wiki/claims/index.md"
-      ],
+      "backlinks": [],
       "summary": "Main source for euro area CPI, core CPI, PMI, and unemployment actual versus consensus. Claim Main source for euro area CPI, core CPI, PMI, and unemployment actual versus consensus. Classification -…",
       "document_class": "",
       "freshness": {
@@ -2703,7 +4602,7 @@
         "stale": false,
         "thresholdDays": 180,
         "basis": "2026-04-03T17:10:39.079Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -2999,6 +4898,25 @@
       ]
     },
     {
+      "relative_path": "wiki/concepts/equities.md",
+      "title": "equities",
+      "kind": "concept-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/concepts.md"
+      ],
+      "summary": "equities Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Global Mark…",
+      "document_class": "",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "<!-- CATO:BEGIN_MANAGED_BLOCK evidence -->"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/concepts/exports.md",
       "title": "exports",
       "kind": "concept-page",
@@ -3145,6 +5063,25 @@
       ]
     },
     {
+      "relative_path": "wiki/concepts/global-markets.md",
+      "title": "global markets",
+      "kind": "concept-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/concepts.md"
+      ],
+      "summary": "global markets Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Globa…",
+      "document_class": "",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "<!-- CATO:BEGIN_MANAGED_BLOCK evidence -->"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/concepts/global-trade.md",
       "title": "global trade",
       "kind": "concept-page",
@@ -3161,6 +5098,25 @@
         "wiki/unresolved/open-threads.md"
       ],
       "summary": "global trade Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - U.S. In…",
+      "document_class": "",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "<!-- CATO:BEGIN_MANAGED_BLOCK evidence -->"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/concepts/government-bonds.md",
+      "title": "government bonds",
+      "kind": "concept-page",
+      "status": "active",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/concepts.md"
+      ],
+      "summary": "government bonds Definition Core Mechanism Why It Matters Competing Interpretations Common Misconceptions Related Topics Open Questions <!-- CATO:BEGINMANAGEDBLOCK evidence --> Managed Evidence - Glo…",
       "document_class": "",
       "freshness": null,
       "open_threads": [
@@ -3914,7 +5870,7 @@
         "stale": false,
         "thresholdDays": 30,
         "basis": "2026-04-03T18:31:35.706Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -3955,6 +5911,126 @@
       "open_threads": []
     },
     {
+      "relative_path": "wiki/drafts/append-review/agent-behavioral-contracts-formal-specification-and-runtime-enforcement-for-reli.md",
+      "title": "Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents Working Capture Agent Behavioral Contracts: Formal Specification and Runt…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:14.896Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/agentic-reasoning-for-large-language-models.md",
+      "title": "Append And Review: Agentic Reasoning for Large Language Models",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Agentic Reasoning for Large Language Models Working Capture Agentic Reasoning for Large Language Models ♢ Foundations · Evolution · Collaboration ♢ Tianxin Wei1† Ting-Wei Li1† Zhin…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:15:41.133Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/application-software-we-move-to-a-neutral-view-as-ai-disruption-uncertainty-ling.md",
+      "title": "Append And Review: Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers Working Capture Thematic Research Thematic industry research based on proprietary analytics fro…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:17.828Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/automotive-potential-winners-and-losers-from-the-oil-price-spike.md",
+      "title": "Append And Review: Automotive: Potential Winners and Losers From the Oil Price Spike",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Automotive: Potential Winners and Losers From the Oil Price Spike Working Capture Thematic Research Thematic industry research based on proprietary analytics from CFRA Garrett Nels…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:18.038Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/drafts/append-review/bank-of-england-decision-maker-panel-march-2026.md",
       "title": "Append And Review: Bank of England Decision Maker Panel, March 2026",
       "kind": "draft-note",
@@ -3971,7 +6047,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.767Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4001,7 +6077,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.823Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4031,7 +6107,157 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.881Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/ce-capital-daily-02042026.md",
+      "title": "Append And Review: CE Capital Daily 02.04.2026",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: CE Capital Daily 02.04.2026 Working Capture Capital Daily | 2nd April 2026 Treasuries offering little protection against stoc ks Yet another volatile 24hours in financial markets C…",
+      "document_class": "macro_data_release",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:18.271Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/ce-capital-daily-31032026.md",
+      "title": "Append And Review: CE Capital Daily 31.03.2026",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: CE Capital Daily 31.03.2026 Working Capture Capital Daily | 31st March 2026 Growth concerns take centre stage Notwithstanding some positivity in stock markets This marks a breakdow…",
+      "document_class": "macro_data_release",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:18.444Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/ce-equities-focus-ai-indices-mar-2026.md",
+      "title": "Append And Review: CE Equities Focus: AI Indices (Mar. 2026)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: CE Equities Focus: AI Indices (Mar. 2026) Working Capture Equities Focus | 31st March 2026 Mapping the next stage of the AI rally • While developments in the Middle East are the pr…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:18.807Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/ce-global-economics-update-indirect-effects-apr-2026.md",
+      "title": "Append And Review: CE Global Economics Update: Indirect Effects (Apr 2026)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: CE Global Economics Update: Indirect Effects (Apr 2026) Working Capture Global Economics Update | 2nd April 2026 The indirect inflation effects of higher energy prices • Beyond the…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:19.084Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/ce-global-markets-focus-bond-supply-focus.md",
+      "title": "Append And Review: CE Global Markets Focus: Bond Supply Focus",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: CE Global Markets Focus: Bond Supply Focus Working Capture Bonds | 2nd April 2026 BONDS FOCUS The retreat from sovereign bond duration • Supply/demand dynamics in long -dated sover…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:19.465Z",
+        "ageDays": 0
       },
       "open_threads": [
         {
@@ -4061,7 +6287,37 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.853Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/emerging-markets-capital-flows-monitor-mar-2026.md",
+      "title": "Append And Review: Emerging Markets Capital Flows Monitor (Mar 2026)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Emerging Markets Capital Flows Monitor (Mar 2026) Working Capture Emerging Markets Economics Update | 30th Mar. 2026 Emerging Markets Capital Flows Monitor ( Mar. 202 6) • Our meas…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:23:11.524Z",
+        "ageDays": 0
       },
       "open_threads": [
         {
@@ -4091,7 +6347,37 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.779Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/exploring-the-diverse-opportunities-in-us-equities-mar-2026.md",
+      "title": "Append And Review: Exploring the Diverse Opportunities in US Equities (Mar 2026)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Exploring the Diverse Opportunities in US Equities (Mar 2026) Working Capture Marketing Communication. For Professional Investors only. Beyond the headlines: Exploring the diverse…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:23:11.554Z",
+        "ageDays": 0
       },
       "open_threads": [
         {
@@ -4121,7 +6407,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.799Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4151,7 +6437,153 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.791Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/global-asset-allocation-april-2026.md",
+      "title": "Append And Review: Global Asset Allocation (April 2026)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Global Asset Allocation (April 2026) Working Capture April 2026 Global asset allocation Yoram Lustig, CFA Head of Global Investment Solutions EMEA Michael Walsh, FIA, CFA, CAIA Sol…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:23:11.793Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/global-economics-chart-pack-iran-conflict-edition-apr-2026.md",
+      "title": "Append And Review: Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Global Economics Chart Pack: Iran Conflict Edition (Apr 2026) Working Capture Global Economics Chart Pack – Iran Conflict Edition Global Economics Team INDEPENDENT ANALYSIS, FORECA…",
+      "document_class": "chartpack_or_visual",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:23:12.063Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/global-economics-update-will-higher-energy-prices-undermine-ai-investment-mar-20.md",
+      "title": "Append And Review: Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026) Working Capture Global Economics Update | 30th March 2026 Will the Iran war undermine AI inve…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:23:12.164Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/global-markets-chart-pack-apr-2026-snapshot.md",
+      "title": "Append And Review: Global Markets Chart Pack (Apr 2026 snapshot)",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [],
+      "summary": "Append And Review: Global Markets Chart Pack (Apr 2026 snapshot) Working Capture Power BI Desktop Global Markets Chart Pack This Global Markets Chart Pack is a snapshot of our live, interactive Chart…",
+      "document_class": "chartpack_or_visual",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:33:55.968Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/health-care-defensive-alternatives-in-a-volatile-energy-price-environment.md",
+      "title": "Append And Review: Health Care: Defensive Alternatives in a Volatile Energy Price Environment",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Health Care: Defensive Alternatives in a Volatile Energy Price Environment Working Capture Thematic Research Thematic industry research based on proprietary analytics from CFRA Sel…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:24:31.820Z",
+        "ageDays": 0
       },
       "open_threads": [
         {
@@ -4171,7 +6603,7 @@
       "status": "",
       "tags": [],
       "backlinks": [],
-      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - Append And Review: Bank of England Decision Maker Panel, March 2026 (meetingnotes) - Append And Review: Bank of Japan Tankan summ…",
+      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents (re…",
       "document_class": "",
       "freshness": {
         "stale": false,
@@ -4180,6 +6612,36 @@
         "ageDays": null
       },
       "open_threads": []
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/insurance-implications-from-the-conflict-with-iran.md",
+      "title": "Append And Review: Insurance: Implications From the Conflict With Iran",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Insurance: Implications From the Conflict With Iran Working Capture Thematic Research Thematic industry research based on proprietary analytics from CFRA Catherine A. Seifert cserv…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:27:16.478Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
     },
     {
       "relative_path": "wiki/drafts/append-review/italy-manufacturing-pmi.md",
@@ -4198,7 +6660,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.807Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4228,7 +6690,37 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.836Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/large-language-model-reasoning-failures.md",
+      "title": "Append And Review: Large Language Model Reasoning Failures",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Large Language Model Reasoning Failures Working Capture Published in Transactions on Machine Learning Research (01/2026) Large Language Model Reasoning Failures Peiyang Song ∗† pso…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:17:06.730Z",
+        "ageDays": 0
       },
       "open_threads": [
         {
@@ -4272,6 +6764,96 @@
       ]
     },
     {
+      "relative_path": "wiki/drafts/append-review/private-credit-hyperscaler-market-risk-exposure.md",
+      "title": "Append And Review: Private Credit: Hyperscaler Market Risk Exposure",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Private Credit: Hyperscaler Market Risk Exposure Working Capture Thematic Research Thematic industry research based on proprietary analytics from CFRA Kenneth Leon cservices@cfrare…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:27:16.610Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/private-credit-negative-sentiment-whats-next.md",
+      "title": "Append And Review: Private Credit: Negative Sentiment, What's Next?",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Private Credit: Negative Sentiment, What's Next? Working Capture Thematic Research Thematic industry research based on proprietary analytics from CFRA Kenneth Leon cservices@cfrare…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:27:16.741Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/private-credit-tech-concentration-risk-how-much.md",
+      "title": "Append And Review: Private Credit: Tech Concentration Risk, How Much?",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Private Credit: Tech Concentration Risk, How Much? Working Capture Thematic Research Thematic industry research based on proprietary analytics from CFRA Kenneth Leon cservices@cfra…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:27:16.887Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/drafts/append-review/purchasing-managers-index-for-march-2026.md",
       "title": "Append And Review: Purchasing Managers Index for March 2026",
       "kind": "draft-note",
@@ -4288,7 +6870,37 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.843Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/recursive-language-models.md",
+      "title": "Append And Review: Recursive Language Models",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Recursive Language Models Working Capture Recursive Language Models Alex L. Zhang1 Tim Kraska1 Omar Khattab1 Abstract 100 We study allowing large language models (LLMs) to process…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:10:02.646Z",
+        "ageDays": 0
       },
       "open_threads": [
         {
@@ -4318,7 +6930,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.869Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4348,7 +6960,67 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.816Z",
-        "ageDays": 1
+        "ageDays": 2
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/technology-sector-implications-the-middle-east-conflict.md",
+      "title": "Append And Review: Technology Sector Implications: The Middle East Conflict",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: Technology Sector Implications: The Middle East Conflict Working Capture Thematic Research Thematic industry research based on proprietary analytics from CFRA Angelo Zino, CFA cser…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:27:16.994Z",
+        "ageDays": 0
+      },
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What would have to be verified before this source informs claims, states, or decisions?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "Which opposing or primary sources should be paired with this one?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/drafts/append-review/the-fog-of-war.md",
+      "title": "Append And Review: The fog of war",
+      "kind": "draft-note",
+      "status": "open",
+      "tags": [],
+      "backlinks": [
+        "wiki/drafts/append-review/index.md",
+        "wiki/drafts/index.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Append And Review: The fog of war Working Capture The fog of war Views from the Global Unconstrained Fixed Income team Marketing material for Monthly Outlook, March 2026 professional clients only. Th…",
+      "document_class": "research_note",
+      "freshness": {
+        "stale": false,
+        "thresholdDays": 21,
+        "basis": "2026-04-05T18:04:41.903Z",
+        "ageDays": 0
       },
       "open_threads": [
         {
@@ -4408,7 +7080,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.758Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4438,7 +7110,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.746Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4468,7 +7140,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.718Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4498,7 +7170,7 @@
         "stale": false,
         "thresholdDays": 21,
         "basis": "2026-04-03T17:10:38.731Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -4518,7 +7190,7 @@
       "status": "",
       "tags": [],
       "backlinks": [],
-      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - Append And Review: Bank of England Decision Maker Panel, March 2026 (meetingnotes) - Append And Review: Bank of Japan Tankan summ…",
+      "summary": "Draft Workspace Index Generated: 2026-04-05 Append And Review Queue - Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents (re…",
       "document_class": "",
       "freshness": {
         "stale": false,
@@ -5157,9 +7829,10 @@
         "outputs/briefs/2026-04-03T18-33-46.708Z-why-believe-global-macro.md",
         "outputs/briefs/2026-04-03T19-04-23.953Z-why-believe-global-macro.md",
         "outputs/briefs/2026-04-03T19-05-49.294Z-why-believe-global-macro.md",
+        "wiki/_indices/backlinks.md",
         "wiki/_maps/home.md"
       ],
-      "summary": "Macro Use this area for growth, inflation, liquidity, central-bank, and regime notes. <!-- CATO:BEGINMANAGEDBLOCK index --> Macro Generated: 2026-04-05 growth - UK quarterly national accounts, Octobe…",
+      "summary": "Macro Use this area for growth, inflation, liquidity, central-bank, and regime notes. <!-- CATO:BEGINMANAGEDBLOCK index --> Macro Generated: 2026-04-05 growth - CE Capital Daily 31.03.2026 - UK quart…",
       "document_class": "",
       "freshness": null,
       "open_threads": []
@@ -5257,6 +7930,142 @@
       "document_class": "",
       "freshness": null,
       "open_threads": []
+    },
+    {
+      "relative_path": "wiki/source-notes/agent-behavioral-contracts-formal-specification-and-runtime-enforcement-for-reliable-autonomous-ai-agents.md",
+      "title": "Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-15414def2cdb.md",
+        "wiki/claims/claim-2026-4cf4553a66d3.md",
+        "wiki/claims/claim-2026-b6a2527a26bc.md",
+        "wiki/claims/claim-2026-f5deaf7a8044.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents Summary Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliabl…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/agentic-reasoning-for-large-language-models.md",
+      "title": "Agentic Reasoning for Large Language Models",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-1554955d6ac6.md",
+        "wiki/claims/claim-2026-9593d31687c0.md",
+        "wiki/claims/claim-2026-d2b7084c5f9b.md",
+        "wiki/claims/claim-2026-ed1f15d94214.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Agentic Reasoning for Large Language Models Summary Agentic Reasoning for Large Language Models ♢ Foundations · Evolution · Collaboration ♢ Tianxin Wei1† Ting-Wei Li1† Zhining Liu1† Xuying Ning1 Ze Y…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/application-software-we-move-to-a-neutral-view-as-ai-disruption-uncertainty-lingers.md",
+      "title": "Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-037708214029.md",
+        "wiki/claims/claim-2026-2a0c4a5f7357.md",
+        "wiki/claims/claim-2026-53d6b9c94dda.md",
+        "wiki/claims/claim-2026-92e97cb1fec6.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Janice Quek cservice…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/automotive-potential-winners-and-losers-from-the-oil-price-spike.md",
+      "title": "Automotive: Potential Winners and Losers From the Oil Price Spike",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-64fece118c11.md",
+        "wiki/claims/claim-2026-790cb021e06f.md",
+        "wiki/claims/claim-2026-9861b4cd3d49.md",
+        "wiki/claims/claim-2026-b2ac97fb9f7c.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Automotive: Potential Winners and Losers From the Oil Price Spike Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Garrett Nelson cservices@cfraresearch.c…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
     },
     {
       "relative_path": "wiki/source-notes/bank-of-england-decision-maker-panel-march-2026.md",
@@ -5631,6 +8440,179 @@
       ]
     },
     {
+      "relative_path": "wiki/source-notes/ce-capital-daily-02042026.md",
+      "title": "CE Capital Daily 02.04.2026",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-43d1b2ac4fc7.md",
+        "wiki/claims/claim-2026-c03b170c3609.md",
+        "wiki/claims/claim-2026-c35bc25d9e50.md",
+        "wiki/claims/claim-2026-d5706d822854.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "CE Capital Daily 02.04.2026 Summary Capital Daily | 2nd April 2026 Treasuries offering little protection against stoc ks Yet another volatile 24hours in financial markets Chart 2: 2-Year Treasury Yie…",
+      "document_class": "macro_data_release",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/ce-capital-daily-31032026.md",
+      "title": "CE Capital Daily 31.03.2026",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-44d99219cbc4.md",
+        "wiki/claims/claim-2026-7fd37db22633.md",
+        "wiki/claims/claim-2026-c4bb4b295592.md",
+        "wiki/claims/claim-2026-f5b4b7436920.md",
+        "wiki/claims/contested.md",
+        "wiki/macro/index.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "CE Capital Daily 31.03.2026 Summary Capital Daily | 31st March 2026 Growth concerns take centre stage Notwithstanding some positivity in stock markets This marks a breakdown in what had been a pretty…",
+      "document_class": "macro_data_release",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/ce-equities-focus-ai-indices-mar-2026.md",
+      "title": "CE Equities Focus: AI Indices (Mar. 2026)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-9edeef204b36.md",
+        "wiki/claims/claim-2026-c20555cc8d58.md",
+        "wiki/claims/claim-2026-c50c1fc68737.md",
+        "wiki/claims/claim-2026-d2e42f7edfe9.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "CE Equities Focus: AI Indices (Mar. 2026) Summary Equities Focus | 31st March 2026 Mapping the next stage of the AI rally • While developments in the Middle East are the primary concern for markets r…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/ce-global-economics-update-indirect-effects-apr-2026.md",
+      "title": "CE Global Economics Update: Indirect Effects (Apr 2026)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-09b75d1530c4.md",
+        "wiki/claims/claim-2026-4f91f409ed24.md",
+        "wiki/claims/claim-2026-98c456b56182.md",
+        "wiki/claims/claim-2026-da14d7cb5022.md",
+        "wiki/claims/contested.md",
+        "wiki/macro/index.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "CE Global Economics Update: Indirect Effects (Apr 2026) Summary Global Economics Update | 2nd April 2026 The indirect inflation effects of higher energy prices • Beyond their direct effects on consum…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/ce-global-markets-focus-bond-supply-focus.md",
+      "title": "CE Global Markets Focus: Bond Supply Focus",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-4304b374fe37.md",
+        "wiki/claims/claim-2026-51d5866df3fc.md",
+        "wiki/claims/claim-2026-bf32aff5d272.md",
+        "wiki/claims/claim-2026-e598ffebf4f1.md",
+        "wiki/claims/contested.md",
+        "wiki/macro/index.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "CE Global Markets Focus: Bond Supply Focus Summary Bonds | 2nd April 2026 BONDS FOCUS The retreat from sovereign bond duration • Supply/demand dynamics in long -dated sovereign debt markets are deter…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/source-notes/china-economic-calendar-for-late-march-and-early-april-2026.md",
       "title": "China economic calendar for late March and early April 2026",
       "kind": "source-note",
@@ -5755,6 +8737,40 @@
         {
           "heading": "Open Questions",
           "text": "What is still ambiguous or unverified?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/emerging-markets-capital-flows-monitor-mar-2026.md",
+      "title": "Emerging Markets Capital Flows Monitor (Mar 2026)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-07c7f64e635b.md",
+        "wiki/claims/claim-2026-4d6065686723.md",
+        "wiki/claims/claim-2026-66414216bfe3.md",
+        "wiki/claims/claim-2026-f51bdf1328a4.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Emerging Markets Capital Flows Monitor (Mar 2026) Summary Emerging Markets Economics Update | 30th Mar. 2026 Emerging Markets Capital Flows Monitor ( Mar. 202 6) • Our measure of EM capital flows poi…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
         }
       ]
     },
@@ -5884,6 +8900,40 @@
         {
           "heading": "Open Questions",
           "text": "What is still ambiguous or unverified?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/exploring-the-diverse-opportunities-in-us-equities-mar-2026.md",
+      "title": "Exploring the Diverse Opportunities in US Equities (Mar 2026)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-07578d1791a0.md",
+        "wiki/claims/claim-2026-15cb21f5f149.md",
+        "wiki/claims/claim-2026-90a4603ea5be.md",
+        "wiki/claims/claim-2026-ed2beb7e43d7.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Exploring the Diverse Opportunities in US Equities (Mar 2026) Summary Marketing Communication. For Professional Investors only. Beyond the headlines: Exploring the diverse opportunities in US equitie…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
         }
       ]
     },
@@ -6141,6 +9191,218 @@
       ]
     },
     {
+      "relative_path": "wiki/source-notes/global-asset-allocation-april-2026.md",
+      "title": "Global Asset Allocation (April 2026)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-4802ae6214d4.md",
+        "wiki/claims/claim-2026-48380e1cedfa.md",
+        "wiki/claims/claim-2026-69d758bfa04b.md",
+        "wiki/claims/claim-2026-906d45738b5c.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Global Asset Allocation (April 2026) Summary April 2026 Global asset allocation Yoram Lustig, CFA Head of Global Investment Solutions EMEA Michael Walsh, FIA, CFA, CAIA Solutions Strategist Eva Wu, C…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/global-economics-chart-pack-iran-conflict-edition-apr-2026.md",
+      "title": "Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-17c67938a0a3.md",
+        "wiki/claims/claim-2026-a24f7814f1ee.md",
+        "wiki/claims/claim-2026-cf0310861834.md",
+        "wiki/claims/claim-2026-e90eb2a628a6.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Global Economics Chart Pack: Iran Conflict Edition (Apr 2026) Summary Global Economics Chart Pack – Iran Conflict Edition Global Economics Team INDEPENDENT ANALYSIS, FORECASTS AND CONSULTANCY 2nd Apr…",
+      "document_class": "chartpack_or_visual",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/global-economics-update-will-higher-energy-prices-undermine-ai-investment-mar-2026.md",
+      "title": "Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-306cfe98909b.md",
+        "wiki/claims/claim-2026-6ff6ddc972bd.md",
+        "wiki/claims/claim-2026-ad41282cc41c.md",
+        "wiki/claims/claim-2026-b7896ad234f0.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026) Summary Global Economics Update | 30th March 2026 Will the Iran war undermine AI investment? • The Iran war coul…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md",
+      "title": "Global Markets Chart Pack (Apr 2026 snapshot)",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [
+        "markets",
+        "chartpack",
+        "macro",
+        "cross-asset"
+      ],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-0a96e659e0b8.md",
+        "wiki/claims/claim-2026-69acbe0d9485.md",
+        "wiki/claims/claim-2026-8b440df716cd.md",
+        "wiki/claims/claim-2026-a8e1b6fa7ebf.md",
+        "wiki/claims/claim-2026-d3a3258faa04.md",
+        "wiki/concepts/energy-prices.md",
+        "wiki/concepts/equities.md",
+        "wiki/concepts/global-markets.md",
+        "wiki/concepts/government-bonds.md",
+        "wiki/timelines/source-chronology.md"
+      ],
+      "summary": "Global Markets Chart Pack (Apr 2026 snapshot) Summary Power BI Desktop Global Markets Chart Pack This Global Markets Chart Pack is a snapshot of our live, interactive Chart Pack. The latest interacti…",
+      "document_class": "chartpack_or_visual",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/health-care-defensive-alternatives-in-a-volatile-energy-price-environment.md",
+      "title": "Health Care: Defensive Alternatives in a Volatile Energy Price Environment",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-7d16585b1efc.md",
+        "wiki/claims/claim-2026-86c06b34b801.md",
+        "wiki/claims/claim-2026-8f07d800bd9b.md",
+        "wiki/claims/claim-2026-f83ff7e52f99.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Health Care: Defensive Alternatives in a Volatile Energy Price Environment Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Sel Hardy Daniel Rich, CFA cse…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/insurance-implications-from-the-conflict-with-iran.md",
+      "title": "Insurance: Implications From the Conflict With Iran",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-27de4d6fdb30.md",
+        "wiki/claims/claim-2026-644ce31aa811.md",
+        "wiki/claims/claim-2026-782a46cb2423.md",
+        "wiki/claims/claim-2026-d1b7f27a9d9f.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Insurance: Implications From the Conflict With Iran Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Catherine A. Seifert cservices@cfraresearch.com Insur…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/source-notes/italy-manufacturing-pmi.md",
       "title": "Italy manufacturing PMI",
       "kind": "source-note",
@@ -6394,6 +9656,40 @@
       ]
     },
     {
+      "relative_path": "wiki/source-notes/large-language-model-reasoning-failures.md",
+      "title": "Large Language Model Reasoning Failures",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-05c659340933.md",
+        "wiki/claims/claim-2026-08313a601575.md",
+        "wiki/claims/claim-2026-4fba4cea193b.md",
+        "wiki/claims/claim-2026-98f15d05c555.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Large Language Model Reasoning Failures Summary Published in Transactions on Machine Learning Research (01/2026) Large Language Model Reasoning Failures Peiyang Song ∗† psong@caltech.edu California I…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
       "relative_path": "wiki/source-notes/mi-guide-to-the-markets-uk.md",
       "title": "MI Guide to the Markets UK",
       "kind": "source-note",
@@ -6408,6 +9704,108 @@
       ],
       "summary": "MI Guide to the Markets UK Summary 2 UK GT M L i l y G i l m o u r London Gl ob al Mar ke t In sigh ts Stra tegy T ea m en-US S h o g o M ae ka w a T ok y o Ker r y Cr ai g , CF A M el bo ur ne Ch ao…",
       "document_class": "macro_data_release",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/private-credit-hyperscaler-market-risk-exposure.md",
+      "title": "Private Credit: Hyperscaler Market Risk Exposure",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-29113bb05006.md",
+        "wiki/claims/claim-2026-4cc13d4ea5a1.md",
+        "wiki/claims/claim-2026-78bef1ceeba5.md",
+        "wiki/claims/claim-2026-7c5bb6ce1fed.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Private Credit: Hyperscaler Market Risk Exposure Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Kenneth Leon cservices@cfraresearch.com Private Credit:…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/private-credit-negative-sentiment-whats-next.md",
+      "title": "Private Credit: Negative Sentiment, What's Next?",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-05edf360f18f.md",
+        "wiki/claims/claim-2026-d31b51fde81a.md",
+        "wiki/claims/claim-2026-d60385fd6d7b.md",
+        "wiki/claims/claim-2026-ed2a663ccd95.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Private Credit: Negative Sentiment, What's Next? Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Kenneth Leon cservices@cfraresearch.com Private Credit:…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/private-credit-tech-concentration-risk-how-much.md",
+      "title": "Private Credit: Tech Concentration Risk, How Much?",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-14eafb155d1b.md",
+        "wiki/claims/claim-2026-887b27e3b76a.md",
+        "wiki/claims/claim-2026-8b1c67fe8c65.md",
+        "wiki/claims/claim-2026-9ed7fce60eed.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Private Credit: Tech Concentration Risk, How Much? Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Kenneth Leon cservices@cfraresearch.com Private Credit…",
+      "document_class": "research_note",
       "freshness": null,
       "open_threads": [
         {
@@ -6545,6 +9943,40 @@
         {
           "heading": "Open Questions",
           "text": "What is still ambiguous or unverified?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/recursive-language-models.md",
+      "title": "Recursive Language Models",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-473ecd5334c1.md",
+        "wiki/claims/claim-2026-a091e59d2a05.md",
+        "wiki/claims/claim-2026-c5e556de4d69.md",
+        "wiki/claims/claim-2026-d21464d79747.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Recursive Language Models Summary Recursive Language Models Alex L. Zhang1 Tim Kraska1 Omar Khattab1 Abstract 100 We study allowing large language models (LLMs) to process arbitrarily long prompts th…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
         }
       ]
     },
@@ -6801,6 +10233,74 @@
         {
           "heading": "Open Questions",
           "text": "What is still ambiguous or unverified?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/technology-sector-implications-the-middle-east-conflict.md",
+      "title": "Technology Sector Implications: The Middle East Conflict",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-05819aaf9e52.md",
+        "wiki/claims/claim-2026-11126fc335d9.md",
+        "wiki/claims/claim-2026-e56984297c94.md",
+        "wiki/claims/claim-2026-f94240b6a4b8.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "Technology Sector Implications: The Middle East Conflict Summary Thematic Research Thematic industry research based on proprietary analytics from CFRA Angelo Zino, CFA cservices@cfraresearch.com Tech…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
+        }
+      ]
+    },
+    {
+      "relative_path": "wiki/source-notes/the-fog-of-war.md",
+      "title": "The fog of war",
+      "kind": "source-note",
+      "status": "draft",
+      "tags": [],
+      "backlinks": [
+        "wiki/_indices/sources.md",
+        "wiki/claims/claim-2026-118efdf49f03.md",
+        "wiki/claims/claim-2026-3dd7507f5e50.md",
+        "wiki/claims/claim-2026-74d6478bf6e8.md",
+        "wiki/claims/claim-2026-9fe1293a90d8.md",
+        "wiki/claims/contested.md",
+        "wiki/unresolved/classification-gaps.md",
+        "wiki/unresolved/open-threads.md"
+      ],
+      "summary": "The fog of war Summary The fog of war Views from the Global Unconstrained Fixed Income team Marketing material for Monthly Outlook, March 2026 professional clients only. The war in Iran has entered i…",
+      "document_class": "research_note",
+      "freshness": null,
+      "open_threads": [
+        {
+          "heading": "Open Questions",
+          "text": "What concepts should this source strengthen?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is still ambiguous or unverified?"
+        },
+        {
+          "heading": "Open Questions",
+          "text": "What is the strongest counter-reading?"
         }
       ]
     },
@@ -7364,7 +10864,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:37.099Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7419,7 +10919,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:36.160Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7463,7 +10963,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:36.347Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7528,7 +11028,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:21.594Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7584,7 +11084,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:36.871Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7627,7 +11127,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:36.618Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7681,7 +11181,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:36.574Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7733,7 +11233,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:35.557Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7789,7 +11289,7 @@
         "stale": false,
         "thresholdDays": 14,
         "basis": "2026-04-03T18:31:35.899Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": [
         {
@@ -7945,8 +11445,10 @@
       "kind": "",
       "status": "",
       "tags": [],
-      "backlinks": [],
-      "summary": "Source Notes Needing Classification - None.",
+      "backlinks": [
+        "wiki/_indices/backlinks.md"
+      ],
+      "summary": "Source Notes Needing Classification - Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents - Agentic Reasoning for Large Language Models - Applic…",
       "document_class": "",
       "freshness": null,
       "open_threads": []
@@ -7972,7 +11474,7 @@
       "backlinks": [
         "wiki/_indices/backlinks.md"
       ],
-      "summary": "Open Threads Generated: 2026-04-05 actual - Note: actual - Open Questions: <!-- CATO:BEGINMANAGEDBLOCK evidence --> Append And Review: Bank of England Decision Maker Panel, March 2026 - Note: Append…",
+      "summary": "Open Threads Generated: 2026-04-05 actual - Note: actual - Open Questions: <!-- CATO:BEGINMANAGEDBLOCK evidence --> Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliab…",
       "document_class": "",
       "freshness": null,
       "open_threads": []
@@ -8041,7 +11543,7 @@
         "stale": false,
         "thresholdDays": 30,
         "basis": "2026-04-03T17:10:38.983Z",
-        "ageDays": 1
+        "ageDays": 2
       },
       "open_threads": []
     },
@@ -8095,7 +11597,7 @@
         "wiki/_indices/backlinks.md",
         "wiki/_maps/home.md"
       ],
-      "summary": "Concept Index Generated: 2026-04-05 - business conditions (1 sources) - capex (1 sources) - current account (1 sources) - domestic demand (1 sources) - energy prices (1 sources) - energy security (1…",
+      "summary": "Concept Index Generated: 2026-04-05 - business conditions (1 sources) - capex (1 sources) - current account (1 sources) - domestic demand (1 sources) - energy prices (2 sources) - energy security (1…",
       "document_class": "",
       "freshness": null,
       "open_threads": []
@@ -8175,7 +11677,7 @@
         "wiki/_indices/backlinks.md",
         "wiki/_maps/home.md"
       ],
-      "summary": "Source Index Generated: 2026-04-05 article - Trump, Hormuz and the End of the Free Ride paper - MI Guide to the Markets UK web - Bank of England Decision Maker Panel, March 2026 (2026-04-02) - Bank o…",
+      "summary": "Source Index Generated: 2026-04-05 article - Trump, Hormuz and the End of the Free Ride paper - Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Age…",
       "document_class": "",
       "freshness": null,
       "open_threads": []
@@ -8657,11 +12159,11 @@
   ],
   "tags": [
     {
-      "key": "llm-handoff",
+      "key": "macro",
       "labels": [
-        "llm-handoff"
+        "macro"
       ],
-      "count": 16,
+      "count": 17,
       "notes": [
         "wiki/source-notes/bank-of-england-decision-maker-panel-march-2026.md",
         "wiki/source-notes/bank-of-japan-tankan-summary-march-2026-survey.md",
@@ -8670,6 +12172,7 @@
         "wiki/source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026.md",
         "wiki/source-notes/france-manufacturing-pmi.md",
         "wiki/source-notes/germany-economic-calendar-for-late-march-and-early-april-2026.md",
+        "wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md",
         "wiki/source-notes/italy-manufacturing-pmi.md",
         "wiki/source-notes/japan-economic-calendar-for-late-march-and-early-april-2026.md",
         "wiki/source-notes/purchasing-managers-index-for-march-2026.md",
@@ -8682,9 +12185,9 @@
       ]
     },
     {
-      "key": "macro",
+      "key": "llm-handoff",
       "labels": [
-        "macro"
+        "llm-handoff"
       ],
       "count": 16,
       "notes": [
@@ -8816,6 +12319,26 @@
       ]
     },
     {
+      "key": "chartpack",
+      "labels": [
+        "chartpack"
+      ],
+      "count": 1,
+      "notes": [
+        "wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md"
+      ]
+    },
+    {
+      "key": "cross-asset",
+      "labels": [
+        "cross-asset"
+      ],
+      "count": 1,
+      "notes": [
+        "wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md"
+      ]
+    },
+    {
       "key": "energy",
       "labels": [
         "energy"
@@ -8913,6 +12436,16 @@
       "count": 1,
       "notes": [
         "wiki/source-notes/trump-hormuz-and-the-end-of-the-free-ride.md"
+      ]
+    },
+    {
+      "key": "markets",
+      "labels": [
+        "markets"
+      ],
+      "count": 1,
+      "notes": [
+        "wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md"
       ]
     },
     {

@@ -158,6 +158,15 @@ Use this when the PDF is image-heavy, chart-heavy, table-heavy, or otherwise too
 
 This is the preferred route for scanned or visually dense PDFs. Do not force those documents through plain `ingest` if the baseline extract is visibly weak.
 
+For larger mixed batches:
+
+- start in chunks of roughly 6-12 PDFs
+- split further if `pdf-pack` overflows
+- isolate a problematic chart deck rather than blocking the entire run
+- use `capture-pdf --copy` while debugging an outlier so retries stay reversible
+
+If a bundle already contains `extracted_text`, ingest now treats that as authoritative enough to bypass the native PDF parser.
+
 ### Frontier Handoff Loop
 
 Use this when you want deeper reasoning over Cato's claim/state/decision stack.

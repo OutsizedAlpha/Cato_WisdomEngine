@@ -6,6 +6,38 @@ Generated: 2026-04-05
 - Note: [[concepts/actual|actual]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents
+- Note: [[source-notes/agent-behavioral-contracts-formal-specification-and-runtime-enforcement-for-reliable-autonomous-ai-agents|Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## Agentic Reasoning for Large Language Models
+- Note: [[source-notes/agentic-reasoning-for-large-language-models|Agentic Reasoning for Large Language Models]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents
+- Note: [[drafts/append-review/agent-behavioral-contracts-formal-specification-and-runtime-enforcement-for-reli|Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Agentic Reasoning for Large Language Models
+- Note: [[drafts/append-review/agentic-reasoning-for-large-language-models|Append And Review: Agentic Reasoning for Large Language Models]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers
+- Note: [[drafts/append-review/application-software-we-move-to-a-neutral-view-as-ai-disruption-uncertainty-ling|Append And Review: Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Automotive: Potential Winners and Losers From the Oil Price Spike
+- Note: [[drafts/append-review/automotive-potential-winners-and-losers-from-the-oil-price-spike|Append And Review: Automotive: Potential Winners and Losers From the Oil Price Spike]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
 ## Append And Review: Bank of England Decision Maker Panel, March 2026
 - Note: [[drafts/append-review/bank-of-england-decision-maker-panel-march-2026|Append And Review: Bank of England Decision Maker Panel, March 2026]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
@@ -21,13 +53,48 @@ Generated: 2026-04-05
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
+## Append And Review: CE Capital Daily 02.04.2026
+- Note: [[drafts/append-review/ce-capital-daily-02042026|Append And Review: CE Capital Daily 02.04.2026]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: CE Capital Daily 31.03.2026
+- Note: [[drafts/append-review/ce-capital-daily-31032026|Append And Review: CE Capital Daily 31.03.2026]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: CE Equities Focus: AI Indices (Mar. 2026)
+- Note: [[drafts/append-review/ce-equities-focus-ai-indices-mar-2026|Append And Review: CE Equities Focus: AI Indices (Mar. 2026)]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: CE Global Economics Update: Indirect Effects (Apr 2026)
+- Note: [[drafts/append-review/ce-global-economics-update-indirect-effects-apr-2026|Append And Review: CE Global Economics Update: Indirect Effects (Apr 2026)]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: CE Global Markets Focus: Bond Supply Focus
+- Note: [[drafts/append-review/ce-global-markets-focus-bond-supply-focus|Append And Review: CE Global Markets Focus: Bond Supply Focus]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
 ## Append And Review: China economic calendar for late March and early April 2026
 - Note: [[drafts/append-review/china-economic-calendar-for-late-march-and-early-april-2026|Append And Review: China economic calendar for late March and early April 2026]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
+## Append And Review: Emerging Markets Capital Flows Monitor (Mar 2026)
+- Note: [[drafts/append-review/emerging-markets-capital-flows-monitor-mar-2026|Append And Review: Emerging Markets Capital Flows Monitor (Mar 2026)]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
 ## Append And Review: Euro area economic calendar for late March and early April 2026
 - Note: [[drafts/append-review/euro-area-economic-calendar-for-late-march-and-early-april-2026|Append And Review: Euro area economic calendar for late March and early April 2026]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Exploring the Diverse Opportunities in US Equities (Mar 2026)
+- Note: [[drafts/append-review/exploring-the-diverse-opportunities-in-us-equities-mar-2026|Append And Review: Exploring the Diverse Opportunities in US Equities (Mar 2026)]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
@@ -41,6 +108,36 @@ Generated: 2026-04-05
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
+## Append And Review: Global Asset Allocation (April 2026)
+- Note: [[drafts/append-review/global-asset-allocation-april-2026|Append And Review: Global Asset Allocation (April 2026)]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)
+- Note: [[drafts/append-review/global-economics-chart-pack-iran-conflict-edition-apr-2026|Append And Review: Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)
+- Note: [[drafts/append-review/global-economics-update-will-higher-energy-prices-undermine-ai-investment-mar-20|Append And Review: Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Global Markets Chart Pack (Apr 2026 snapshot)
+- Note: [[drafts/append-review/global-markets-chart-pack-apr-2026-snapshot|Append And Review: Global Markets Chart Pack (Apr 2026 snapshot)]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Health Care: Defensive Alternatives in a Volatile Energy Price Environment
+- Note: [[drafts/append-review/health-care-defensive-alternatives-in-a-volatile-energy-price-environment|Append And Review: Health Care: Defensive Alternatives in a Volatile Energy Price Environment]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Insurance: Implications From the Conflict With Iran
+- Note: [[drafts/append-review/insurance-implications-from-the-conflict-with-iran|Append And Review: Insurance: Implications From the Conflict With Iran]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
 ## Append And Review: Italy manufacturing PMI
 - Note: [[drafts/append-review/italy-manufacturing-pmi|Append And Review: Italy manufacturing PMI]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
@@ -51,13 +148,38 @@ Generated: 2026-04-05
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
+## Append And Review: Large Language Model Reasoning Failures
+- Note: [[drafts/append-review/large-language-model-reasoning-failures|Append And Review: Large Language Model Reasoning Failures]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
 ## Append And Review: MI Guide to the Markets UK
 - Note: [[drafts/append-review/mi-guide-to-the-markets-uk|Append And Review: MI Guide to the Markets UK]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
+## Append And Review: Private Credit: Hyperscaler Market Risk Exposure
+- Note: [[drafts/append-review/private-credit-hyperscaler-market-risk-exposure|Append And Review: Private Credit: Hyperscaler Market Risk Exposure]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Private Credit: Negative Sentiment, What's Next?
+- Note: [[drafts/append-review/private-credit-negative-sentiment-whats-next|Append And Review: Private Credit: Negative Sentiment, What's Next?]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Private Credit: Tech Concentration Risk, How Much?
+- Note: [[drafts/append-review/private-credit-tech-concentration-risk-how-much|Append And Review: Private Credit: Tech Concentration Risk, How Much?]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
 ## Append And Review: Purchasing Managers Index for March 2026
 - Note: [[drafts/append-review/purchasing-managers-index-for-march-2026|Append And Review: Purchasing Managers Index for March 2026]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Recursive Language Models
+- Note: [[drafts/append-review/recursive-language-models|Append And Review: Recursive Language Models]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
@@ -68,6 +190,16 @@ Generated: 2026-04-05
 
 ## Append And Review: Spain manufacturing PMI
 - Note: [[drafts/append-review/spain-manufacturing-pmi|Append And Review: Spain manufacturing PMI]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: Technology Sector Implications: The Middle East Conflict
+- Note: [[drafts/append-review/technology-sector-implications-the-middle-east-conflict|Append And Review: Technology Sector Implications: The Middle East Conflict]]
+- Open Questions: What would have to be verified before this source informs claims, states, or decisions?
+- Open Questions: Which opposing or primary sources should be paired with this one?
+
+## Append And Review: The fog of war
+- Note: [[drafts/append-review/the-fog-of-war|Append And Review: The fog of war]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
@@ -96,9 +228,21 @@ Generated: 2026-04-05
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
 - Open Questions: Which opposing or primary sources should be paired with this one?
 
+## Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers
+- Note: [[source-notes/application-software-we-move-to-a-neutral-view-as-ai-disruption-uncertainty-lingers|Application Software: We Move to a Neutral View as AI Disruption Uncertainty Lingers]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
 ## april
 - Note: [[concepts/april|april]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Automotive: Potential Winners and Losers From the Oil Price Spike
+- Note: [[source-notes/automotive-potential-winners-and-losers-from-the-oil-price-spike|Automotive: Potential Winners and Losers From the Oil Price Spike]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## Bank of England
 - Note: [[entities/bank-of-england|Bank of England]]
@@ -143,6 +287,36 @@ Generated: 2026-04-05
 - Note: [[concepts/capex|capex]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## CE Capital Daily 02.04.2026
+- Note: [[source-notes/ce-capital-daily-02042026|CE Capital Daily 02.04.2026]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## CE Capital Daily 31.03.2026
+- Note: [[source-notes/ce-capital-daily-31032026|CE Capital Daily 31.03.2026]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## CE Equities Focus: AI Indices (Mar. 2026)
+- Note: [[source-notes/ce-equities-focus-ai-indices-mar-2026|CE Equities Focus: AI Indices (Mar. 2026)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## CE Global Economics Update: Indirect Effects (Apr 2026)
+- Note: [[source-notes/ce-global-economics-update-indirect-effects-apr-2026|CE Global Economics Update: Indirect Effects (Apr 2026)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## CE Global Markets Focus: Bond Supply Focus
+- Note: [[source-notes/ce-global-markets-focus-bond-supply-focus|CE Global Markets Focus: Bond Supply Focus]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
 ## change
 - Note: [[concepts/change|change]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
@@ -186,12 +360,22 @@ Generated: 2026-04-05
 - Note: [[entities/ecb|ECB]]
 - Open Issues: <!-- CATO:BEGIN_MANAGED_BLOCK concepts -->
 
+## Emerging Markets Capital Flows Monitor (Mar 2026)
+- Note: [[source-notes/emerging-markets-capital-flows-monitor-mar-2026|Emerging Markets Capital Flows Monitor (Mar 2026)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
 ## energy prices
 - Note: [[concepts/energy-prices|energy prices]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## energy security
 - Note: [[concepts/energy-security|energy security]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## equities
+- Note: [[concepts/equities|equities]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## Euro Area
@@ -213,6 +397,12 @@ Generated: 2026-04-05
 ## European Union
 - Note: [[entities/european-union|European Union]]
 - Open Issues: <!-- CATO:BEGIN_MANAGED_BLOCK concepts -->
+
+## Exploring the Diverse Opportunities in US Equities (Mar 2026)
+- Note: [[source-notes/exploring-the-diverse-opportunities-in-us-equities-mar-2026|Exploring the Diverse Opportunities in US Equities (Mar 2026)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## exports
 - Note: [[concepts/exports|exports]]
@@ -274,6 +464,24 @@ Generated: 2026-04-05
 - Open Questions: What concepts should this source strengthen?
 - Open Questions: What is still ambiguous or unverified?
 
+## Global Asset Allocation (April 2026)
+- Note: [[source-notes/global-asset-allocation-april-2026|Global Asset Allocation (April 2026)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)
+- Note: [[source-notes/global-economics-chart-pack-iran-conflict-edition-apr-2026|Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)
+- Note: [[source-notes/global-economics-update-will-higher-energy-prices-undermine-ai-investment-mar-2026|Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
 ## Global Macro
 - Note: [[states/global-macro|Global Macro]]
 - Managed What Would Flip It: Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
@@ -281,8 +489,22 @@ Generated: 2026-04-05
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
+## global markets
+- Note: [[concepts/global-markets|global markets]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Global Markets Chart Pack (Apr 2026 snapshot)
+- Note: [[source-notes/global-markets-chart-pack-apr-2026-snapshot|Global Markets Chart Pack (Apr 2026 snapshot)]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
 ## global trade
 - Note: [[concepts/global-trade|global trade]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## government bonds
+- Note: [[concepts/government-bonds|government bonds]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## growth
@@ -292,6 +514,12 @@ Generated: 2026-04-05
 ## hard power
 - Note: [[concepts/hard-power|hard power]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Health Care: Defensive Alternatives in a Volatile Energy Price Environment
+- Note: [[source-notes/health-care-defensive-alternatives-in-a-volatile-energy-price-environment|Health Care: Defensive Alternatives in a Volatile Energy Price Environment]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## housing
 - Note: [[concepts/housing|housing]]
@@ -316,6 +544,12 @@ Generated: 2026-04-05
 ## inflation rate
 - Note: [[concepts/inflation-rate|inflation rate]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Insurance: Implications From the Conflict With Iran
+- Note: [[source-notes/insurance-implications-from-the-conflict-with-iran|Insurance: Implications From the Conflict With Iran]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## Iran
 - Note: [[entities/iran|Iran]]
@@ -353,6 +587,12 @@ Generated: 2026-04-05
 ## labour
 - Note: [[concepts/labour|labour]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Large Language Model Reasoning Failures
+- Note: [[source-notes/large-language-model-reasoning-failures|Large Language Model Reasoning Failures]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## macro calendar
 - Note: [[concepts/macro-calendar|macro calendar]]
@@ -434,6 +674,24 @@ Generated: 2026-04-05
 - Note: [[concepts/pricing-power|pricing power]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## Private Credit: Hyperscaler Market Risk Exposure
+- Note: [[source-notes/private-credit-hyperscaler-market-risk-exposure|Private Credit: Hyperscaler Market Risk Exposure]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## Private Credit: Negative Sentiment, What's Next?
+- Note: [[source-notes/private-credit-negative-sentiment-whats-next|Private Credit: Negative Sentiment, What's Next?]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## Private Credit: Tech Concentration Risk, How Much?
+- Note: [[source-notes/private-credit-tech-concentration-risk-how-much|Private Credit: Tech Concentration Risk, How Much?]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
 ## production
 - Note: [[concepts/production|production]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
@@ -446,6 +704,12 @@ Generated: 2026-04-05
 ## quarter
 - Note: [[concepts/quarter|quarter]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Recursive Language Models
+- Note: [[source-notes/recursive-language-models|Recursive Language Models]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## retail sales
 - Note: [[concepts/retail-sales|retail sales]]
@@ -484,6 +748,18 @@ Generated: 2026-04-05
 ## survey data
 - Note: [[concepts/survey-data|survey data]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Technology Sector Implications: The Middle East Conflict
+- Note: [[source-notes/technology-sector-implications-the-middle-east-conflict|Technology Sector Implications: The Middle East Conflict]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
+
+## The fog of war
+- Note: [[source-notes/the-fog-of-war|The fog of war]]
+- Open Questions: What concepts should this source strengthen?
+- Open Questions: What is still ambiguous or unverified?
+- Open Questions: What is the strongest counter-reading?
 
 ## trade
 - Note: [[concepts/trade|trade]]

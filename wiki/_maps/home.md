@@ -20,10 +20,10 @@ Core domains:
 <!-- CATO:BEGIN_MANAGED_BLOCK overview -->
 ## Managed Overview
 
-- Source notes: 18
-- Claims: 124
-- Contested claims: 31
-- Concepts: 26
+- Source notes: 42
+- Claims: 221
+- Contested claims: 54
+- Concepts: 29
 - Entities: 19
 - Timelines: 1
 - States: 9
@@ -33,9 +33,9 @@ Core domains:
 - Watch profiles: 1
 - Surveillance pages: 1
 - Self notes: 2
-- Draft workspace notes: 18
+- Draft workspace notes: 42
 - Contradiction candidates: 0
 - Synthesis candidates: 3
-- Open threads: 213
-- Last compiled: 2026-04-05T16:51:18.433Z
+- Open threads: 336
+- Last compiled: 2026-04-05T18:33:56.554Z
 <!-- CATO:END_MANAGED_BLOCK overview -->

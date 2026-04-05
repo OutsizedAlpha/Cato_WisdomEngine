@@ -1,0 +1,102 @@
+Global Economics Update | 2nd April 2026
+The indirect inflation effects of higher energy prices
+• Beyond their direct effects on consumer prices of fuels and piped gas , higher crude oil and natural gas
+prices will prompt firms to pass on higher fuel costs to consumers, boosting the prices of non -fuel items
+of the CPI such as electricity and food . In our baseline scenario, we estimate that these indirect effects
+on inflation – which are separate from “second -round” effects via broader wage - and price -setting – could
+range from 0.7% -pt in the US to nearly 1.5% -pt in the euro -zone, with the UK and Japan in between.
+• Chart 1 provides a framework for thinking about how a surge in oil and (natural) gas prices feed through to
+consumer prices . “First-round” effects are one-off price adjustments to higher fuel costs . “Second-round”
+effects capture workers and firms respond ing to first-round price increases by bidding up wages and prices
+to defend their real incomes. On their own, the first -round effects are (for want of a better word ) transitory,
+even if they can take time to fully feed through . But when inflation expectations rise amid conditions of
+excess demand , would -be transitory price effects can become self -sustaining via second -round effects.
+Chart 1: Stylised Transmission of Higher Energy Prices to Consumer Price Inflation
+Source: Capital Economics
+• Within first-round effects, higher oil and gas prices directly push up the consumer prices of fuels. For motor
+fuel, the passthrough is bigger where fuel taxes are lower , as in the US. (See Chart 2.) In contrast, in Europe,
+taxes make up a bigger share of pump price s, which dampens the inflationary effect of a rise in oil prices .
+Of course, in practice, tax changes or price cap s (like those in Japan ) will influence the direct passthrough.
+Chart 2: Fuel Tax Share of Gasoline Price (%, 2024) Chart 3: Brent Oil Price & Japan LNG Import Price
+Sources: IEA, Capital Economics Sources: LSEG, Capital Economics
+Simon MacAdam , Deputy Chief Global Economist , simon.macadam@capitaleconomics.com
+Global Economics Update Page 1
+
+Global Economics Update
+• For natural gas prices, there is also a fairly mechanical passthrough to consumer prices of piped gas, at least
+outside Japan. Indeed, in Japan, it is the yen price of crude oil that determines the prices of household gas
+(see Chart 3), not Asian LNG benchmarks , since most imported LNG contracts there are linked to oil prices.
+• In addition to pushing up consumer prices of fuels, higher oil and gas prices indirectly boost the prices of
+non-fuel goods and services as firms pass on higher fuel costs. For example, natural gas prices are a major
+determinant of electricity prices in many DMs. (See Chart 4.) In many cases , gas is either a key input for
+power generation or frequently sets the price of power generated under uniform marginal pricing systems.
+And as electricity bills are included in some rental agreements, higher gas prices can end up boosting rents.
+• Moreover, h igher oil prices increase fuel costs for transport services such as air lines and haulage. The
+cost hike for transport services is larger when the cost of higher -grade refined petroleum rise s by more than
+crude oil prices, as is the case today . Indeed, s ince the start of the war, gasoline prices have experienced
+comparable increases to crude oil . But the prices of diesel – which is used disproportionately by heavy-
+goods vehicles transporting goods – and jet fuel have risen much further. (See Chart 5.) Prices of tourism-
+related services can be sensitive to higher transport costs too.
+Chart 4: Natural Gas Prices & Electricity CPI Chart 5: % Change in Prices of Crude Oil &
+(% y/y , DM Average) Refined Products Since the War Began
+Sources: LSEG, Capital Economics Sources: LSEG, Capital Economics
+• Besides electricity and transportation, food production is often energy-intensive, especially in relation to
+fertilisers. Natural gas is used to make ammonia -based fertilisers such as urea . While there are gas-free
+phosphate and potash alternatives, they are partly fungible with and often complementary to ammonia
+fertilisers, so fertiliser prices are typically jointly driven by natural gas prices. (See Chart 6.) So higher natural
+gas prices push up food inflation, which in turn increases price pressures in the hospitality sectors.
+• What’s more, an energy price shock can increase the costs of production of energy-intensive materials
+that cascade down supply chains to household goods. For instance, refined metals, processed rubber, and
+wood pulp are energy -intensive and hence their prices are significantly driven by energy prices . In addition,
+higher prices of oil and gas boost the prices of hydrocarbon derivatives such as plastics. The prices of PVC
+and VCM plastics have spiked since the war began. (See Chart 7.) And given that packaging makes up a
+higher share of the value of food than other goods, higher plastic prices can exacerbate food inflation.
+Chart 6: Natural gas & Fertiliser Prices (2019 = 100) Chart 7: Global Industrial Materials Prices (2019 = 100)
+Sources: LSEG, World Bank, Capital Economics Sources: LSEG, Capital Economics
+Global Economics Update Page 2
+
+Global Economics Update
+• Out of all these channels through which a surge in oil and gas prices can boost inflation indirectly , the
+most important quantitatively is food, followed by electricity. To determine this, we examine 1 the responses
+of CPI components to a uniform doubling of oil and gas prices across major advanced economies . In this
+case, we estimate that the increase in average headline inflation from higher food prices peaks at 0.6% -pt
+after 15 months, having taken several months to feed through initially . (See the dark blue line in Chart 8.)
+• While electricity inflation rises much further than inflation in other CPI component s, its small weight in CPI
+baskets (< 2%) means its contribution to headline inflation is just over half that of food. (Compare the green
+and dark blue lines.) The inflation boost from higher transport prices is the fastest indirect effect with almost
+the peak effect coming through in just four months. The peak effect from higher hospitality inflation is similar
+in size to that of transport but takes much longer to feed through. (Compare the light blue and grey lines.)
+• Of course, in current circumstances, advanced economies are not facing a uniform energy price shock. Oil
+and gas prices have risen by less in the US than in Europe and Asia. And as we set out in our “baseline ” and
+“adverse” energy price scenarios in our Global Economic Outlook , this disparity is likely to endure in either
+case, limiting the indirect boost to inflation in the US compared to other DMs . What’s more, the parts of the
+CPI that are the main transmission channels for indirect energy effects are smaller in the US. (See Chart 9.)
+Chart 8: Modelled % -Point Indirect Boost to Inflation Chart 9: CPI Weights of Categories with Biggest Indirect
+from Doubling of Oil & Gas Prices (Major DM Average) Exposure to Higher Oil & Gas Prices (%)
+Sources: LSEG, Capital Economics Sources: LSEG, Capital Economics
+• In our baseline scenario – with Brent ending the year at $80pb and TTF natural gas at €70/MWh – our model
+suggests the US will see the smallest indirect boost to inflation among major DMs, peaking at about 0.75% -
+pt in early 2027. (See Chart 10.) The peak effect in the euro-zone is twice the size and doesn’t unwind until
+H2 2027. After all, the US is mainly facing an oil price shock which fades more quickly, while in the euro-
+zone the far bigger rise in natural gas prices takes time to boost food and hospitality inflation. The indirect
+effects in the UK and Japan are a bit smaller than in the euro-zone. But because our model doesn’t take
+policy intervention into account, in practice, fuel price caps will limit the passthrough in Japan. Price caps
+aside, half or more of the indirect effects come through food and electricit y, rather than core, component s.
+• In our adverse scenario, with Brent reaching $130 pb and TTF at €120/MWh, the indirect boosts to inflation
+are roughly two -thirds larger. (See Chart 11.) All else equal, the bigger the indirect effects on inflation , the
+greater the risk of second -round effects taking hold and central banks acting forcefully in response.
+Chart 10: Modelled % -Point Indirect Boost to Headline Chart 11: Modelled % -Point Indirect Boost to Headline
+Inflation in CE Baseline Scenario for Oil & Gas Prices Inflation in CE Adverse Scenario for Oil & Gas Prices
+Sources: LSEG, Capital Economics Sources: LSEG, Capital Economics
+Global Economics Update Page 3
+
+Global Economics Update
+1 We use a VAR framework to model the response of CPI components to shocks in oil and gas prices, controlling for shocks in oth er
+commodity prices (based on the IMF’s primary commodity price index) , exchange rates, domestic economic conditions (proxied b y OECD
+CLIs), and global supply chain conditions (proxied by S&P Global PMI indicators). Estimations based on monthly data from 1998 to 2025.
+Disclaimer: While every effort has been made to ensure that the data quoted and used for the research behind this document is reliable, t here is no guarantee
+that it is correct, and Capital Economics Limited and its subsidiaries can accept no liability whatsoever in respect of any errors or omissions. This document is
+a piece of economic research and is not intended to constitute investment advice, nor to solicit dealing in securities or inv estments.
+Distribution: Subscribers are free to make copies of our publications for their own use, and for the use of members of the subscribing team at their business
+location. No other form of copying or distribution of our publications is permitted without our explicit permis sion. This includes but is not limited to internal
+distribution to non -subscribing employees or teams.

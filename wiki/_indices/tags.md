@@ -2,8 +2,8 @@
 
 Generated: 2026-04-05
 
-## llm-handoff
-- Uses: 16
+## macro
+- Uses: 17
 - [[source-notes/bank-of-england-decision-maker-panel-march-2026|bank-of-england-decision-maker-panel-march-2026]]
 - [[source-notes/bank-of-japan-tankan-summary-march-2026-survey|bank-of-japan-tankan-summary-march-2026-survey]]
 - [[source-notes/brazil-economic-calendar-for-late-march-and-early-april-2026|brazil-economic-calendar-for-late-march-and-early-april-2026]]
@@ -11,13 +11,13 @@ Generated: 2026-04-05
 - [[source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026|euro-area-economic-calendar-for-late-march-and-early-april-2026]]
 - [[source-notes/france-manufacturing-pmi|france-manufacturing-pmi]]
 - [[source-notes/germany-economic-calendar-for-late-march-and-early-april-2026|germany-economic-calendar-for-late-march-and-early-april-2026]]
+- [[source-notes/global-markets-chart-pack-apr-2026-snapshot|global-markets-chart-pack-apr-2026-snapshot]]
 - [[source-notes/italy-manufacturing-pmi|italy-manufacturing-pmi]]
 - [[source-notes/japan-economic-calendar-for-late-march-and-early-april-2026|japan-economic-calendar-for-late-march-and-early-april-2026]]
 - [[source-notes/purchasing-managers-index-for-march-2026|purchasing-managers-index-for-march-2026]]
 - [[source-notes/south-korea-economic-calendar-for-late-march-and-early-april-2026|south-korea-economic-calendar-for-late-march-and-early-april-2026]]
-- [[source-notes/spain-manufacturing-pmi|spain-manufacturing-pmi]]
 
-## macro
+## llm-handoff
 - Uses: 16
 - [[source-notes/bank-of-england-decision-maker-panel-march-2026|bank-of-england-decision-maker-panel-march-2026]]
 - [[source-notes/bank-of-japan-tankan-summary-march-2026-survey|bank-of-japan-tankan-summary-march-2026-survey]]
@@ -87,6 +87,14 @@ Generated: 2026-04-05
 - Uses: 1
 - [[source-notes/brazil-economic-calendar-for-late-march-and-early-april-2026|brazil-economic-calendar-for-late-march-and-early-april-2026]]
 
+## chartpack
+- Uses: 1
+- [[source-notes/global-markets-chart-pack-apr-2026-snapshot|global-markets-chart-pack-apr-2026-snapshot]]
+
+## cross-asset
+- Uses: 1
+- [[source-notes/global-markets-chart-pack-apr-2026-snapshot|global-markets-chart-pack-apr-2026-snapshot]]
+
 ## energy
 - Uses: 1
 - [[source-notes/trump-hormuz-and-the-end-of-the-free-ride|trump-hormuz-and-the-end-of-the-free-ride]]
@@ -126,6 +134,10 @@ Generated: 2026-04-05
 ## manual-drop
 - Uses: 1
 - [[source-notes/trump-hormuz-and-the-end-of-the-free-ride|trump-hormuz-and-the-end-of-the-free-ride]]
+
+## markets
+- Uses: 1
+- [[source-notes/global-markets-chart-pack-apr-2026-snapshot|global-markets-chart-pack-apr-2026-snapshot]]
 
 ## official-pmi
 - Uses: 1
