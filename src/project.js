@@ -22,6 +22,7 @@ function loadSettings(root) {
       states: "wiki/states",
       regimes: "wiki/regimes",
       decisions: "wiki/decisions",
+      reportsCanonical: "wiki/reports",
       memos: "outputs/memos",
       reports: "outputs/reports",
       meetingBriefs: "outputs/meeting-briefs",
@@ -91,6 +92,7 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "wiki", "states", "index.md"), "# State Index\n");
   ensureFile(path.join(root, "wiki", "regimes", "index.md"), "# Regime Index\n");
   ensureFile(path.join(root, "wiki", "decisions", "index.md"), "# Decision Index\n");
+  ensureFile(path.join(root, "wiki", "reports", "index.md"), "# Report Index\n");
   ensureFile(path.join(root, "wiki", "watch-profiles", "index.md"), "# Watch Profile Index\n");
   ensureFile(path.join(root, "wiki", "theses", "index.md"), "# Thesis Index\n");
   ensureFile(path.join(root, "wiki", "surveillance", "index.md"), "# Surveillance Index\n");

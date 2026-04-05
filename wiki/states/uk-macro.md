@@ -5,10 +5,10 @@ title: UK Macro
 status: active
 state_label: contested
 confidence: high
-last_refreshed_at: 2026-04-03T18:31:36.574Z
+last_refreshed_at: 2026-04-05T21:26:39.539Z
 query: UK Macro britain united kingdom macro uk growth and inflation growth inflation current account United Kingdom Bank of England macro global macro weekly investment meeting geopolitics and macro Federal Reserve ECB Bank of Japan PBOC United States Euro Area Germany Japan China South Korea Brazil Use labor market manufacturing cycle global trade oil shock shipping disruption rates dollar intermarket analysis asset cross geopolitical investment meetings releases relevant spillovers track transmission
 watch_profile_path: wiki/watch-profiles/global-macro.md
-related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md","extracted/text/SRC-2026-4A45F1B16C06.txt","extracted/text/SRC-2026-43CBDAEA5E65.txt","extracted/text/SRC-2026-7DD7B91D4D02.txt","extracted/text/SRC-2026-5EA51C2BF319.txt","extracted/text/SRC-2026-8031900B9C3F.txt","extracted/text/SRC-2026-CA6D805D453E.txt","extracted/text/SRC-2026-28A1E9DAABE7.txt","extracted/text/SRC-2026-9555CA26D695.txt"]
+related: ["wiki/source-notes/bank-of-england-decision-maker-panel-march-2026.md","wiki/source-notes/united-states-economic-calendar-week-of-march-30-april-3-2026.md","wiki/reports/current-investment-summary-across-all-ingested-research.md","wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md","wiki/source-notes/global-economics-chart-pack-iran-conflict-edition-apr-2026.md","wiki/source-notes/bank-of-japan-tankan-summary-march-2026-survey.md","wiki/source-notes/japan-economic-calendar-for-late-march-and-early-april-2026.md","wiki/concepts/inflation.md","wiki/concepts/growth.md","wiki/synthesis/global-macro-frontier-decision-brief.md","wiki/synthesis/weekly-investment-meeting-macro-brief-2026-04-03.md","wiki/concepts/inflation-rate.md","wiki/concepts/labour.md"]
 ---
 
 # UK Macro
@@ -28,12 +28,12 @@ related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-ma
 <!-- CATO:BEGIN_MANAGED_BLOCK snapshot -->
 ## Managed Snapshot
 
-- Last refreshed: 2026-04-05T15:47:52.377Z
+- Last refreshed: 2026-04-05T21:26:39.539Z
 - State label: contested
 - Confidence: high
 - Claim count: 12
 - Evidence count: 8
-- Summary: Imported inflation, domestic stagnation, and policy awkwardness in the UK. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals become more fragile if the market concludes that geopolitical inflation is pushing yields higher without delivering a clean upside growth impulse. Instead, the U.S. growth and labor data were good enough to make the market take the inflation transmission channel more seriously. It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying. Primary evidence route: Global Macro frontier decision brief; Weekly Investment Meeting Macro Brief - 2026-04-03; manufacturing.
+- Summary: Imported inflation, domestic stagnation, and policy awkwardness in the UK. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. Used to anchor the report discussion on rising UK inflation expectations and own-price intentions. Primary weekly table for U.S. actual, consensus, and prior data points used in the report. Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation spillovers. Primary evidence route: inflation; growth; Global Macro frontier decision brief.
 <!-- CATO:END_MANAGED_BLOCK snapshot -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK strengthened -->
@@ -45,22 +45,23 @@ related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-ma
 <!-- CATO:BEGIN_MANAGED_BLOCK weakened -->
 ## Managed Weakened
 
-- [[claims/claim-2026-07e05b836d6a|It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitic…]]
-- [[claims/claim-2026-1b65acd3b32c|The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.]]
-- [[claims/claim-2026-7db2bd48f562|In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix…]]
-- [[claims/claim-2026-4822396080e4|Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity…]]
-- [[claims/claim-2026-c95697ecd44d|The practical conclusion for asset markets is that the growth side of the equation did not weaken enough this…]]
+- [[claims/claim-2026-41b7cba346ed|Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic di…]]
+- [[claims/claim-2026-2b7471855442|The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.]]
+- [[claims/claim-2026-5fdf9155275e|The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure,…]]
+- [[claims/claim-2026-f169f079c282|It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, an…]]
+- [[claims/claim-2026-f237326d804e|The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation p…]]
+- [[claims/claim-2026-574b297b3ab5|The current report is strongest on macro regime, rates, equity leadership, and private credit.]]
 <!-- CATO:END_MANAGED_BLOCK weakened -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK unchanged -->
 ## Managed Unchanged
 
-- [[claims/claim-2026-4c8c13812682|Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals become more fragile…]]
-- [[claims/claim-2026-7c8fc0edf014|Instead, the U.S. growth and labor data were good enough to make the market take the inflation transmission c…]]
-- [[claims/claim-2026-07e05b836d6a|It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitic…]]
-- [[claims/claim-2026-6c2736f39c6c|It is that the macro tape remains resilient enough that geopolitical inflation pressure still matters.]]
-- [[claims/claim-2026-1b65acd3b32c|The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.]]
-- [[claims/claim-2026-7db2bd48f562|In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix…]]
+- [[claims/claim-2026-bb7378bdaf06|Used to anchor the report discussion on rising UK inflation expectations and own-price intentions.]]
+- [[claims/claim-2026-0c94d7232d30|Primary weekly table for U.S. actual, consensus, and prior data points used in the report.]]
+- [[claims/claim-2026-41b7cba346ed|Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic di…]]
+- [[claims/claim-2026-2b7471855442|The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.]]
+- [[claims/claim-2026-5fdf9155275e|The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure,…]]
+- [[claims/claim-2026-acb759433195|This chart pack is now reviewed enough for qualitative macro scenario use, especially around energy, inflatio…]]
 <!-- CATO:END_MANAGED_BLOCK unchanged -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK catalysts -->
@@ -71,19 +72,19 @@ related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-ma
 - oil spike
 - shipping disruption escalation
 - trade-policy shock
+- Revisit [[concepts/inflation|inflation]] for catalyst or regime change.
+- Revisit [[concepts/growth|growth]] for catalyst or regime change.
 - Revisit [[synthesis/global-macro-frontier-decision-brief|Global Macro frontier decision brief]] for catalyst or regime change.
 - Revisit [[synthesis/weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]] for catalyst or regime change.
-- Revisit [[concepts/manufacturing|manufacturing]] for catalyst or regime change.
-- Revisit [[entities/united-kingdom|United Kingdom]] for catalyst or regime change.
 <!-- CATO:END_MANAGED_BLOCK catalysts -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK flip -->
 ## Managed What Would Flip It
 
-- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
-- The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
-- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
-- Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
+- Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation spillovers.
+- The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.
+- The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for inflation, duration, and leadership.
 <!-- CATO:END_MANAGED_BLOCK flip -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
@@ -95,11 +96,12 @@ related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-ma
 <!-- CATO:BEGIN_MANAGED_BLOCK counter -->
 ## Managed Counter-Arguments
 
-- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
-- The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
-- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
-- Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
-- The practical conclusion for asset markets is that the growth side of the equation did not weaken enough this week to offset the inflationary and geopolitical impulse.
+- Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation spillovers.
+- The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.
+- The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for inflation, duration, and leadership.
+- The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation premium.
+- The current report is strongest on macro regime, rates, equity leadership, and private credit.
 <!-- CATO:END_MANAGED_BLOCK counter -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK gaps -->

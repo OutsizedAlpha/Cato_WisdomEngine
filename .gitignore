@@ -10,3 +10,4 @@ logs/
 .codex
 inbox/drop_here/*
 inbox/self/*
+tmp/

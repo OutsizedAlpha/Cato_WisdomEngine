@@ -51,7 +51,7 @@ Capture the authored extraction bundle:
 3. open the generated files in `cache/pdf-packs/`
 4. let Codex/GPT inspect the rendered page images and, if useful, the original PDF path directly
 5. replace the placeholder text in each generated `authored-extraction.md`
-6. update the generated capture bundle with title, document class, tags, entities, concepts, and any figure refs worth preserving
+6. update the generated capture bundle with title, document class, tags, entities, concepts, review status, review method, review scope, and any figure refs worth preserving
 7. run `capture-pdf`
 8. let Cato ingest, compile, and file the PDFs through the normal source-note path
 
@@ -133,6 +133,14 @@ Canonical repo material after intentional capture:
 - source notes under `wiki/source-notes/`
 - append-review drafts under `wiki/drafts/append-review/`
 - refreshed manifests and maintained wiki surfaces
+
+Source notes created through this path should not stay indefinitely as anonymous `draft` captures.
+
+Use the review fields deliberately:
+
+- `review_status: unreviewed` while the pack is still only a capture
+- `review_status: text_reviewed` when the extracted text has been checked closely enough for grounded qualitative use
+- `review_status: visual_reviewed` when rendered pages have been checked directly and the note can support chart-led qualitative synthesis
 
 That is the durable state worth reviewing and committing.
 

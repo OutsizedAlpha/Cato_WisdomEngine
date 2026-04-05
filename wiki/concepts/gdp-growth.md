@@ -2,7 +2,7 @@
 id: CONCEPT-2026-GDP-GROWTH
 kind: concept-page
 title: gdp growth
-status: retired
+status: active
 tags: []
 related: []
 ---

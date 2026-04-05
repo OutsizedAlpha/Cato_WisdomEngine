@@ -9,7 +9,7 @@ claim_date: 2026-04-01
 origin_note_path: wiki/source-notes/spain-manufacturing-pmi.md
 origin_note_kind: source-note
 supporting_sources: ["wiki/source-notes/spain-manufacturing-pmi.md"]
-contradicting_claims: ["CLAIM-2026-0F6C133346D9","CLAIM-2026-8C921EAE317B"]
+contradicting_claims: ["CLAIM-2026-0F6C133346D9","CLAIM-2026-F169F079C282"]
 concepts: ["manufacturing"]
 entities: ["Spain"]
 ---
@@ -36,12 +36,12 @@ Used to show Spain diverged lower and slipped back into contraction.
 ## Contradicting Claims
 
 - [[claims/claim-2026-0f6c133346d9|Used to position France near the expansion threshold in Europe.]]
-- [[claims/claim-2026-8c921eae317b|That same dynamic is visible in the broader manufacturing complex: Europe recovered on activity…]]
+- [[claims/claim-2026-f169f079c282|It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturi…]]
 
 ## Counter-Arguments / Weakening Evidence
 
 - Used to position France near the expansion threshold in Europe.
-- That same dynamic is visible in the broader manufacturing complex: Europe recovered on activity, but the quality of that recovery is being complicated by cost pressure rather than helped by easier inputs.
+- It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for inflation, duration, and leadership.
 - This claim currently leans on a thin support map and may be overconfident.
 
 ## Data Gaps / What Would Strengthen It

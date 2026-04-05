@@ -7,6 +7,7 @@ const { renderRetrievalBudgetBlock, retrieveEvidence } = require("./retrieval");
 const {
   appendJsonl,
   makeId,
+  moveFile,
   nowIso,
   readText,
   relativeToRoot,
@@ -167,6 +168,55 @@ function writeOutputDocument(root, options) {
   };
 }
 
+function writeCanonicalDocument(root, options) {
+  ensureProjectStructure(root);
+  const relativeOutputPath = String(options.outputPath || "").replace(/\\/g, "/");
+  if (!relativeOutputPath) {
+    throw new Error("writeCanonicalDocument requires an outputPath.");
+  }
+
+  const absoluteOutputPath = path.join(root, relativeOutputPath);
+  const existing = fs.existsSync(absoluteOutputPath) ? parseFrontmatter(readText(absoluteOutputPath)) : null;
+  let archivedPath = "";
+
+  if (existing && options.archiveDir) {
+    const archiveFileName = `${timestampStamp()}-${path.basename(relativeOutputPath)}`;
+    const archivePath = uniquePath(path.join(root, options.archiveDir, archiveFileName));
+    moveFile(absoluteOutputPath, archivePath);
+    archivedPath = relativeToRoot(root, archivePath);
+  }
+
+  const createdAt = existing?.frontmatter?.created_at || nowIso();
+  const frontmatter = {
+    id:
+      existing?.frontmatter?.id ||
+      makeId(options.idPrefix, slugify(options.fileSlug || options.title).slice(0, 12).padEnd(12, options.idPrefix.toLowerCase()[0] || "x")),
+    kind: options.kind,
+    title: options.title,
+    created_at: createdAt,
+    updated_at: nowIso(),
+    sources: options.sources || [],
+    ...options.frontmatter
+  };
+
+  writeText(absoluteOutputPath, renderMarkdown(frontmatter, options.body));
+  appendJsonl(path.join(root, "logs", "report_runs", `${slugify(options.kind) || "outputs"}.jsonl`), {
+    event: options.kind,
+    at: frontmatter.updated_at,
+    title: options.title,
+    output_path: relativeOutputPath,
+    archived_previous_path: archivedPath,
+    sources: frontmatter.sources,
+    canonical: true
+  });
+
+  return {
+    outputPath: relativeOutputPath,
+    archivedPath,
+    frontmatter
+  };
+}
+
 function renderSourceList(sources) {
   if (!sources.length) {
     return "- None recorded.";
@@ -237,8 +287,15 @@ function updateManagedNote(filePath, frontmatter, title, blocks) {
 
 ## Manual Notes
 `;
-  const initialContent = renderMarkdown(frontmatter, baseBody);
-  let content = fs.existsSync(filePath) ? readText(filePath) : initialContent;
+  let content = renderMarkdown(frontmatter, baseBody);
+  if (fs.existsSync(filePath)) {
+    const parsed = parseFrontmatter(readText(filePath));
+    const mergedFrontmatter = {
+      ...parsed.frontmatter,
+      ...frontmatter
+    };
+    content = renderMarkdown(mergedFrontmatter, parsed.body || baseBody);
+  }
 
   for (const [name, blockContent] of Object.entries(blocks)) {
     content = upsertManagedBlock(content, name, blockContent);
@@ -267,5 +324,6 @@ module.exports = {
   selectEvidence,
   synthesisParagraphs,
   updateManagedNote,
+  writeCanonicalDocument,
   writeOutputDocument
 };

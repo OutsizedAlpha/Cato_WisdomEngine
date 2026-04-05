@@ -37,6 +37,11 @@
     "metadata_path": { "type": ["string", "null"] },
     "note_path": { "type": "string" },
     "checksum": { "type": "string" },
-    "status": { "type": "string" }
+    "status": { "type": "string" },
+    "note_status": { "type": ["string", "null"] },
+    "review_status": { "type": ["string", "null"] },
+    "reviewed_at": { "type": ["string", "null"] },
+    "review_method": { "type": ["string", "null"] },
+    "review_scope": { "type": ["string", "null"] }
   }
 }

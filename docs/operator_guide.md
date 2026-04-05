@@ -101,7 +101,7 @@ The normal local loop is:
    - `compile`
 4. Generate the surface you need:
    - `ask`
-   - `report`
+   - `report` then `capture-report` for final reports
    - `deck`
    - `claims-refresh`
    - `why-believe`
@@ -174,9 +174,21 @@ Use this when you want deeper reasoning over Cato's claim/state/decision stack.
 1. run `frontier-pack`
 2. let Codex/GPT reason over the generated pack
 3. save the final authored result into the generated capture bundle
-4. run `capture-frontier`
+4. fill `model` with the actual terminal session label used for authorship
+5. run `capture-frontier`
 
 This is the settled operating model. Cato remains agent-driven. It does not embed external LLM execution directly into the CLI.
+
+### Report Handoff Loop
+
+Use this when the output should be a final report rather than a deterministic scaffold.
+
+1. run `report`
+2. open the generated files in `cache/report-packs/`
+3. let Codex/Claude author the final report in the generated capture bundle
+4. fill `model` with the actual terminal session label used for authorship
+5. run `capture-report`
+6. let Cato update the canonical report under `wiki/reports/` and archive the previous canonical version
 
 ## Belief -> State -> Decision Stack
 
@@ -224,7 +236,8 @@ Foundation:
 - `compile` = refresh indices, claims, structured catalog, unresolved registers, and other maintained surfaces
 - `search` = lexical corpus lookup across maintained notes and extracts
 - `ask` = grounded memo
-- `report` = stronger report-style output
+- `report` = prepare a final-report pack for the active terminal model
+- `capture-report` = capture the model-authored final report into canonical `wiki/reports/`
 - `deck` = Marp-friendly deck
 
 Belief and state:

@@ -19,3 +19,11 @@ Only durable, repo-specific lessons and guardrails belong here. Do not record tr
 - Retry-safe PDF capture merges must dedupe note-like fields such as `capture_notes`; repeated attempts on the same source should not compound operator notes into duplicate paragraphs.
 - Pack-generated titles and `document_class` values are only first-pass hints; clean them in the capture bundle before capture when the inferred metadata is obviously weak.
 - Info-only lint spikes after a large ingest batch usually mean enrichment debt on new notes and claims, not a structural ingest failure, as long as errors and warnings remain at zero.
+- Broad all-corpus investment reports should not rely on generic lexical report routing; use curated section lenses that start from reviewed source notes and only use states/claims as supporting context.
+- For broad investment reports, keep the route source-note-led unless evidence is genuinely thin, and build section prose from cleaned note sections or extracted-text takeaways rather than raw search excerpts or claim pages.
+- PDF-handoff notes need explicit review-state metadata, and unreviewed chartpacks should stay downgraded until a visual-review trail exists.
+- If a chartpack becomes report-critical, do not just clear the draft flag; add a page-route summary so the note can support qualitative cross-asset synthesis without pretending to be a machine-perfect numeric surface.
+- Final intellectual outputs should be model-authored through the active terminal session and captured back into Cato; deterministic CLI prose is scaffolding unless it goes through a capture boundary.
+- Raw `outputs/reports/` files are legacy operational history and must not feed the claim layer; canonical model-authored reports live in `wiki/reports/` with one current file per topic.
+- When sweeping legacy report runs into archive, preserve the original filenames under `outputs/reports/archive/legacy-deterministic/`; changing archive filenames breaks historical markdown references for no benefit.
+- Treat `tmp/` as scratch review space and keep it out of version control.

@@ -18,6 +18,14 @@ Generated: 2026-04-05
 - Open Questions: What is still ambiguous or unverified?
 - Open Questions: What is the strongest counter-reading?
 
+## ai
+- Note: [[concepts/ai|ai]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## alt firms
+- Note: [[concepts/alt-firms|alt firms]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents
 - Note: [[drafts/append-review/agent-behavioral-contracts-formal-specification-and-runtime-enforcement-for-reli|Append And Review: Agent Behavioral Contracts: Formal Specification and Runtime Enforcement for Reliable Autonomous AI Agents]]
 - Open Questions: What would have to be verified before this source informs claims, states, or decisions?
@@ -238,6 +246,10 @@ Generated: 2026-04-05
 - Note: [[concepts/april|april]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## arxiv preprint arxiv
+- Note: [[concepts/arxiv-preprint-arxiv|arxiv preprint arxiv]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## Automotive: Potential Winners and Losers From the Oil Price Spike
 - Note: [[source-notes/automotive-potential-winners-and-losers-from-the-oil-price-spike|Automotive: Potential Winners and Losers From the Oil Price Spike]]
 - Open Questions: What concepts should this source strengthen?
@@ -287,6 +299,26 @@ Generated: 2026-04-05
 - Note: [[concepts/capex|capex]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## capital daily
+- Note: [[concepts/capital-daily|capital daily]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## capital economics
+- Note: [[concepts/capital-economics|capital economics]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## capitaleconomics com
+- Note: [[concepts/capitaleconomics-com|capitaleconomics com]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## ce capital
+- Note: [[concepts/ce-capital|ce capital]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## ce capital daily
+- Note: [[concepts/ce-capital-daily|ce capital daily]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## CE Capital Daily 02.04.2026
 - Note: [[source-notes/ce-capital-daily-02042026|CE Capital Daily 02.04.2026]]
 - Open Questions: What concepts should this source strengthen?
@@ -317,6 +349,10 @@ Generated: 2026-04-05
 - Open Questions: What is still ambiguous or unverified?
 - Open Questions: What is the strongest counter-reading?
 
+## central banks
+- Note: [[concepts/central-banks|central banks]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## change
 - Note: [[concepts/change|change]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
@@ -328,10 +364,10 @@ Generated: 2026-04-05
 ## China Demand
 - Note: [[states/china-demand|China Demand]]
 - Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
-- Managed What Would Flip It: China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse.
-- Managed What Would Flip It: China recovered officially, while external Asia gave the better trade signal.
+- Managed What Would Flip It: Health Care: Defensive Alternatives in a Volatile Energy Price Environment is straightforward: health care does not become a growth winner from higher oil, but it remains one of the most credible def…
+- Managed What Would Flip It: China improved in official PMI data, but external Asia, especially Korea, still looked like the cleaner trade and AI-cycle signal.
+- Managed What Would Flip It: Technology Sector Implications: The Middle East Conflict says the main risk from the Iran conflict is not direct destruction of tech demand; it is higher oil, more inflation pressure, delayed rate cu…
 - Managed What Would Flip It: Used to position France near the expansion threshold in Europe.
-- Managed What Would Flip It: Used to show Spain diverged lower and slipped back into contraction.
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
@@ -344,9 +380,94 @@ Generated: 2026-04-05
 - Note: [[concepts/consensus|consensus]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## credit
+- Note: [[concepts/credit|credit]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## credit funds
+- Note: [[concepts/credit-funds|credit funds]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## current account
 - Note: [[concepts/current-account|current account]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## Current investment summary across all ingested research
+- Note: [[reports/current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Data Gaps: Chart-heavy cross-asset decks should still be treated as qualitative regime and relative-performance surfaces rather than machine-perfect numeric forecast sheets.
+- Data Gaps: The current report is strongest on macro regime, rates, equity leadership, and private credit. It is less complete on single-name underwriting and valuation work.
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T19-03-37.325Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which arguments are currently under-evidenced?
+- Open Questions: Which opposing sources would most likely change the conclusion?
+- Open Questions: What should be promoted into a dedicated thesis, concept, or surveillance page next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T19-40-06.890Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T19-41-05.190Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T19-48-17.782Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T19-49-10.068Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T19-55-40.614Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T19-56-36.666Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T20-20-27.070Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T20-24-28.379Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T20-25-10.465Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T20-27-05.968Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
+
+## Current investment summary across all ingested research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T20-28-24.926Z-current-investment-summary-across-all-ingested-research|Current investment summary across all ingested research]]
+- Open Questions: Which cross-asset views still depend too heavily on one sell-side house or one scenario path?
+- Open Questions: Which opposing sources would most likely change the duration, AI, or private-credit conclusions?
+- Open Questions: Which sections should be promoted into dedicated theses, states, or watch profiles next?
 
 ## domestic demand
 - Note: [[concepts/domestic-demand|domestic demand]]
@@ -389,8 +510,10 @@ Generated: 2026-04-05
 
 ## Europe Macro
 - Note: [[states/europe-macro|Europe Macro]]
-- Managed What Would Flip It: Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
-- Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+- Managed What Would Flip It: It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for infla…
+- Managed What Would Flip It: Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation…
+- Managed What Would Flip It: The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- Managed What Would Flip It: Used to position France near the expansion threshold in Europe.
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
@@ -448,10 +571,9 @@ Generated: 2026-04-05
 ## Geopolitical Risk
 - Note: [[states/geopolitical-risk|Geopolitical Risk]]
 - Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
-- Managed What Would Flip It: The data this week did not create that risk; they reduced the market's ability to ignore it.
-- Managed What Would Flip It: In Europe, softer core CPI argues the other way, but headline CPI and input-cost risk complicate the dovish case.
-- Managed What Would Flip It: Japan is steady, but energy sensitivity remains a live risk.
-- Managed What Would Flip It: The Middle East war and associated shipping and energy risks are not abstract background noise.
+- Managed What Would Flip It: Technology Sector Implications: The Middle East Conflict says the main risk from the Iran conflict is not direct destruction of tech demand; it is higher oil, more inflation pressure, delayed rate cu…
+- Managed What Would Flip It: Private Credit: Hyperscaler Market Risk Exposure says the next version of the risk is not just software.
+- Managed What Would Flip It: Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation…
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
@@ -470,6 +592,10 @@ Generated: 2026-04-05
 - Open Questions: What is still ambiguous or unverified?
 - Open Questions: What is the strongest counter-reading?
 
+## global economics
+- Note: [[concepts/global-economics|global economics]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)
 - Note: [[source-notes/global-economics-chart-pack-iran-conflict-edition-apr-2026|Global Economics Chart Pack: Iran Conflict Edition (Apr 2026)]]
 - Open Questions: What concepts should this source strengthen?
@@ -484,10 +610,16 @@ Generated: 2026-04-05
 
 ## Global Macro
 - Note: [[states/global-macro|Global Macro]]
-- Managed What Would Flip It: Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
-- Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+- Managed What Would Flip It: Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation…
+- Managed What Would Flip It: The current report is strongest on macro regime, rates, equity leadership, and private credit.
+- Managed What Would Flip It: The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- Managed What Would Flip It: The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
+
+## global market intelligence
+- Note: [[concepts/global-market-intelligence|global market intelligence]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## global markets
 - Note: [[concepts/global-markets|global markets]]
@@ -495,9 +627,9 @@ Generated: 2026-04-05
 
 ## Global Markets Chart Pack (Apr 2026 snapshot)
 - Note: [[source-notes/global-markets-chart-pack-apr-2026-snapshot|Global Markets Chart Pack (Apr 2026 snapshot)]]
-- Open Questions: What concepts should this source strengthen?
-- Open Questions: What is still ambiguous or unverified?
-- Open Questions: What is the strongest counter-reading?
+- Open Questions: Which parts of the de-escalation baseline would fail first if oil stayed elevated for longer?
+- Open Questions: Which relative-value trades depend most on AI leadership resuming?
+- Open Questions: Which chart panels would most likely change the cross-asset conclusion if rechecked later?
 
 ## global trade
 - Note: [[concepts/global-trade|global trade]]
@@ -551,6 +683,12 @@ Generated: 2026-04-05
 - Open Questions: What is still ambiguous or unverified?
 - Open Questions: What is the strongest counter-reading?
 
+## Investment Summary Across Ingested Research
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-05T20-07-04.902Z-investment-summary-across-ingested-research-grounded|Investment Summary Across Ingested Research]]
+- Data Gaps: Several of the April 5 PDF handoff notes are still marked `draft`, and chart-heavy sections were not fully reconstructed page by page.
+- Data Gaps: The global markets chart pack was captured through a direct fallback bundle and should not be treated as a precise numeric forecast surface without visual re-checking.
+- Data Gaps: The current report is strongest on macro regime, rates, equity leadership, and private credit. It is less complete on single-name underwriting and valuation work.
+
 ## Iran
 - Note: [[entities/iran|Iran]]
 - Open Issues: <!-- CATO:BEGIN_MANAGED_BLOCK concepts -->
@@ -575,8 +713,10 @@ Generated: 2026-04-05
 
 ## Japan Macro
 - Note: [[states/japan-macro|Japan Macro]]
-- Managed What Would Flip It: Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
-- Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+- Managed What Would Flip It: The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- Managed What Would Flip It: Global Economics Update: Will Higher Energy Prices Undermine AI Investment? argues that higher energy prices, hardware-cost pressure, helium constraints, and tighter financial conditions can slow AI…
+- Managed What Would Flip It: Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation…
+- Managed What Would Flip It: It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for infla…
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
@@ -588,11 +728,27 @@ Generated: 2026-04-05
 - Note: [[concepts/labour|labour]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## language models
+- Note: [[concepts/language-models|language models]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## large language
+- Note: [[concepts/large-language|large language]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## Large Language Model Reasoning Failures
 - Note: [[source-notes/large-language-model-reasoning-failures|Large Language Model Reasoning Failures]]
 - Open Questions: What concepts should this source strengthen?
 - Open Questions: What is still ambiguous or unverified?
 - Open Questions: What is the strongest counter-reading?
+
+## liquidity
+- Note: [[concepts/liquidity|liquidity]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## lseg capital economics
+- Note: [[concepts/lseg-capital-economics|lseg capital economics]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## macro calendar
 - Note: [[concepts/macro-calendar|macro calendar]]
@@ -610,13 +766,16 @@ Generated: 2026-04-05
 - Note: [[concepts/march|march]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## margins
+- Note: [[concepts/margins|margins]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## Market Structure
 - Note: [[states/market-structure|Market Structure]]
 - Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
-- Managed What Would Flip It: China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse.
-- Managed What Would Flip It: A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and the UK are more exposed to imported energy than the U.S. is.
-- Managed What Would Flip It: The data this week did not create that risk; they reduced the market's ability to ignore it.
-- Managed What Would Flip It: Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower easing path than a weak market tape alone might imply.
+- Managed What Would Flip It: The core adverse case is re-escalation: equities and bonds both come under renewed pressure while the dollar stays stronger.
+- Managed What Would Flip It: The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- Managed What Would Flip It: The core baseline is de-escalation: oil falls back, AI leadership resumes, and the most pressured DM bonds recover.
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
@@ -638,14 +797,18 @@ Generated: 2026-04-05
 - Note: [[concepts/official-activity|official activity]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## p global
+- Note: [[concepts/p-global|p global]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## passive flows
-- Note: [[outputs/reports/2026-04-03T14-48-37.081Z-passive-flows|passive flows]]
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-03T14-48-37.081Z-passive-flows|passive flows]]
 - Open Questions: Which arguments are currently under-evidenced?
 - Open Questions: Which opposing sources would most likely change the conclusion?
 - Open Questions: What should be promoted into a dedicated thesis, concept, or surveillance page next?
 
 ## passive flows
-- Note: [[outputs/reports/2026-04-03T14-49-43.918Z-passive-flows|passive flows]]
+- Note: [[outputs/reports/archive/legacy-deterministic/2026-04-03T14-49-43.918Z-passive-flows|passive flows]]
 - Open Questions: Which arguments are currently under-evidenced?
 - Open Questions: Which opposing sources would most likely change the conclusion?
 - Open Questions: What should be promoted into a dedicated thesis, concept, or surveillance page next?
@@ -672,6 +835,14 @@ Generated: 2026-04-05
 
 ## pricing power
 - Note: [[concepts/pricing-power|pricing power]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## private credit
+- Note: [[concepts/private-credit|private credit]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## private credit funds
+- Note: [[concepts/private-credit-funds|private credit funds]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## Private Credit: Hyperscaler Market Risk Exposure
@@ -715,12 +886,24 @@ Generated: 2026-04-05
 - Note: [[concepts/retail-sales|retail sales]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
+## see chart
+- Note: [[concepts/see-chart|see chart]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## services
 - Note: [[concepts/services|services]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## shipping
 - Note: [[concepts/shipping|shipping]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## sources lseg
+- Note: [[concepts/sources-lseg|sources lseg]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## sources lseg capital
+- Note: [[concepts/sources-lseg-capital|sources lseg capital]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
 
 ## South Korea
@@ -761,6 +944,14 @@ Generated: 2026-04-05
 - Open Questions: What is still ambiguous or unverified?
 - Open Questions: What is the strongest counter-reading?
 
+## thematic research
+- Note: [[concepts/thematic-research|thematic research]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
+## third party
+- Note: [[concepts/third-party|third party]]
+- Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
+
 ## trade
 - Note: [[concepts/trade|trade]]
 - Open Questions: <!-- CATO:BEGIN_MANAGED_BLOCK evidence -->
@@ -791,10 +982,10 @@ Generated: 2026-04-05
 
 ## UK Macro
 - Note: [[states/uk-macro|UK Macro]]
-- Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
-- Managed What Would Flip It: The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
-- Managed What Would Flip It: In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
-- Managed What Would Flip It: Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
+- Managed What Would Flip It: Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation…
+- Managed What Would Flip It: The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.
+- Managed What Would Flip It: The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- Managed What Would Flip It: It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for infla…
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
@@ -819,20 +1010,20 @@ Generated: 2026-04-05
 ## US Growth
 - Note: [[states/us-growth|US Growth]]
 - Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
-- Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
-- Managed What Would Flip It: The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
-- Managed What Would Flip It: The UK growth numbers were too soft to justify complacency, yet the BoE's firm-level survey showed rising CPI and own-price expectations tied to recent energy-price moves.
-- Managed What Would Flip It: In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
+- Managed What Would Flip It: The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.
+- Managed What Would Flip It: Health Care: Defensive Alternatives in a Volatile Energy Price Environment is straightforward: health care does not become a growth winner from higher oil, but it remains one of the most credible def…
+- Managed What Would Flip It: The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation premium.
+- Managed What Would Flip It: Used to position France near the expansion threshold in Europe.
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 
 ## US Inflation
 - Note: [[states/us-inflation|US Inflation]]
 - Managed Data Gaps: Create or link a watch profile so this state has explicit monitoring context.
-- Managed What Would Flip It: If energy pressure persists, inflation breakevens and credit spreads become the channels to watch.
-- Managed What Would Flip It: It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
-- Managed What Would Flip It: The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
-- Managed What Would Flip It: Europe improved on activity but not in a clean enough way to relax about inflation transmission.
+- Managed What Would Flip It: The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- Managed What Would Flip It: It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for infla…
+- Managed What Would Flip It: The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation premium.
+- Managed What Would Flip It: whether indirect inflation pressures show up in food, electricity, transport, and expectations
 - Managed What Would Flip It: <!-- CATO:END_MANAGED_BLOCK flip -->
 - Managed What Would Flip It: <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
 

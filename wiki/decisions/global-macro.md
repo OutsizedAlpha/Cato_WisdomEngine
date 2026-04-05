@@ -4,8 +4,8 @@ kind: decision-note
 title: Global Macro
 status: active
 confidence: high
-last_updated_at: 2026-04-03T18:31:35.706Z
-related: ["wiki/states/global-macro.md","outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md","extracted/text/SRC-2026-7DD7B91D4D02.txt","extracted/text/SRC-2026-43CBDAEA5E65.txt","extracted/text/SRC-2026-5EA51C2BF319.txt","extracted/text/SRC-2026-BD50ACFF7C7D.txt","extracted/text/SRC-2026-8031900B9C3F.txt","extracted/text/SRC-2026-CA6D805D453E.txt","extracted/text/SRC-2026-28A1E9DAABE7.txt","extracted/text/SRC-2026-5A7326140C0D.txt"]
+last_updated_at: 2026-04-05T21:26:41.921Z
+related: ["wiki/states/global-macro.md","wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md","wiki/source-notes/bank-of-england-decision-maker-panel-march-2026.md","wiki/source-notes/united-states-economic-calendar-week-of-march-30-april-3-2026.md","wiki/source-notes/bank-of-japan-tankan-summary-march-2026-survey.md","wiki/reports/current-investment-summary-across-all-ingested-research.md","wiki/source-notes/japan-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/us-international-trade-in-goods-and-services-february-2026.md","wiki/source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/south-korea-economic-calendar-for-late-march-and-early-april-2026.md","wiki/concepts/inflation.md","wiki/concepts/growth.md","wiki/synthesis/weekly-investment-meeting-macro-brief-2026-04-03.md","wiki/synthesis/global-macro-frontier-decision-brief.md","wiki/concepts/inflation-rate.md","wiki/concepts/labour.md","wiki/source-notes/global-economics-chart-pack-iran-conflict-edition-apr-2026.md"]
 ---
 
 # Global Macro
@@ -32,34 +32,37 @@ related: ["wiki/states/global-macro.md","outputs/reports/2026-04-03T17-10-39.079
 <!-- CATO:BEGIN_MANAGED_BLOCK risks -->
 ## Managed Risk Flags
 
-- Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
-- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+- The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for inflation, duration, and leadership.
+- Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation spillovers.
 <!-- CATO:END_MANAGED_BLOCK risks -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK triggers -->
 ## Managed De-Risk Triggers
 
 - A fresh deterioration in Global Macro would justify immediate re-evaluation.
-- Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
-- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+- The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for inflation, duration, and leadership.
+- Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation spillovers.
 <!-- CATO:END_MANAGED_BLOCK triggers -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK monitor -->
 ## Managed What To Monitor Next
 
+- [[concepts/inflation|inflation]]
+- [[concepts/growth|growth]]
 - [[synthesis/weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]]
 - [[synthesis/global-macro-frontier-decision-brief|Global Macro frontier decision brief]]
-- [[concepts/manufacturing|manufacturing]]
-- [[concepts/global-trade|global trade]]
-- [[entities/united-states|United States]]
-- [[concepts/labor-market|labor market]]
+- [[concepts/inflation-rate|inflation rate]]
+- [[concepts/labour|labour]]
 <!-- CATO:END_MANAGED_BLOCK monitor -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK counter -->
 ## Managed Strongest Counter-Case
 
-- Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
-- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+- The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
+- It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for inflation, duration, and leadership.
+- Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not catastrophic direct claims from Iran itself, but pricing, marine / war-risk coverage, and macro inflation spillovers.
 - Self-model tension: values concentration but sometimes accumulates too many tactical ideas
 - Self-model tension: values first principles but can still overweight strong recent price validation
 - Self-model tension: wants sharp challenge but may sometimes prefer confirmation at peak conviction
@@ -77,12 +80,12 @@ related: ["wiki/states/global-macro.md","outputs/reports/2026-04-03T17-10-39.079
 <!-- CATO:BEGIN_MANAGED_BLOCK claims -->
 ## Managed Claim Map
 
-- [[claims/claim-2026-e376e0fef91a|Euro area core inflation softened, which is the cleanest dovish input of the week, but headline…]]
-- [[claims/claim-2026-4822396080e4|Japan also remains vulnerable on this axis because its external energy dependence can turn a gl…]]
-- [[claims/claim-2026-14f0db0c96fd|Japan can tolerate a moderate global reflation pulse; it is much less comfortable if the pulse…]]
-- [[claims/claim-2026-28e93401466b|More importantly for the near-term policy tone, the Bank of England's March Decision Maker Pane…]]
-- [[claims/claim-2026-4c8c13812682|Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals becom…]]
-- [[claims/claim-2026-6c2736f39c6c|It is that the macro tape remains resilient enough that geopolitical inflation pressure still m…]]
+- [[claims/claim-2026-5fdf9155275e|The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, durat…]]
+- [[claims/claim-2026-bb7378bdaf06|Used to anchor the report discussion on rising UK inflation expectations and own-price intentio…]]
+- [[claims/claim-2026-0c94d7232d30|Primary weekly table for U.S. actual, consensus, and prior data points used in the report.]]
+- [[claims/claim-2026-493badb65604|Official Tankan summary used for Japan business conditions and FY2026 capex plans.]]
+- [[claims/claim-2026-f169f079c282|It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturi…]]
+- [[claims/claim-2026-41b7cba346ed|Insurance: Implications From the Conflict With Iran says the bigger issue for insurers is not c…]]
 <!-- CATO:END_MANAGED_BLOCK claims -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK gaps -->

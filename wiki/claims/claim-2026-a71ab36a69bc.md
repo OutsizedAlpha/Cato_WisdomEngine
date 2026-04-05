@@ -2,14 +2,14 @@
 id: CLAIM-2026-A71AB36A69BC
 kind: claim-page
 title: The U.S. was the single clearest upside surprise.
-status: active
+status: superseded
 claim_type: inference
 confidence: high
 claim_date: 2026-04-03T17:10:39.079Z
-origin_note_path: outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md
+origin_note_path: outputs/reports/archive/legacy-deterministic/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md
 origin_note_kind: research-report
 supporting_sources: ["wiki/source-notes/united-states-economic-calendar-week-of-march-30-april-3-2026.md","wiki/source-notes/us-international-trade-in-goods-and-services-february-2026.md","wiki/source-notes/uk-quarterly-national-accounts-october-to-december-2025.md","wiki/source-notes/uk-balance-of-payments-october-to-december-2025.md","wiki/source-notes/bank-of-england-decision-maker-panel-march-2026.md","wiki/source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/germany-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/france-manufacturing-pmi.md","wiki/source-notes/italy-manufacturing-pmi.md","wiki/source-notes/spain-manufacturing-pmi.md","wiki/source-notes/bank-of-japan-tankan-summary-march-2026-survey.md","wiki/source-notes/japan-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/purchasing-managers-index-for-march-2026.md","wiki/source-notes/china-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/south-korea-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/brazil-economic-calendar-for-late-march-and-early-april-2026.md"]
-contradicting_claims: []
+contradicting_claims: ["CLAIM-2026-5FDF9155275E"]
 concepts: []
 entities: []
 ---
@@ -23,7 +23,7 @@ The U.S. was the single clearest upside surprise.
 ## Classification
 
 - Type: inference
-- Status: active
+- Status: contested
 - Polarity: positive
 - Confidence: high
 - Origin note: [[outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]]
@@ -50,14 +50,15 @@ The U.S. was the single clearest upside surprise.
 
 ## Contradicting Claims
 
-- No direct contradiction cluster detected.
+- [[claims/claim-2026-5fdf9155275e|The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, durat…]]
 
 ## Counter-Arguments / Weakening Evidence
 
-- No explicit counter-argument has been surfaced yet beyond normal review risk.
+- The chart pack gives a single cross-asset baseline linking oil, inflation, AI leadership, duration pressure, dollar strength, EM spread behaviour, and REIT underperformance.
 
 ## Data Gaps / What Would Strengthen It
 
+- Resolve the contradiction cluster with fresher or more primary evidence.
 - Look for a primary source that can separate evidence from interpretation.
 
 ## Related Concepts

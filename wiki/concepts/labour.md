@@ -2,7 +2,7 @@
 id: CONCEPT-2026-LABOUR
 kind: concept-page
 title: labour
-status: retired
+status: active
 tags: []
 related: []
 ---
@@ -30,8 +30,10 @@ related: []
 - [[source-notes/china-economic-calendar-for-late-march-and-early-april-2026|China economic calendar for late March and early April 2026]]
 - [[source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026|Euro area economic calendar for late March and early April 2026]]
 - [[source-notes/germany-economic-calendar-for-late-march-and-early-april-2026|Germany economic calendar for late March and early April 2026]]
+- [[source-notes/global-economics-update-will-higher-energy-prices-undermine-ai-investment-mar-2026|Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026)]]
 - [[source-notes/japan-economic-calendar-for-late-march-and-early-april-2026|Japan economic calendar for late March and early April 2026]]
 - [[source-notes/south-korea-economic-calendar-for-late-march-and-early-april-2026|South Korea economic calendar for late March and early April 2026]]
+- [[source-notes/the-fog-of-war|The fog of war]]
 <!-- CATO:END_MANAGED_BLOCK evidence -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK synthesis -->
@@ -41,8 +43,10 @@ related: []
 - China economic calendar for late March and early April 2026: China Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Countri…
 - Euro area economic calendar for late March and early April 2026: Euro Area Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Cou…
 - Germany economic calendar for late March and early April 2026: Germany Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Count…
+- Global Economics Update: Will Higher Energy Prices Undermine AI Investment? (Mar 2026): Global Economics Update | 30th March 2026 Will the Iran war undermine AI investment? • The Iran war could take some of the momentum out of the AI investment boom but we doubt that…
 - Japan economic calendar for late March and early April 2026: Japan Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds Countri…
 - South Korea economic calendar for late March and early April 2026: South Korea Calendar Calendar News Markets Commodities Indexes Shares Currencies Crypto Bonds Earnings Indicators Countries Forecasts Commodities Indexes Currencies Crypto Bonds C…
+- The fog of war: The fog of war Views from the Global Unconstrained Fixed Income team Marketing material for Monthly Outlook, March 2026 professional clients only. The war in Iran has entered its…
 <!-- CATO:END_MANAGED_BLOCK synthesis -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK entities -->

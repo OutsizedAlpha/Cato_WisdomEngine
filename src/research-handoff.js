@@ -4,7 +4,7 @@ const { compileProject } = require("./compile");
 const { ingest } = require("./ingest");
 const { parseFrontmatter, sectionContent } = require("./markdown");
 const { ensureProjectStructure, loadSettings } = require("./project");
-const { promoteOutputToSynthesis, writeOutputDocument } = require("./research");
+const { promoteOutputToSynthesis, writeCanonicalDocument, writeOutputDocument } = require("./research");
 const { appendJsonl, ensureDir, readJson, relativeToRoot, slugify, timestampStamp } = require("./utils");
 const { createWatchProfile } = require("./watch");
 const { writeSurveillance } = require("./surveil");
@@ -20,6 +20,12 @@ const OUTPUT_KINDS = {
     idPrefix: "REPORT",
     kind: "research-report",
     outputDir: "outputs/reports"
+  },
+  "final-report": {
+    idPrefix: "REPORT",
+    kind: "research-report",
+    outputDir: "wiki/reports",
+    canonical: true
   },
   deck: {
     idPrefix: "DECK",
@@ -276,18 +282,21 @@ function captureResearch(root, bundleInput, options = {}) {
     const captureSummary = [renderImportedSourceSection(ingestResult.results), renderLocalSourceSection(localSources)].filter(Boolean).join("\n\n");
     const outputPayload = normalizeOutputPayload(bundle, captureSummary);
     const outputSources = [...new Set(localSources.map((source) => source.path).concat(ingestResult.results.map((record) => record.note_path)))];
-    const output = writeOutputDocument(root, {
+    const sharedOutputOptions = {
       idPrefix: config.idPrefix,
       kind: config.kind,
       title: inferOutputTitle(bundle),
-      outputDir: config.outputDir,
       fileSlug: inferOutputTitle(bundle),
       body: outputPayload.body,
       sources: outputSources,
       frontmatter: {
         ...outputPayload.frontmatter,
+        ...(bundle.output?.frontmatter || {}),
         ...config.frontmatter,
         generation_mode: bundle.output?.generation_mode || bundle.generation_mode || options.generationMode || "llm_handoff",
+        authoring_layer: bundle.authoring_layer || "",
+        authoring_model: bundle.model || "",
+        authoring_session: bundle.authoring_session || "",
         handoff_topic: bundle.topic || "",
         handoff_question: bundle.question || "",
         handoff_pack_path: bundle.pack_path || "",
@@ -296,10 +305,23 @@ function captureResearch(root, bundleInput, options = {}) {
         imported_sources: ingestResult.results.length,
         imported_failures: staged.failures.length
       }
-    });
+    };
+    const output =
+      config.canonical || bundle.output?.canonical_path
+        ? writeCanonicalDocument(root, {
+            ...sharedOutputOptions,
+            outputPath: String(bundle.output?.canonical_path || "").trim() || path.join(config.outputDir, `${slugify(inferOutputTitle(bundle)).slice(0, 80) || "report"}.md`),
+            archiveDir:
+              String(bundle.output?.archive_dir || "").trim() ||
+              path.join(config.outputDir, "archive", slugify(inferOutputTitle(bundle)).slice(0, 80) || "report")
+          })
+        : writeOutputDocument(root, {
+            ...sharedOutputOptions,
+            outputDir: config.outputDir
+          });
 
     let promotedPath = "";
-    if (options.promote || bundle.output.promote) {
+    if (!(config.canonical || bundle.output?.canonical_path) && (options.promote || bundle.output.promote)) {
       promotedPath = promoteOutputToSynthesis(root, output.outputPath, {
         title: inferOutputTitle(bundle),
         sources: outputSources,
@@ -309,6 +331,7 @@ function captureResearch(root, bundleInput, options = {}) {
 
     outputResult = {
       outputPath: output.outputPath,
+      archivedPath: output.archivedPath || "",
       promotedPath
     };
   }

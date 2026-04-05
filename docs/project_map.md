@@ -25,13 +25,15 @@ This file records the current local truth of the repository, not the full intend
 - Prepare a PDF vision handoff pack: `node .\bin\cato.js pdf-pack --from inbox/drop_here --limit 8 --dpi 144 --max-pages 0`
 - Capture a Codex-authored PDF extraction bundle: `node .\bin\cato.js capture-pdf .\path\to\bundle.json`
 - Import a GPT/Codex research bundle: `node .\bin\cato.js capture-research .\path\to\bundle.json`
+- Prepare a canonical final-report pack: `node .\bin\cato.js report "topic"`
+- Capture a model-authored final report: `node .\bin\cato.js capture-report .\path\to\bundle.json`
 - Prepare a frontier reasoning pack: `node .\bin\cato.js frontier-pack "topic" --mode decision`
 - Capture a frontier-authored bundle: `node .\bin\cato.js capture-frontier .\path\to\bundle.json`
 - Ingest self-notes: `node .\bin\cato.js self-ingest`
 - Compile indices/concepts/entities: `node .\bin\cato.js compile`
 - Search corpus: `node .\bin\cato.js search "query"`
 - Generate a grounded memo: `node .\bin\cato.js ask "question"`
-- Generate a report: `node .\bin\cato.js report "topic"`
+- Prepare a report pack: `node .\bin\cato.js report "topic"`
 - Generate a slide deck: `node .\bin\cato.js deck "topic"`
 - Update a surveillance page: `node .\bin\cato.js surveil "topic"`
 - Create or update a watch profile: `node .\bin\cato.js watch "topic" --context "..."`
@@ -74,14 +76,14 @@ This file records the current local truth of the repository, not the full intend
 - [`src/extraction.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/extraction.js) = handles text extraction, PDF stream parsing, repo snapshot manifests, figure reference extraction, SVG text capture, and Windows OCR handoff for raster images
 - [`src/self-ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/self-ingest.js) = converts rough self-authored notes into structured self-model notes
 - [`src/compile.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/compile.js) = rebuilds indices, unresolved registers, and managed evidence blocks
-- [`src/claims.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/claims.js) = decomposes source and report material into atomic claims, writes `manifests/claims.jsonl`, and maintains `wiki/claims/`
+- [`src/claims.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/claims.js) = decomposes source notes and canonical `wiki/reports/` material into atomic claims, writes `manifests/claims.jsonl`, and maintains `wiki/claims/`
 - [`src/states.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/states.js) = turns claims plus grounded evidence into current-state pages, state diffs, and regime briefs
 - [`src/decisions.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/decisions.js) = writes meeting briefs, decision notes, red-team outputs, and market-change briefs from states, claims, and self-model context
 - [`src/concept-quality.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/concept-quality.js) = shared concept-normalisation and concept-quality heuristics used to keep promoted ontology terms domain-meaningful
-- [`src/search.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/search.js) = token-based corpus search over markdown and extracted text
+- [`src/search.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/search.js) = token-based corpus search over markdown and extracted text, preserving frontmatter and preferring reviewed evidence over provisional PDF-handoff notes
 - [`src/retrieval.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/retrieval.js) = explicit L0/L1/L2/L3 retrieval-budget planner with TLDR-first escalation rules
 - [`src/ask.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ask.js) = generates grounded markdown memos and optional question pages
-- [`src/report.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/report.js) = writes stronger report-style grounded outputs
+- [`src/report.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/report.js) = prepares report packs, captures model-authored canonical reports under `wiki/reports/`, archives prior canonical versions, and gives broad all-corpus investment summaries a dedicated curated route that starts from reviewed source notes and reviewed chartpacks rather than generic lexical state/claim hits
 - [`src/deck.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/deck.js) = writes Marp-friendly grounded slide decks
 - [`src/surveil.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/surveil.js) = updates persistent surveillance pages
 - [`src/watch.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/watch.js) = creates watch profiles, derives watch ontology, and expands retrieval for watch-driven topics
@@ -104,13 +106,19 @@ This file records the current local truth of the repository, not the full intend
 - `CLAUDE.md` is a thin loader pointing to `AGENTS.md`.
 - [`INVESTMENT_RESEARCH.md`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/INVESTMENT_RESEARCH.md) acts as the domain overlay for investment-research-specific behaviour.
 - The repo now includes the first full operating tree: `config/`, `inbox/`, `raw/`, `manifests/`, `extracted/`, `wiki/`, `outputs/`, `logs/`, `cache/`, `src/`, `tests/`, and root wrapper commands.
-- The CLI now covers deterministic repo maintenance plus grounded memo, report, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
+- The CLI now covers deterministic repo maintenance plus grounded memo, report-pack, canonical report capture, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
 - The live-research split is now explicit: GPT/Codex is expected to perform web research and author the synthesis, while Cato captures the cited sources and final artefacts through `capture-research`.
+- The final-report split is now explicit: `report` prepares the structured pack, the active terminal model authors the final report, and `capture-report` writes one canonical current report per topic under `wiki/reports/` while archiving the previous canonical version.
+- Legacy deterministic report runs now archive under `outputs/reports/archive/legacy-deterministic/` with their original filenames preserved so older markdown references can still resolve after the active report folder is swept.
 - The PDF-vision split is now explicit: `pdf-pack` prepares rendered-page review packs for image-rich PDFs, Codex/GPT performs OCR/vision/chart extraction over those artefacts, and `capture-pdf` feeds the authored extraction back into normal Cato ingest.
+- PDF-handoff notes now carry explicit review-state metadata (`review_status`, `reviewed_at`, `review_method`, `review_scope`) so the repo can distinguish provisional capture from text-reviewed and visually reviewed evidence.
 - When `capture-pdf` or another handoff writes `extracted_text` into a source sidecar, ingest now treats that as authoritative enough to bypass brittle native extraction instead of re-running the local parser first.
 - The current PDF batch operating rule is pragmatic rather than idealised: chunk larger runs, isolate heavy chart decks, and use a direct single-document capture bundle when `pdf-pack` still overflows on an outlier.
+- Broad investment-summary reports now use curated section lenses, stay source-note-led unless evidence is thin, and build section prose from cleaned source-note sections plus extracted-text takeaways instead of raw search excerpts.
 - The zero-API frontier split is also explicit: Cato prepares deterministic claim/state/decision context through `frontier-pack`, Codex performs the deeper reasoning, and Cato stores the final authored artefact through `capture-frontier`.
 - The repo will keep repo agent-driven operation rather than embedding external LLM execution directly into the CLI; handoff commands remain the integration boundary.
+- Raw `outputs/reports/` files are now treated as legacy operational history rather than active claim input; the claim layer only reads canonical `wiki/reports/` material.
+- The live repo now has a canonical current investment report at `wiki/reports/current-investment-summary-across-all-ingested-research.md`, and the old timestamped report runs were swept into `outputs/reports/archive/legacy-deterministic/`.
 - `ingest` now treats repo directories and repo archives as first-class evidence objects instead of only plain files.
 - `ingest` now writes figure notes into `extracted/figures/` for standalone images and markdown/HTML sources with image references.
 - `ingest` now assigns a semantic `document_class` and writes a companion append-and-review draft note under `wiki/drafts/append-review/`.
@@ -154,6 +162,7 @@ This file records the current local truth of the repository, not the full intend
 - Use the repo as the source of truth; Obsidian is intended to be a frontend, not the underlying truth layer.
 - Treat `inbox/drop_here/` and `inbox/self/` as git-ignored staging queues rather than durable repo state.
 - Treat `cache/` and `logs/` as disposable operator artefacts; commit the workflow code and docs, not transient handoff packs.
+- Treat `tmp/` as disposable manual-review scratch, not durable repo state.
 - Keep raw evidence separate from derived knowledge once those layers are created.
 - Keep draft append-and-review notes out of grounded retrieval unless the task explicitly needs workspace material.
 - Maintain project memory in `docs/` and `tasks/` rather than relying on chat history.

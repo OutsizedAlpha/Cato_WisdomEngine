@@ -18,7 +18,11 @@ ingested_at: 2026-04-05T18:23:12.063Z
 raw_path: "raw/pdfs/SRC-2026-D7B76B247706__Global Economics Chart Pack - Iran Conflict Edition (Apr 2026)_0.pdf"
 extracted_text_path: extracted/text/SRC-2026-D7B76B247706.txt
 metadata_path: extracted/metadata/SRC-2026-D7B76B247706.json
-status: draft
+status: reviewed
+review_status: visual_reviewed
+reviewed_at: 2026-04-05T19:55:00.000Z
+review_method: rendered_pages_and_extracted_text_crosscheck
+review_scope: "Overview pages and the first six rendered pages were visually reviewed against the extracted page sequence for qualitative macro use."
 confidence: medium
 tags: []
 entities: []
@@ -41,13 +45,14 @@ Global Economics Chart Pack – Iran Conflict Edition Global Economics Team INDE
 
 ## What This Source Says
 
-- Initial draft only. Refine this note after review or a frontier-model synthesis pass.
+- Reviewed visually at the overview level and against the extracted page sequence. Use this note for qualitative macro scenario work.
+- The baseline scenario is a short-lived conflict where energy prices unwind by year-end and most economies avoid recession.
+- The adverse scenario is a longer disruption to energy supply that pushes the global economy toward stagflation and broad-based rate hikes.
 
 ## Why It Matters
 
-- Batch-authored by Codex on 2026-04-05 from local PDFs via the PDF handoff path. Text was re-extracted with pdfplumber and normalised before capture. No page-by-page manual chart or table reconstruction was performed in this pass.
-
-Initial batch capture authored by Codex from the live PDF plus a stronger local text pass; review chart-heavy sections before promoting precise numeric claims.
+- This chart pack is now reviewed enough for qualitative macro scenario use, especially around energy, inflation, policy, and growth-path branching.
+- It gives a compact macro baseline versus adverse-case frame for the Iran conflict rather than a single-point forecast.
 
 ## Key Facts / Data
 
@@ -57,6 +62,9 @@ Initial batch capture authored by Codex from the live PDF plus a stronger local 
 - Ingested at: `2026-04-05T18:23:12.063Z`
 - Captured at: `2026-04-05T18:23:11.407Z`
 - Raw path: `raw/pdfs/SRC-2026-D7B76B247706__Global Economics Chart Pack - Iran Conflict Edition (Apr 2026)_0.pdf`
+- Review status: `visual_reviewed`
+- Reviewed at: `2026-04-05T19:55:00.000Z`
+- Review method: `rendered_pages_and_extracted_text_crosscheck`
 
 
 

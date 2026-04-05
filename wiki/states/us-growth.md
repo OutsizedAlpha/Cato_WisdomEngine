@@ -5,10 +5,10 @@ title: US Growth
 status: active
 state_label: contested
 confidence: high
-last_refreshed_at: 2026-04-03T18:31:35.557Z
+last_refreshed_at: 2026-04-05T21:26:38.327Z
 query: US Growth us activity american growth growth labor market manufacturing trade United States Federal Reserve
 watch_profile_path: ""
-related: ["wiki/source-notes/united-states-economic-calendar-week-of-march-30-april-3-2026.md","outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md","wiki/source-notes/us-international-trade-in-goods-and-services-february-2026.md","extracted/text/SRC-2026-4A45F1B16C06.txt","extracted/text/SRC-2026-7DD7B91D4D02.txt","extracted/text/SRC-2026-561EED62FC64.txt","extracted/text/SRC-2026-9555CA26D695.txt","extracted/text/SRC-2026-CA6D805D453E.txt","extracted/text/SRC-2026-736F27210F77.txt","extracted/text/SRC-2026-43CBDAEA5E65.txt","extracted/text/SRC-2026-28A1E9DAABE7.txt"]
+related: ["wiki/source-notes/united-states-economic-calendar-week-of-march-30-april-3-2026.md","wiki/reports/current-investment-summary-across-all-ingested-research.md","wiki/source-notes/us-international-trade-in-goods-and-services-february-2026.md","wiki/source-notes/germany-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/global-economics-chart-pack-iran-conflict-edition-apr-2026.md","wiki/source-notes/purchasing-managers-index-for-march-2026.md","wiki/source-notes/france-manufacturing-pmi.md","wiki/concepts/growth.md","wiki/concepts/manufacturing.md","wiki/entities/united-states.md","wiki/concepts/inflation.md","wiki/concepts/labor-market.md","wiki/concepts/gdp-growth.md","wiki/source-notes/global-markets-chart-pack-apr-2026-snapshot.md","wiki/source-notes/private-credit-hyperscaler-market-risk-exposure.md"]
 ---
 
 # US Growth
@@ -28,12 +28,12 @@ related: ["wiki/source-notes/united-states-economic-calendar-week-of-march-30-ap
 <!-- CATO:BEGIN_MANAGED_BLOCK snapshot -->
 ## Managed Snapshot
 
-- Last refreshed: 2026-04-05T15:47:52.555Z
+- Last refreshed: 2026-04-05T21:26:38.327Z
 - State label: contested
 - Confidence: high
 - Claim count: 12
 - Evidence count: 8
-- Summary: Growth resilience, labour-market trend, and whether the U.S. is accelerating or rolling over. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. Primary weekly table for U.S. actual, consensus, and prior data points used in the report. Instead, the U.S. growth and labor data were good enough to make the market take the inflation transmission channel more seriously. It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying. Primary evidence route: manufacturing; United States; labor market.
+- Summary: Growth resilience, labour-market trend, and whether the U.S. is accelerating or rolling over. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. Primary weekly table for U.S. actual, consensus, and prior data points used in the report. The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider. Health Care: Defensive Alternatives in a Volatile Energy Price Environment is straightforward: health care does not become a growth winner from higher oil, but it remains one of the most credible defensive shelters because demand is inelastic, balance sheets are stronger, and revenue is less GDP-sensitive. Primary evidence route: growth; manufacturing; United States.
 <!-- CATO:END_MANAGED_BLOCK snapshot -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK strengthened -->
@@ -45,41 +45,39 @@ related: ["wiki/source-notes/united-states-economic-calendar-week-of-march-30-ap
 <!-- CATO:BEGIN_MANAGED_BLOCK weakened -->
 ## Managed Weakened
 
-- [[claims/claim-2026-07e05b836d6a|It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitic…]]
-- [[claims/claim-2026-1b65acd3b32c|The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.]]
-- [[claims/claim-2026-345e39584a35|The UK growth numbers were too soft to justify complacency, yet the BoE's firm-level survey showed rising CPI…]]
-- [[claims/claim-2026-7db2bd48f562|In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix…]]
-- [[claims/claim-2026-c95697ecd44d|The practical conclusion for asset markets is that the growth side of the equation did not weaken enough this…]]
-- [[claims/claim-2026-fc060b000e20|The U.S. week was hawkish in growth terms, only partly offset by softer wages.]]
+- [[claims/claim-2026-2b7471855442|The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.]]
+- [[claims/claim-2026-33da458ecf36|Health Care: Defensive Alternatives in a Volatile Energy Price Environment is straightforward: health care do…]]
+- [[claims/claim-2026-f237326d804e|The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation p…]]
+- [[claims/claim-2026-0f6c133346d9|Used to position France near the expansion threshold in Europe.]]
 <!-- CATO:END_MANAGED_BLOCK weakened -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK unchanged -->
 ## Managed Unchanged
 
 - [[claims/claim-2026-0c94d7232d30|Primary weekly table for U.S. actual, consensus, and prior data points used in the report.]]
-- [[claims/claim-2026-7c8fc0edf014|Instead, the U.S. growth and labor data were good enough to make the market take the inflation transmission c…]]
-- [[claims/claim-2026-07e05b836d6a|It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitic…]]
-- [[claims/claim-2026-1b65acd3b32c|The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.]]
-- [[claims/claim-2026-345e39584a35|The UK growth numbers were too soft to justify complacency, yet the BoE's firm-level survey showed rising CPI…]]
-- [[claims/claim-2026-4c8c13812682|Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals become more fragile…]]
+- [[claims/claim-2026-2b7471855442|The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.]]
+- [[claims/claim-2026-33da458ecf36|Health Care: Defensive Alternatives in a Volatile Energy Price Environment is straightforward: health care do…]]
+- [[claims/claim-2026-ed6305eeddc7|Official release for the February U.S. trade balance used in the report.]]
+- [[claims/claim-2026-f237326d804e|The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation p…]]
+- [[claims/claim-2026-0b19d6be6346|If U.S. growth softens more sharply than the current corpus implies, duration could rally despite supply worr…]]
 <!-- CATO:END_MANAGED_BLOCK unchanged -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK catalysts -->
 ## Managed Catalysts
 
+- Revisit [[concepts/growth|growth]] for catalyst or regime change.
 - Revisit [[concepts/manufacturing|manufacturing]] for catalyst or regime change.
 - Revisit [[entities/united-states|United States]] for catalyst or regime change.
-- Revisit [[concepts/labor-market|labor market]] for catalyst or regime change.
-- Revisit [[concepts/growth|growth]] for catalyst or regime change.
+- Revisit [[concepts/inflation|inflation]] for catalyst or regime change.
 <!-- CATO:END_MANAGED_BLOCK catalysts -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK flip -->
 ## Managed What Would Flip It
 
-- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
-- The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
-- The UK growth numbers were too soft to justify complacency, yet the BoE's firm-level survey showed rising CPI and own-price expectations tied to recent energy-price moves.
-- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
+- The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.
+- Health Care: Defensive Alternatives in a Volatile Energy Price Environment is straightforward: health care does not become a growth winner from higher oil, but it remains one of the most credible defensive shelters because demand is inelastic, balance sheets are stronger, and revenue is less GDP-sensitive.
+- The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation premium.
+- Used to position France near the expansion threshold in Europe.
 <!-- CATO:END_MANAGED_BLOCK flip -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
@@ -91,12 +89,10 @@ related: ["wiki/source-notes/united-states-economic-calendar-week-of-march-30-ap
 <!-- CATO:BEGIN_MANAGED_BLOCK counter -->
 ## Managed Counter-Arguments
 
-- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
-- The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
-- The UK growth numbers were too soft to justify complacency, yet the BoE's firm-level survey showed rising CPI and own-price expectations tied to recent energy-price moves.
-- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
-- The practical conclusion for asset markets is that the growth side of the equation did not weaken enough this week to offset the inflationary and geopolitical impulse.
-- The U.S. week was hawkish in growth terms, only partly offset by softer wages.
+- The core regime is growth not broken, inflation risk re-extended, geopolitical tails wider.
+- Health Care: Defensive Alternatives in a Volatile Energy Price Environment is straightforward: health care does not become a growth winner from higher oil, but it remains one of the most credible defensive shelters because demand is inelastic, balance sheets are stronger, and revenue is less GDP-sensitive.
+- The growth side is soft enough to stay contested, but not weak enough to neutralise an energy-led inflation premium.
+- Used to position France near the expansion threshold in Europe.
 <!-- CATO:END_MANAGED_BLOCK counter -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK gaps -->

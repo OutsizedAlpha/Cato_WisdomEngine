@@ -13,6 +13,10 @@ extracted_text_path:
 metadata_path:
 draft_workspace_path:
 status: draft
+review_status: unreviewed
+reviewed_at:
+review_method:
+review_scope:
 confidence: low
 tags: []
 entities: []

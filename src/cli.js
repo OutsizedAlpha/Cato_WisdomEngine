@@ -14,7 +14,7 @@ const { createPostmortem } = require("./postmortem");
 const { writePrinciplesSnapshot } = require("./principles");
 const { writeReflection } = require("./reflect");
 const { captureResearch } = require("./research-handoff");
-const { writeReport } = require("./report");
+const { captureReport, writeReport } = require("./report");
 const { searchCorpus } = require("./search");
 const { selfIngest } = require("./self-ingest");
 const { refreshState, writeRegimeBrief, writeStateDiff } = require("./states");
@@ -67,7 +67,8 @@ Usage:
   .\\cato.cmd capture-frontier path\\to\\bundle.json [--promote] [--no-surveil]
   .\\cato.cmd capture-pdf path\\to\\bundle.json [--copy] [--promote-candidates]
   .\\cato.cmd ask "question" [--limit 6] [--save-question] [--promote]
-  .\\cato.cmd report "topic" [--limit 10] [--promote]
+  .\\cato.cmd report "topic" [--limit 10]
+  .\\cato.cmd capture-report path\\to\\bundle.json
   .\\cato.cmd deck "topic" [--limit 8] [--promote]
   .\\cato.cmd surveil "topic" [--limit 10]
   .\\cato.cmd watch "topic" [--context "..."] [--aliases "..."] [--entities "..."] [--concepts "..."] [--triggers "..."]
@@ -285,14 +286,28 @@ function runCli(argv) {
         throw new Error('Report requires a topic. Example: .\\cato.cmd report "Passive flows and liquidity"');
       }
       const result = writeReport(root, topic, {
-        limit: parsed.options.limit,
-        promote: Boolean(parsed.options.promote)
+        limit: parsed.options.limit
       });
-      console.log(`Wrote report to ${result.outputPath}`);
-      if (result.promotedPath) {
-        console.log(`Promoted synthesis note to ${result.promotedPath}`);
+      console.log(`Report pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Canonical final report path: ${result.canonicalPath}`);
+      console.log(`Evidence results: ${result.results.length}`);
+      return;
+    }
+    case "capture-report": {
+      const bundlePath = parsed.positionals.join(" ").trim();
+      if (!bundlePath) {
+        throw new Error('Capture-report requires a bundle path. Example: .\\cato.cmd capture-report .\\cache\\report-packs\\...-capture.json');
       }
-      printSearchResults(result.results);
+      const result = captureReport(root, bundlePath);
+      console.log(`Captured report bundle: ${bundlePath}`);
+      if (result.outputResult) {
+        console.log(`Wrote canonical report to ${result.outputResult.outputPath}`);
+        if (result.outputResult.archivedPath) {
+          console.log(`Archived previous canonical version to ${result.outputResult.archivedPath}`);
+        }
+      }
       return;
     }
     case "deck": {

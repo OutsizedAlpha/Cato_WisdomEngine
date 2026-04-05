@@ -100,13 +100,9 @@ switch ($Action) {
   "report" {
     $topic = Resolve-InteractivePrompt $Prompt "Report topic"
     Invoke-CatoCommand -CommandArgs @("compile", "--promote-candidates")
-    $commandArgs = @("report", $topic)
-    if (-not $SkipPromote) {
-      $commandArgs += "--promote"
-    }
-    Invoke-CatoCommand -CommandArgs $commandArgs
+    Invoke-CatoCommand -CommandArgs @("report", $topic)
     if (-not $SkipOpen) {
-      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "outputs\reports")
+      $latest = Get-LatestMarkdown (Join-Path $RepoRoot "cache\report-packs")
       if ($latest) {
         Open-InObsidian $latest.FullName
       }
@@ -262,9 +258,9 @@ switch ($Action) {
     }
   }
   "open-latest-report" {
-    $latest = Get-LatestMarkdown (Join-Path $RepoRoot "outputs\reports")
+    $latest = Get-LatestMarkdown (Join-Path $RepoRoot "wiki\reports")
     if (-not $latest) {
-      throw "No report markdown files exist yet."
+      throw "No canonical report markdown files exist yet."
     }
     if (-not $SkipOpen) {
       Open-InObsidian $latest.FullName

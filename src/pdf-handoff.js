@@ -203,6 +203,7 @@ For each document in this pack:
    - document class
    - author/date/source URL if visible
    - tags, entities, and concepts when they are grounded
+   - review_status, review_method, and review_scope once the extraction has actually been checked
    - any figure refs worth preserving
 4. Keep the extraction factual. If a chart or table is ambiguous, say that explicitly instead of hallucinating precision.
 5. When the bundle is ready, run:
@@ -253,6 +254,10 @@ function buildCaptureBundle(packRelativePath, documents) {
       tags: [],
       entities: [],
       concepts: [],
+      review_status: "unreviewed",
+      reviewed_at: "",
+      review_method: "",
+      review_scope: "",
       extracted_text_path: document.authored_extraction_path,
       extraction_method: "llm_vision_handoff",
       extraction_notes: [
@@ -522,6 +527,10 @@ function capturePdf(root, bundleInput, options = {}) {
       tags: uniqueList([...(existing.tags || []), ...(document.tags || [])]),
       entities: uniqueList([...(existing.entities || []), ...(document.entities || [])]),
       concepts: uniqueList([...(existing.concepts || []), ...(document.concepts || [])]),
+      review_status: document.review_status || existing.review_status || "unreviewed",
+      reviewed_at: document.reviewed_at || existing.reviewed_at || "",
+      review_method: document.review_method || existing.review_method || "",
+      review_scope: document.review_scope || existing.review_scope || "",
       extracted_text: extractedText,
       extraction_status: document.extraction_status || existing.extraction_status || "extracted",
       extraction_method: document.extraction_method || existing.extraction_method || "llm_vision_handoff",

@@ -29,9 +29,12 @@ The current product is already more than an MVP scaffold. It now includes:
 - decision notes, meeting briefs, red-team briefs, and market-change briefs
 - watch profiles and surveillance pages for persistent live topics
 - zero-API PDF vision handoff for image-heavy or chart-heavy PDFs
+- explicit source-note review states so reviewed text and visually reviewed chartpacks can be preferred over provisional capture
 - GPT/Codex research handoff into the repo
 - zero-API frontier handoff over the claim/state/decision stack
+- zero-API report handoff that stores one canonical model-authored report per topic under `wiki/reports/`
 - retrieval-budget discipline from maps to canonical notes to evidence notes to raw extracts
+- a dedicated broad investment-summary report route that prepares curated report packs from reviewed evidence instead of generic lexical state hits
 - tag, backlink, freshness, and open-thread maintenance surfaces
 - repo health checks for lint, OCR readiness, repo-local Python, and browser automation availability
 
@@ -51,7 +54,7 @@ Typical failure modes without a system like this:
 Cato fixes that by making useful work land in a structured local system:
 
 - evidence becomes source notes
-- source notes and reports become claims
+- source notes and canonical model-authored reports can become claims
 - claims become current-state views
 - current-state views feed decision support
 - outputs can be filed back into the knowledge layer
@@ -66,6 +69,7 @@ That is the difference between a file archive and a thinking instrument.
 - auditable and git-friendly
 - deterministic plumbing in the CLI, not hidden magic
 - frontier reasoning stays with the external model
+- final intellectual outputs are authored through the active terminal model and captured back into Cato
 - Cato stays agent-driven rather than embedding external LLM execution directly into the CLI
 
 The last point is deliberate. Cato prepares context, captures outputs, and maintains memory. Codex/GPT remains the higher-order reasoning layer.
@@ -137,14 +141,23 @@ Those pages now explicitly include:
 
 ### 5. Use The Right Loop
 
-There are four main loops.
+There are five main loops.
 
 Local evidence loop:
 
 1. add files
 2. run `ingest`
 3. run `compile`
-4. run `ask`, `report`, `claims-refresh`, `state-refresh`, or `decision-note`
+4. run `ask`, `claims-refresh`, `state-refresh`, or `decision-note`
+
+Report handoff loop:
+
+1. run `report "topic"`
+2. open the generated files in `cache/report-packs/`
+3. let Codex/Claude author the final report into the generated capture bundle
+4. fill `model` with the actual terminal session label used for authorship
+5. run `capture-report`
+6. let Cato write or update the canonical report under `wiki/reports/` and archive the previous canonical version
 
 Research handoff loop:
 
@@ -163,12 +176,21 @@ PDF vision handoff loop:
 
 For larger mixed batches, start in chunks of roughly 6-12 PDFs and isolate outlier chart decks instead of forcing one oversized pack.
 
+Broad investment-summary loop:
+
+1. review the source notes that actually matter to the current investment surface
+2. use explicit review states so draft PDF-handoff notes do not silently dominate retrieval
+3. run `report "Current investment summary across all ingested research"`
+4. let the curated investment route prepare the pack from reviewed source notes first, then supporting canonical pages if needed
+5. let Codex/Claude author the final report and capture it back with `capture-report`
+
 Frontier handoff loop:
 
 1. run `frontier-pack`
 2. let Codex/GPT reason over the generated context
 3. save the final authored output into the generated capture bundle
-4. run `capture-frontier`
+4. fill `model` with the actual terminal session label used for authorship
+5. run `capture-frontier`
 
 ## Repository Layout
 
@@ -179,6 +201,7 @@ Frontier handoff loop:
 - `manifests/` = structured sidecars and change-tracking files
 - `wiki/source-notes/` = one-note-per-source grounding layer
 - `wiki/drafts/append-review/` = working draft queue distinct from canonical notes
+- `wiki/reports/` = canonical model-authored reports, one current file per topic
 - `wiki/claims/` = atomic belief ledger
 - `wiki/states/` = current-state pages
 - `wiki/regimes/` = regime-level world-model surfaces
@@ -186,7 +209,7 @@ Frontier handoff loop:
 - `wiki/watch-profiles/` = persistent watch instructions
 - `wiki/surveillance/` = refreshed live watch pages
 - `wiki/self/` = principles, heuristics, postmortems, biases, tensions
-- `outputs/` = generated memos, reports, briefs, decks, meeting briefs
+- `outputs/` = generated memos, briefs, decks, meeting briefs, and legacy archived report runs
 - `logs/` = lint, doctor, and workflow reports
 - `cache/` = frontier packs, claim snapshots, and disposable runtime files
 - `src/` = Node implementation
@@ -199,6 +222,7 @@ Some folders are intentionally operational rather than canonical:
 - `inbox/drop_here/` and `inbox/self/` are staging queues and should remain uncommitted
 - `cache/` contains disposable handoff packs, snapshots, and runtime artefacts
 - `logs/` contains operator reports and health traces
+- `tmp/` is scratch space for manual review artefacts and should remain uncommitted
 
 The durable knowledge system begins after intentional ingest. That is when evidence moves into `raw/`, `extracted/`, `wiki/`, and `manifests/`.
 
@@ -212,11 +236,13 @@ The durable knowledge system begins after intentional ingest. That is when evide
 6. For image-heavy PDFs, run `.\cato.cmd pdf-pack`, complete the authored extraction bundle, then run `.\cato.cmd capture-pdf`.
 7. Run `.\cato.cmd compile` when you used plain `ingest`.
 8. Run `.\cato.cmd search "your topic"`.
-9. Run `.\cato.cmd ask "your question"` or `.\cato.cmd report "your topic"`.
-10. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
-11. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
-12. Run `.\cato.cmd decision-note "topic"` or `.\cato.cmd meeting-brief "Weekly investment meeting brief"` for decision-facing outputs.
-13. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
+9. Run `.\cato.cmd ask "your question"` for a grounded local memo.
+10. Run `.\cato.cmd report "your topic"` to prepare a final-report pack, then let the active terminal model author the capture bundle and run `.\cato.cmd capture-report .\cache\report-packs\...\...-capture.json`.
+11. For the all-corpus investment route, use `.\cato.cmd report "Current investment summary across all ingested research"` and capture the authored result back through `capture-report`.
+12. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
+13. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
+14. Run `.\cato.cmd decision-note "topic"` or `.\cato.cmd meeting-brief "Weekly investment meeting brief"` for deterministic decision scaffolds, and use `frontier-pack` / `capture-frontier` when you want the final authored model output.
+15. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
 
 ## Core Commands
 
@@ -231,6 +257,7 @@ Foundation:
 - `.\cato.cmd search`
 - `.\cato.cmd ask`
 - `.\cato.cmd report`
+- `.\cato.cmd capture-report`
 - `.\cato.cmd deck`
 - `.\cato.cmd lint`
 - `.\cato.cmd doctor`
@@ -260,6 +287,8 @@ Handoffs:
 - `.\cato.cmd pdf-pack --from inbox/drop_here --limit 8 --dpi 144 --max-pages 0`
 - `.\cato.cmd capture-pdf .\path\to\bundle.json`
 - `.\cato.cmd capture-research .\path\to\bundle.json`
+- `.\cato.cmd report "topic"`
+- `.\cato.cmd capture-report .\path\to\bundle.json`
 - `.\cato.cmd frontier-pack "topic" --mode decision`
 - `.\cato.cmd capture-frontier .\path\to\bundle.json --promote`
 
@@ -299,6 +328,7 @@ Use this mental model:
 - claims are belief units
 - states are the current world model
 - decisions are mandate-facing judgement
+- canonical reports are model-authored durable judgement
 - drafts are workspace
 - outputs are artefacts
 - Cato keeps the whole chain inspectable
@@ -306,7 +336,9 @@ Use this mental model:
 If you need the deeper operating detail, read:
 
 - [docs/operator_guide.md](docs/operator_guide.md)
+- [docs/report_handoff.md](docs/report_handoff.md)
 - [docs/pdf_handoff.md](docs/pdf_handoff.md)
 - [docs/research_handoff.md](docs/research_handoff.md)
 - [docs/frontier_handoff.md](docs/frontier_handoff.md)
+- [docs/final_output_policy.md](docs/final_output_policy.md)
 - [docs/project_map.md](docs/project_map.md)

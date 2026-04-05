@@ -34,8 +34,9 @@ Capture the final result:
 3. open the generated files in `cache/frontier-packs/`
 4. let Codex/GPT reason over that pack and add any needed live web work
 5. write the final markdown output into `output.body` in the generated capture bundle
-6. add any newly researched external URLs to `sources`
-7. run `capture-frontier`
+6. fill `model` with the actual Codex/Claude session label used for authorship
+7. add any newly researched external URLs to `sources`
+8. run `capture-frontier`
 
 ## What The Pack Contains
 
@@ -93,6 +94,7 @@ See:
 
 The frontier bundle supports:
 
+- `model` and `authoring_session` so the final artefact records which terminal model/session authored it
 - `local_sources` for existing Cato context
 - `sources` for new web URLs discovered during frontier research
 - `output` for the final authored markdown artefact

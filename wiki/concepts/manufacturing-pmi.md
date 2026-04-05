@@ -2,7 +2,7 @@
 id: CONCEPT-2026-MANUFACTURING-PMI
 kind: concept-page
 title: manufacturing pmi
-status: retired
+status: active
 tags: []
 related: []
 ---

@@ -18,7 +18,11 @@ ingested_at: 2026-04-05T18:17:18.271Z
 raw_path: raw/pdfs/SRC-2026-1CC6C3A51136__CE Capital Daily - 02.04.2026.pdf
 extracted_text_path: extracted/text/SRC-2026-1CC6C3A51136.txt
 metadata_path: extracted/metadata/SRC-2026-1CC6C3A51136.json
-status: draft
+status: reviewed
+review_status: text_reviewed
+reviewed_at: 2026-04-05T19:45:00.000Z
+review_method: codex_corpus_text_review
+review_scope: "Full extracted text reviewed for grounded qualitative synthesis."
 confidence: medium
 tags: []
 entities: []
@@ -41,7 +45,7 @@ Capital Daily | 2nd April 2026 Treasuries offering little protection against sto
 
 ## What This Source Says
 
-- Initial draft only. Refine this note after review or a frontier-model synthesis pass.
+- Reviewed against the extracted text. Use this note for grounded qualitative synthesis; revisit the raw PDF before relying on exact table or chart values.
 
 ## Why It Matters
 

@@ -558,8 +558,9 @@ You are the frontier reasoning layer for Cato. Use this pack as structured scaff
 3. Treat claim, state, regime, and decision surfaces as current structured context, but check the underlying local evidence when nuance matters.
 4. If the user explicitly wants freshness beyond the local corpus, do live web research in Codex and add the cited URLs under \`sources\` in the capture bundle.
 5. Write the final authored markdown into \`output.body\` in the capture bundle.
-6. Keep the bundle's \`local_sources\` intact so Cato preserves the local reasoning trail.
-7. After the bundle is ready, run:
+6. Fill \`model\` with the actual Codex/Claude session label used for authorship.
+7. Keep the bundle's \`local_sources\` intact so Cato preserves the local reasoning trail.
+8. After the bundle is ready, run:
    \`.\cato.cmd capture-frontier "${capturePath}" --promote\`
 
 ## Deterministic Artefacts
@@ -613,6 +614,9 @@ function writeFrontierPack(root, seed, options = {}) {
     topic: pack.topic,
     question: pack.question,
     pack_path: pack.pack_path,
+    authoring_layer: "terminal_model",
+    model: "",
+    authoring_session: "",
     watch_topic: pack.watch.title || "",
     watch: pack.watch.title
       ? {
@@ -671,6 +675,9 @@ function captureFrontier(root, bundleInput, options = {}) {
       const body = String(rawBundle.output?.body || "").trim();
       if (!body || /Replace this placeholder with the GPT\/Codex-authored output\./i.test(body)) {
         throw new Error("Frontier capture bundle still contains the placeholder output body. Replace it with the real Codex-authored output first.");
+      }
+      if (!String(rawBundle.model || "").trim()) {
+        throw new Error("Frontier capture bundle must record the active terminal model/session label in `model` before capture.");
       }
     }
   }

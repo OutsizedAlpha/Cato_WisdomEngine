@@ -2,7 +2,7 @@
 id: CONCEPT-2026-GAS-STOCKS
 kind: concept-page
 title: gas stocks
-status: retired
+status: active
 tags: []
 related: []
 ---

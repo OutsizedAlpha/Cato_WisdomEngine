@@ -11,16 +11,16 @@ subjects: ["Global Macro","US Growth","US Inflation","Europe Macro","UK Macro","
 
 ## Summary
 
+- China Demand: contested (high)
+- Europe Macro: contested (high)
+- Geopolitical Risk: contested (high)
 - Global Macro: contested (high)
+- Japan Macro: contested (high)
+- Market Structure: contested (high)
+- UK Macro: contested (high)
 - US Growth: contested (high)
 - US Inflation: contested (high)
-- Europe Macro: contested (high)
-- UK Macro: contested (high)
-- Japan Macro: contested (high)
-- China Demand: contested (high)
-- Geopolitical Risk: contested (high)
-- Market Structure: contested (high)
 
 ## Output Reference
 
-- Latest generated brief: `outputs/briefs/2026-04-03T18-33-49.782Z-weekly-investment-meeting-regime-brief.md`
+- Latest generated brief: `outputs/briefs/2026-04-05T21-26-41.945Z-weekly-investment-meeting-regime-brief.md`

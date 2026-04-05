@@ -2,14 +2,14 @@
 id: CLAIM-2026-1CE324BBA4DD
 kind: claim-page
 title: "That is still positive, but it is not explosive, and it leaves Japan exposed if imported energy…"
-status: contested
+status: superseded
 claim_type: inference
 confidence: high
 claim_date: 2026-04-03T17:10:39.079Z
-origin_note_path: outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md
+origin_note_path: outputs/reports/archive/legacy-deterministic/2026-04-03T17-10-39.079Z-weekly-investment-meeting-macro-brief-2026-04-03.md
 origin_note_kind: research-report
 supporting_sources: ["wiki/source-notes/united-states-economic-calendar-week-of-march-30-april-3-2026.md","wiki/source-notes/us-international-trade-in-goods-and-services-february-2026.md","wiki/source-notes/uk-quarterly-national-accounts-october-to-december-2025.md","wiki/source-notes/uk-balance-of-payments-october-to-december-2025.md","wiki/source-notes/bank-of-england-decision-maker-panel-march-2026.md","wiki/source-notes/euro-area-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/germany-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/france-manufacturing-pmi.md","wiki/source-notes/italy-manufacturing-pmi.md","wiki/source-notes/spain-manufacturing-pmi.md","wiki/source-notes/bank-of-japan-tankan-summary-march-2026-survey.md","wiki/source-notes/japan-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/purchasing-managers-index-for-march-2026.md","wiki/source-notes/china-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/south-korea-economic-calendar-for-late-march-and-early-april-2026.md","wiki/source-notes/brazil-economic-calendar-for-late-march-and-early-april-2026.md"]
-contradicting_claims: ["CLAIM-2026-00A1FC15C7D3","CLAIM-2026-370B44E6A1FB","CLAIM-2026-7DB2BD48F562","CLAIM-2026-833112A64B26"]
+contradicting_claims: ["CLAIM-2026-00A1FC15C7D3","CLAIM-2026-370B44E6A1FB","CLAIM-2026-41281E8C3FE0","CLAIM-2026-6FC1624FCEBE","CLAIM-2026-7DB2BD48F562","CLAIM-2026-833112A64B26"]
 concepts: []
 entities: []
 ---
@@ -52,6 +52,8 @@ That is still positive, but it is not explosive, and it leaves Japan exposed if 
 
 - [[claims/claim-2026-00a1fc15c7d3|The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised b…]]
 - [[claims/claim-2026-370b44e6a1fb|U.S. domestically resilient sectors can still work.]]
+- [[claims/claim-2026-41281e8c3fe0|The core adverse case is re-escalation: equities and bonds both come under renewed pressure whi…]]
+- [[claims/claim-2026-6fc1624fcebe|It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturi…]]
 - [[claims/claim-2026-7db2bd48f562|In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is…]]
 - [[claims/claim-2026-833112a64b26|Stronger payrolls, firmer ISM, and still-low claims do not validate an immediate recession trad…]]
 
@@ -59,8 +61,8 @@ That is still positive, but it is not explosive, and it leaves Japan exposed if 
 
 - The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised both CPI expectations and own-price expectations.
 - U.S. domestically resilient sectors can still work.
-- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
-- Stronger payrolls, firmer ISM, and still-low claims do not validate an immediate recession trade.
+- The core adverse case is re-escalation: equities and bonds both come under renewed pressure while the dollar stays stronger.
+- It is that U.S. activity has stayed resilient enough, Europe has improved enough on manufacturing breadth, and Japan has stayed stable enough that the Iran-linked energy shock still matters for inflation, duration, and leadership.
 
 ## Data Gaps / What Would Strengthen It
 

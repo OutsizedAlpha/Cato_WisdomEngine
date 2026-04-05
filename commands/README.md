@@ -9,7 +9,7 @@ Use these wrappers when the action is frequent enough that typing the command be
 Good launcher candidates:
 
 - refreshing the corpus
-- writing a report or memo
+- preparing a report pack or writing a memo
 - refreshing surveillance
 - rebuilding claims
 - refreshing a state page
@@ -85,4 +85,6 @@ This is the central PowerShell implementation used by the `.cmd` wrappers.
 - The launcher layer assumes the settled operating model:
   - Cato handles deterministic plumbing and durable storage
   - Codex/GPT handles live reasoning and authored synthesis
+- `Write-Report.cmd` now prepares the latest report pack prompt under `cache/report-packs/`; the canonical final report is only created after the authored bundle is captured with `capture-report`.
+- `Open-Latest-Report.cmd` now opens the latest canonical report under `wiki/reports/`, not legacy timestamped drafts under `outputs/reports/`.
 - For the deeper workflow explanation, read `docs/operator_guide.md`.

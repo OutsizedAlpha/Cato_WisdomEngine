@@ -597,7 +597,31 @@ ${extraction.extractedText ? extraction.extractedText : "- No visible text was e
   );
 }
 
+function normalizeReviewStatus(value) {
+  const normalized = String(value || "").trim().toLowerCase();
+  if (!normalized) {
+    return "unreviewed";
+  }
+  return normalized;
+}
+
+function noteStatusFromReviewStatus(reviewStatus) {
+  return normalizeReviewStatus(reviewStatus) === "unreviewed" ? "draft" : "reviewed";
+}
+
+function reviewStatusSummary(record) {
+  const reviewStatus = normalizeReviewStatus(record.review_status);
+  if (["visual_reviewed", "visual-and-text-reviewed", "operator_reviewed"].includes(reviewStatus)) {
+    return "Reviewed against rendered pages and the extracted text. Use this note as grounded qualitative evidence; return to the raw source if exact chart precision matters.";
+  }
+  if (reviewStatus === "text_reviewed") {
+    return "Reviewed against the extracted text. Use this note for qualitative synthesis, but revisit source figures or tables before relying on exact numeric reads.";
+  }
+  return "Initial draft only. Refine this note after review or a frontier-model synthesis pass.";
+}
+
 function buildSourceNote(record) {
+  const reviewStatus = normalizeReviewStatus(record.review_status);
   const frontmatter = {
     id: record.id,
     kind: "source-note",
@@ -618,7 +642,11 @@ function buildSourceNote(record) {
     raw_path: record.raw_path,
     extracted_text_path: record.extracted_text_path || "",
     metadata_path: record.metadata_path,
-    status: "draft",
+    status: record.note_status || noteStatusFromReviewStatus(reviewStatus),
+    review_status: reviewStatus,
+    reviewed_at: record.reviewed_at || "",
+    review_method: record.review_method || "",
+    review_scope: record.review_scope || "",
     confidence: record.extracted_text_path ? "medium" : "low",
     tags: record.tags,
     entities: record.entities,
@@ -648,9 +676,17 @@ function buildSourceNote(record) {
 
 ${record.summary}
 
+## Review Status
+
+- Note status: \`${record.note_status || noteStatusFromReviewStatus(reviewStatus)}\`
+- Review status: \`${reviewStatus}\`
+- Reviewed at: \`${record.reviewed_at || "not yet reviewed"}\`
+- Review method: ${record.review_method ? `\`${record.review_method}\`` : "not yet recorded"}
+- Review scope: ${record.review_scope || "not yet recorded"}
+
 ## What This Source Says
 
-- Initial draft only. Refine this note after review or a frontier-model synthesis pass.
+- ${reviewStatusSummary(record)}
 
 ## Why It Matters
 
@@ -799,11 +835,16 @@ function ingest(root, options = {}) {
       draft_workspace_path: relativeToRoot(root, draftWorkspacePath),
       checksum,
       status: hashIndex[checksum] ? "duplicate" : "processed",
+      note_status: importedFrontmatter.status || noteStatusFromReviewStatus(importedFrontmatter.review_status),
       duplicate_of: hashIndex[checksum]?.id || "",
       extraction_status: extraction.extractionStatus,
       extraction_method: extraction.extractionMethod,
       extraction_notes: extraction.extractionNotes,
       review_lens: reviewLensForDocumentClass(documentClass),
+      review_status: normalizeReviewStatus(importedFrontmatter.review_status),
+      reviewed_at: importedFrontmatter.reviewed_at || "",
+      review_method: importedFrontmatter.review_method || "",
+      review_scope: importedFrontmatter.review_scope || "",
       tags,
       entities,
       concepts,

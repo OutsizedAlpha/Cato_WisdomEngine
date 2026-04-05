@@ -10,6 +10,19 @@ function isRetiredStatus(frontmatter) {
   return ["inactive", "obsolete", "retired", "superseded"].includes(String(frontmatter.status || "").toLowerCase());
 }
 
+function normalizeReviewStatus(frontmatter = {}) {
+  return String(frontmatter.review_status || "").trim().toLowerCase();
+}
+
+function hasVisualReview(frontmatter = {}) {
+  const reviewStatus = normalizeReviewStatus(frontmatter);
+  const reviewMethod = String(frontmatter.review_method || "").trim().toLowerCase();
+  if (["visual_reviewed", "visual-and-text-reviewed", "operator_reviewed"].includes(reviewStatus)) {
+    return true;
+  }
+  return /visual|page image|chart review|rendered pages/.test(reviewMethod);
+}
+
 function noteKindRelative(relativePath) {
   if (
     relativePath.endsWith("/index.md") ||
@@ -81,6 +94,13 @@ function noteKindRelative(relativePath) {
   return null;
 }
 
+function isArchiveNote(relativePath) {
+  return (
+    relativePath.startsWith("outputs/reports/archive/") ||
+    relativePath.startsWith("wiki/reports/archive/")
+  );
+}
+
 function buildTargetSet(root) {
   const targets = new Set();
   for (const filePath of listMarkdownNotes(root, "wiki").concat(listMarkdownNotes(root, "outputs"))) {
@@ -96,7 +116,9 @@ function buildTargetSet(root) {
 
 function lintProject(root) {
   ensureProjectStructure(root);
-  const noteFiles = listMarkdownNotes(root, "wiki").concat(listMarkdownNotes(root, "outputs"));
+  const noteFiles = listMarkdownNotes(root, "wiki")
+    .concat(listMarkdownNotes(root, "outputs"))
+    .filter((filePath) => !isArchiveNote(relativeToRoot(root, filePath)));
   const targets = buildTargetSet(root);
   const inboundCounts = new Map();
   const issues = [];
@@ -124,6 +146,11 @@ function lintProject(root) {
     }
 
     if (kind === "source-note") {
+      const status = String(frontmatter.status || "").trim().toLowerCase();
+      const reviewStatus = normalizeReviewStatus(frontmatter);
+      const captureSource = String(frontmatter.capture_source || "").trim().toLowerCase();
+      const documentClass = String(frontmatter.document_class || "").trim().toLowerCase();
+
       for (const field of ["raw_path", "metadata_path"]) {
         const targetPath = frontmatter[field];
         if (targetPath && !fs.existsSync(path.join(root, targetPath))) {
@@ -142,6 +169,27 @@ function lintProject(root) {
       }
       if (!frontmatter.draft_workspace_path) {
         issues.push({ severity: "info", file: relative, message: "Source note does not link to an append-and-review draft note." });
+      }
+      if (captureSource === "codex_pdf_vision_handoff" && (!reviewStatus || reviewStatus === "unreviewed" || status === "draft")) {
+        issues.push({
+          severity: "info",
+          file: relative,
+          message: "Codex PDF handoff note is still provisional; set `review_status` after text or visual review."
+        });
+      }
+      if (documentClass === "chartpack_or_visual" && !hasVisualReview(frontmatter)) {
+        issues.push({
+          severity: "warning",
+          file: relative,
+          message: "Chartpack or visual source note is missing a visual review trail."
+        });
+      }
+      if (reviewStatus && reviewStatus !== "unreviewed" && status === "draft") {
+        issues.push({
+          severity: "warning",
+          file: relative,
+          message: "Reviewed source note is still marked `draft`."
+        });
       }
     }
 

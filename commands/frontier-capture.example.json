@@ -3,6 +3,9 @@
   "topic": "Global Macro",
   "question": "What matters most now for the portfolio and what should change my view?",
   "pack_path": "cache/frontier-packs/2026-04-03T00-00-00.000Z-decision-global-macro-pack.json",
+  "authoring_layer": "terminal_model",
+  "model": "gpt-5.4 xhigh via Codex",
+  "authoring_session": "example-session",
   "watch_topic": "Global Macro",
   "watch": {
     "subject": "Global Macro",

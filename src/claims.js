@@ -23,7 +23,7 @@ const {
 } = require("./utils");
 const { renderRetrievalBudgetBlock, retrieveEvidence } = require("./research");
 
-const CLAIM_SOURCE_DIRS = ["wiki/source-notes", "outputs/reports", "wiki/theses"];
+const CLAIM_SOURCE_DIRS = ["wiki/source-notes", "wiki/reports", "wiki/theses"];
 const FACT_TERMS = ["reported", "printed", "rose", "fell", "held", "stayed", "slipped", "widened", "narrowed"];
 const ESTIMATE_TERMS = ["forecast", "expected", "consensus", "estimate", "estimated"];
 const INFERENCE_TERMS = ["suggests", "implies", "points to", "indicates", "appears", "likely", "could", "may", "signal"];
@@ -128,13 +128,16 @@ function claimSectionsForNote(note) {
   if (note.relativePath.startsWith("wiki/source-notes/")) {
     return ["What This Source Says", "Why It Matters"];
   }
-  if (note.relativePath.startsWith("outputs/reports/")) {
+  if (note.relativePath.startsWith("wiki/reports/")) {
     return [
       "Executive Summary",
-      "What Matters Most",
-      "Intermarket Discussion In The Spirit Of John Murphy",
-      "Asset-Market Implications Right Now",
-      "Bottom Line For Tomorrow's Meeting"
+      "What The Corpus Says",
+      "Investment Implications",
+      "Judgement",
+      "Bottom Line",
+      "Synthesis",
+      "Counter-Case",
+      "Data Gaps"
     ];
   }
   if (note.relativePath.startsWith("outputs/memos/")) {

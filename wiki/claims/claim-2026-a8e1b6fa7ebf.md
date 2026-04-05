@@ -2,7 +2,7 @@
 id: CLAIM-2026-A8E1B6FA7EBF
 kind: claim-page
 title: Direct single-document capture used because the generic pack builder overflowed on this file.
-status: active
+status: superseded
 claim_type: fact
 confidence: medium-high
 claim_date: 2026-04-01

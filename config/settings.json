@@ -24,6 +24,7 @@
     "selfRoot": "wiki/self",
     "concepts": "wiki/concepts",
     "entities": "wiki/entities",
+    "reportsCanonical": "wiki/reports",
     "briefs": "outputs/briefs",
     "memos": "outputs/memos",
     "reports": "outputs/reports",

@@ -18,8 +18,9 @@ const { capturePdf, writePdfPack } = require("../src/pdf-handoff");
 const { createPostmortem } = require("../src/postmortem");
 const { writePrinciplesSnapshot } = require("../src/principles");
 const { writeReflection } = require("../src/reflect");
+const { updateManagedNote } = require("../src/research");
 const { captureResearch } = require("../src/research-handoff");
-const { writeReport } = require("../src/report");
+const { archiveLegacyReportRuns, captureReport, writeReport } = require("../src/report");
 const { retrieveEvidence } = require("../src/retrieval");
 const { searchCorpus } = require("../src/search");
 const { selfIngest } = require("../src/self-ingest");
@@ -76,6 +77,58 @@ function createPngFixture(filePath) {
   const onePixelPngBase64 =
     "iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQIHWP4////fwAJ+wP9KobjigAAAABJRU5ErkJggg==";
   fs.writeFileSync(filePath, Buffer.from(onePixelPngBase64, "base64"));
+}
+
+function writeSourceNoteFixture(root, fileName, frontmatter, body) {
+  const sourceNotesDir = path.join(root, "wiki", "source-notes");
+  fs.mkdirSync(sourceNotesDir, { recursive: true });
+  const filePath = path.join(sourceNotesDir, fileName);
+  fs.writeFileSync(filePath, renderMarkdown(frontmatter, body), "utf8");
+  return filePath;
+}
+
+function defaultReportBody(title) {
+  return `# ${title}
+
+## Executive Summary
+
+Test-authored final report.
+
+## What The Corpus Says
+
+The corpus supports a grounded read on the topic.
+
+## Judgement
+
+The current evidence set is usable but still conditional.
+
+## Counter-Case
+
+Opposing evidence could still change the balance of risks.
+
+## Data Gaps
+
+More primary evidence would improve confidence.
+
+## Source Map
+
+- Local source map preserved through capture.
+`;
+}
+
+function captureModelAuthoredReport(root, topic, options = {}) {
+  const pack = writeReport(root, topic, options);
+  const bundlePath = path.join(root, pack.capturePath);
+  const bundle = JSON.parse(fs.readFileSync(bundlePath, "utf8"));
+  bundle.model = options.model || "codex test session";
+  bundle.authoring_session = options.authoringSession || "test-suite";
+  bundle.output.body = options.body || defaultReportBody(bundle.output.title);
+  fs.writeFileSync(bundlePath, `${JSON.stringify(bundle, null, 2)}\n`, "utf8");
+  const capture = captureReport(root, pack.capturePath);
+  return {
+    ...capture,
+    pack
+  };
 }
 
 function runTest(name, fn) {
@@ -574,7 +627,7 @@ runTest("phase-2 workflows write reports, decks, surveillance, reflection, princ
     assert.ok(fs.existsSync(path.join(root, "wiki", "unresolved", "synthesis-candidates.md")));
     assert.ok(fs.existsSync(path.join(root, "wiki", "unresolved", "potential-contradictions.md")));
 
-    const report = writeReport(root, "passive flows and liquidity", { promote: true });
+    const report = captureModelAuthoredReport(root, "passive flows and liquidity");
     const deck = writeDeck(root, "passive flows and liquidity", { promote: true });
     const surveillance = writeSurveillance(root, "passive flows");
     const reflection = writeReflection(root, { promote: true });
@@ -598,14 +651,13 @@ runTest("phase-2 workflows write reports, decks, surveillance, reflection, princ
       }
     });
 
-    assert.ok(fs.existsSync(path.join(root, report.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, report.outputResult.outputPath)));
     assert.ok(fs.existsSync(path.join(root, deck.outputPath)));
     assert.ok(fs.existsSync(path.join(root, surveillance.notePath)));
     assert.ok(fs.existsSync(path.join(root, reflection.outputPath)));
     assert.ok(fs.existsSync(path.join(root, principles.outputPath)));
     assert.ok(fs.existsSync(path.join(root, postmortem.notePath)));
     assert.ok(fs.existsSync(path.join(root, doctor.reportPath)));
-    assert.ok(fs.existsSync(path.join(root, report.promotedPath)));
     assert.ok(fs.existsSync(path.join(root, deck.promotedPath)));
     assert.ok(fs.existsSync(path.join(root, reflection.promotedPath)));
 
@@ -672,19 +724,50 @@ Houthi attacks and shipping disruption are creating oil and freight sensitivity.
     assert.ok(fs.existsSync(path.join(root, "wiki", "glossary", "watch-ontology.md")));
 
     const surveillance = writeSurveillance(root, "Middle East");
-    const report = writeReport(root, "Middle East");
+    const report = captureModelAuthoredReport(root, "Middle East", {
+      body: `# Middle East
+
+## Executive Summary
+
+Codex-authored final report on the Middle East watch topic.
+
+## Watch Context
+
+Netanyahu, Houthis, and Gaza remain central to the current route.
+
+## What The Corpus Says
+
+Shipping disruption and oil sensitivity remain central to the current geopolitical stress.
+
+## Judgement
+
+Escalation and shipping disruption are the key portfolio transmission channels.
+
+## Counter-Case
+
+The conflict could de-escalate faster than the corpus expects.
+
+## Data Gaps
+
+Fresh evidence could still change the oil and freight read-through.
+
+## Source Map
+
+- Local source map preserved through capture.
+`
+    });
 
     assert.ok(fs.existsSync(path.join(root, surveillance.notePath)));
-    assert.ok(fs.existsSync(path.join(root, report.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, report.outputResult.outputPath)));
     assert.ok(surveillance.results.length >= 2);
-    assert.ok(report.results.length >= 2);
-    assert.ok(report.results.every((result) => !result.relativePath.startsWith("wiki/surveillance/")));
-    assert.ok(report.results.every((result) => !result.relativePath.startsWith("outputs/")));
-    assert.ok(report.results.every((result) => !result.relativePath.startsWith("wiki/_indices/")));
-    assert.ok(report.results.every((result) => !result.relativePath.startsWith("wiki/unresolved/")));
+    assert.ok(report.pack.results.length >= 2);
+    assert.ok(report.pack.results.every((result) => !result.relativePath.startsWith("wiki/surveillance/")));
+    assert.ok(report.pack.results.every((result) => !result.relativePath.startsWith("outputs/")));
+    assert.ok(report.pack.results.every((result) => !result.relativePath.startsWith("wiki/_indices/")));
+    assert.ok(report.pack.results.every((result) => !result.relativePath.startsWith("wiki/unresolved/")));
 
     const surveillanceContent = fs.readFileSync(path.join(root, surveillance.notePath), "utf8");
-    const reportContent = fs.readFileSync(path.join(root, report.outputPath), "utf8");
+    const reportContent = fs.readFileSync(path.join(root, report.outputResult.outputPath), "utf8");
     const ontologyContent = fs.readFileSync(path.join(root, "wiki", "glossary", "watch-ontology.md"), "utf8");
 
     assert.match(surveillanceContent, /Managed Watch Profile/);
@@ -693,6 +776,133 @@ Houthi attacks and shipping disruption are creating oil and freight sensitivity.
     assert.match(reportContent, /Netanyahu|Houthis|Gaza/);
     assert.match(ontologyContent, /Middle East/);
     assert.match(ontologyContent, /shipping disruption/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("search prefers reviewed source notes over provisional chartpack handoff notes", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+
+    writeSourceNoteFixture(
+      root,
+      "reviewed-rates-note.md",
+      {
+        id: "SRC-REVIEWED-01",
+        kind: "source-note",
+        title: "Reviewed rates and dollar note",
+        source_type: "paper",
+        document_class: "research_note",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/reviewed-rates.pdf",
+        extracted_text_path: "extracted/text/reviewed-rates.txt",
+        metadata_path: "extracted/metadata/reviewed-rates.json",
+        status: "reviewed",
+        review_status: "text_reviewed",
+        review_method: "codex_corpus_review",
+        review_scope: "Full qualitative text review.",
+        tags: ["rates", "dollar"],
+        entities: [],
+        concepts: ["duration", "us dollar"]
+      },
+      `# Reviewed rates and dollar note
+
+## Summary
+
+Reviewed evidence says bond supply keeps long duration under pressure while the dollar stays firm and AI leadership supports selective equities.
+`
+    );
+
+    writeSourceNoteFixture(
+      root,
+      "draft-chartpack-note.md",
+      {
+        id: "SRC-DRAFT-01",
+        kind: "source-note",
+        title: "Draft global markets chart pack",
+        source_type: "paper",
+        document_class: "chartpack_or_visual",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/draft-chartpack.pdf",
+        extracted_text_path: "extracted/text/draft-chartpack.txt",
+        metadata_path: "extracted/metadata/draft-chartpack.json",
+        status: "draft",
+        review_status: "unreviewed",
+        review_method: "",
+        review_scope: "",
+        tags: ["markets", "chartpack"],
+        entities: [],
+        concepts: ["duration", "us dollar"]
+      },
+      `# Draft global markets chart pack
+
+## Summary
+
+This fallback chart deck mentions bonds, the dollar, and equities, but it has not been visually reviewed.
+`
+    );
+
+    const results = searchCorpus(root, "global markets bonds dollar equities", { limit: 2 });
+    assert.equal(results[0].title, "Reviewed rates and dollar note");
+    assert.equal(results[0].frontmatter.review_status, "text_reviewed");
+    assert.ok(
+      !results.some(
+        (result, index) => index === 0 && result.title === "Draft global markets chart pack"
+      )
+    );
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("lint flags codex chartpacks that have not been visually reviewed", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+
+    writeSourceNoteFixture(
+      root,
+      "draft-chartpack-note.md",
+      {
+        id: "SRC-DRAFT-02",
+        kind: "source-note",
+        title: "Draft global markets chart pack",
+        source_type: "paper",
+        document_class: "chartpack_or_visual",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/draft-chartpack.pdf",
+        extracted_text_path: "extracted/text/draft-chartpack.txt",
+        metadata_path: "extracted/metadata/draft-chartpack.json",
+        status: "draft",
+        review_status: "unreviewed",
+        review_method: "",
+        review_scope: "",
+        tags: ["markets", "chartpack"],
+        entities: [],
+        concepts: ["global markets"]
+      },
+      `# Draft global markets chart pack
+
+## Summary
+
+Fallback capture only.
+`
+    );
+
+    const lint = lintProject(root);
+    assert.ok(
+      lint.issues.some(
+        (issue) =>
+          issue.file === "wiki/source-notes/draft-chartpack-note.md" &&
+          issue.severity === "warning" &&
+          /visual review/i.test(issue.message)
+      )
+    );
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
@@ -834,6 +1044,328 @@ This is the imported GPT-authored meeting brief.
   }
 });
 
+runTest("broad investment reports use curated multi-section routing instead of the generic lexical path", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "extracted", "text"), { recursive: true });
+
+    writeSourceNoteFixture(
+      root,
+      "macro-regime.md",
+      {
+        id: "SRC-INVEST-01",
+        kind: "source-note",
+        title: "Macro regime and energy shock note",
+        source_type: "paper",
+        document_class: "research_note",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/macro-regime.pdf",
+        extracted_text_path: "extracted/text/macro-regime.txt",
+        metadata_path: "extracted/metadata/macro-regime.json",
+        status: "reviewed",
+        review_status: "text_reviewed",
+        review_method: "codex_corpus_review",
+        review_scope: "Full qualitative text review.",
+        tags: ["macro", "energy"],
+        entities: [],
+        concepts: ["stagflation", "oil", "inflation"]
+      },
+      `# Macro regime and energy shock note
+
+## Summary
+
+Energy-price pressure is the current regime shock, but de-escalation would reopen the AI and duration recovery path.
+`
+    );
+    fs.writeFileSync(
+      path.join(root, "extracted", "text", "macro-regime.txt"),
+      `Global macro regime note
+- The central regime question is whether the oil shock fades quickly or extends a second inflation wave.
+- Growth is not yet breaking, but inflation risk has clearly widened again.
+- De-escalation would reopen the path for AI leadership and a cleaner duration recovery.
+`,
+      "utf8"
+    );
+
+    writeSourceNoteFixture(
+      root,
+      "rates-duration.md",
+      {
+        id: "SRC-INVEST-02",
+        kind: "source-note",
+        title: "Rates and duration note",
+        source_type: "paper",
+        document_class: "research_note",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/rates-duration.pdf",
+        extracted_text_path: "extracted/text/rates-duration.txt",
+        metadata_path: "extracted/metadata/rates-duration.json",
+        status: "reviewed",
+        review_status: "text_reviewed",
+        review_method: "codex_corpus_review",
+        review_scope: "Full qualitative text review.",
+        tags: ["rates", "bonds"],
+        entities: [],
+        concepts: ["duration", "bond supply"]
+      },
+      `# Rates and duration note
+
+## Summary
+
+Long duration is capped by supply and term-premia pressure, even if policy-hike fears fade.
+`
+    );
+    fs.writeFileSync(
+      path.join(root, "extracted", "text", "rates-duration.txt"),
+      `Rates and duration note
+- Long-dated sovereign bonds remain vulnerable because supply is heavy and traditional buyers are waning.
+- A relief rally can happen, but duration is not a clean all-clear trade in this regime.
+`,
+      "utf8"
+    );
+
+    writeSourceNoteFixture(
+      root,
+      "equities-ai.md",
+      {
+        id: "SRC-INVEST-03",
+        kind: "source-note",
+        title: "Equities and AI leadership note",
+        source_type: "paper",
+        document_class: "research_note",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/equities-ai.pdf",
+        extracted_text_path: "extracted/text/equities-ai.txt",
+        metadata_path: "extracted/metadata/equities-ai.json",
+        status: "reviewed",
+        review_status: "text_reviewed",
+        review_method: "codex_corpus_review",
+        review_scope: "Full qualitative text review.",
+        tags: ["equities", "ai"],
+        entities: [],
+        concepts: ["ai", "equities"]
+      },
+      `# Equities and AI leadership note
+
+## Summary
+
+US and Asia tech-heavy indices regain leadership if the conflict de-escalates and the AI capex story resumes.
+`
+    );
+    fs.writeFileSync(
+      path.join(root, "extracted", "text", "equities-ai.txt"),
+      `Equities and AI leadership note
+- The AI trade is damaged but not broken.
+- Leadership remains concentrated in US and Asia tech-heavy markets rather than broad global beta.
+- Software is more contested than AI infrastructure.
+`,
+      "utf8"
+    );
+
+    writeSourceNoteFixture(
+      root,
+      "sector-defensives.md",
+      {
+        id: "SRC-INVEST-03B",
+        kind: "source-note",
+        title: "Defensive rotation and healthcare note",
+        source_type: "paper",
+        document_class: "research_note",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/sector-defensives.pdf",
+        extracted_text_path: "extracted/text/sector-defensives.txt",
+        metadata_path: "extracted/metadata/sector-defensives.json",
+        status: "reviewed",
+        review_status: "text_reviewed",
+        review_method: "codex_corpus_review",
+        review_scope: "Full qualitative text review.",
+        tags: ["health-care", "defensives"],
+        entities: [],
+        concepts: ["health care", "defensives"]
+      },
+      `# Defensive rotation and healthcare note
+
+## Summary
+
+Healthcare and other quality defensives hold up better if energy-price pressure persists and cyclical confidence weakens.
+`
+    );
+    fs.writeFileSync(
+      path.join(root, "extracted", "text", "sector-defensives.txt"),
+      `Defensive rotation and healthcare note
+- Health care remains one of the cleanest defensive shelters in a volatile energy regime.
+- Quality balance sheets and inelastic demand matter more than deep cyclical beta here.
+`,
+      "utf8"
+    );
+
+    writeSourceNoteFixture(
+      root,
+      "private-credit.md",
+      {
+        id: "SRC-INVEST-04",
+        kind: "source-note",
+        title: "Private credit concentration note",
+        source_type: "paper",
+        document_class: "research_note",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/private-credit.pdf",
+        extracted_text_path: "extracted/text/private-credit.txt",
+        metadata_path: "extracted/metadata/private-credit.json",
+        status: "reviewed",
+        review_status: "text_reviewed",
+        review_method: "codex_corpus_review",
+        review_scope: "Full qualitative text review.",
+        tags: ["credit", "private-credit"],
+        entities: [],
+        concepts: ["private credit", "concentration risk"]
+      },
+      `# Private credit concentration note
+
+## Summary
+
+Private credit remains investable, but hyperscaler and software concentration create real downside if AI spending or equity sentiment rolls over.
+`
+    );
+    fs.writeFileSync(
+      path.join(root, "extracted", "text", "private-credit.txt"),
+      `Private credit concentration note
+- Private credit is still an opportunity set, but 2026 looks like a real underwriting test.
+- Concentrated software and hyperscaler exposure creates asymmetric downside if cashflows or sentiment deteriorate.
+`,
+      "utf8"
+    );
+
+    writeSourceNoteFixture(
+      root,
+      "em-flows.md",
+      {
+        id: "SRC-INVEST-05",
+        kind: "source-note",
+        title: "EM capital flows and dollar note",
+        source_type: "paper",
+        document_class: "research_note",
+        capture_source: "codex_pdf_vision_handoff",
+        ingested_at: "2026-04-05T12:00:00.000Z",
+        raw_path: "raw/pdfs/em-flows.pdf",
+        extracted_text_path: "extracted/text/em-flows.txt",
+        metadata_path: "extracted/metadata/em-flows.json",
+        status: "reviewed",
+        review_status: "text_reviewed",
+        review_method: "codex_corpus_review",
+        review_scope: "Full qualitative text review.",
+        tags: ["em", "fx"],
+        entities: [],
+        concepts: ["em", "capital flows", "dollar"]
+      },
+      `# EM capital flows and dollar note
+
+## Summary
+
+EM outflows and dollar strength are the first places where cross-asset pressure reappears when the geopolitical shock intensifies.
+`
+    );
+    fs.writeFileSync(
+      path.join(root, "extracted", "text", "em-flows.txt"),
+      `EM capital flows and dollar note
+- Emerging-market outflows have already intensified through both bonds and equities.
+- The dollar and oil complex are the first pressure points to watch if the shock persists.
+`,
+      "utf8"
+    );
+
+    const report = captureModelAuthoredReport(root, "Current investment summary across all ingested research", {
+      limit: 24,
+      body: `# Current investment summary across all ingested research
+
+## Executive Summary
+
+The corpus supports a selective-risk stance rather than a broad risk-on view.
+
+## What The Corpus Says
+
+### 1. Macro / Regime
+
+Long-dated sovereign bonds remain vulnerable while the inflation path is still fragile.
+
+### 2. Rates / Duration
+
+Duration still looks tactical rather than automatically defensive.
+
+### 3. Equities / AI
+
+The AI trade is damaged but not broken, and quality leadership still matters.
+
+### 4. Sector / Defensive Rotation
+
+Defensives deserve more respect than deep cyclical beta.
+
+### 5. Credit / Liquidity
+
+Private credit still offers opportunity, but underwriting quality matters more than reach-for-yield behaviour.
+
+### 6. FX / Commodities / EM
+
+Oil, the dollar, and EM flows remain the first cross-asset pressure points to watch.
+
+## Investment Implications
+
+## Judgement
+
+### Prefer
+
+- selective risk
+
+### Be Careful With
+
+- complacent duration and weak software beta
+
+### What Looks Most Important Right Now
+
+- oil, the dollar, and private-credit concentration
+
+## Counter-Case
+
+The corpus could still be underweight a cleaner de-escalation path.
+
+## Data Gaps
+
+Fresh opposing evidence could still change the rates and AI read-through.
+
+## Bottom Line
+
+Stay selective.
+
+## Source Map
+
+- Local source map preserved through capture.
+`
+    });
+    const content = fs.readFileSync(path.join(root, report.outputResult.outputPath), "utf8");
+
+    assert.match(content, /generation_mode: terminal_model_report/);
+    assert.match(content, /## What The Corpus Says/);
+    assert.match(content, /## Investment Implications/);
+    assert.match(content, /### Prefer/);
+    assert.match(content, /### Be Careful With/);
+    assert.match(content, /## Bottom Line/);
+    assert.match(content, /Long-dated sovereign bonds remain vulnerable/i);
+    assert.match(content, /The AI trade is damaged but not broken/i);
+    assert.doesNotMatch(content, /The current corpus supports a report-level synthesis route/i);
+    assert.doesNotMatch(content, /Why it matters:/i);
+    assert.doesNotMatch(content, /### Working Synthesis/i);
+    assert.ok(report.pack.results.length >= 6);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
 runTest("compile promotes domain concepts while retiring noisy generated concepts", () => {
   const root = makeTempRepo();
   try {
@@ -943,6 +1475,241 @@ The Federal Reserve issued a fresh FOMC statement covering rates and inflation.`
   }
 });
 
+runTest("report workflow writes a pack, captures a canonical final report, and archives prior canonical versions", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+    fs.copyFileSync(fixturePath("sample-article.md"), path.join(root, "inbox", "drop_here", "sample-article.md"));
+    fs.copyFileSync(fixturePath("sample-note.txt"), path.join(root, "inbox", "drop_here", "sample-note.txt"));
+
+    ingest(root);
+    compileProject(root, { promoteCandidates: true });
+
+    const first = captureModelAuthoredReport(root, "passive flows and liquidity", {
+      body: `# passive flows and liquidity
+
+## Executive Summary
+
+First final report.
+
+## What The Corpus Says
+
+Passive flows still matter.
+
+## Judgement
+
+Stay alert.
+
+## Counter-Case
+
+The flow impulse could fade.
+
+## Data Gaps
+
+Need fresher evidence.
+
+## Source Map
+`
+    });
+
+    assert.ok(fs.existsSync(path.join(root, first.pack.packPath)));
+    assert.ok(fs.existsSync(path.join(root, first.pack.promptPath)));
+    assert.ok(fs.existsSync(path.join(root, first.outputResult.outputPath)));
+    assert.equal(first.outputResult.outputPath, "wiki/reports/passive-flows-and-liquidity.md");
+
+    const secondPack = writeReport(root, "passive flows and liquidity");
+    const secondBundlePath = path.join(root, secondPack.capturePath);
+    const secondBundle = JSON.parse(fs.readFileSync(secondBundlePath, "utf8"));
+    secondBundle.model = "codex test session";
+    secondBundle.authoring_session = "test-suite";
+    secondBundle.output.body = `# passive flows and liquidity
+
+## Executive Summary
+
+Second final report.
+
+## What The Corpus Says
+
+The corpus moved on.
+
+## Judgement
+
+Stay selective.
+
+## Counter-Case
+
+Opposing evidence still matters.
+
+## Data Gaps
+
+Need more primary evidence.
+
+## Source Map
+`;
+    fs.writeFileSync(secondBundlePath, `${JSON.stringify(secondBundle, null, 2)}\n`, "utf8");
+
+    const second = captureReport(root, secondPack.capturePath);
+    assert.ok(fs.existsSync(path.join(root, second.outputResult.outputPath)));
+    assert.ok(second.outputResult.archivedPath);
+    assert.ok(fs.existsSync(path.join(root, second.outputResult.archivedPath)));
+
+    const canonical = fs.readFileSync(path.join(root, second.outputResult.outputPath), "utf8");
+    assert.match(canonical, /Second final report/);
+    assert.match(canonical, /authoring_model: codex test session/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("claim refresh ignores raw outputs reports and only uses canonical wiki reports", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "wiki", "reports"), { recursive: true });
+    fs.mkdirSync(path.join(root, "outputs", "reports"), { recursive: true });
+
+    fs.writeFileSync(
+      path.join(root, "outputs", "reports", "legacy-draft.md"),
+      renderMarkdown(
+        {
+          id: "REPORT-2026-LEGACYDRAFT",
+          kind: "research-report",
+          title: "Legacy draft report",
+          created_at: new Date().toISOString(),
+          sources: []
+        },
+        `# Legacy draft report
+
+## Executive Summary
+
+This legacy draft should never reach the claim layer.
+`
+      ),
+      "utf8"
+    );
+
+    fs.writeFileSync(
+      path.join(root, "wiki", "reports", "final-report.md"),
+      renderMarkdown(
+        {
+          id: "REPORT-2026-FINALREPORT",
+          kind: "research-report",
+          title: "Final report",
+          created_at: new Date().toISOString(),
+          sources: ["wiki/source-notes/example.md"],
+          generation_mode: "terminal_model_report",
+          canonical_report: true,
+          report_status: "final"
+        },
+        `# Final report
+
+## Executive Summary
+
+This final report should reach the claim layer because it is canonical, model-authored, and explicit that passive flows are still distorting index liquidity and crowding market structure risk.
+
+## Source Map
+`
+      ),
+      "utf8"
+    );
+
+    const refresh = refreshClaims(root);
+    const claims = fs.readFileSync(path.join(root, "manifests", "claims.jsonl"), "utf8");
+
+    assert.ok(refresh.claims >= 1);
+    assert.match(claims, /canonical, model-authored, and explicit that passive flows are still distorting index liquidity/i);
+    assert.doesNotMatch(claims, /legacy draft should never reach the claim layer/i);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("legacy report archive preserves original filenames for stable internal references", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "outputs", "reports"), { recursive: true });
+    fs.writeFileSync(
+      path.join(root, "outputs", "reports", "legacy-draft.md"),
+      renderMarkdown(
+        {
+          id: "REPORT-2026-LEGACYDRAFT",
+          kind: "research-report",
+          title: "Legacy draft report",
+          created_at: new Date().toISOString(),
+          sources: []
+        },
+        `# Legacy draft report
+
+## Executive Summary
+
+Stable archive naming matters because older markdown surfaces may still reference this artefact.
+`
+      ),
+      "utf8"
+    );
+
+    const archive = archiveLegacyReportRuns(root);
+    assert.equal(archive.archived, 1);
+    assert.deepEqual(archive.archivedPaths, ["outputs/reports/archive/legacy-deterministic/legacy-draft.md"]);
+    assert.ok(fs.existsSync(path.join(root, "outputs", "reports", "archive", "legacy-deterministic", "legacy-draft.md")));
+    assert.ok(!fs.existsSync(path.join(root, "outputs", "reports", "legacy-draft.md")));
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("updateManagedNote refreshes frontmatter as well as managed blocks", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    const filePath = path.join(root, "wiki", "states", "managed-note-test.md");
+
+    updateManagedNote(
+      filePath,
+      {
+        id: "STATE-2026-MANAGEDTEST",
+        kind: "state-page",
+        title: "Managed Note Test",
+        last_refreshed_at: "2026-04-05T20:00:00.000Z"
+      },
+      "Managed Note Test",
+      {
+        snapshot: `
+## Managed Snapshot
+
+- First pass.
+`
+      }
+    );
+
+    updateManagedNote(
+      filePath,
+      {
+        id: "STATE-2026-MANAGEDTEST",
+        kind: "state-page",
+        title: "Managed Note Test",
+        last_refreshed_at: "2026-04-05T21:00:00.000Z"
+      },
+      "Managed Note Test",
+      {
+        snapshot: `
+## Managed Snapshot
+
+- Second pass.
+`
+      }
+    );
+
+    const parsed = parseFrontmatter(fs.readFileSync(filePath, "utf8"));
+    assert.equal(parsed.frontmatter.last_refreshed_at, "2026-04-05T21:00:00.000Z");
+    assert.match(parsed.body, /Second pass/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
 runTest("claim ledger refresh builds claim pages, snapshots, and why-believe output", () => {
   const root = makeTempRepo();
   try {
@@ -953,7 +1720,7 @@ runTest("claim ledger refresh builds claim pages, snapshots, and why-believe out
 
     ingest(root);
     compileProject(root, { promoteCandidates: true });
-    writeReport(root, "passive flows and liquidity");
+    captureModelAuthoredReport(root, "passive flows and liquidity");
     const refresh = refreshClaims(root, { writeSnapshot: true });
     const whyBelieve = writeWhyBelieve(root, "passive flows");
 
@@ -995,12 +1762,12 @@ runTest("state engine refreshes state pages, diffs snapshots, and writes regime 
 
     ingest(root);
     compileProject(root, { promoteCandidates: true });
-    writeReport(root, "passive flows and liquidity");
+    captureModelAuthoredReport(root, "passive flows and liquidity");
     refreshClaims(root, { writeSnapshot: true });
 
     const firstState = refreshState(root, "Market Structure");
     fs.writeFileSync(
-      path.join(root, "outputs", "reports", "manual-follow-up.md"),
+      path.join(root, "wiki", "reports", "manual-follow-up.md"),
       renderMarkdown(
         {
           id: "REPORT-2026-MANUALFOLLOW",
@@ -1008,7 +1775,9 @@ runTest("state engine refreshes state pages, diffs snapshots, and writes regime 
           title: "Market structure follow-up",
           created_at: new Date().toISOString(),
           sources: ["wiki/source-notes/sample-article.md"],
-          generation_mode: "test"
+          generation_mode: "terminal_model_report",
+          canonical_report: true,
+          report_status: "final"
         },
         `# Market structure follow-up
 
@@ -1059,7 +1828,7 @@ runTest("decision layer writes meeting briefs, decision notes, red-team briefs, 
     ingest(root);
     selfIngest(root);
     compileProject(root, { promoteCandidates: true });
-    writeReport(root, "passive flows and liquidity");
+    captureModelAuthoredReport(root, "passive flows and liquidity");
     refreshClaims(root, { writeSnapshot: true });
     refreshState(root, "Market Structure");
     refreshState(root, "Global Macro");
@@ -1234,17 +2003,17 @@ This 10-Q shareholder update covered guidance, capital allocation, and disclosed
     assert.ok(retrieval.results.every((result) => !result.relativePath.startsWith("wiki/drafts/")));
 
     const askResult = askQuestion(root, "What does the corpus currently say about passive flows?");
-    const reportResult = writeReport(root, "passive flows and liquidity");
+    const reportResult = captureModelAuthoredReport(root, "passive flows and liquidity");
     refreshClaims(root, { writeSnapshot: true });
     const stateResult = refreshState(root, "Market Structure");
     const decisionResult = writeDecisionNote(root, "passive flows");
 
     const askMemo = fs.readFileSync(path.join(root, askResult.outputPath), "utf8");
-    const reportMemo = fs.readFileSync(path.join(root, reportResult.outputPath), "utf8");
+    const reportMemo = fs.readFileSync(path.join(root, reportResult.outputResult.outputPath), "utf8");
     assert.match(askMemo, /## Retrieval Budget/);
-    assert.match(reportMemo, /## Retrieval Budget/);
+    assert.match(reportMemo, /generation_mode: terminal_model_report/);
     assert.match(askMemo, /generation_mode: grounded_synthesis/);
-    assert.match(reportMemo, /generation_mode: grounded_report/);
+    assert.match(reportMemo, /canonical_report: true/);
 
     const claimFiles = fs
       .readdirSync(path.join(root, "wiki", "claims"))
@@ -1300,6 +2069,8 @@ runTest("frontier pack prepares Codex-ready context and capture-frontier files t
 
     const capturePath = path.join(root, pack.capturePath);
     const captureBundle = JSON.parse(fs.readFileSync(capturePath, "utf8"));
+    captureBundle.model = "codex test session";
+    captureBundle.authoring_session = "test-suite";
     captureBundle.output.body = `# Passive flows frontier decision brief
 
 ## Executive Summary

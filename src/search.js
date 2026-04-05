@@ -24,6 +24,51 @@ function noteTitleFromContent(content, fallback) {
   return frontmatter.title || body.match(/^#\s+(.+)$/m)?.[1]?.trim() || fallback;
 }
 
+function normalizeReviewStatus(frontmatter = {}) {
+  return String(frontmatter.review_status || "").trim().toLowerCase();
+}
+
+function isVisualReview(frontmatter = {}) {
+  const reviewStatus = normalizeReviewStatus(frontmatter);
+  const reviewMethod = String(frontmatter.review_method || "").trim().toLowerCase();
+  if (["visual_reviewed", "visual-and-text-reviewed", "operator_reviewed"].includes(reviewStatus)) {
+    return true;
+  }
+  return /visual|page image|chart review|rendered pages/.test(reviewMethod);
+}
+
+function isReviewedSource(frontmatter = {}) {
+  const reviewStatus = normalizeReviewStatus(frontmatter);
+  return ["text_reviewed", "visual_reviewed", "visual-and-text-reviewed", "operator_reviewed"].includes(reviewStatus);
+}
+
+function reviewScoreAdjustment(document) {
+  const frontmatter = document.frontmatter || {};
+  const status = String(frontmatter.status || "").trim().toLowerCase();
+  const documentClass = String(frontmatter.document_class || "").trim().toLowerCase();
+  const captureSource = String(frontmatter.capture_source || "").trim().toLowerCase();
+  const reviewStatus = normalizeReviewStatus(frontmatter);
+  let score = 0;
+
+  if (document.relativePath.startsWith("wiki/source-notes/")) {
+    if (isReviewedSource(frontmatter)) {
+      score += 12;
+    } else if (reviewStatus === "unreviewed" || status === "draft") {
+      score -= 4;
+    }
+
+    if (captureSource === "codex_pdf_vision_handoff" && (reviewStatus === "unreviewed" || status === "draft")) {
+      score -= 3;
+    }
+
+    if (documentClass === "chartpack_or_visual") {
+      score += isVisualReview(frontmatter) ? 6 : -15;
+    }
+  }
+
+  return score;
+}
+
 function buildCorpus(root) {
   const documents = [];
   const includeDirs = ["wiki", "outputs", "extracted/text"];
@@ -64,6 +109,7 @@ function buildCorpus(root) {
         path: filePath,
         relativePath,
         title,
+        frontmatter: parsed.frontmatter,
         titleTokens: tokenize(title),
         bodyTokens: tokenize(content),
         content,
@@ -78,7 +124,7 @@ function buildCorpus(root) {
 function scoreDocument(document, query, queryTokens) {
   const titleCounts = buildTokenCounts(document.titleTokens);
   const bodyCounts = buildTokenCounts(document.bodyTokens);
-  let score = 0;
+  let score = reviewScoreAdjustment(document);
 
   for (const token of queryTokens) {
     score += (titleCounts.get(token) || 0) * 5;
@@ -115,7 +161,7 @@ function buildExcerpt(content, queryTokens, length = 280) {
 
   const start = Math.max(0, bestIndex - Math.floor(length / 3));
   const snippet = content.slice(start, start + length).replace(/\s+/g, " ").trim();
-  return start > 0 ? `…${snippet}` : snippet;
+  return start > 0 ? `...${snippet}` : snippet;
 }
 
 function searchCorpus(root, query, options = {}) {

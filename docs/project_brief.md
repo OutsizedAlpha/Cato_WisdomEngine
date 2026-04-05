@@ -25,6 +25,7 @@ Implemented and in scope now:
 - GPT/Codex research handoff via `capture-research`
 - zero-API PDF vision handoff via `pdf-pack` and `capture-pdf`
 - zero-API frontier handoff via `frontier-pack` and `capture-frontier`
+- zero-API report handoff via `report` and `capture-report`, with one canonical model-authored report per topic
 - structured sidecar catalog, backlink/tag/open-thread surfaces, and maintenance linting
 
 ## Constraints
@@ -37,6 +38,7 @@ Implemented and in scope now:
 - Changes should remain pragmatic and avoid speculative infrastructure.
 - Important claims must remain traceable to source notes and raw artefacts.
 - The repo stays agent-driven rather than embedding external LLM execution directly into the CLI.
+- Final intellectual outputs should be authored by the active terminal model and captured back into Cato, not passed off as standalone deterministic CLI prose.
 
 ## Assumptions
 
@@ -68,6 +70,7 @@ Implemented and in scope now:
 - Keep external frontier reasoning outside the CLI.
 - Keep heavy PDF OCR / chart extraction in the handoff model rather than pretending the built-in parser is enough for image-rich research documents.
 - Use `capture-research` and `capture-frontier` as the integration boundary.
+- Use `report` plus `capture-report` as the integration boundary for final reports, with canonical current reports stored under `wiki/reports/`.
 - Use `pdf-pack` and `capture-pdf` as the integration boundary for vision-assisted PDF extraction.
 - Keep draft append-and-review notes distinct from canonical knowledge and exclude them from grounded retrieval by default.
 
