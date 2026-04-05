@@ -1,0 +1,90 @@
+{
+  "id": "SRC-2026-61FD8C3FB6DF",
+  "title": "Trump, Hormuz and the End of the Free Ride",
+  "source_type": "article",
+  "source_url": "",
+  "origin_url": "",
+  "capture_source": "manual_drop",
+  "captured_at": "",
+  "search_query": "",
+  "search_engine": "",
+  "search_rank": "",
+  "search_snippet": "",
+  "capture_notes": "User-provided macro/geopolitical commentary pasted into Cato for ingest. Original source URL, publication date, and quoted line attribution have not yet been independently verified.",
+  "author": "Macroeconomist",
+  "date": "",
+  "ingested_at": "2026-04-03T21:37:12.372Z",
+  "raw_path": "raw/web/SRC-2026-61FD8C3FB6DF__trump-hormuz-and-the-end-of-the-free-ride.md",
+  "extracted_text_path": "extracted/text/SRC-2026-61FD8C3FB6DF.txt",
+  "table_preview_path": "",
+  "figure_note_path": "",
+  "metadata_path": "extracted/metadata/SRC-2026-61FD8C3FB6DF.json",
+  "note_path": "wiki/source-notes/trump-hormuz-and-the-end-of-the-free-ride.md",
+  "checksum": "61fd8c3fb6dfe70c2d0bb5d45dcebebb95660c22935ab4d0b9d98d3bc352a39a",
+  "status": "processed",
+  "duplicate_of": "",
+  "extraction_status": "extracted",
+  "extraction_method": "markdown_text",
+  "extraction_notes": [
+    "Parsed markdown body and preserved imported frontmatter."
+  ],
+  "tags": [
+    "geopolitics",
+    "energy",
+    "shipping",
+    "manual-drop"
+  ],
+  "entities": [
+    "Donald Trump",
+    "United States",
+    "Iran",
+    "European Union",
+    "United Kingdom",
+    "Strait of Hormuz"
+  ],
+  "concepts": [
+    "energy security",
+    "shipping",
+    "trade",
+    "policy regimes",
+    "hard power"
+  ],
+  "candidate_concepts": [
+    "free ride",
+    "trump hormuz",
+    "british leaders",
+    "hard power",
+    "iran s",
+    "united states"
+  ],
+  "figure_count": 0,
+  "summary": "Trump, Hormuz and the End of the Free Ride For half a century, Western strategists have known that the Strait of Hormuz is the acute point where energy, sea power and political will intersect. That knowledge is not in dispute. What is new in this war with Iran is that the United States, under Donald Trump, has chosen not to rush to \"solve\" the problem. In Hegelian terms, he is refusing an easy synthesis in order to…",
+  "imported_frontmatter": {
+    "title": "Trump, Hormuz and the End of the Free Ride",
+    "author": "Macroeconomist",
+    "tags": [
+      "geopolitics",
+      "energy",
+      "shipping",
+      "manual-drop"
+    ],
+    "concepts": [
+      "energy security",
+      "shipping",
+      "trade",
+      "policy regimes",
+      "hard power"
+    ],
+    "entities": [
+      "Donald Trump",
+      "United States",
+      "Iran",
+      "European Union",
+      "United Kingdom",
+      "Strait of Hormuz"
+    ],
+    "capture_notes": "User-provided macro/geopolitical commentary pasted into Cato for ingest. Original source URL, publication date, and quoted line attribution have not yet been independently verified."
+  },
+  "figure_refs": [],
+  "target_kind": "file"
+}

@@ -52,6 +52,14 @@ A 178K payroll gain against a 60K consensus is not a minor beat, especially afte
 
 - No direct contradiction cluster detected.
 
+## Counter-Arguments / Weakening Evidence
+
+- No explicit counter-argument has been surfaced yet beyond normal review risk.
+
+## Data Gaps / What Would Strengthen It
+
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - None linked.

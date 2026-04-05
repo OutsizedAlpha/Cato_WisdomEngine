@@ -1,6 +1,6 @@
 # Contested Claims
 
-Generated: 2026-04-03
+Generated: 2026-04-05
 
 ## The Bank of England's DMP explicitly pointed to recent energy-price increases as firms ra…
 - Claim: [[claims/claim-2026-00a1fc15c7d3|The Bank of England's DMP explicitly pointed to recent energy-price increases as firms ra…]]

@@ -53,6 +53,16 @@ The data this week did not create that risk; they reduced the market's ability t
 - [[claims/claim-2026-1492d4175eb2|China's official PMIs recovered above 50, but the more market-sensitive message is that externa…]]
 - [[claims/claim-2026-2a9e200b5039|A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially whe…]]
 
+## Counter-Arguments / Weakening Evidence
+
+- China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse.
+- A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and the UK are more exposed to imported energy than the U.S. is.
+
+## Data Gaps / What Would Strengthen It
+
+- Resolve the contradiction cluster with fresher or more primary evidence.
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - None linked.

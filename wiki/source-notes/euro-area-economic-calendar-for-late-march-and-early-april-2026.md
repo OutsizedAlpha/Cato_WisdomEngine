@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-8031900B9C3F.md
 figure_count: 9
+document_class: meeting_notes
+draft_workspace_path: wiki/drafts/append-review/euro-area-economic-calendar-for-late-march-and-early-april-2026.md
 ---
 
 # Euro area economic calendar for late March and early April 2026

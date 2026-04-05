@@ -55,6 +55,18 @@ That is still positive, but it is not explosive, and it leaves Japan exposed if 
 - [[claims/claim-2026-7db2bd48f562|In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is…]]
 - [[claims/claim-2026-833112a64b26|Stronger payrolls, firmer ISM, and still-low claims do not validate an immediate recession trad…]]
 
+## Counter-Arguments / Weakening Evidence
+
+- The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised both CPI expectations and own-price expectations.
+- U.S. domestically resilient sectors can still work.
+- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
+- Stronger payrolls, firmer ISM, and still-low claims do not validate an immediate recession trade.
+
+## Data Gaps / What Would Strengthen It
+
+- Resolve the contradiction cluster with fresher or more primary evidence.
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - None linked.

@@ -1,6 +1,9 @@
 # Source Index
 
-Generated: 2026-04-03
+Generated: 2026-04-05
+
+## article
+- [[source-notes/trump-hormuz-and-the-end-of-the-free-ride|Trump, Hormuz and the End of the Free Ride]]
 
 ## web
 - [[source-notes/bank-of-england-decision-maker-panel-march-2026|Bank of England Decision Maker Panel, March 2026]] (2026-04-02)

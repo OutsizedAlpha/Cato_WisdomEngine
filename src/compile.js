@@ -16,8 +16,10 @@ const {
   upsertManagedBlock
 } = require("./markdown");
 const { ensureProjectStructure, listMarkdownNotes } = require("./project");
+const { buildAppendReviewBody, detectDocumentClass, reviewLensForDocumentClass } = require("./source-routing");
+const { buildCatalogGraph, buildTagSummary, loadCatalogNotes, summaryText } = require("./wiki-catalog");
 const { buildWatchProfileArtifacts, loadWatchProfiles } = require("./watch");
-const { dateStamp, readJson, readText, relativeToRoot, slugify, truncate, writeText } = require("./utils");
+const { dateStamp, nowIso, readJson, readText, relativeToRoot, slugify, truncate, writeJson, writeText } = require("./utils");
 
 const POSITIVE_CUES = ["outperform", "improve", "tailwind", "strong", "benefit", "support", "higher", "bull"];
 const NEGATIVE_CUES = ["underperform", "weaken", "headwind", "risk", "pressure", "lower", "fragile", "bear"];
@@ -34,6 +36,85 @@ function loadNotes(root, relativeDir) {
       title: parsed.frontmatter.title || path.basename(filePath, ".md")
     };
   });
+}
+
+function backfillSourceRouting(root, sourceNotes) {
+  let updated = 0;
+
+  for (const note of sourceNotes) {
+    const extractedTextPath = note.frontmatter.extracted_text_path
+      ? path.join(root, note.frontmatter.extracted_text_path)
+      : "";
+    const extractedText = extractedTextPath && fs.existsSync(extractedTextPath) ? readText(extractedTextPath) : "";
+    const documentClass = note.frontmatter.document_class || detectDocumentClass(
+      note.frontmatter.source_type || "note",
+      note.title,
+      extractedText,
+      note.frontmatter
+    );
+    const draftRelativePath =
+      note.frontmatter.draft_workspace_path ||
+      relativeToRoot(
+        root,
+        path.join(root, "wiki", "drafts", "append-review", `${slugify(note.title).slice(0, 80) || note.frontmatter.id}.md`)
+      );
+    const draftAbsolutePath = path.join(root, draftRelativePath);
+
+    if (!fs.existsSync(draftAbsolutePath)) {
+      writeText(
+        draftAbsolutePath,
+        renderMarkdown(
+          {
+            id: `DRAFT-${new Date().getUTCFullYear()}-${slugify(note.title).slice(0, 12).toUpperCase() || "SOURCE"}`,
+            kind: "draft-note",
+            title: `Append And Review: ${note.title}`,
+            status: "open",
+            stage: "append-review",
+            source_note_path: note.relativePath,
+            raw_path: note.frontmatter.raw_path || "",
+            metadata_path: note.frontmatter.metadata_path || "",
+            document_class: documentClass,
+            created_at: note.frontmatter.ingested_at || nowIso()
+          },
+          buildAppendReviewBody(
+            {
+              id: note.frontmatter.id || "",
+              title: note.title,
+              source_type: note.frontmatter.source_type || "note",
+              document_class: documentClass,
+              review_lens: reviewLensForDocumentClass(documentClass),
+              note_path: note.relativePath,
+              raw_path: note.frontmatter.raw_path || "",
+              metadata_path: note.frontmatter.metadata_path || "",
+              extraction_status: note.frontmatter.extraction_status || "",
+              extraction_method: note.frontmatter.extraction_method || "",
+              summary: sectionContent(note.body, "Summary") || summaryText(note),
+              candidate_concepts: normalizeList(note.frontmatter.candidate_concepts),
+              tags: normalizeList(note.frontmatter.tags)
+            },
+            { extractedText }
+          )
+        )
+      );
+    }
+
+    if (note.frontmatter.document_class !== documentClass || note.frontmatter.draft_workspace_path !== draftRelativePath) {
+      writeText(
+        note.path,
+        renderMarkdown(
+          {
+            ...note.frontmatter,
+            document_class: documentClass,
+            draft_workspace_path: draftRelativePath
+          },
+          note.body
+        )
+      );
+      updated += 1;
+    }
+  }
+
+  return updated;
 }
 
 function normalizeList(value) {
@@ -524,6 +605,121 @@ function countCollectionNotes(root, relativeDir, options = {}) {
   }).length;
 }
 
+function buildTagIndex(root, tagSummary) {
+  const lines = ["# Tag Index", "", `Generated: ${dateStamp()}`, ""];
+  if (!tagSummary.length) {
+    lines.push("- No tags recorded yet.");
+  } else {
+    for (const tag of tagSummary) {
+      lines.push(`## ${tag.labels[0]}`);
+      lines.push(`- Uses: ${tag.count}`);
+      if (tag.labels.length > 1) {
+        lines.push(`- Variants: ${tag.labels.join(", ")}`);
+      }
+      lines.push(
+        ...tag.notes.slice(0, 12).map((relativePath) =>
+          `- ${toWikiLink(relativePath, relativePath.split("/").pop().replace(/\.md$/i, ""))}`
+        )
+      );
+      lines.push("");
+    }
+  }
+  writeText(path.join(root, "wiki", "_indices", "tags.md"), `${lines.join("\n").trim()}\n`);
+}
+
+function buildBacklinkIndex(root, catalogNotes, backlinks) {
+  const lines = ["# Backlink Index", "", `Generated: ${dateStamp()}`, ""];
+  const ranked = catalogNotes
+    .filter((note) => !/\/(?:index|README)\.md$/i.test(note.relativePath))
+    .map((note) => ({
+      note,
+      backlinks: backlinks.get(note.relativePath) || []
+    }))
+    .sort((left, right) => right.backlinks.length - left.backlinks.length || left.note.title.localeCompare(right.note.title));
+
+  if (!ranked.length) {
+    lines.push("- No notes indexed yet.");
+  } else {
+    for (const entry of ranked.slice(0, 80)) {
+      lines.push(`## ${entry.note.title}`);
+      lines.push(`- Path: \`${entry.note.relativePath}\``);
+      lines.push(`- Backlinks: ${entry.backlinks.length}`);
+      lines.push(
+        ...(entry.backlinks.length
+          ? entry.backlinks.slice(0, 12).map((relativePath) => `- Linked from ${toWikiLink(relativePath)}`)
+          : ["- No inbound links detected yet."])
+      );
+      lines.push("");
+    }
+  }
+
+  writeText(path.join(root, "wiki", "_indices", "backlinks.md"), `${lines.join("\n").trim()}\n`);
+}
+
+function buildOpenThreadsRegister(root, catalogNotes) {
+  const lines = ["# Open Threads", "", `Generated: ${dateStamp()}`, ""];
+  let count = 0;
+
+  for (const note of catalogNotes
+    .filter((entry) => entry.openThreads.length)
+    .sort((left, right) => left.title.localeCompare(right.title))) {
+    count += note.openThreads.length;
+    lines.push(`## ${note.title}`);
+    lines.push(`- Note: ${toWikiLink(note.relativePath, note.title)}`);
+    for (const thread of note.openThreads.slice(0, 8)) {
+      lines.push(`- ${thread.heading}: ${thread.text}`);
+    }
+    lines.push("");
+  }
+
+  if (!count) {
+    lines.push("- No explicit open threads were extracted from the current note set.");
+    lines.push("");
+  }
+
+  writeText(path.join(root, "wiki", "unresolved", "open-threads.md"), `${lines.join("\n").trim()}\n`);
+  return count;
+}
+
+function buildDraftWorkspaceIndex(root, catalogNotes) {
+  const drafts = catalogNotes
+    .filter((note) => note.kind === "draft-note" && !/\/index\.md$/i.test(note.relativePath))
+    .sort((left, right) => left.title.localeCompare(right.title));
+  const lines = ["# Draft Workspace Index", "", `Generated: ${dateStamp()}`, "", "## Append And Review Queue"];
+
+  if (!drafts.length) {
+    lines.push("- No draft workspace notes are open.");
+  } else {
+    for (const draft of drafts) {
+      lines.push(`- ${toWikiLink(draft.relativePath, draft.title)} (${draft.frontmatter.document_class || "working_note"})`);
+    }
+  }
+  lines.push("");
+
+  writeText(path.join(root, "wiki", "drafts", "index.md"), `${lines.join("\n").trim()}\n`);
+  writeText(path.join(root, "wiki", "drafts", "append-review", "index.md"), `${lines.join("\n").trim()}\n`);
+  return drafts.length;
+}
+
+function writeStructuredCatalog(root, catalogNotes, backlinks, tagSummary) {
+  writeJson(path.join(root, "manifests", "wiki_index.json"), {
+    generated_at: nowIso(),
+    notes: catalogNotes.map((note) => ({
+      relative_path: note.relativePath,
+      title: note.title,
+      kind: note.kind,
+      status: note.status,
+      tags: note.tags,
+      backlinks: backlinks.get(note.relativePath) || [],
+      summary: summaryText(note),
+      document_class: note.frontmatter.document_class || "",
+      freshness: note.freshness,
+      open_threads: note.openThreads
+    })),
+    tags: tagSummary
+  });
+}
+
 function updateHomePage(root, stats) {
   const homePath = path.join(root, "wiki", "_maps", "home.md");
   const current = readText(homePath);
@@ -543,8 +739,10 @@ function updateHomePage(root, stats) {
 - Watch profiles: ${stats.watchProfiles}
 - Surveillance pages: ${stats.surveillance}
 - Self notes: ${stats.selfNotes}
+- Draft workspace notes: ${stats.drafts}
 - Contradiction candidates: ${stats.contradictions}
 - Synthesis candidates: ${stats.synthesisCandidates}
+- Open threads: ${stats.openThreads}
 - Last compiled: ${new Date().toISOString()}
 `;
   writeText(homePath, upsertManagedBlock(current, "overview", managed));
@@ -552,7 +750,11 @@ function updateHomePage(root, stats) {
 
 function compileProject(root, options = {}) {
   ensureProjectStructure(root);
-  const sourceNotes = loadNotes(root, "wiki/source-notes");
+  let sourceNotes = loadNotes(root, "wiki/source-notes");
+  const sourceRoutingBackfills = backfillSourceRouting(root, sourceNotes);
+  if (sourceRoutingBackfills) {
+    sourceNotes = loadNotes(root, "wiki/source-notes");
+  }
   const ontology = readJson(path.join(root, "config", "ontology.json"), {});
   const ontologyIndex = buildConceptOntologyIndex(ontology);
   buildSourceIndex(root, sourceNotes);
@@ -577,9 +779,18 @@ function compileProject(root, options = {}) {
   const selfCount = buildCollectionIndex(root, "wiki/self", "Self Index");
   const watchProfiles = loadWatchProfiles(root);
   buildWatchProfileArtifacts(root, watchProfiles);
+  const catalogNotes = loadCatalogNotes(root);
+  const catalogGraph = buildCatalogGraph(catalogNotes);
+  const tagSummary = buildTagSummary(catalogNotes);
+  buildTagIndex(root, tagSummary);
+  buildBacklinkIndex(root, catalogNotes, catalogGraph.backlinks);
+  const openThreadCount = buildOpenThreadsRegister(root, catalogNotes);
+  const draftCount = buildDraftWorkspaceIndex(root, catalogNotes);
+  writeStructuredCatalog(root, catalogNotes, catalogGraph.backlinks, tagSummary);
 
   updateHomePage(root, {
     sourceNotes: sourceNotes.length,
+    sourceRoutingBackfills,
     claims: claimCount,
     contestedClaims: claimSummary.contested,
     concepts: conceptMap.size,
@@ -592,12 +803,15 @@ function compileProject(root, options = {}) {
     watchProfiles: watchProfileCount,
     surveillance: surveillanceCount,
     selfNotes: selfCount,
+    drafts: draftCount,
     contradictions: unresolved.contradictionCandidates,
-    synthesisCandidates: unresolved.synthesisCandidates
+    synthesisCandidates: unresolved.synthesisCandidates,
+    openThreads: openThreadCount
   });
 
   return {
     sourceNotes: sourceNotes.length,
+    sourceRoutingBackfills,
     claims: claimCount,
     contestedClaims: claimSummary.contested,
     concepts: conceptMap.size,
@@ -609,6 +823,8 @@ function compileProject(root, options = {}) {
     thesisPages: thesisCount,
     watchProfiles: watchProfileCount,
     surveillancePages: surveillanceCount,
+    draftPages: draftCount,
+    openThreads: openThreadCount,
     contradictionCandidates: unresolved.contradictionCandidates,
     synthesisCandidates: unresolved.synthesisCandidates
   };

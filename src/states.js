@@ -1,8 +1,14 @@
 const path = require("node:path");
 const { parseFrontmatter, renderMarkdown, toWikiLink } = require("./markdown");
 const { ensureProjectStructure, listMarkdownNotes } = require("./project");
-const { confidenceLabel, renderResultReference, updateManagedNote, writeOutputDocument } = require("./research");
-const { searchCorpus, tokenize } = require("./search");
+const {
+  confidenceLabel,
+  renderResultReference,
+  renderRetrievalBudgetBlock,
+  retrieveEvidence,
+  updateManagedNote,
+  writeOutputDocument
+} = require("./research");
 const { searchClaims } = require("./claims");
 const { resolveWatchSubject } = require("./watch");
 const {
@@ -30,6 +36,7 @@ const EVIDENCE_EXCLUDE_PREFIXES = [
   "wiki/_indices/",
   "wiki/_maps/",
   "wiki/unresolved/",
+  "wiki/drafts/",
   "wiki/self/"
 ];
 
@@ -221,6 +228,33 @@ function marketRelevance(profile, label, claims) {
   return `- Current balance is mixed. Positive claim count: ${positive}. Negative claim count: ${negative}. The market lens is ${lens}.`;
 }
 
+function stateCounterArguments(claims) {
+  const contested = claims.filter((claim) => claim.status === "contested");
+  const negative = claims.filter((claim) => claim.polarity === "negative");
+  const lines = contested.concat(negative).slice(0, 6).map((claim) => `- ${claim.claim_text}`);
+  return lines.length ? [...new Set(lines)].join("\n") : "- No explicit counter-argument cluster surfaced beyond routine review risk.";
+}
+
+function stateDataGaps(resolved, claims, evidence, evidencePack) {
+  const lines = [];
+  if (claims.length < 3) {
+    lines.push("- Add more directly relevant claims before treating this state as well-covered.");
+  }
+  if (evidence.length < 3) {
+    lines.push("- Add more grounded evidence notes or source notes on this subject.");
+  }
+  if (evidencePack.escalated) {
+    lines.push("- Retrieval had to escalate beyond the requested budget, which signals thin short-route coverage.");
+  }
+  if (!resolved.watch.profile) {
+    lines.push("- Create or link a watch profile so this state has explicit monitoring context.");
+  }
+  if (claims.some((claim) => claim.status === "stale")) {
+    lines.push("- Refresh stale claims with newer evidence before relying on this state operationally.");
+  }
+  return lines.length ? lines.join("\n") : "- No immediate data-gap pressure surfaced beyond normal monitoring cadence.";
+}
+
 function refreshState(root, subject, options = {}) {
   ensureProjectStructure(root);
   const resolved = resolveStateSubject(root, subject);
@@ -228,10 +262,13 @@ function refreshState(root, subject, options = {}) {
     limit: Number(options.claimLimit || 12),
     statuses: ["active", "contested", "stale"]
   });
-  const evidence = searchCorpus(root, resolved.query, {
+  const evidencePack = retrieveEvidence(root, resolved.query, {
+    budget: options.budget || "L2",
+    mode: "brief",
     limit: Number(options.evidenceLimit || 8),
     excludePrefixes: EVIDENCE_EXCLUDE_PREFIXES
   });
+  const evidence = evidencePack.results;
   const statePath = path.join(root, "wiki", "states", `${slugify(resolved.profile.title).slice(0, 80) || "state"}.md`);
   const priorSnapshots = latestStateSnapshots(root, resolved.profile.title);
   const previous = priorSnapshots.length ? priorSnapshots[priorSnapshots.length - 1] : null;
@@ -265,6 +302,7 @@ function refreshState(root, subject, options = {}) {
         resolved.watch.profile ? toWikiLink(resolved.watch.profile.relativePath, resolved.watch.profile.title) : "No linked watch profile."
       }
 - Query route: ${resolved.query || subject}
+- Retrieval budget: ${evidencePack.activeBudget}
 `,
       snapshot: `
 ## Managed Snapshot
@@ -305,6 +343,18 @@ ${flipLines(resolved.profile, claims)}
 ## Managed Market Relevance
 
 ${marketRelevance(resolved.profile, label, claims)}
+`,
+      counter: `
+## Managed Counter-Arguments
+
+${stateCounterArguments(claims)}
+`,
+      gaps: `
+## Managed Data Gaps
+
+${stateDataGaps(resolved, claims, evidence, evidencePack)}
+
+${renderRetrievalBudgetBlock(evidencePack).trim()}
 `
     }
   );

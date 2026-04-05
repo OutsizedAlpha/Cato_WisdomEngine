@@ -1,8 +1,14 @@
 const path = require("node:path");
 const { parseFrontmatter, renderMarkdown, toWikiLink } = require("./markdown");
 const { ensureProjectStructure } = require("./project");
-const { loadSelfNotes, renderResultReference, updateManagedNote, writeOutputDocument } = require("./research");
-const { searchCorpus } = require("./search");
+const {
+  loadSelfNotes,
+  renderResultReference,
+  renderRetrievalBudgetBlock,
+  retrieveEvidence,
+  updateManagedNote,
+  writeOutputDocument
+} = require("./research");
 const { searchClaims } = require("./claims");
 const { defaultRegimeSubjects, latestStateSnapshots, refreshState, writeRegimeBrief } = require("./states");
 const { resolveWatchSubject } = require("./watch");
@@ -18,6 +24,7 @@ const EVIDENCE_EXCLUDE_PREFIXES = [
   "wiki/_indices/",
   "wiki/_maps/",
   "wiki/unresolved/",
+  "wiki/drafts/",
   "wiki/self/"
 ];
 
@@ -137,6 +144,26 @@ function strongestCounterCase(states, claims, selfModel) {
   return lines.join("\n");
 }
 
+function decisionDataGaps(pack) {
+  const lines = [];
+  if (pack.claims.length < 3) {
+    lines.push("- The claim map is still thin relative to the decision surface.");
+  }
+  if (pack.evidence.length < 3) {
+    lines.push("- Add more grounded evidence before treating this decision as well-covered.");
+  }
+  if (pack.evidencePack?.escalated) {
+    lines.push("- Retrieval had to escalate beyond the requested budget, so short-route knowledge is sparse.");
+  }
+  if (pack.claims.some((claim) => claim.status === "stale")) {
+    lines.push("- Some supporting claims are stale and should be refreshed before acting heavily on this note.");
+  }
+  if (!pack.watch.profile) {
+    lines.push("- A dedicated watch profile would tighten monitoring and trigger discipline on this topic.");
+  }
+  return lines.length ? lines.join("\n") : "- No immediate data-gap pressure surfaced beyond normal monitoring cadence.";
+}
+
 function collectTopicPack(root, topic, options = {}) {
   const watch = resolveWatchSubject(root, topic);
   const state = refreshState(root, topic, {
@@ -147,11 +174,13 @@ function collectTopicPack(root, topic, options = {}) {
     limit: Number(options.claimLimit || 10),
     statuses: ["active", "contested", "stale"]
   });
-  const evidence = searchCorpus(root, watch.query, {
+  const evidencePack = retrieveEvidence(root, watch.query, {
+    budget: options.budget || "L2",
+    mode: "brief",
     limit: Number(options.evidenceLimit || 8),
     excludePrefixes: EVIDENCE_EXCLUDE_PREFIXES
   });
-  return { watch, state, claims, evidence };
+  return { watch, state, claims, evidence: evidencePack.results, evidencePack };
 }
 
 function writeDecisionNote(root, topic, options = {}) {
@@ -214,6 +243,13 @@ ${strongestCounterCase([pack.state], pack.claims, selfModel)}
 ## Managed Self-Model Lens
 
 ${selfModelBlock(selfModel)}
+`,
+      gaps: `
+## Managed Data Gaps
+
+${decisionDataGaps(pack)}
+
+${renderRetrievalBudgetBlock(pack.evidencePack).trim()}
 `,
       claims: `
 ## Managed Claim Map
@@ -294,6 +330,10 @@ ${evidence.length ? evidence.slice(0, 8).map((result) => `- ${renderResultRefere
 
 ${strongestCounterCase(states, claims, selfModel)}
 
+## Data Gaps
+
+${decisionDataGaps({ claims, evidence, watch: { profile: null }, evidencePack: { escalated: false } })}
+
 ## Self-Model Lens
 
 ${selfModelBlock(selfModel)}
@@ -367,6 +407,12 @@ ${deRiskTriggers([pack.state], pack.claims)}
 ## Missing Evidence
 
 ${pack.evidence.length ? pack.evidence.slice(0, 6).map((result) => `- Need fresh or opposing follow-up to ${renderResultReference(result)}`).join("\n") : "- Add primary-source evidence on this topic."}
+
+## Retrieval Budget
+
+- Active budget: ${pack.evidencePack.activeBudget}
+- Escalated: ${pack.evidencePack.escalated ? "yes" : "no"}
+- Route: TL;DR surfaces first, raw extracts only if needed.
 `
   });
 

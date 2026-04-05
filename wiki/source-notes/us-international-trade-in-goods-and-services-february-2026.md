@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-7DD7B91D4D02.md
 figure_count: 2
+document_class: internal_memo
+draft_workspace_path: wiki/drafts/append-review/us-international-trade-in-goods-and-services-february-2026.md
 ---
 
 # U.S. International Trade in Goods and Services, February 2026

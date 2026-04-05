@@ -22,23 +22,29 @@ related: ["outputs/reports/2026-04-03T14-49-43.918Z-passive-flows.md","outputs/r
 - Market lens: index behaviour, vol, cross-asset positioning
 - Watch profile: No linked watch profile.
 - Query route: Market Structure flows positioning dealer gamma passive flows funding stress options expiry effects
+- Retrieval budget: L2
 <!-- CATO:END_MANAGED_BLOCK profile -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK snapshot -->
 ## Managed Snapshot
 
-- Last refreshed: 2026-04-03T18:41:11.678Z
+- Last refreshed: 2026-04-05T15:47:52.211Z
 - State label: contested
 - Confidence: high
 - Claim count: 12
 - Evidence count: 8
-- Summary: Flow, positioning, and plumbing effects shaping market transmission. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. The current corpus supports a report-level synthesis route anchored to passive flows; Market Structure; Derivatives. Recurring themes include none, yet, market, structure, cato, dealer. The current corpus supports a report-level synthesis route anchored to Market Structure; Derivatives. Primary evidence route: Market Structure; SRC 2026 5A7326140C0D; SRC 2026 BD50ACFF7C7D.
+- Summary: Flow, positioning, and plumbing effects shaping market transmission. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse. A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and the UK are more exposed to imported energy than the U.S. is. The data this week did not create that risk; they reduced the market's ability to ignore it. Primary evidence route: labor market; ECB; Euro Area.
 <!-- CATO:END_MANAGED_BLOCK snapshot -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK strengthened -->
 ## Managed Strengthened
 
-- No newly strengthened claims relative to the previous snapshot.
+- [[claims/claim-2026-00a1fc15c7d3|The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised both CPI expect…]]
+- [[claims/claim-2026-0c8d2bd74c92|China recovered officially, while external Asia gave the better trade signal.]]
+- [[claims/claim-2026-0c94d7232d30|Primary weekly table for U.S. actual, consensus, and prior data points used in the report.]]
+- [[claims/claim-2026-0eb21b9586ce|The key Murphy-style point is that the bond market has not been given a clean reason to dismiss the commodity…]]
+- [[claims/claim-2026-0f6c133346d9|Used to position France near the expansion threshold in Europe.]]
+- [[claims/claim-2026-14f0db0c96fd|Japan can tolerate a moderate global reflation pulse; it is much less comfortable if the pulse is being drive…]]
 <!-- CATO:END_MANAGED_BLOCK strengthened -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK weakened -->
@@ -47,26 +53,27 @@ related: ["outputs/reports/2026-04-03T14-49-43.918Z-passive-flows.md","outputs/r
 - [[claims/claim-2026-1492d4175eb2|China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especi…]]
 - [[claims/claim-2026-2a9e200b5039|A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and t…]]
 - [[claims/claim-2026-3bd13f3eea67|The data this week did not create that risk; they reduced the market's ability to ignore it.]]
+- [[claims/claim-2026-cd5a2a1ffedb|Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower easing path tha…]]
+- [[claims/claim-2026-00a1fc15c7d3|The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised both CPI expect…]]
+- [[claims/claim-2026-07e05b836d6a|It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitic…]]
 <!-- CATO:END_MANAGED_BLOCK weakened -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK unchanged -->
 ## Managed Unchanged
 
-- [[claims/claim-2026-25464adb8a90|The current corpus supports a report-level synthesis route anchored to passive flows; Market Structure; Deriv…]]
-- [[claims/claim-2026-94c161ce2a64|Recurring themes include none, yet, market, structure, cato, dealer.]]
-- [[claims/claim-2026-26e1d7c45113|The current corpus supports a report-level synthesis route anchored to Market Structure; Derivatives.]]
-- [[claims/claim-2026-5f28149413a2|Recurring themes include none, yet, market, structure, cato, corpus.]]
-- [[claims/claim-2026-76d70453ca93|The evidence base currently spans 2 sources, so the result should be treated as grounded but still dependent…]]
-- [[claims/claim-2026-78e8f79a1b83|Confidence is low because the answer is retrieval-grounded and constrained by the local repo.]]
+- [[claims/claim-2026-1492d4175eb2|China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especi…]]
+- [[claims/claim-2026-2a9e200b5039|A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and t…]]
+- [[claims/claim-2026-3bd13f3eea67|The data this week did not create that risk; they reduced the market's ability to ignore it.]]
+- [[claims/claim-2026-6226af13b4c9|Used for German retail sales, labor-market, and manufacturing release checks.]]
 <!-- CATO:END_MANAGED_BLOCK unchanged -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK catalysts -->
 ## Managed Catalysts
 
-- Revisit [[market-structure/index|Market Structure]] for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-5A7326140C0D.txt` (SRC 2026 5A7326140C0D) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-BD50ACFF7C7D.txt` (SRC 2026 BD50ACFF7C7D) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-F16BD246F379.txt` (SRC 2026 F16BD246F379) for catalyst or regime change.
+- Revisit [[concepts/labor-market|labor market]] for catalyst or regime change.
+- Revisit [[entities/ecb|ECB]] for catalyst or regime change.
+- Revisit [[entities/euro-area|Euro Area]] for catalyst or regime change.
+- Revisit [[entities/federal-reserve|Federal Reserve]] for catalyst or regime change.
 <!-- CATO:END_MANAGED_BLOCK catalysts -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK flip -->
@@ -75,6 +82,7 @@ related: ["outputs/reports/2026-04-03T14-49-43.918Z-passive-flows.md","outputs/r
 - China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse.
 - A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and the UK are more exposed to imported energy than the U.S. is.
 - The data this week did not create that risk; they reduced the market's ability to ignore it.
+- Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower easing path than a weak market tape alone might imply.
 <!-- CATO:END_MANAGED_BLOCK flip -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK markets -->
@@ -82,3 +90,28 @@ related: ["outputs/reports/2026-04-03T14-49-43.918Z-passive-flows.md","outputs/r
 
 - Current balance is contested. The market lens is index behaviour, vol, cross-asset positioning, but the stronger task is separating regime change from noisy cross-currents.
 <!-- CATO:END_MANAGED_BLOCK markets -->
+
+<!-- CATO:BEGIN_MANAGED_BLOCK counter -->
+## Managed Counter-Arguments
+
+- China's official PMIs recovered above 50, but the more market-sensitive message is that external Asia, especially Korea, still looks healthier than China's private-sector demand pulse.
+- A resilient U.S. data set plus geopolitical stress is usually dollar-supportive, especially when Europe and the UK are more exposed to imported energy than the U.S. is.
+- The data this week did not create that risk; they reduced the market's ability to ignore it.
+- Softer wages help at the margin, but payrolls, claims, and ISM together argue for a shallower easing path than a weak market tape alone might imply.
+- The Bank of England's DMP explicitly pointed to recent energy-price increases as firms raised both CPI expectations and own-price expectations.
+- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+<!-- CATO:END_MANAGED_BLOCK counter -->
+
+<!-- CATO:BEGIN_MANAGED_BLOCK gaps -->
+## Managed Data Gaps
+
+- Create or link a watch profile so this state has explicit monitoring context.
+
+## Retrieval Budget
+
+- Requested budget: L2
+- Active budget: L2
+- Escalated beyond initial budget: No
+- Retrieval route: L0 Maps And Indices -> L1 Canonical Knowledge -> L2 Evidence Notes
+- Discipline: Start with TL;DR surfaces and only escalate to raw extracts when the shorter route is not enough.
+<!-- CATO:END_MANAGED_BLOCK gaps -->

@@ -6,6 +6,7 @@ const GROUNDED_EXCLUDE_PREFIXES = [
   "wiki/_indices/",
   "wiki/_maps/",
   "wiki/unresolved/",
+  "wiki/drafts/",
   "wiki/self/",
   "wiki/timelines/source-chronology.md"
 ];

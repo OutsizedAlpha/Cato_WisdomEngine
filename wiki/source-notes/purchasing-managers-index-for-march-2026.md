@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-32DEAA5F7FB5.md
 figure_count: 6
+document_class: filing_or_company_update
+draft_workspace_path: wiki/drafts/append-review/purchasing-managers-index-for-march-2026.md
 ---
 
 # Purchasing Managers Index for March 2026

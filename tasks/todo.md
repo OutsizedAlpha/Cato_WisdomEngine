@@ -37,7 +37,12 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - [x] Add a PM decision layer with meeting briefs, decision notes, red-team outputs, and market-change briefs.
 - [x] Extend the launcher layer for the new belief/state/decision surfaces.
 - [x] Add a zero-API frontier-pack bridge so Codex can reason over claim/state/decision context and capture the final output back into Cato.
-- [ ] Decide whether to embed external LLM execution into the CLI or keep the repo agent-driven.
+- [x] Add semantic source/document-class routing so ingest can branch by document class, not only file format.
+- [x] Add explicit L0/L1/L2/L3 retrieval-budget rules and TLDR-first reading discipline to the prompts and operator workflow.
+- [x] Add managed counter-arguments / data-gaps blocks to the core claim/state/decision surfaces.
+- [x] Add a draft or append-and-review workspace distinct from canonical wiki surfaces.
+- [x] Add structured query/backlink/tag surfaces as a file-first sidecar catalog without rewriting storage away from markdown.
+- [x] Decide whether to embed external LLM execution into the CLI or keep the repo agent-driven.
 
 ## Validation
 
@@ -54,6 +59,10 @@ Use this file for active or recently completed non-trivial work. Keep it concise
   - Legacy source-note refresh validation on 2026-04-03 covering empty-frontmatter round-trip protection, refreshed source-note candidate concepts, live compile, and zero-issue lint after rewriting the existing corpus notes
   - Claim/state/decision validation on 2026-04-03 covering `claims-refresh`, `claim-diff`, `why-believe`, `state-refresh`, `state-diff`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, full test pass, and zero-issue live lint after regenerating superseded outputs
   - Frontier-pack validation on 2026-04-03 covering `frontier-pack`, `capture-frontier`, local-context bundle capture, full test pass, real live smoke against the current repo, and zero-issue lint after a real frontier-authored output capture
+  - Reconnaissance validation on 2026-04-05 covering ordered context loading, `node .\tests\cato.test.js`, `node .\bin\cato.js lint`, and a verified headless global Playwright smoke
+  - Environment-hardening validation on 2026-04-05 covering enhanced `doctor` checks for repo-local Python, Playwright, Puppeteer, and OCR readiness plus a full test pass
+  - External architecture review on 2026-04-05 covering full reads of Karpathy `llm-wiki` and Garry Tan `GBrain.md`, Karpathy comment review, revision review for both gists, and capture of the resulting design recommendations into `docs/architecture_review_llm_wiki_gbrain_2026-04-05.md`
+  - Architecture-ingestion implementation on 2026-04-05 covering semantic document routing, append-and-review drafts, retrieval budgets, structured catalog/backlink/tag indices, counter-argument/data-gap blocks, full test pass, live compile/state/decision refresh, zero-issue lint, and zero-issue doctor
   - Ongoing validation expectations:
     - rerun tests after CLI or schema changes
     - keep live repo lint at zero or explain any deliberate exceptions
@@ -83,6 +92,11 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-03, the repo gained a PM decision layer under `wiki/decisions/` plus `outputs/meeting-briefs/` and new decision-support briefs.
 - On 2026-04-03, the launcher layer was extended for claims, state refresh, regime briefs, decision notes, meeting briefs, red-team briefs, and market-change briefs.
 - On 2026-04-03, the repo gained a zero-API frontier-pack bridge so Codex can consume structured claim/state/decision context, optionally add fresh web research, and file the final authored output back into Cato.
+- On 2026-04-05, `doctor` was promoted into the repeatable environment-readiness check for repo-local Python plus browser automation availability, replacing ad hoc shell probing.
+- On 2026-04-05, the repo captured a durable architecture review of Karpathy's `llm-wiki` and Garry Tan's `GBrain.md`, with concrete Cato follow-up recommendations rather than a storage-model rewrite.
+- On 2026-04-05, those architecture learnings were implemented directly into Cato: ingest now assigns semantic `document_class` routing, creates append-and-review draft notes, grounded workflows now follow explicit retrieval budgets, claim/state/decision pages now carry counter-argument and data-gap sections, and compile/lint now maintain a structured catalog with tags, backlinks, freshness, and open-thread audit.
+- On 2026-04-05, the live repo corpus was backfilled and refreshed so the stricter maintenance checks still pass at zero live lint issues instead of only working for newly generated notes.
+- On 2026-04-05, the remaining architecture decision was closed explicitly: keep the repo agent-driven, preserve the zero-API handoff model, and do not embed external LLM execution directly into the CLI.
 
 ## Open Risks / Next Steps
 
@@ -93,4 +107,4 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - The correct live-research model is now explicit, but it still depends on Codex/GPT producing the research bundle; the CLI is intentionally not trying to impersonate a frontier web-research model.
 - Claim extraction and state inference are now useful but still deterministic; a later model-assisted pass may improve claim quality and contradiction handling.
 - The CLI still does not invoke the frontier model directly. The repo now has a zero-API bridge instead, which is the correct operating model for the current user workflow.
-- The next build phase needs discipline so it does not jump too early into fine-tuning or heavyweight retrieval before the corpus and workflows justify it.
+- Retrieval discipline, draft/workspace separation, and maintenance audit are now materially stronger, but the search engine is still lexical and should not be mistaken for a full semantic query layer.

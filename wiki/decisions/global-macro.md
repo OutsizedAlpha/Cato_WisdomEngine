@@ -47,12 +47,12 @@ related: ["wiki/states/global-macro.md","outputs/reports/2026-04-03T17-10-39.079
 <!-- CATO:BEGIN_MANAGED_BLOCK monitor -->
 ## Managed What To Monitor Next
 
-- `extracted/text/SRC-2026-7DD7B91D4D02.txt` (SRC 2026 7DD7B91D4D02)
-- `extracted/text/SRC-2026-43CBDAEA5E65.txt` (SRC 2026 43CBDAEA5E65)
-- `extracted/text/SRC-2026-5EA51C2BF319.txt` (SRC 2026 5EA51C2BF319)
-- `extracted/text/SRC-2026-BD50ACFF7C7D.txt` (SRC 2026 BD50ACFF7C7D)
-- `extracted/text/SRC-2026-8031900B9C3F.txt` (SRC 2026 8031900B9C3F)
-- `extracted/text/SRC-2026-CA6D805D453E.txt` (SRC 2026 CA6D805D453E)
+- [[synthesis/weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]]
+- [[synthesis/global-macro-frontier-decision-brief|Global Macro frontier decision brief]]
+- [[concepts/manufacturing|manufacturing]]
+- [[concepts/global-trade|global trade]]
+- [[entities/united-states|United States]]
+- [[concepts/labor-market|labor market]]
 <!-- CATO:END_MANAGED_BLOCK monitor -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK counter -->
@@ -84,3 +84,17 @@ related: ["wiki/states/global-macro.md","outputs/reports/2026-04-03T17-10-39.079
 - [[claims/claim-2026-4c8c13812682|Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals becom…]]
 - [[claims/claim-2026-6c2736f39c6c|It is that the macro tape remains resilient enough that geopolitical inflation pressure still m…]]
 <!-- CATO:END_MANAGED_BLOCK claims -->
+
+<!-- CATO:BEGIN_MANAGED_BLOCK gaps -->
+## Managed Data Gaps
+
+- No immediate data-gap pressure surfaced beyond normal monitoring cadence.
+
+## Retrieval Budget
+
+- Requested budget: L2
+- Active budget: L2
+- Escalated beyond initial budget: No
+- Retrieval route: L0 Maps And Indices -> L1 Canonical Knowledge -> L2 Evidence Notes
+- Discipline: Start with TL;DR surfaces and only escalate to raw extracts when the shorter route is not enough.
+<!-- CATO:END_MANAGED_BLOCK gaps -->

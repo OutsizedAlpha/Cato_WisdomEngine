@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-43CBDAEA5E65.md
 figure_count: 9
+document_class: internal_memo
+draft_workspace_path: wiki/drafts/append-review/japan-economic-calendar-for-late-march-and-early-april-2026.md
 ---
 
 # Japan economic calendar for late March and early April 2026

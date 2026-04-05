@@ -5,8 +5,9 @@ const {
   confidenceLabel,
   evidenceBullets,
   promoteOutputToSynthesis,
+  renderRetrievalBudgetBlock,
   renderResultReference,
-  selectEvidence,
+  retrieveEvidence,
   synthesisParagraphs,
   writeOutputDocument
 } = require("./research");
@@ -21,11 +22,12 @@ const GROUNDED_EXCLUDE_PREFIXES = [
   "wiki/_indices/",
   "wiki/_maps/",
   "wiki/unresolved/",
+  "wiki/drafts/",
   "wiki/self/",
   "wiki/timelines/source-chronology.md"
 ];
 
-function buildMemoBody(question, results) {
+function buildMemoBody(question, results, retrieval) {
   if (!results.length) {
     return `
 # ${question}
@@ -43,6 +45,8 @@ The current corpus does not contain enough direct evidence to produce a grounded
 
 - No matching notes were found.
 
+${renderRetrievalBudgetBlock(retrieval)}
+
 ## Synthesis
 
 The correct next step is to add relevant source material, rerun ingest and compile, and only then attempt a stronger analytical memo.
@@ -50,6 +54,10 @@ The correct next step is to add relevant source material, rerun ingest and compi
 ## Counter-Case
 
 - The absence of evidence in this repo is not evidence that the real-world answer is negative.
+
+## Data Gaps
+
+- Add directly relevant evidence notes or source notes and rerun the memo.
 
 ## What Would Change The View
 
@@ -78,6 +86,8 @@ ${synthesis.summary}
 
 ${evidenceBullets(results)}
 
+${renderRetrievalBudgetBlock(retrieval)}
+
 ## Synthesis
 
 ${synthesis.summary}
@@ -91,6 +101,10 @@ ${synthesis.contributions}
 - Check whether the current corpus is over-weighted toward one regime, one author set, or one dominant interpretation.
 - Review unresolved extraction or classification gaps before treating this memo as settled.
 - Treat the current memo as corpus-grounded analysis, not a substitute for fresh primary-source work.
+
+## Data Gaps
+
+${results.length < 3 ? "- Add more directly relevant evidence before treating this memo as well-covered." : "- Coverage is workable, but opposing evidence can still materially change the memo."}
 
 ## What Would Change The View
 
@@ -107,11 +121,14 @@ ${results.map((result) => `- ${renderResultReference(result)}`).join("\n")}
 function askQuestion(root, question, options = {}) {
   ensureProjectStructure(root);
   const settings = loadSettings(root);
-  const results = selectEvidence(root, question, {
+  const retrieval = retrieveEvidence(root, question, {
+    budget: options.budget || settings.search?.defaultBudget || "L2",
+    mode: "memo",
     limit: Number(options.limit || settings.ask?.defaultTopDocs || 6),
     excerptLength: 260,
     excludePrefixes: GROUNDED_EXCLUDE_PREFIXES
   });
+  const results = retrieval.results;
 
   const output = writeOutputDocument(root, {
     idPrefix: "ASK",
@@ -119,11 +136,13 @@ function askQuestion(root, question, options = {}) {
     title: question,
     outputDir: settings.ask?.outputDirectory || "outputs/memos",
     fileSlug: question,
-    body: buildMemoBody(question, results),
+    body: buildMemoBody(question, results, retrieval),
     sources: results.map((result) => result.relativePath),
     frontmatter: {
       question,
-      generation_mode: "grounded_synthesis"
+      generation_mode: "grounded_synthesis",
+      retrieval_budget: retrieval.activeBudget,
+      retrieval_escalated: retrieval.escalated
     }
   });
 

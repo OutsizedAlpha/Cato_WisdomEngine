@@ -22,17 +22,18 @@ related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-ma
 - Market lens: gilts, sterling, UK defensives
 - Watch profile: [[watch-profiles/global-macro|Global Macro]]
 - Query route: UK Macro britain united kingdom macro uk growth and inflation growth inflation current account United Kingdom Bank of England macro global macro weekly investment meeting geopolitics and macro Federal Reserve ECB Bank of Japan PBOC United States Euro Area Germany Japan China South Korea Brazil Use labor market manufacturing cycle global trade oil shock shipping disruption rates dollar intermarket analysis asset cross geopolitical investment meetings releases relevant spillovers track transmission
+- Retrieval budget: L2
 <!-- CATO:END_MANAGED_BLOCK profile -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK snapshot -->
 ## Managed Snapshot
 
-- Last refreshed: 2026-04-03T18:41:10.391Z
+- Last refreshed: 2026-04-05T15:47:52.377Z
 - State label: contested
 - Confidence: high
 - Claim count: 12
 - Evidence count: 8
-- Summary: Imported inflation, domestic stagnation, and policy awkwardness in the UK. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals become more fragile if the market concludes that geopolitical inflation is pushing yields higher without delivering a clean upside growth impulse. Instead, the U.S. growth and labor data were good enough to make the market take the inflation transmission channel more seriously. It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying. Primary evidence route: SRC 2026 4A45F1B16C06; SRC 2026 43CBDAEA5E65; SRC 2026 7DD7B91D4D02.
+- Summary: Imported inflation, domestic stagnation, and policy awkwardness in the UK. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals become more fragile if the market concludes that geopolitical inflation is pushing yields higher without delivering a clean upside growth impulse. Instead, the U.S. growth and labor data were good enough to make the market take the inflation transmission channel more seriously. It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying. Primary evidence route: Global Macro frontier decision brief; Weekly Investment Meeting Macro Brief - 2026-04-03; manufacturing.
 <!-- CATO:END_MANAGED_BLOCK snapshot -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK strengthened -->
@@ -70,10 +71,10 @@ related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-ma
 - oil spike
 - shipping disruption escalation
 - trade-policy shock
-- Revisit `extracted/text/SRC-2026-4A45F1B16C06.txt` (SRC 2026 4A45F1B16C06) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-43CBDAEA5E65.txt` (SRC 2026 43CBDAEA5E65) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-7DD7B91D4D02.txt` (SRC 2026 7DD7B91D4D02) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-5EA51C2BF319.txt` (SRC 2026 5EA51C2BF319) for catalyst or regime change.
+- Revisit [[synthesis/global-macro-frontier-decision-brief|Global Macro frontier decision brief]] for catalyst or regime change.
+- Revisit [[synthesis/weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]] for catalyst or regime change.
+- Revisit [[concepts/manufacturing|manufacturing]] for catalyst or regime change.
+- Revisit [[entities/united-kingdom|United Kingdom]] for catalyst or regime change.
 <!-- CATO:END_MANAGED_BLOCK catalysts -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK flip -->
@@ -90,3 +91,27 @@ related: ["outputs/reports/2026-04-03T17-10-39.079Z-weekly-investment-meeting-ma
 
 - Current balance is contested. The market lens is gilts, sterling, UK defensives, but the stronger task is separating regime change from noisy cross-currents.
 <!-- CATO:END_MANAGED_BLOCK markets -->
+
+<!-- CATO:BEGIN_MANAGED_BLOCK counter -->
+## Managed Counter-Arguments
+
+- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+- The UK remained sluggish in hard growth terms but less comfortable on inflation psychology.
+- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
+- Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
+- The practical conclusion for asset markets is that the growth side of the equation did not weaken enough this week to offset the inflationary and geopolitical impulse.
+<!-- CATO:END_MANAGED_BLOCK counter -->
+
+<!-- CATO:BEGIN_MANAGED_BLOCK gaps -->
+## Managed Data Gaps
+
+- No immediate data-gap pressure surfaced beyond normal monitoring cadence.
+
+## Retrieval Budget
+
+- Requested budget: L2
+- Active budget: L2
+- Escalated beyond initial budget: No
+- Retrieval route: L0 Maps And Indices -> L1 Canonical Knowledge -> L2 Evidence Notes
+- Discipline: Start with TL;DR surfaces and only escalate to raw extracts when the shorter route is not enough.
+<!-- CATO:END_MANAGED_BLOCK gaps -->

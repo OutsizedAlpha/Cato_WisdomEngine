@@ -2,7 +2,7 @@
 id: CONCEPT-2026-LABOUR
 kind: concept-page
 title: labour
-status: active
+status: retired
 tags: []
 related: []
 ---

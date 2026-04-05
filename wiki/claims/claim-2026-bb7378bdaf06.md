@@ -37,6 +37,14 @@ Used to anchor the report discussion on rising UK inflation expectations and own
 
 - No direct contradiction cluster detected.
 
+## Counter-Arguments / Weakening Evidence
+
+- This claim currently leans on a thin support map and may be overconfident.
+
+## Data Gaps / What Would Strengthen It
+
+- Add at least one independent supporting source before treating this as durable.
+
 ## Related Concepts
 
 - inflation expectations

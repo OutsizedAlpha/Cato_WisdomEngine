@@ -1,19 +1,20 @@
 # Research Handoff
 
-This document defines the bridge between live GPT/Codex research and durable Cato state.
+This document defines the boundary between live external research and durable Cato state.
 
 ## Purpose
 
 Use this workflow when:
 
-- Codex has already done live web research
-- you want the cited sources downloaded and preserved in Cato
-- you want source notes, compilation, watch refresh, and output storage to happen in one durable pass
+- Codex/GPT has already done live web research
+- you want the cited sources preserved in Cato
+- you want those sources turned into normal Cato evidence objects
+- you want the authored memo/report/deck stored durably
 
-The operating split is:
+The operating split is settled:
 
-- GPT/Codex does the live reasoning and web research
-- Cato captures, ingests, compiles, and stores the resulting work
+- external frontier model = live research and authored synthesis
+- Cato = capture, ingest, compile, and durable storage
 
 ## Command
 
@@ -29,7 +30,7 @@ Launcher equivalent:
 
 ## Bundle Shape
 
-Use [research-capture.example.json](/C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/commands/research-capture.example.json) as the template.
+Use `commands\research-capture.example.json` as the template.
 
 High-level fields:
 
@@ -52,7 +53,7 @@ Each `sources[]` entry can include:
 
 The `output` block can include:
 
-- `kind`: `memo`, `report`, `deck`, or `brief`
+- `kind` = `memo`, `report`, `deck`, or `brief`
 - `title`
 - `promote`
 - `body`
@@ -64,21 +65,29 @@ When you run `capture-research`, Cato:
 1. downloads each cited URL
 2. writes provenance sidecars
 3. ingests the downloaded sources into `raw/`, `extracted/`, and `wiki/source-notes/`
-4. compiles the repo
-5. optionally creates or refreshes a watch profile and surveillance page
-6. writes the supplied output body into `outputs/`
-7. optionally promotes that output into `wiki/synthesis/`
+4. assigns semantic document classes to the imported sources
+5. creates append-and-review draft notes alongside the canonical source notes
+6. compiles the repo and refreshes maintained surfaces
+7. optionally creates or refreshes a watch profile and surveillance page
+8. writes the supplied output body into `outputs/`
+9. optionally promotes that output into `wiki/synthesis/`
+
+## Why This Boundary Matters
+
+This keeps the product honest:
+
+- Cato does not pretend to be a live web-research model
+- Codex/GPT does not stay ephemeral
+- the final work lands with preserved evidence, provenance, and repo structure
 
 ## Operator Pattern
 
-The intended usage is:
-
-1. Ask Codex to research something live.
-2. Ask Codex to return:
-   - the final report/memo/deck body
-   - the cited source URLs
+1. Ask Codex/GPT to research something live.
+2. Ask it to return:
+   - the final output body
+   - the cited URLs
    - any watch metadata worth persisting
-3. Save that into a handoff bundle JSON.
-4. Run `capture-research`.
+3. save that into a handoff bundle
+4. run `capture-research`
 
-That gives you the GPT/Codex intelligence layer without losing the durable evidence trail and markdown knowledge base.
+That preserves the live intelligence of the external model while keeping Cato as the durable evidence and memory layer.

@@ -38,6 +38,17 @@ Used to show Spain diverged lower and slipped back into contraction.
 - [[claims/claim-2026-0f6c133346d9|Used to position France near the expansion threshold in Europe.]]
 - [[claims/claim-2026-8c921eae317b|That same dynamic is visible in the broader manufacturing complex: Europe recovered on activity…]]
 
+## Counter-Arguments / Weakening Evidence
+
+- Used to position France near the expansion threshold in Europe.
+- That same dynamic is visible in the broader manufacturing complex: Europe recovered on activity, but the quality of that recovery is being complicated by cost pressure rather than helped by easier inputs.
+- This claim currently leans on a thin support map and may be overconfident.
+
+## Data Gaps / What Would Strengthen It
+
+- Add at least one independent supporting source before treating this as durable.
+- Resolve the contradiction cluster with fresher or more primary evidence.
+
 ## Related Concepts
 
 - manufacturing

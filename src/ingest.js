@@ -6,6 +6,12 @@ const { renderMarkdown } = require("./markdown");
 const { extractCandidateConcepts, isMeaningfulExplicitConcept, buildConceptOntologyIndex } = require("./concept-quality");
 const { extractContent } = require("./extraction");
 const { ensureProjectStructure, loadSettings } = require("./project");
+const {
+  buildAppendReviewBody,
+  detectDocumentClass,
+  normalizeList,
+  reviewLensForDocumentClass
+} = require("./source-routing");
 const { downloadWebSource } = require("./web-import");
 const {
   appendJsonl,
@@ -279,22 +285,6 @@ function extractSourceUrl(frontmatter) {
   return frontmatter.source_url || frontmatter.url || frontmatter.source || frontmatter.origin || "";
 }
 
-function normalizeList(value) {
-  if (!value) {
-    return [];
-  }
-  if (Array.isArray(value)) {
-    return value.map((entry) => String(entry).trim()).filter(Boolean);
-  }
-  if (typeof value === "string") {
-    return value
-      .split(",")
-      .map((entry) => entry.trim())
-      .filter(Boolean);
-  }
-  return [];
-}
-
 function summaryFromExtractedText(extractedText, sourceType) {
   if (!extractedText.trim()) {
     if (sourceType === "paper") {
@@ -418,6 +408,7 @@ function buildSourceNote(record) {
     kind: "source-note",
     title: record.title,
     source_type: record.source_type,
+    document_class: record.document_class,
     source_url: record.source_url || "",
     origin_url: record.origin_url || "",
     capture_source: record.capture_source || "manual_drop",
@@ -443,6 +434,7 @@ function buildSourceNote(record) {
     extraction_status: record.extraction_status,
     extraction_method: record.extraction_method,
     figure_note_path: record.figure_note_path || "",
+    draft_workspace_path: record.draft_workspace_path || "",
     figure_count: record.figure_count || 0
   };
 
@@ -472,6 +464,7 @@ ${record.capture_notes ? `- ${record.capture_notes}` : "- Link this source into 
 ## Key Facts / Data
 
 - Source type: \`${record.source_type}\`
+- Document class: \`${record.document_class}\`
 - Capture source: \`${record.capture_source || "manual_drop"}\`
 - Ingested at: \`${record.ingested_at}\`
 - Captured at: \`${record.captured_at || record.ingested_at}\`
@@ -481,6 +474,7 @@ ${record.origin_url && record.origin_url !== record.source_url ? `- Origin URL: 
 ${record.search_query ? `- Research query: ${record.search_query}` : ""}
 ${record.search_engine ? `- Search engine: \`${record.search_engine}\`` : ""}
 ${record.search_rank ? `- Search rank: ${record.search_rank}` : ""}
+${record.draft_workspace_path ? `- Draft workspace: \`${record.draft_workspace_path}\`` : ""}
 ${record.table_preview_path ? `- Table preview: \`${record.table_preview_path}\`` : ""}
 ${record.figure_note_path ? `- Figure note: \`${record.figure_note_path}\`` : ""}
 ${record.source_type === "repo" ? "- Repo snapshots are indexed as structural evidence, not full code interpretation." : ""}
@@ -493,6 +487,7 @@ ${reviewAssets.length ? reviewAssets.map((assetPath) => `- Review \`${assetPath}
 
 - What concepts should this source strengthen?
 - What is still ambiguous or unverified?
+- What is the strongest counter-reading?
 
 ## Related Concepts
 
@@ -504,6 +499,7 @@ ${candidateList}
 - Extraction status: \`${record.extraction_status}\`
 - Extraction method: \`${record.extraction_method}\`
 - Figure refs indexed: ${record.figure_count || 0}
+- Review lens: ${record.review_lens}
 - Preserve the raw source as the anchor of truth.
 
 ${extractionNotes}
@@ -569,10 +565,15 @@ function ingest(root, options = {}) {
     );
     const entities = normalizeList(importedFrontmatter.entities);
     const tags = normalizeList(importedFrontmatter.tags);
+    const documentClass = detectDocumentClass(sourceType, title, extraction.extractedText, importedFrontmatter, target.kind);
+    const draftWorkspacePath = uniquePath(
+      path.join(root, "wiki", "drafts", "append-review", `${slugify(title).slice(0, 80) || id}.md`)
+    );
     const record = {
       id,
       title,
       source_type: sourceType,
+      document_class: documentClass,
       source_url: extractSourceUrl(importedFrontmatter),
       origin_url: importedFrontmatter.origin_url || "",
       capture_source: importedFrontmatter.capture_source || "manual_drop",
@@ -591,12 +592,14 @@ function ingest(root, options = {}) {
       figure_note_path: "",
       metadata_path: relativeToRoot(root, metadataPath),
       note_path: relativeToRoot(root, sourceNotePath),
+      draft_workspace_path: relativeToRoot(root, draftWorkspacePath),
       checksum,
       status: hashIndex[checksum] ? "duplicate" : "processed",
       duplicate_of: hashIndex[checksum]?.id || "",
       extraction_status: extraction.extractionStatus,
       extraction_method: extraction.extractionMethod,
       extraction_notes: extraction.extractionNotes,
+      review_lens: reviewLensForDocumentClass(documentClass),
       tags,
       entities,
       concepts,
@@ -618,6 +621,24 @@ function ingest(root, options = {}) {
       target_kind: target.kind
     });
     writeText(sourceNotePath, buildSourceNote(record));
+    writeText(
+      draftWorkspacePath,
+      renderMarkdown(
+        {
+          id: makeId("DRAFT", slugify(title).padEnd(12, "d")),
+          kind: "draft-note",
+          title: `Append And Review: ${title}`,
+          status: "open",
+          stage: "append-review",
+          source_note_path: record.note_path,
+          raw_path: record.raw_path,
+          metadata_path: record.metadata_path,
+          document_class: record.document_class,
+          created_at: record.ingested_at
+        },
+        buildAppendReviewBody(record, extraction)
+      )
+    );
 
     appendJsonl(path.join(root, "manifests", "sources.jsonl"), record);
     appendJsonl(path.join(root, "logs", "actions", "ingest.jsonl"), {

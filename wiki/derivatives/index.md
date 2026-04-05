@@ -5,7 +5,7 @@ Use this area for skew, surface behaviour, term structure, hedging pressure, and
 <!-- CATO:BEGIN_MANAGED_BLOCK index -->
 # Derivatives
 
-Generated: 2026-04-03
+Generated: 2026-04-05
 
 ## surface behaviour
 - None yet.

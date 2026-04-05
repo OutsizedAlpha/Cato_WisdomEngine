@@ -2,8 +2,9 @@ const {
   confidenceLabel,
   evidenceBullets,
   promoteOutputToSynthesis,
+  renderRetrievalBudgetBlock,
   renderResultReference,
-  selectEvidence,
+  retrieveEvidence,
   synthesisParagraphs,
   writeOutputDocument
 } = require("./research");
@@ -16,6 +17,7 @@ const GROUNDED_EXCLUDE_PREFIXES = [
   "wiki/_indices/",
   "wiki/_maps/",
   "wiki/unresolved/",
+  "wiki/drafts/",
   "wiki/self/",
   "wiki/timelines/source-chronology.md"
 ];
@@ -51,7 +53,21 @@ ${claims.length ? claims.slice(0, 6).map((claim) => `- ${claim.claim_text}`).joi
 `;
 }
 
-function buildReportBody(topic, results, watch, claims, state) {
+function buildDataGapSection(results, claims, retrieval) {
+  const lines = [];
+  if (results.length < 3) {
+    lines.push("- Add more directly relevant evidence notes or source notes before treating this report as well-covered.");
+  }
+  if (claims.length < 3) {
+    lines.push("- The claim ledger is still thin on this topic; refresh claims after ingesting more evidence.");
+  }
+  if (retrieval.escalated) {
+    lines.push("- Retrieval had to escalate beyond the initial budget, which signals weak TL;DR coverage.");
+  }
+  return lines.length ? lines.join("\n") : "- No immediate data-gap pressure surfaced beyond normal corpus incompleteness risk.";
+}
+
+function buildReportBody(topic, results, watch, claims, state, retrieval) {
   if (!results.length) {
     return `
 # ${topic}
@@ -69,6 +85,8 @@ The current local corpus does not yet support a grounded report on this topic.
 
 - None.
 
+${renderRetrievalBudgetBlock(retrieval)}
+
 ${buildWatchContextBlock(watch)}
 
 ${buildClaimContextBlock(claims, state)}
@@ -80,6 +98,10 @@ Add source material, rerun ingest and compile, and then regenerate the report.
 ## Counter-Case
 
 - The repo may simply be incomplete rather than the topic being unsupported.
+
+## Data Gaps
+
+- Add directly relevant primary evidence and rerun claim/state refresh.
 
 ## Open Questions
 
@@ -108,6 +130,8 @@ ${synthesis.summary}
 
 ${evidenceBullets(results, 280)}
 
+${renderRetrievalBudgetBlock(retrieval)}
+
 ${buildWatchContextBlock(watch)}
 
 ${buildClaimContextBlock(claims, state)}
@@ -125,6 +149,10 @@ ${topCluster}
 - The current repo may be over-representing one regime, one author cluster, or one style of evidence.
 - Review unresolved extraction gaps and classification gaps before treating this report as settled.
 - Treat the report as an internal working document, not as proof that the knowledge base is complete.
+
+## Data Gaps
+
+${buildDataGapSection(results, claims, retrieval)}
 
 ## Open Questions
 
@@ -148,11 +176,14 @@ function writeReport(root, topic, options = {}) {
     claimLimit: options.claimLimit,
     evidenceLimit: options.evidenceLimit
   });
-  const results = selectEvidence(root, watch.query, {
+  const retrieval = retrieveEvidence(root, watch.query, {
+    budget: options.budget || "L2",
+    mode: "report",
     limit: Number(options.limit || 10),
     excerptLength: 300,
     excludePrefixes: GROUNDED_EXCLUDE_PREFIXES
   });
+  const results = retrieval.results;
 
   const output = writeOutputDocument(root, {
     idPrefix: "REPORT",
@@ -160,14 +191,16 @@ function writeReport(root, topic, options = {}) {
     title: topic,
     outputDir: "outputs/reports",
     fileSlug: topic,
-    body: buildReportBody(topic, results, watch, claims, state),
+    body: buildReportBody(topic, results, watch, claims, state, retrieval),
     sources: results.map((result) => result.relativePath),
     frontmatter: {
       report_topic: topic,
       generation_mode: "grounded_report",
       watch_profile: watch.profile ? watch.profile.relativePath : "",
       state_path: state.statePath,
-      claim_count: claims.length
+      claim_count: claims.length,
+      retrieval_budget: retrieval.activeBudget,
+      retrieval_escalated: retrieval.escalated
     }
   });
 

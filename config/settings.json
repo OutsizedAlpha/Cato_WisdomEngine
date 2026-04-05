@@ -3,7 +3,9 @@
   "version": "0.1.0",
   "search": {
     "defaultLimit": 8,
-    "excerptLength": 280
+    "excerptLength": 280,
+    "defaultBudget": "L2",
+    "minGrounding": 3
   },
   "ask": {
     "defaultTopDocs": 6,
@@ -17,6 +19,8 @@
     "inbox": "inbox/drop_here",
     "selfInbox": "inbox/self",
     "sourceNotes": "wiki/source-notes",
+    "drafts": "wiki/drafts",
+    "appendReview": "wiki/drafts/append-review",
     "selfRoot": "wiki/self",
     "concepts": "wiki/concepts",
     "entities": "wiki/entities",

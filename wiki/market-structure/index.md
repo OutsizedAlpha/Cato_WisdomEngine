@@ -5,7 +5,7 @@ Use this area for flow mechanics, dealer positioning, passive flows, options plu
 <!-- CATO:BEGIN_MANAGED_BLOCK index -->
 # Market Structure
 
-Generated: 2026-04-03
+Generated: 2026-04-05
 
 ## dealer gamma
 - None yet.

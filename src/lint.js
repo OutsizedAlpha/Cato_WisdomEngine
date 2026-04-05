@@ -3,10 +3,11 @@ const path = require("node:path");
 const { REQUIRED_FRONTMATTER } = require("./constants");
 const { extractWikiLinks, normalizeWikiTarget, parseFrontmatter, sectionContent } = require("./markdown");
 const { ensureProjectStructure, listMarkdownNotes } = require("./project");
+const { buildCatalogGraph, buildTagSummary, loadCatalogNotes } = require("./wiki-catalog");
 const { nowIso, readText, relativeToRoot, timestampStamp, writeText } = require("./utils");
 
 function isRetiredStatus(frontmatter) {
-  return ["inactive", "obsolete", "retired"].includes(String(frontmatter.status || "").toLowerCase());
+  return ["inactive", "obsolete", "retired", "superseded"].includes(String(frontmatter.status || "").toLowerCase());
 }
 
 function noteKindRelative(relativePath) {
@@ -19,6 +20,9 @@ function noteKindRelative(relativePath) {
   }
   if (relativePath.startsWith("wiki/source-notes/")) {
     return "source-note";
+  }
+  if (relativePath.startsWith("wiki/drafts/")) {
+    return "draft-note";
   }
   if (relativePath.startsWith("wiki/claims/")) {
     return "claim-page";
@@ -133,6 +137,12 @@ function lintProject(root) {
           message: "Source note has no concepts or entities yet."
         });
       }
+      if (!frontmatter.document_class) {
+        issues.push({ severity: "warning", file: relative, message: "Source note is missing `document_class` routing." });
+      }
+      if (!frontmatter.draft_workspace_path) {
+        issues.push({ severity: "info", file: relative, message: "Source note does not link to an append-and-review draft note." });
+      }
     }
 
     if (kind === "thesis-page" && !sectionContent(body, "Tripwires / Falsifiers")) {
@@ -146,9 +156,24 @@ function lintProject(root) {
     if (kind === "state-page" && !sectionContent(body, "Managed Snapshot")) {
       issues.push({ severity: "warning", file: relative, message: "State page is missing a managed snapshot block." });
     }
+    if (kind === "state-page" && !sectionContent(body, "Managed Counter-Arguments")) {
+      issues.push({ severity: "warning", file: relative, message: "State page is missing a managed counter-arguments block." });
+    }
+    if (kind === "state-page" && !sectionContent(body, "Managed Data Gaps")) {
+      issues.push({ severity: "warning", file: relative, message: "State page is missing a managed data-gaps block." });
+    }
 
     if (kind === "decision-note" && !sectionContent(body, "Managed Strongest Counter-Case")) {
       issues.push({ severity: "warning", file: relative, message: "Decision note is missing a counter-case block." });
+    }
+    if (kind === "decision-note" && !sectionContent(body, "Managed Data Gaps")) {
+      issues.push({ severity: "warning", file: relative, message: "Decision note is missing a data-gaps block." });
+    }
+    if (kind === "claim-page" && !sectionContent(body, "Data Gaps / What Would Strengthen It")) {
+      issues.push({ severity: "warning", file: relative, message: "Claim page is missing a data-gaps block." });
+    }
+    if (kind === "claim-page" && !sectionContent(body, "Counter-Arguments / Weakening Evidence")) {
+      issues.push({ severity: "warning", file: relative, message: "Claim page is missing a counter-arguments block." });
     }
 
     for (const link of extractWikiLinks(content)) {
@@ -159,26 +184,56 @@ function lintProject(root) {
     }
   }
 
-  for (const filePath of listMarkdownNotes(root, "wiki/concepts").concat(listMarkdownNotes(root, "wiki/entities"))) {
-    const rawRelative = relativeToRoot(root, filePath);
-    if (/\/(?:index|README)\.md$/i.test(rawRelative)) {
+  const catalogNotes = loadCatalogNotes(root);
+  const graph = buildCatalogGraph(catalogNotes);
+  const tagSummary = buildTagSummary(catalogNotes);
+  const orphanKinds = new Set([
+    "concept-page",
+    "entity-page",
+    "claim-page",
+    "state-page",
+    "decision-note",
+    "thesis-page",
+    "synthesis-note",
+    "source-note"
+  ]);
+
+  for (const note of catalogNotes) {
+    if (/\/(?:index|README)\.md$/i.test(note.relativePath)) {
       continue;
     }
-    const { frontmatter } = parseFrontmatter(readText(filePath));
-    if (isRetiredStatus(frontmatter)) {
+    if (isRetiredStatus(note.frontmatter)) {
       continue;
     }
-    const relative = rawRelative.replace(/\.md$/i, "");
-    const withoutWiki = relative.replace(/^wiki\//, "");
-    const stem = path.basename(relative);
-    const inbound = (inboundCounts.get(relative) || 0) + (inboundCounts.get(withoutWiki) || 0) + (inboundCounts.get(stem) || 0);
-    if (inbound === 0) {
+    if (orphanKinds.has(note.kind) && !(graph.backlinks.get(note.relativePath) || []).length) {
       issues.push({
         severity: "info",
-        file: `${relative}.md`,
+        file: note.relativePath,
         message: "No inbound wiki links detected."
       });
     }
+    if (note.freshness?.stale) {
+      issues.push({
+        severity: note.kind === "draft-note" ? "info" : "warning",
+        file: note.relativePath,
+        message: `Stale ${note.kind || "note"}: ${note.freshness.ageDays} days old against ${note.freshness.thresholdDays}-day threshold.`
+      });
+    }
+    if (note.freshness?.stale && note.openThreads.length) {
+      issues.push({
+        severity: "warning",
+        file: note.relativePath,
+        message: `Stale note still has ${note.openThreads.length} explicit open thread(s).`
+      });
+    }
+  }
+
+  for (const tag of tagSummary.filter((entry) => entry.labels.length > 1)) {
+    issues.push({
+      severity: "warning",
+      file: "wiki/_indices/tags.md",
+      message: `Tag drift detected for \`${tag.key}\`: ${tag.labels.join(", ")}`
+    });
   }
 
   const grouped = {

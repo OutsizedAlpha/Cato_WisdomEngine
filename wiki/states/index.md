@@ -1,6 +1,6 @@
 # State Index
 
-Generated: 2026-04-03
+Generated: 2026-04-05
 
 - [[states/china-demand|China Demand]]
 - [[states/europe-macro|Europe Macro]]

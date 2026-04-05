@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-561EED62FC64.md
 figure_count: 6
+document_class: macro_data_release
+draft_workspace_path: wiki/drafts/append-review/italy-manufacturing-pmi.md
 ---
 
 # Italy manufacturing PMI

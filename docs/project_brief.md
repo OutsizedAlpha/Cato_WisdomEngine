@@ -1,62 +1,76 @@
 # Project Brief
 
-This file turns the user's long-form conversation into the current working brief for the repository. It should stay concise, practical, and aligned to the repo's actual build direction.
+This file records the current product brief for the repository, not an earlier bootstrap intention.
 
 ## Objective
 
-- Build `Cato-WisdomEngine` as a local, file-based research operating system for evidence-backed knowledge work.
-- Support a workflow where raw material is ingested, preserved, extracted, compiled into a structured markdown knowledge base, queried by LLM agents, and used to generate durable outputs such as reports, briefs, decks, and charts.
-- Make the system especially strong for investment research: macro, market structure, derivatives, company work, portfolio process, and surveillance.
-- Add a structured self-model layer so the system can understand the user's principles, heuristics, communication style, and recurring blind spots without becoming sycophantic.
+- Build `Cato_WisdomEngine` as a local, file-first, markdown-first research operating system.
+- Turn evidence into durable knowledge, durable knowledge into beliefs, and beliefs into current-state and decision support.
+- Make the system especially strong for investment research across macro, market structure, derivatives, company work, surveillance, and PM process.
+- Preserve a structured self-model so output can reflect the user's principles, heuristics, biases, and tensions without collapsing into sycophancy.
 
 ## Scope
 
-- MVP scope is a local-first repository operated from PowerShell and viewed in Obsidian.
-- Core layers in scope: acquisition/inbox, immutable raw evidence, extracted artefacts, compiled wiki, outputs, manifests/logs, config/policies/prompts, and CLI tooling.
-- Core workflows in scope: `init`, `ingest`, `compile`, `lint`, and `ask`.
-- Phase-2 workflows now in scope and implemented locally: `report`, `deck`, `surveil`, `watch`, `watch-refresh`, `watch-list`, `doctor`, `self-ingest`, `reflect`, `principles`, and `postmortem`.
-- Phase-3 knowledge and decision layers are now in scope and implemented locally: `claims-refresh`, `claim-diff`, `why-believe`, `state-refresh`, `state-diff`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, and `what-changed-for-markets`.
-- GPT/Codex-to-Cato handoff is now in scope: Codex does the live web research and authored synthesis, while Cato imports the cited sources plus the finished artefact through `capture-research`.
-- Frontier-assisted claim/state/decision handoff is now in scope: Cato prepares deterministic context through `frontier-pack`, Codex performs the deeper reasoning, and Cato captures the final authored result through `capture-frontier`.
-- Knowledge objects in scope: source notes, claim pages, concept pages, entity pages, state pages, regime pages, decision notes, timeline pages, thesis pages, watch profiles, surveillance pages, question pages, synthesis pages, and self-model notes.
+Implemented and in scope now:
+
+- local ingest for notes, PDFs, images, datasets, web captures, and repo snapshots
+- semantic document-class routing during ingest
+- append-and-review draft workspace separate from canonical notes
+- extracted text, metadata, table previews, and figure notes
+- source notes, concepts, entities, theses, synthesis notes, and self-model notes
+- atomic claim ledger, claim snapshots, claim diffs, and belief briefs
+- state pages, state diffs, and regime briefs
+- decision notes, meeting briefs, red-team briefs, and market-change briefs
+- watch profiles, surveillance pages, and derived watch ontology
+- GPT/Codex research handoff via `capture-research`
+- zero-API frontier handoff via `frontier-pack` and `capture-frontier`
+- structured sidecar catalog, backlink/tag/open-thread surfaces, and maintenance linting
 
 ## Constraints
 
-- `AGENTS.md` is the canonical shared policy file; `CLAUDE.md` remains a thin loader only.
-- The system must remain markdown-first, file-first, auditable, and version-controllable.
-- Raw evidence must be kept separate from derived knowledge; the LLM may maintain the knowledge layer but must not rewrite source truth.
-- Windows PowerShell is the primary operating environment for the first version.
-- Obsidian is the viewing/navigation layer, not the system of record.
-- Changes should stay minimal and practical; avoid speculative architecture and unnecessary dependencies.
-- Investment-grade provenance matters: important claims should remain traceable to source notes and raw artefacts.
+- `AGENTS.md` remains the canonical shared policy file.
+- The system stays markdown-first, file-first, auditable, and git-friendly.
+- Raw evidence stays separate from derived knowledge.
+- Windows PowerShell remains the primary operating environment for the current version.
+- Obsidian is the browsing layer, not the system of record.
+- Changes should remain pragmatic and avoid speculative infrastructure.
+- Important claims must remain traceable to source notes and raw artefacts.
+- The repo stays agent-driven rather than embedding external LLM execution directly into the CLI.
 
 ## Assumptions
 
-- The user will work locally with a frontier LLM agent such as Codex/GPT-5.x as the main reasoning/compiler layer.
-- New source material will arrive as PDFs, clipped web articles, images, repo snapshots, datasets, transcripts, and personal notes.
-- The user wants the system to improve cumulatively: good outputs should be fileable back into the knowledge base as durable synthesis.
-- A disciplined markdown ontology plus good index pages is sufficient for the first version; vector search and fine-tuning are later options, not initial requirements.
-- The user values first-principles, PM-grade output that is concise, rigorous, and willing to challenge weak assumptions.
+- The user operates with an external frontier model such as Codex/GPT-5.x as the reasoning layer.
+- New material arrives as PDFs, web captures, images, repo snapshots, datasets, transcripts, and rough notes.
+- The user wants cumulative improvement: useful outputs should become durable repo assets.
+- Lexical search plus maintained indices and sidecar cataloging are sufficient for the current phase.
+- The user values PM-grade output: direct, rigorous, source-grounded, and willing to challenge weak assumptions.
 
 ## Non-goals
 
-- Treating the repo as just a dump folder that an LLM scans ad hoc.
-- Mixing raw evidence and derived interpretation in the same layer.
-- Building fine-tuning, complex RAG, or heavyweight infrastructure before the file-based workflow proves itself.
-- Letting the self-model hard-code conclusions or simply mirror the user's priors.
-- Repeating the full policy text from `AGENTS.md` in project memory files.
+- treating the repo as a passive dump folder
+- mixing raw evidence and derived interpretation
+- replacing markdown with a database-first storage model right now
+- embedding fake always-on automation or hidden model calls into the CLI
+- building heavyweight RAG or fine-tuning infrastructure before the workflow justifies it
+- duplicating the full policy content from `AGENTS.md` into project memory
 
 ## Current Phase
 
-- MVP foundation implemented.
-- The repository now includes the first working local runtime, repo structure, templates, policies, fixture data, and test coverage for the core workflow.
-- Immediate goal shifts from repo bootstrap to phase-3 hardening and integration: stronger claim quality, cleaner state/regime surfaces, sharper PM decision outputs, and continued GPT/Codex-to-Cato handoff discipline for both live research and frontier-assisted decision work.
+- The bootstrap phase is complete.
+- The repo is now in operational hardening and refinement.
+- The current focus is maintaining a clean belief/state/decision runtime, improving source and claim quality, and keeping the agent-driven handoff model disciplined.
+
+## Settled Decisions
+
+- Keep the runtime Node-first for now.
+- Keep the product markdown-first and file-first.
+- Keep external frontier reasoning outside the CLI.
+- Use `capture-research` and `capture-frontier` as the integration boundary.
+- Keep draft append-and-review notes distinct from canonical knowledge and exclude them from grounded retrieval by default.
 
 ## Open Decisions
 
-- Whether to keep the runtime permanently Node-first or add a parallel Python tool layer once Python is reliably available on the machine.
-- Manifest format details and stable ID scheme for ingested sources.
-- Whether to add API-backed LLM execution inside the CLI or keep LLM synthesis as an external Codex/ChatGPT agent workflow over the repo.
-- How far the zero-API frontier-pack workflow can go before an embedded API bridge would add enough value to justify cost and complexity.
+- Whether a parallel Python tool layer is worth adding later once there is clear benefit beyond the current Node-first runtime.
 - How far to push deterministic claim extraction and state inference before adding optional model-assisted compile passes.
-- How aggressive watch-profile-driven retrieval and state routing should become before introducing richer semantic indexing or embedded model passes.
+- Whether lexical search plus the current sidecar catalog remains enough, or whether a richer structured query layer is justified later.
+- How aggressive watch-profile-driven routing should become before adding stronger semantic indexing.

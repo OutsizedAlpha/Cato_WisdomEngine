@@ -52,7 +52,7 @@ function buildCorpus(root) {
       }
       const isMarkdown = extension === ".md";
       const parsed = isMarkdown ? parseFrontmatter(rawContent) : { frontmatter: {}, body: rawContent };
-      if (["inactive", "obsolete", "retired"].includes(String(parsed.frontmatter.status || "").toLowerCase())) {
+      if (["inactive", "obsolete", "retired", "superseded"].includes(String(parsed.frontmatter.status || "").toLowerCase())) {
         continue;
       }
       const content = isMarkdown ? stripMarkdownFormatting(parsed.body) : rawContent;
@@ -127,9 +127,18 @@ function searchCorpus(root, query, options = {}) {
   const limit = Number(options.limit || 8);
   const excerptLength = Number(options.excerptLength || 280);
   const excludePrefixes = normalizeExcludePrefixes(options.excludePrefixes);
+  const includePrefixes = normalizeExcludePrefixes(options.includePrefixes);
 
   return buildCorpus(root)
-    .filter((document) => !excludePrefixes.some((prefix) => document.relativePath.toLowerCase().startsWith(prefix)))
+    .filter((document) => {
+      if (excludePrefixes.some((prefix) => document.relativePath.toLowerCase().startsWith(prefix))) {
+        return false;
+      }
+      if (includePrefixes.length && !includePrefixes.some((prefix) => document.relativePath.toLowerCase().startsWith(prefix))) {
+        return false;
+      }
+      return true;
+    })
     .map((document) => ({
       ...document,
       score: scoreDocument(document, query, queryTokens),

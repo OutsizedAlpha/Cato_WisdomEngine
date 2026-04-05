@@ -21,6 +21,7 @@ const {
   writeJsonl,
   writeText
 } = require("./utils");
+const { renderRetrievalBudgetBlock, retrieveEvidence } = require("./research");
 
 const CLAIM_SOURCE_DIRS = ["wiki/source-notes", "outputs/reports", "wiki/theses"];
 const FACT_TERMS = ["reported", "printed", "rose", "fell", "held", "stayed", "slipped", "widened", "narrowed"];
@@ -431,6 +432,43 @@ function renderClaimSourceReference(source) {
   return isNoteLikeMarkdown ? toWikiLink(normalized) : `\`${normalized}\``;
 }
 
+function claimCounterArguments(claim, claimIndex) {
+  const lines = claim.contradicting_claim_ids
+    .map((id) => claimIndex.get(id))
+    .filter(Boolean)
+    .slice(0, 4)
+    .map((other) => `- ${other.claim_text}`);
+
+  if (claim.status === "stale") {
+    lines.push("- The supporting evidence may be stale relative to the current market or operating context.");
+  }
+  if (claim.supporting_sources.length <= 1) {
+    lines.push("- This claim currently leans on a thin support map and may be overconfident.");
+  }
+
+  return [...new Set(lines)].join("\n") || "- No explicit counter-argument has been surfaced yet beyond normal review risk.";
+}
+
+function claimDataGaps(claim) {
+  const lines = [];
+  if (claim.supporting_sources.length <= 1) {
+    lines.push("- Add at least one independent supporting source before treating this as durable.");
+  }
+  if (claim.status === "contested") {
+    lines.push("- Resolve the contradiction cluster with fresher or more primary evidence.");
+  }
+  if (claim.status === "stale") {
+    lines.push("- Refresh this claim with evidence newer than the current 180-day staleness window.");
+  }
+  if (!claim.claim_date) {
+    lines.push("- Add a date anchor so the claim can be assessed in context.");
+  }
+  if (claim.claim_type !== "fact") {
+    lines.push("- Look for a primary source that can separate evidence from interpretation.");
+  }
+  return [...new Set(lines)].join("\n") || "- Current support is adequate for now, but fresher opposing evidence can still change the view.";
+}
+
 function writeClaimPage(root, claim, claimIndex) {
   const pagePath = claimPagePath(root, claim);
   const contradictions = claim.contradicting_claim_ids
@@ -485,6 +523,14 @@ ${support || "- None recorded."}
 ## Contradicting Claims
 
 ${contradictions || "- No direct contradiction cluster detected."}
+
+## Counter-Arguments / Weakening Evidence
+
+${claimCounterArguments(claim, claimIndex)}
+
+## Data Gaps / What Would Strengthen It
+
+${claimDataGaps(claim)}
 
 ## Related Concepts
 
@@ -764,7 +810,7 @@ function diffLatestClaimSnapshots(root, options = {}) {
   };
 }
 
-function buildWhyBelieveBody(topic, claims, evidence) {
+function buildWhyBelieveBody(topic, claims, evidence, retrieval) {
   if (!claims.length) {
     return `
 # Why Believe: ${topic}
@@ -778,6 +824,8 @@ The claim ledger does not yet contain enough relevant claims to answer this topi
 - Refresh claims after new ingest or reports.
 - Add directly relevant source notes or reports.
 - Create or refresh a state page if this is a live monitoring topic.
+
+${renderRetrievalBudgetBlock(retrieval)}
 `;
   }
 
@@ -815,13 +863,17 @@ ${claims
 ## Source Map
 
 ${evidence.length ? evidence.map((result) => `- ${renderResultReference(result)}`).join("\n") : "- No direct evidence notes matched in the current corpus."}
+
+${renderRetrievalBudgetBlock(retrieval)}
 `;
 }
 
 function writeWhyBelieve(root, topic, options = {}) {
   ensureProjectStructure(root);
   const claims = searchClaims(root, topic, { limit: Number(options.limit || 10) });
-  const evidence = searchCorpus(root, topic, {
+  const retrieval = retrieveEvidence(root, topic, {
+    budget: options.budget || "L2",
+    mode: "brief",
     limit: Number(options.limit || 8),
     excludePrefixes: options.excludePrefixes || [
       "outputs/",
@@ -833,9 +885,11 @@ function writeWhyBelieve(root, topic, options = {}) {
       "wiki/_indices/",
       "wiki/_maps/",
       "wiki/unresolved/",
+      "wiki/drafts/",
       "wiki/self/"
     ]
   });
+  const evidence = retrieval.results;
 
   const outputPath = path.join(
     root,
@@ -854,7 +908,7 @@ function writeWhyBelieve(root, topic, options = {}) {
         topic,
         sources: [...new Set(claims.flatMap((claim) => claim.supporting_sources).concat(evidence.map((result) => result.relativePath)))]
       },
-      buildWhyBelieveBody(topic, claims, evidence)
+      buildWhyBelieveBody(topic, claims, evidence, retrieval)
     )
   );
 

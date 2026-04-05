@@ -2,7 +2,7 @@
 id: CONCEPT-2026-FISCAL
 kind: concept-page
 title: fiscal
-status: active
+status: retired
 tags: []
 related: []
 ---

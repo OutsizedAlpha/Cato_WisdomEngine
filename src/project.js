@@ -7,12 +7,14 @@ function loadSettings(root) {
   const settingsPath = path.join(root, "config", "settings.json");
   return readJson(settingsPath, {
     projectName: "Cato_WisdomEngine",
-    search: { defaultLimit: 8, excerptLength: 280 },
+    search: { defaultLimit: 8, excerptLength: 280, defaultBudget: "L2", minGrounding: 3 },
     ask: { defaultTopDocs: 6, outputDirectory: "outputs/memos" },
     paths: {
       inbox: "inbox/drop_here",
       selfInbox: "inbox/self",
       sourceNotes: "wiki/source-notes",
+      drafts: "wiki/drafts",
+      appendReview: "wiki/drafts/append-review",
       selfRoot: "wiki/self",
       claims: "wiki/claims",
       concepts: "wiki/concepts",
@@ -61,6 +63,8 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "wiki", "_indices", "states.md"), "# State Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "regimes.md"), "# Regime Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "decisions.md"), "# Decision Index\n");
+  ensureFile(path.join(root, "wiki", "_indices", "tags.md"), "# Tag Index\n");
+  ensureFile(path.join(root, "wiki", "_indices", "backlinks.md"), "# Backlink Index\n");
   ensureFile(path.join(root, "wiki", "synthesis", "index.md"), "# Synthesis Index\n");
   ensureFile(path.join(root, "wiki", "timelines", "source-chronology.md"), "# Source Chronology\n");
   ensureFile(
@@ -90,6 +94,8 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "wiki", "watch-profiles", "index.md"), "# Watch Profile Index\n");
   ensureFile(path.join(root, "wiki", "theses", "index.md"), "# Thesis Index\n");
   ensureFile(path.join(root, "wiki", "surveillance", "index.md"), "# Surveillance Index\n");
+  ensureFile(path.join(root, "wiki", "drafts", "index.md"), "# Draft Workspace Index\n");
+  ensureFile(path.join(root, "wiki", "drafts", "append-review", "index.md"), "# Append And Review Queue\n");
   ensureFile(
     path.join(root, "wiki", "glossary", "watch-ontology.md"),
     "# Watch Ontology\n\nThis page is derived from active watch profiles. Edit the profiles, not this generated summary.\n"

@@ -2,7 +2,7 @@
 id: CONCEPT-2026-TRADE-IN
 kind: concept-page
 title: trade in
-status: active
+status: retired
 tags: []
 related: []
 ---

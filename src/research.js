@@ -2,7 +2,8 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { parseFrontmatter, renderMarkdown, stripMarkdownFormatting, toWikiLink, upsertManagedBlock } = require("./markdown");
 const { ensureProjectStructure, listMarkdownNotes, loadSettings } = require("./project");
-const { searchCorpus, tokenize } = require("./search");
+const { tokenize } = require("./search");
+const { renderRetrievalBudgetBlock, retrieveEvidence } = require("./retrieval");
 const {
   appendJsonl,
   makeId,
@@ -126,11 +127,16 @@ function synthesisParagraphs(subject, results, options = {}) {
 function selectEvidence(root, query, options = {}) {
   ensureProjectStructure(root);
   const settings = loadSettings(root);
-  return searchCorpus(root, query, {
+  const pack = retrieveEvidence(root, query, {
+    budget: options.budget || settings.search?.defaultBudget || "L2",
     limit: Number(options.limit || settings.search?.defaultLimit || 8),
     excerptLength: Number(options.excerptLength || settings.search?.excerptLength || 280),
-    excludePrefixes: options.excludePrefixes || []
+    excludePrefixes: options.excludePrefixes || [],
+    mode: options.mode || "default",
+    minGrounding: Number(options.minGrounding || settings.search?.minGrounding || 3),
+    noEscalate: Boolean(options.noEscalate)
   });
+  return pack.results;
 }
 
 function writeOutputDocument(root, options) {
@@ -254,8 +260,10 @@ module.exports = {
   noteSummary,
   promoteOutputToSynthesis,
   recurringThemes,
+  renderRetrievalBudgetBlock,
   renderResultReference,
   renderSourceList,
+  retrieveEvidence,
   selectEvidence,
   synthesisParagraphs,
   updateManagedNote,

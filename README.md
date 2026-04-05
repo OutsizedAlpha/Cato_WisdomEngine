@@ -1,315 +1,282 @@
 # Cato_WisdomEngine
 
-*Cato* (traditionally linked to the Latin *catus*): wise, shrewd, discerning, clear-sighted. The name points toward judgment sharpened by experience rather than ornament, which is the spirit this project is trying to carry into research, memory, and decision-making.
+*Cato* (traditionally linked to the Latin *catus*): wise, shrewd, discerning, clear-sighted. The name points toward judgment sharpened by experience rather than ornament, which is the spirit this project is meant to carry into research, memory, and decision-making.
 
-Cato_WisdomEngine is a local, file-based research operating system for building and maintaining an evidence-backed markdown knowledge base with LLM assistance.
+Cato is a local, markdown-first research operating system for turning evidence into durable knowledge, durable knowledge into beliefs, and beliefs into current-state and decision support.
 
-## In Plain English
+It is not "chat with files" and it is not "just a notes vault". It is a structured external memory and operating layer that sits underneath Codex/GPT or Claude so serious work compounds instead of disappearing into chat history.
 
-Cato is not “just a folder of notes” and it is not “just chat with files.”
+## What Cato Is
 
-It is a structured external memory and research runtime that sits underneath Codex/GPT or Claude:
+The shortest accurate description is:
 
-- you feed it evidence
-- it preserves the raw source material
-- it turns that material into source notes, claims, states, decisions, and reports
-- it lets a frontier model reason over that accumulated structure instead of starting from scratch every time
+- frontier model = reasoning, live research, authored synthesis
+- Cato = evidence store, markdown knowledge system, audit trail, and operating memory
 
-If you want the shortest possible definition:
+Cato preserves raw source material, writes source notes, refreshes a claim ledger, maintains state and regime views, produces decision-facing outputs, and keeps the repo healthy enough that future reasoning can start from structure instead of from scratch.
 
-- `Codex/GPT/Claude` = the thinking engine
-- `Cato` = the durable memory, evidence store, audit trail, and markdown knowledge system
+## What Exists Today
 
-## What Problem It Solves
+The current product is already more than an MVP scaffold. It now includes:
 
-Using a frontier model on its own is excellent for one-off work, but weak at durable accumulation unless you manually curate everything.
+- evidence ingest for notes, web captures, PDFs, images, datasets, and repo snapshots
+- semantic document-class routing on ingest, not just file-extension routing
+- append-and-review draft workspace separate from canonical wiki notes
+- extracted text, metadata, table previews, and figure notes
+- source notes, concept pages, entity pages, thesis pages, synthesis notes, and self-model notes
+- atomic claim pages plus claim snapshots, diffs, and "why believe" briefs
+- state pages, state diffs, and regime briefs
+- decision notes, meeting briefs, red-team briefs, and market-change briefs
+- watch profiles and surveillance pages for persistent live topics
+- GPT/Codex research handoff into the repo
+- zero-API frontier handoff over the claim/state/decision stack
+- retrieval-budget discipline from maps to canonical notes to evidence notes to raw extracts
+- tag, backlink, freshness, and open-thread maintenance surfaces
+- repo health checks for lint, OCR readiness, repo-local Python, and browser automation availability
 
-Typical failure modes of chat-only knowledge work:
+## Why It Matters
+
+Frontier chat alone is excellent at one-off work and weak at durable accumulation unless you manually curate everything.
+
+Typical failure modes without a system like this:
 
 - good work stays trapped in chat history
-- raw sources and later interpretation get mixed together
-- you cannot easily see what changed in the belief set
-- the model redoes context-building work repeatedly
-- surveillance and meeting prep become recurring manual labour
-- there is no durable map from evidence to claims to state to decision
+- raw evidence and later interpretation get mixed together
+- the same context-building work gets repeated over and over
+- you cannot easily answer what changed in the belief set
+- surveillance, meeting prep, and decision review stay manual
+- outputs are hard to audit back to sources
 
-Cato solves that by making every useful interaction land in a structured local system.
+Cato fixes that by making useful work land in a structured local system:
 
-## Why Use This Instead Of Just Using Codex Or Claude Alone?
+- evidence becomes source notes
+- source notes and reports become claims
+- claims become current-state views
+- current-state views feed decision support
+- outputs can be filed back into the knowledge layer
 
-Because a frontier model by itself is an extraordinary analyst, but not a durable institution.
+That is the difference between a file archive and a thinking instrument.
 
-What frontier chat alone gives you:
+## Core Principles
 
-- excellent reasoning
-- live web research
-- strong synthesis
-- flexible conversation
+- markdown-first
+- file-first
+- raw evidence remains separate from derived knowledge
+- auditable and git-friendly
+- deterministic plumbing in the CLI, not hidden magic
+- frontier reasoning stays with the external model
+- Cato stays agent-driven rather than embedding external LLM execution directly into the CLI
 
-What Cato adds on top:
+The last point is deliberate. Cato prepares context, captures outputs, and maintains memory. Codex/GPT remains the higher-order reasoning layer.
 
-- preserved raw evidence
-- one-note-per-source grounding
-- claim ledger
-- state and regime tracking
-- PM-facing decision surfaces
-- watch profiles and surveillance history
-- structured self-model context
-- durable markdown outputs you can revisit, compare, diff, and build on later
+## How It Works
 
-So the point is not to replace Codex, GPT, or Claude.
+### 1. Ingest And Route
 
-The point is to stop losing work between sessions and to make future reasoning start from a better base.
+You drop material into `inbox/drop_here/`.
 
-## Is This “Extended Memory”?
+Cato:
 
-Yes, but not in the vague marketing sense.
+- archives the original into `raw/`
+- writes extracted artefacts into `extracted/`
+- classifies the source by semantic document class
+- writes a canonical source note into `wiki/source-notes/`
+- writes a matching append-and-review draft note into `wiki/drafts/append-review/`
 
-The most accurate description is:
+Document-class routing matters because a filing, meeting note, transcript, chart, macro release, and repo snapshot should not all be treated as the same kind of evidence.
 
-- structured external memory
-- evidence-backed working memory for research
-- durable reasoning scaffolding for frontier models
+### 2. Compile The Knowledge Layer
 
-It is more than a memory layer because it does not just store past material. It also organises that material into:
+`compile` refreshes the maintained repo surfaces:
 
-- source notes
-- claims
-- state pages
-- regime surfaces
-- decision notes
-- watch profiles
-- synthesis artefacts
+- indices and maps
+- concept and entity pages
+- claim pages
+- timelines
+- watch ontology
+- unresolved registers
+- tag and backlink indices
+- open-thread register
+- structured sidecar catalog in `manifests/wiki_index.json`
 
-So “extended memory” is true, but incomplete. Cato is better understood as a research operating system with persistent memory.
+This is how the repo stays navigable and queryable without abandoning markdown as the source of truth.
 
-## What It Does
+### 3. Retrieve With Explicit Budgets
 
-- preserves raw source evidence
-- extracts machine-usable artefacts
-- treats repo snapshots and figures as evidence-bearing sources rather than second-class metadata
-- decomposes source notes and major outputs into an auditable claim ledger
-- maintains explicit state and regime pages for live macro, geopolitical, and market-structure monitoring
-- produces PM-facing decision notes, meeting briefs, red-team outputs, and market-change briefs
-- compiles source notes, concepts, entities, timelines, theses, and self-model notes
-- maintains watch profiles as persistent instructions for live surveillance topics
-- generates markdown-first outputs such as briefs, reports, decks, and memos
-- keeps the knowledge base healthier over time through linting, indexing, and search
+Grounded workflows now follow retrieval budgets:
 
-## How It Actually Helps In Practice
+- `L0` = maps, indices, glossary surfaces
+- `L1` = canonical knowledge pages such as concepts, claims, states, decisions
+- `L2` = evidence notes and prior grounded outputs
+- `L3` = raw extracted text
 
-If you are doing serious research, Cato improves the workflow in a few concrete ways:
+The rule is TLDR-first:
 
-- it separates raw truth from later interpretation, which reduces silent drift and self-referential nonsense
-- it turns repeated research into reusable assets instead of disposable chat output
-- it gives frontier models a better starting context for follow-up work
-- it makes meeting prep, surveillance, and briefing work faster because the repo already knows the topic structure
-- it preserves provenance, which matters when you need to explain why you believe something
-- it lets your own principles and PM style shape output framing without automatically hard-coding conclusions
+- start with the shortest maintained route
+- escalate only when the shorter route is insufficient
+- keep workspace drafts out of grounded retrieval by default
+
+### 4. Work Through Belief, State, And Decision
+
+Cato now has a proper stack:
+
+- claims = atomic belief units
+- states = current view on a monitored subject
+- regimes = multi-state world-model surfaces
+- decisions = PM-facing implications, risks, triggers, and counter-cases
+
+Those pages now explicitly include:
+
+- counter-arguments
+- data gaps
+- what would flip the view
+- current evidence route
+
+### 5. Use The Right Loop
+
+There are three main loops.
+
+Local evidence loop:
+
+1. add files
+2. run `ingest`
+3. run `compile`
+4. run `ask`, `report`, `claims-refresh`, `state-refresh`, or `decision-note`
+
+Research handoff loop:
+
+1. let Codex/GPT do live web research
+2. save the researched sources and final authored output into a bundle
+3. run `capture-research`
+4. let Cato ingest, compile, refresh watches, and store the output durably
+
+Frontier handoff loop:
+
+1. run `frontier-pack`
+2. let Codex/GPT reason over the generated context
+3. save the final authored output into the generated capture bundle
+4. run `capture-frontier`
+
+## Repository Layout
+
+- `config/` = settings, prompts, policies, ontology, schemas
+- `inbox/` = staging area for new evidence and self-notes
+- `raw/` = immutable evidence archive
+- `extracted/` = text, metadata, figures, tables
+- `manifests/` = structured sidecars and change-tracking files
+- `wiki/source-notes/` = one-note-per-source grounding layer
+- `wiki/drafts/append-review/` = working draft queue distinct from canonical notes
+- `wiki/claims/` = atomic belief ledger
+- `wiki/states/` = current-state pages
+- `wiki/regimes/` = regime-level world-model surfaces
+- `wiki/decisions/` = durable decision-support notes
+- `wiki/watch-profiles/` = persistent watch instructions
+- `wiki/surveillance/` = refreshed live watch pages
+- `wiki/self/` = principles, heuristics, postmortems, biases, tensions
+- `outputs/` = generated memos, reports, briefs, decks, meeting briefs
+- `logs/` = lint, doctor, and workflow reports
+- `cache/` = frontier packs, claim snapshots, and disposable runtime files
+- `src/` = Node implementation
+- `tests/` = verification
+
+## Quick Start
+
+1. Open a terminal in the repo root.
+2. Run `.\cato.cmd init`.
+3. Drop evidence into `inbox/drop_here/`.
+4. Run `.\cato.cmd ingest`.
+5. Run `.\cato.cmd compile`.
+6. Run `.\cato.cmd search "your topic"`.
+7. Run `.\cato.cmd ask "your question"` or `.\cato.cmd report "your topic"`.
+8. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
+9. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
+10. Run `.\cato.cmd decision-note "topic"` or `.\cato.cmd meeting-brief "Weekly investment meeting brief"` for decision-facing outputs.
+11. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
+
+## Core Commands
+
+Foundation:
+
+- `.\cato.cmd init`
+- `.\cato.cmd ingest`
+- `.\cato.cmd self-ingest`
+- `.\cato.cmd compile`
+- `.\cato.cmd search`
+- `.\cato.cmd ask`
+- `.\cato.cmd report`
+- `.\cato.cmd deck`
+- `.\cato.cmd lint`
+- `.\cato.cmd doctor`
+
+Belief and state:
+
+- `.\cato.cmd claims-refresh --snapshot`
+- `.\cato.cmd claim-diff --topic "..."`
+- `.\cato.cmd why-believe "..."`
+- `.\cato.cmd state-refresh "..."`
+- `.\cato.cmd state-diff "..."`
+- `.\cato.cmd regime-brief --set weekly-investment-meeting`
+
+Decision and monitoring:
+
+- `.\cato.cmd watch "..."`
+- `.\cato.cmd watch-refresh`
+- `.\cato.cmd watch-list`
+- `.\cato.cmd surveil "..."`
+- `.\cato.cmd meeting-brief "..."`
+- `.\cato.cmd decision-note "..."`
+- `.\cato.cmd red-team "..."`
+- `.\cato.cmd what-changed-for-markets`
+
+Handoffs:
+
+- `.\cato.cmd capture-research .\path\to\bundle.json`
+- `.\cato.cmd frontier-pack "topic" --mode decision`
+- `.\cato.cmd capture-frontier .\path\to\bundle.json --promote`
+
+Self-model:
+
+- `.\cato.cmd reflect`
+- `.\cato.cmd principles`
+- `.\cato.cmd postmortem "title"`
+
+Run `.\cato.cmd help` for arguments and options.
+
+## Obsidian, Python, And Browser Tooling
+
+Obsidian is optional. It is the reading and navigation layer, not the control surface.
+
+The runtime is Node-first. Repo-local Python wrappers exist so Python-dependent utilities can still be reached from the repo shell. Browser automation is treated as an environment capability, not as an in-repo dependency, and `doctor` verifies Playwright/Puppeteer readiness when needed.
 
 ## What Cato Is Not
 
 - not a replacement for Codex/GPT/Claude
-- not a vector database product
-- not a fine-tuned model
+- not a vector-database product
 - not a hidden long-context trick
+- not an always-on daemon
+- not a storage rewrite away from markdown
+- not a fake embedded model runtime
 - not just a markdown vault
 - not just a RAG layer
 
 It is the structured local system those tools can think through and write into.
 
-## Core Rule
+## Recommended Mental Model
 
-Raw evidence is immutable. Derived knowledge lives in the `wiki/` layer. Outputs belong in `outputs/` unless they become durable synthesis worth filing back into `wiki/`.
+Use this mental model:
 
-## Repository Layout
+- raw evidence is truth
+- source notes are grounded interpretation
+- claims are belief units
+- states are the current world model
+- decisions are mandate-facing judgement
+- drafts are workspace
+- outputs are artefacts
+- Cato keeps the whole chain inspectable
 
-- `config/` = settings, ontology, prompt guides, policies, schemas
-- `inbox/` = staging area for new evidence and self-authored notes
-- `raw/` = preserved source archive
-- `manifests/` = source manifests and hash tracking
-- `extracted/` = text, metadata, figures, and tables derived from raw evidence
-- `wiki/` = compiled knowledge layer and self-model
-- `wiki/claims/` = atomic claim ledger
-- `wiki/states/` and `wiki/regimes/` = canonical current-state surfaces
-- `wiki/decisions/` = durable decision-support notes
-- `outputs/` = generated answer artefacts
-- `logs/` = lint and workflow logs
-- `cache/` = disposable local cache
-- `src/` = Node implementation
-- `tests/` = focused verification
+If you need the deeper operating detail, read:
 
-## Quick Start
-
-1. Open a terminal in this folder.
-2. Run `.\cato.cmd init`.
-3. Drop source files into `inbox/drop_here/`.
-4. Run `.\cato.cmd ingest`.
-5. Run `.\cato.cmd compile`.
-6. Run `.\cato.cmd search "your topic"`.
-7. Run `.\cato.cmd ask "your question"`.
-8. Run `.\cato.cmd report "your topic"` or `.\cato.cmd surveil "your topic"` when you need a stronger output or a live watch page.
-9. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger updated and diffable.
-10. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
-11. Run `.\cato.cmd meeting-brief "Weekly investment meeting brief"` or `.\cato.cmd decision-note "topic"` when you want mandate-facing output.
-12. Run `.\cato.cmd lint`.
-
-Obsidian is optional. It is the reading and navigation layer, not the control surface. You can run the whole workflow from PowerShell/WSL and use Obsidian only when you want to browse the markdown corpus comfortably.
-
-For live web research through GPT/Codex:
-
-1. Let Codex/GPT-5.4 do the live research in conversation.
-2. Save the researched sources and the finished memo/report/deck into a JSON bundle shaped like `commands\research-capture.example.json`.
-3. Run `.\cato.cmd capture-research .\commands\research-capture.example.json`.
-
-That keeps GPT as the live researcher and Cato as the durable ingestion, provenance, wiki, and output layer.
-
-For frontier-quality claim/state/decision reasoning without embedded API access:
-
-1. Run `.\cato.cmd frontier-pack "topic" --mode decision` or `.\cato.cmd frontier-pack "Weekly investment meeting brief" --mode meeting`.
-2. Let Codex/GPT read the generated files in `cache/frontier-packs/`.
-3. Fill the generated `...-capture.json` bundle with the final authored output and any fresh web sources Codex discovered.
-4. Run `.\cato.cmd capture-frontier .\cache\frontier-packs\...\...-capture.json --promote`.
-
-That keeps Codex as the frontier reasoning layer while Cato remains the durable structure, provenance, and memory layer.
-
-## Core Operating Model
-
-There are now two complementary loops:
-
-1. Local evidence loop
-- you add files manually
-- Cato ingests them
-- Cato builds source notes and the wiki
-- you ask questions or generate outputs from the local corpus
-
-2. Frontier-assisted loop
-- Cato prepares structured local context
-- Codex/GPT does the harder reasoning and optional live web work
-- Cato captures the final result back into the repo with provenance
-
-This is the intended symbiosis.
-
-For persistent live topics:
-
-1. Run `.\cato.cmd watch "topic" --context "why this matters"`.
-2. Run `.\cato.cmd watch-refresh` whenever you want all active watches refreshed.
-3. Run `.\cato.cmd report "topic"` or `.\cato.cmd deck "topic"` and Cato will use the matching watch profile when one exists.
-
-If you prefer double-click launchers instead of typing commands, use the wrappers in `commands/`. Start with:
-
-- `commands\Open-Cato-Vault.cmd`
-- `commands\Refresh-Cato.cmd`
-- `commands\Write-Report.cmd`
-- `commands\Run-Surveillance.cmd`
-- `commands\Create-Watch.cmd`
-- `commands\Refresh-Watches.cmd`
-- `commands\Import-Research-Bundle.cmd`
-- `commands\Prepare-Frontier-Pack.cmd`
-- `commands\Import-Frontier-Bundle.cmd`
-- `commands\Run-Claims.cmd`
-- `commands\Refresh-State.cmd`
-- `commands\Write-Regime-Brief.cmd`
-- `commands\Write-Decision-Note.cmd`
-- `commands\Write-Meeting-Brief.cmd`
-- `commands\Run-Red-Team.cmd`
-- `commands\Run-Market-Changes.cmd`
-
-See `docs/operator_guide.md` for the operating model behind those launchers.
-See `docs/research_handoff.md` for the exact GPT/Codex-to-Cato research handoff flow and bundle shape.
-See `docs/frontier_handoff.md` for the zero-API frontier-assist flow over the claim/state/decision stack.
-
-For personal thinking and PM process notes:
-
-1. Drop rough notes into `inbox/self/`.
-2. Run `.\cato.cmd self-ingest`.
-3. Run `.\cato.cmd compile`.
-
-## Python In This Repo
-
-This machine has Python 3.13 registered, but shell resolution may be unreliable when the interpreter comes from the Windows Store package path. Repo-local wrappers are provided:
-
-- `.\python.cmd`
-- `.\py.cmd`
-- `.\Use-CatoPython.ps1`
-- `.\Use-CatoPython.cmd`
-
-For a PowerShell session in this folder, run:
-
-```powershell
-.\Use-CatoPython.cmd
-python --version
-```
-
-Resolution order:
-
-1. local `.venv\Scripts\python.exe` if present
-2. registry-resolved `HKCU\SOFTWARE\Python\PythonCore\3.13\InstallPath\ExecutablePath`
-
-## Command Reference
-
-- `.\cato.cmd init` = repair/create the operating structure and seed core files
-- `.\cato.cmd ingest` = archive evidence from `inbox/drop_here/`, extract text from notes/web/PDFs, apply image OCR when available, ingest repo directories/archives, and draft source notes with figure/table sidecars where relevant
-- `.\cato.cmd ingest --url "https://..."` = fetch a web page into the ingest pipeline without manual clipping
-- `.\cato.cmd capture-research .\path\to\bundle.json` = import a GPT/Codex research bundle, download the cited web sources, ingest them as proper evidence, compile the repo, optionally refresh a watch, and write the supplied memo/report/deck into `outputs/`
-- `.\cato.cmd frontier-pack "topic"` = refresh the deterministic claim/state/decision scaffolding and write a frontier-ready context pack, prompt, and starter capture bundle into `cache/frontier-packs/`
-- `.\cato.cmd capture-frontier .\path\to\bundle.json` = capture a Codex-authored frontier output back into Cato with both local context sources and any new live web sources preserved
-- `.\cato.cmd self-ingest` = convert self-authored notes into structured self-model notes
-- `.\cato.cmd compile` = rebuild indices, maps, claim pages, managed evidence blocks, and unresolved registers
-- `.\cato.cmd claims-refresh --snapshot` = rebuild the atomic claim ledger and optionally write a diffable snapshot
-- `.\cato.cmd claim-diff --topic "..."` = compare the latest two claim snapshots
-- `.\cato.cmd why-believe "topic"` = write a belief brief grounded in the current claim ledger plus source evidence
-- `.\cato.cmd search "query"` = rank relevant notes and extracted artefacts
-- `.\cato.cmd ask "question"` = produce a grounded markdown memo from the current corpus
-- `.\cato.cmd report "topic"` = produce a stronger report-style output in `outputs/reports/`
-- `.\cato.cmd deck "topic"` = produce a Marp-friendly markdown slide deck in `outputs/decks/`
-- `.\cato.cmd surveil "topic"` = update a persistent surveillance page in `wiki/surveillance/`
-- `.\cato.cmd watch "topic"` = create or update a persistent watch profile and refresh the related surveillance page
-- `.\cato.cmd watch-refresh` = refresh one or all active watch profiles
-- `.\cato.cmd watch-list` = list active watch profiles
-- `.\cato.cmd state-refresh "subject"` = refresh a canonical state page in `wiki/states/`
-- `.\cato.cmd state-diff "subject"` = compare the last two state snapshots for that subject
-- `.\cato.cmd regime-brief --set weekly-investment-meeting` = write a regime brief and refresh the corresponding canonical regime page
-- `.\cato.cmd meeting-brief "title"` = write a PM-facing meeting brief into `outputs/meeting-briefs/`
-- `.\cato.cmd decision-note "topic"` = refresh a durable decision-support note in `wiki/decisions/`
-- `.\cato.cmd red-team "topic"` = write a counter-case and blind-spot brief
-- `.\cato.cmd what-changed-for-markets` = write a state-led change brief across the chosen market subjects
-- `.\cato.cmd reflect` = summarise the current self-model and refresh the tension register
-- `.\cato.cmd principles` = write a current principles snapshot from the self-model layer
-- `.\cato.cmd postmortem "title"` = create a structured self postmortem note
-- `.\cato.cmd doctor` = run repo health checks and write a doctor report
-- `.\cato.cmd lint` = check structure, metadata, and link integrity
-
-Run `.\cato.cmd help` for command options.
-
-## Design Notes
-
-- The CLI handles deterministic plumbing and repository maintenance.
-- The CLI now supports memo, report, deck, surveillance, watch-profile, claim-ledger, state/regime, decision-support, self-reflection, doctor, and promotion workflows directly over the local corpus.
-- Live internet research should come from GPT/Codex itself; Cato now provides a handoff layer so researched sources and LLM-authored outputs become durable repo artefacts instead of ephemeral chat-only work.
-- Claim/state/decision quality can now be frontier-assisted without API embedding through the `frontier-pack -> Codex reasoning -> capture-frontier` loop.
-- The claim ledger is now the belief layer between source notes and higher-order outputs.
-- State pages and regime briefs are now canonical current-world-model surfaces rather than ad hoc reports.
-- Decision outputs now combine claims, states, watch context, and the self-model so Cato can answer mandate-aware questions instead of only summarising evidence.
-- Obsidian is the reading and navigation layer, not the truth layer.
-- Git should be used from day one to preserve diffs and rollback.
-- `docs/operator_guide.md` explains the daily loop and what the launcher layer is actually automating.
-- `docs/frontier_handoff.md` explains the zero-API frontier-assist contract.
-
-## Why This Matters For Serious Research
-
-The real value is not “the model answers questions about my files.”
-
-The real value is:
-
-- evidence becomes structured knowledge
-- structured knowledge becomes claims
-- claims become a current state view
-- current state becomes decision support
-- the whole thing remains inspectable and reusable
-
-That is the difference between an archive and a thinking instrument.
-
-## Current Runtime
-
-This first implementation is Node-first so it runs on the current machine without requiring a Python interpreter on `PATH`.
+- [docs/operator_guide.md](docs/operator_guide.md)
+- [docs/research_handoff.md](docs/research_handoff.md)
+- [docs/frontier_handoff.md](docs/frontier_handoff.md)
+- [docs/project_map.md](docs/project_map.md)

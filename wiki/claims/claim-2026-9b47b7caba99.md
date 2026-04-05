@@ -53,6 +53,16 @@ The UK is vulnerable to imported inflation more than to domestic overheating.
 - [[claims/claim-2026-64e95553b988|Europe improved on activity but not in a clean enough way to relax about inflation transmission.]]
 - [[claims/claim-2026-7db2bd48f562|In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is…]]
 
+## Counter-Arguments / Weakening Evidence
+
+- Europe improved on activity but not in a clean enough way to relax about inflation transmission.
+- In the UK, imported inflation looks more dangerous than domestic growth looks strong, which is not a good mix for duration.
+
+## Data Gaps / What Would Strengthen It
+
+- Resolve the contradiction cluster with fresher or more primary evidence.
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - inflation

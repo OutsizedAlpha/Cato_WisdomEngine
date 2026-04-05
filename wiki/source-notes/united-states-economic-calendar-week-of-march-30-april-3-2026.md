@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-5A7326140C0D.md
 figure_count: 3
+document_class: meeting_notes
+draft_workspace_path: wiki/drafts/append-review/united-states-economic-calendar-week-of-march-30-april-3-2026.md
 ---
 
 # United States economic calendar week of March 30-April 3, 2026

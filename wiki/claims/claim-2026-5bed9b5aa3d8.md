@@ -37,6 +37,15 @@ Used to align China official data with consensus and prior readings.
 
 - No direct contradiction cluster detected.
 
+## Counter-Arguments / Weakening Evidence
+
+- This claim currently leans on a thin support map and may be overconfident.
+
+## Data Gaps / What Would Strengthen It
+
+- Add at least one independent supporting source before treating this as durable.
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - pmi

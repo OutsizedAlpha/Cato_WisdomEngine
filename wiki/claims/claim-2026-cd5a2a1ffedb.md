@@ -53,6 +53,16 @@ Softer wages help at the margin, but payrolls, claims, and ISM together argue fo
 - [[claims/claim-2026-292b0283a637|March nonfarm payrolls printed 178K against a 60K consensus after a sharply negative revised Fe…]]
 - [[claims/claim-2026-833112a64b26|Stronger payrolls, firmer ISM, and still-low claims do not validate an immediate recession trad…]]
 
+## Counter-Arguments / Weakening Evidence
+
+- March nonfarm payrolls printed 178K against a 60K consensus after a sharply negative revised February base, unemployment slipped to 4.3%, initial jobless claims stayed low at 202K, and ISM manufacturing improved to 52.7.
+- Stronger payrolls, firmer ISM, and still-low claims do not validate an immediate recession trade.
+
+## Data Gaps / What Would Strengthen It
+
+- Resolve the contradiction cluster with fresher or more primary evidence.
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - None linked.

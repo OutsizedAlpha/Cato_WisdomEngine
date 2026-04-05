@@ -52,6 +52,14 @@ The trade deficit widened to $57.3 billion in February, but the broader activity
 
 - No direct contradiction cluster detected.
 
+## Counter-Arguments / Weakening Evidence
+
+- No explicit counter-argument has been surfaced yet beyond normal review risk.
+
+## Data Gaps / What Would Strengthen It
+
+- Current support is adequate for now, but fresher opposing evidence can still change the view.
+
 ## Related Concepts
 
 - None linked.

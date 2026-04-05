@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-BD50ACFF7C7D.md
 figure_count: 10
+document_class: meeting_notes
+draft_workspace_path: wiki/drafts/append-review/bank-of-japan-tankan-summary-march-2026-survey.md
 ---
 
 # Bank of Japan Tankan summary, March 2026 survey

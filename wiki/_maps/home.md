@@ -20,11 +20,11 @@ Core domains:
 <!-- CATO:BEGIN_MANAGED_BLOCK overview -->
 ## Managed Overview
 
-- Source notes: 16
-- Claims: 117
-- Contested claims: 30
-- Concepts: 31
-- Entities: 15
+- Source notes: 17
+- Claims: 122
+- Contested claims: 31
+- Concepts: 26
+- Entities: 19
 - Timelines: 1
 - States: 9
 - Regimes: 1
@@ -33,7 +33,9 @@ Core domains:
 - Watch profiles: 1
 - Surveillance pages: 1
 - Self notes: 2
+- Draft workspace notes: 17
 - Contradiction candidates: 0
-- Synthesis candidates: 14
-- Last compiled: 2026-04-03T19:04:40.276Z
+- Synthesis candidates: 3
+- Open threads: 201
+- Last compiled: 2026-04-05T15:47:41.053Z
 <!-- CATO:END_MANAGED_BLOCK overview -->

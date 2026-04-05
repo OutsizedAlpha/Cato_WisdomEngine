@@ -22,17 +22,18 @@ related: ["extracted/text/SRC-2026-7DD7B91D4D02.txt","extracted/text/SRC-2026-BD
 - Market lens: rates, FX, global equities, credit
 - Watch profile: [[watch-profiles/global-macro|Global Macro]]
 - Query route: Global Macro macro climate macro regime overall macro growth inflation liquidity policy regimes Federal Reserve European Central Bank Bank of England Bank of Japan China macro weekly investment meeting geopolitics and macro ECB PBOC United States United Kingdom Euro Area Germany Japan South Korea Brazil Use labor market manufacturing cycle global trade oil shock shipping disruption rates dollar intermarket analysis asset cross geopolitical investment meetings releases relevant spillovers track transmission
+- Retrieval budget: L2
 <!-- CATO:END_MANAGED_BLOCK profile -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK snapshot -->
 ## Managed Snapshot
 
-- Last refreshed: 2026-04-03T19:05:52.272Z
+- Last refreshed: 2026-04-05T15:47:52.883Z
 - State label: contested
 - Confidence: high
 - Claim count: 12
 - Evidence count: 8
-- Summary: Cross-asset macro regime and the balance between growth resilience, inflation pressure, and liquidity conditions. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. It is that the macro tape remains resilient enough that geopolitical inflation pressure still matters. That matters because it keeps the global macro signal from becoming outright bearish, but it also warns against reading one official China PMI bounce as a durable all-clear. Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals become more fragile if the market concludes that geopolitical inflation is pushing yields higher without delivering a clean upside growth impulse. Primary evidence route: SRC 2026 7DD7B91D4D02; SRC 2026 BD50ACFF7C7D; SRC 2026 43CBDAEA5E65.
+- Summary: Cross-asset macro regime and the balance between growth resilience, inflation pressure, and liquidity conditions. The current state is contested. 12 relevant claims and 8 grounded evidence notes currently support the view. It is that the macro tape remains resilient enough that geopolitical inflation pressure still matters. That matters because it keeps the global macro signal from becoming outright bearish, but it also warns against reading one official China PMI bounce as a durable all-clear. Rate-sensitive long-duration equities, consumer discretionary, and Europe/Japan cyclicals become more fragile if the market concludes that geopolitical inflation is pushing yields higher without delivering a clean upside growth impulse. Primary evidence route: Global Macro frontier decision brief; Weekly Investment Meeting Macro Brief - 2026-04-03; manufacturing.
 <!-- CATO:END_MANAGED_BLOCK snapshot -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK strengthened -->
@@ -67,10 +68,10 @@ related: ["extracted/text/SRC-2026-7DD7B91D4D02.txt","extracted/text/SRC-2026-BD
 - oil spike
 - shipping disruption escalation
 - trade-policy shock
-- Revisit `extracted/text/SRC-2026-7DD7B91D4D02.txt` (SRC 2026 7DD7B91D4D02) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-BD50ACFF7C7D.txt` (SRC 2026 BD50ACFF7C7D) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-43CBDAEA5E65.txt` (SRC 2026 43CBDAEA5E65) for catalyst or regime change.
-- Revisit `extracted/text/SRC-2026-4A45F1B16C06.txt` (SRC 2026 4A45F1B16C06) for catalyst or regime change.
+- Revisit [[synthesis/global-macro-frontier-decision-brief|Global Macro frontier decision brief]] for catalyst or regime change.
+- Revisit [[synthesis/weekly-investment-meeting-macro-brief-2026-04-03|Weekly Investment Meeting Macro Brief - 2026-04-03]] for catalyst or regime change.
+- Revisit [[concepts/manufacturing|manufacturing]] for catalyst or regime change.
+- Revisit [[entities/bank-of-japan|Bank of Japan]] for catalyst or regime change.
 <!-- CATO:END_MANAGED_BLOCK catalysts -->
 
 <!-- CATO:BEGIN_MANAGED_BLOCK flip -->
@@ -85,3 +86,24 @@ related: ["extracted/text/SRC-2026-7DD7B91D4D02.txt","extracted/text/SRC-2026-BD
 
 - Current balance is contested. The market lens is rates, FX, global equities, credit, but the stronger task is separating regime change from noisy cross-currents.
 <!-- CATO:END_MANAGED_BLOCK markets -->
+
+<!-- CATO:BEGIN_MANAGED_BLOCK counter -->
+## Managed Counter-Arguments
+
+- Japan also remains vulnerable on this axis because its external energy dependence can turn a global commodity shock into a domestic terms-of-trade problem even if the Tankan itself looks fine.
+- It is whether the next move in markets is driven by renewed inflation-premium pressure coming from geopolitics while growth is still decent enough to keep bond markets from fully rallying.
+<!-- CATO:END_MANAGED_BLOCK counter -->
+
+<!-- CATO:BEGIN_MANAGED_BLOCK gaps -->
+## Managed Data Gaps
+
+- No immediate data-gap pressure surfaced beyond normal monitoring cadence.
+
+## Retrieval Budget
+
+- Requested budget: L2
+- Active budget: L2
+- Escalated beyond initial budget: No
+- Retrieval route: L0 Maps And Indices -> L1 Canonical Knowledge -> L2 Evidence Notes
+- Discipline: Start with TL;DR surfaces and only escalate to raw extracts when the shorter route is not enough.
+<!-- CATO:END_MANAGED_BLOCK gaps -->

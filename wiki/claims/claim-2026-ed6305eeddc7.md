@@ -37,6 +37,14 @@ Official release for the February U.S. trade balance used in the report.
 
 - No direct contradiction cluster detected.
 
+## Counter-Arguments / Weakening Evidence
+
+- This claim currently leans on a thin support map and may be overconfident.
+
+## Data Gaps / What Would Strengthen It
+
+- Add at least one independent supporting source before treating this as durable.
+
 ## Related Concepts
 
 - trade deficit

@@ -24,4 +24,6 @@ related: []
 
 ## Managed Self-Model Lens
 
+## Managed Data Gaps
+
 ## Managed Claim Map

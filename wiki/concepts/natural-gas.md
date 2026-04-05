@@ -2,7 +2,7 @@
 id: CONCEPT-2026-NATURAL-GAS
 kind: concept-page
 title: natural gas
-status: active
+status: retired
 tags: []
 related: []
 ---

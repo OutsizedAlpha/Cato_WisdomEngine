@@ -52,6 +52,14 @@ That matters because it keeps the global macro signal from becoming outright bea
 
 - No direct contradiction cluster detected.
 
+## Counter-Arguments / Weakening Evidence
+
+- No explicit counter-argument has been surfaced yet beyond normal review risk.
+
+## Data Gaps / What Would Strengthen It
+
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - None linked.

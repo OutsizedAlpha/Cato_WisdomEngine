@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-5EA51C2BF319.md
 figure_count: 10
+document_class: internal_memo
+draft_workspace_path: wiki/drafts/append-review/uk-balance-of-payments-october-to-december-2025.md
 ---
 
 # UK Balance of Payments, October to December 2025

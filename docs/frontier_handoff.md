@@ -1,88 +1,95 @@
 # Frontier Handoff
 
-This file documents the zero-API bridge between Codex/GPT and Cato for claim-led, state-led, and decision-led reasoning.
+This file documents the zero-API bridge between Codex/GPT and Cato for belief, state, regime, and decision work.
 
 ## Why This Exists
 
-The local CLI can maintain structured belief/state/decision surfaces, but it should not pretend to be the frontier model.
+Cato now maintains a real belief/state/decision stack, but it should not impersonate the frontier model.
 
-The correct split is:
+The operating split is:
 
-- Codex/GPT = frontier reasoning, live web research, authored synthesis
-- Cato = structured context, provenance, ingestion, durable storage, and repo refresh
+- Codex/GPT = deeper reasoning, optional live web research, authored synthesis
+- Cato = structured context, provenance, ingestion, and durable storage
 
 `frontier-pack` and `capture-frontier` are the bridge between those roles.
 
-## Workflow
+## Commands
 
-1. Refresh the deterministic repo state as usual.
-2. Run a frontier pack:
+Prepare context:
 
 ```powershell
 .\cato.cmd frontier-pack "Global Macro" --mode decision
 ```
 
-or:
-
-```powershell
-.\cato.cmd frontier-pack "Weekly investment meeting brief" --mode meeting
-```
-
-3. Open the generated files in `cache/frontier-packs/`:
-   - `...-pack.json`
-   - `...-prompt.md`
-   - `...-capture.json`
-4. Let Codex use the pack plus any additional live web research it judges necessary.
-5. Write the final markdown output into `output.body` in the capture bundle.
-6. Add any newly researched external URLs to `sources`.
-7. Run:
+Capture the final result:
 
 ```powershell
 .\cato.cmd capture-frontier .\cache\frontier-packs\...\...-capture.json --promote
 ```
 
+## Workflow
+
+1. refresh the deterministic repo state as usual
+2. run a frontier pack
+3. open the generated files in `cache/frontier-packs/`
+4. let Codex/GPT reason over that pack and add any needed live web work
+5. write the final markdown output into `output.body` in the generated capture bundle
+6. add any newly researched external URLs to `sources`
+7. run `capture-frontier`
+
 ## What The Pack Contains
 
-- the operating mode: `belief`, `state`, `decision`, or `meeting`
-- refreshed deterministic artefacts such as state pages, decision notes, regime briefs, or belief briefs
+Each pack writes:
+
+- `...-pack.json`
+- `...-prompt.md`
+- `...-capture.json`
+
+The structured context can include:
+
+- operating mode
+- refreshed belief/state/decision artefacts
 - claim summaries
 - state summaries
 - evidence references
-- local source references that should remain attached to the final output
-- a ready-made capture bundle
+- local source references that must remain attached to the final output
+- a starter capture bundle
+
+The surrounding Cato runtime already includes:
+
+- semantic source routing
+- append-and-review draft workspace
+- retrieval-budget discipline
+- claim, state, regime, and decision surfaces
+- counter-argument and data-gap sections
+
+The frontier handoff is how the external model reasons over that structure without Cato embedding an API client.
 
 ## Modes
 
-- `belief`
-  Best when you want a frontier model to refine what the repo currently believes and why.
-
-- `state`
-  Best when you want a frontier model to assess the current state of one subject and what has shifted.
-
-- `decision`
-  Best when you want portfolio implications, risk flags, de-risk triggers, and counter-cases.
-
-- `meeting`
-  Best when you want a multi-subject investment meeting brief.
+- `belief` = refine what the repo currently believes and why
+- `state` = assess one subject's current state and what shifted
+- `decision` = portfolio implications, risk flags, de-risk triggers, counter-case
+- `meeting` = multi-subject investment meeting brief
 
 ## Important Constraint
 
-This workflow does not embed a direct API call into the CLI.
+This workflow does not embed a direct external model call into the CLI.
 
 That is deliberate.
 
-The value is:
+The product decision is:
 
-- no double-paying for API access
-- you keep using Codex/GPT interactively in the terminal
-- Cato still receives a durable, structured, auditable record of what the frontier model produced
+- keep Cato agent-driven
+- keep the CLI deterministic
+- use handoff files as the integration boundary
 
 ## Bundle Shape
 
 See:
 
-- `commands/research-capture.example.json`
-- `commands/frontier-capture.example.json`
+- `commands\frontier-capture.example.json`
+- `commands\research-capture.example.json`
 
 The frontier bundle supports:
 

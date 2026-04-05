@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-9555CA26D695.md
 figure_count: 6
+document_class: macro_data_release
+draft_workspace_path: wiki/drafts/append-review/spain-manufacturing-pmi.md
 ---
 
 # Spain manufacturing PMI

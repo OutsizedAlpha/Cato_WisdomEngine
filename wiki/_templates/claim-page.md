@@ -24,6 +24,10 @@ entities: []
 
 ## Contradicting Claims
 
+## Counter-Arguments / Weakening Evidence
+
+## Data Gaps / What Would Strengthen It
+
 ## Related Concepts
 
 ## Related Entities

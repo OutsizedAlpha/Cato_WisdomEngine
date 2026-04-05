@@ -5,7 +5,7 @@ Use this area for growth, inflation, liquidity, central-bank, and regime notes.
 <!-- CATO:BEGIN_MANAGED_BLOCK index -->
 # Macro
 
-Generated: 2026-04-03
+Generated: 2026-04-05
 
 ## growth
 - [[source-notes/uk-quarterly-national-accounts-october-to-december-2025|UK quarterly national accounts, October to December 2025]]
@@ -28,7 +28,7 @@ Generated: 2026-04-03
 - None yet.
 
 ## policy regimes
-- None yet.
+- [[source-notes/trump-hormuz-and-the-end-of-the-free-ride|Trump, Hormuz and the End of the Free Ride]]
 
 ## cross-asset confirmation
 - None yet.

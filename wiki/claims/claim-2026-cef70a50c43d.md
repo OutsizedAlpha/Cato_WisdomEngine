@@ -52,6 +52,14 @@ They increase the chance that front-end yields stay sticky or back up when oil a
 
 - No direct contradiction cluster detected.
 
+## Counter-Arguments / Weakening Evidence
+
+- No explicit counter-argument has been surfaced yet beyond normal review risk.
+
+## Data Gaps / What Would Strengthen It
+
+- Look for a primary source that can separate evidence from interpretation.
+
 ## Related Concepts
 
 - None linked.

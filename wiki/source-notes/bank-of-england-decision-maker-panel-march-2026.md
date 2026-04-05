@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-A52E1E7C7BC7.md
 figure_count: 2
+document_class: meeting_notes
+draft_workspace_path: wiki/drafts/append-review/bank-of-england-decision-maker-panel-march-2026.md
 ---
 
 # Bank of England Decision Maker Panel, March 2026

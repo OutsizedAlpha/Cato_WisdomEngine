@@ -1,6 +1,6 @@
 # Claim Index
 
-Generated: 2026-04-03
+Generated: 2026-04-05
 
 ## Active Claims
 - [[claims/claim-2026-077bd16f5ce2|France and Italy were near or above the manufacturing expansion threshold, but Spain fell back…]] (fact, high)
@@ -62,6 +62,7 @@ Generated: 2026-04-03
 - [[claims/claim-2026-497f71fb88cc|Calendar cross-check for the Japan release window and supplementary Japan data.]] (fact, medium-high)
 - [[claims/claim-2026-68601464f21c|Official China PMI release used for the March rebound in manufacturing and non-manufacturing ac…]] (fact, medium-high)
 - [[claims/claim-2026-14ff7779ac2b|Used for Korea exports, imports, trade balance, PMI, and CPI as the clearest external-Asia read…]] (fact, medium-high)
+- [[claims/claim-2026-dc71f7079c6f|The note argues that Trump is deliberately withholding an automatic US security guarantee in th…]] (fact, medium-high)
 - [[claims/claim-2026-ed81cf21c053|Official source for UK current-account figures used in the report.]] (fact, medium-high)
 - [[claims/claim-2026-75a9a64d1225|Official source for UK Q4 2025 GDP final estimates.]] (estimate, medium-high)
 - [[claims/claim-2026-0c94d7232d30|Primary weekly table for U.S. actual, consensus, and prior data points used in the report.]] (estimate, medium-high)

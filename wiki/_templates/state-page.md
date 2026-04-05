@@ -28,3 +28,7 @@ related: []
 ## Managed What Would Flip It
 
 ## Managed Market Relevance
+
+## Managed Counter-Arguments
+
+## Managed Data Gaps

@@ -2,7 +2,7 @@
 id: CONCEPT-2026-INFLATION-RATE
 kind: concept-page
 title: inflation rate
-status: active
+status: retired
 tags: []
 related: []
 ---

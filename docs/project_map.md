@@ -8,6 +8,8 @@ This file records the current local truth of the repository, not the full intend
 - Markdown-first repo structure designed for Obsidian browsing and LLM-maintained knowledge work.
 - Git-initialised local repository with config, templates, policies, schemas, tests, and CLI entrypoints.
 - Intended operating model remains local-first + Obsidian + Git + Codex/LLM workflow, with deterministic plumbing handled by the local CLI.
+- Retrieval is now explicitly tiered: L0 maps/indices, L1 canonical knowledge pages, L2 evidence notes, L3 raw extracts.
+- The knowledge layer now includes a draft append-and-review workspace plus a structured sidecar catalog for tags, backlinks, freshness, and open-thread audit.
 
 ## Package / Environment Manager
 
@@ -46,7 +48,7 @@ This file records the current local truth of the repository, not the full intend
 - Reflect on the self-model: `node .\bin\cato.js reflect`
 - Snapshot active principles: `node .\bin\cato.js principles`
 - Create a postmortem note: `node .\bin\cato.js postmortem "title"`
-- Run repo health checks: `node .\bin\cato.js doctor`
+- Run repo health checks, including repo-local Python and browser automation readiness: `node .\bin\cato.js doctor`
 - Lint the knowledge base: `node .\bin\cato.js lint`
 - Test: `node .\tests\cato.test.js`
 - Typecheck: none
@@ -62,6 +64,7 @@ This file records the current local truth of the repository, not the full intend
 ## Key Modules
 
 - [`src/ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ingest.js) = archives inbox files, runs format-aware extraction, writes metadata, and drafts source notes
+- [`src/source-routing.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/source-routing.js) = semantic document-class routing plus append-and-review draft note scaffolding
 - [`src/research-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research-handoff.js) = imports GPT/Codex research bundles, downloads cited sources, ingests them, compiles the repo, and writes the supplied output artefact
 - [`src/frontier.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/frontier.js) = prepares zero-API frontier reasoning packs from claim/state/decision surfaces and captures Codex-authored frontier bundles back into Cato
 - [`src/web-import.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/web-import.js) = Windows-first web download/provenance helper used for URL ingest and research handoff capture
@@ -73,6 +76,7 @@ This file records the current local truth of the repository, not the full intend
 - [`src/decisions.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/decisions.js) = writes meeting briefs, decision notes, red-team outputs, and market-change briefs from states, claims, and self-model context
 - [`src/concept-quality.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/concept-quality.js) = shared concept-normalisation and concept-quality heuristics used to keep promoted ontology terms domain-meaningful
 - [`src/search.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/search.js) = token-based corpus search over markdown and extracted text
+- [`src/retrieval.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/retrieval.js) = explicit L0/L1/L2/L3 retrieval-budget planner with TLDR-first escalation rules
 - [`src/ask.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ask.js) = generates grounded markdown memos and optional question pages
 - [`src/report.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/report.js) = writes stronger report-style grounded outputs
 - [`src/deck.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/deck.js) = writes Marp-friendly grounded slide decks
@@ -87,6 +91,7 @@ This file records the current local truth of the repository, not the full intend
 - [`src/markdown.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/markdown.js) = frontmatter, wiki-link, and managed-block helpers
 - [`src/utils.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/utils.js) = filesystem and path helpers
 - [`src/research.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research.js) = shared evidence selection, output writing, and promotion helpers
+- [`src/wiki-catalog.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/wiki-catalog.js) = structured catalog, tag summary, backlink graph, freshness, and open-thread extraction for maintenance
 - [`commands/Cato-Launcher.ps1`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/commands/Cato-Launcher.ps1) = one-click Windows launcher for refresh, reports, decks, surveillance, watch creation, watch refresh, research-bundle import, frontier-pack prep, frontier-bundle import, claims, state refresh, regime briefs, decision notes, meeting briefs, red-team briefs, market-change briefs, reflection, doctor, latest-report opening, and Obsidian opening
 
 ## Architecture Notes
@@ -98,15 +103,19 @@ This file records the current local truth of the repository, not the full intend
 - The CLI now covers deterministic repo maintenance plus grounded memo, report, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
 - The live-research split is now explicit: GPT/Codex is expected to perform web research and author the synthesis, while Cato captures the cited sources and final artefacts through `capture-research`.
 - The zero-API frontier split is also explicit: Cato prepares deterministic claim/state/decision context through `frontier-pack`, Codex performs the deeper reasoning, and Cato stores the final authored artefact through `capture-frontier`.
+- The repo will keep repo agent-driven operation rather than embedding external LLM execution directly into the CLI; handoff commands remain the integration boundary.
 - `ingest` now treats repo directories and repo archives as first-class evidence objects instead of only plain files.
 - `ingest` now writes figure notes into `extracted/figures/` for standalone images and markdown/HTML sources with image references.
+- `ingest` now assigns a semantic `document_class` and writes a companion append-and-review draft note under `wiki/drafts/append-review/`.
 - Watch profiles live in `wiki/watch-profiles/`; they are instruction objects, not evidence. Search now excludes them from retrieval so reports and surveillance do not cite watch instructions back as source material.
-- Grounded output workflows also exclude surveillance pages, prior outputs, generic indices/maps, unresolved registers, and self-model pages from evidence selection so reports and surveillance stay source-grounded.
+- Grounded output workflows now follow explicit retrieval budgets and exclude draft notes, surveillance pages, prior outputs, generic indices/maps, unresolved registers, and self-model pages from evidence selection so reports and surveillance stay source-grounded.
 - `wiki/_indices/` and managed blocks are generated surfaces. Concept and entity pages are updatable knowledge objects with generated evidence sections.
 - Candidate concept extraction is now ontology-aware and phrase-biased rather than raw token-frequency-driven; compile retires stale generated concept pages instead of letting weak concepts keep leaking into retrieval.
 - Compile now also refreshes the atomic claim ledger, so the repo maintains a belief layer between source notes and higher-order outputs.
+- Compile now backfills legacy source-note routing, regenerates the draft workspace index, and writes `manifests/wiki_index.json` plus tag/backlink/open-thread maintenance surfaces.
 - State pages are canonical current-world-model surfaces built from claims plus grounded evidence, with their own history in `manifests/state_history.jsonl`.
-- Decision outputs are now explicitly mandate-facing and combine claims, states, watch context, and the self-model rather than only summarising search results.
+- Claim, state, and decision pages now carry explicit counter-argument and data-gap surfaces rather than only positive synthesis.
+- Decision outputs are now explicitly mandate-facing and combine claims, states, watch context, retrieval-budget discipline, and the self-model rather than only summarising search results.
 - Markdown frontmatter rendering now quotes empty scalar values, so refreshed source-note frontmatter round-trips without mutating empty strings into YAML-array placeholders.
 - `compile` now also refreshes timeline, domain-index, synthesis-candidate, contradiction, thesis-index, watch-profile index/ontology, surveillance-index, and self-index surfaces.
 - `commands/` now contains a launcher layer for common double-click workflows, including the new claim, state, regime, meeting, decision, and red-team surfaces.
@@ -120,7 +129,10 @@ This file records the current local truth of the repository, not the full intend
 - Git is initialised in the current folder.
 - `.obsidian/` may exist locally for vault settings, but user-specific Obsidian state is not version-controlled.
 - The current shell has `node` and `git` available.
-- The current shell does not have `python` on `PATH`, so the executable runtime is Node-first for now.
+- Repo-local Python shims are available at the root: `python.cmd` and `py.cmd`. In this workspace, `python --version` and `py --version` resolve successfully from the repo shell even though no in-repo Python environment manager is configured.
+- Global browser automation is available outside the repo: `npx playwright` resolves to Playwright `1.59.1`, Playwright-managed browsers are installed under `%LOCALAPPDATA%\ms-playwright\`, and a headless Chromium launch was validated locally on 2026-04-05.
+- `npx puppeteer` is also callable in the current shell, but neither Playwright nor Puppeteer is vendored as an in-repo dependency.
+- The executable runtime is still Node-first for now; do not assume a separate global Python toolchain outside the repo-root wrapper path.
 - PowerShell execution policy can block `.ps1` wrappers; the repo therefore provides `cato.cmd` and direct `node` entrypoints.
 - Raster-image OCR depends on the Windows OCR runtime being callable from the local machine; sandboxed child-process environments can block that path even though the OCR layer exists in the repo.
 - URL ingest currently relies on PowerShell `Invoke-WebRequest`, which is pragmatic for Windows-first operation but not yet a cross-platform fetch abstraction.
@@ -131,6 +143,7 @@ This file records the current local truth of the repository, not the full intend
 
 - Use the repo as the source of truth; Obsidian is intended to be a frontend, not the underlying truth layer.
 - Keep raw evidence separate from derived knowledge once those layers are created.
+- Keep draft append-and-review notes out of grounded retrieval unless the task explicitly needs workspace material.
 - Maintain project memory in `docs/` and `tasks/` rather than relying on chat history.
 - Use managed blocks for generated evidence/index sections rather than blindly rewriting full note bodies.
 - Prefer direct `node` or `cato.cmd` invocation in PowerShell.

@@ -29,6 +29,8 @@ extraction_status: extracted
 extraction_method: html_text
 figure_note_path: extracted/figures/SRC-2026-4A45F1B16C06.md
 figure_count: 17
+document_class: filing_or_company_update
+draft_workspace_path: wiki/drafts/append-review/uk-quarterly-national-accounts-october-to-december-2025.md
 ---
 
 # UK quarterly national accounts, October to December 2025
