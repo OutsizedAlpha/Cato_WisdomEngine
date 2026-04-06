@@ -25,6 +25,7 @@ This file records the current local truth of the repository, not the full intend
 - Prepare a PDF vision handoff pack: `node .\bin\cato.js pdf-pack --from inbox/drop_here --limit 8 --dpi 144 --max-pages 0`
 - Capture a Codex-authored PDF extraction bundle: `node .\bin\cato.js capture-pdf .\path\to\bundle.json`
 - Import a GPT/Codex research bundle: `node .\bin\cato.js capture-research .\path\to\bundle.json`
+- Capture a common model-authored output bundle: `node .\bin\cato.js capture-authored .\path\to\bundle.json`
 - Prepare a canonical final-report pack: `node .\bin\cato.js report "topic"`
 - Capture a model-authored final report: `node .\bin\cato.js capture-report .\path\to\bundle.json`
 - Prepare a frontier reasoning pack: `node .\bin\cato.js frontier-pack "topic" --mode decision`
@@ -32,26 +33,26 @@ This file records the current local truth of the repository, not the full intend
 - Ingest self-notes: `node .\bin\cato.js self-ingest`
 - Compile indices/concepts/entities: `node .\bin\cato.js compile`
 - Search corpus: `node .\bin\cato.js search "query"`
-- Generate a grounded memo: `node .\bin\cato.js ask "question"`
+- Prepare a grounded memo pack for model authorship: `node .\bin\cato.js ask "question"`
 - Prepare a report pack: `node .\bin\cato.js report "topic"`
-- Generate a slide deck: `node .\bin\cato.js deck "topic"`
-- Update a surveillance page: `node .\bin\cato.js surveil "topic"`
-- Create or update a watch profile: `node .\bin\cato.js watch "topic" --context "..."`
+- Prepare a model-authored slide deck pack: `node .\bin\cato.js deck "topic"`
+- Prepare a model-authored surveillance page pack: `node .\bin\cato.js surveil "topic"`
+- Prepare a model-authored watch-profile pack: `node .\bin\cato.js watch "topic" --context "..."`
 - Refresh active watch profiles: `node .\bin\cato.js watch-refresh`
 - List active watch profiles: `node .\bin\cato.js watch-list`
 - Refresh the claim ledger: `node .\bin\cato.js claims-refresh --snapshot`
 - Compare recent claim snapshots: `node .\bin\cato.js claim-diff --topic "topic"`
-- Write a claim-led belief brief: `node .\bin\cato.js why-believe "topic"`
-- Refresh a state page: `node .\bin\cato.js state-refresh "Global Macro"`
+- Prepare a model-authored claim-led belief brief pack: `node .\bin\cato.js why-believe "topic"`
+- Prepare a model-authored state-page pack: `node .\bin\cato.js state-refresh "Global Macro"`
 - Compare recent state snapshots: `node .\bin\cato.js state-diff "Global Macro"`
-- Write a regime brief: `node .\bin\cato.js regime-brief --set weekly-investment-meeting`
-- Write a meeting brief: `node .\bin\cato.js meeting-brief "Weekly investment meeting brief"`
-- Refresh a decision note: `node .\bin\cato.js decision-note "topic"`
-- Write a red-team brief: `node .\bin\cato.js red-team "topic"`
-- Write a market-change brief: `node .\bin\cato.js what-changed-for-markets`
-- Reflect on the self-model: `node .\bin\cato.js reflect`
-- Snapshot active principles: `node .\bin\cato.js principles`
-- Create a postmortem note: `node .\bin\cato.js postmortem "title"`
+- Prepare a model-authored regime brief pack: `node .\bin\cato.js regime-brief --set weekly-investment-meeting`
+- Prepare a model-authored meeting brief pack: `node .\bin\cato.js meeting-brief "Weekly investment meeting brief"`
+- Prepare a model-authored decision-note pack: `node .\bin\cato.js decision-note "topic"`
+- Prepare a model-authored red-team brief pack: `node .\bin\cato.js red-team "topic"`
+- Prepare a model-authored market-change brief pack: `node .\bin\cato.js what-changed-for-markets`
+- Prepare a model-authored self-reflection pack: `node .\bin\cato.js reflect`
+- Prepare a model-authored principles snapshot pack: `node .\bin\cato.js principles`
+- Prepare a model-authored postmortem pack: `node .\bin\cato.js postmortem "title"`
 - Run repo health checks, including repo-local Python and browser automation readiness: `node .\bin\cato.js doctor`
 - Lint the knowledge base: `node .\bin\cato.js lint`
 - Test: `node .\tests\cato.test.js`
@@ -72,6 +73,7 @@ This file records the current local truth of the repository, not the full intend
 - [`src/pdf-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/pdf-handoff.js) = prepares zero-API PDF vision packs from inbox PDFs, dedupes retry note merges, and captures Codex-authored extraction bundles back into normal Cato ingest
 - [`src/research-handoff.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/research-handoff.js) = imports GPT/Codex research bundles, downloads cited sources, ingests them, compiles the repo, and writes the supplied output artefact
 - [`src/frontier.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/frontier.js) = prepares zero-API frontier reasoning packs from claim/state/decision surfaces and captures Codex-authored frontier bundles back into Cato
+- [`src/authored.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/authored.js) = prepares common authored-output packs for memo/deck/surveillance/belief/state/decision/self-model/postmortem commands and captures the terminal-model result back into the scaffold path
 - [`src/web-import.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/web-import.js) = Windows-first web download/provenance helper used for URL ingest and research handoff capture
 - [`src/extraction.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/extraction.js) = handles text extraction, PDF stream parsing, repo snapshot manifests, figure reference extraction, SVG text capture, and Windows OCR handoff for raster images
 - [`src/self-ingest.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/self-ingest.js) = converts rough self-authored notes into structured self-model notes
@@ -82,14 +84,14 @@ This file records the current local truth of the repository, not the full intend
 - [`src/concept-quality.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/concept-quality.js) = shared concept-normalisation and concept-quality heuristics used to keep promoted ontology terms domain-meaningful
 - [`src/search.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/search.js) = token-based corpus search over markdown and extracted text, preserving frontmatter and preferring reviewed evidence over provisional PDF-handoff notes
 - [`src/retrieval.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/retrieval.js) = explicit L0/L1/L2/L3 retrieval-budget planner with TLDR-first escalation rules
-- [`src/ask.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ask.js) = generates grounded markdown memos and optional question pages
+- [`src/ask.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/ask.js) = generates grounded memo scaffolds and optional question pages used by the authored-output handoff
 - [`src/report.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/report.js) = prepares report packs, captures model-authored canonical reports under `wiki/reports/`, archives prior canonical versions, and gives broad all-corpus investment summaries a dedicated curated route that starts from reviewed source notes and reviewed chartpacks rather than generic lexical state/claim hits
-- [`src/deck.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/deck.js) = writes Marp-friendly grounded slide decks
-- [`src/surveil.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/surveil.js) = updates persistent surveillance pages
+- [`src/deck.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/deck.js) = writes Marp-friendly deck scaffolds used by the authored-output handoff
+- [`src/surveil.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/surveil.js) = updates deterministic surveillance scaffolds that can then be finalized through the authored-output handoff
 - [`src/watch.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/watch.js) = creates watch profiles, derives watch ontology, and expands retrieval for watch-driven topics
-- [`src/reflect.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/reflect.js) = summarises the self-model and refreshes the tension register
-- [`src/principles.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/principles.js) = writes a current principles snapshot from self notes
-- [`src/postmortem.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/postmortem.js) = creates structured postmortem notes
+- [`src/reflect.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/reflect.js) = summarises the self-model and refreshes the tension register scaffold used by the authored-output handoff
+- [`src/principles.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/principles.js) = writes a current principles snapshot scaffold from self notes
+- [`src/postmortem.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/postmortem.js) = creates structured postmortem scaffolds for final model-authored capture
 - [`src/doctor.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/doctor.js) = checks runtime and repo health
 - [`src/lint.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/lint.js) = checks metadata, link integrity, and note health
 - [`src/project.js`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/src/project.js) = structure repair and project defaults
@@ -106,9 +108,11 @@ This file records the current local truth of the repository, not the full intend
 - `CLAUDE.md` is a thin loader pointing to `AGENTS.md`.
 - [`INVESTMENT_RESEARCH.md`](C:/Users/DameonDeans/OneDrive%20-%20Furnley%20House%20Ltd/Documents/AI/AI%20Builds/Cato_WisdomEngine/INVESTMENT_RESEARCH.md) acts as the domain overlay for investment-research-specific behaviour.
 - The repo now includes the first full operating tree: `config/`, `inbox/`, `raw/`, `manifests/`, `extracted/`, `wiki/`, `outputs/`, `logs/`, `cache/`, `src/`, `tests/`, and root wrapper commands.
-- The CLI now covers deterministic repo maintenance plus grounded memo, report-pack, canonical report capture, deck, watch-profile, claim-ledger, state/regime, decision-support, reflection, principles, postmortem, doctor, and promotion workflows over the local corpus.
+- The CLI now covers deterministic repo maintenance plus memo-pack, report-pack, canonical report capture, deck-pack, watch-profile pack, claim-ledger, state/regime pack, decision-support pack, reflection pack, principles pack, postmortem pack, doctor, and promotion workflows over the local corpus.
+- The CLI now distinguishes two broad layers clearly: deterministic repo maintenance stays local, while substantive top-level authored outputs prepare pack/capture workflows that hand authorship to the active terminal model.
 - The live-research split is now explicit: GPT/Codex is expected to perform web research and author the synthesis, while Cato captures the cited sources and final artefacts through `capture-research`.
 - The final-report split is now explicit: `report` prepares the structured pack, the active terminal model authors the final report, and `capture-report` writes one canonical current report per topic under `wiki/reports/` while archiving the previous canonical version.
+- The common authored-output split is now explicit too: `ask`, `deck`, `surveil`, `watch`, `why-believe`, `state-refresh`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, `reflect`, `principles`, and `postmortem` prepare pack files under `cache/authored-packs/`, and `capture-authored` writes the model-authored result back into the prepared output path.
 - Legacy deterministic report runs now archive under `outputs/reports/archive/legacy-deterministic/` with their original filenames preserved so older markdown references can still resolve after the active report folder is swept.
 - The PDF-vision split is now explicit: `pdf-pack` prepares rendered-page review packs for image-rich PDFs, Codex/GPT performs OCR/vision/chart extraction over those artefacts, and `capture-pdf` feeds the authored extraction back into normal Cato ingest.
 - PDF-handoff notes now carry explicit review-state metadata (`review_status`, `reviewed_at`, `review_method`, `review_scope`) so the repo can distinguish provisional capture from text-reviewed and visually reviewed evidence.
@@ -117,6 +121,7 @@ This file records the current local truth of the repository, not the full intend
 - Broad investment-summary reports now use curated section lenses, stay source-note-led unless evidence is thin, and build section prose from cleaned source-note sections plus extracted-text takeaways instead of raw search excerpts.
 - The zero-API frontier split is also explicit: Cato prepares deterministic claim/state/decision context through `frontier-pack`, Codex performs the deeper reasoning, and Cato stores the final authored artefact through `capture-frontier`.
 - The repo will keep repo agent-driven operation rather than embedding external LLM execution directly into the CLI; handoff commands remain the integration boundary.
+- The phrase "does not call the model directly" now has a strict meaning: Cato does not make an embedded API call itself, but the active terminal model still becomes the author whenever a pack is opened, reasoned through, and captured back into the repo.
 - Raw `outputs/reports/` files are now treated as legacy operational history rather than active claim input; the claim layer only reads canonical `wiki/reports/` material.
 - The live repo now has a canonical current investment report at `wiki/reports/current-investment-summary-across-all-ingested-research.md`, and the old timestamped report runs were swept into `outputs/reports/archive/legacy-deterministic/`.
 - `ingest` now treats repo directories and repo archives as first-class evidence objects instead of only plain files.

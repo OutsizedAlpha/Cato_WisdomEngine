@@ -4,7 +4,7 @@ const { compileProject } = require("./compile");
 const { ingest } = require("./ingest");
 const { parseFrontmatter, sectionContent } = require("./markdown");
 const { ensureProjectStructure, loadSettings } = require("./project");
-const { promoteOutputToSynthesis, writeCanonicalDocument, writeOutputDocument } = require("./research");
+const { promoteOutputToSynthesis, writeCanonicalDocument, writeFixedDocument, writeOutputDocument } = require("./research");
 const { appendJsonl, ensureDir, readJson, relativeToRoot, slugify, timestampStamp } = require("./utils");
 const { createWatchProfile } = require("./watch");
 const { writeSurveillance } = require("./surveil");
@@ -46,6 +46,56 @@ const OUTPUT_KINDS = {
     idPrefix: "MEETING",
     kind: "meeting-brief",
     outputDir: "outputs/meeting-briefs"
+  },
+  "belief-brief": {
+    idPrefix: "WHYBELIEVE",
+    kind: "belief-brief",
+    outputDir: "outputs/briefs"
+  },
+  "red-team-brief": {
+    idPrefix: "REDTEAM",
+    kind: "red-team-brief",
+    outputDir: "outputs/briefs"
+  },
+  "market-change-brief": {
+    idPrefix: "MARKETCHG",
+    kind: "market-change-brief",
+    outputDir: "outputs/briefs"
+  },
+  "surveillance-page": {
+    idPrefix: "SURVEIL",
+    kind: "surveillance-page",
+    outputDir: "wiki/surveillance"
+  },
+  "state-page": {
+    idPrefix: "STATE",
+    kind: "state-page",
+    outputDir: "wiki/states"
+  },
+  "decision-note": {
+    idPrefix: "DECISION",
+    kind: "decision-note",
+    outputDir: "wiki/decisions"
+  },
+  "watch-profile": {
+    idPrefix: "WATCH",
+    kind: "watch-profile",
+    outputDir: "wiki/watch-profiles"
+  },
+  "self-reflection": {
+    idPrefix: "REFLECT",
+    kind: "self-reflection",
+    outputDir: "outputs/memos"
+  },
+  "principles-snapshot": {
+    idPrefix: "PRINCIPLES",
+    kind: "principles-snapshot",
+    outputDir: "outputs/memos"
+  },
+  "postmortem-note": {
+    idPrefix: "POSTMORTEM",
+    kind: "postmortem-note",
+    outputDir: "wiki/self/postmortems"
   }
 };
 
@@ -306,6 +356,7 @@ function captureResearch(root, bundleInput, options = {}) {
         imported_failures: staged.failures.length
       }
     };
+    const fixedOutputPath = String(bundle.output?.output_path || "").trim();
     const output =
       config.canonical || bundle.output?.canonical_path
         ? writeCanonicalDocument(root, {
@@ -315,6 +366,11 @@ function captureResearch(root, bundleInput, options = {}) {
               String(bundle.output?.archive_dir || "").trim() ||
               path.join(config.outputDir, "archive", slugify(inferOutputTitle(bundle)).slice(0, 80) || "report")
           })
+        : fixedOutputPath
+          ? writeFixedDocument(root, {
+              ...sharedOutputOptions,
+              outputPath: fixedOutputPath
+            })
         : writeOutputDocument(root, {
             ...sharedOutputOptions,
             outputDir: config.outputDir

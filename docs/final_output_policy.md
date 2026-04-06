@@ -16,6 +16,7 @@ That means:
 
 ## What Is Enforced Now
 
+- Common substantive authored outputs use their normal top-level command plus `capture-authored`
 - Final reports use `report` plus `capture-report`
 - Canonical current reports live under `wiki/reports/`
 - Prior canonical versions are archived under `wiki/reports/archive/`
@@ -25,13 +26,37 @@ That means:
 - Research imports use `capture-research`
 - PDF vision/OCR extraction uses `pdf-pack` plus `capture-pdf`
 
+## What Still Stays Deterministic
+
+The following are maintenance, retrieval, or structural bookkeeping and may remain deterministic:
+
+- `init`
+- `ingest`
+- `self-ingest`
+- `compile`
+- `search`
+- `watch-list`
+- `watch-refresh`
+- `claims-refresh`
+- `claim-diff`
+- `state-diff`
+- `doctor`
+- `lint`
+
 ## What To Treat As Scaffolding
 
 The following direct CLI outputs are useful, but should not be mistaken for final authored IP unless they are handed through a model-authored capture step:
 
 - `ask`
-- direct deterministic state or decision refreshes
-- direct deterministic briefs and decks
+- `deck`
+- `surveil`
+- `watch`
+- `why-believe`
+- direct deterministic state or decision scaffolds created while preparing pack context
+- direct deterministic briefs created while preparing pack context
+- `reflect`
+- `principles`
+- `postmortem`
 - any timestamped operational output under `outputs/`
 
 ## Metadata Discipline

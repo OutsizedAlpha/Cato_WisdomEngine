@@ -33,6 +33,7 @@ The current product is already more than an MVP scaffold. It now includes:
 - GPT/Codex research handoff into the repo
 - zero-API frontier handoff over the claim/state/decision stack
 - zero-API report handoff that stores one canonical model-authored report per topic under `wiki/reports/`
+- a generalized authored-output handoff for memos, decks, surveillance, belief/state/decision surfaces, self-model outputs, and postmortems
 - retrieval-budget discipline from maps to canonical notes to evidence notes to raw extracts
 - a dedicated broad investment-summary report route that prepares curated report packs from reviewed evidence instead of generic lexical state hits
 - tag, backlink, freshness, and open-thread maintenance surfaces
@@ -70,6 +71,7 @@ That is the difference between a file archive and a thinking instrument.
 - deterministic plumbing in the CLI, not hidden magic
 - frontier reasoning stays with the external model
 - final intellectual outputs are authored through the active terminal model and captured back into Cato
+- top-level substantive output commands now prepare packs and require capture rather than treating deterministic scaffold prose as final
 - Cato stays agent-driven rather than embedding external LLM execution directly into the CLI
 
 The last point is deliberate. Cato prepares context, captures outputs, and maintains memory. Codex/GPT remains the higher-order reasoning layer.
@@ -148,7 +150,15 @@ Local evidence loop:
 1. add files
 2. run `ingest`
 3. run `compile`
-4. run `ask`, `claims-refresh`, `state-refresh`, or `decision-note`
+4. run a pack-preparation command such as `ask`, `state-refresh`, or `decision-note`, then complete the authored output through capture
+
+Common authored-output loop:
+
+1. run the normal top-level command such as `ask`, `deck`, `surveil`, `watch`, `why-believe`, `state-refresh`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, `reflect`, `principles`, or `postmortem`
+2. open the generated files in `cache/authored-packs/`
+3. let Codex/Claude author the final output into the generated capture bundle
+4. fill `model` with the actual terminal session label used for authorship
+5. run `capture-authored`
 
 Report handoff loop:
 
@@ -236,12 +246,12 @@ The durable knowledge system begins after intentional ingest. That is when evide
 6. For image-heavy PDFs, run `.\cato.cmd pdf-pack`, complete the authored extraction bundle, then run `.\cato.cmd capture-pdf`.
 7. Run `.\cato.cmd compile` when you used plain `ingest`.
 8. Run `.\cato.cmd search "your topic"`.
-9. Run `.\cato.cmd ask "your question"` for a grounded local memo.
+9. Run `.\cato.cmd ask "your question"` to prepare a model-authored memo pack, then complete it with `.\cato.cmd capture-authored .\cache\authored-packs\...\...-capture.json`.
 10. Run `.\cato.cmd report "your topic"` to prepare a final-report pack, then let the active terminal model author the capture bundle and run `.\cato.cmd capture-report .\cache\report-packs\...\...-capture.json`.
 11. For the all-corpus investment route, use `.\cato.cmd report "Current investment summary across all ingested research"` and capture the authored result back through `capture-report`.
 12. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
-13. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` when you want a current world-model surface.
-14. Run `.\cato.cmd decision-note "topic"` or `.\cato.cmd meeting-brief "Weekly investment meeting brief"` for deterministic decision scaffolds, and use `frontier-pack` / `capture-frontier` when you want the final authored model output.
+13. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` to prepare authored packs for the current world-model surface, then complete them with `capture-authored`.
+14. Run `.\cato.cmd decision-note "topic"`, `.\cato.cmd meeting-brief "Weekly investment meeting brief"`, or `.\cato.cmd red-team "topic"` to prepare authored packs, and use `frontier-pack` / `capture-frontier` when you want a deeper bespoke frontier reasoning route over the same claim/state/decision stack.
 15. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
 
 ## Core Commands
@@ -256,6 +266,7 @@ Foundation:
 - `.\cato.cmd compile`
 - `.\cato.cmd search`
 - `.\cato.cmd ask`
+- `.\cato.cmd capture-authored`
 - `.\cato.cmd report`
 - `.\cato.cmd capture-report`
 - `.\cato.cmd deck`
@@ -287,6 +298,7 @@ Handoffs:
 - `.\cato.cmd pdf-pack --from inbox/drop_here --limit 8 --dpi 144 --max-pages 0`
 - `.\cato.cmd capture-pdf .\path\to\bundle.json`
 - `.\cato.cmd capture-research .\path\to\bundle.json`
+- `.\cato.cmd capture-authored .\path\to\bundle.json`
 - `.\cato.cmd report "topic"`
 - `.\cato.cmd capture-report .\path\to\bundle.json`
 - `.\cato.cmd frontier-pack "topic" --mode decision`
@@ -336,6 +348,7 @@ Use this mental model:
 If you need the deeper operating detail, read:
 
 - [docs/operator_guide.md](docs/operator_guide.md)
+- [docs/authored_output_handoff.md](docs/authored_output_handoff.md)
 - [docs/report_handoff.md](docs/report_handoff.md)
 - [docs/pdf_handoff.md](docs/pdf_handoff.md)
 - [docs/research_handoff.md](docs/research_handoff.md)

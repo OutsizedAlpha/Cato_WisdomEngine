@@ -1,4 +1,5 @@
 const path = require("node:path");
+const { captureAuthored, writeAuthoredPack } = require("./authored");
 const { askQuestion } = require("./ask");
 const { diffLatestClaimSnapshots, refreshClaims, writeWhyBelieve } = require("./claims");
 const { compileProject } = require("./compile");
@@ -66,6 +67,7 @@ Usage:
   .\\cato.cmd frontier-pack "topic" [--mode decision|belief|state|meeting] [--kind report|brief|meeting-brief|deck] [--subjects "Global Macro,Geopolitical Risk"]
   .\\cato.cmd capture-frontier path\\to\\bundle.json [--promote] [--no-surveil]
   .\\cato.cmd capture-pdf path\\to\\bundle.json [--copy] [--promote-candidates]
+  .\\cato.cmd capture-authored path\\to\\bundle.json
   .\\cato.cmd ask "question" [--limit 6] [--save-question] [--promote]
   .\\cato.cmd report "topic" [--limit 10]
   .\\cato.cmd capture-report path\\to\\bundle.json
@@ -263,21 +265,33 @@ function runCli(argv) {
       }
       return;
     }
+    case "capture-authored": {
+      const bundlePath = parsed.positionals.join(" ").trim();
+      if (!bundlePath) {
+        throw new Error('Capture-authored requires a bundle path. Example: .\\cato.cmd capture-authored .\\cache\\authored-packs\\...-capture.json');
+      }
+      const result = captureAuthored(root, bundlePath, {
+        promote: Boolean(parsed.options.promote)
+      });
+      console.log(`Captured authored bundle: ${bundlePath}`);
+      if (result.outputResult) {
+        console.log(`Wrote authored output to ${result.outputResult.outputPath}`);
+        if (result.outputResult.promotedPath) {
+          console.log(`Promoted synthesis note to ${result.outputResult.promotedPath}`);
+        }
+      }
+      return;
+    }
     case "ask": {
       const question = parsed.positionals.join(" ").trim();
       if (!question) {
         throw new Error('Ask requires a question. Example: .\\cato.cmd ask "What are the key drivers of X?"');
       }
-      const result = askQuestion(root, question, {
-        limit: parsed.options.limit,
-        saveQuestion: Boolean(parsed.options["save-question"]),
-        promote: Boolean(parsed.options.promote)
-      });
-      console.log(`Wrote memo to ${result.outputPath}`);
-      if (result.promotedPath) {
-        console.log(`Promoted synthesis note to ${result.promotedPath}`);
-      }
-      printSearchResults(result.results);
+      const result = writeAuthoredPack(root, "ask", question, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "report": {
@@ -315,14 +329,11 @@ function runCli(argv) {
       if (!topic) {
         throw new Error('Deck requires a topic. Example: .\\cato.cmd deck "AI capex and market structure"');
       }
-      const result = writeDeck(root, topic, {
-        limit: parsed.options.limit,
-        promote: Boolean(parsed.options.promote)
-      });
-      console.log(`Wrote deck to ${result.outputPath}`);
-      if (result.promotedPath) {
-        console.log(`Promoted synthesis note to ${result.promotedPath}`);
-      }
+      const result = writeAuthoredPack(root, "deck", topic, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "surveil": {
@@ -330,11 +341,11 @@ function runCli(argv) {
       if (!subject) {
         throw new Error('Surveil requires a subject. Example: .\\cato.cmd surveil "Passive flows"');
       }
-      const result = writeSurveillance(root, subject, {
-        limit: parsed.options.limit
-      });
-      console.log(`Updated surveillance page at ${result.notePath}`);
-      printSearchResults(result.results);
+      const result = writeAuthoredPack(root, "surveil", subject, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "watch": {
@@ -342,26 +353,11 @@ function runCli(argv) {
       if (!subject) {
         throw new Error('Watch requires a subject. Example: .\\cato.cmd watch "Middle East" --context "Track escalation risk for the defensive fund."');
       }
-      const watchResult = createWatchProfile(root, subject, {
-        context: parsed.options.context,
-        aliases: parsed.options.aliases,
-        entities: parsed.options.entities,
-        concepts: parsed.options.concepts,
-        triggers: parsed.options.triggers,
-        instructions: parsed.options.instructions,
-        priority: parsed.options.priority,
-        cadence: parsed.options.cadence,
-        status: parsed.options.status
-      });
-      console.log(`Updated watch profile at ${watchResult.profilePath}`);
-      console.log(`Updated watch ontology at ${watchResult.ontologyPath}`);
-      if (!parsed.options["no-refresh"]) {
-        const result = writeSurveillance(root, subject, {
-          limit: parsed.options.limit
-        });
-        console.log(`Updated surveillance page at ${result.notePath}`);
-        printSearchResults(result.results);
-      }
+      const result = writeAuthoredPack(root, "watch", subject, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "watch-refresh": {
@@ -429,12 +425,11 @@ function runCli(argv) {
       if (!topic) {
         throw new Error('Why-believe requires a topic. Example: .\\cato.cmd why-believe "US inflation"');
       }
-      const result = writeWhyBelieve(root, topic, {
-        limit: parsed.options.limit
-      });
-      console.log(`Wrote belief brief to ${result.outputPath}`);
-      console.log(`Claims used: ${result.claims}`);
-      console.log(`Evidence used: ${result.evidence}`);
+      const result = writeAuthoredPack(root, "why-believe", topic, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "state-refresh": {
@@ -442,13 +437,11 @@ function runCli(argv) {
       if (!subject) {
         throw new Error('State-refresh requires a subject. Example: .\\cato.cmd state-refresh "Global Macro"');
       }
-      const result = refreshState(root, subject, {
-        claimLimit: parsed.options["claim-limit"],
-        evidenceLimit: parsed.options["evidence-limit"]
-      });
-      console.log(`Updated state page at ${result.statePath}`);
-      console.log(`State label: ${result.stateLabel}`);
-      console.log(`Confidence: ${result.confidence}`);
+      const result = writeAuthoredPack(root, "state-refresh", subject, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "state-diff": {
@@ -462,27 +455,20 @@ function runCli(argv) {
       return;
     }
     case "regime-brief": {
-      const result = writeRegimeBrief(root, {
-        set: parsed.options.set,
-        title: parsed.options.title,
-        subjects: parsed.options.subjects,
-        noRefresh: Boolean(parsed.options["no-refresh"]),
-        claimLimit: parsed.options["claim-limit"],
-        evidenceLimit: parsed.options["evidence-limit"]
-      });
-      console.log(`Wrote regime brief to ${result.outputPath}`);
-      console.log(`Updated regime page at ${result.regimePath}`);
+      const result = writeAuthoredPack(root, "regime-brief", parsed.positionals.join(" ").trim(), parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "meeting-brief": {
       const title = parsed.positionals.join(" ").trim() || "Weekly investment meeting brief";
-      const result = writeMeetingBrief(root, title, {
-        subjects: parsed.options.subjects,
-        claimLimit: parsed.options["claim-limit"],
-        evidenceLimit: parsed.options["evidence-limit"]
-      });
-      console.log(`Wrote meeting brief to ${result.outputPath}`);
-      console.log(`Subjects covered: ${result.subjects.join(", ")}`);
+      const result = writeAuthoredPack(root, "meeting-brief", title, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "decision-note": {
@@ -490,12 +476,11 @@ function runCli(argv) {
       if (!topic) {
         throw new Error('Decision-note requires a topic. Example: .\\cato.cmd decision-note "Middle East"');
       }
-      const result = writeDecisionNote(root, topic, {
-        claimLimit: parsed.options["claim-limit"],
-        evidenceLimit: parsed.options["evidence-limit"]
-      });
-      console.log(`Updated decision note at ${result.notePath}`);
-      console.log(`Linked state page: ${result.statePath}`);
+      const result = writeAuthoredPack(root, "decision-note", topic, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "red-team": {
@@ -503,40 +488,35 @@ function runCli(argv) {
       if (!topic) {
         throw new Error('Red-team requires a topic. Example: .\\cato.cmd red-team "US inflation"');
       }
-      const result = writeRedTeam(root, topic, {
-        claimLimit: parsed.options["claim-limit"],
-        evidenceLimit: parsed.options["evidence-limit"]
-      });
-      console.log(`Wrote red-team brief to ${result.outputPath}`);
-      console.log(`Contested claims surfaced: ${result.contestedClaims}`);
+      const result = writeAuthoredPack(root, "red-team", topic, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "what-changed-for-markets": {
-      const result = writeWhatChangedForMarkets(root, {
-        title: parsed.options.title,
-        subjects: parsed.options.subjects,
-        claimLimit: parsed.options["claim-limit"],
-        evidenceLimit: parsed.options["evidence-limit"]
-      });
-      console.log(`Wrote market-change brief to ${result.outputPath}`);
-      console.log(`Subjects covered: ${result.subjects.join(", ")}`);
+      const result = writeAuthoredPack(root, "what-changed-for-markets", parsed.positionals.join(" ").trim(), parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "reflect": {
-      const result = writeReflection(root, {
-        promote: Boolean(parsed.options.promote)
-      });
-      console.log(`Wrote reflection memo to ${result.outputPath}`);
-      console.log(`Updated tension register at ${result.tensionRegisterPath}`);
-      if (result.promotedPath) {
-        console.log(`Promoted synthesis note to ${result.promotedPath}`);
-      }
+      const result = writeAuthoredPack(root, "reflect", "Self Reflection", parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "principles": {
-      const result = writePrinciplesSnapshot(root);
-      console.log(`Wrote principles snapshot to ${result.outputPath}`);
-      console.log(`Self-notes scanned: ${result.selfNotes}`);
+      const result = writeAuthoredPack(root, "principles", "Principles Snapshot", parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "postmortem": {
@@ -544,12 +524,11 @@ function runCli(argv) {
       if (!title) {
         throw new Error('Postmortem requires a title. Example: .\\cato.cmd postmortem "Q1 satellite ETF review"');
       }
-      const result = createPostmortem(root, title, {
-        notes: parsed.options.notes,
-        from: parsed.options.from,
-        confidence: parsed.options.confidence
-      });
-      console.log(`Created postmortem note at ${result.notePath}`);
+      const result = writeAuthoredPack(root, "postmortem", title, parsed.options);
+      console.log(`Authored pack: ${result.packPath}`);
+      console.log(`Prompt: ${result.promptPath}`);
+      console.log(`Capture bundle: ${result.capturePath}`);
+      console.log(`Final output path: ${result.outputPath}`);
       return;
     }
     case "doctor": {

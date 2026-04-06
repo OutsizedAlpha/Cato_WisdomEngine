@@ -85,6 +85,8 @@ This is the central PowerShell implementation used by the `.cmd` wrappers.
 - The launcher layer assumes the settled operating model:
   - Cato handles deterministic plumbing and durable storage
   - Codex/GPT handles live reasoning and authored synthesis
+- Many top-level commands now prepare packs rather than final deterministic prose. Use the launcher to prepare the pack, then complete the authored bundle with the relevant capture command.
 - `Write-Report.cmd` now prepares the latest report pack prompt under `cache/report-packs/`; the canonical final report is only created after the authored bundle is captured with `capture-report`.
+- `Ask-Cato.cmd`, `Write-Deck.cmd`, `Run-Surveillance.cmd`, `Create-Watch.cmd`, `Refresh-State.cmd`, `Write-Regime-Brief.cmd`, `Write-Decision-Note.cmd`, `Write-Meeting-Brief.cmd`, `Run-Red-Team.cmd`, `Run-Market-Changes.cmd`, `Run-Reflect.cmd`, and similar wrappers now prepare authored-output packs; the final artefact is completed with `capture-authored`.
 - `Open-Latest-Report.cmd` now opens the latest canonical report under `wiki/reports/`, not legacy timestamped drafts under `outputs/reports/`.
-- For the deeper workflow explanation, read `docs/operator_guide.md`.
+- For the deeper workflow explanation, read `docs/operator_guide.md`, `docs/authored_output_handoff.md`, and `docs/report_handoff.md`.

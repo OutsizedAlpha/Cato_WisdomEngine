@@ -3,6 +3,7 @@ const fs = require("node:fs");
 const os = require("node:os");
 const path = require("node:path");
 
+const { captureAuthored, writeAuthoredPack } = require("../src/authored");
 const { askQuestion } = require("../src/ask");
 const { diffLatestClaimSnapshots, refreshClaims, writeWhyBelieve } = require("../src/claims");
 const { extractCandidateConcepts } = require("../src/concept-quality");
@@ -129,6 +130,16 @@ function captureModelAuthoredReport(root, topic, options = {}) {
     ...capture,
     pack
   };
+}
+
+function captureModelAuthoredOutput(root, pack, body) {
+  const bundlePath = path.join(root, pack.capturePath);
+  const bundle = JSON.parse(fs.readFileSync(bundlePath, "utf8"));
+  bundle.model = "gpt-5.4 xhigh via Codex";
+  bundle.authoring_session = "test-suite";
+  bundle.output.body = body;
+  fs.writeFileSync(bundlePath, `${JSON.stringify(bundle, null, 2)}\n`, "utf8");
+  return captureAuthored(root, pack.capturePath);
 }
 
 function runTest(name, fn) {
@@ -1557,6 +1568,80 @@ Need more primary evidence.
     const canonical = fs.readFileSync(path.join(root, second.outputResult.outputPath), "utf8");
     assert.match(canonical, /Second final report/);
     assert.match(canonical, /authoring_model: codex test session/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
+runTest("substantive authored commands now prepare model packs and capture-authored overwrites the scaffold path", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
+    fs.copyFileSync(fixturePath("sample-article.md"), path.join(root, "inbox", "drop_here", "sample-article.md"));
+    fs.copyFileSync(fixturePath("sample-note.txt"), path.join(root, "inbox", "drop_here", "sample-note.txt"));
+    ingest(root);
+    compileProject(root, { promoteCandidates: true });
+    refreshClaims(root, { writeSnapshot: true });
+
+    const askPack = writeAuthoredPack(root, "ask", "What does the corpus currently say about passive flows?", {
+      limit: 6
+    });
+    assert.ok(fs.existsSync(path.join(root, askPack.packPath)));
+    assert.ok(fs.existsSync(path.join(root, askPack.promptPath)));
+    assert.ok(fs.existsSync(path.join(root, askPack.capturePath)));
+
+    const askBundle = JSON.parse(fs.readFileSync(path.join(root, askPack.capturePath), "utf8"));
+    assert.equal(askBundle.output.output_path, askPack.outputPath);
+    assert.match(askBundle.output.body, /MODEL_AUTHOR_REPLACE_THIS_SCAFFOLD/);
+
+    const askCapture = captureModelAuthoredOutput(
+      root,
+      askPack,
+      `# What does the corpus currently say about passive flows?
+
+## Executive Summary
+
+Passive flows still matter for market structure, liquidity concentration, and benchmark behaviour.
+
+## Judgement
+
+The corpus still points to passive concentration as a real plumbing issue rather than a cosmetic flow narrative.
+`
+    );
+    const askOutput = fs.readFileSync(path.join(root, askCapture.outputResult.outputPath), "utf8");
+    assert.match(askOutput, /Passive flows still matter/);
+    assert.doesNotMatch(askOutput, /MODEL_AUTHOR_REPLACE_THIS_SCAFFOLD/);
+    assert.equal(askCapture.outputResult.outputPath, askPack.outputPath);
+
+    const statePack = writeAuthoredPack(root, "state-refresh", "Market Structure", {
+      "claim-limit": 8,
+      "evidence-limit": 6
+    });
+    assert.ok(fs.existsSync(path.join(root, statePack.capturePath)));
+
+    const stateCapture = captureModelAuthoredOutput(
+      root,
+      statePack,
+      `# Market Structure
+
+## Executive Summary
+
+Market structure remains fragile because passive concentration and benchmark plumbing still dominate the route of risk transmission.
+
+## Current State
+
+The active evidence set still points to crowding, benchmark effects, and liquidity asymmetry as the critical state variables.
+
+## Counter-Case
+
+Fresh opposing evidence could weaken this view if active price discovery broadens materially.
+`
+    );
+    const stateOutput = fs.readFileSync(path.join(root, stateCapture.outputResult.outputPath), "utf8");
+    assert.match(stateOutput, /market structure remains fragile/i);
+    assert.doesNotMatch(stateOutput, /MODEL_AUTHOR_REPLACE_THIS_SCAFFOLD/);
+    assert.equal(stateCapture.outputResult.outputPath, statePack.outputPath);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

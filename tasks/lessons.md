@@ -24,6 +24,7 @@ Only durable, repo-specific lessons and guardrails belong here. Do not record tr
 - PDF-handoff notes need explicit review-state metadata, and unreviewed chartpacks should stay downgraded until a visual-review trail exists.
 - If a chartpack becomes report-critical, do not just clear the draft flag; add a page-route summary so the note can support qualitative cross-asset synthesis without pretending to be a machine-perfect numeric surface.
 - Final intellectual outputs should be model-authored through the active terminal session and captured back into Cato; deterministic CLI prose is scaffolding unless it goes through a capture boundary.
+- If a top-level command produces substantive memo, deck, surveillance, belief/state/decision, self-model, or postmortem prose, prepare a pack and capture the result back into the same output path rather than creating a second near-duplicate file.
 - Raw `outputs/reports/` files are legacy operational history and must not feed the claim layer; canonical model-authored reports live in `wiki/reports/` with one current file per topic.
 - When sweeping legacy report runs into archive, preserve the original filenames under `outputs/reports/archive/legacy-deterministic/`; changing archive filenames breaks historical markdown references for no benefit.
 - Treat `tmp/` as scratch review space and keep it out of version control.

@@ -100,20 +100,22 @@ The normal local loop is:
    - `self-ingest`
    - `compile`
 4. Generate the surface you need:
-   - `ask`
+   - `ask` then `capture-authored`
    - `report` then `capture-report` for final reports
-   - `deck`
+   - `deck` then `capture-authored`
    - `claims-refresh`
-   - `why-believe`
-   - `state-refresh`
-   - `regime-brief`
-   - `decision-note`
-   - `meeting-brief`
-   - `red-team`
-   - `what-changed-for-markets`
-   - `watch`
-   - `surveil`
-   - `reflect`
+   - `why-believe` then `capture-authored`
+   - `state-refresh` then `capture-authored`
+   - `regime-brief` then `capture-authored`
+   - `decision-note` then `capture-authored`
+   - `meeting-brief` then `capture-authored`
+   - `red-team` then `capture-authored`
+   - `what-changed-for-markets` then `capture-authored`
+   - `watch` then `capture-authored`
+   - `surveil` then `capture-authored`
+   - `reflect` then `capture-authored`
+   - `principles` then `capture-authored`
+   - `postmortem` then `capture-authored`
 5. Run `lint` and `doctor` when you want confidence in structural health and environment readiness.
 
 ## Staging And Commit Boundaries
@@ -126,7 +128,7 @@ Operate with a clean boundary between staging and canonical state:
 
 Do not treat inbox files or temporary handoff packs as durable knowledge just because they exist on disk.
 
-## Four Working Loops
+## Working Loops
 
 ### Local Evidence Loop
 
@@ -134,8 +136,18 @@ Use this when evidence already exists locally.
 
 1. ingest
 2. compile
-3. query or write outputs
-4. refresh claims, states, and decisions when needed
+3. query or prepare authored output packs
+4. capture the final model-authored result where the command is substantive
+
+### Authored Output Loop
+
+Use this for substantive local outputs that do not need the specialized report, frontier, research, or PDF workflows.
+
+1. run the top-level command such as `ask`, `deck`, `surveil`, `watch`, `why-believe`, `state-refresh`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, `reflect`, `principles`, or `postmortem`
+2. open the generated files in `cache/authored-packs/`
+3. let Codex/GPT or Claude author the final markdown in the generated capture bundle
+4. fill `model` with the actual terminal session label used for authorship
+5. run `capture-authored`
 
 ### Research Handoff Loop
 
@@ -235,44 +247,46 @@ Foundation:
 - `self-ingest` = convert rough personal notes into structured self-model notes
 - `compile` = refresh indices, claims, structured catalog, unresolved registers, and other maintained surfaces
 - `search` = lexical corpus lookup across maintained notes and extracts
-- `ask` = grounded memo
+- `ask` = prepare a model-authored memo pack
+- `capture-authored` = capture the model-authored memo, deck, surveillance, belief/state/decision, self-model, or postmortem output back into the repo
 - `report` = prepare a final-report pack for the active terminal model
 - `capture-report` = capture the model-authored final report into canonical `wiki/reports/`
-- `deck` = Marp-friendly deck
+- `deck` = prepare a model-authored Marp-friendly deck pack
 
 Belief and state:
 
 - `claims-refresh` = rebuild atomic claim ledger
 - `claim-diff` = compare latest claim snapshots
-- `why-believe` = explain why the repo currently holds a view
-- `state-refresh` = refresh canonical state page for a subject
+- `why-believe` = prepare a model-authored belief brief pack
+- `state-refresh` = prepare a model-authored state-page pack while refreshing the deterministic state scaffold underneath
 - `state-diff` = compare latest two state snapshots
-- `regime-brief` = aggregate states into a regime surface
+- `regime-brief` = prepare a model-authored regime brief pack
 
 Monitoring and decisions:
 
-- `watch` = create or update persistent watch profile
-- `watch-refresh` = refresh one or all active watches
+- `watch` = prepare a model-authored watch-profile pack
+- `watch-refresh` = batch-refresh watch maintenance surfaces
 - `watch-list` = list active watch profiles
-- `surveil` = update surveillance page
-- `decision-note` = refresh durable decision-support note
-- `meeting-brief` = write PM-facing multi-subject brief
-- `red-team` = write counter-case and invalidation brief
-- `what-changed-for-markets` = write a state-led market-change brief
+- `surveil` = prepare a model-authored surveillance-page pack
+- `decision-note` = prepare a model-authored durable decision-note pack
+- `meeting-brief` = prepare a model-authored PM-facing meeting brief pack
+- `red-team` = prepare a model-authored counter-case and invalidation brief pack
+- `what-changed-for-markets` = prepare a model-authored market-change brief pack
 
 Handoffs:
 
 - `pdf-pack` = prepare rendered-page PDF review pack plus capture bundle for Codex/GPT vision work
 - `capture-pdf` = ingest a Codex-authored PDF extraction bundle back through the normal source-note pipeline
 - `capture-research` = import external research bundle
+- `capture-authored` = import the model-authored result for the common authored-output pack workflow
 - `frontier-pack` = prepare structured context for Codex/GPT
 - `capture-frontier` = write Codex-authored frontier output back into the repo
 
 Self-model and health:
 
-- `reflect` = review self-model and tension register
-- `principles` = write principles snapshot
-- `postmortem` = create structured postmortem note
+- `reflect` = prepare a model-authored self-reflection memo pack
+- `principles` = prepare a model-authored principles snapshot pack
+- `postmortem` = prepare a model-authored postmortem note pack
 - `doctor` = check runtime, Python wrappers, browser tooling, OCR readiness, and repo health
 - `lint` = check metadata, drift, backlinks, tags, stale notes, and required managed sections
 

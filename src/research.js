@@ -217,6 +217,47 @@ function writeCanonicalDocument(root, options) {
   };
 }
 
+function writeFixedDocument(root, options) {
+  ensureProjectStructure(root);
+  const relativeOutputPath = String(options.outputPath || "").replace(/\\/g, "/");
+  if (!relativeOutputPath) {
+    throw new Error("writeFixedDocument requires an outputPath.");
+  }
+
+  const absoluteOutputPath = path.join(root, relativeOutputPath);
+  const existing = fs.existsSync(absoluteOutputPath) ? parseFrontmatter(readText(absoluteOutputPath)) : null;
+  const slugSeed = slugify(options.fileSlug || options.title).slice(0, 80) || options.idPrefix.toLowerCase();
+  const createdAt = existing?.frontmatter?.created_at || options.frontmatter?.created_at || nowIso();
+  const frontmatter = {
+    ...(existing?.frontmatter || {}),
+    id:
+      existing?.frontmatter?.id ||
+      options.frontmatter?.id ||
+      makeId(options.idPrefix, slugSeed.padEnd(12, options.idPrefix.toLowerCase()[0] || "x")),
+    kind: options.kind,
+    title: options.title,
+    created_at: createdAt,
+    updated_at: nowIso(),
+    sources: options.sources || existing?.frontmatter?.sources || [],
+    ...options.frontmatter
+  };
+
+  writeText(absoluteOutputPath, renderMarkdown(frontmatter, options.body));
+  appendJsonl(path.join(root, "logs", "report_runs", `${slugify(options.kind) || "outputs"}.jsonl`), {
+    event: options.kind,
+    at: frontmatter.updated_at,
+    title: options.title,
+    output_path: relativeOutputPath,
+    sources: frontmatter.sources,
+    fixed_path: true
+  });
+
+  return {
+    outputPath: relativeOutputPath,
+    frontmatter
+  };
+}
+
 function renderSourceList(sources) {
   if (!sources.length) {
     return "- None recorded.";
@@ -325,5 +366,6 @@ module.exports = {
   synthesisParagraphs,
   updateManagedNote,
   writeCanonicalDocument,
+  writeFixedDocument,
   writeOutputDocument
 };

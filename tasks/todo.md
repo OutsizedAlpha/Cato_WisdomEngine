@@ -11,6 +11,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 1. Maintain the new belief/state/decision layers without letting them drift into noisy generated surfaces.
 2. Decide how much deterministic logic to keep versus where model-assisted compile passes should eventually enter.
 3. Keep improving finance-specific note quality and operator usability without breaking source-grounded discipline.
+4. Widen the handoff boundary so every substantive authored output is produced through the active terminal model rather than deterministic CLI prose.
 
 ## Tasks
 
@@ -44,6 +45,11 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - [x] Add structured query/backlink/tag surfaces as a file-first sidecar catalog without rewriting storage away from markdown.
 - [x] Decide whether to embed external LLM execution into the CLI or keep the repo agent-driven.
 - [x] Add a zero-API PDF vision handoff so Codex/GPT can perform OCR, chart, and table extraction for image-heavy PDFs and feed the result back through normal Cato ingest.
+- [x] Replace deterministic authored-output commands with model-pack plus capture flows wherever the command is doing substantive reasoning or writing.
+- [x] Add a generalized authored-output pack/capture contract so memo, deck, surveillance, belief/state/decision, self-model, and meeting surfaces can all be model-authored through the active terminal session.
+- [x] Keep pure repo plumbing deterministic only where it is not substantive authored IP: `init`, `ingest`, `self-ingest`, `compile`, `search`, `watch-list`, `claims-refresh`, `claim-diff`, `state-diff`, `doctor`, and `lint`.
+- [x] Update the CLI help, operator docs, and final-output policy so the model-authorship boundary is explicit command by command.
+- [x] Add tests that fail if substantive commands write final deterministic prose instead of preparing model handoff packs.
 
 ## Validation
 
@@ -76,6 +82,7 @@ Use this file for active or recently completed non-trivial work. Keep it concise
     - keep live repo lint at zero or explain any deliberate exceptions
     - verify real ingest paths against actual user corpus types before broadening automation
     - rerun live `lint` after the next repo-generated output pass
+  - Authored-output boundary widening on 2026-04-06 covering `capture-authored`, fixed-path capture into scaffold outputs, pack generation for memo/deck/surveillance/belief/state/decision/self-model commands, updated operator docs and final-output policy, CLI help refresh, and red/green enforcement that substantive commands prepare model-authored packs instead of final deterministic prose
 
 ## Results
 
@@ -117,18 +124,20 @@ Use this file for active or recently completed non-trivial work. Keep it concise
 - On 2026-04-05, the live repo was migrated onto that model: `wiki/reports/current-investment-summary-across-all-ingested-research.md` became the canonical current report and 17 legacy timestamped report files were swept into `outputs/reports/archive/legacy-deterministic/`.
 - On 2026-04-05, the archive policy was tightened so legacy report filenames remain stable inside `outputs/reports/archive/legacy-deterministic/`, report handoff now has its own operator doc, and transient `tmp/` review scratch is explicitly ignored rather than committed.
 - On 2026-04-05, the reconciled current state was revalidated before sync: tests passed, live lint remained at `0` errors and `0` warnings with an info-only backlog, and the repo memory/docs layer was updated to match the final report-handoff and archive rules before GitHub push.
+- On 2026-04-06, the general authored-output boundary was widened so `ask`, `deck`, `surveil`, `watch`, `why-believe`, `state-refresh`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, `reflect`, `principles`, and `postmortem` now prepare packs for the active terminal model and file the authored result back through `capture-authored`.
+- On 2026-04-06, the repo made the operating rule explicit in code and docs: Cato remains the memory and grounding layer, but substantive authored IP is produced by the active terminal model session rather than final deterministic CLI prose.
 
 ## Open Risks / Next Steps
 
-- API-backed model execution is still not embedded in the CLI; `ask` now writes grounded memos locally rather than calling an external model.
+- API-backed model execution is still not embedded in the CLI by design; the active terminal model remains the author through pack/capture workflows rather than a direct in-process API client.
 - The self-model layer is now queryable and reflectable, but it still depends on user-supplied postmortems and bias notes to become genuinely sharp.
 - Repo snapshots and figure extraction are now materially better, but semantic repo understanding, richer figure interpretation, and deeper dataset/table workflows are still partial rather than mature.
 - Watch profiles now expand topic retrieval, but the underlying search engine is still mostly lexical rather than fully semantic; frontier-model-assisted routing remains an open upgrade path.
 - The correct live-research model is now explicit, but it still depends on Codex/GPT producing the research bundle; the CLI is intentionally not trying to impersonate a frontier web-research model.
 - The new PDF vision loop removes the weakest current OCR bottleneck, but it is still a human-or-agent-authored handoff rather than a fully automatic model invocation inside the CLI.
-- Claim extraction and state inference are now useful but still deterministic; a later model-assisted pass may improve claim quality and contradiction handling.
+- Claim extraction, state diffs, and other maintenance transforms remain deterministic plumbing; if any of them start asserting new analytical judgement rather than maintaining structure, they should be widened onto the authored-output path too.
 - The CLI still does not invoke the frontier model directly. The repo now has a zero-API bridge instead, which is the correct operating model for the current user workflow.
-- `ask`, `deck`, and some direct deterministic state/decision outputs still exist as local scaffolds; if the user wants the same hard model-authorship boundary on every final artefact type, those direct surfaces should eventually be pushed behind capture-first workflows too.
+- `watch-refresh`, `claims-refresh`, `claim-diff`, and `state-diff` still operate as deterministic maintenance/reporting utilities. If the operator wants those to become authored analytical surfaces instead of maintenance tooling, they should be split into authored commands rather than silently changing the existing maintenance verbs.
 - Retrieval discipline, draft/workspace separation, and maintenance audit are now materially stronger, but the search engine is still lexical and should not be mistaken for a full semantic query layer.
 - Reviewed-source preference materially improves report quality, but broad investment synthesis still depends on good section queries and note quality rather than a fully semantic retrieval layer.
 - Live lint is structurally clean, but the current corpus still carries an info-only backlog around provisional PDF-handoff review states, thin concept/entity extraction on some notes, and orphan claims that need later quality passes rather than runtime fixes.
