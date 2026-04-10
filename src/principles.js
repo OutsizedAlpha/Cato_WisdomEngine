@@ -1,49 +1,41 @@
-const { loadSelfNotes, noteSummary, writeOutputDocument } = require("./research");
+const { writeOutputByFamily } = require("./research");
+const { buildCompiledSelfModel, loadSelfNotes, renderSelfModelMarkdownBlock } = require("./self-model");
 
-function groupedSelfNotes(selfNotes) {
-  const groups = new Map();
-  for (const note of selfNotes) {
-    if (!groups.has(note.category)) {
-      groups.set(note.category, []);
-    }
-    groups.get(note.category).push(note);
-  }
-  return groups;
-}
+function buildPrinciplesBody(selfNotes, context) {
+  return `
+# Principles Snapshot
 
-function buildPrinciplesBody(selfNotes) {
-  const groups = groupedSelfNotes(
-    selfNotes.filter((note) =>
-      ["principles", "portfolio-philosophy", "heuristics", "decision-rules", "communication-style"].includes(note.category)
-    )
-  );
-  const lines = ["# Principles Snapshot", "", "## Current Active Self-Model Surfaces", ""];
+## Current Operating Constitution
 
-  if (!groups.size) {
-    lines.push("- No active principles or heuristics recorded yet.");
-    return `${lines.join("\n").trim()}\n`;
-  }
+${renderSelfModelMarkdownBlock(context, { title: "Current Operating Constitution" })}
 
-  for (const category of [...groups.keys()].sort()) {
-    lines.push(`## ${category}`);
-    for (const note of groups.get(category).sort((left, right) => left.title.localeCompare(right.title))) {
-      lines.push(`- ${note.title}: ${noteSummary(note, 180)}`);
-    }
-    lines.push("");
-  }
+## Source Basis Mix
 
-  return `${lines.join("\n").trim()}\n`;
+- Declared directly: ${selfNotes.filter((note) => note.sourceBasis === "declared").length}
+- Learned from history or postmortems: ${selfNotes.filter((note) => note.sourceBasis !== "declared").length}
+- Learned from postmortem: ${context.learnedFromPostmortems.length}
+
+## Conflict Register
+
+${context.conflicts.length
+  ? context.conflicts.map((conflict) => `- ${conflict.winner_title} overrides ${conflict.loser_title} because ${conflict.reason}.`).join("\n")
+  : "- No declared rule conflicts are active right now."}
+
+## Stale Review Candidates
+
+${context.staleReview.length
+  ? context.staleReview.map((entry) => `- ${entry.title}: ${entry.review_trigger} (${entry.days_since_review} days since review).`).join("\n")
+  : "- No stale review candidates surfaced right now."}
+`;
 }
 
 function writePrinciplesSnapshot(root) {
   const selfNotes = loadSelfNotes(root);
-  const output = writeOutputDocument(root, {
-    idPrefix: "PRINCIPLES",
-    kind: "principles-snapshot",
+  const context = buildCompiledSelfModel(root).globalContext;
+  const output = writeOutputByFamily(root, "principles-snapshot", {
     title: "Principles Snapshot",
-    outputDir: "outputs/memos",
     fileSlug: "principles-snapshot",
-    body: buildPrinciplesBody(selfNotes),
+    body: buildPrinciplesBody(selfNotes, context),
     sources: selfNotes.map((note) => note.relativePath)
   });
 

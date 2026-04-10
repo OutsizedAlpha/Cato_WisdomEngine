@@ -7,7 +7,7 @@ const {
   renderRetrievalBudgetBlock,
   retrieveEvidence,
   updateManagedNote,
-  writeOutputDocument
+  writeOutputByFamily
 } = require("./research");
 const { searchClaims } = require("./claims");
 const { resolveWatchSubject } = require("./watch");
@@ -397,27 +397,23 @@ function writeStateDiff(root, subject) {
   ensureProjectStructure(root);
   const snapshots = latestStateSnapshots(root, subject);
   if (snapshots.length < 2) {
-    const emptyPath = path.join(root, "outputs", "briefs", `${timestampStamp()}-state-diff-${slugify(subject).slice(0, 80) || "state"}.md`);
-    writeText(
-      emptyPath,
-      renderMarkdown(
-        {
-          id: makeId("STATEDIFF", slugify(subject).padEnd(12, "d")),
-          kind: "state-diff",
-          title: `State Diff: ${subject}`,
-          created_at: nowIso(),
-          subject
-        },
-        `
+    const output = writeOutputByFamily(root, "brief", {
+      idPrefix: "STATEDIFF",
+      kind: "state-diff",
+      title: `State Diff: ${subject}`,
+      fileSlug: `state-diff-${subject}`,
+      frontmatter: {
+        subject
+      },
+      body: `
 # State Diff: ${subject}
 
 ## Status
 
 There are not yet two state snapshots for this subject, so no meaningful diff is available.
 `
-      )
-    );
-    return { outputPath: relativeToRoot(root, emptyPath), subject, changed: 0 };
+    });
+    return { outputPath: output.outputPath, subject, changed: 0 };
   }
 
   const previous = snapshots[snapshots.length - 2];
@@ -426,11 +422,10 @@ There are not yet two state snapshots for this subject, so no meaningful diff is
   const removed = previous.claim_ids.filter((id) => !current.claim_ids.includes(id));
   const carried = current.claim_ids.filter((id) => previous.claim_ids.includes(id));
 
-  const output = writeOutputDocument(root, {
+  const output = writeOutputByFamily(root, "brief", {
     idPrefix: "STATEDIFF",
     kind: "state-diff",
     title: `State Diff: ${subject}`,
-    outputDir: "outputs/briefs",
     fileSlug: `state-diff-${subject}`,
     sources: [...new Set(current.evidence_paths.concat(previous.evidence_paths))],
     frontmatter: {
@@ -503,11 +498,10 @@ function writeRegimeBrief(root, options = {}) {
     evidence: []
   })) : subjects.map((subject) => refreshState(root, subject, { claimLimit: options.claimLimit, evidenceLimit: options.evidenceLimit }));
 
-  const output = writeOutputDocument(root, {
+  const output = writeOutputByFamily(root, "brief", {
     idPrefix: "REGIME",
     kind: "regime-brief",
     title: options.title || `${options.set || "global-risk-regime"} regime brief`,
-    outputDir: "outputs/briefs",
     fileSlug: `${options.set || "global-risk-regime"}-regime-brief`,
     sources: [...new Set(refreshed.flatMap((entry) => (entry.evidence || []).map((result) => result.relativePath)))],
     frontmatter: {

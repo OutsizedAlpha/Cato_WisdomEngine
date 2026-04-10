@@ -1,4 +1,4 @@
-const { promoteOutputToSynthesis, selectEvidence, synthesisParagraphs, writeOutputDocument } = require("./research");
+const { promoteOutputToSynthesis, selectEvidence, synthesisParagraphs, writeOutputByFamily } = require("./research");
 const { resolveWatchSubject } = require("./watch");
 const GROUNDED_EXCLUDE_PREFIXES = [
   "outputs/",
@@ -90,17 +90,12 @@ function writeDeck(root, topic, options = {}) {
     excludePrefixes: GROUNDED_EXCLUDE_PREFIXES
   });
 
-  const output = writeOutputDocument(root, {
-    idPrefix: "DECK",
-    kind: "research-deck",
+  const output = writeOutputByFamily(root, "deck", {
     title: topic,
-    outputDir: "outputs/decks",
     fileSlug: topic,
     body: buildDeckBody(topic, results, watch),
     sources: results.map((result) => result.relativePath),
     frontmatter: {
-      marp: true,
-      paginate: true,
       theme: "default",
       generation_mode: "grounded_deck",
       watch_profile: watch.profile ? watch.profile.relativePath : ""

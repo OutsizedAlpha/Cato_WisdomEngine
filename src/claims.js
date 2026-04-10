@@ -21,7 +21,8 @@ const {
   writeJsonl,
   writeText
 } = require("./utils");
-const { renderRetrievalBudgetBlock, retrieveEvidence } = require("./research");
+const { renderRetrievalBudgetBlock, retrieveEvidence, writeOutputByFamily } = require("./research");
+const { writeSafeGeneratedMarkdown } = require("./generated-note-safety");
 
 const CLAIM_SOURCE_DIRS = ["wiki/source-notes", "wiki/reports", "wiki/theses"];
 const FACT_TERMS = ["reported", "printed", "rose", "fell", "held", "stayed", "slipped", "widened", "narrowed"];
@@ -252,6 +253,11 @@ function noteDate(note) {
   return note.frontmatter.date || note.frontmatter.created_at || note.frontmatter.captured_at || note.frontmatter.ingested_at || "";
 }
 
+function parseDateValue(value) {
+  const parsed = Date.parse(String(value || ""));
+  return Number.isNaN(parsed) ? 0 : parsed;
+}
+
 function normalizeClaimText(value) {
   return String(value || "")
     .toLowerCase()
@@ -307,35 +313,187 @@ function claimSupportingSources(note) {
   return [note.relativePath];
 }
 
-function claimConfidence(record) {
-  let score = 0;
+function clampScore(value, minimum = 0, maximum = 1) {
+  return Math.min(maximum, Math.max(minimum, value));
+}
+
+function claimTypeWeight(record) {
   if (record.claim_type === "fact") {
-    score += 3;
-  } else if (record.claim_type === "inference") {
-    score += 2;
-  } else if (record.claim_type === "estimate") {
-    score += 2;
-  } else {
-    score += 1;
+    return 1;
   }
-  score += Math.min(record.supporting_sources.length, 3);
-  if (record.origin_note_kind === "source-note") {
-    score += 1;
+  if (record.claim_type === "inference") {
+    return 0.75;
+  }
+  if (record.claim_type === "estimate") {
+    return 0.65;
+  }
+  return 0.45;
+}
+
+function sourceSupportWeight(record) {
+  return Math.min(record.supporting_sources.length, 4) / 4;
+}
+
+function claimAgeDays(record) {
+  if (!record.claim_date_value) {
+    return null;
+  }
+  return Math.max(0, (Date.now() - record.claim_date_value) / (1000 * 60 * 60 * 24));
+}
+
+function recencyWeight(record) {
+  const days = claimAgeDays(record);
+  if (days === null) {
+    return 0.35;
+  }
+  if (days <= 30) {
+    return 1;
+  }
+  if (days <= 90) {
+    return 0.8;
+  }
+  if (days <= 180) {
+    return 0.6;
+  }
+  if (days <= 365) {
+    return 0.35;
+  }
+  if (days <= 730) {
+    return 0.15;
+  }
+  return 0.05;
+}
+
+function reviewWeight(record) {
+  const reviewStatus = String(record.origin_review_status || "").trim().toLowerCase();
+  if (["visual_reviewed", "visual-and-text-reviewed", "operator_reviewed"].includes(reviewStatus)) {
+    return 1;
+  }
+  if (reviewStatus === "text_reviewed") {
+    return 0.85;
   }
   if (record.origin_note_kind === "research-report") {
-    score += 1;
+    return 0.8;
   }
+  if (!reviewStatus || reviewStatus === "unreviewed") {
+    return 0.35;
+  }
+  return 0.6;
+}
 
-  if (score >= 6) {
+function contradictionWeight(record) {
+  const contradictions = record.contradicting_claim_ids.length;
+  if (!contradictions) {
+    return 1;
+  }
+  if (contradictions === 1) {
+    return 0.65;
+  }
+  if (contradictions === 2) {
+    return 0.45;
+  }
+  return 0.25;
+}
+
+function supersessionWeight(record) {
+  return record.superseded_by_claim_ids.length ? 0.2 : 1;
+}
+
+function confidenceLabelFromScore(score) {
+  if (score >= 0.8) {
     return "high";
   }
-  if (score >= 4) {
+  if (score >= 0.65) {
     return "medium-high";
   }
-  if (score >= 3) {
+  if (score >= 0.45) {
     return "medium";
   }
   return "low";
+}
+
+function confidenceBasis(record, score) {
+  const supportText =
+    record.supporting_sources.length === 1
+      ? "1 supporting source"
+      : `${record.supporting_sources.length} supporting sources`;
+  const reviewStatus = String(record.origin_review_status || "unreviewed").replace(/_/g, " ");
+  const ageDays = claimAgeDays(record);
+  const recencyText =
+    ageDays === null
+      ? "undated evidence"
+      : ageDays <= 30
+        ? "confirmed within 30 days"
+        : ageDays <= 90
+          ? "confirmed within 90 days"
+          : ageDays <= 365
+            ? `last anchored ${Math.round(ageDays)} days ago`
+            : `stale at ${Math.round(ageDays)} days old`;
+  const contradictionText = record.contradicting_claim_ids.length
+    ? `${record.contradicting_claim_ids.length} contradiction link${record.contradicting_claim_ids.length === 1 ? "" : "s"}`
+    : "no direct contradiction links";
+  const supersessionText = record.superseded_by_claim_ids.length
+    ? "superseded by a fresher overlapping claim"
+    : "not superseded";
+  return `${supportText}; ${reviewStatus}; ${recencyText}; ${contradictionText}; ${supersessionText}; score ${score.toFixed(2)}`;
+}
+
+function buildClaimConfidence(record) {
+  const score = clampScore(
+    sourceSupportWeight(record) * 0.3 +
+      recencyWeight(record) * 0.25 +
+      reviewWeight(record) * 0.15 +
+      claimTypeWeight(record) * 0.15 +
+      contradictionWeight(record) * 0.1 +
+      supersessionWeight(record) * 0.05
+  );
+  return {
+    confidence: confidenceLabelFromScore(score),
+    confidence_score: Number(score.toFixed(2)),
+    confidence_basis: confidenceBasis(record, score)
+  };
+}
+
+function tokenSet(value) {
+  return new Set(tokenize(value));
+}
+
+function overlapCount(leftValues, rightValues) {
+  const right = new Set(rightValues);
+  let count = 0;
+  for (const value of leftValues) {
+    if (right.has(value)) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+function jaccardSimilarity(leftValues, rightValues) {
+  const left = new Set(leftValues);
+  const right = new Set(rightValues);
+  if (!left.size && !right.size) {
+    return 0;
+  }
+  const intersection = overlapCount(left, right);
+  const union = new Set([...left, ...right]).size;
+  return union ? intersection / union : 0;
+}
+
+function claimBaseStrength(record) {
+  return sourceSupportWeight(record) * 0.4 + recencyWeight(record) * 0.3 + reviewWeight(record) * 0.15 + claimTypeWeight(record) * 0.15;
+}
+
+function fresherClaim(left, right) {
+  if (left.claim_date_value && right.claim_date_value && left.claim_date_value !== right.claim_date_value) {
+    return left.claim_date_value > right.claim_date_value ? left : right;
+  }
+  const leftStrength = claimBaseStrength(left);
+  const rightStrength = claimBaseStrength(right);
+  if (leftStrength === rightStrength) {
+    return null;
+  }
+  return leftStrength > rightStrength ? left : right;
 }
 
 function isStaleDate(dateValue) {
@@ -367,23 +525,29 @@ function buildClaimRecords(root) {
         id,
         claim_text: claimText,
         normalized_claim_text: normalizeClaimText(claimText),
+        claim_tokens: [...tokenSet(claimText)],
         claim_type: classifyClaimType(claimText, note),
         polarity: classifyPolarity(claimText),
         status: isStaleDate(noteDate(note)) ? "stale" : "active",
         heading: unit.heading,
         claim_date: noteDate(note),
+        claim_date_value: parseDateValue(noteDate(note)),
         origin_note_path: note.relativePath,
         origin_note_kind: note.frontmatter.kind || "",
+        origin_review_status: note.frontmatter.review_status || "",
         origin_title: note.title,
         supporting_sources: claimSupportingSources(note),
         contradicting_claim_ids: [],
+        weakened_by_claim_ids: [],
+        weakens_claim_ids: [],
+        superseded_by_claim_ids: [],
+        supersedes_claim_ids: [],
         concepts: deriveConceptTerms(note, claimText, ontologyIndex),
         entities: deriveEntities(note),
         subject_keys: [],
         context_excerpt: truncate(claimText, 220)
       };
       record.subject_keys = claimSubjectKeys(record);
-      record.confidence = claimConfidence(record);
       claims.push(record);
     }
   }
@@ -398,24 +562,69 @@ function buildClaimRecords(root) {
     }
   }
 
+  const processedPairs = new Set();
   for (const claim of claims) {
-    const contradictions = new Set();
     for (const key of claim.subject_keys) {
       for (const candidate of bySubject.get(key) || []) {
         if (candidate.id === claim.id) {
           continue;
         }
+
+        const pairKey = [claim.id, candidate.id].sort().join("::");
+        if (processedPairs.has(pairKey)) {
+          continue;
+        }
+        processedPairs.add(pairKey);
+
+        const sharedSubjects = overlapCount(claim.subject_keys, candidate.subject_keys);
+        const tokenSimilarity = jaccardSimilarity(claim.claim_tokens, candidate.claim_tokens);
+        const stronger = fresherClaim(claim, candidate);
+        const weaker = stronger && stronger.id === claim.id ? candidate : claim;
+
         if (
-          candidate.polarity !== "neutral" &&
           claim.polarity !== "neutral" &&
-          candidate.polarity !== claim.polarity
+          candidate.polarity !== "neutral" &&
+          claim.polarity !== candidate.polarity &&
+          (sharedSubjects >= 2 || tokenSimilarity >= 0.32)
         ) {
-          contradictions.add(candidate.id);
+          claim.contradicting_claim_ids.push(candidate.id);
+          candidate.contradicting_claim_ids.push(claim.id);
+
+          if (stronger && tokenSimilarity >= 0.38) {
+            stronger.weakens_claim_ids.push(weaker.id);
+            weaker.weakened_by_claim_ids.push(stronger.id);
+          }
+        }
+
+        if (
+          claim.polarity === candidate.polarity &&
+          claim.claim_type === candidate.claim_type &&
+          stronger &&
+          (sharedSubjects >= 2 || tokenSimilarity >= 0.78) &&
+          tokenSimilarity >= 0.72
+        ) {
+          stronger.supersedes_claim_ids.push(weaker.id);
+          weaker.superseded_by_claim_ids.push(stronger.id);
         }
       }
     }
-    claim.contradicting_claim_ids = [...contradictions].sort();
-    if (claim.status === "active" && claim.contradicting_claim_ids.length) {
+  }
+
+  for (const claim of claims) {
+    claim.contradicting_claim_ids = [...new Set(claim.contradicting_claim_ids)].sort();
+    claim.weakened_by_claim_ids = [...new Set(claim.weakened_by_claim_ids)].sort();
+    claim.weakens_claim_ids = [...new Set(claim.weakens_claim_ids)].sort();
+    claim.superseded_by_claim_ids = [...new Set(claim.superseded_by_claim_ids)].sort();
+    claim.supersedes_claim_ids = [...new Set(claim.supersedes_claim_ids)].sort();
+
+    const confidence = buildClaimConfidence(claim);
+    claim.confidence = confidence.confidence;
+    claim.confidence_score = confidence.confidence_score;
+    claim.confidence_basis = confidence.confidence_basis;
+
+    if (claim.superseded_by_claim_ids.length) {
+      claim.status = "superseded";
+    } else if (claim.status === "active" && claim.contradicting_claim_ids.length) {
       claim.status = "contested";
     }
   }
@@ -445,6 +654,9 @@ function claimCounterArguments(claim, claimIndex) {
   if (claim.status === "stale") {
     lines.push("- The supporting evidence may be stale relative to the current market or operating context.");
   }
+  if (claim.superseded_by_claim_ids.length) {
+    lines.push("- A fresher overlapping claim now dominates this point and should be preferred for live use.");
+  }
   if (claim.supporting_sources.length <= 1) {
     lines.push("- This claim currently leans on a thin support map and may be overconfident.");
   }
@@ -463,6 +675,9 @@ function claimDataGaps(claim) {
   if (claim.status === "stale") {
     lines.push("- Refresh this claim with evidence newer than the current 180-day staleness window.");
   }
+  if (claim.superseded_by_claim_ids.length) {
+    lines.push("- Prefer the fresher superseding claim unless this page still captures context the newer claim omits.");
+  }
   if (!claim.claim_date) {
     lines.push("- Add a date anchor so the claim can be assessed in context.");
   }
@@ -479,31 +694,57 @@ function writeClaimPage(root, claim, claimIndex) {
     .filter(Boolean)
     .map((other) => `- ${toWikiLink(relativeToRoot(root, claimPagePath(root, other)), truncate(other.claim_text, 96))}`)
     .join("\n");
+  const weakenedBy = claim.weakened_by_claim_ids
+    .map((id) => claimIndex.get(id))
+    .filter(Boolean)
+    .map((other) => `- ${toWikiLink(relativeToRoot(root, claimPagePath(root, other)), truncate(other.claim_text, 96))}`)
+    .join("\n");
+  const weakens = claim.weakens_claim_ids
+    .map((id) => claimIndex.get(id))
+    .filter(Boolean)
+    .map((other) => `- ${toWikiLink(relativeToRoot(root, claimPagePath(root, other)), truncate(other.claim_text, 96))}`)
+    .join("\n");
+  const supersededBy = claim.superseded_by_claim_ids
+    .map((id) => claimIndex.get(id))
+    .filter(Boolean)
+    .map((other) => `- ${toWikiLink(relativeToRoot(root, claimPagePath(root, other)), truncate(other.claim_text, 96))}`)
+    .join("\n");
+  const supersedes = claim.supersedes_claim_ids
+    .map((id) => claimIndex.get(id))
+    .filter(Boolean)
+    .map((other) => `- ${toWikiLink(relativeToRoot(root, claimPagePath(root, other)), truncate(other.claim_text, 96))}`)
+    .join("\n");
   const support = claim.supporting_sources
     .map((source) => `- ${renderClaimSourceReference(source)}`)
     .join("\n");
   const concepts = claim.concepts.length ? claim.concepts.map((value) => `- ${value}`).join("\n") : "- None linked.";
   const entities = claim.entities.length ? claim.entities.map((value) => `- ${value}`).join("\n") : "- None linked.";
 
-  writeText(
+  writeSafeGeneratedMarkdown(
     pagePath,
-    renderMarkdown(
-      {
-        id: claim.id,
-        kind: "claim-page",
-        title: truncate(claim.claim_text, 96),
-        status: claim.status,
-        claim_type: claim.claim_type,
-        confidence: claim.confidence,
-        claim_date: claim.claim_date,
-        origin_note_path: claim.origin_note_path,
-        origin_note_kind: claim.origin_note_kind,
-        supporting_sources: claim.supporting_sources,
-        contradicting_claims: claim.contradicting_claim_ids,
-        concepts: claim.concepts,
-        entities: claim.entities
-      },
-      `
+    {
+      id: claim.id,
+      kind: "claim-page",
+      title: truncate(claim.claim_text, 96),
+      status: claim.status,
+      claim_type: claim.claim_type,
+      confidence: claim.confidence,
+      confidence_score: claim.confidence_score,
+      confidence_basis: claim.confidence_basis,
+      claim_date: claim.claim_date,
+      origin_note_path: claim.origin_note_path,
+      origin_note_kind: claim.origin_note_kind,
+      origin_review_status: claim.origin_review_status,
+      supporting_sources: claim.supporting_sources,
+      contradicting_claims: claim.contradicting_claim_ids,
+      weakened_by_claims: claim.weakened_by_claim_ids,
+      weakens_claims: claim.weakens_claim_ids,
+      superseded_by_claims: claim.superseded_by_claim_ids,
+      supersedes_claims: claim.supersedes_claim_ids,
+      concepts: claim.concepts,
+      entities: claim.entities
+    },
+    `
 # ${truncate(claim.claim_text, 96)}
 
 ## Claim
@@ -516,6 +757,8 @@ ${claim.claim_text}
 - Status: ${claim.status}
 - Polarity: ${claim.polarity}
 - Confidence: ${claim.confidence}
+- Confidence score: ${claim.confidence_score}
+- Confidence basis: ${claim.confidence_basis}
 - Origin note: ${toWikiLink(claim.origin_note_path, claim.origin_title)}
 - Claim date: ${claim.claim_date || "undated"}
 
@@ -526,6 +769,24 @@ ${support || "- None recorded."}
 ## Contradicting Claims
 
 ${contradictions || "- No direct contradiction cluster detected."}
+
+## Lifecycle Links
+
+### Weakened By
+
+${weakenedBy || "- No stronger weakening claim detected."}
+
+### Weakens
+
+${weakens || "- No weakening relationship detected."}
+
+### Superseded By
+
+${supersededBy || "- No fresher overlapping claim detected."}
+
+### Supersedes
+
+${supersedes || "- No older overlapping claim detected."}
 
 ## Counter-Arguments / Weakening Evidence
 
@@ -542,8 +803,12 @@ ${concepts}
 ## Related Entities
 
 ${entities}
-`
-    )
+`,
+    {
+      label: `claim page ${claim.id}`,
+      maxBodyChars: 25000,
+      maxTotalChars: 35000
+    }
   );
 
   return relativeToRoot(root, pagePath);
@@ -582,12 +847,14 @@ function writeClaimIndexes(root, claims) {
   const active = claims.filter((claim) => claim.status === "active");
   const contested = claims.filter((claim) => claim.status === "contested");
   const stale = claims.filter((claim) => claim.status === "stale");
+  const superseded = claims.filter((claim) => claim.status === "superseded");
   const lines = ["# Claim Index", "", `Generated: ${dateStamp()}`, ""];
 
   const sections = [
     ["Active Claims", active],
     ["Contested Claims", contested],
-    ["Stale Claims", stale]
+    ["Stale Claims", stale],
+    ["Superseded Claims", superseded]
   ];
 
   for (const [title, group] of sections) {
@@ -663,6 +930,7 @@ function writeClaimArtifacts(root, claims, options = {}) {
     claims: claims.length,
     contested: claims.filter((claim) => claim.status === "contested").length,
     stale: claims.filter((claim) => claim.status === "stale").length,
+    superseded: claims.filter((claim) => claim.status === "superseded").length,
     retired,
     snapshot_path: snapshotPath
   });
@@ -709,6 +977,13 @@ function scoreClaim(claim, queryTokens, query) {
   if (claim.status === "contested") {
     score += 1;
   }
+  if (claim.status === "stale") {
+    score -= 2;
+  }
+  if (claim.status === "superseded") {
+    score -= 8;
+  }
+  score += Number(claim.confidence_score || 0) * 6;
   return score;
 }
 
@@ -894,29 +1169,18 @@ function writeWhyBelieve(root, topic, options = {}) {
   });
   const evidence = retrieval.results;
 
-  const outputPath = path.join(
-    root,
-    "outputs",
-    "briefs",
-    `${timestampStamp()}-why-believe-${slugify(topic).slice(0, 80) || "topic"}.md`
-  );
-  writeText(
-    outputPath,
-    renderMarkdown(
-      {
-        id: `WHYBELIEVE-${new Date().getUTCFullYear()}-${slugify(topic).slice(0, 12).toUpperCase() || "TOPIC"}`,
-        kind: "belief-brief",
-        title: `Why Believe: ${topic}`,
-        created_at: nowIso(),
-        topic,
-        sources: [...new Set(claims.flatMap((claim) => claim.supporting_sources).concat(evidence.map((result) => result.relativePath)))]
-      },
-      buildWhyBelieveBody(topic, claims, evidence, retrieval)
-    )
-  );
+  const output = writeOutputByFamily(root, "belief-brief", {
+    title: `Why Believe: ${topic}`,
+    fileSlug: `why-believe-${topic}`,
+    sources: [...new Set(claims.flatMap((claim) => claim.supporting_sources).concat(evidence.map((result) => result.relativePath)))],
+    frontmatter: {
+      topic
+    },
+    body: buildWhyBelieveBody(topic, claims, evidence, retrieval)
+  });
 
   return {
-    outputPath: relativeToRoot(root, outputPath),
+    outputPath: output.outputPath,
     claims: claims.length,
     evidence: evidence.length
   };

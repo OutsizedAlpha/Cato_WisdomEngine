@@ -3,101 +3,13 @@ const fs = require("node:fs");
 const { compileProject } = require("./compile");
 const { ingest } = require("./ingest");
 const { parseFrontmatter, sectionContent } = require("./markdown");
+const { getOutputFamily, hasOutputFamily } = require("./output-registry");
 const { ensureProjectStructure, loadSettings } = require("./project");
-const { promoteOutputToSynthesis, writeCanonicalDocument, writeFixedDocument, writeOutputDocument } = require("./research");
+const { promoteOutputToSynthesis, writeOutputByFamily } = require("./research");
 const { appendJsonl, ensureDir, readJson, relativeToRoot, slugify, timestampStamp } = require("./utils");
 const { createWatchProfile } = require("./watch");
 const { writeSurveillance } = require("./surveil");
 const { downloadWebSource, normalizeKnownUrl } = require("./web-import");
-
-const OUTPUT_KINDS = {
-  memo: {
-    idPrefix: "ASK",
-    kind: "answer-memo",
-    outputDir: "outputs/memos"
-  },
-  report: {
-    idPrefix: "REPORT",
-    kind: "research-report",
-    outputDir: "outputs/reports"
-  },
-  "final-report": {
-    idPrefix: "REPORT",
-    kind: "research-report",
-    outputDir: "wiki/reports",
-    canonical: true
-  },
-  deck: {
-    idPrefix: "DECK",
-    kind: "research-deck",
-    outputDir: "outputs/decks",
-    frontmatter: {
-      marp: true,
-      paginate: true,
-      theme: "default"
-    }
-  },
-  brief: {
-    idPrefix: "BRIEF",
-    kind: "research-brief",
-    outputDir: "outputs/briefs"
-  },
-  "meeting-brief": {
-    idPrefix: "MEETING",
-    kind: "meeting-brief",
-    outputDir: "outputs/meeting-briefs"
-  },
-  "belief-brief": {
-    idPrefix: "WHYBELIEVE",
-    kind: "belief-brief",
-    outputDir: "outputs/briefs"
-  },
-  "red-team-brief": {
-    idPrefix: "REDTEAM",
-    kind: "red-team-brief",
-    outputDir: "outputs/briefs"
-  },
-  "market-change-brief": {
-    idPrefix: "MARKETCHG",
-    kind: "market-change-brief",
-    outputDir: "outputs/briefs"
-  },
-  "surveillance-page": {
-    idPrefix: "SURVEIL",
-    kind: "surveillance-page",
-    outputDir: "wiki/surveillance"
-  },
-  "state-page": {
-    idPrefix: "STATE",
-    kind: "state-page",
-    outputDir: "wiki/states"
-  },
-  "decision-note": {
-    idPrefix: "DECISION",
-    kind: "decision-note",
-    outputDir: "wiki/decisions"
-  },
-  "watch-profile": {
-    idPrefix: "WATCH",
-    kind: "watch-profile",
-    outputDir: "wiki/watch-profiles"
-  },
-  "self-reflection": {
-    idPrefix: "REFLECT",
-    kind: "self-reflection",
-    outputDir: "outputs/memos"
-  },
-  "principles-snapshot": {
-    idPrefix: "PRINCIPLES",
-    kind: "principles-snapshot",
-    outputDir: "outputs/memos"
-  },
-  "postmortem-note": {
-    idPrefix: "POSTMORTEM",
-    kind: "postmortem-note",
-    outputDir: "wiki/self/postmortems"
-  }
-};
 
 function resolveBundle(root, bundleInput) {
   if (typeof bundleInput === "string") {
@@ -224,7 +136,7 @@ function inferOutputTitle(bundle) {
 
 function inferOutputKind(bundle) {
   const requested = String(bundle.output?.kind || bundle.kind || "report").toLowerCase();
-  return OUTPUT_KINDS[requested] ? requested : "report";
+  return hasOutputFamily(requested) ? requested : "report";
 }
 
 function normalizeOutputPayload(bundle, captureSummary = "") {
@@ -328,7 +240,7 @@ function captureResearch(root, bundleInput, options = {}) {
   let outputResult = null;
   if (bundle.output) {
     const outputKind = inferOutputKind(bundle);
-    const config = OUTPUT_KINDS[outputKind];
+    const config = getOutputFamily(outputKind);
     const captureSummary = [renderImportedSourceSection(ingestResult.results), renderLocalSourceSection(localSources)].filter(Boolean).join("\n\n");
     const outputPayload = normalizeOutputPayload(bundle, captureSummary);
     const outputSources = [...new Set(localSources.map((source) => source.path).concat(ingestResult.results.map((record) => record.note_path)))];
@@ -357,27 +269,22 @@ function captureResearch(root, bundleInput, options = {}) {
       }
     };
     const fixedOutputPath = String(bundle.output?.output_path || "").trim();
-    const output =
-      config.canonical || bundle.output?.canonical_path
-        ? writeCanonicalDocument(root, {
-            ...sharedOutputOptions,
-            outputPath: String(bundle.output?.canonical_path || "").trim() || path.join(config.outputDir, `${slugify(inferOutputTitle(bundle)).slice(0, 80) || "report"}.md`),
-            archiveDir:
-              String(bundle.output?.archive_dir || "").trim() ||
-              path.join(config.outputDir, "archive", slugify(inferOutputTitle(bundle)).slice(0, 80) || "report")
-          })
-        : fixedOutputPath
-          ? writeFixedDocument(root, {
-              ...sharedOutputOptions,
-              outputPath: fixedOutputPath
-            })
-        : writeOutputDocument(root, {
-            ...sharedOutputOptions,
-            outputDir: config.outputDir
-          });
+    const output = writeOutputByFamily(root, outputKind, {
+      ...sharedOutputOptions,
+      outputPath:
+        String(bundle.output?.canonical_path || "").trim() ||
+        fixedOutputPath ||
+        undefined,
+      archiveDir:
+        String(bundle.output?.archive_dir || "").trim() ||
+        (config.canonical
+          ? path.join(config.outputDir, "archive", slugify(inferOutputTitle(bundle)).slice(0, 80) || "report")
+          : undefined)
+    });
 
+    const usesCanonicalOutput = Boolean(config.canonical || bundle.output?.canonical_path);
     let promotedPath = "";
-    if (!(config.canonical || bundle.output?.canonical_path) && (options.promote || bundle.output.promote)) {
+    if (!usesCanonicalOutput && (options.promote || bundle.output.promote)) {
       promotedPath = promoteOutputToSynthesis(root, output.outputPath, {
         title: inferOutputTitle(bundle),
         sources: outputSources,

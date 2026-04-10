@@ -1,18 +1,18 @@
 const path = require("node:path");
-const { parseFrontmatter, renderMarkdown, toWikiLink } = require("./markdown");
+const { toWikiLink } = require("./markdown");
 const { ensureProjectStructure } = require("./project");
 const {
-  loadSelfNotes,
   renderResultReference,
   renderRetrievalBudgetBlock,
   retrieveEvidence,
   updateManagedNote,
-  writeOutputDocument
+  writeOutputByFamily
 } = require("./research");
+const { renderSelfModelMarkdownBlock, resolveSelfModelContext } = require("./self-model");
 const { searchClaims } = require("./claims");
 const { defaultRegimeSubjects, latestStateSnapshots, refreshState, writeRegimeBrief } = require("./states");
 const { resolveWatchSubject } = require("./watch");
-const { appendJsonl, makeId, nowIso, readText, relativeToRoot, slugify, timestampStamp, truncate } = require("./utils");
+const { appendJsonl, makeId, nowIso, relativeToRoot, slugify, truncate } = require("./utils");
 
 const EVIDENCE_EXCLUDE_PREFIXES = [
   "outputs/",
@@ -42,37 +42,6 @@ function uniqueByKey(values, keyFn) {
   return output;
 }
 
-function parseTensionRegister(root) {
-  const filePath = path.join(root, "wiki", "self", "tension-register.md");
-  try {
-    return readText(filePath)
-      .split(/\r?\n/)
-      .map((line) => line.trim())
-      .filter((line) => line.startsWith("- "))
-      .map((line) => line.replace(/^- /, ""));
-  } catch (error) {
-    return [];
-  }
-}
-
-function collectSelfModelContext(root) {
-  const notes = loadSelfNotes(root);
-  const byCategory = new Map();
-  for (const note of notes) {
-    if (!byCategory.has(note.category)) {
-      byCategory.set(note.category, []);
-    }
-    byCategory.get(note.category).push(note);
-  }
-
-  return {
-    principles: (byCategory.get("principles") || []).concat(byCategory.get("portfolio-philosophy") || []).slice(0, 4),
-    heuristics: (byCategory.get("heuristics") || []).concat(byCategory.get("decision-rules") || []).slice(0, 4),
-    biases: (byCategory.get("bias-watch") || []).slice(0, 4),
-    tensions: parseTensionRegister(root).slice(0, 4)
-  };
-}
-
 function supportingClaimLines(claims, count = 5) {
   return claims.length ? claims.slice(0, count).map((claim) => `- ${claim.claim_text}`).join("\n") : "- None surfaced.";
 }
@@ -84,24 +53,10 @@ function claimLinks(claims, count = 6) {
 }
 
 function selfModelBlock(context) {
-  const lines = [];
-  if (context.principles.length) {
-    lines.push("### Principles");
-    lines.push(...context.principles.map((note) => `- ${note.title}`));
-    lines.push("");
-  }
-  if (context.heuristics.length) {
-    lines.push("### Heuristics");
-    lines.push(...context.heuristics.map((note) => `- ${note.title}`));
-    lines.push("");
-  }
-  if (context.biases.length || context.tensions.length) {
-    lines.push("### Bias / Tension Checks");
-    lines.push(...context.biases.map((note) => `- ${note.title}`));
-    lines.push(...context.tensions.map((line) => `- ${line}`));
-    lines.push("");
-  }
-  return lines.length ? lines.join("\n") : "- No self-model notes are available yet.";
+  const nested = renderSelfModelMarkdownBlock(context, { title: "Active Self-Model" })
+    .replace(/^## /gm, "### ")
+    .trim();
+  return nested || "- No self-model notes are available yet.";
 }
 
 function decisionImplications(states) {
@@ -133,7 +88,9 @@ function fragileSubjects(states) {
 
 function strongestCounterCase(states, claims, selfModel) {
   const contested = claims.filter((claim) => claim.status === "contested");
-  const tensions = selfModel.tensions || [];
+  const tensions = (selfModel.conflicts || []).map(
+    (conflict) => `${conflict.winner_title} overrides ${conflict.loser_title} because ${conflict.reason}.`
+  );
   const lines = [
     ...contested.slice(0, 4).map((claim) => `- ${claim.claim_text}`),
     ...tensions.slice(0, 3).map((line) => `- Self-model tension: ${line}`)
@@ -186,7 +143,10 @@ function collectTopicPack(root, topic, options = {}) {
 function writeDecisionNote(root, topic, options = {}) {
   ensureProjectStructure(root);
   const pack = collectTopicPack(root, topic, options);
-  const selfModel = collectSelfModelContext(root);
+  const selfModel = resolveSelfModelContext(root, {
+    command: "decision-note",
+    topic
+  });
   const decisionPath = path.join(root, "wiki", "decisions", `${slugify(topic).slice(0, 80) || "decision"}.md`);
 
   updateManagedNote(
@@ -289,13 +249,13 @@ function writeMeetingBrief(root, title, options = {}) {
   );
   const claims = uniqueByKey(states.flatMap((state) => state.claims), (claim) => claim.id);
   const evidence = uniqueByKey(states.flatMap((state) => state.evidence), (result) => result.relativePath);
-  const selfModel = collectSelfModelContext(root);
+  const selfModel = resolveSelfModelContext(root, {
+    command: "meeting-brief",
+    topic: title
+  });
 
-  const output = writeOutputDocument(root, {
-    idPrefix: "MEETING",
-    kind: "meeting-brief",
+  const output = writeOutputByFamily(root, "meeting-brief", {
     title,
-    outputDir: "outputs/meeting-briefs",
     fileSlug: title,
     sources: [...new Set(evidence.map((result) => result.relativePath).concat(claims.flatMap((claim) => claim.supporting_sources)))],
     frontmatter: {
@@ -364,15 +324,15 @@ ${states.map((state) => `- ${toWikiLink(state.statePath, state.subject)} (${stat
 function writeRedTeam(root, topic, options = {}) {
   ensureProjectStructure(root);
   const pack = collectTopicPack(root, topic, options);
-  const selfModel = collectSelfModelContext(root);
+  const selfModel = resolveSelfModelContext(root, {
+    command: "red-team",
+    topic
+  });
   const contested = pack.claims.filter((claim) => claim.status === "contested");
   const negative = pack.claims.filter((claim) => claim.polarity === "negative");
 
-  const output = writeOutputDocument(root, {
-    idPrefix: "REDTEAM",
-    kind: "red-team-brief",
+  const output = writeOutputByFamily(root, "red-team-brief", {
     title: `Red Team: ${topic}`,
-    outputDir: "outputs/briefs",
     fileSlug: `red-team-${topic}`,
     sources: [...new Set(pack.evidence.map((result) => result.relativePath).concat(pack.claims.flatMap((claim) => claim.supporting_sources)))],
     frontmatter: {
@@ -398,7 +358,7 @@ ${supportingClaimLines(contested.concat(negative), 8)}
 
 ## Likely Blind Spots
 
-${selfModel.tensions.length || selfModel.biases.length ? selfModelBlock(selfModel) : "- No explicit blind spots are documented in the self-model yet."}
+${selfModel.conflicts.length || selfModel.biasChecks.length ? selfModelBlock(selfModel) : "- No explicit blind spots are documented in the self-model yet."}
 
 ## What Would Invalidate The Current Stance
 
@@ -456,11 +416,8 @@ function writeWhatChangedForMarkets(root, options = {}) {
     lines.push(`- ${state.subject}: ${state.stateLabel} (${state.confidence}); added claims ${added}, removed claims ${removed}.`);
   }
 
-  const output = writeOutputDocument(root, {
-    idPrefix: "MARKETCHG",
-    kind: "market-change-brief",
+  const output = writeOutputByFamily(root, "market-change-brief", {
     title: options.title || "What changed for markets",
-    outputDir: "outputs/briefs",
     fileSlug: "what-changed-for-markets",
     sources: states.flatMap((state) => state.evidence.map((result) => result.relativePath)),
     frontmatter: {

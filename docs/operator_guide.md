@@ -30,6 +30,9 @@ Cato maintains a layered research system:
 8. `manifests/` and `logs/`
    Structured sidecars, history, and audit trail.
 
+9. `wiki/memory/` and `MEMORY.md`
+   Daily operating logs, compiled current context, weekly reviews, and a root working-memory mirror.
+
 ## Core Operating Rule
 
 Keep the layers clean:
@@ -43,6 +46,40 @@ Keep the layers clean:
 - outputs are artefacts
 
 Do not collapse those layers into one another.
+
+## Working Memory
+
+The repo now has a dedicated working-memory layer:
+
+- `wiki/memory/daily/YYYY-MM-DD.md` = raw daily operating log
+- `wiki/memory/current-context.md` = current compiled orientation note
+- `wiki/memory/weekly/weekly-review-YYYY-MM-DD.md` = weekly review / kaizen surface
+- `MEMORY.md` = root mirror of the current context
+
+Important operating rule:
+
+- daily logs are deterministic and automatic
+- current context and weekly review are model-authored via pack/capture
+
+The trigger is not shell startup.
+
+The live trigger is:
+
+- first meaningful Cato use of the day if current context is due
+- first meaningful Cato use of the ISO week if the weekly review is due
+
+That keeps refresh low-friction without creating noise every time a terminal opens.
+
+## Repository Split
+
+This repo is no longer just one undifferentiated GitHub line.
+
+- maintain a private working line for real doctrine, corpus, and captured outputs
+- treat the public line as a deliberate engine-only release surface
+
+If a change contains user-specific self-model doctrine, private corpus material, or captured working outputs, it belongs in the private line only. Publish to the public line deliberately, after confirming the change is engine-level and share-safe. See [repo_topology.md](repo_topology.md).
+
+When you want to refresh the public line from the private working repo, use `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public` from the private worktree, then validate and commit from the public worktree separately.
 
 ## Document Routing And Drafts
 
@@ -62,6 +99,11 @@ Every ingested source now creates two distinct surfaces:
 
 - a canonical source note in `wiki/source-notes/`
 - an append-and-review draft note in `wiki/drafts/append-review/`
+
+Ingest also now enforces a sensitive-data gate:
+
+- secret-like patterns quarantine the source by default instead of writing it into canonical storage
+- `--allow-sensitive` is an explicit override, not the default operating path
 
 Use the draft note for:
 
@@ -88,6 +130,47 @@ Operating rule:
 - avoid jumping to raw extracts when maintained notes already answer the question
 
 This is now part of the actual product behavior, not just an informal preference.
+
+## Self-Model And Operating Constitution
+
+The self-model is no longer just a loose bucket of personal notes.
+
+`self-ingest` now supports explicit schemas such as:
+
+- `constitution`
+- `mode`
+- `preference`
+- `bias`
+- `anti-pattern`
+- `heuristic`
+- `decision-rule`
+- `communication-style`
+- `portfolio-philosophy`
+- `postmortem`
+
+Use explicit `--schema` when you know what the note is. Keep `--type auto` only as a backwards-compatible fallback.
+
+The best operating shape is atomic notes, not one giant omnibus personality dump. One note per durable rule is easier to route, resolve, supersede, and review.
+
+`compile` now turns the self notes into:
+
+- `manifests/self_model.json`
+- `wiki/self/current-operating-constitution.md`
+- `wiki/self/mode-profiles/investment-research.md`
+- `wiki/self/mode-profiles/trading.md`
+- `wiki/self/mode-profiles/communication.md`
+- `wiki/self/tension-register.md`
+
+The compiled self-model resolves conflicts by:
+
+- higher `priority`
+- `hard` over `default` over `soft`
+- exact `command_scope` over global
+- exact `applicability` over generic
+
+That compiled result is what now feeds authored packs, report packs, frontier packs, and decision scaffolds.
+
+The repo now has an expanded doctrine corpus. Use [self_model_bootstrap.md](self_model_bootstrap.md) to extend or revise it without duplicating the same rules under new filenames.
 
 ## Daily Loop
 
@@ -116,7 +199,11 @@ The normal local loop is:
    - `reflect` then `capture-authored`
    - `principles` then `capture-authored`
    - `postmortem` then `capture-authored`
-5. Run `lint` and `doctor` when you want confidence in structural health and environment readiness.
+5. If the finished artefact contains durable knowledge worth reusing, run:
+   - `crystallize` then `capture-crystallize`
+6. Run `lint` and `doctor` when you want confidence in structural health and environment readiness.
+
+Working memory now happens inside that normal loop rather than as a separate ritual. If current memory is stale, Cato queues the refresh packs automatically after meaningful actions.
 
 ## Staging And Commit Boundaries
 
@@ -145,9 +232,36 @@ Use this for substantive local outputs that do not need the specialized report, 
 
 1. run the top-level command such as `ask`, `deck`, `surveil`, `watch`, `why-believe`, `state-refresh`, `regime-brief`, `meeting-brief`, `decision-note`, `red-team`, `what-changed-for-markets`, `reflect`, `principles`, or `postmortem`
 2. open the generated files in `cache/authored-packs/`
-3. let Codex/GPT or Claude author the final markdown in the generated capture bundle
+3. review the injected `Active Self-Model` block as part of the command context
+4. let Codex/GPT or Claude author the final markdown in the generated capture bundle
+5. keep the final result consistent with the active hard rules, bias checks, challenge style, and writing constraints unless you are deliberately overriding them
+6. fill `model` with the actual terminal session label used for authorship
+7. run `capture-authored`
+
+### Crystallization Loop
+
+Use this after a finished artefact contains durable knowledge that should compound future work.
+
+1. run `crystallize` against the finished artefact path or title
+2. review the generated files in `cache/crystallize-packs/`
+3. distill only durable validated takeaways, claim candidates, concept or entity updates, state or decision implications, and process lessons
 4. fill `model` with the actual terminal session label used for authorship
-5. run `capture-authored`
+5. run `capture-crystallize`
+
+See [crystallization_guide.md](crystallization_guide.md) for the detailed contract.
+
+### Working-Memory Loop
+
+Use this when you want to inspect or override the automatic memory behaviour.
+
+1. run `memory-status`
+2. if needed, run `memory-refresh`
+3. review the generated files in `cache/memory-packs/`
+4. let Codex/GPT or Claude author the final current-context or weekly-review note
+5. fill `model` with the actual terminal session label used for authorship
+6. run `capture-memory`
+
+Most of the time steps 1 and 2 should be unnecessary because Cato now queues memory refresh automatically when due.
 
 ### Research Handoff Loop
 
@@ -185,9 +299,10 @@ Use this when you want deeper reasoning over Cato's claim/state/decision stack.
 
 1. run `frontier-pack`
 2. let Codex/GPT reason over the generated pack
-3. save the final authored result into the generated capture bundle
-4. fill `model` with the actual terminal session label used for authorship
-5. run `capture-frontier`
+3. use the injected self-model block as part of the reasoning brief rather than ignoring it
+4. save the final authored result into the generated capture bundle
+5. fill `model` with the actual terminal session label used for authorship
+6. run `capture-frontier`
 
 This is the settled operating model. Cato remains agent-driven. It does not embed external LLM execution directly into the CLI.
 
@@ -244,14 +359,32 @@ These exist so the repo can answer questions like:
 Foundation:
 
 - `ingest` = archive evidence, extract artefacts, classify document type, create source note and append-review draft
-- `self-ingest` = convert rough personal notes into structured self-model notes
+- `self-ingest` = convert rough personal notes into structured self-model notes, with explicit schema support and richer frontmatter for priority, rule strength, applicability, conflicts, examples, and review triggers
 - `compile` = refresh indices, claims, structured catalog, unresolved registers, and other maintained surfaces
 - `search` = lexical corpus lookup across maintained notes and extracts
 - `ask` = prepare a model-authored memo pack
 - `capture-authored` = capture the model-authored memo, deck, surveillance, belief/state/decision, self-model, or postmortem output back into the repo
+- `memory-status` = show whether current context or weekly review is due or already pending
+- `memory-refresh` = manually queue current-context and/or weekly-review packs
+- `capture-memory` = write the model-authored current-context or weekly-review note back into the repo and update `MEMORY.md`
 - `report` = prepare a final-report pack for the active terminal model
 - `capture-report` = capture the model-authored final report into canonical `wiki/reports/`
 - `deck` = prepare a model-authored Marp-friendly deck pack
+
+Recurring generated outputs under `outputs/memos/`, `outputs/briefs/`, `outputs/decks/`, and `outputs/meeting-briefs/` now keep one current file per slug. Older runs move into sibling `archive/<slug>/` folders instead of piling up in the active folder.
+
+## Internal Runtime Shape
+
+The current internal shape is now more deliberate:
+
+- command dispatch lives behind a registry
+- pack/capture mechanics use one shared core
+- output-family behaviour resolves through one registry
+- generated-note safety is centralised
+- `self-model` and `report` are now thin public façades over internal modules
+- the custom Node test harness is split into focused suites behind the same top-level entrypoint
+
+That changed the maintainability of the repo, not the operator contract. If you need the implementation map, read [internal_architecture.md](internal_architecture.md).
 
 Belief and state:
 

@@ -1,3 +1,0 @@
-# Extraction Gaps
-
-- None.

@@ -17,6 +17,8 @@ const {
 } = require("./markdown");
 const { ensureProjectStructure, listMarkdownNotes } = require("./project");
 const { buildAppendReviewBody, detectDocumentClass, reviewLensForDocumentClass } = require("./source-routing");
+const { buildWorkingMemoryIndex } = require("./memory");
+const { compileSelfModelArtifacts } = require("./self-model");
 const { buildCatalogGraph, buildTagSummary, loadCatalogNotes, summaryText } = require("./wiki-catalog");
 const { buildWatchProfileArtifacts, loadWatchProfiles } = require("./watch");
 const { dateStamp, nowIso, readJson, readText, relativeToRoot, slugify, truncate, writeJson, writeText } = require("./utils");
@@ -765,6 +767,7 @@ function compileProject(root, options = {}) {
   retireStaleConceptPages(root, conceptMap);
   upsertEntityPages(root, entityMap);
   const claimSummary = refreshClaims(root, { writeSnapshot: false });
+  const selfModelSummary = compileSelfModelArtifacts(root);
   buildSelfModelIndex(root);
   buildTimelineIndex(root, sourceNotes);
   buildDomainMaps(root, sourceNotes);
@@ -776,7 +779,7 @@ function compileProject(root, options = {}) {
   const thesisCount = buildCollectionIndex(root, "wiki/theses", "Thesis Index");
   const watchProfileCount = buildCollectionIndex(root, "wiki/watch-profiles", "Watch Profile Index");
   const surveillanceCount = buildCollectionIndex(root, "wiki/surveillance", "Surveillance Index");
-  const selfCount = buildCollectionIndex(root, "wiki/self", "Self Index");
+  buildCollectionIndex(root, "wiki/self", "Self Index");
   const watchProfiles = loadWatchProfiles(root);
   buildWatchProfileArtifacts(root, watchProfiles);
   const catalogNotes = loadCatalogNotes(root);
@@ -786,6 +789,7 @@ function compileProject(root, options = {}) {
   buildBacklinkIndex(root, catalogNotes, catalogGraph.backlinks);
   const openThreadCount = buildOpenThreadsRegister(root, catalogNotes);
   const draftCount = buildDraftWorkspaceIndex(root, catalogNotes);
+  buildWorkingMemoryIndex(root);
   writeStructuredCatalog(root, catalogNotes, catalogGraph.backlinks, tagSummary);
 
   updateHomePage(root, {
@@ -802,7 +806,7 @@ function compileProject(root, options = {}) {
     theses: thesisCount,
     watchProfiles: watchProfileCount,
     surveillance: surveillanceCount,
-    selfNotes: selfCount,
+    selfNotes: selfModelSummary.noteCount,
     drafts: draftCount,
     contradictions: unresolved.contradictionCandidates,
     synthesisCandidates: unresolved.synthesisCandidates,
@@ -823,6 +827,7 @@ function compileProject(root, options = {}) {
     thesisPages: thesisCount,
     watchProfiles: watchProfileCount,
     surveillancePages: surveillanceCount,
+    selfNotes: selfModelSummary.noteCount,
     draftPages: draftCount,
     openThreads: openThreadCount,
     contradictionCandidates: unresolved.contradictionCandidates,

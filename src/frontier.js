@@ -2,10 +2,12 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { refreshClaims, searchClaims, writeWhyBelieve } = require("./claims");
 const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("./decisions");
+const { captureTerminalModelBundle, writePackArtifacts } = require("./handoff-core");
+const { workingMemoryLocalSources } = require("./memory");
 const { parseFrontmatter, sectionContent, stripMarkdownFormatting } = require("./markdown");
 const { ensureProjectStructure } = require("./project");
-const { captureResearch } = require("./research-handoff");
 const { searchCorpus } = require("./search");
+const { renderSelfModelMarkdownBlock, resolveSelfModelContext, serializeSelfModelContext } = require("./self-model");
 const { defaultRegimeSubjects, refreshState, writeRegimeBrief, writeStateDiff } = require("./states");
 const { resolveWatchSubject } = require("./watch");
 const {
@@ -14,10 +16,7 @@ const {
   readText,
   relativeToRoot,
   slugify,
-  timestampStamp,
   truncate,
-  uniquePath,
-  writeJson,
   writeText
 } = require("./utils");
 
@@ -120,6 +119,25 @@ function makeLocalSource(pathValue, title, role) {
     title: title || path.basename(String(pathValue), path.extname(String(pathValue))),
     role
   };
+}
+
+function selfModelLocalSources(context) {
+  const sources = [
+    makeLocalSource("wiki/self/current-operating-constitution.md", "Current Operating Constitution", "self-model"),
+    ...context.sourceNotes.slice(0, 8).map((note) => makeLocalSource(note.relative_path, note.title, "self-note"))
+  ];
+
+  if (context.applicability.includes("investment") || context.applicability.includes("macro") || context.applicability.includes("valuation")) {
+    sources.push(makeLocalSource("wiki/self/mode-profiles/investment-research.md", "Investment Research", "mode-profile"));
+  }
+  if (context.applicability.includes("trading")) {
+    sources.push(makeLocalSource("wiki/self/mode-profiles/trading.md", "Trading", "mode-profile"));
+  }
+  if (context.applicability.includes("writing")) {
+    sources.push(makeLocalSource("wiki/self/mode-profiles/communication.md", "Communication", "mode-profile"));
+  }
+
+  return uniqueLocalSources(sources);
 }
 
 function loadNoteSections(root, relativePath, headings) {
@@ -571,6 +589,8 @@ ${artifactLines || "- None."}
 
 ${localLines || "- None."}
 
+${pack.self_model ? `${renderSelfModelMarkdownBlock(pack.self_model)}\n` : ""}
+
 ## Pack Summary
 
 ${packSummaryMarkdown(pack)}
@@ -585,118 +605,139 @@ function writeFrontierPack(root, seed, options = {}) {
   const topic = String(seed || "").trim() || "Frontier Topic";
   const packData = buildPackData(root, topic, mode, options);
   const packSlug = slugify(`${mode}-${packData.topic}`).slice(0, 80) || mode;
-  const basePath = uniquePath(path.join(root, "cache", "frontier-packs", `${timestampStamp()}-${packSlug}`));
-  const packPath = `${basePath}-pack.json`;
-  const promptPath = `${basePath}-prompt.md`;
-  const capturePath = `${basePath}-capture.json`;
   const desiredOutputKind = String(options.kind || outputKindForMode(mode)).toLowerCase();
-
-  const pack = {
-    generated_at: nowIso(),
-    mode,
-    topic: packData.topic,
-    title: bundleTitle(packData.topic, mode, options.title),
-    desired_output_kind: desiredOutputKind,
-    question: options.question || "",
-    subjects: packData.subjects || [],
-    watch: watchSummary(packData.watch || { profile: null, query: packData.topic }),
-    artifacts: packData.artifacts,
-    claims: summarizeClaims(packData.claims || []),
-    states: packData.states || [],
-    evidence: summarizeEvidence(packData.evidence || []),
-    summaries: packData.summaries || {},
-    local_sources: uniqueLocalSources(packData.localSources || [])
-  };
-  pack.pack_path = relativeToRoot(root, packPath);
-
-  const captureBundle = {
-    mode,
-    topic: pack.topic,
-    question: pack.question,
-    pack_path: pack.pack_path,
-    authoring_layer: "terminal_model",
-    model: "",
-    authoring_session: "",
-    watch_topic: pack.watch.title || "",
-    watch: pack.watch.title
-      ? {
-          subject: pack.watch.title,
-          context: pack.watch.context,
-          aliases: pack.watch.aliases,
-          entities: pack.watch.entities,
-          concepts: pack.watch.concepts,
-          triggers: pack.watch.triggers
+  const selfModel = resolveSelfModelContext(root, {
+    command: "frontier-pack",
+    topic: packData.topic
+  });
+  const localSources = uniqueLocalSources([
+    ...(packData.localSources || []),
+    ...workingMemoryLocalSources(root),
+    ...selfModelLocalSources(selfModel)
+  ]);
+  const watch = watchSummary(packData.watch || { profile: null, query: packData.topic });
+  const title = bundleTitle(packData.topic, mode, options.title);
+  const paths = writePackArtifacts(root, {
+    cacheDir: path.join("cache", "frontier-packs"),
+    slugSeed: packSlug,
+    pack(paths) {
+      return {
+        generated_at: nowIso(),
+        mode,
+        topic: packData.topic,
+        title,
+        desired_output_kind: desiredOutputKind,
+        question: options.question || "",
+        subjects: packData.subjects || [],
+        watch,
+        artifacts: packData.artifacts,
+        claims: summarizeClaims(packData.claims || []),
+        states: packData.states || [],
+        evidence: summarizeEvidence(packData.evidence || []),
+        summaries: packData.summaries || {},
+        self_model: serializeSelfModelContext(selfModel),
+        local_sources: localSources,
+        pack_path: paths.packPath
+      };
+    },
+    captureBundle(paths) {
+      return {
+        mode,
+        topic: packData.topic,
+        question: options.question || "",
+        pack_path: paths.packPath,
+        authoring_layer: "terminal_model",
+        model: "",
+        authoring_session: "",
+        watch_topic: watch.title || "",
+        watch: watch.title
+          ? {
+              subject: watch.title,
+              context: watch.context,
+              aliases: watch.aliases,
+              entities: watch.entities,
+              concepts: watch.concepts,
+              triggers: watch.triggers
+            }
+          : undefined,
+        local_sources: localSources,
+        sources: [],
+        output: {
+          kind: desiredOutputKind,
+          title,
+          promote: true,
+          body: `# ${title}\n\nReplace this placeholder with the GPT/Codex-authored output.\n`
         }
-      : undefined,
-    local_sources: pack.local_sources,
-    sources: [],
-    output: {
-      kind: desiredOutputKind,
-      title: pack.title,
-      promote: true,
-      body: `# ${pack.title}\n\nReplace this placeholder with the GPT/Codex-authored output.\n`
+      };
+    },
+    promptMarkdown(paths) {
+      const pack = {
+        generated_at: nowIso(),
+        mode,
+        topic: packData.topic,
+        title,
+        desired_output_kind: desiredOutputKind,
+        question: options.question || "",
+        subjects: packData.subjects || [],
+        watch,
+        artifacts: packData.artifacts,
+        claims: summarizeClaims(packData.claims || []),
+        states: packData.states || [],
+        evidence: summarizeEvidence(packData.evidence || []),
+        summaries: packData.summaries || {},
+        self_model: serializeSelfModelContext(selfModel),
+        local_sources: localSources,
+        pack_path: paths.packPath
+      };
+      return buildPromptMarkdown(pack, paths.capturePath);
+    },
+    logFile: path.join("logs", "actions", "frontier_runs.jsonl"),
+    logEntry(paths) {
+      return {
+        event: "frontier_pack",
+        mode,
+        topic: packData.topic,
+        pack_path: paths.packPath,
+        prompt_path: paths.promptPath,
+        capture_path: paths.capturePath,
+        local_sources: localSources.length,
+        claims: (packData.claims || []).length,
+        evidence: (packData.evidence || []).length
+      };
     }
-  };
-
-  writeJson(packPath, pack);
-  writeJson(capturePath, captureBundle);
-  writeText(promptPath, buildPromptMarkdown(pack, relativeToRoot(root, capturePath)));
-
-  appendJsonl(path.join(root, "logs", "actions", "frontier_runs.jsonl"), {
-    event: "frontier_pack",
-    at: nowIso(),
-    mode,
-    topic: pack.topic,
-    pack_path: relativeToRoot(root, packPath),
-    prompt_path: relativeToRoot(root, promptPath),
-    capture_path: relativeToRoot(root, capturePath),
-    local_sources: pack.local_sources.length,
-    claims: pack.claims.length,
-    evidence: pack.evidence.length
   });
 
   return {
     mode,
-    topic: pack.topic,
-    packPath: relativeToRoot(root, packPath),
-    promptPath: relativeToRoot(root, promptPath),
-    capturePath: relativeToRoot(root, capturePath),
-    localSources: pack.local_sources.length,
-    claims: pack.claims.length,
-    evidence: pack.evidence.length
+    topic: packData.topic,
+    packPath: paths.packPath,
+    promptPath: paths.promptPath,
+    capturePath: paths.capturePath,
+    localSources: localSources.length,
+    claims: (packData.claims || []).length,
+    evidence: (packData.evidence || []).length
   };
 }
 
 function captureFrontier(root, bundleInput, options = {}) {
-  if (typeof bundleInput === "string") {
-    const bundlePath = path.isAbsolute(bundleInput) ? bundleInput : path.join(root, bundleInput);
-    if (fs.existsSync(bundlePath)) {
-      const rawBundle = JSON.parse(readText(bundlePath));
-      const body = String(rawBundle.output?.body || "").trim();
-      if (!body || /Replace this placeholder with the GPT\/Codex-authored output\./i.test(body)) {
-        throw new Error("Frontier capture bundle still contains the placeholder output body. Replace it with the real Codex-authored output first.");
+  return captureTerminalModelBundle(root, bundleInput, {
+    label: "Frontier capture",
+    generationMode: "frontier_handoff",
+    placeholderChecks: [
+      {
+        test: (body) => /Replace this placeholder with the GPT\/Codex-authored output\./i.test(body),
+        message: "Frontier capture bundle still contains the placeholder output body. Replace it with the real Codex-authored output first."
       }
-      if (!String(rawBundle.model || "").trim()) {
-        throw new Error("Frontier capture bundle must record the active terminal model/session label in `model` before capture.");
-      }
+    ],
+    captureOptions: options,
+    logFile: path.join("logs", "actions", "frontier_runs.jsonl"),
+    logEvent: "frontier_capture",
+    logFields(_bundle, result) {
+      return {
+        watch_subject: result.watch?.subject || ""
+      };
     }
-  }
-  const result = captureResearch(root, bundleInput, {
-    ...options,
-    generationMode: "frontier_handoff"
   });
-
-  const bundlePath = typeof bundleInput === "string" ? bundleInput : "";
-  appendJsonl(path.join(root, "logs", "actions", "frontier_runs.jsonl"), {
-    event: "frontier_capture",
-    at: nowIso(),
-    bundle_path: bundlePath ? bundlePath.replace(/\\/g, "/") : "",
-    output_path: result.outputResult?.outputPath || "",
-    ingested_sources: result.ingested,
-    watch_subject: result.watch?.subject || ""
-  });
-
-  return result;
 }
 
 module.exports = {

@@ -42,6 +42,22 @@
     "review_status": { "type": ["string", "null"] },
     "reviewed_at": { "type": ["string", "null"] },
     "review_method": { "type": ["string", "null"] },
-    "review_scope": { "type": ["string", "null"] }
+    "review_scope": { "type": ["string", "null"] },
+    "sensitive_data_flagged": { "type": ["boolean", "null"] },
+    "sensitive_data_summary": { "type": ["string", "null"] },
+    "sensitive_data_hits": {
+      "type": ["array", "null"],
+      "items": {
+        "type": "object",
+        "properties": {
+          "source": { "type": ["string", "null"] },
+          "label": { "type": "string" },
+          "line": { "type": ["integer", "null"] },
+          "preview": { "type": ["string", "null"] }
+        },
+        "required": ["label"]
+      }
+    },
+    "sensitive_data_override": { "type": ["boolean", "null"] }
   }
 }

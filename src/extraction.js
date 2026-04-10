@@ -8,8 +8,23 @@ const { parseFrontmatter, stripHtml, stripMarkdownFormatting } = require("./mark
 const { readText } = require("./utils");
 const REPO_ARCHIVE_EXTENSIONS = new Set([".zip", ".tar", ".gz", ".tgz"]);
 
-function normalizeExtractedText(value) {
+function repairCommonMojibake(value) {
   return String(value || "")
+    .replace(/Â©/g, "©")
+    .replace(/Â®/g, "®")
+    .replace(/Â·/g, "·")
+    .replace(/â€¢/g, "•")
+    .replace(/â€“/g, "–")
+    .replace(/â€”/g, "—")
+    .replace(/â€˜/g, "‘")
+    .replace(/â€™/g, "’")
+    .replace(/â€œ/g, "“")
+    .replace(/â€/g, "”")
+    .replace(/â€¦/g, "…");
+}
+
+function normalizeExtractedText(value) {
+  return repairCommonMojibake(String(value || ""))
     .replace(/\u0000/g, " ")
     .replace(/\r/g, "")
     .split("\n")
@@ -17,6 +32,59 @@ function normalizeExtractedText(value) {
     .filter(Boolean)
     .join("\n")
     .trim();
+}
+
+function pdfWeirdCharacterRatio(value) {
+  const text = String(value || "");
+  const visibleCharacters = [...text].filter((character) => !/\s/.test(character));
+  if (!visibleCharacters.length) {
+    return 1;
+  }
+
+  const weirdCharacters = visibleCharacters.filter((character) => {
+    if (character === "�" || character === "Â" || character === "Ã") {
+      return true;
+    }
+    if (/[\u0000-\u0008\u000b\u000c\u000e-\u001f]/.test(character)) {
+      return true;
+    }
+    return false;
+  }).length;
+
+  return weirdCharacters / visibleCharacters.length;
+}
+
+function pdfSpacedLetterSequenceCount(value) {
+  return [...String(value || "").matchAll(/\b(?:[A-Za-z]\s+){5,}[A-Za-z]\b/g)].length;
+}
+
+function looksUnreadablePdfText(value) {
+  const text = normalizeExtractedText(value);
+  if (!text) {
+    return false;
+  }
+
+  const words = text.split(/\s+/).filter(Boolean);
+  const singleLetterWords = words.filter((word) => /^[A-Za-z]$/.test(word)).length;
+  const splitWordStarts = [...text.matchAll(/\b[A-Za-z]\s+[a-z]{2,}\b/g)].length;
+  const weirdRatio = pdfWeirdCharacterRatio(text);
+  const spacedLetterRuns = pdfSpacedLetterSequenceCount(text);
+  const singleLetterRatio = words.length ? singleLetterWords / words.length : 0;
+  const splitWordStartRatio = words.length ? splitWordStarts / words.length : 0;
+
+  if (weirdRatio >= 0.02) {
+    return true;
+  }
+  if (spacedLetterRuns >= 8) {
+    return true;
+  }
+  if (words.length >= 200 && singleLetterRatio >= 0.15) {
+    return true;
+  }
+  if (splitWordStarts >= 100 && splitWordStartRatio >= 0.18) {
+    return true;
+  }
+  return text.length >= 400 && spacedLetterRuns >= 2 && singleLetterRatio >= 0.22;
 }
 
 function decodeXmlEntities(value) {
@@ -318,6 +386,67 @@ function extractPdfStreamSegments(buffer) {
   return segments;
 }
 
+function runPythonPdfExtraction(filePath) {
+  const script = [
+    "import sys",
+    "from pypdf import PdfReader",
+    "if hasattr(sys.stdout, 'reconfigure'):",
+    "    sys.stdout.reconfigure(encoding='utf-8')",
+    "reader = PdfReader(sys.argv[1])",
+    "parts = []",
+    "for page in reader.pages:",
+    "    try:",
+    "        text = page.extract_text() or ''",
+    "    except Exception:",
+    "        text = ''",
+    "    if text:",
+    "        parts.append(text)",
+    "sys.stdout.buffer.write('\\n'.join(parts).encode('utf-8', 'ignore'))"
+  ].join("\n");
+
+  const invocations =
+    process.platform === "win32"
+      ? [
+          { command: "py", args: ["-3", "-c", script, filePath] },
+          { command: "python", args: ["-c", script, filePath] }
+        ]
+      : [
+          { command: "python3", args: ["-c", script, filePath] },
+          { command: "python", args: ["-c", script, filePath] }
+        ];
+
+  for (const invocation of invocations) {
+    const result = spawnSync(invocation.command, invocation.args, {
+      encoding: "utf8",
+      windowsHide: true,
+      maxBuffer: 64 * 1024 * 1024
+    });
+
+    if (result.error) {
+      continue;
+    }
+    if (result.status !== 0) {
+      continue;
+    }
+
+    const extractedText = normalizeExtractedText(result.stdout);
+    if (!extractedText) {
+      continue;
+    }
+
+    return {
+      ok: true,
+      extractedText,
+      runner: invocation.command
+    };
+  }
+
+  return {
+    ok: false,
+    error: "Python PDF extraction was unavailable or did not recover readable text."
+  };
+}
+
 function extractPdfContent(filePath) {
   const rawBuffer = fs.readFileSync(filePath);
   const lines = [];
@@ -336,11 +465,38 @@ function extractPdfContent(filePath) {
 
   const extractedText = normalizeExtractedText(lines.join("\n"));
   if (!extractedText) {
+    const pythonFallback = runPythonPdfExtraction(filePath);
+    if (pythonFallback.ok) {
+      return resultShape({
+        extractedText: pythonFallback.extractedText,
+        extractionStatus: "extracted",
+        extractionMethod: "pdf_text_python",
+        extractionNotes: [`Recovered text from PDF through Python pypdf via ${pythonFallback.runner}.`]
+      });
+    }
     return resultShape({
       extractionStatus: "extraction_failed",
       extractionMethod: "pdf_text",
-      extractionNotes: ["Parsed PDF content streams but did not recover readable text. Scanned PDFs still need OCR support."]
+      extractionNotes: [
+        "Parsed PDF content streams but did not recover readable text.",
+        "Python pypdf fallback was unavailable or also failed. Scanned PDFs still need OCR support."
+      ]
     });
+  }
+
+  if (looksUnreadablePdfText(extractedText)) {
+    const pythonFallback = runPythonPdfExtraction(filePath);
+    if (pythonFallback.ok && !looksUnreadablePdfText(pythonFallback.extractedText)) {
+      return resultShape({
+        extractedText: pythonFallback.extractedText,
+        extractionStatus: "extracted",
+        extractionMethod: "pdf_text_python",
+        extractionNotes: [
+          "Built-in PDF stream parsing recovered text but it looked unreadable or heavily spaced.",
+          `Fell back to Python pypdf via ${pythonFallback.runner} for a cleaner extraction.`
+        ]
+      });
+    }
   }
 
   return resultShape({

@@ -2,6 +2,7 @@ const fs = require("node:fs");
 const path = require("node:path");
 const { parseFrontmatter, renderMarkdown, stripMarkdownFormatting } = require("./markdown");
 const { ensureProjectStructure, loadSettings } = require("./project");
+const { inferSelfNoteSchema, schemaConfig } = require("./self-model");
 const {
   appendJsonl,
   computeHash,
@@ -20,35 +21,9 @@ const {
   writeText
 } = require("./utils");
 
-function classifySelfNote(filePath, content) {
-  const lower = `${path.basename(filePath)}\n${content}`.toLowerCase();
-  if (lower.includes("postmortem") || lower.includes("what went wrong")) {
-    return { folder: "postmortems", kind: "postmortem-note" };
-  }
-  if (lower.includes("bias") || lower.includes("blind spot")) {
-    return { folder: "bias-watch", kind: "bias-watch-note" };
-  }
-  if (lower.includes("anti-pattern") || lower.includes("avoid this")) {
-    return { folder: "anti-patterns", kind: "anti-pattern-note" };
-  }
-  if (lower.includes("communication") || lower.includes("tone") || lower.includes("how to write")) {
-    return { folder: "communication-style", kind: "communication-style-note" };
-  }
-  if (lower.includes("decision rule") || lower.includes("sizing rule")) {
-    return { folder: "decision-rules", kind: "decision-rule-note" };
-  }
-  if (lower.includes("portfolio") || lower.includes("diversification") || lower.includes("satellite")) {
-    return { folder: "portfolio-philosophy", kind: "portfolio-philosophy-note" };
-  }
-  if (lower.includes("heuristic") || lower.includes("rule of thumb") || lower.includes("when in doubt")) {
-    return { folder: "heuristics", kind: "heuristic-note" };
-  }
-  return { folder: "principles", kind: "principle-note" };
-}
-
-function sectionSkeleton(kind) {
-  switch (kind) {
-    case "postmortem-note":
+function sectionSkeleton(schema) {
+  switch (schema) {
+    case "postmortem":
       return `
 ## Decision
 
@@ -62,7 +37,7 @@ function sectionSkeleton(kind) {
 
 ## Original Input
 `;
-    case "bias-watch-note":
+    case "bias":
       return `
 ## Observed Bias / Tendency
 
@@ -72,7 +47,7 @@ function sectionSkeleton(kind) {
 
 ## Original Input
 `;
-    case "anti-pattern-note":
+    case "anti-pattern":
       return `
 ## Anti-Pattern
 
@@ -84,7 +59,7 @@ function sectionSkeleton(kind) {
 
 ## Original Input
 `;
-    case "communication-style-note":
+    case "communication-style":
       return `
 ## Preferred Output Style
 
@@ -94,7 +69,7 @@ function sectionSkeleton(kind) {
 
 ## Original Input
 `;
-    case "heuristic-note":
+    case "heuristic":
       return `
 ## Heuristic
 
@@ -103,6 +78,40 @@ function sectionSkeleton(kind) {
 ## Failure Modes
 
 ## Counterpoints
+
+## Original Input
+`;
+    case "decision-rule":
+      return `
+## Decision Rule
+
+## Mechanism
+
+## When It Applies
+
+## Failure Modes
+
+## Counterpoints
+
+## Original Input
+`;
+    case "preference":
+      return `
+## Preference
+
+## Why It Helps
+
+## What To Avoid
+
+## Original Input
+`;
+    case "mode":
+      return `
+## Mode
+
+## When It Applies
+
+## Failure Modes
 
 ## Original Input
 `;
@@ -132,25 +141,62 @@ function selfNoteTitle(filePath, content) {
   return truncate(parsed.frontmatter.title || firstLine || titleFromFilename(filePath), 120);
 }
 
-function buildSelfNote(record, originalInput) {
-  const frontmatter = {
+function buildStructuredFrontmatter(record, parsedFrontmatter, schema) {
+  const config = schemaConfig(schema);
+  return {
+    ...parsedFrontmatter,
     id: record.id,
-    kind: record.kind,
+    kind: parsedFrontmatter.kind || config.kind,
+    schema,
     title: record.title,
-    status: "active",
-    confidence: "medium",
-    declared_by: "user",
-    derived_from: [record.raw_path],
-    related: []
+    status: parsedFrontmatter.status || "active",
+    confidence: parsedFrontmatter.confidence || "medium",
+    priority: parsedFrontmatter.priority ?? (schema === "constitution" ? 4 : 3),
+    rule_strength: parsedFrontmatter.rule_strength || config.defaultRuleStrength,
+    applicability: parsedFrontmatter.applicability || config.defaultApplicability,
+    command_scope: parsedFrontmatter.command_scope || config.defaultCommandScope,
+    time_horizon: parsedFrontmatter.time_horizon || config.defaultTimeHorizon,
+    source_basis: parsedFrontmatter.source_basis || "declared",
+    supersedes: parsedFrontmatter.supersedes || [],
+    conflicts_with: parsedFrontmatter.conflicts_with || [],
+    examples_good: parsedFrontmatter.examples_good || [],
+    examples_bad: parsedFrontmatter.examples_bad || [],
+    review_trigger: parsedFrontmatter.review_trigger || "",
+    declared_by: parsedFrontmatter.declared_by || "user",
+    derived_from: parsedFrontmatter.derived_from || [record.raw_path],
+    related: parsedFrontmatter.related || [],
+    ingested_at: record.ingested_at
   };
+}
 
-  const body = `
+function buildSelfNote(record, originalInput, parsedInput, schema) {
+  const frontmatter = buildStructuredFrontmatter(record, parsedInput.frontmatter, schema);
+  const structuredBody = String(parsedInput.body || "").trim();
+  const body =
+    structuredBody && (Object.keys(parsedInput.frontmatter).length || structuredBody.startsWith("#"))
+      ? structuredBody.startsWith("#")
+        ? structuredBody
+        : `# ${record.title}\n\n${structuredBody}`
+      : `
 # ${record.title}
-${sectionSkeleton(record.kind)}
+${sectionSkeleton(schema)}
 ${originalInput.trim()}
 `;
 
   return renderMarkdown(frontmatter, body);
+}
+
+function resolveSchemaAndStorage(filePath, content, options = {}) {
+  const parsed = parseFrontmatter(content);
+  const schema = inferSelfNoteSchema(filePath, content, parsed.frontmatter, options);
+  const config = schemaConfig(schema);
+  const frontmatter = {
+    folder: config.folder,
+    kind: config.kind,
+    schema,
+    parsed
+  };
+  return frontmatter;
 }
 
 function selfIngest(root, options = {}) {
@@ -163,9 +209,7 @@ function selfIngest(root, options = {}) {
 
   for (const filePath of files) {
     const content = readText(filePath);
-    const classification = options.type && options.type !== "auto"
-      ? { folder: options.type, kind: `${options.type.replace(/s$/, "")}-note` }
-      : classifySelfNote(filePath, content);
+    const resolved = resolveSchemaAndStorage(filePath, content, options);
     const checksum = computeHash(filePath);
     const id = makeId("SELF", checksum);
     const rawDestination = uniquePath(path.join(root, "raw", "notes", "self", `${id}__${path.basename(filePath)}`));
@@ -179,26 +223,28 @@ function selfIngest(root, options = {}) {
 
     const title = selfNoteTitle(rawDestination, content);
     const notePath = uniquePath(
-      path.join(root, "wiki", "self", classification.folder, `${slugify(title) || id}.md`)
+      path.join(root, "wiki", "self", resolved.folder, `${slugify(title) || id}.md`)
     );
     const record = {
       id,
       title,
-      kind: classification.kind,
-      folder: classification.folder,
+      kind: resolved.kind,
+      schema: resolved.schema,
+      folder: resolved.folder,
       ingested_at: nowIso(),
       raw_path: relativeToRoot(root, rawDestination),
       note_path: relativeToRoot(root, notePath),
       checksum
     };
 
-    writeText(notePath, buildSelfNote(record, content));
+    writeText(notePath, buildSelfNote(record, content, resolved.parsed, resolved.schema));
     appendJsonl(path.join(root, "manifests", "self_notes.jsonl"), record);
     appendJsonl(path.join(root, "logs", "actions", "self_ingest.jsonl"), {
       event: "self-ingest",
       at: record.ingested_at,
       id: record.id,
-      note_path: record.note_path
+      note_path: record.note_path,
+      schema: record.schema
     });
     results.push(record);
   }

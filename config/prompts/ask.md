@@ -10,3 +10,5 @@ Use this when answering questions from the corpus.
 - Write the answer as a grounded memo, not just a retrieval pack.
 - Separate evidence, synthesis, counter-case, and what would change the view.
 - Surface counter-case and data gaps rather than pretending to certainty.
+- Compress at write time: prefer dense bullets and short sections over narrative sprawl.
+- Make entities and concepts explicit so later lexical retrieval can find them without re-summarising the memo.

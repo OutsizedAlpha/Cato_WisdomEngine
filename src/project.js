@@ -13,6 +13,10 @@ function loadSettings(root) {
       inbox: "inbox/drop_here",
       selfInbox: "inbox/self",
       sourceNotes: "wiki/source-notes",
+      memoryRoot: "wiki/memory",
+      memoryDaily: "wiki/memory/daily",
+      memoryWeekly: "wiki/memory/weekly",
+      memoryCurrent: "wiki/memory/current-context.md",
       drafts: "wiki/drafts",
       appendReview: "wiki/drafts/append-review",
       selfRoot: "wiki/self",
@@ -44,6 +48,33 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "manifests", "self_notes.jsonl"), "");
   ensureFile(path.join(root, "manifests", "claims.jsonl"), "");
   ensureFile(path.join(root, "manifests", "state_history.jsonl"), "");
+  ensureFile(path.join(root, "manifests", "memory_events.jsonl"), "");
+  ensureFile(
+    path.join(root, "manifests", "memory_state.json"),
+    JSON.stringify(
+      {
+        version: 1,
+        current_context: {
+          last_captured_date: "",
+          last_capture_at: "",
+          pending_date: "",
+          pending_pack_path: "",
+          pending_prompt_path: "",
+          pending_capture_path: ""
+        },
+        weekly_review: {
+          last_captured_week: "",
+          last_capture_at: "",
+          pending_week: "",
+          pending_pack_path: "",
+          pending_prompt_path: "",
+          pending_capture_path: ""
+        }
+      },
+      null,
+      2
+    ) + "\n"
+  );
   ensureFile(path.join(root, "manifests", "file_hashes.json"), "{}\n");
   ensureFile(
     path.join(root, "commands", "README.md"),
@@ -81,9 +112,16 @@ function ensureProjectStructure(root) {
     "# Self-Model\n\nUse this area for principles, heuristics, anti-patterns, and other structured self-notes.\n"
   );
   ensureFile(
+    path.join(root, "wiki", "self", "current-operating-constitution.md"),
+    "# Current Operating Constitution\n\nCompiled self-model summary will appear here after compile.\n"
+  );
+  ensureFile(
     path.join(root, "wiki", "self", "tension-register.md"),
     "# Tension Register\n\nTrack tensions between stated principles and observed behaviour here.\n"
   );
+  ensureFile(path.join(root, "wiki", "self", "mode-profiles", "investment-research.md"), "# Investment Research\n");
+  ensureFile(path.join(root, "wiki", "self", "mode-profiles", "trading.md"), "# Trading\n");
+  ensureFile(path.join(root, "wiki", "self", "mode-profiles", "communication.md"), "# Communication\n");
   ensureFile(path.join(root, "wiki", "macro", "index.md"), "# Macro\n");
   ensureFile(path.join(root, "wiki", "market-structure", "index.md"), "# Market Structure\n");
   ensureFile(path.join(root, "wiki", "derivatives", "index.md"), "# Derivatives\n");
@@ -93,6 +131,25 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "wiki", "regimes", "index.md"), "# Regime Index\n");
   ensureFile(path.join(root, "wiki", "decisions", "index.md"), "# Decision Index\n");
   ensureFile(path.join(root, "wiki", "reports", "index.md"), "# Report Index\n");
+  ensureFile(path.join(root, "wiki", "memory", "index.md"), "# Working Memory Index\n");
+  ensureFile(
+    path.join(root, "wiki", "memory", "current-context.md"),
+    `---
+id: MEMORY-SEED-CONTX
+kind: memory-context-page
+title: Current Context
+status: provisional
+memory_date: unrefreshed
+refresh_basis: first_meaningful_cato_use_when_due
+---
+
+# Current Context
+
+Compiled working-memory context will appear here after the first refresh capture.
+`
+  );
+  ensureFile(path.join(root, "wiki", "memory", "daily", "README.md"), "# Daily Memory Logs\n");
+  ensureFile(path.join(root, "wiki", "memory", "weekly", "README.md"), "# Weekly Reviews\n");
   ensureFile(path.join(root, "wiki", "watch-profiles", "index.md"), "# Watch Profile Index\n");
   ensureFile(path.join(root, "wiki", "theses", "index.md"), "# Thesis Index\n");
   ensureFile(path.join(root, "wiki", "surveillance", "index.md"), "# Surveillance Index\n");
@@ -103,6 +160,10 @@ function ensureProjectStructure(root) {
     "# Watch Ontology\n\nThis page is derived from active watch profiles. Edit the profiles, not this generated summary.\n"
   );
   ensureFile(path.join(root, "wiki", "self", "index.md"), "# Self Index\n");
+  ensureFile(
+    path.join(root, "MEMORY.md"),
+    "# Memory\n\nThis file mirrors the latest compiled working-memory snapshot after memory refresh capture.\n"
+  );
 }
 
 function listMarkdownNotes(root, relativeDir) {

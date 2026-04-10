@@ -18,8 +18,12 @@ That means:
 
 - Common substantive authored outputs use their normal top-level command plus `capture-authored`
 - Final reports use `report` plus `capture-report`
+- Working-memory synthesis uses `memory-refresh` plus `capture-memory`
 - Canonical current reports live under `wiki/reports/`
 - Prior canonical versions are archived under `wiki/reports/archive/`
+- Canonical current-context memory lives under `wiki/memory/current-context.md`, weekly reviews live under `wiki/memory/weekly/`, and the root `MEMORY.md` file is only a mirror of the current context
+- Recurring generated outputs under `outputs/memos/`, `outputs/briefs/`, `outputs/decks/`, and `outputs/meeting-briefs/` now keep one current file per slug and archive older runs under sibling `archive/<slug>/` folders
+- The common pack/capture mechanics behind authored, report, and frontier flows are now centralised, so metadata and placeholder enforcement follow one shared rule path
 - Raw `outputs/reports/` history is legacy operational artefact, not active claim input
 - Legacy deterministic report archives should preserve the original report filename so historical references remain auditable
 - Frontier-authored belief/state/decision/meeting outputs use `frontier-pack` plus `capture-frontier`
@@ -57,7 +61,8 @@ The following direct CLI outputs are useful, but should not be mistaken for fina
 - `reflect`
 - `principles`
 - `postmortem`
-- any timestamped operational output under `outputs/`
+- any scaffold or archived operational output under `outputs/`
+- uncaptured current-context or weekly-review bundles under `cache/memory-packs/`
 
 ## Metadata Discipline
 

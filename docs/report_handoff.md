@@ -44,6 +44,8 @@ Before running `capture-report`:
 
 If `output.body` is still placeholder text or `model` is blank, capture should fail.
 
+In a live terminal session, the agent can also complete that loop directly. The real requirement is still model authorship plus honest capture metadata, not manual operator keystrokes for their own sake.
+
 ## Canonical Storage
 
 Final reports are written to:

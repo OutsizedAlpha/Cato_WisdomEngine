@@ -4,30 +4,24 @@ const { askQuestion } = require("./ask");
 const { searchClaims, writeWhyBelieve } = require("./claims");
 const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("./decisions");
 const { writeDeck } = require("./deck");
+const { PLACEHOLDER_MARKER, captureTerminalModelBundle, scaffoldBody, writePackArtifacts } = require("./handoff-core");
+const { workingMemoryLocalSources } = require("./memory");
 const { parseFrontmatter } = require("./markdown");
 const { ensureProjectStructure } = require("./project");
-const { loadSelfNotes } = require("./research");
-const { captureResearch } = require("./research-handoff");
 const { writeReflection } = require("./reflect");
 const { writePrinciplesSnapshot } = require("./principles");
 const { createPostmortem } = require("./postmortem");
+const { loadSelfNotes, renderSelfModelMarkdownBlock, resolveSelfModelContext, serializeSelfModelContext } = require("./self-model");
 const { refreshState, writeRegimeBrief } = require("./states");
 const { writeSurveillance } = require("./surveil");
 const { buildWatchProfileArtifacts, createWatchProfile, loadWatchProfiles, resolveWatchSubject } = require("./watch");
 const {
-  appendJsonl,
-  nowIso,
   readText,
   relativeToRoot,
   slugify,
-  timestampStamp,
   truncate,
-  uniquePath,
-  writeJson,
   writeText
 } = require("./utils");
-
-const PLACEHOLDER_MARKER = "<!-- MODEL_AUTHOR_REPLACE_THIS_SCAFFOLD -->";
 
 function normalizeList(value) {
   if (!value) {
@@ -91,11 +85,6 @@ function parseScaffold(root, relativePath, titleFallback = "") {
   };
 }
 
-function scaffoldBody(body, fallbackTitle) {
-  const trimmed = String(body || "").trim() || `# ${fallbackTitle}`;
-  return `${PLACEHOLDER_MARKER}\n\n${trimmed}\n`;
-}
-
 function inferStatePath(subject) {
   return `wiki/states/${slugify(subject).slice(0, 80) || "state"}.md`;
 }
@@ -107,56 +96,94 @@ function summarizeSources(localSources) {
     .join("\n");
 }
 
+function selfModelLocalSources(context) {
+  const sources = [
+    makeLocalSource("wiki/self/current-operating-constitution.md", "Current Operating Constitution", "self-model"),
+    ...context.sourceNotes.slice(0, 8).map((note) => makeLocalSource(note.relative_path, note.title, "self-note"))
+  ];
+
+  if (context.applicability.includes("investment") || context.applicability.includes("macro") || context.applicability.includes("valuation")) {
+    sources.push(makeLocalSource("wiki/self/mode-profiles/investment-research.md", "Investment Research", "mode-profile"));
+  }
+  if (context.applicability.includes("trading")) {
+    sources.push(makeLocalSource("wiki/self/mode-profiles/trading.md", "Trading", "mode-profile"));
+  }
+  if (context.applicability.includes("writing")) {
+    sources.push(makeLocalSource("wiki/self/mode-profiles/communication.md", "Communication", "mode-profile"));
+  }
+
+  return uniqueLocalSources(sources);
+}
+
+function attachSelfModel(root, prepared, options = {}) {
+  const context = resolveSelfModelContext(root, {
+    command: prepared.command,
+    topic: prepared.topic,
+    applicability: options.applicability
+  });
+
+  return {
+    ...prepared,
+    notes: (prepared.notes || []).concat([
+      "The active self-model is part of the command context and should materially shape the authored output."
+    ]),
+    localSources: uniqueLocalSources([
+      ...(prepared.localSources || []),
+      ...workingMemoryLocalSources(root),
+      ...selfModelLocalSources(context)
+    ]),
+    selfModel: context
+  };
+}
+
 function writePackFiles(root, prepared) {
   const packSlug = slugify(`${prepared.command}-${prepared.title || prepared.topic || "authored-output"}`).slice(0, 80) || "authored-output";
-  const basePath = uniquePath(path.join(root, "cache", "authored-packs", `${timestampStamp()}-${packSlug}`));
-  const packPath = `${basePath}-pack.json`;
-  const promptPath = `${basePath}-prompt.md`;
-  const capturePath = `${basePath}-capture.json`;
-
-  const pack = {
-    generated_at: nowIso(),
-    command: prepared.command,
-    topic: prepared.topic,
-    title: prepared.title,
-    output_kind: prepared.output.kind,
-    output_path: prepared.output.output_path || "",
-    promote: Boolean(prepared.output.promote),
-    artifacts: prepared.artifacts || {},
-    notes: prepared.notes || [],
-    local_sources: prepared.localSources
-  };
-  pack.pack_path = relativeToRoot(root, packPath);
-
-  const captureBundle = {
-    mode: "authored_output",
-    command: prepared.command,
-    topic: prepared.topic,
-    title: prepared.title,
-    pack_path: pack.pack_path,
-    authoring_layer: "terminal_model",
-    model: "",
-    authoring_session: "",
-    local_sources: prepared.localSources,
-    sources: [],
-    output: {
-      kind: prepared.output.kind,
-      title: prepared.title,
-      output_path: prepared.output.output_path || "",
-      canonical_path: prepared.output.canonical_path || "",
-      archive_dir: prepared.output.archive_dir || "",
-      promote: Boolean(prepared.output.promote),
-      generation_mode: prepared.output.generation_mode || `terminal_model_${prepared.command}`,
-      frontmatter: prepared.output.frontmatter || {},
-      body: scaffoldBody(prepared.output.body, prepared.title)
-    }
-  };
-
-  writeJson(packPath, pack);
-  writeJson(capturePath, captureBundle);
-  writeText(
-    promptPath,
-    `# Authored Output Pack Prompt
+  const paths = writePackArtifacts(root, {
+    cacheDir: path.join("cache", "authored-packs"),
+    slugSeed: packSlug,
+    pack(paths) {
+      return {
+        generated_at: require("./utils").nowIso(),
+        command: prepared.command,
+        topic: prepared.topic,
+        title: prepared.title,
+        output_kind: prepared.output.kind,
+        output_path: prepared.output.output_path || "",
+        promote: Boolean(prepared.output.promote),
+        artifacts: prepared.artifacts || {},
+        notes: prepared.notes || [],
+        self_model: prepared.selfModel ? serializeSelfModelContext(prepared.selfModel) : null,
+        local_sources: prepared.localSources,
+        pack_path: paths.packPath
+      };
+    },
+    captureBundle(paths) {
+      return {
+        mode: "authored_output",
+        command: prepared.command,
+        topic: prepared.topic,
+        title: prepared.title,
+        pack_path: paths.packPath,
+        authoring_layer: "terminal_model",
+        model: "",
+        authoring_session: "",
+        local_sources: prepared.localSources,
+        sources: [],
+        output: {
+          kind: prepared.output.kind,
+          title: prepared.title,
+          output_path: prepared.output.output_path || "",
+          canonical_path: prepared.output.canonical_path || "",
+          archive_dir: prepared.output.archive_dir || "",
+          promote: Boolean(prepared.output.promote),
+          generation_mode: prepared.output.generation_mode || `terminal_model_${prepared.command}`,
+          frontmatter: prepared.output.frontmatter || {},
+          body: scaffoldBody(prepared.output.body, prepared.title)
+        }
+      };
+    },
+    promptMarkdown(paths) {
+      return `# Authored Output Pack Prompt
 
 Cato is the memory and scaffolding layer. The active terminal model must author the final output.
 
@@ -167,39 +194,43 @@ Cato is the memory and scaffolding layer. The active terminal model must author 
 - Title: ${prepared.title}
 - Output kind: ${prepared.output.kind}
 - Output path: \`${prepared.output.output_path || prepared.output.canonical_path || "(generated on capture)"}\`
-- Capture bundle: \`${relativeToRoot(root, capturePath)}\`
+- Capture bundle: \`${paths.capturePath}\`
 
 ## Required Operating Rules
 
-1. Read the pack JSON at \`${relativeToRoot(root, packPath)}\`.
+1. Read the pack JSON at \`${paths.packPath}\`.
 2. Review the local scaffold and context files listed below.
 3. Treat the scaffold as a starting structure only, not as final authored text.
 4. Replace the placeholder marker \`${PLACEHOLDER_MARKER}\` in \`output.body\`.
 5. Fill \`model\` with the actual active Codex/Claude session label used for authorship.
 6. Add fresh URLs under \`sources\` only if you actually did live external research.
 7. Finalise the authored output with:
-   \`.\cato.cmd capture-authored "${relativeToRoot(root, capturePath)}"\`
+   \`.\cato.cmd capture-authored "${paths.capturePath}"\`
 
 ## Local Context Sources
 
 ${summarizeSources(prepared.localSources) || "- None."}
 
-${prepared.notes?.length ? `## Notes\n\n${prepared.notes.map((line) => `- ${line}`).join("\n")}\n` : ""}
-`
-  );
+${prepared.selfModel ? `${renderSelfModelMarkdownBlock(prepared.selfModel)}\n` : ""}
 
-  appendJsonl(path.join(root, "logs", "actions", "authored_runs.jsonl"), {
-    event: "authored_pack",
-    at: nowIso(),
-    command: prepared.command,
-    topic: prepared.topic,
-    title: prepared.title,
-    output_kind: prepared.output.kind,
-    output_path: prepared.output.output_path || prepared.output.canonical_path || "",
-    pack_path: relativeToRoot(root, packPath),
-    prompt_path: relativeToRoot(root, promptPath),
-    capture_path: relativeToRoot(root, capturePath),
-    local_sources: prepared.localSources.length
+${prepared.notes?.length ? `## Notes\n\n${prepared.notes.map((line) => `- ${line}`).join("\n")}\n` : ""}
+`;
+    },
+    logFile: path.join("logs", "actions", "authored_runs.jsonl"),
+    logEntry(paths) {
+      return {
+        event: "authored_pack",
+        command: prepared.command,
+        topic: prepared.topic,
+        title: prepared.title,
+        output_kind: prepared.output.kind,
+        output_path: prepared.output.output_path || prepared.output.canonical_path || "",
+        pack_path: paths.packPath,
+        prompt_path: paths.promptPath,
+        capture_path: paths.capturePath,
+        local_sources: prepared.localSources.length
+      };
+    }
   });
 
   return {
@@ -208,9 +239,9 @@ ${prepared.notes?.length ? `## Notes\n\n${prepared.notes.map((line) => `- ${line
     title: prepared.title,
     outputKind: prepared.output.kind,
     outputPath: prepared.output.output_path || prepared.output.canonical_path || "",
-    packPath: relativeToRoot(root, packPath),
-    promptPath: relativeToRoot(root, promptPath),
-    capturePath: relativeToRoot(root, capturePath),
+    packPath: paths.packPath,
+    promptPath: paths.promptPath,
+    capturePath: paths.capturePath,
     localSources: prepared.localSources.length
   };
 }
@@ -691,49 +722,36 @@ function prepareAuthoredCommand(root, command, seed, options = {}) {
 }
 
 function writeAuthoredPack(root, command, seed, options = {}) {
-  const prepared = prepareAuthoredCommand(root, command, seed, options);
+  const prepared = attachSelfModel(root, prepareAuthoredCommand(root, command, seed, options));
   return writePackFiles(root, prepared);
 }
 
 function captureAuthored(root, bundleInput, options = {}) {
-  const bundlePath = path.isAbsolute(bundleInput) ? bundleInput : path.join(root, bundleInput);
-  if (!fs.existsSync(bundlePath)) {
-    throw new Error(`Authored capture bundle not found: ${bundlePath}`);
-  }
-
-  const bundle = JSON.parse(readText(bundlePath));
-  const body = String(bundle.output?.body || "").trim();
-  if (!body || body.includes(PLACEHOLDER_MARKER)) {
-    throw new Error("Authored capture bundle still contains the scaffold placeholder marker. Replace it with the real model-authored output first.");
-  }
-  if (!String(bundle.model || "").trim()) {
-    throw new Error("Authored capture bundle must record the active terminal model/session label in `model` before capture.");
-  }
-
-  const result = captureResearch(root, bundlePath, {
-    ...options,
-    generationMode: bundle.output?.generation_mode || `terminal_model_${bundle.command || "authored"}`
+  return captureTerminalModelBundle(root, bundleInput, {
+    label: "Authored capture",
+    generationMode: (bundle) => bundle.output?.generation_mode || `terminal_model_${bundle.command || "authored"}`,
+    placeholderChecks: [
+      {
+        test: (body) => body.includes(PLACEHOLDER_MARKER),
+        message: "Authored capture bundle still contains the scaffold placeholder marker. Replace it with the real model-authored output first."
+      }
+    ],
+    captureOptions: options,
+    afterCapture(bundle) {
+      if (bundle.output?.kind === "watch-profile") {
+        buildWatchProfileArtifacts(root, loadWatchProfiles(root));
+      }
+    },
+    logFile: path.join("logs", "actions", "authored_runs.jsonl"),
+    logEvent: "authored_capture",
+    logFields(bundle) {
+      return {
+        command: bundle.command || "",
+        topic: bundle.topic || "",
+        title: bundle.title || ""
+      };
+    }
   });
-
-  if (bundle.output?.kind === "watch-profile") {
-    buildWatchProfileArtifacts(root, loadWatchProfiles(root));
-  }
-
-  appendJsonl(path.join(root, "logs", "actions", "authored_runs.jsonl"), {
-    event: "authored_capture",
-    at: nowIso(),
-    command: bundle.command || "",
-    topic: bundle.topic || "",
-    title: bundle.title || "",
-    bundle_path: relativeToRoot(root, bundlePath),
-    model: bundle.model || "",
-    authoring_session: bundle.authoring_session || "",
-    output_path: result.outputResult?.outputPath || "",
-    imported_sources: result.ingested,
-    local_context_sources: result.localSources.length
-  });
-
-  return result;
 }
 
 module.exports = {

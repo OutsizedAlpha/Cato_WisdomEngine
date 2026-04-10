@@ -1,8 +1,11 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { parseFrontmatter, renderMarkdown, stripMarkdownFormatting, toWikiLink, upsertManagedBlock } = require("./markdown");
+const { writeSafeGeneratedMarkdown } = require("./generated-note-safety");
+const { getOutputFamily } = require("./output-registry");
 const { ensureProjectStructure, listMarkdownNotes, loadSettings } = require("./project");
 const { tokenize } = require("./search");
+const { loadSelfNotes } = require("./self-model");
 const { renderRetrievalBudgetBlock, retrieveEvidence } = require("./retrieval");
 const {
   appendJsonl,
@@ -33,15 +36,6 @@ function loadMarkdownObjects(root, relativeDir, options = {}) {
         title: parsed.frontmatter.title || path.basename(filePath, ".md")
       };
     });
-}
-
-function loadSelfNotes(root) {
-  return loadMarkdownObjects(root, "wiki/self")
-    .filter((note) => !/\/tension-register\.md$/i.test(note.relativePath))
-    .map((note) => ({
-      ...note,
-      category: note.relativePath.split("/").slice(2, 3)[0] || "other"
-    }));
 }
 
 function renderResultReference(result) {
@@ -153,7 +147,11 @@ function writeOutputDocument(root, options) {
     ...options.frontmatter
   };
 
-  writeText(outputPath, renderMarkdown(frontmatter, options.body));
+  writeSafeGeneratedMarkdown(outputPath, frontmatter, options.body, {
+    label: `${options.kind} output`,
+    maxBodyChars: options.maxBodyChars,
+    maxTotalChars: options.maxTotalChars
+  });
   appendJsonl(path.join(root, "logs", "report_runs", `${slugify(options.kind) || "outputs"}.jsonl`), {
     event: options.kind,
     at: frontmatter.created_at,
@@ -166,6 +164,125 @@ function writeOutputDocument(root, options) {
     outputPath: relativeToRoot(root, outputPath),
     frontmatter
   };
+}
+
+function rollingOutputRelativePath(options) {
+  const slugSeed = slugify(options.fileSlug || options.title).slice(0, 80) || options.idPrefix.toLowerCase();
+  return {
+    slugSeed,
+    outputPath: path.join(options.outputDir, `${slugSeed}.md`),
+    archiveDir: path.join(options.outputDir, "archive", slugSeed)
+  };
+}
+
+function writeRollingOutputDocument(root, options) {
+  ensureProjectStructure(root);
+  const rolling = rollingOutputRelativePath(options);
+  return writeCanonicalDocument(root, {
+    ...options,
+    fileSlug: options.fileSlug || rolling.slugSeed,
+    outputPath: options.outputPath || rolling.outputPath,
+    archiveDir: options.archiveDir || rolling.archiveDir
+  });
+}
+
+function writeOutputByFamily(root, familyName, options) {
+  const config = getOutputFamily(familyName);
+  const sharedOptions = {
+    ...options,
+    idPrefix: options.idPrefix || config.idPrefix,
+    kind: options.kind || config.kind,
+    outputDir: options.outputDir || config.outputDir,
+    frontmatter: {
+      ...(config.frontmatter || {}),
+      ...(options.frontmatter || {})
+    }
+  };
+
+  if (config.canonical || options.outputPath && options.archiveDir) {
+    return writeCanonicalDocument(root, {
+      ...sharedOptions,
+      outputPath: options.outputPath,
+      archiveDir: options.archiveDir
+    });
+  }
+  if (config.rolling) {
+    return writeRollingOutputDocument(root, sharedOptions);
+  }
+  if (options.outputPath) {
+    return writeFixedDocument(root, {
+      ...sharedOptions,
+      outputPath: options.outputPath
+    });
+  }
+  return writeOutputDocument(root, sharedOptions);
+}
+
+function migrateLegacyRollingOutputs(root, outputDir) {
+  ensureProjectStructure(root);
+  const absoluteDir = path.join(root, outputDir);
+  const summary = {
+    outputDir,
+    promoted: 0,
+    archived: 0,
+    promotedPaths: [],
+    archivedPaths: []
+  };
+
+  if (!fs.existsSync(absoluteDir)) {
+    return summary;
+  }
+
+  const timestampPattern = /^(\d{4}-\d{2}-\d{2}T\d{2}-\d{2}-\d{2}\.\d{3}Z)-(.+)\.md$/i;
+  const grouped = new Map();
+  for (const entry of fs.readdirSync(absoluteDir, { withFileTypes: true })) {
+    if (!entry.isFile() || !entry.name.toLowerCase().endsWith(".md")) {
+      continue;
+    }
+    const match = entry.name.match(timestampPattern);
+    if (!match) {
+      continue;
+    }
+    const slug = match[2];
+    if (!grouped.has(slug)) {
+      grouped.set(slug, []);
+    }
+    grouped.get(slug).push(entry.name);
+  }
+
+  for (const [slug, files] of grouped.entries()) {
+    const sorted = files.slice().sort((left, right) => left.localeCompare(right));
+    const canonicalRelativePath = path.join(outputDir, `${slug}.md`);
+    const canonicalAbsolutePath = path.join(root, canonicalRelativePath);
+    const latestFile = sorted[sorted.length - 1];
+    const archiveDir = path.join(root, outputDir, "archive", slug);
+
+    if (!fs.existsSync(canonicalAbsolutePath)) {
+      moveFile(path.join(absoluteDir, latestFile), canonicalAbsolutePath);
+      summary.promoted += 1;
+      summary.promotedPaths.push(relativeToRoot(root, canonicalAbsolutePath));
+      sorted.pop();
+    }
+
+    for (const fileName of sorted) {
+      const archivePath = uniquePath(path.join(archiveDir, fileName));
+      moveFile(path.join(absoluteDir, fileName), archivePath);
+      summary.archived += 1;
+      summary.archivedPaths.push(relativeToRoot(root, archivePath));
+    }
+  }
+
+  if (summary.promoted || summary.archived) {
+    appendJsonl(path.join(root, "logs", "actions", "output_rollover.jsonl"), {
+      event: "rolling_output_migration",
+      at: nowIso(),
+      output_dir: outputDir,
+      promoted_paths: summary.promotedPaths,
+      archived_paths: summary.archivedPaths
+    });
+  }
+
+  return summary;
 }
 
 function writeCanonicalDocument(root, options) {
@@ -199,7 +316,11 @@ function writeCanonicalDocument(root, options) {
     ...options.frontmatter
   };
 
-  writeText(absoluteOutputPath, renderMarkdown(frontmatter, options.body));
+  writeSafeGeneratedMarkdown(absoluteOutputPath, frontmatter, options.body, {
+    label: `${options.kind} canonical output`,
+    maxBodyChars: options.maxBodyChars,
+    maxTotalChars: options.maxTotalChars
+  });
   appendJsonl(path.join(root, "logs", "report_runs", `${slugify(options.kind) || "outputs"}.jsonl`), {
     event: options.kind,
     at: frontmatter.updated_at,
@@ -242,7 +363,11 @@ function writeFixedDocument(root, options) {
     ...options.frontmatter
   };
 
-  writeText(absoluteOutputPath, renderMarkdown(frontmatter, options.body));
+  writeSafeGeneratedMarkdown(absoluteOutputPath, frontmatter, options.body, {
+    label: `${options.kind} fixed output`,
+    maxBodyChars: options.maxBodyChars,
+    maxTotalChars: options.maxTotalChars
+  });
   appendJsonl(path.join(root, "logs", "report_runs", `${slugify(options.kind) || "outputs"}.jsonl`), {
     event: options.kind,
     at: frontmatter.updated_at,
@@ -342,7 +467,12 @@ function updateManagedNote(filePath, frontmatter, title, blocks) {
     content = upsertManagedBlock(content, name, blockContent);
   }
 
-  writeText(filePath, content);
+  const parsed = parseFrontmatter(content);
+  writeSafeGeneratedMarkdown(filePath, parsed.frontmatter, parsed.body, {
+    label: `${title} managed note`,
+    maxBodyChars: 300000,
+    maxTotalChars: 350000
+  });
 }
 
 function noteSummary(note, length = 220) {
@@ -355,6 +485,7 @@ module.exports = {
   evidenceBullets,
   loadMarkdownObjects,
   loadSelfNotes,
+  migrateLegacyRollingOutputs,
   noteSummary,
   promoteOutputToSynthesis,
   recurringThemes,
@@ -365,7 +496,9 @@ module.exports = {
   selectEvidence,
   synthesisParagraphs,
   updateManagedNote,
+  writeOutputByFamily,
   writeCanonicalDocument,
   writeFixedDocument,
+  writeRollingOutputDocument,
   writeOutputDocument
 };

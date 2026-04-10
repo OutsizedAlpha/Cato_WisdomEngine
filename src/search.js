@@ -24,6 +24,19 @@ function noteTitleFromContent(content, fallback) {
   return frontmatter.title || body.match(/^#\s+(.+)$/m)?.[1]?.trim() || fallback;
 }
 
+function normalizeList(value) {
+  if (!value) {
+    return [];
+  }
+  if (Array.isArray(value)) {
+    return value.map((entry) => String(entry).trim()).filter(Boolean);
+  }
+  return String(value)
+    .split(/[;,]/)
+    .map((entry) => entry.trim())
+    .filter(Boolean);
+}
+
 function normalizeReviewStatus(frontmatter = {}) {
   return String(frontmatter.review_status || "").trim().toLowerCase();
 }
@@ -66,6 +79,69 @@ function reviewScoreAdjustment(document) {
     }
   }
 
+  if (status === "stale") {
+    score -= 3;
+  }
+
+  return score;
+}
+
+function metadataTokenBlock(frontmatter = {}) {
+  return [
+    ...normalizeList(frontmatter.concepts),
+    ...normalizeList(frontmatter.entities),
+    ...normalizeList(frontmatter.tags),
+    frontmatter.document_class || "",
+    frontmatter.kind || ""
+  ].join(" ");
+}
+
+function buildTokenDocumentStats(documents, field) {
+  const termDocumentCounts = new Map();
+  let totalLength = 0;
+
+  for (const document of documents) {
+    const tokens = document[field] || [];
+    totalLength += tokens.length;
+    const uniqueTokens = new Set(tokens);
+    for (const token of uniqueTokens) {
+      termDocumentCounts.set(token, (termDocumentCounts.get(token) || 0) + 1);
+    }
+  }
+
+  return {
+    averageLength: documents.length ? totalLength / documents.length : 0,
+    termDocumentCounts
+  };
+}
+
+function bm25Idf(documentFrequency, documentCount) {
+  return Math.log(1 + (documentCount - documentFrequency + 0.5) / (documentFrequency + 0.5));
+}
+
+function bm25FieldScore(queryTokens, tokens, counts, stats, options = {}) {
+  if (!queryTokens.length || !tokens.length) {
+    return 0;
+  }
+
+  const k1 = Number(options.k1 || 1.2);
+  const b = Number(options.b ?? 0.75);
+  const averageLength = Math.max(stats.averageLength || 0, 1);
+  const fieldLength = Math.max(tokens.length, 1);
+  let score = 0;
+
+  for (const token of queryTokens) {
+    const termFrequency = counts.get(token) || 0;
+    if (!termFrequency) {
+      continue;
+    }
+    const documentFrequency = stats.termDocumentCounts.get(token) || 0;
+    const idf = bm25Idf(documentFrequency, stats.documentCount);
+    score +=
+      idf *
+      ((termFrequency * (k1 + 1)) / (termFrequency + k1 * (1 - b + b * (fieldLength / averageLength))));
+  }
+
   return score;
 }
 
@@ -104,6 +180,7 @@ function buildCorpus(root) {
       const title = isMarkdown
         ? noteTitleFromContent(rawContent, titleFromFilename(filePath))
         : titleFromFilename(filePath);
+      const metadataTokens = tokenize(metadataTokenBlock(parsed.frontmatter));
 
       documents.push({
         path: filePath,
@@ -112,6 +189,7 @@ function buildCorpus(root) {
         frontmatter: parsed.frontmatter,
         titleTokens: tokenize(title),
         bodyTokens: tokenize(content),
+        metadataTokens,
         content,
         rawContent
       });
@@ -121,21 +199,44 @@ function buildCorpus(root) {
   return documents;
 }
 
-function scoreDocument(document, query, queryTokens) {
+function scoreDocument(document, query, queryTokens, stats) {
   const titleCounts = buildTokenCounts(document.titleTokens);
   const bodyCounts = buildTokenCounts(document.bodyTokens);
+  const metadataCounts = buildTokenCounts(document.metadataTokens);
   let score = reviewScoreAdjustment(document);
 
+  score += bm25FieldScore(queryTokens, document.titleTokens, titleCounts, stats.title, {
+    k1: 1.1,
+    b: 0.4
+  }) * 5;
+  score += bm25FieldScore(queryTokens, document.metadataTokens, metadataCounts, stats.metadata, {
+    k1: 1.1,
+    b: 0.3
+  }) * 3;
+  score += bm25FieldScore(queryTokens, document.bodyTokens, bodyCounts, stats.body, {
+    k1: 1.5,
+    b: 0.75
+  });
+
+  const exactPhrase = query.toLowerCase();
+  if (document.title.toLowerCase().includes(exactPhrase)) {
+    score += 10;
+  }
+  if (document.relativePath.toLowerCase().includes(exactPhrase)) {
+    score += 4;
+  }
+
   for (const token of queryTokens) {
-    score += (titleCounts.get(token) || 0) * 5;
-    score += bodyCounts.get(token) || 0;
     if (document.relativePath.toLowerCase().includes(token)) {
       score += 2;
     }
+    if ((metadataCounts.get(token) || 0) > 0 && String(document.relativePath || "").startsWith("wiki/")) {
+      score += 1;
+    }
   }
 
-  if (document.rawContent.toLowerCase().includes(query.toLowerCase())) {
-    score += 10;
+  if (document.rawContent.toLowerCase().includes(exactPhrase)) {
+    score += 6;
   }
 
   return score;
@@ -174,8 +275,23 @@ function searchCorpus(root, query, options = {}) {
   const excerptLength = Number(options.excerptLength || 280);
   const excludePrefixes = normalizeExcludePrefixes(options.excludePrefixes);
   const includePrefixes = normalizeExcludePrefixes(options.includePrefixes);
+  const documents = buildCorpus(root);
+  const stats = {
+    title: {
+      ...buildTokenDocumentStats(documents, "titleTokens"),
+      documentCount: documents.length
+    },
+    body: {
+      ...buildTokenDocumentStats(documents, "bodyTokens"),
+      documentCount: documents.length
+    },
+    metadata: {
+      ...buildTokenDocumentStats(documents, "metadataTokens"),
+      documentCount: documents.length
+    }
+  };
 
-  return buildCorpus(root)
+  return documents
     .filter((document) => {
       if (excludePrefixes.some((prefix) => document.relativePath.toLowerCase().startsWith(prefix))) {
         return false;
@@ -187,7 +303,7 @@ function searchCorpus(root, query, options = {}) {
     })
     .map((document) => ({
       ...document,
-      score: scoreDocument(document, query, queryTokens),
+      score: scoreDocument(document, query, queryTokens, stats),
       excerpt: buildExcerpt(document.content, queryTokens, excerptLength)
     }))
     .filter((document) => document.score > 0)

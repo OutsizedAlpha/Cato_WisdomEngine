@@ -9,7 +9,7 @@ const {
   renderResultReference,
   retrieveEvidence,
   synthesisParagraphs,
-  writeOutputDocument
+  writeOutputByFamily
 } = require("./research");
 const { makeId, relativeToRoot, slugify, writeText } = require("./utils");
 const GROUNDED_EXCLUDE_PREFIXES = [
@@ -130,9 +130,7 @@ function askQuestion(root, question, options = {}) {
   });
   const results = retrieval.results;
 
-  const output = writeOutputDocument(root, {
-    idPrefix: "ASK",
-    kind: "answer-memo",
+  const output = writeOutputByFamily(root, "memo", {
     title: question,
     outputDir: settings.ask?.outputDirectory || "outputs/memos",
     fileSlug: question,

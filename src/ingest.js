@@ -7,6 +7,13 @@ const { extractCandidateConcepts, isMeaningfulExplicitConcept, buildConceptOntol
 const { extractContent } = require("./extraction");
 const { ensureProjectStructure, loadSettings } = require("./project");
 const {
+  mergeSensitiveScanResults,
+  scanDirectoryForSensitiveData,
+  scanFileForSensitiveData,
+  scanTextForSensitiveData,
+  summarizeSensitiveHits
+} = require("./sensitive-data");
+const {
   buildAppendReviewBody,
   detectDocumentClass,
   normalizeList,
@@ -84,7 +91,7 @@ const EXTRACTION_OVERRIDE_KEYS = new Set([
   "imported_frontmatter"
 ]);
 const TITLE_CASE_LOWER_WORDS = new Set(["a", "an", "and", "at", "for", "in", "of", "on", "the", "to"]);
-const TITLE_CASE_UPPER_WORDS = new Set(["eu", "jp", "mi", "uk", "us"]);
+const TITLE_CASE_UPPER_WORDS = new Set(["cfa", "eu", "jp", "mi", "uk", "us"]);
 
 function detectSourceType(targetPath, targetKind = "file") {
   if (targetKind === "directory") {
@@ -408,6 +415,84 @@ function transferTarget(sourcePath, destinationPath, targetKind, copyMode) {
   }
 }
 
+function isPathInside(basePath, targetPath) {
+  const relative = path.relative(basePath, targetPath);
+  return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
+}
+
+function buildSensitiveScan(target, extraction) {
+  const scans = [];
+  if (target.kind === "directory") {
+    scans.push(
+      scanDirectoryForSensitiveData(target.path, {
+        sourceLabel: path.basename(target.path),
+        maxHits: 10
+      })
+    );
+  } else {
+    scans.push(
+      scanFileForSensitiveData(target.path, {
+        sourceLabel: path.basename(target.path),
+        maxHits: 10
+      })
+    );
+  }
+  if (String(extraction.extractedText || "").trim()) {
+    scans.push(
+      scanTextForSensitiveData(extraction.extractedText, {
+        sourceLabel: "extracted_text",
+        maxHits: 10
+      })
+    );
+  }
+  return mergeSensitiveScanResults(scans);
+}
+
+function quarantineTarget(root, inboxDir, target, id, sensitiveScan, options = {}) {
+  const baseName = `${id}__${path.basename(target.path)}`;
+  const quarantinePath = uniquePath(path.join(root, "tmp", "sensitive-quarantine", baseName));
+  const shouldMoveOriginal = !options.copyMode && isPathInside(inboxDir, target.path);
+  transferTarget(target.path, quarantinePath, target.kind, !shouldMoveOriginal);
+
+  let sidecarQuarantinePath = "";
+  if (target.kind === "file") {
+    const sourceSidecarPath = sidecarMetadataPath(target.path);
+    if (fs.existsSync(sourceSidecarPath)) {
+      sidecarQuarantinePath = `${quarantinePath}${SOURCE_METADATA_SIDECAR_SUFFIX}`;
+      transferTarget(sourceSidecarPath, sidecarQuarantinePath, "file", !shouldMoveOriginal);
+    }
+  }
+
+  const quarantineMetadataPath = `${quarantinePath}.quarantine.json`;
+  const entry = {
+    id,
+    target_kind: target.kind,
+    original_path: target.path,
+    quarantined_path: relativeToRoot(root, quarantinePath),
+    sidecar_path: sidecarQuarantinePath ? relativeToRoot(root, sidecarQuarantinePath) : "",
+    move_mode: shouldMoveOriginal ? "moved" : "copied",
+    detected_at: nowIso(),
+    sensitive_data_flagged: true,
+    sensitive_data_summary: summarizeSensitiveHits(sensitiveScan.hits),
+    sensitive_data_hits: sensitiveScan.hits
+  };
+  writeJson(quarantineMetadataPath, entry);
+  appendJsonl(path.join(root, "logs", "actions", "sensitive_quarantine.jsonl"), {
+    event: "sensitive_quarantine",
+    at: entry.detected_at,
+    id,
+    target_kind: target.kind,
+    move_mode: entry.move_mode,
+    original_path: target.path,
+    quarantined_path: entry.quarantined_path,
+    sensitive_data_summary: entry.sensitive_data_summary
+  });
+  return {
+    ...entry,
+    metadata_path: relativeToRoot(root, quarantineMetadataPath)
+  };
+}
+
 function cleanTitleCandidate(value) {
   return truncate(String(value || "").replace(/^#+\s*/, "").replace(/\s+/g, " ").trim(), 120);
 }
@@ -445,7 +530,19 @@ function isWeakTitleCandidate(value) {
   if (!/[A-Za-z]/.test(candidate)) {
     return true;
   }
+  if (/[\u0000-\u001f]/.test(candidate)) {
+    return true;
+  }
+  if (/[ÂÃ�]/.test(candidate)) {
+    return true;
+  }
   if (/^\d+([./-]\d+)*$/.test(candidate)) {
+    return true;
+  }
+  if (/^src[-\s_]*\d{4}\b/i.test(candidate)) {
+    return true;
+  }
+  if (/^(?:copyright|©)\s*\d{4}\b/i.test(candidate)) {
     return true;
   }
 
@@ -455,22 +552,111 @@ function isWeakTitleCandidate(value) {
   }
 
   const singleCharacterWords = words.filter((word) => word.length === 1).length;
+  const shortWords = words.filter((word) => word.length <= 2).length;
   if (words.length >= 6 && singleCharacterWords / words.length >= 0.3) {
+    return true;
+  }
+  if (/\b(?:[A-Za-z]\s+){2,}[A-Za-z]\b/.test(candidate)) {
+    return true;
+  }
+  if (words.length >= 6 && shortWords / words.length >= 0.6 && singleCharacterWords >= 2) {
     return true;
   }
 
   return false;
 }
 
+function scoreTitleCandidate(value, sourceLabel, filenameTitle) {
+  const candidate = cleanTitleCandidate(value);
+  if (isWeakTitleCandidate(candidate)) {
+    return Number.NEGATIVE_INFINITY;
+  }
+
+  const words = candidate.split(/\s+/).filter(Boolean);
+  const filenameWords = cleanTitleCandidate(filenameTitle).split(/\s+/).filter(Boolean);
+  const candidateTokens = slugify(candidate).split("-").filter(Boolean);
+  const filenameTokens = slugify(filenameTitle).split("-").filter(Boolean);
+  const filenameTokenSet = new Set(filenameTokens);
+  const overlapCount = candidateTokens.filter((token) => filenameTokenSet.has(token)).length;
+  const numericTokenCount = words.filter((word) => /\d/.test(word)).length;
+  let score = 0;
+
+  switch (sourceLabel) {
+    case "frontmatter_title":
+      score += 50;
+      break;
+    case "frontmatter_name":
+      score += 44;
+      break;
+    case "heading":
+      score += 30;
+      break;
+    case "first_line":
+      score += 24;
+      break;
+    case "filename":
+      score += 20;
+      break;
+    default:
+      break;
+  }
+
+  score += Math.min(words.length, 8);
+  if (/\b\d{4}\b/.test(candidate) || /\b(?:vol(?:ume)?|level|part|chapter)\b/i.test(candidate)) {
+    score += 4;
+  }
+  if (words.length <= 2) {
+    score -= 10;
+  }
+  if (/^[A-Z0-9\s&|/.,:()'-]+$/.test(candidate) && words.length <= 3) {
+    score -= 6;
+  }
+  if (numericTokenCount >= 2 || /%/.test(candidate)) {
+    score -= 12;
+  }
+  if (sourceLabel !== "filename" && filenameWords.length >= 3 && overlapCount === 0) {
+    score -= 14;
+  }
+  if (sourceLabel !== "filename" && overlapCount > 0) {
+    score += Math.min(overlapCount, 4);
+  }
+
+  const normalizedCandidate = slugify(candidate).replace(/-/g, " ");
+  const normalizedFilename = slugify(filenameTitle).replace(/-/g, " ");
+  if (
+    sourceLabel !== "filename" &&
+    normalizedCandidate &&
+    normalizedFilename &&
+    normalizedFilename.includes(normalizedCandidate) &&
+    filenameWords.length >= words.length + 2
+  ) {
+    score -= 12;
+  }
+
+  return score;
+}
+
 function deriveTitle(filePath, importedFrontmatter, extractedText) {
   const heading = extractedText.match(/^#\s+(.+)$/m)?.[1]?.trim();
   const firstLine = extractedText.split(/\r?\n/).find((line) => line.trim());
-  const candidates = [importedFrontmatter.title, importedFrontmatter.name, heading, firstLine, humanizeFilenameTitle(filePath)];
+  const filenameTitle = humanizeFilenameTitle(filePath);
+  const candidates = [
+    { value: importedFrontmatter.title, sourceLabel: "frontmatter_title" },
+    { value: importedFrontmatter.name, sourceLabel: "frontmatter_name" },
+    { value: heading, sourceLabel: "heading" },
+    { value: firstLine, sourceLabel: "first_line" },
+    { value: filenameTitle, sourceLabel: "filename" }
+  ]
+    .map((candidate) => ({
+      ...candidate,
+      clean: cleanTitleCandidate(candidate.value),
+      score: scoreTitleCandidate(candidate.value, candidate.sourceLabel, filenameTitle)
+    }))
+    .filter((candidate) => Number.isFinite(candidate.score))
+    .sort((left, right) => right.score - left.score || right.clean.length - left.clean.length);
 
-  for (const candidate of candidates) {
-    if (!isWeakTitleCandidate(candidate)) {
-      return cleanTitleCandidate(candidate);
-    }
+  if (candidates.length) {
+    return candidates[0].clean;
   }
 
   return cleanTitleCandidate(titleFromFilename(filePath));
@@ -658,7 +844,9 @@ function buildSourceNote(record) {
     extraction_method: record.extraction_method,
     figure_note_path: record.figure_note_path || "",
     draft_workspace_path: record.draft_workspace_path || "",
-    figure_count: record.figure_count || 0
+    figure_count: record.figure_count || 0,
+    sensitive_data_flagged: Boolean(record.sensitive_data_flagged),
+    sensitive_data_summary: record.sensitive_data_summary || ""
   };
 
   const candidateList = record.candidate_concepts.length
@@ -714,6 +902,11 @@ ${record.source_type === "repo" ? "- Repo snapshots are indexed as structural ev
 
 ${reviewAssets.length ? reviewAssets.map((assetPath) => `- Review \`${assetPath}\`.`).join("\n") : "- Add image, table, or figure-specific notes here when relevant."}
 
+## Sensitive Data Review
+
+- Sensitive data flagged: \`${record.sensitive_data_flagged ? "true" : "false"}\`
+- Summary: ${record.sensitive_data_summary || "No secret-like patterns were detected during ingest."}
+
 ## Open Questions
 
 - What concepts should this source strengthen?
@@ -745,6 +938,7 @@ function ingest(root, options = {}) {
   const ontology = readJson(path.join(root, "config", "ontology.json"), {});
   const ontologyIndex = buildConceptOntologyIndex(ontology);
   const inboxDir = path.join(root, options.from || settings.paths.inbox || "inbox/drop_here");
+  const allowSensitive = Boolean(options["allow-sensitive"] || options.allowSensitive);
   const copyMode = Boolean(options.copy);
   if (options.url) {
     prepareUrlDrop(inboxDir, options.url, options.title);
@@ -755,6 +949,7 @@ function ingest(root, options = {}) {
   const explicitTargets = listExplicitTargets(root, options.paths);
   const targets = explicitTargets.length ? explicitTargets : listIngestTargets(inboxDir);
   const results = [];
+  const quarantinedResults = [];
 
   for (const target of targets) {
     const sourceSidecar = target.kind === "file" ? readSourceSidecar(target.path) : {};
@@ -767,23 +962,29 @@ function ingest(root, options = {}) {
     const rawDestination = uniquePath(path.join(root, "raw", rawSubdir, destinationName));
     ensureDir(path.dirname(rawDestination));
 
-    transferTarget(target.path, rawDestination, target.kind, copyMode);
-
     const extractionBase = hasExtractionOverrideText(extractionOverride)
       ? emptyExtractionResult("Skipped built-in extraction because a source sidecar supplied extracted_text.")
-      : runExtraction(rawDestination, {
+      : runExtraction(target.path, {
           ...options,
           targetKind: target.kind
         });
-    const extraction = applyExtractionOverride(
-      extractionBase,
-      extractionOverride
-    );
+    const extraction = applyExtractionOverride(extractionBase, extractionOverride);
+    const sensitiveScan = buildSensitiveScan(target, extraction);
+    if (sensitiveScan.flagged && !allowSensitive) {
+      quarantinedResults.push(
+        quarantineTarget(root, inboxDir, target, id, sensitiveScan, {
+          copyMode
+        })
+      );
+      continue;
+    }
+
+    transferTarget(target.path, rawDestination, target.kind, copyMode);
     const importedFrontmatter = {
       ...extraction.importedFrontmatter,
       ...sourceSidecarFrontmatter
     };
-    const title = deriveTitle(rawDestination, importedFrontmatter, extraction.extractedText);
+    const title = deriveTitle(target.path, importedFrontmatter, extraction.extractedText);
     const extractedTextPath = extraction.extractedText ? path.join(root, "extracted", "text", `${id}.txt`) : null;
     const metadataPath = path.join(root, "extracted", "metadata", `${id}.json`);
     const tablePreviewPath =
@@ -835,7 +1036,7 @@ function ingest(root, options = {}) {
       draft_workspace_path: relativeToRoot(root, draftWorkspacePath),
       checksum,
       status: hashIndex[checksum] ? "duplicate" : "processed",
-      note_status: importedFrontmatter.status || noteStatusFromReviewStatus(importedFrontmatter.review_status),
+      note_status: sensitiveScan.flagged ? "draft" : importedFrontmatter.status || noteStatusFromReviewStatus(importedFrontmatter.review_status),
       duplicate_of: hashIndex[checksum]?.id || "",
       extraction_status: extraction.extractionStatus,
       extraction_method: extraction.extractionMethod,
@@ -850,7 +1051,13 @@ function ingest(root, options = {}) {
       concepts,
       candidate_concepts: extractCandidateConcepts(title, extraction.extractedText, ontology),
       figure_count: (extraction.figureRefs || []).length,
-      summary: summaryFromExtractedText(extraction.extractedText, sourceType)
+      summary: sensitiveScan.flagged
+        ? "Sensitive data was detected during ingest. Review the raw artefact directly before reusing any of its contents."
+        : summaryFromExtractedText(extraction.extractedText, sourceType),
+      sensitive_data_flagged: sensitiveScan.flagged,
+      sensitive_data_summary: sensitiveScan.summary || "",
+      sensitive_data_hits: sensitiveScan.hits || [],
+      sensitive_data_override: allowSensitive && sensitiveScan.flagged
     };
 
     if (record.figure_count || sourceType === "image") {
@@ -892,7 +1099,9 @@ function ingest(root, options = {}) {
       id: record.id,
       raw_path: record.raw_path,
       note_path: record.note_path,
-      status: record.status
+      status: record.status,
+      sensitive_data_flagged: Boolean(record.sensitive_data_flagged),
+      sensitive_data_summary: record.sensitive_data_summary || ""
     });
 
     hashIndex[checksum] = {
@@ -911,7 +1120,9 @@ function ingest(root, options = {}) {
   writeJson(hashIndexPath, hashIndex);
   return {
     ingested: results.length,
-    results
+    quarantined: quarantinedResults.length,
+    results,
+    quarantinedResults
   };
 }
 

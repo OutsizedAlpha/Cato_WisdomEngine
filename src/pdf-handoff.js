@@ -23,7 +23,7 @@ const {
 
 const EXTRACTION_PLACEHOLDER_MARKER = "REPLACE_WITH_AUTHORED_EXTRACTION";
 const TITLE_CASE_LOWER_WORDS = new Set(["a", "an", "and", "at", "for", "in", "of", "on", "the", "to"]);
-const TITLE_CASE_UPPER_WORDS = new Set(["ai", "ce", "eu", "gtm", "jp", "jpm", "uk", "us"]);
+const TITLE_CASE_UPPER_WORDS = new Set(["ai", "ce", "cfa", "eu", "gtm", "jp", "jpm", "uk", "us"]);
 
 function normalizeList(value) {
   if (!value) {

@@ -15,6 +15,16 @@ The shortest accurate description is:
 
 Cato preserves raw source material, writes source notes, refreshes a claim ledger, maintains state and regime views, produces decision-facing outputs, and keeps the repo healthy enough that future reasoning can start from structure instead of from scratch.
 
+## Repository Lines
+
+The project now has two intended repository lines:
+
+- a public line for the open reference version of Cato
+- a private line for the personalised working system with seeded self-model doctrine, private corpus material, and captured authored outputs
+
+In the maintainer workflow, day-to-day work happens in the private line and the public repo is a deliberate engine-only release surface. See [docs/repo_topology.md](docs/repo_topology.md).
+Use `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public` when you want to project the current engine into a separate public-safe worktree without shipping the private corpus.
+
 ## What Exists Today
 
 The current product is already more than an MVP scaffold. It now includes:
@@ -24,6 +34,7 @@ The current product is already more than an MVP scaffold. It now includes:
 - append-and-review draft workspace separate from canonical wiki notes
 - extracted text, metadata, table previews, and figure notes
 - source notes, concept pages, entity pages, thesis pages, synthesis notes, and self-model notes
+- schema-driven self-model notes for constitution, modes, preferences, biases, anti-patterns, heuristics, decision rules, communication style, portfolio philosophy, and postmortems
 - atomic claim pages plus claim snapshots, diffs, and "why believe" briefs
 - state pages, state diffs, and regime briefs
 - decision notes, meeting briefs, red-team briefs, and market-change briefs
@@ -34,10 +45,14 @@ The current product is already more than an MVP scaffold. It now includes:
 - zero-API frontier handoff over the claim/state/decision stack
 - zero-API report handoff that stores one canonical model-authored report per topic under `wiki/reports/`
 - a generalized authored-output handoff for memos, decks, surveillance, belief/state/decision surfaces, self-model outputs, and postmortems
+- a working-memory layer with automatic daily logs, due-based current-context refresh, weekly review refresh, and a root `MEMORY.md` mirror
+- a compiled self-model artefact under `manifests/self_model.json` plus `wiki/self/current-operating-constitution.md` and command-relevant mode profiles
+- an expanded doctrine corpus covering PM-grade research, macro/intermarket analysis, valuation, trading, sourcing, communication, cognitive augmentation, bias watch, anti-patterns, portfolio construction, workbook audit standards, idea-market discipline, and update discipline
 - retrieval-budget discipline from maps to canonical notes to evidence notes to raw extracts
 - a dedicated broad investment-summary report route that prepares curated report packs from reviewed evidence instead of generic lexical state hits
 - tag, backlink, freshness, and open-thread maintenance surfaces
 - repo health checks for lint, OCR readiness, repo-local Python, and browser automation availability
+- a hardened internal architecture built around a command registry, shared handoff core, output-family registry, generated-note safety layer, split self-model/report internals, and focused test suites
 
 ## Why It Matters
 
@@ -72,6 +87,7 @@ That is the difference between a file archive and a thinking instrument.
 - frontier reasoning stays with the external model
 - final intellectual outputs are authored through the active terminal model and captured back into Cato
 - top-level substantive output commands now prepare packs and require capture rather than treating deterministic scaffold prose as final
+- the compiled self-model should materially shape authored packs, reports, frontier packs, and decision scaffolds rather than sitting as passive notes
 - Cato stays agent-driven rather than embedding external LLM execution directly into the CLI
 
 The last point is deliberate. Cato prepares context, captures outputs, and maintains memory. Codex/GPT remains the higher-order reasoning layer.
@@ -125,7 +141,47 @@ The rule is TLDR-first:
 - escalate only when the shorter route is insufficient
 - keep workspace drafts out of grounded retrieval by default
 
-### 4. Work Through Belief, State, And Decision
+### 4. Compile And Apply The Self-Model
+
+`self-ingest` no longer just drops rough thoughts into a generic bucket.
+
+It now supports schema-shaped self notes such as:
+
+- constitution
+- mode
+- preference
+- bias
+- anti-pattern
+- heuristic
+- decision-rule
+- communication-style
+- portfolio-philosophy
+- postmortem
+
+`compile` turns those notes into:
+
+- `manifests/self_model.json`
+- `wiki/self/current-operating-constitution.md`
+- `wiki/self/mode-profiles/investment-research.md`
+- `wiki/self/mode-profiles/trading.md`
+- `wiki/self/mode-profiles/communication.md`
+- an updated self tension register
+
+Authored packs, report packs, frontier packs, and decision scaffolds now receive a command-specific self-model block with:
+
+- active hard rules
+- active soft preferences
+- challenge style
+- bias checks
+- writing constraints
+- what not to do
+- explicit rule conflicts and review pressure
+
+That is the current mechanism for making Cato behave more like your operating constitution rather than merely remembering that it exists.
+
+Use [docs/self_model_bootstrap.md](docs/self_model_bootstrap.md) to extend, refine, or supersede the current doctrine corpus without collapsing back into one omnibus personality memo.
+
+### 5. Work Through Belief, State, And Decision
 
 Cato now has a proper stack:
 
@@ -141,7 +197,7 @@ Those pages now explicitly include:
 - what would flip the view
 - current evidence route
 
-### 5. Use The Right Loop
+### 6. Use The Right Loop
 
 There are five main loops.
 
@@ -159,6 +215,14 @@ Common authored-output loop:
 3. let Codex/Claude author the final output into the generated capture bundle
 4. fill `model` with the actual terminal session label used for authorship
 5. run `capture-authored`
+
+Working-memory loop:
+
+1. meaningful Cato commands now append to daily working memory automatically
+2. on the first meaningful Cato use of the day or ISO week when due, Cato queues current-context and weekly-review packs automatically
+3. use `memory-status` if you want to inspect whether either surface is due or pending
+4. use `memory-refresh` only as a manual override or force-refresh path
+5. let Codex/Claude author the queued memory bundle and run `capture-memory`
 
 Report handoff loop:
 
@@ -212,6 +276,7 @@ Frontier handoff loop:
 - `wiki/source-notes/` = one-note-per-source grounding layer
 - `wiki/drafts/append-review/` = working draft queue distinct from canonical notes
 - `wiki/reports/` = canonical model-authored reports, one current file per topic
+- `wiki/memory/` = daily logs, current context, weekly reviews, and memory index
 - `wiki/claims/` = atomic belief ledger
 - `wiki/states/` = current-state pages
 - `wiki/regimes/` = regime-level world-model surfaces
@@ -219,11 +284,13 @@ Frontier handoff loop:
 - `wiki/watch-profiles/` = persistent watch instructions
 - `wiki/surveillance/` = refreshed live watch pages
 - `wiki/self/` = principles, heuristics, postmortems, biases, tensions
-- `outputs/` = generated memos, briefs, decks, meeting briefs, and legacy archived report runs
+- `wiki/self/current-operating-constitution.md` = compiled current operating constitution
+- `wiki/self/mode-profiles/` = compiled mode-specific profiles used by authored/report/frontier context
+- `outputs/` = generated memos, briefs, decks, and meeting briefs, each now kept as one current file per slug with older runs archived under sibling `archive/` folders, plus legacy archived report runs
 - `logs/` = lint, doctor, and workflow reports
 - `cache/` = frontier packs, claim snapshots, and disposable runtime files
 - `src/` = Node implementation
-- `tests/` = verification
+- `tests/` = verification, now split into focused suites with a stable top-level entrypoint
 
 ## Version-Control Hygiene
 
@@ -244,15 +311,18 @@ The durable knowledge system begins after intentional ingest. That is when evide
 4. Treat `inbox/` as a staging queue, not as committed repo state.
 5. For text-first evidence, run `.\cato.cmd ingest`.
 6. For image-heavy PDFs, run `.\cato.cmd pdf-pack`, complete the authored extraction bundle, then run `.\cato.cmd capture-pdf`.
-7. Run `.\cato.cmd compile` when you used plain `ingest`.
-8. Run `.\cato.cmd search "your topic"`.
-9. Run `.\cato.cmd ask "your question"` to prepare a model-authored memo pack, then complete it with `.\cato.cmd capture-authored .\cache\authored-packs\...\...-capture.json`.
-10. Run `.\cato.cmd report "your topic"` to prepare a final-report pack, then let the active terminal model author the capture bundle and run `.\cato.cmd capture-report .\cache\report-packs\...\...-capture.json`.
-11. For the all-corpus investment route, use `.\cato.cmd report "Current investment summary across all ingested research"` and capture the authored result back through `capture-report`.
-12. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
-13. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` to prepare authored packs for the current world-model surface, then complete them with `capture-authored`.
-14. Run `.\cato.cmd decision-note "topic"`, `.\cato.cmd meeting-brief "Weekly investment meeting brief"`, or `.\cato.cmd red-team "topic"` to prepare authored packs, and use `frontier-pack` / `capture-frontier` when you want a deeper bespoke frontier reasoning route over the same claim/state/decision stack.
-15. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
+7. For rough personal operating rules, add atomic notes to `inbox/self/` and run `.\cato.cmd self-ingest --schema constitution` or another explicit schema when the routing is obvious.
+8. Run `.\cato.cmd compile` so the self-model, indices, and belief layer refresh together.
+9. Run `.\cato.cmd search "your topic"`.
+10. Run `.\cato.cmd ask "your question"` to prepare a model-authored memo pack, then complete it with `.\cato.cmd capture-authored .\cache\authored-packs\...\...-capture.json`.
+11. Run `.\cato.cmd report "your topic"` to prepare a final-report pack, then let the active terminal model author the capture bundle and run `.\cato.cmd capture-report .\cache\report-packs\...\...-capture.json`.
+12. For the all-corpus investment route, use `.\cato.cmd report "Current investment summary across all ingested research"` and capture the authored result back through `capture-report`.
+13. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
+14. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` to prepare authored packs for the current world-model surface, then complete them with `capture-authored`.
+15. Run `.\cato.cmd decision-note "topic"`, `.\cato.cmd meeting-brief "Weekly investment meeting brief"`, or `.\cato.cmd red-team "topic"` to prepare authored packs, and use `frontier-pack` / `capture-frontier` when you want a deeper bespoke frontier reasoning route over the same claim/state/decision stack.
+16. Check working memory with `.\cato.cmd memory-status`; use `.\cato.cmd memory-refresh` only when you need a manual override, then complete the queued authored bundle with `.\cato.cmd capture-memory`.
+17. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
+18. When you want to update the public engine line, run `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public` and validate that worktree before committing there.
 
 ## Core Commands
 
@@ -267,11 +337,15 @@ Foundation:
 - `.\cato.cmd search`
 - `.\cato.cmd ask`
 - `.\cato.cmd capture-authored`
+- `.\cato.cmd memory-status`
+- `.\cato.cmd memory-refresh`
+- `.\cato.cmd capture-memory`
 - `.\cato.cmd report`
 - `.\cato.cmd capture-report`
 - `.\cato.cmd deck`
 - `.\cato.cmd lint`
 - `.\cato.cmd doctor`
+- `.\cato.cmd public-release`
 
 Belief and state:
 
@@ -348,8 +422,10 @@ Use this mental model:
 If you need the deeper operating detail, read:
 
 - [docs/operator_guide.md](docs/operator_guide.md)
+- [docs/internal_architecture.md](docs/internal_architecture.md)
 - [docs/authored_output_handoff.md](docs/authored_output_handoff.md)
 - [docs/report_handoff.md](docs/report_handoff.md)
+- [docs/working_memory.md](docs/working_memory.md)
 - [docs/pdf_handoff.md](docs/pdf_handoff.md)
 - [docs/research_handoff.md](docs/research_handoff.md)
 - [docs/frontier_handoff.md](docs/frontier_handoff.md)

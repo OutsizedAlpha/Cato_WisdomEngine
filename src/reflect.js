@@ -1,83 +1,55 @@
 const path = require("node:path");
 const { parseFrontmatter } = require("./markdown");
-const { confidenceLabel, loadSelfNotes, noteSummary, promoteOutputToSynthesis, updateManagedNote, writeOutputDocument } = require("./research");
+const { confidenceLabel, promoteOutputToSynthesis, updateManagedNote, writeOutputByFamily } = require("./research");
 const { ensureProjectStructure } = require("./project");
-const { tokenize } = require("./search");
+const { buildCompiledSelfModel, loadSelfNotes, renderSelfModelMarkdownBlock } = require("./self-model");
 const { readText, relativeToRoot, makeId, nowIso, slugify } = require("./utils");
 
-function keywordsFromNote(note) {
-  return new Set(tokenize(`${note.title} ${note.body}`));
-}
-
-function overlappingTensions(principles, challengers) {
-  const tensions = [];
-
-  for (const principle of principles) {
-    const principleTokens = keywordsFromNote(principle);
-    for (const challenger of challengers) {
-      const shared = [...keywordsFromNote(challenger)].filter((token) => principleTokens.has(token)).slice(0, 3);
-      if (!shared.length) {
-        continue;
-      }
-      tensions.push(
-        `- ${principle.title} may be in tension with ${challenger.title} around ${shared.join(", ")}.`
-      );
-    }
-  }
-
-  return [...new Set(tensions)].slice(0, 8);
-}
-
-function buildReflectionBody(selfNotes, tensions) {
-  const principles = selfNotes.filter((note) => ["principles", "portfolio-philosophy", "heuristics", "decision-rules"].includes(note.category));
-  const challengers = selfNotes.filter((note) => ["anti-patterns", "bias-watch", "postmortems"].includes(note.category));
+function buildReflectionBody(selfNotes, context) {
+  const declared = selfNotes.filter((note) => note.sourceBasis === "declared");
+  const learned = selfNotes.filter((note) => note.sourceBasis !== "declared");
 
   return `
 # Self Reflection
 
 ## Executive Summary
 
-The current self-model contains ${selfNotes.length} structured note${selfNotes.length === 1 ? "" : "s"}. The active principle layer is strongest where the notes repeat durable views on portfolio construction, reasoning style, and challenge preference. Confidence is ${confidenceLabel(selfNotes)} because the self-model is still only as strong as the quality and volume of the notes you have ingested.
+The current self-model contains ${selfNotes.length} structured note${selfNotes.length === 1 ? "" : "s"}. Confidence is ${confidenceLabel(selfNotes)} because the reflection is only as strong as the operating rules and postmortems currently captured in the repo.
 
-## Active Principles And Heuristics
+## Active Rules Most In Play
 
-${principles.length ? principles.map((note) => `- ${note.title}: ${noteSummary(note, 180)}`).join("\n") : "- No active principles or heuristics are recorded yet."}
+${renderSelfModelMarkdownBlock(context, { title: "Current Operating Constitution" })}
 
-## Biases, Anti-Patterns, And Failure Modes
+## Declared Versus Learned Rules
 
-${challengers.length ? challengers.map((note) => `- ${note.title}: ${noteSummary(note, 180)}`).join("\n") : "- No explicit biases or anti-patterns are recorded yet."}
+- Declared directly: ${declared.length}
+- Learned from history or postmortems: ${learned.length}
+- Learned from postmortem: ${context.learnedFromPostmortems.length}
 
-## Tension Register Summary
+## Conflict Register
 
-${tensions.length ? tensions.join("\n") : "- No strong tensions inferred yet from the current self-model."}
+${context.conflicts.length ? context.conflicts.map((conflict) => `- ${conflict.winner_title} overrides ${conflict.loser_title} because ${conflict.reason}.`).join("\n") : "- No declared rule conflicts are active right now."}
 
-## What The System Should Optimise For
+## Review Queue
 
-- Use your principles to shape the route of reasoning, not to pre-decide conclusions.
-- Keep outputs PM-grade, sparse, explicit about evidence, and willing to challenge weak assumptions.
-- Surface falsifiers and counter-cases whenever a principle is doing too much explanatory work.
+${context.staleReview.length ? context.staleReview.map((entry) => `- ${entry.title}: ${entry.review_trigger} (${entry.days_since_review} days since review).`).join("\n") : "- No stale review candidates surfaced right now."}
 
 ## What To Add Next
 
 - Add postmortems after major calls or trades so the self-model learns from outcomes rather than only declared beliefs.
-- Add more explicit bias-watch notes if you want the system to challenge you in a more targeted way.
-- Promote recurring heuristics into principle or decision-rule notes when they stabilise.
+- Tighten conflicts explicitly when two good rules genuinely compete by command or mode.
+- Review stale rules when your operating style or mandate has changed materially.
 `;
 }
 
 function writeReflection(root, options = {}) {
   ensureProjectStructure(root);
   const selfNotes = loadSelfNotes(root);
-  const principles = selfNotes.filter((note) => ["principles", "portfolio-philosophy", "heuristics", "decision-rules"].includes(note.category));
-  const challengers = selfNotes.filter((note) => ["anti-patterns", "bias-watch", "postmortems"].includes(note.category));
-  const tensions = overlappingTensions(principles, challengers);
-  const output = writeOutputDocument(root, {
-    idPrefix: "REFLECT",
-    kind: "self-reflection",
+  const context = buildCompiledSelfModel(root).globalContext;
+  const output = writeOutputByFamily(root, "self-reflection", {
     title: "Self Reflection",
-    outputDir: "outputs/memos",
     fileSlug: "self-reflection",
-    body: buildReflectionBody(selfNotes, tensions),
+    body: buildReflectionBody(selfNotes, context),
     sources: selfNotes.map((note) => note.relativePath),
     frontmatter: {
       reflection_scope: "self-model"
@@ -104,7 +76,9 @@ function writeReflection(root, options = {}) {
 
 - Last updated: ${nowIso()}
 
-${tensions.length ? tensions.join("\n") : "- No tensions inferred yet from the current self-model."}
+${context.conflicts.length
+  ? context.conflicts.map((conflict) => `- ${conflict.winner_title} overrides ${conflict.loser_title} because ${conflict.reason}.`).join("\n")
+  : "- No declared rule conflicts are active right now."}
 `
     }
   );

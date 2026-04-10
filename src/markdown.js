@@ -180,10 +180,30 @@ function upsertManagedBlock(content, name, blockContent) {
 }
 
 function sectionContent(body, heading) {
-  const escapedHeading = heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-  const regex = new RegExp(`^##\\s+${escapedHeading}\\s*$([\\s\\S]*?)(?=^##\\s+|\\Z)`, "im");
-  const match = body.match(regex);
-  return match ? match[1].trim() : "";
+  const pattern = new RegExp(`^##\\s+${heading.replace(/[.*+?^${}()|[\]\\]/g, "\\$&")}\\s*$`, "i");
+  const lines = String(body || "").split(/\r?\n/);
+  let startIndex = -1;
+
+  for (let index = 0; index < lines.length; index += 1) {
+    if (pattern.test(lines[index].trim())) {
+      startIndex = index + 1;
+      break;
+    }
+  }
+
+  if (startIndex === -1) {
+    return "";
+  }
+
+  const collected = [];
+  for (let index = startIndex; index < lines.length; index += 1) {
+    if (/^##\s+/.test(lines[index].trim())) {
+      break;
+    }
+    collected.push(lines[index]);
+  }
+
+  return collected.join("\n").trim();
 }
 
 function stemFromPath(filePath) {

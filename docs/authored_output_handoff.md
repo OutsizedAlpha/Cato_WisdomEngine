@@ -53,6 +53,20 @@ The command may also refresh a deterministic scaffold at the final output path s
 
 That scaffold is not the final artefact.
 
+Each pack now also carries command-specific self-model context compiled from the current self notes. In practice that means the prompt and pack can include:
+
+- active hard rules
+- active soft preferences
+- challenge style
+- bias checks
+- writing constraints
+- what not to do
+- current tensions and review pressure
+
+Treat that block as part of the operating brief, not as decorative metadata.
+
+Internally, the authored-output workflow now shares its pack/capture mechanics with the report and frontier handoff paths through the common handoff core. That reduces drift in path generation, placeholder enforcement, and capture metadata rules.
+
 ## Required Capture Discipline
 
 Before running `capture-authored`:
@@ -64,6 +78,8 @@ Before running `capture-authored`:
 5. then run `capture-authored`
 
 If the scaffold marker is still present or `model` is blank, capture should fail.
+
+In a live terminal session, the agent can carry that loop end to end. The important boundary is not who typed the command; it is that the active terminal model authored the body and that the capture metadata records that authorship honestly.
 
 ## What Stays Deterministic
 

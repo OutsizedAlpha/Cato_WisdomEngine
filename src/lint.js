@@ -3,6 +3,12 @@ const path = require("node:path");
 const { REQUIRED_FRONTMATTER } = require("./constants");
 const { extractWikiLinks, normalizeWikiTarget, parseFrontmatter, sectionContent } = require("./markdown");
 const { ensureProjectStructure, listMarkdownNotes } = require("./project");
+const {
+  scanDirectoryForSensitiveData,
+  scanFileForSensitiveData,
+  scanTextForSensitiveData,
+  summarizeSensitiveHits
+} = require("./sensitive-data");
 const { buildCatalogGraph, buildTagSummary, loadCatalogNotes } = require("./wiki-catalog");
 const { nowIso, readText, relativeToRoot, timestampStamp, writeText } = require("./utils");
 
@@ -55,8 +61,20 @@ function noteKindRelative(relativePath) {
   if (relativePath.startsWith("wiki/decisions/")) {
     return "decision-note";
   }
+  if (relativePath === "wiki/memory/current-context.md") {
+    return "memory-context-page";
+  }
+  if (relativePath.startsWith("wiki/memory/daily/")) {
+    return "daily-memory-log";
+  }
+  if (relativePath.startsWith("wiki/memory/weekly/")) {
+    return "weekly-review-page";
+  }
   if (relativePath.startsWith("wiki/theses/")) {
     return "thesis-page";
+  }
+  if (relativePath.startsWith("wiki/synthesis/")) {
+    return "synthesis-note";
   }
   if (relativePath.startsWith("wiki/watch-profiles/")) {
     return "watch-profile";
@@ -69,6 +87,15 @@ function noteKindRelative(relativePath) {
   }
   if (relativePath.startsWith("wiki/self/principles/")) {
     return "principle-note";
+  }
+  if (relativePath.startsWith("wiki/self/constitution/")) {
+    return "constitution-note";
+  }
+  if (relativePath.startsWith("wiki/self/modes/")) {
+    return "mode-note";
+  }
+  if (relativePath.startsWith("wiki/self/preferences/")) {
+    return "preference-note";
   }
   if (relativePath.startsWith("wiki/self/heuristics/")) {
     return "heuristic-note";
@@ -96,7 +123,7 @@ function noteKindRelative(relativePath) {
 
 function isArchiveNote(relativePath) {
   return (
-    relativePath.startsWith("outputs/reports/archive/") ||
+    /^outputs\/[^/]+\/archive\//.test(relativePath) ||
     relativePath.startsWith("wiki/reports/archive/")
   );
 }
@@ -145,16 +172,55 @@ function lintProject(root) {
       }
     }
 
+    const noteSensitiveScan = scanTextForSensitiveData(content, {
+      sourceLabel: relative,
+      maxHits: 8
+    });
+    if (noteSensitiveScan.flagged) {
+      issues.push({
+        severity: "warning",
+        file: relative,
+        message: `Sensitive-data pattern detected in note content (${summarizeSensitiveHits(noteSensitiveScan.hits)}).`
+      });
+    }
+
     if (kind === "source-note") {
       const status = String(frontmatter.status || "").trim().toLowerCase();
       const reviewStatus = normalizeReviewStatus(frontmatter);
       const captureSource = String(frontmatter.capture_source || "").trim().toLowerCase();
       const documentClass = String(frontmatter.document_class || "").trim().toLowerCase();
 
-      for (const field of ["raw_path", "metadata_path"]) {
+      for (const field of ["raw_path", "extracted_text_path", "metadata_path", "table_preview_path", "figure_note_path"]) {
         const targetPath = frontmatter[field];
         if (targetPath && !fs.existsSync(path.join(root, targetPath))) {
           issues.push({ severity: "error", file: relative, message: `Referenced file does not exist: \`${targetPath}\`.` });
+        }
+      }
+      if (frontmatter.sensitive_data_flagged) {
+        issues.push({
+          severity: "warning",
+          file: relative,
+          message: `Source note is marked \`sensitive_data_flagged\`${frontmatter.sensitive_data_summary ? ` (${frontmatter.sensitive_data_summary})` : ""}.`
+        });
+      }
+      for (const field of ["raw_path", "extracted_text_path", "metadata_path"]) {
+        const targetPath = String(frontmatter[field] || "").trim();
+        if (!targetPath) {
+          continue;
+        }
+        const absolutePath = path.join(root, targetPath);
+        if (!fs.existsSync(absolutePath)) {
+          continue;
+        }
+        const scan = fs.statSync(absolutePath).isDirectory()
+          ? scanDirectoryForSensitiveData(absolutePath, { sourceLabel: targetPath, maxHits: 8 })
+          : scanFileForSensitiveData(absolutePath, { sourceLabel: targetPath, maxHits: 8 });
+        if (scan.flagged) {
+          issues.push({
+            severity: "warning",
+            file: relative,
+            message: `Sensitive-data pattern detected in \`${field}\` target (${summarizeSensitiveHits(scan.hits)}).`
+          });
         }
       }
       if (!frontmatter.concepts?.length && !frontmatter.entities?.length) {
@@ -222,6 +288,13 @@ function lintProject(root) {
     }
     if (kind === "claim-page" && !sectionContent(body, "Counter-Arguments / Weakening Evidence")) {
       issues.push({ severity: "warning", file: relative, message: "Claim page is missing a counter-arguments block." });
+    }
+    if (kind === "claim-page" && Number(frontmatter.confidence_score || 0) < 0.3) {
+      issues.push({
+        severity: "warning",
+        file: relative,
+        message: `Claim page is low confidence (${frontmatter.confidence_score || 0}).`
+      });
     }
 
     for (const link of extractWikiLinks(content)) {

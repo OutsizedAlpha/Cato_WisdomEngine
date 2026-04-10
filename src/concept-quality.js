@@ -386,9 +386,28 @@ function addCandidateScore(scores, label, score, ontologyIndex, titleText) {
   scores.set(normalized, (scores.get(normalized) || 0) + weightedScore);
 }
 
+function sampleConceptSourceText(value, maxChars = 60000) {
+  const text = String(value || "");
+  if (text.length <= maxChars) {
+    return text;
+  }
+
+  const chunkSize = Math.max(8000, Math.floor(maxChars / 3));
+  const middleStart = Math.max(0, Math.floor(text.length / 2) - Math.floor(chunkSize / 2));
+
+  return [
+    text.slice(0, chunkSize),
+    text.slice(middleStart, middleStart + chunkSize),
+    text.slice(-chunkSize)
+  ]
+    .join("\n")
+    .trim();
+}
+
 function extractCandidateConcepts(title, extractedText, ontology = {}) {
   const ontologyIndex = buildConceptOntologyIndex(ontology);
-  const combined = `${title || ""}\n${extractedText || ""}`;
+  const sampledText = sampleConceptSourceText(extractedText);
+  const combined = `${title || ""}\n${sampledText}`;
   const paddedCombined = ` ${normalizeSourceText(combined)} `;
   const paddedTitle = ` ${normalizeSourceText(title)} `;
   const scores = new Map();
@@ -435,5 +454,6 @@ module.exports = {
   extractCandidateConcepts,
   isMeaningfulExplicitConcept,
   isMeaningfulCandidateConcept,
-  normalizeConceptLabel
+  normalizeConceptLabel,
+  sampleConceptSourceText
 };
