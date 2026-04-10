@@ -127,7 +127,7 @@ function loadClaimInputNotes(root) {
 
 function claimSectionsForNote(note) {
   if (note.relativePath.startsWith("wiki/source-notes/")) {
-    return ["What This Source Says", "Why It Matters"];
+    return ["What This Source Says"];
   }
   if (note.relativePath.startsWith("wiki/reports/")) {
     return [
@@ -148,6 +148,28 @@ function claimSectionsForNote(note) {
     return ["Thesis Statement", "What Must Be True", "Risks / Failure Modes", "Catalysts"];
   }
   return [];
+}
+
+function shouldExtractClaimsFromNote(note) {
+  if (!note.relativePath.startsWith("wiki/source-notes/")) {
+    return true;
+  }
+
+  const reviewStatus = String(note.frontmatter.review_status || "").trim().toLowerCase();
+  const sourceType = String(note.frontmatter.source_type || "").trim().toLowerCase();
+  const documentClass = String(note.frontmatter.document_class || "").trim().toLowerCase();
+  if (reviewStatus !== "unreviewed") {
+    return true;
+  }
+
+  if (sourceType === "image") {
+    return false;
+  }
+  if (documentClass === "chartpack_or_visual" || documentClass === "visual_capture") {
+    return false;
+  }
+
+  return true;
 }
 
 function cleanClaimText(value) {
@@ -201,6 +223,10 @@ function isClaimLike(text) {
 }
 
 function sectionsToClaimUnits(note) {
+  if (!shouldExtractClaimsFromNote(note)) {
+    return [];
+  }
+
   const sections = claimSectionsForNote(note);
   const units = [];
 

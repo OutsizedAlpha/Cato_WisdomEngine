@@ -1,5 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
+const { ensureProjectStructure } = require("./project");
 const { appendJsonl, ensureDir, nowIso, readJson, writeJson } = require("./utils");
 
 const PUBLIC_INCLUDE_PATHS = [
@@ -76,11 +77,13 @@ const PUBLIC_SCAFFOLD_FILES = {
 ## Scope
 
 - Keep the markdown-first research runtime, CLI, prompts, policies, tests, and templates.
+- Keep the working-memory and self-model features present as clean starter scaffolds rather than deleting those engine surfaces outright.
 - Keep the repo ready for a new operator to initialize, ingest sources, compile knowledge, and run authored pack/capture workflows.
 
 ## Constraints
 
 - Do not bundle private inbox material, raw evidence archives, extracted text, manifests, working memory, or captured outputs.
+- Replace private self-model and working-memory artefacts with sanitized starter placeholders so the public repo still shows the full engine shape.
 - Preserve the zero-API operating model: Cato stores memory and structure, while the active terminal model authors substantive output.
 - Keep the public engine auditable, git-friendly, and ready to extend.
 
@@ -108,6 +111,9 @@ const PUBLIC_SCAFFOLD_FILES = {
 - \`node .\\tests\\cato.test.js\`
 - \`node .\\bin\\cato.js help\`
 - \`node .\\bin\\cato.js lint\`
+- \`node .\\bin\\cato.js memory-status\`
+- \`node .\\bin\\cato.js reflect\`
+- \`node .\\bin\\cato.js principles\`
 - \`node .\\bin\\cato.js public-release --to ..\\Cato_WisdomEngine_Public\`
 
 ## Architecture Notes
@@ -115,7 +121,8 @@ const PUBLIC_SCAFFOLD_FILES = {
 - Markdown-first, file-first, and auditable by default
 - Keep repo agent-driven rather than embedding external LLM execution into the CLI
 - Deterministic plumbing in the CLI, model-authored substantive output through pack/capture workflows
-- Public releases should preserve engine behaviour while excluding private corpus and operator-specific memory
+- Public releases should preserve engine behaviour while excluding private corpus and operator-specific memory payloads
+- Working-memory and self-model features remain part of the public engine through sanitized scaffold files
 `,
   "tasks/todo.md": `# Task Tracker
 
@@ -136,6 +143,7 @@ const PUBLIC_SCAFFOLD_FILES = {
 
 - [x] Keep private corpus, manifests, inbox material, outputs, and working memory out of the public line.
 - [x] Preserve the reusable engine scaffold so a new operator can initialize and use the repo immediately.
+- [x] Preserve clean starter self-model and working-memory surfaces so the public repo still reflects the full engine capability.
 `,
   "tasks/lessons.md": `# Lessons
 
@@ -209,6 +217,7 @@ function buildPublicRelease(root, options = {}) {
   const copiedPaths = copyIncludedPaths(root, targetDir);
   const removedPaths = removeExcludedPaths(targetDir);
   writePublicScaffolds(targetDir);
+  ensureProjectStructure(targetDir);
 
   const exportedAt = nowIso();
   const manifest = {
@@ -219,7 +228,7 @@ function buildPublicRelease(root, options = {}) {
     removed_paths: removedPaths,
     include_policy: PUBLIC_INCLUDE_PATHS,
     exclude_policy: PUBLIC_EXCLUDE_PATHS,
-    note: "This export intentionally excludes private corpus, working memory, inbox material, manifests, wiki state, outputs, and project-memory files."
+    note: "This export intentionally excludes private corpus and operator-specific state, then reseeds the standard engine scaffold so the public line stays functionally complete."
   };
   const manifestPath = path.join(root, "logs", "public-release", `${exportedAt.replace(/[:.]/g, "-")}.manifest.json`);
   writeJson(manifestPath, manifest);

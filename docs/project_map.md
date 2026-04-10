@@ -17,6 +17,9 @@
 - `node .\tests\cato.test.js`
 - `node .\bin\cato.js help`
 - `node .\bin\cato.js lint`
+- `node .\bin\cato.js memory-status`
+- `node .\bin\cato.js reflect`
+- `node .\bin\cato.js principles`
 - `node .\bin\cato.js public-release --to ..\Cato_WisdomEngine_Public`
 
 ## Architecture Notes
@@ -24,4 +27,5 @@
 - Markdown-first, file-first, and auditable by default
 - Keep repo agent-driven rather than embedding external LLM execution into the CLI
 - Deterministic plumbing in the CLI, model-authored substantive output through pack/capture workflows
-- Public releases should preserve engine behaviour while excluding private corpus and operator-specific memory
+- Public releases should preserve engine behaviour while excluding private corpus and operator-specific memory payloads
+- Working-memory and self-model features remain part of the public engine through sanitized scaffold files

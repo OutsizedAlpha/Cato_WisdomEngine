@@ -372,6 +372,17 @@ runTest("public release export keeps engine files and excludes private corpus su
     fs.writeFileSync(path.join(root, "docs", "project_brief.md"), "# Private Brief\n", "utf8");
     fs.mkdirSync(path.join(root, "wiki", "source-notes"), { recursive: true });
     fs.writeFileSync(path.join(root, "wiki", "source-notes", "private.md"), "# Private Corpus\n", "utf8");
+    fs.writeFileSync(
+      path.join(root, "wiki", "self", "current-operating-constitution.md"),
+      "# Current Operating Constitution\n\nPrivate doctrine should not ship.\n",
+      "utf8"
+    );
+    fs.writeFileSync(
+      path.join(root, "wiki", "memory", "current-context.md"),
+      "---\nid: PRIVATE-MEM\nkind: memory-context-page\ntitle: Current Context\nstatus: reviewed\nmemory_date: 2026-04-10\n---\n\n# Current Context\n\nPrivate operating context should not ship.\n",
+      "utf8"
+    );
+    fs.writeFileSync(path.join(root, "MEMORY.md"), "# Memory\n\nPrivate memory mirror should not ship.\n", "utf8");
     fs.mkdirSync(path.join(root, "inbox", "drop_here"), { recursive: true });
     fs.writeFileSync(path.join(root, "inbox", "drop_here", "private.txt"), "secret\n", "utf8");
 
@@ -388,10 +399,23 @@ runTest("public release export keeps engine files and excludes private corpus su
       assert.ok(fs.existsSync(path.join(target, "docs", "project_map.md")));
       assert.ok(fs.existsSync(path.join(target, "tasks", "todo.md")));
       assert.ok(fs.existsSync(path.join(target, "wiki", "_templates")));
+      assert.ok(fs.existsSync(path.join(target, "wiki", "self", "current-operating-constitution.md")));
+      assert.ok(fs.existsSync(path.join(target, "wiki", "memory", "current-context.md")));
+      assert.ok(fs.existsSync(path.join(target, "MEMORY.md")));
       assert.ok(!fs.existsSync(path.join(target, "public-release.manifest.json")));
       assert.ok(fs.existsSync(result.manifestPath));
-      assert.ok(!fs.existsSync(path.join(target, "inbox")));
+      assert.ok(fs.existsSync(path.join(target, "inbox")));
+      assert.ok(!fs.existsSync(path.join(target, "inbox", "drop_here", "private.txt")));
       assert.equal(fs.readFileSync(path.join(target, "docs", "project_brief.md"), "utf8").includes("Private Brief"), false);
+      assert.equal(
+        fs.readFileSync(path.join(target, "wiki", "self", "current-operating-constitution.md"), "utf8").includes("Private doctrine should not ship"),
+        false
+      );
+      assert.equal(
+        fs.readFileSync(path.join(target, "wiki", "memory", "current-context.md"), "utf8").includes("Private operating context should not ship"),
+        false
+      );
+      assert.equal(fs.readFileSync(path.join(target, "MEMORY.md"), "utf8").includes("Private memory mirror should not ship"), false);
     } finally {
       fs.rmSync(root, { recursive: true, force: true });
     }

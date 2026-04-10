@@ -252,6 +252,59 @@ Newest negative inflation read.
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+runTest("unreviewed visual source notes do not promote OCR routing text into the claim ledger", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+
+    writeSourceNoteFixture(
+      root,
+      "visual-capture.md",
+      {
+        id: "SRC-VISUAL-01",
+        kind: "source-note",
+        title: "AI Partnerships and the Path to $75B in Revenue",
+        source_type: "image",
+        document_class: "chartpack_or_visual",
+        ingested_at: "2026-04-10T21:35:31.918Z",
+        date: "2026-04-10",
+        raw_path: "raw/images/visual-capture.jpg",
+        metadata_path: "extracted/metadata/visual-capture.json",
+        status: "draft",
+        review_status: "unreviewed",
+        review_method: "",
+        review_scope: "",
+        tags: ["aws", "openai"],
+        entities: ["Amazon Web Services", "OpenAI"],
+        concepts: []
+      },
+      `# AI Partnerships and the Path to $75B in Revenue
+
+## Summary
+
+Draft OCR capture from a standalone image.
+
+## What This Source Says
+
+- Initial draft only. Refine this note after review or a frontier-model synthesis pass.
+
+## Why It Matters
+
+- Treat OCR as a routing aid and revisit the image directly before promoting chart-specific claims.
+`
+    );
+
+    const refresh = refreshClaims(root, { writeSnapshot: false });
+    assert.equal(refresh.claims, 0);
+
+    const claimFiles = fs
+      .readdirSync(path.join(root, "wiki", "claims"))
+      .filter((name) => /^claim-.*\.md$/i.test(name));
+    assert.equal(claimFiles.length, 0);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
 runTest("state engine refreshes state pages, diffs snapshots, and writes regime briefs", () => {
   const root = makeTempRepo();
   try {

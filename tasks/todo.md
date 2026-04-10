@@ -17,3 +17,4 @@
 
 - [x] Keep private corpus, manifests, inbox material, outputs, and working memory out of the public line.
 - [x] Preserve the reusable engine scaffold so a new operator can initialize and use the repo immediately.
+- [x] Preserve clean starter self-model and working-memory surfaces so the public repo still reflects the full engine capability.

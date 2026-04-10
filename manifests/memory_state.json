@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "current_context": {
+    "last_captured_date": "",
+    "last_capture_at": "",
+    "pending_date": "",
+    "pending_pack_path": "",
+    "pending_prompt_path": "",
+    "pending_capture_path": ""
+  },
+  "weekly_review": {
+    "last_captured_week": "",
+    "last_capture_at": "",
+    "pending_week": "",
+    "pending_pack_path": "",
+    "pending_prompt_path": "",
+    "pending_capture_path": ""
+  }
+}

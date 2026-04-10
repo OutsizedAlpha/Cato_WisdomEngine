@@ -676,7 +676,8 @@ function extractRepoDirectoryContent(directoryPath) {
 }
 
 function runWindowsOcr(filePath) {
-  const powershellPathLiteral = String(filePath).replace(/'/g, "''");
+  const absolutePath = path.resolve(filePath);
+  const powershellPathLiteral = String(absolutePath).replace(/'/g, "''");
   const script = `
 $ErrorActionPreference = 'Stop'
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
@@ -693,6 +694,9 @@ function AwaitWinRt($operation, [Type]$resultType) {
 Add-Type -AssemblyName System.Runtime.WindowsRuntime
 $null = [Windows.Storage.StorageFile, Windows.Storage, ContentType=WindowsRuntime]
 $null = [Windows.Graphics.Imaging.SoftwareBitmap, Windows.Graphics.Imaging, ContentType=WindowsRuntime]
+$null = [Windows.Graphics.Imaging.BitmapDecoder, Windows.Graphics.Imaging, ContentType=WindowsRuntime]
+$null = [Windows.Graphics.Imaging.BitmapPixelFormat, Windows.Graphics.Imaging, ContentType=WindowsRuntime]
+$null = [Windows.Graphics.Imaging.BitmapAlphaMode, Windows.Graphics.Imaging, ContentType=WindowsRuntime]
 $null = [Windows.Media.Ocr.OcrEngine, Windows.Foundation, ContentType=WindowsRuntime]
 
 $targetPath = '${powershellPathLiteral}'
@@ -700,6 +704,11 @@ $file = AwaitWinRt ([Windows.Storage.StorageFile]::GetFileFromPathAsync($targetP
 $stream = AwaitWinRt ($file.OpenAsync([Windows.Storage.FileAccessMode]::Read)) ([Windows.Storage.Streams.IRandomAccessStream])
 $decoder = AwaitWinRt ([Windows.Graphics.Imaging.BitmapDecoder]::CreateAsync($stream)) ([Windows.Graphics.Imaging.BitmapDecoder])
 $softwareBitmap = AwaitWinRt ($decoder.GetSoftwareBitmapAsync()) ([Windows.Graphics.Imaging.SoftwareBitmap])
+$softwareBitmap = [Windows.Graphics.Imaging.SoftwareBitmap]::Convert(
+  $softwareBitmap,
+  [Windows.Graphics.Imaging.BitmapPixelFormat]::Bgra8,
+  [Windows.Graphics.Imaging.BitmapAlphaMode]::Premultiplied
+)
 $ocrEngine = [Windows.Media.Ocr.OcrEngine]::TryCreateFromUserProfileLanguages()
 $result = AwaitWinRt ($ocrEngine.RecognizeAsync($softwareBitmap)) ([Windows.Media.Ocr.OcrResult])
 Write-Output $result.Text
