@@ -20,14 +20,20 @@ runTest("working-memory automation records daily events and queues due refresh p
     assert.equal(events[0].command, "ingest");
     assert.ok(fs.existsSync(path.join(root, "wiki", "memory", "daily", "2026-04-07.md")));
     assert.equal(automation.generated.length, 2);
+    assert.equal(automation.captured.length, 2);
     assert.deepEqual(
       automation.generated.map((entry) => entry.scope).sort(),
       ["current_context", "weekly_review"]
     );
+    assert.ok(fs.existsSync(path.join(root, "wiki", "memory", "current-context.md")));
+    assert.ok(fs.existsSync(path.join(root, "wiki", "memory", "weekly", "weekly-review-2026-04-07.md")) === false);
+    assert.ok(fs.existsSync(path.join(root, "wiki", "memory", "weekly", "weekly-review-2026-04-06.md")));
 
     const status = workingMemoryStatus(root, { now: new Date("2026-04-07T09:15:00Z") });
-    assert.equal(status.currentContext.pending, true);
-    assert.equal(status.weeklyReview.pending, true);
+    assert.equal(status.currentContext.pending, false);
+    assert.equal(status.currentContext.due, false);
+    assert.equal(status.weeklyReview.pending, false);
+    assert.equal(status.weeklyReview.due, false);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }

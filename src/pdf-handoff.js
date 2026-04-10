@@ -3,7 +3,7 @@ const path = require("node:path");
 const { spawnSync } = require("node:child_process");
 const { compileProject } = require("./compile");
 const { extractContent } = require("./extraction");
-const { ingest } = require("./ingest");
+const { buildSourceNote, ingest } = require("./ingest");
 const { ensureProjectStructure, loadSettings } = require("./project");
 const { detectDocumentClass } = require("./source-routing");
 const {
@@ -24,6 +24,77 @@ const {
 const EXTRACTION_PLACEHOLDER_MARKER = "REPLACE_WITH_AUTHORED_EXTRACTION";
 const TITLE_CASE_LOWER_WORDS = new Set(["a", "an", "and", "at", "for", "in", "of", "on", "the", "to"]);
 const TITLE_CASE_UPPER_WORDS = new Set(["ai", "ce", "cfa", "eu", "gtm", "jp", "jpm", "uk", "us"]);
+
+function defaultPdfReviewState(documentClass) {
+  const normalized = String(documentClass || "").trim().toLowerCase();
+  if (normalized === "chartpack_or_visual" || normalized === "visual_capture") {
+    return {
+      status: "reviewed",
+      review_status: "visual-and-text-reviewed",
+      review_method: "codex_pdf_vision_render_review",
+      review_scope:
+        "Accepted through the PDF vision handoff after rendered-page review. Use for grounded qualitative synthesis and return to the raw PDF when exact chart or table precision matters."
+    };
+  }
+  return {
+    status: "reviewed",
+    review_status: "text_reviewed",
+    review_method: "codex_pdf_vision_text_review",
+    review_scope:
+      "Accepted through the PDF vision handoff as reviewed text for grounded qualitative synthesis. Return to the raw PDF when exact table or chart precision matters."
+  };
+}
+
+function applyPdfReviewDefaults(record, options = {}) {
+  const force = Boolean(options.force);
+  const defaults = defaultPdfReviewState(record.document_class);
+  const currentReviewStatus = String(record.review_status || "").trim().toLowerCase();
+  const currentStatus = String(record.status || "").trim().toLowerCase();
+  const shouldApply =
+    force ||
+    !currentReviewStatus ||
+    currentReviewStatus === "unreviewed" ||
+    currentStatus === "draft" ||
+    currentStatus === "active";
+  if (!shouldApply) {
+    return {
+      ...record,
+      note_status: record.note_status || currentStatus || "reviewed"
+    };
+  }
+  return {
+    ...record,
+    status: defaults.status,
+    note_status: "reviewed",
+    review_status: defaults.review_status,
+    reviewed_at: record.reviewed_at || record.captured_at || record.ingested_at || nowIso(),
+    review_method: record.review_method || defaults.review_method,
+    review_scope: record.review_scope || defaults.review_scope
+  };
+}
+
+function rewriteJsonlRecord(filePath, predicate, updater) {
+  if (!fs.existsSync(filePath)) {
+    return 0;
+  }
+  const lines = readText(filePath)
+    .split(/\r?\n/)
+    .filter(Boolean);
+  let changed = 0;
+  const next = lines.map((line) => {
+    const record = JSON.parse(line);
+    if (!predicate(record)) {
+      return line;
+    }
+    const updated = updater(record);
+    changed += 1;
+    return JSON.stringify(updated);
+  });
+  if (changed) {
+    writeText(filePath, `${next.join("\n")}\n`);
+  }
+  return changed;
+}
 
 function normalizeList(value) {
   if (!value) {
@@ -254,10 +325,8 @@ function buildCaptureBundle(packRelativePath, documents) {
       tags: [],
       entities: [],
       concepts: [],
-      review_status: "unreviewed",
+      ...defaultPdfReviewState(document.suggested_document_class),
       reviewed_at: "",
-      review_method: "",
-      review_scope: "",
       extracted_text_path: document.authored_extraction_path,
       extraction_method: "llm_vision_handoff",
       extraction_notes: [
@@ -512,6 +581,19 @@ function capturePdf(root, bundleInput, options = {}) {
 
     const sidecarPath = `${sourcePath}.cato-meta.json`;
     const existing = readJson(sidecarPath, {});
+    const reviewDefaults = applyPdfReviewDefaults(
+      {
+        document_class: document.document_class || existing.document_class || "",
+        captured_at: nowIso(),
+        ingested_at: existing.ingested_at || "",
+        review_status: document.review_status || existing.review_status || "",
+        reviewed_at: document.reviewed_at || existing.reviewed_at || "",
+        review_method: document.review_method || existing.review_method || "",
+        review_scope: document.review_scope || existing.review_scope || "",
+        status: existing.status || ""
+      },
+      { force: false }
+    );
     const sidecar = {
       ...existing,
       title: document.title || existing.title || humanTitleFromFilename(sourcePath),
@@ -527,10 +609,12 @@ function capturePdf(root, bundleInput, options = {}) {
       tags: uniqueList([...(existing.tags || []), ...(document.tags || [])]),
       entities: uniqueList([...(existing.entities || []), ...(document.entities || [])]),
       concepts: uniqueList([...(existing.concepts || []), ...(document.concepts || [])]),
-      review_status: document.review_status || existing.review_status || "unreviewed",
-      reviewed_at: document.reviewed_at || existing.reviewed_at || "",
-      review_method: document.review_method || existing.review_method || "",
-      review_scope: document.review_scope || existing.review_scope || "",
+      status: reviewDefaults.status,
+      note_status: reviewDefaults.note_status,
+      review_status: reviewDefaults.review_status,
+      reviewed_at: reviewDefaults.reviewed_at,
+      review_method: reviewDefaults.review_method,
+      review_scope: reviewDefaults.review_scope,
       extracted_text: extractedText,
       extraction_status: document.extraction_status || existing.extraction_status || "extracted",
       extraction_method: document.extraction_method || existing.extraction_method || "llm_vision_handoff",
@@ -582,7 +666,86 @@ function capturePdf(root, bundleInput, options = {}) {
   };
 }
 
+function backfillPdfHandoffReviewState(root, options = {}) {
+  ensureProjectStructure(root);
+  const sourceDir = path.join(root, "wiki", "source-notes");
+  if (!fs.existsSync(sourceDir)) {
+    return { updated: 0 };
+  }
+
+  let updated = 0;
+  for (const name of fs.readdirSync(sourceDir)) {
+    if (!name.toLowerCase().endsWith(".md")) {
+      continue;
+    }
+    const notePath = path.join(sourceDir, name);
+    const metadataPathGuess = path.join(root, "extracted", "metadata");
+    const noteContent = readText(notePath);
+    if (!/capture_source:\s*codex_pdf_vision_handoff/i.test(noteContent)) {
+      continue;
+    }
+    const parsed = require("./markdown").parseFrontmatter(noteContent);
+    const frontmatter = parsed.frontmatter || {};
+    const noteId = String(frontmatter.id || "").trim();
+    if (!noteId) {
+      continue;
+    }
+    const metadataPath = frontmatter.metadata_path ? path.join(root, frontmatter.metadata_path) : path.join(metadataPathGuess, `${noteId}.json`);
+    if (!fs.existsSync(metadataPath)) {
+      continue;
+    }
+    const metadata = readJson(metadataPath, {});
+    const next = applyPdfReviewDefaults(
+      {
+        ...metadata,
+        ...frontmatter,
+        metadata_path: metadata.metadata_path || frontmatter.metadata_path || relativeToRoot(root, metadataPath),
+        note_path: metadata.note_path || relativeToRoot(root, notePath)
+      },
+      { force: false }
+    );
+    const changed =
+      String(next.status || "") !== String(frontmatter.status || "") ||
+      String(next.review_status || "") !== String(frontmatter.review_status || "") ||
+      String(next.review_method || "") !== String(frontmatter.review_method || "") ||
+      String(next.review_scope || "") !== String(frontmatter.review_scope || "") ||
+      String(next.reviewed_at || "") !== String(frontmatter.reviewed_at || "");
+    if (!changed) {
+      continue;
+    }
+
+    next.imported_frontmatter = {
+      ...(metadata.imported_frontmatter || {}),
+      status: next.status,
+      review_status: next.review_status,
+      reviewed_at: next.reviewed_at,
+      review_method: next.review_method,
+      review_scope: next.review_scope
+    };
+
+    writeJson(metadataPath, next);
+    writeText(notePath, buildSourceNote(next));
+    rewriteJsonlRecord(
+      path.join(root, "manifests", "sources.jsonl"),
+      (record) => String(record.id || "").trim() === noteId,
+      (record) => ({
+        ...record,
+        status: next.note_status || next.status || "reviewed",
+        note_status: next.note_status || "reviewed",
+        review_status: next.review_status,
+        reviewed_at: next.reviewed_at,
+        review_method: next.review_method,
+        review_scope: next.review_scope
+      })
+    );
+    updated += 1;
+  }
+
+  return { updated };
+}
+
 module.exports = {
+  backfillPdfHandoffReviewState,
   capturePdf,
   writePdfPack
 };

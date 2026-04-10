@@ -420,20 +420,22 @@ function isPathInside(basePath, targetPath) {
   return relative === "" || (!relative.startsWith("..") && !path.isAbsolute(relative));
 }
 
-function buildSensitiveScan(target, extraction) {
+function buildSensitiveScan(target, extraction, options = {}) {
   const scans = [];
   if (target.kind === "directory") {
     scans.push(
       scanDirectoryForSensitiveData(target.path, {
         sourceLabel: path.basename(target.path),
-        maxHits: 10
+        maxHits: 10,
+        sourceType: options.sourceType
       })
     );
   } else {
     scans.push(
       scanFileForSensitiveData(target.path, {
         sourceLabel: path.basename(target.path),
-        maxHits: 10
+        maxHits: 10,
+        sourceType: options.sourceType
       })
     );
   }
@@ -969,7 +971,7 @@ function ingest(root, options = {}) {
           targetKind: target.kind
         });
     const extraction = applyExtractionOverride(extractionBase, extractionOverride);
-    const sensitiveScan = buildSensitiveScan(target, extraction);
+    const sensitiveScan = buildSensitiveScan(target, extraction, { sourceType });
     if (sensitiveScan.flagged && !allowSensitive) {
       quarantinedResults.push(
         quarantineTarget(root, inboxDir, target, id, sensitiveScan, {
@@ -1127,5 +1129,6 @@ function ingest(root, options = {}) {
 }
 
 module.exports = {
+  buildSourceNote,
   ingest
 };

@@ -22,7 +22,7 @@ The project now has two intended repository lines:
 - a public line for the open reference version of Cato
 - a private line for the personalised working system with seeded self-model doctrine, private corpus material, and captured authored outputs
 
-In the maintainer workflow, day-to-day work happens in the private line and the public repo is a deliberate engine-only release surface. See [docs/repo_topology.md](docs/repo_topology.md).
+In the maintainer workflow, day-to-day work happens in the private line and the public repo is a deliberate engine-only release surface. The public line should preserve the same underlying engine architecture and operator-facing workflows as the private line, while stripping private corpus, personal doctrine, and operator-specific memory payloads. See [docs/repo_topology.md](docs/repo_topology.md) and [docs/public_release_policy.md](docs/public_release_policy.md).
 Use `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public` when you want to project the current engine into a separate public-safe worktree without shipping the private corpus.
 
 ## What Exists Today
@@ -219,10 +219,10 @@ Common authored-output loop:
 Working-memory loop:
 
 1. meaningful Cato commands now append to daily working memory automatically
-2. on the first meaningful Cato use of the day or ISO week when due, Cato queues current-context and weekly-review packs automatically
-3. use `memory-status` if you want to inspect whether either surface is due or pending
+2. on the first meaningful Cato use of the day or ISO week when due, Cato refreshes current-context and weekly-review automatically and writes them back into the repo
+3. use `memory-status` if you want to inspect whether either surface is current
 4. use `memory-refresh` only as a manual override or force-refresh path
-5. let Codex/Claude author the queued memory bundle and run `capture-memory`
+5. use `capture-memory` only when you intentionally want to replace the automatic note with a manually authored override
 
 Report handoff loop:
 
@@ -320,7 +320,7 @@ The durable knowledge system begins after intentional ingest. That is when evide
 13. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
 14. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` to prepare authored packs for the current world-model surface, then complete them with `capture-authored`.
 15. Run `.\cato.cmd decision-note "topic"`, `.\cato.cmd meeting-brief "Weekly investment meeting brief"`, or `.\cato.cmd red-team "topic"` to prepare authored packs, and use `frontier-pack` / `capture-frontier` when you want a deeper bespoke frontier reasoning route over the same claim/state/decision stack.
-16. Check working memory with `.\cato.cmd memory-status`; use `.\cato.cmd memory-refresh` only when you need a manual override, then complete the queued authored bundle with `.\cato.cmd capture-memory`.
+16. Check working memory with `.\cato.cmd memory-status`; use `.\cato.cmd memory-refresh` only when you want to force or override the automatic write-through behaviour, and use `.\cato.cmd capture-memory` only for a deliberate manual replacement note.
 17. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
 18. When you want to update the public engine line, run `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public` and validate that worktree before committing there.
 

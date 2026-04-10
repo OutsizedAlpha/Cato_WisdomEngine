@@ -27,8 +27,12 @@ const SENSITIVE_PATTERNS = [
     pattern: /\bBearer\s+[A-Za-z0-9._=-]{20,}\b/gi
   },
   {
+    label: "password_literal",
+    pattern: /\b(?:password|passwd|pwd)\b\s*[:=]\s*["']?[^\s"'`<>{}]{8,}["']?/gi
+  },
+  {
     label: "keyword_secret_value",
-    pattern: /\b(?:api[_-]?key|access[_-]?key|secret|token|password)\b[^\r\n:=]{0,24}[:=]\s*["']?[A-Za-z0-9/_+=.-]{16,}["']?/gi
+    pattern: /\b(?:api[_-]?key|access[_-]?key|secret|token)\b[^\r\n:=]{0,24}[:=]\s*["']?[A-Za-z0-9/_+=.-]{16,}["']?/gi
   }
 ];
 
@@ -116,6 +120,26 @@ function pushHit(hits, label, lineNumber, lineText) {
   });
 }
 
+function isPublicWebHtmlContext(options = {}) {
+  const sourceType = String(options.sourceType || "").trim().toLowerCase();
+  const filePath = String(options.filePath || "");
+  const extension = path.extname(filePath).toLowerCase();
+  return sourceType === "web" && [".html", ".htm"].includes(extension);
+}
+
+function shouldSuppressSensitiveHit(line, entry, options = {}) {
+  if (!entry?.label) {
+    return false;
+  }
+  if (
+    isPublicWebHtmlContext(options) &&
+    ["keyword_secret_value", "bearer_token", "password_literal"].includes(entry.label)
+  ) {
+    return true;
+  }
+  return false;
+}
+
 function scanTextForSensitiveData(text, options = {}) {
   const maxHits = Number(options.maxHits || 20);
   const sourceLabel = String(options.sourceLabel || "");
@@ -130,6 +154,9 @@ function scanTextForSensitiveData(text, options = {}) {
     for (const entry of SENSITIVE_PATTERNS) {
       entry.pattern.lastIndex = 0;
       if (!entry.pattern.test(line)) {
+        continue;
+      }
+      if (shouldSuppressSensitiveHit(line, entry, options)) {
         continue;
       }
       pushHit(hits, entry.label, index + 1, maskLine(line, entry.pattern));
@@ -205,7 +232,9 @@ function scanFileForSensitiveData(filePath, options = {}) {
   }
   return scanTextForSensitiveData(fs.readFileSync(filePath, "utf8"), {
     sourceLabel: options.sourceLabel || path.basename(filePath),
-    maxHits: options.maxHits
+    maxHits: options.maxHits,
+    sourceType: options.sourceType,
+    filePath
   });
 }
 
@@ -246,7 +275,8 @@ function scanDirectoryForSensitiveData(directoryPath, options = {}) {
       scans.push(
         scanFileForSensitiveData(fullPath, {
           sourceLabel: `${rootLabel}:${path.relative(directoryPath, fullPath).replace(/\\/g, "/")}`,
-          maxHits
+          maxHits,
+          sourceType: options.sourceType
         })
       );
     }

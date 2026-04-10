@@ -248,6 +248,290 @@ function summarizeArtifacts(artifacts) {
     .join(", ");
 }
 
+function compactMarkdownLine(value) {
+  return stripMarkdownFormatting(
+    String(value || "")
+      .replace(/^\s*[-*]\s+/, "")
+      .replace(/^\s*\d+\.\s+/, "")
+      .trim()
+  )
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
+function uniqueCompactLines(values, limit = 0) {
+  const output = [];
+  const seen = new Set();
+  for (const value of Array.isArray(values) ? values : []) {
+    const normalized = compactMarkdownLine(value);
+    if (!normalized || seen.has(normalized)) {
+      continue;
+    }
+    seen.add(normalized);
+    output.push(normalized);
+    if (limit && output.length >= limit) {
+      break;
+    }
+  }
+  return output;
+}
+
+function markdownSectionLines(content, limit = 4) {
+  return uniqueCompactLines(String(content || "").split(/\r?\n/), limit);
+}
+
+function readMarkdownSectionLines(root, relativePath, heading, limit = 4) {
+  const absolutePath = path.join(root, relativePath);
+  if (!fs.existsSync(absolutePath)) {
+    return [];
+  }
+  const parsed = parseFrontmatter(readText(absolutePath));
+  return markdownSectionLines(sectionContent(parsed.body, heading), limit);
+}
+
+function readMarkdownTitle(root, relativePath) {
+  const absolutePath = path.join(root, relativePath);
+  if (!fs.existsSync(absolutePath)) {
+    return path.basename(relativePath, path.extname(relativePath));
+  }
+  const parsed = parseFrontmatter(readText(absolutePath));
+  return parsed.frontmatter.title || path.basename(relativePath, path.extname(relativePath));
+}
+
+function recentEventLines(events, limit = 5) {
+  const ordered = [...(Array.isArray(events) ? events : [])]
+    .sort((left, right) => String(left.at || "").localeCompare(String(right.at || "")))
+    .slice(-limit)
+    .reverse();
+  return ordered.map((event) => {
+    const time = timestampTime(event.at) || "??:??";
+    const artifactSummary = summarizeArtifacts(event.artifacts || []);
+    return `${time} ${event.command}: ${event.summary}${artifactSummary ? ` (${artifactSummary})` : ""}`;
+  });
+}
+
+function artifactTitles(root, events, limit = 5) {
+  const output = [];
+  const seen = new Set();
+  for (const event of [...(Array.isArray(events) ? events : [])].reverse()) {
+    for (const artifact of event.artifacts || []) {
+      if (!/^wiki\/source-notes\/|^wiki\/reports\/|^outputs\//.test(String(artifact || ""))) {
+        continue;
+      }
+      const title = readMarkdownTitle(root, artifact);
+      if (!title || seen.has(title)) {
+        continue;
+      }
+      seen.add(title);
+      output.push(title);
+      if (output.length >= limit) {
+        return output;
+      }
+    }
+  }
+  return output;
+}
+
+function markdownFileNames(directoryPath, matcher) {
+  if (!fs.existsSync(directoryPath)) {
+    return [];
+  }
+  return fs
+    .readdirSync(directoryPath)
+    .filter((name) => name.toLowerCase().endsWith(".md") && !(matcher && !matcher(name)));
+}
+
+function countSourceNotes(root, predicate) {
+  const sourceDir = path.join(root, "wiki", "source-notes");
+  let count = 0;
+  for (const name of markdownFileNames(sourceDir, (file) => !/^(index|readme)\.md$/i.test(file))) {
+    const parsed = parseFrontmatter(readText(path.join(sourceDir, name)));
+    if (!predicate || predicate(parsed.frontmatter || {}, name)) {
+      count += 1;
+    }
+  }
+  return count;
+}
+
+function countClaimPages(root) {
+  const claimDir = path.join(root, "wiki", "claims");
+  return markdownFileNames(claimDir, (file) => /^claim-.*\.md$/i.test(file)).length;
+}
+
+function commandCounts(events) {
+  const counts = new Map();
+  for (const event of Array.isArray(events) ? events : []) {
+    const key = String(event.command || "").trim();
+    if (!key) {
+      continue;
+    }
+    counts.set(key, (counts.get(key) || 0) + 1);
+  }
+  return [...counts.entries()].sort((left, right) => right[1] - left[1] || left[0].localeCompare(right[0]));
+}
+
+function commandCountLines(events, limit = 5) {
+  return commandCounts(events)
+    .slice(0, limit)
+    .map(([command, count]) => `${command}: ${count}`);
+}
+
+function weeklySummaryLine(weekKey, latestWeekly) {
+  if (!latestWeekly) {
+    return "No weekly review has been captured yet.";
+  }
+  return `Weekly review is current for ${weekKey}.`;
+}
+
+function automaticCurrentContextBody(root, options = {}) {
+  const memoryDate = String(options.memoryDate || dateStamp()).trim();
+  const weekKey = String(options.weekKey || isoWeekKey(new Date())).trim();
+  const recentEvents = Array.isArray(options.recentEvents) ? options.recentEvents : [];
+  const phaseLines = readMarkdownSectionLines(root, "docs/project_brief.md", "Current Phase", 4);
+  const objectiveLines = readMarkdownSectionLines(root, "tasks/todo.md", "Objective", 3);
+  const guardrails = readMarkdownSectionLines(root, "docs/working_memory.md", "Guardrails", 4);
+  const recentTitles = artifactTitles(root, recentEvents, 5);
+  const sourceNoteCount = countSourceNotes(root);
+  const draftSourceCount = countSourceNotes(root, (frontmatter) => String(frontmatter.status || "").trim().toLowerCase() === "draft");
+  const provisionalPdfCount = countSourceNotes(
+    root,
+    (frontmatter) =>
+      String(frontmatter.capture_source || "").trim() === "codex_pdf_vision_handoff" &&
+      String(frontmatter.status || "").trim().toLowerCase() === "draft"
+  );
+  const claimCount = countClaimPages(root);
+  const openLoops = [];
+  if (draftSourceCount) {
+    openLoops.push(`Draft source notes still in the corpus: ${draftSourceCount}.`);
+  }
+  if (provisionalPdfCount) {
+    openLoops.push(`Legacy PDF handoff notes still marked draft: ${provisionalPdfCount}.`);
+  }
+  openLoops.push(weeklySummaryLine(weekKey, options.latestWeekly));
+  const watchpoints = guardrails.length
+    ? guardrails
+    : [
+        "Working memory is operating context, not primary evidence for claims or market views.",
+        "Keep daily logs raw, current context concise, and weekly review reflective rather than bloated.",
+        "Sensitive-data quarantine remains active by default at ingest."
+      ];
+  const priorities = uniqueCompactLines([...phaseLines, ...objectiveLines], 5);
+
+  return `# Current Context
+
+## Executive Orientation
+
+Cato is operating as a file-first research system with automatic working-memory refresh. ${
+    phaseLines[0] || "The repo remains in operational hardening and refinement."
+  } Current context now writes through automatically after meaningful Cato activity instead of waiting in a pending manual capture queue.
+
+## What Changed Recently
+
+${recentEventLines(recentEvents, 6).length ? recentEventLines(recentEvents, 6).map((line) => `- ${line}`).join("\n") : "- No recent meaningful Cato events were recorded."}
+
+## Active Priorities
+
+${priorities.length ? priorities.map((line) => `- ${line}`).join("\n") : "- Keep the repo grounded, current, and low-friction."}
+
+## Active Corpora / Themes
+
+- Source notes tracked: ${sourceNoteCount}; draft source notes: ${draftSourceCount}.
+- Claim ledger size: ${claimCount} current claim page${claimCount === 1 ? "" : "s"}.
+${recentTitles.length ? `- Recent source or output surfaces: ${recentTitles.join("; ")}.` : "- No recent source or output surfaces were captured in the current event window."}
+- Self-model and working-memory context are active inputs for authored packs.
+
+## Open Loops
+
+${openLoops.length ? openLoops.map((line) => `- ${line}`).join("\n") : "- No open operating loops were surfaced from the current automatic pass."}
+
+## Watchpoints
+
+${watchpoints.map((line) => `- ${line}`).join("\n")}
+
+## Memory Hygiene / Next Refresh
+
+- This current-context snapshot is for ${memoryDate}.
+- Daily memory logs update automatically after meaningful Cato commands.
+- Current context will refresh automatically on the first meaningful Cato use on the next day.
+- Weekly review will refresh automatically on the first meaningful Cato use of the next ISO week.
+`;
+}
+
+function automaticWeeklyReviewBody(root, options = {}) {
+  const weekKey = String(options.weekKey || isoWeekKey(new Date())).trim();
+  const weekStart = String(options.weekStart || dateStamp(isoWeekStart(new Date()))).trim();
+  const recentEvents = Array.isArray(options.recentEvents) ? options.recentEvents : [];
+  const phaseLines = readMarkdownSectionLines(root, "docs/project_brief.md", "Current Phase", 3);
+  const lessonsPath = path.join(root, "tasks", "lessons.md");
+  const lessonLines = fs.existsSync(lessonsPath) ? markdownSectionLines(readText(lessonsPath), 6) : [];
+  const recentTitles = artifactTitles(root, recentEvents, 8);
+  const draftSourceCount = countSourceNotes(root, (frontmatter) => String(frontmatter.status || "").trim().toLowerCase() === "draft");
+  const claimCount = countClaimPages(root);
+  const topCommands = commandCountLines(recentEvents, 5);
+  const kaizenLines = uniqueCompactLines(
+    lessonLines.filter((line) =>
+      /working memory|pdf|draft|capture|sensitive-data|current context|weekly review|evidence/i.test(line)
+    ),
+    4
+  );
+
+  return `# Weekly Review - ${weekKey}
+
+## Weekly View
+
+Cato ran through ${recentEvents.length} meaningful logged event${recentEvents.length === 1 ? "" : "s"} this ISO week. ${
+    phaseLines[0] || "The repo remains in an operational hardening phase."
+  } Working memory is now expected to stay current automatically rather than leaving stale current-context notes hanging in a queued state.
+
+## What Compounded
+
+${topCommands.length ? topCommands.map((line) => `- ${line}`).join("\n") : "- No dominant command pattern surfaced this week."}
+
+## What Friction Recurred
+
+${[
+    draftSourceCount ? `Draft source-note backlog remains non-zero at ${draftSourceCount}.` : "",
+    "Legacy corpus enrichment still matters when new maintenance rules are introduced.",
+    "Private/public boundary discipline still needs to stay explicit whenever engine changes are projected outward."
+  ]
+    .filter(Boolean)
+    .map((line) => `- ${line}`)
+    .join("\n")}
+
+## What Changed In The Corpus
+
+${recentTitles.length ? recentTitles.map((title) => `- ${title}`).join("\n") : "- No new source or output titles were surfaced in the weekly event window."}
+
+## Process Adjustments / Kaizen
+
+${(kaizenLines.length
+    ? kaizenLines
+    : [
+        "Keep working memory automatic and low-noise rather than treating it as another manual sign-off surface.",
+        "Keep PDF handoff captures grounded and explicit about where exact chart or table precision still needs care.",
+        "Keep raw evidence separate from claims and higher-order judgement layers."
+      ])
+    .map((line) => `- ${line}`)
+    .join("\n")}
+
+## Open Questions Next Week
+
+${[
+    `Which draft source notes should be enriched next so the corpus compounds more cleanly?`,
+    `How aggressively should claim pages be linked back into state, decision, and synthesis surfaces?`,
+    `Where does the current claim ledger of ${claimCount} pages still need better promotion or pruning?`
+  ]
+    .map((line) => `- ${line}`)
+    .join("\n")}
+
+## Next Refresh
+
+- Week key: ${weekKey}
+- Week start: ${weekStart}
+- Refresh automatically on the first meaningful Cato use in the next ISO week.
+`;
+}
+
 function buildMemoryEvent(command, parsed, result, options = {}) {
   if (!command || IGNORED_MEMORY_COMMANDS.has(command)) {
     return null;
@@ -435,53 +719,6 @@ function extractCurrentContextSections(root) {
   return sections;
 }
 
-function currentContextTemplate(dateValue) {
-  return `# Current Context
-
-## Executive Orientation
-
-Replace this placeholder with the model-authored current operating context.
-
-## What Changed Recently
-
-## Active Priorities
-
-## Active Corpora / Themes
-
-## Open Loops
-
-## Watchpoints
-
-## Memory Hygiene / Next Refresh
-
-- Memory date: ${dateValue}
-`;
-}
-
-function weeklyReviewTemplate(weekKey, weekStart) {
-  return `# Weekly Review - ${weekKey}
-
-## Weekly View
-
-Replace this placeholder with the model-authored weekly review.
-
-## What Compounded
-
-## What Friction Recurred
-
-## What Changed In The Corpus
-
-## Process Adjustments / Kaizen
-
-## Open Questions Next Week
-
-## Next Refresh
-
-- Week key: ${weekKey}
-- Week start: ${weekStart}
-`;
-}
-
 function dailyEventDigest(events, limit = 12) {
   return events.slice(-limit).map((event) => ({
     at: event.at,
@@ -667,9 +904,9 @@ function writeCurrentContextPack(root, status, state, options = {}) {
         memory_refresh_type: "current_context",
         topic: "Current Context",
         pack_path: relativePaths.packPath,
-        authoring_layer: "terminal_model",
-        model: "",
-        authoring_session: "",
+        authoring_layer: "automatic_runtime",
+        model: "cato automatic working-memory refresh",
+        authoring_session: "automatic runtime refresh",
         local_sources: localSources,
         sources: [],
         output: {
@@ -677,20 +914,25 @@ function writeCurrentContextPack(root, status, state, options = {}) {
           title: "Current Context",
           output_path: "wiki/memory/current-context.md",
           promote: false,
-          generation_mode: "terminal_model_memory_context",
+          generation_mode: "automatic_working_memory_context",
           frontmatter: {
             status: "active",
             memory_date: today,
             refresh_basis: "first_meaningful_cato_use_when_due"
           },
-          body: currentContextTemplate(today)
+          body: automaticCurrentContextBody(root, {
+            memoryDate: today,
+            weekKey: isoWeekKey(now),
+            latestWeekly,
+            recentEvents
+          })
         }
       };
     },
     promptMarkdown(relativePaths) {
       return `# Working Memory Refresh Prompt
 
-Cato is the raw memory and grounding layer. The active terminal model must author the compiled current-context note.
+Cato can now auto-refresh working memory. This pack is the auditable override surface if you want to replace the automatically generated current-context note with a manually authored one.
 
 ## Objective
 
@@ -702,10 +944,9 @@ Cato is the raw memory and grounding layer. The active terminal model must autho
 
 1. Read the pack JSON at \`${relativePaths.packPath}\`.
 2. Review the local sources and the recent event digest before writing.
-3. Produce a concise but useful working-memory snapshot of what matters now.
-4. Replace the placeholder text in \`output.body\`.
-5. Fill \`model\` with the active session label.
-6. Finalise with:
+3. Review the prefilled \`output.body\` and adjust it only if the automatic snapshot missed something important.
+4. Fill \`model\` with the active session label if you materially rewrote the note.
+5. Finalise with:
    \`.\cato.cmd capture-memory "${relativePaths.capturePath}"\`
 
 ## Local Context Sources
@@ -786,9 +1027,9 @@ function writeWeeklyReviewPack(root, status, state, options = {}) {
         memory_refresh_type: "weekly_review",
         topic: `Weekly Review ${weekKey}`,
         pack_path: relativePaths.packPath,
-        authoring_layer: "terminal_model",
-        model: "",
-        authoring_session: "",
+        authoring_layer: "automatic_runtime",
+        model: "cato automatic working-memory refresh",
+        authoring_session: "automatic runtime refresh",
         local_sources: localSources,
         sources: [],
         output: {
@@ -796,20 +1037,24 @@ function writeWeeklyReviewPack(root, status, state, options = {}) {
           title: `Weekly Review - ${weekKey}`,
           output_path: weeklyReviewRelativePath(weekStart),
           promote: false,
-          generation_mode: "terminal_model_weekly_review",
+          generation_mode: "automatic_working_memory_weekly_review",
           frontmatter: {
             status: "active",
             week_key: weekKey,
             week_start: weekStart
           },
-          body: weeklyReviewTemplate(weekKey, weekStart)
+          body: automaticWeeklyReviewBody(root, {
+            weekKey,
+            weekStart,
+            recentEvents
+          })
         }
       };
     },
     promptMarkdown(relativePaths) {
       return `# Weekly Review Refresh Prompt
 
-The active terminal model must author the weekly working-memory review from the grounded pack.
+Cato can now auto-refresh weekly review notes. This pack is the auditable override surface if you want to replace the automatically generated weekly review with a manually authored one.
 
 ## Objective
 
@@ -821,10 +1066,9 @@ The active terminal model must author the weekly working-memory review from the 
 
 1. Read the pack JSON at \`${relativePaths.packPath}\`.
 2. Review the local sources and weekly event digest.
-3. Write a sharp weekly review with useful process and priority judgement.
-4. Replace the placeholder text in \`output.body\`.
-5. Fill \`model\` with the active session label.
-6. Finalise with:
+3. Review the prefilled \`output.body\` and adjust it only if the automatic weekly review missed something important.
+4. Fill \`model\` with the active session label if you materially rewrote the note.
+5. Finalise with:
    \`.\cato.cmd capture-memory "${relativePaths.capturePath}"\`
 
 ## Local Context Sources
@@ -901,6 +1145,18 @@ function handleWorkingMemoryAfterCommand(root, payload = {}) {
     scope: "all",
     force: false
   });
+  const captured = [];
+  for (const entry of refresh.generated) {
+    const result = captureMemory(root, entry.capturePath);
+    captured.push({
+      scope: entry.scope,
+      capturePath: entry.capturePath,
+      outputPath: result.outputResult?.outputPath || ""
+    });
+  }
+  const status = workingMemoryStatus(root, {
+    now: payload.options?.now
+  });
 
   appendJsonl(memoryPaths(root).actionsLogPath, {
     event: "memory_automation",
@@ -910,6 +1166,10 @@ function handleWorkingMemoryAfterCommand(root, payload = {}) {
     generated_packs: refresh.generated.map((entry) => ({
       scope: entry.scope,
       capture_path: entry.capturePath
+    })),
+    captured_outputs: captured.map((entry) => ({
+      scope: entry.scope,
+      output_path: entry.outputPath
     }))
   });
 
@@ -918,7 +1178,8 @@ function handleWorkingMemoryAfterCommand(root, payload = {}) {
     event,
     daily: recorded?.daily || null,
     generated: refresh.generated,
-    status: refresh.status
+    captured,
+    status
   };
 }
 

@@ -64,6 +64,9 @@ runTest("pdf vision handoff packs PDFs and captures authored extraction back int
     assert.match(note, /MI Guide to the Markets UK/);
     assert.equal(metadata.extraction_method, "llm_vision_handoff");
     assert.deepEqual(metadata.entities, ["United Kingdom"]);
+    assert.equal(metadata.review_status, "text_reviewed");
+    assert.equal(metadata.note_status, "reviewed");
+    assert.match(note, /review_status: text_reviewed/);
 
     const lintResult = lintProject(root);
     const errorCount = lintResult.issues.filter((issue) => issue.severity === "error").length;

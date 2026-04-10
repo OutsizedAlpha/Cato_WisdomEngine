@@ -10,6 +10,7 @@ The project now has two distinct lines:
 - the private line = personalised working repository with user-specific doctrine, self-model notes, curated corpus, and captured authored outputs
 
 The private line is the real operating repo for ongoing work.
+The public line should remain functionally aligned with the private engine rather than becoming a feature-thinned demo.
 
 ## Remote Roles
 
@@ -31,6 +32,7 @@ The exact remote names are a local convention, not a product requirement. The im
 - a clean external-facing version of the architecture
 - open reference for workflow ideas, structure, and improvement
 - generic improvements that are safe to share publicly
+- the same core CLI/runtime capability, prompts, policies, and scaffolded engine surfaces without the private knowledge payload
 
 The public line should not become the default home for user-specific doctrine or private operating memory.
 

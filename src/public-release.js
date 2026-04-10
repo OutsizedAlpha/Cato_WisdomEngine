@@ -73,12 +73,14 @@ const PUBLIC_SCAFFOLD_FILES = {
 ## Objective
 
 - Publish a clean, reusable public engine for Cato without shipping any private corpus, personal doctrine, or operator-specific working memory.
+- Preserve the same underlying engine architecture and operator-facing workflows that exist in the private line, with only the personalized payload stripped away.
 
 ## Scope
 
 - Keep the markdown-first research runtime, CLI, prompts, policies, tests, and templates.
 - Keep the working-memory and self-model features present as clean starter scaffolds rather than deleting those engine surfaces outright.
 - Keep the repo ready for a new operator to initialize, ingest sources, compile knowledge, and run authored pack/capture workflows.
+- Keep the public repo documented as a full engine release rather than a reduced demo vault.
 
 ## Constraints
 
@@ -99,6 +101,7 @@ const PUBLIC_SCAFFOLD_FILES = {
 - Node-first CLI with no declared runtime or dev dependencies in \`package.json\`
 - Python wrappers and PDF tooling remain optional environment helpers
 - Browser automation is treated as an environment capability verified by \`doctor\`
+- The public repo preserves the same engine runtime shape as the private repo; only the private payload is removed.
 
 ## Entry Points
 
@@ -110,8 +113,14 @@ const PUBLIC_SCAFFOLD_FILES = {
 
 - \`node .\\tests\\cato.test.js\`
 - \`node .\\bin\\cato.js help\`
+- \`node .\\bin\\cato.js compile\`
 - \`node .\\bin\\cato.js lint\`
 - \`node .\\bin\\cato.js memory-status\`
+- \`node .\\bin\\cato.js memory-refresh\`
+- \`node .\\bin\\cato.js ask "topic"\`
+- \`node .\\bin\\cato.js report "topic"\`
+- \`node .\\bin\\cato.js frontier-pack "topic" --mode decision\`
+- \`node .\\bin\\cato.js crystallize .\\path\\to\\artifact.md\`
 - \`node .\\bin\\cato.js reflect\`
 - \`node .\\bin\\cato.js principles\`
 - \`node .\\bin\\cato.js public-release --to ..\\Cato_WisdomEngine_Public\`
@@ -123,12 +132,13 @@ const PUBLIC_SCAFFOLD_FILES = {
 - Deterministic plumbing in the CLI, model-authored substantive output through pack/capture workflows
 - Public releases should preserve engine behaviour while excluding private corpus and operator-specific memory payloads
 - Working-memory and self-model features remain part of the public engine through sanitized scaffold files
+- Compile auto-weaves concepts and claim backlinks so the knowledge graph is denser without requiring manual operator linking
 `,
   "tasks/todo.md": `# Task Tracker
 
 ## Objective
 
-- Keep the public Cato engine current without bundling private knowledge or personal doctrine.
+- Keep the public Cato engine functionally aligned with the private engine architecture without bundling private knowledge or personal doctrine.
 
 ## Maintained Commitments
 
@@ -144,11 +154,13 @@ const PUBLIC_SCAFFOLD_FILES = {
 - [x] Keep private corpus, manifests, inbox material, outputs, and working memory out of the public line.
 - [x] Preserve the reusable engine scaffold so a new operator can initialize and use the repo immediately.
 - [x] Preserve clean starter self-model and working-memory surfaces so the public repo still reflects the full engine capability.
+- [x] Preserve architecture and workflow parity so the public repo is an engine release, not a reduced demo.
 `,
   "tasks/lessons.md": `# Lessons
 
 - Keep the public line engine-only: publish workflow and implementation improvements, not private corpus or operator-specific doctrine.
 - When exporting to the public line, preserve the operating scaffold and templates instead of deleting required context files outright.
+- Public release means payload stripping, not capability stripping: the public repo should keep the same core engine shape while excluding private knowledge and operating history.
 `
 };
 

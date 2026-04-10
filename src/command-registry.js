@@ -76,7 +76,7 @@ const OPTION_LINES = [
   "--no-refresh          Create/update the watch profile without refreshing surveillance.",
   "--snapshot            Write a timestamped claim snapshot during claims-refresh.",
   "--scope NAME          Memory refresh scope: current, weekly, or all.",
-  "--force               Force a memory refresh pack even if the current period is already queued.",
+  "--force               Force a memory refresh even if the current period is already current.",
   "--to PATH             Write a public-safe export to PATH instead of the default tmp/public-release target."
 ];
 
@@ -138,6 +138,12 @@ function logAuthoredPack(result) {
 }
 
 function logMemoryAutomation(result) {
+  if (result?.captured?.length) {
+    for (const entry of result.captured) {
+      console.log(`Working memory refreshed (${entry.scope}): ${entry.outputPath}`);
+    }
+    return;
+  }
   if (!result?.generated?.length) {
     return;
   }
@@ -450,12 +456,24 @@ function buildCommandRegistry() {
           console.log("Working memory is already current for the requested scope.");
           return result;
         }
+        const captured = [];
         for (const pack of result.generated) {
           console.log(`Working memory pack (${pack.scope}): ${pack.packPath}`);
           console.log(`Prompt: ${pack.promptPath}`);
           console.log(`Capture bundle: ${pack.capturePath}`);
+          const captureResult = captureMemory(root, pack.capturePath);
+          captured.push({
+            scope: pack.scope,
+            outputPath: captureResult.outputResult?.outputPath || ""
+          });
+          if (captureResult.outputResult?.outputPath) {
+            console.log(`Wrote memory output to ${captureResult.outputResult.outputPath}`);
+          }
         }
-        return result;
+        return {
+          ...result,
+          captured
+        };
       }
     },
     "capture-memory": captureCommand(

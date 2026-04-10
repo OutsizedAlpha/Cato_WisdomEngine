@@ -79,6 +79,19 @@ runTest("markdown frontmatter preserves numeric-looking strings on render and pa
   assert.equal(parsed.frontmatter.search_rank, "7");
   assert.equal(parsed.frontmatter.source_id, "00123");
 });
+runTest("candidate concept extraction rejects disclosure and preprint footer noise", () => {
+  const ontology = JSON.parse(fs.readFileSync(path.join(repoRoot, "config", "ontology.json"), "utf8"));
+  const candidates = extractCandidateConcepts(
+    "Agentic Reasoning for Large Language Models",
+    "Agentic reasoning for large language models improves coordination. This arXiv preprint should not turn footer noise into concepts. Please see additional disclosures page. Large language models and agentic reasoning remain the actual topic. Large language models need grounded evaluation.",
+    ontology
+  );
+  assert.ok(candidates.includes("large language"));
+  assert.ok(candidates.includes("agentic reasoning"));
+  assert.ok(!candidates.includes("arxiv preprint"));
+  assert.ok(!candidates.includes("additional disclosures"));
+  assert.ok(!candidates.includes("disclosures page"));
+});
 runTest("candidate concept extraction rejects abbreviation-heavy table shorthand", () => {
   const ontology = JSON.parse(fs.readFileSync(path.join(repoRoot, "config", "ontology.json"), "utf8"));
   const candidates = extractCandidateConcepts(
@@ -91,6 +104,22 @@ runTest("candidate concept extraction rejects abbreviation-heavy table shorthand
   assert.ok(!candidates.includes("pm us eia"));
   assert.ok(!candidates.includes("am us mba"));
   assert.ok(!candidates.includes("yoy mar"));
+});
+runTest("candidate concept extraction rejects structural URL and menu noise", () => {
+  const ontology = JSON.parse(fs.readFileSync(path.join(repoRoot, "config", "ontology.json"), "utf8"));
+  const candidates = extractCandidateConcepts(
+    "Large Language Model Reasoning Failures",
+    "Large language models fail in some reasoning settings. OpenReview URL https://openreview.net/forum?id=abc123 should not become a concept. Main menu and sub menu back are page chrome, not durable knowledge. User ID and final answer are interface artifacts. Large language models and agentic reasoning remain the real topic. Agentic reasoning can improve reliability, and agentic reasoning should stay grounded in explicit steps.",
+    ontology
+  );
+  assert.ok(candidates.includes("large language"));
+  assert.ok(candidates.includes("agentic reasoning"));
+  assert.ok(!candidates.includes("url https"));
+  assert.ok(!candidates.includes("https openreview"));
+  assert.ok(!candidates.includes("main menu"));
+  assert.ok(!candidates.includes("sub menu"));
+  assert.ok(!candidates.includes("user id"));
+  assert.ok(!candidates.includes("final answer"));
 });
 runTest("ingest, compile, search, ask, and lint produce a working research loop", () => {
   const root = makeTempRepo();

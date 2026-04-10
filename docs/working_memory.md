@@ -52,28 +52,28 @@ The current trigger is better:
 
 - do real Cato work
 - let Cato log the event
-- if the current memory period is stale, queue the refresh pack automatically
+- if the current memory period is stale, refresh the due memory surfaces automatically and write them back into the repo
 
 ## Model Boundary
 
 Daily memory logs are deterministic and automatic.
 
-Current-context and weekly-review notes are treated as substantive authored outputs:
+Current-context and weekly-review notes now auto-refresh as deterministic operating notes:
 
 - Cato prepares the grounded refresh pack
-- the active terminal model authors the final note
-- `capture-memory` writes the result back into the repo
+- Cato writes the compiled note through automatically on due refresh
+- the pack remains available as an override surface if the operator wants to replace the automatic note with a manually authored one
 
-This keeps the repo consistent with the wider project rule:
+This keeps the boundary pragmatic:
 
-- deterministic CLI for plumbing
-- active terminal model for final intellectual synthesis
+- deterministic CLI for operating memory and low-friction repo state
+- authored pack/capture flow remains available when a manual override is useful
 
 ## Automatic vs Manual
 
 Most of the time you should not need to think about the memory layer.
 
-It now auto-queues itself when due.
+It now auto-refreshes itself when due on meaningful Cato activity.
 
 Manual commands still exist for control and recovery:
 
@@ -83,6 +83,8 @@ Manual commands still exist for control and recovery:
 - `.\cato.cmd memory-refresh --scope weekly`
 - `.\cato.cmd memory-refresh --force`
 - `.\cato.cmd capture-memory .\cache\memory-packs\...\...-capture.json`
+
+`memory-refresh` now writes through automatically as well. The manual capture path is there for deliberate override, not as the normal day-to-day operating path.
 
 ## What Counts As A Meaningful Event
 

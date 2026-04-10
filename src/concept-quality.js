@@ -235,6 +235,58 @@ const SINGLE_WORD_ALLOWLIST = new Set([
   "volatility"
 ]);
 
+const CANDIDATE_NOISE_TOKENS = new Set([
+  "additional",
+  "answer",
+  "arxiv",
+  "back",
+  "com",
+  "disclosure",
+  "disclosures",
+  "final",
+  "forum",
+  "http",
+  "https",
+  "id",
+  "menu",
+  "module",
+  "openreview",
+  "page",
+  "pages",
+  "please",
+  "preprint",
+  "problems",
+  "sub",
+  "research",
+  "see",
+  "third",
+  "url",
+  "user",
+  "www"
+]);
+
+const STRUCTURAL_NOISE_TOKENS = new Set([
+  "answer",
+  "back",
+  "com",
+  "final",
+  "forum",
+  "http",
+  "https",
+  "id",
+  "menu",
+  "openreview",
+  "org",
+  "pdf",
+  "problems",
+  "sub",
+  "url",
+  "user",
+  "www"
+]);
+
+const ALLOWED_SHORT_PHRASE_TOKENS = new Set(["ai"]);
+
 function normalizeConceptLabel(value) {
   return String(value || "")
     .toLowerCase()
@@ -290,6 +342,10 @@ function isMeaningfulConcept(value, options = {}) {
     return false;
   }
 
+  if (words.some((word) => STRUCTURAL_NOISE_TOKENS.has(word))) {
+    return false;
+  }
+
   if (words.length === 1) {
     const [word] = words;
     if (isGenericToken(word)) {
@@ -302,7 +358,27 @@ function isMeaningfulConcept(value, options = {}) {
     return false;
   }
 
+  if (words.some((word) => word.length === 1)) {
+    return false;
+  }
+
+  if (
+    words.some(
+      (word) =>
+        word.length <= 2 &&
+        !/\d/.test(word) &&
+        !ALLOWED_SHORT_PHRASE_TOKENS.has(word) &&
+        !ontologyIndex.singleWordTerms.has(word)
+    )
+  ) {
+    return false;
+  }
+
   if (words.some((word) => MONTHS.has(word))) {
+    return false;
+  }
+
+  if (STOPWORDS.has(words[0]) || STOPWORDS.has(words[words.length - 1])) {
     return false;
   }
 
@@ -323,10 +399,22 @@ function isMeaningfulConcept(value, options = {}) {
 }
 
 function isMeaningfulCandidateConcept(value, ontologyIndex = buildConceptOntologyIndex()) {
-  return isMeaningfulConcept(value, {
+  if (!isMeaningfulConcept(value, {
     ontologyIndex,
     allowSingleWordFallback: false
-  });
+  })) {
+    return false;
+  }
+
+  const words = conceptWords(value);
+  if (words.some((word) => word.length === 1)) {
+    return false;
+  }
+  if (words.some((word) => CANDIDATE_NOISE_TOKENS.has(word))) {
+    return false;
+  }
+
+  return true;
 }
 
 function isMeaningfulExplicitConcept(value, ontologyIndex = buildConceptOntologyIndex()) {

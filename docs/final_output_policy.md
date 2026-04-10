@@ -18,7 +18,7 @@ That means:
 
 - Common substantive authored outputs use their normal top-level command plus `capture-authored`
 - Final reports use `report` plus `capture-report`
-- Working-memory synthesis uses `memory-refresh` plus `capture-memory`
+- Working memory refreshes automatically by default; `memory-refresh` plus `capture-memory` remain the explicit override path
 - Canonical current reports live under `wiki/reports/`
 - Prior canonical versions are archived under `wiki/reports/archive/`
 - Canonical current-context memory lives under `wiki/memory/current-context.md`, weekly reviews live under `wiki/memory/weekly/`, and the root `MEMORY.md` file is only a mirror of the current context

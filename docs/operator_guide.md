@@ -203,7 +203,7 @@ The normal local loop is:
    - `crystallize` then `capture-crystallize`
 6. Run `lint` and `doctor` when you want confidence in structural health and environment readiness.
 
-Working memory now happens inside that normal loop rather than as a separate ritual. If current memory is stale, Cato queues the refresh packs automatically after meaningful actions.
+Working memory now happens inside that normal loop rather than as a separate ritual. If current memory is stale, Cato refreshes the due surfaces automatically after meaningful actions and writes them back into the repo.
 
 ## Staging And Commit Boundaries
 
@@ -257,11 +257,11 @@ Use this when you want to inspect or override the automatic memory behaviour.
 1. run `memory-status`
 2. if needed, run `memory-refresh`
 3. review the generated files in `cache/memory-packs/`
-4. let Codex/GPT or Claude author the final current-context or weekly-review note
+4. only if you want to replace the automatic note, let Codex/GPT or Claude author the final current-context or weekly-review note
 5. fill `model` with the actual terminal session label used for authorship
 6. run `capture-memory`
 
-Most of the time steps 1 and 2 should be unnecessary because Cato now queues memory refresh automatically when due.
+Most of the time steps 1 and 2 should be unnecessary because Cato now refreshes working memory automatically when due.
 
 ### Research Handoff Loop
 
@@ -365,8 +365,8 @@ Foundation:
 - `ask` = prepare a model-authored memo pack
 - `capture-authored` = capture the model-authored memo, deck, surveillance, belief/state/decision, self-model, or postmortem output back into the repo
 - `memory-status` = show whether current context or weekly review is due or already pending
-- `memory-refresh` = manually queue current-context and/or weekly-review packs
-- `capture-memory` = write the model-authored current-context or weekly-review note back into the repo and update `MEMORY.md`
+- `memory-refresh` = manually force or override the automatic current-context and/or weekly-review refresh path
+- `capture-memory` = replace an automatically generated current-context or weekly-review note with a manually authored override and update `MEMORY.md`
 - `report` = prepare a final-report pack for the active terminal model
 - `capture-report` = capture the model-authored final report into canonical `wiki/reports/`
 - `deck` = prepare a model-authored Marp-friendly deck pack

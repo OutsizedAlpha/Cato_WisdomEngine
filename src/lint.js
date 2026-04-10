@@ -213,8 +213,16 @@ function lintProject(root) {
           continue;
         }
         const scan = fs.statSync(absolutePath).isDirectory()
-          ? scanDirectoryForSensitiveData(absolutePath, { sourceLabel: targetPath, maxHits: 8 })
-          : scanFileForSensitiveData(absolutePath, { sourceLabel: targetPath, maxHits: 8 });
+          ? scanDirectoryForSensitiveData(absolutePath, {
+              sourceLabel: targetPath,
+              maxHits: 8,
+              sourceType: frontmatter.source_type
+            })
+          : scanFileForSensitiveData(absolutePath, {
+              sourceLabel: targetPath,
+              maxHits: 8,
+              sourceType: frontmatter.source_type
+            });
         if (scan.flagged) {
           issues.push({
             severity: "warning",
