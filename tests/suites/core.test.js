@@ -11,6 +11,8 @@ runTest("init seeds the project structure and generated indices", () => {
     assert.ok(fs.existsSync(path.join(root, "manifests", "file_hashes.json")));
     assert.ok(fs.existsSync(path.join(root, "wiki", "_indices", "sources.md")));
     assert.ok(fs.existsSync(path.join(root, "wiki", "_maps", "home.md")));
+    const scenarioProfiles = JSON.parse(fs.readFileSync(path.join(root, "config", "scenario_profiles.json"), "utf8"));
+    assert.equal(scenarioProfiles.default_paths, 100000);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
@@ -431,10 +433,19 @@ runTest("public release export keeps engine files and excludes private corpus su
       assert.ok(fs.existsSync(path.join(target, "wiki", "self", "current-operating-constitution.md")));
       assert.ok(fs.existsSync(path.join(target, "wiki", "memory", "current-context.md")));
       assert.ok(fs.existsSync(path.join(target, "MEMORY.md")));
+      assert.ok(fs.existsSync(path.join(target, "inbox")));
+      assert.ok(fs.existsSync(path.join(target, "inbox", "drop_here")));
+      assert.ok(fs.existsSync(path.join(target, "inbox", "self")));
+      assert.ok(fs.existsSync(path.join(target, "manifests", "claims.jsonl")));
+      assert.ok(fs.existsSync(path.join(target, "manifests", "scenario_history.jsonl")));
+      assert.ok(fs.existsSync(path.join(target, "manifests", "market_data_catalog.json")));
+      assert.ok(fs.existsSync(path.join(target, "wiki", "_indices", "probabilities.md")));
+      assert.ok(fs.existsSync(path.join(target, "wiki", "probabilities", "index.md")));
       assert.ok(!fs.existsSync(path.join(target, "public-release.manifest.json")));
       assert.ok(fs.existsSync(result.manifestPath));
-      assert.ok(fs.existsSync(path.join(target, "inbox")));
       assert.ok(!fs.existsSync(path.join(target, "inbox", "drop_here", "private.txt")));
+      assert.equal(JSON.parse(fs.readFileSync(path.join(target, "manifests", "market_data_catalog.json"), "utf8")).series.length, 0);
+      assert.equal(fs.readFileSync(path.join(target, "manifests", "scenario_history.jsonl"), "utf8"), "");
       assert.equal(fs.readFileSync(path.join(target, "docs", "project_brief.md"), "utf8").includes("Private Brief"), false);
       assert.equal(
         fs.readFileSync(path.join(target, "wiki", "self", "current-operating-constitution.md"), "utf8").includes("Private doctrine should not ship"),

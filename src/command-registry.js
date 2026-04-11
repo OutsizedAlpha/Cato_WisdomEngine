@@ -14,6 +14,8 @@ const { captureResearch } = require("./research-handoff");
 const { captureReport, writeReport } = require("./report");
 const { searchCorpus } = require("./search");
 const { selfIngest } = require("./self-ingest");
+const { refreshMarketData } = require("./market-data");
+const { refreshScenario, writeScenarioDiff } = require("./scenario");
 const { writeStateDiff } = require("./states");
 const { writeSurveillance } = require("./surveil");
 const { formatWatchProfileLine, listActiveWatchProfiles, resolveWatchSubject, writeWatchRefreshReport } = require("./watch");
@@ -35,9 +37,13 @@ const USAGE_LINES = [
   ".\\cato.cmd memory-refresh [--scope current|weekly|all] [--force]",
   ".\\cato.cmd capture-memory path\\to\\bundle.json",
   ".\\cato.cmd memory-status",
+  ".\\cato.cmd market-refresh [--profile global-risk-regime] [--series \"SPY,QQQ,TLT\"]",
   ".\\cato.cmd ask \"question\" [--limit 6] [--save-question] [--promote]",
   ".\\cato.cmd report \"topic\" [--limit 10]",
   ".\\cato.cmd capture-report path\\to\\bundle.json",
+  ".\\cato.cmd scenario-refresh \"topic\" [--profile global-risk-regime] [--horizons \"5,21,63,126\"] [--paths 100000]",
+  ".\\cato.cmd scenario-diff \"topic\" [--profile global-risk-regime]",
+  ".\\cato.cmd probability-brief \"topic\" [--profile global-risk-regime] [--paths 100000]",
   ".\\cato.cmd deck \"topic\" [--limit 8] [--promote]",
   ".\\cato.cmd surveil \"topic\" [--limit 10]",
   ".\\cato.cmd watch \"topic\" [--context \"...\"] [--aliases \"...\"] [--entities \"...\"] [--concepts \"...\"] [--triggers \"...\"]",
@@ -76,6 +82,11 @@ const OPTION_LINES = [
   "--no-refresh          Create/update the watch profile without refreshing surveillance.",
   "--snapshot            Write a timestamped claim snapshot during claims-refresh.",
   "--scope NAME          Memory refresh scope: current, weekly, or all.",
+  "--profile NAME        Scenario or market-data profile id/title to use.",
+  "--horizons DAYS       Comma-separated trading-day horizons, e.g. 5,21,63,126.",
+  "--paths N             Number of Monte Carlo paths to simulate for scenario refresh or probability briefs.",
+  "--seed N              Random seed for scenario simulation reproducibility.",
+  "--no-market-refresh   Use cached market history instead of pulling fresh web data before scenario work.",
   "--force               Force a memory refresh even if the current period is already current.",
   "--to PATH             Write a public-safe export to PATH instead of the default tmp/public-release target."
 ];
@@ -361,6 +372,21 @@ function buildCommandRegistry() {
         }
       }
     ),
+    "market-refresh": {
+      run(root, parsed) {
+        const result = refreshMarketData(root, {
+          profile: parsed.options.profile || joinedPositionals(parsed),
+          series: parsed.options.series
+        });
+        console.log(`Market series refreshed: ${result.refreshed}`);
+        console.log(`Profile: ${result.profileId}`);
+        console.log(`Catalog: ${result.catalogPath}`);
+        if (result.failures?.length) {
+          console.log(`Fetch failures: ${result.failures.length}`);
+        }
+        return result;
+      }
+    },
     ask: authoredPackCommand("ask", { errorMessage: 'Ask requires a question. Example: .\\cato.cmd ask "What are the key drivers of X?"' }),
     report: {
       run(root, parsed) {
@@ -521,6 +547,43 @@ function buildCommandRegistry() {
     },
     "why-believe": authoredPackCommand("why-believe", { errorMessage: 'Why-believe requires a topic. Example: .\\cato.cmd why-believe "US inflation"' }),
     "state-refresh": authoredPackCommand("state-refresh", { errorMessage: 'State-refresh requires a subject. Example: .\\cato.cmd state-refresh "Global Macro"' }),
+    "scenario-refresh": {
+      run(root, parsed) {
+        const topic = joinedPositionals(parsed) || parsed.options.profile || "global-risk-regime";
+        const result = refreshScenario(root, topic, {
+          profile: parsed.options.profile,
+          subjects: parsed.options.subjects,
+          series: parsed.options.series,
+          horizons: parsed.options.horizons,
+          paths: parsed.options.paths,
+          seed: parsed.options.seed,
+          "no-market-refresh": Boolean(parsed.options["no-market-refresh"])
+        });
+        console.log(`Probability surface: ${result.probabilityPath}`);
+        console.log(`Profile: ${result.profile.id}`);
+        console.log(`As-of date: ${result.model.as_of_date}`);
+        console.log(`Simulation paths: ${result.model.paths}`);
+        return result;
+      }
+    },
+    "scenario-diff": {
+      run(root, parsed) {
+        const topic = joinedPositionals(parsed) || parsed.options.profile || "global-risk-regime";
+        const result = writeScenarioDiff(root, topic, {
+          profile: parsed.options.profile
+        });
+        if (!result.outputPath) {
+          console.log("Not enough scenario history to diff.");
+          return result;
+        }
+        console.log(`Scenario diff: ${result.outputPath}`);
+        console.log(`Changed anchors: ${result.changed}`);
+        return result;
+      }
+    },
+    "probability-brief": authoredPackCommand("probability-brief", {
+      fallbackTitle: "Probability Brief"
+    }),
     "state-diff": {
       run(root, parsed) {
         const subject = requireValue(joinedPositionals(parsed), 'State-diff requires a subject. Example: .\\cato.cmd state-diff "Global Macro"');

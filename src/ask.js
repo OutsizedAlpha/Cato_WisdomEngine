@@ -18,6 +18,7 @@ const GROUNDED_EXCLUDE_PREFIXES = [
   "wiki/states/",
   "wiki/regimes/",
   "wiki/decisions/",
+  "wiki/probabilities/",
   "wiki/surveillance/",
   "wiki/_indices/",
   "wiki/_maps/",

@@ -660,6 +660,60 @@ Stay selective.
     fs.rmSync(root, { recursive: true, force: true });
   }
 });
+runTest("broad investment report packs include probability surfaces and forward-path scaffolding", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    fs.mkdirSync(path.join(root, "wiki", "probabilities"), { recursive: true });
+    fs.writeFileSync(
+      path.join(root, "wiki", "probabilities", "global-risk-regime.md"),
+      renderMarkdown(
+        {
+          id: "PROB-TEST-01",
+          kind: "probability-page",
+          title: "Global Risk Regime Probability Surface",
+          status: "active",
+          confidence: "medium",
+          profile_id: "global-risk-regime",
+          as_of_date: "2026-04-11"
+        },
+        `# Global Risk Regime Probability Surface
+
+## Managed Current Regime
+
+- Active regime: selective risk with inflation pressure.
+
+## Managed Scenario Archetypes
+
+- Defensive carry path.
+
+## Managed Transmission Map
+
+- Oil and rates remain the main transmission chain.
+
+## Managed Data Gaps
+
+- Macro feature panel is still partial.
+`
+      ),
+      "utf8"
+    );
+
+    const report = writeReport(root, "Current investment summary across all ingested research");
+    const pack = JSON.parse(fs.readFileSync(path.join(root, report.packPath), "utf8"));
+    const bundle = JSON.parse(fs.readFileSync(path.join(root, report.capturePath), "utf8"));
+    const prompt = fs.readFileSync(path.join(root, report.promptPath), "utf8");
+
+    assert.equal(pack.probabilities.length, 1);
+    assert.equal(pack.probabilities[0].profile_id, "global-risk-regime");
+    assert.ok(pack.local_sources.some((source) => source.path === "wiki/probabilities/global-risk-regime.md"));
+    assert.match(prompt, /Probability Surfaces/);
+    assert.match(prompt, /Use the probability surfaces as forward-looking distribution context/);
+    assert.match(bundle.output.body, /## Forward Probability Surface/);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
 runTest("compile promotes domain concepts while retiring noisy generated concepts", () => {
   const root = makeTempRepo();
   try {

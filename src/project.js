@@ -48,7 +48,20 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "manifests", "self_notes.jsonl"), "");
   ensureFile(path.join(root, "manifests", "claims.jsonl"), "");
   ensureFile(path.join(root, "manifests", "state_history.jsonl"), "");
+  ensureFile(path.join(root, "manifests", "scenario_history.jsonl"), "");
   ensureFile(path.join(root, "manifests", "memory_events.jsonl"), "");
+  ensureFile(
+    path.join(root, "manifests", "market_data_catalog.json"),
+    JSON.stringify(
+      {
+        version: 1,
+        updated_at: "",
+        series: []
+      },
+      null,
+      2
+    ) + "\n"
+  );
   ensureFile(
     path.join(root, "manifests", "memory_state.json"),
     JSON.stringify(
@@ -86,10 +99,13 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "logs", "actions", "state_refresh.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "decision_runs.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "frontier_runs.jsonl"), "");
+  ensureFile(path.join(root, "logs", "actions", "market_refresh.jsonl"), "");
+  ensureFile(path.join(root, "logs", "actions", "scenario_runs.jsonl"), "");
   ensureFile(path.join(root, "wiki", "_indices", "sources.md"), "# Source Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "claims.md"), "# Claim Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "concepts.md"), "# Concept Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "entities.md"), "# Entity Index\n");
+  ensureFile(path.join(root, "wiki", "_indices", "probabilities.md"), "# Probability Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "self-model.md"), "# Self-Model Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "watch-profiles.md"), "# Watch Profile Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "states.md"), "# State Index\n");
@@ -130,6 +146,7 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "wiki", "states", "index.md"), "# State Index\n");
   ensureFile(path.join(root, "wiki", "regimes", "index.md"), "# Regime Index\n");
   ensureFile(path.join(root, "wiki", "decisions", "index.md"), "# Decision Index\n");
+  ensureFile(path.join(root, "wiki", "probabilities", "index.md"), "# Probability Index\n");
   ensureFile(path.join(root, "wiki", "reports", "index.md"), "# Report Index\n");
   ensureFile(path.join(root, "wiki", "memory", "index.md"), "# Working Memory Index\n");
   ensureFile(
@@ -163,6 +180,30 @@ Compiled working-memory context will appear here after the first refresh capture
   ensureFile(
     path.join(root, "MEMORY.md"),
     "# Memory\n\nThis file mirrors the latest compiled working-memory snapshot after memory refresh capture.\n"
+  );
+  ensureFile(
+    path.join(root, "config", "market_series.json"),
+    JSON.stringify(
+      {
+        version: 1,
+        series: []
+      },
+      null,
+      2
+    ) + "\n"
+  );
+  ensureFile(
+    path.join(root, "config", "scenario_profiles.json"),
+    JSON.stringify(
+      {
+        version: 1,
+        default_paths: 100000,
+        default_horizons: [5, 21, 63, 126],
+        profiles: []
+      },
+      null,
+      2
+    ) + "\n"
   );
 }
 

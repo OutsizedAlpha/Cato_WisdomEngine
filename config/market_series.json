@@ -1,0 +1,245 @@
+{
+  "version": 1,
+  "series": [
+    {
+      "id": "SPY",
+      "title": "SPDR S&P 500 ETF Trust",
+      "vendor": "stooq",
+      "symbol": "spy.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "risk", "equity", "us"]
+    },
+    {
+      "id": "QQQ",
+      "title": "Invesco QQQ Trust",
+      "vendor": "stooq",
+      "symbol": "qqq.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "risk", "equity", "growth", "us"]
+    },
+    {
+      "id": "IWM",
+      "title": "iShares Russell 2000 ETF",
+      "vendor": "stooq",
+      "symbol": "iwm.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "risk", "equity", "cyclical", "us"]
+    },
+    {
+      "id": "TLT",
+      "title": "iShares 20+ Year Treasury Bond ETF",
+      "vendor": "stooq",
+      "symbol": "tlt.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "rates", "duration", "defense"]
+    },
+    {
+      "id": "IEF",
+      "title": "iShares 7-10 Year Treasury Bond ETF",
+      "vendor": "stooq",
+      "symbol": "ief.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "rates", "duration"]
+    },
+    {
+      "id": "SHY",
+      "title": "iShares 1-3 Year Treasury Bond ETF",
+      "vendor": "stooq",
+      "symbol": "shy.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "rates", "cash"]
+    },
+    {
+      "id": "HYG",
+      "title": "iShares iBoxx High Yield Corporate Bond ETF",
+      "vendor": "stooq",
+      "symbol": "hyg.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "credit", "risk"]
+    },
+    {
+      "id": "LQD",
+      "title": "iShares iBoxx Investment Grade Corporate Bond ETF",
+      "vendor": "stooq",
+      "symbol": "lqd.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "credit", "defense"]
+    },
+    {
+      "id": "UUP",
+      "title": "Invesco DB US Dollar Index Bullish Fund",
+      "vendor": "stooq",
+      "symbol": "uup.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "fx", "dollar", "defense"]
+    },
+    {
+      "id": "USO",
+      "title": "United States Oil Fund",
+      "vendor": "stooq",
+      "symbol": "uso.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "commodities", "energy", "inflation"]
+    },
+    {
+      "id": "GLD",
+      "title": "SPDR Gold Shares",
+      "vendor": "stooq",
+      "symbol": "gld.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["core", "commodities", "gold", "defense"]
+    },
+    {
+      "id": "XLE",
+      "title": "Energy Select Sector SPDR Fund",
+      "vendor": "stooq",
+      "symbol": "xle.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "sector", "energy"]
+    },
+    {
+      "id": "XLI",
+      "title": "Industrial Select Sector SPDR Fund",
+      "vendor": "stooq",
+      "symbol": "xli.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "sector", "industrials"]
+    },
+    {
+      "id": "XLF",
+      "title": "Financial Select Sector SPDR Fund",
+      "vendor": "stooq",
+      "symbol": "xlf.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "sector", "financials"]
+    },
+    {
+      "id": "EWJ",
+      "title": "iShares MSCI Japan ETF",
+      "vendor": "stooq",
+      "symbol": "ewj.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "region", "japan", "north-asia"]
+    },
+    {
+      "id": "EWY",
+      "title": "iShares MSCI South Korea ETF",
+      "vendor": "stooq",
+      "symbol": "ewy.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "region", "south-korea", "north-asia"]
+    },
+    {
+      "id": "EWT",
+      "title": "iShares MSCI Taiwan ETF",
+      "vendor": "stooq",
+      "symbol": "ewt.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "region", "taiwan", "north-asia"]
+    },
+    {
+      "id": "EEM",
+      "title": "iShares MSCI Emerging Markets ETF",
+      "vendor": "stooq",
+      "symbol": "eem.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "region", "em"]
+    },
+    {
+      "id": "SMH",
+      "title": "VanEck Semiconductor ETF",
+      "vendor": "stooq",
+      "symbol": "smh.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "sector", "semiconductors", "ai-hardware"]
+    },
+    {
+      "id": "SOXX",
+      "title": "iShares Semiconductor ETF",
+      "vendor": "stooq",
+      "symbol": "soxx.us",
+      "kind": "price",
+      "transform": "log_return",
+      "simulate": true,
+      "groups": ["equity", "sector", "semiconductors", "ai-hardware"]
+    },
+    {
+      "id": "DGS10",
+      "title": "10-Year Treasury Constant Maturity Rate",
+      "vendor": "fred",
+      "symbol": "DGS10",
+      "kind": "yield",
+      "transform": "diff",
+      "simulate": false,
+      "groups": ["macro-feature", "rates", "treasury"]
+    },
+    {
+      "id": "DFF",
+      "title": "Effective Federal Funds Rate",
+      "vendor": "fred",
+      "symbol": "DFF",
+      "kind": "policy-rate",
+      "transform": "diff",
+      "simulate": false,
+      "groups": ["macro-feature", "rates", "policy"]
+    },
+    {
+      "id": "T10YIE",
+      "title": "10-Year Breakeven Inflation Rate",
+      "vendor": "fred",
+      "symbol": "T10YIE",
+      "kind": "breakeven",
+      "transform": "diff",
+      "simulate": false,
+      "groups": ["macro-feature", "inflation", "rates"]
+    },
+    {
+      "id": "BAMLH0A0HYM2",
+      "title": "ICE BofA US High Yield Index Option-Adjusted Spread",
+      "vendor": "fred",
+      "symbol": "BAMLH0A0HYM2",
+      "kind": "spread",
+      "transform": "diff",
+      "simulate": false,
+      "groups": ["macro-feature", "credit", "spread"]
+    }
+  ]
+}

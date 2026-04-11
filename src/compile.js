@@ -1028,6 +1028,7 @@ function updateHomePage(root, stats) {
 - States: ${stats.states}
 - Regimes: ${stats.regimes}
 - Decisions: ${stats.decisions}
+- Probability surfaces: ${stats.probabilities}
 - Thesis pages: ${stats.theses}
 - Watch profiles: ${stats.watchProfiles}
 - Surveillance pages: ${stats.surveillance}
@@ -1090,6 +1091,7 @@ function compileProject(root, options = {}) {
   const stateCount = buildCollectionIndex(root, "wiki/states", "State Index");
   const regimeCount = buildCollectionIndex(root, "wiki/regimes", "Regime Index");
   const decisionCount = buildCollectionIndex(root, "wiki/decisions", "Decision Index");
+  const probabilityCount = buildCollectionIndex(root, "wiki/probabilities", "Probability Index");
   const thesisCount = buildCollectionIndex(root, "wiki/theses", "Thesis Index");
   const watchProfileCount = buildCollectionIndex(root, "wiki/watch-profiles", "Watch Profile Index");
   const surveillanceCount = buildCollectionIndex(root, "wiki/surveillance", "Surveillance Index");
@@ -1117,6 +1119,7 @@ function compileProject(root, options = {}) {
     states: stateCount,
     regimes: regimeCount,
     decisions: decisionCount,
+    probabilities: probabilityCount,
     theses: thesisCount,
     watchProfiles: watchProfileCount,
     surveillance: surveillanceCount,
@@ -1139,6 +1142,7 @@ function compileProject(root, options = {}) {
     statePages: stateCount,
     regimePages: regimeCount,
     decisionPages: decisionCount,
+    probabilityPages: probabilityCount,
     thesisPages: thesisCount,
     watchProfiles: watchProfileCount,
     surveillancePages: surveillanceCount,

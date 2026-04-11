@@ -11,6 +11,7 @@ const { ensureProjectStructure } = require("./project");
 const { writeReflection } = require("./reflect");
 const { writePrinciplesSnapshot } = require("./principles");
 const { createPostmortem } = require("./postmortem");
+const { writeProbabilityBrief } = require("./scenario");
 const { loadSelfNotes, renderSelfModelMarkdownBlock, resolveSelfModelContext, serializeSelfModelContext } = require("./self-model");
 const { refreshState, writeRegimeBrief } = require("./states");
 const { writeSurveillance } = require("./surveil");
@@ -684,6 +685,36 @@ function preparePostmortem(root, topic, options = {}) {
   };
 }
 
+function prepareProbabilityBrief(root, topic, options = {}) {
+  const result = writeProbabilityBrief(root, topic, options);
+  const scaffold = parseScaffold(root, result.outputPath, `${result.profile.title} probability brief`);
+  return {
+    command: "probability-brief",
+    topic: topic || result.profile.title,
+    title: scaffold.title,
+    artifacts: {
+      probability_brief_scaffold: result.outputPath,
+      probability_page: result.probabilityPath
+    },
+    localSources: uniqueLocalSources([
+      makeLocalSource(result.outputPath, scaffold.title, "probability-brief-scaffold"),
+      makeLocalSource(result.probabilityPath, `${result.profile.title} Probability Surface`, "probability-page"),
+      ...result.localSources.map((source) => makeLocalSource(source.path, source.title, source.role))
+    ]),
+    notes: [
+      "The quantitative probability brief should translate the probability surface into a market-ready read, not just restate the deterministic tables."
+    ],
+    output: {
+      kind: "probability-brief",
+      output_path: result.outputPath,
+      promote: false,
+      generation_mode: "terminal_model_probability_brief",
+      frontmatter: scaffold.frontmatter,
+      body: scaffold.body
+    }
+  };
+}
+
 function prepareAuthoredCommand(root, command, seed, options = {}) {
   ensureProjectStructure(root);
   const normalizedSeed = String(seed || "").trim();
@@ -716,6 +747,8 @@ function prepareAuthoredCommand(root, command, seed, options = {}) {
       return preparePrinciples(root, normalizedSeed, options);
     case "postmortem":
       return preparePostmortem(root, normalizedSeed, options);
+    case "probability-brief":
+      return prepareProbabilityBrief(root, normalizedSeed, options);
     default:
       throw new Error(`Unsupported authored command: ${command}`);
   }

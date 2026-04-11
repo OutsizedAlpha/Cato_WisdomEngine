@@ -18,6 +18,7 @@ const RETRIEVAL_TIERS = {
       "wiki/states/",
       "wiki/regimes/",
       "wiki/decisions/",
+      "wiki/probabilities/",
       "wiki/theses/",
       "wiki/watch-profiles/",
       "wiki/surveillance/",

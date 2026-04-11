@@ -1,0 +1,260 @@
+{
+  "version": 1,
+  "default_paths": 100000,
+  "default_horizons": [5, 21, 63, 126],
+  "profiles": [
+    {
+      "id": "global-risk-regime",
+      "title": "Global Risk Regime",
+      "description": "Cross-asset probability engine for macro, policy, geopolitics, and market-structure transmission.",
+      "subjects": [
+        "Global Macro",
+        "US Growth",
+        "US Inflation",
+        "Europe Macro",
+        "Japan Macro",
+        "China Demand",
+        "Geopolitical Risk",
+        "Market Structure"
+      ],
+      "series": [
+        "SPY",
+        "QQQ",
+        "IWM",
+        "TLT",
+        "IEF",
+        "SHY",
+        "HYG",
+        "LQD",
+        "UUP",
+        "USO",
+        "GLD",
+        "XLE",
+        "XLI",
+        "XLF",
+        "EWJ",
+        "EWY",
+        "EWT",
+        "EEM",
+        "SMH",
+        "DGS10",
+        "DFF",
+        "T10YIE",
+        "BAMLH0A0HYM2"
+      ],
+      "driver_series": [
+        "SPY",
+        "QQQ",
+        "TLT",
+        "HYG",
+        "UUP",
+        "USO",
+        "GLD",
+        "EWJ",
+        "EWY",
+        "EWT",
+        "SMH",
+        "DGS10",
+        "T10YIE",
+        "BAMLH0A0HYM2"
+      ],
+      "anchor_series": [
+        "SPY",
+        "QQQ",
+        "TLT",
+        "HYG",
+        "UUP",
+        "USO",
+        "GLD",
+        "EWJ",
+        "EWY",
+        "EWT",
+        "SMH"
+      ],
+      "composites": {
+        "risk": {
+          "label": "Risk Composite",
+          "members": ["SPY", "QQQ", "HYG"]
+        },
+        "defense": {
+          "label": "Defense Composite",
+          "members": ["TLT", "GLD", "UUP"]
+        },
+        "asia_hardware": {
+          "label": "North Asia Hardware Composite",
+          "members": ["EWJ", "EWY", "EWT", "SMH"]
+        },
+        "energy_inflation": {
+          "label": "Energy Inflation Composite",
+          "members": ["USO", "XLE"]
+        }
+      },
+      "regime_count": {
+        "min": 3,
+        "max": 6
+      },
+      "archetype_count": 10,
+      "state_overlays": {
+        "Global Macro": {
+          "constructive": { "SPY": 4, "QQQ": 5, "HYG": 3, "UUP": -2, "TLT": 1 },
+          "fragile": { "SPY": -5, "QQQ": -6, "HYG": -4, "UUP": 3, "GLD": 2, "TLT": 2 },
+          "contested": { "GLD": 1, "UUP": 1 },
+          "mixed": { "GLD": 1 }
+        },
+        "US Growth": {
+          "constructive": { "SPY": 3, "IWM": 5, "HYG": 3, "XLI": 3, "TLT": -2 },
+          "fragile": { "SPY": -4, "IWM": -6, "HYG": -4, "TLT": 3, "UUP": 2, "GLD": 1 },
+          "contested": { "TLT": 1, "UUP": 1 },
+          "mixed": { "SPY": 1 }
+        },
+        "US Inflation": {
+          "constructive": { "TLT": 5, "IEF": 3, "SPY": 2, "QQQ": 2, "USO": -4, "UUP": -1 },
+          "fragile": { "TLT": -5, "IEF": -3, "USO": 5, "GLD": 2, "UUP": 2, "QQQ": -3 },
+          "contested": { "GLD": 1, "USO": 1 },
+          "mixed": { "TLT": 1 }
+        },
+        "Europe Macro": {
+          "constructive": { "HYG": 2, "LQD": 2, "SPY": 1, "UUP": -1 },
+          "fragile": { "HYG": -2, "LQD": -1, "UUP": 2, "GLD": 1, "TLT": 1 },
+          "contested": { "UUP": 1 },
+          "mixed": { "LQD": 1 }
+        },
+        "Japan Macro": {
+          "constructive": { "EWJ": 5, "SMH": 1, "UUP": -1 },
+          "fragile": { "EWJ": -4, "UUP": 2, "USO": 2, "GLD": 1 },
+          "contested": { "EWJ": 1 },
+          "mixed": { "EWJ": 1 }
+        },
+        "China Demand": {
+          "constructive": { "EEM": 4, "EWY": 3, "EWT": 3, "XLI": 2, "USO": 1, "UUP": -2 },
+          "fragile": { "EEM": -4, "EWY": -3, "EWT": -3, "UUP": 2, "TLT": 2, "GLD": 1 },
+          "contested": { "UUP": 1, "GLD": 1 },
+          "mixed": { "EEM": 1 }
+        },
+        "Geopolitical Risk": {
+          "constructive": { "SPY": 1, "HYG": 1, "USO": -3, "GLD": -1 },
+          "fragile": { "USO": 7, "XLE": 5, "GLD": 3, "UUP": 3, "SPY": -5, "HYG": -4, "TLT": -1 },
+          "contested": { "USO": 2, "GLD": 1, "UUP": 1 },
+          "mixed": { "GLD": 1, "USO": 1 }
+        },
+        "Market Structure": {
+          "constructive": { "SPY": 2, "QQQ": 2, "HYG": 1, "UUP": -1 },
+          "fragile": { "SPY": -3, "QQQ": -4, "HYG": -3, "UUP": 2, "GLD": 1, "TLT": 1 },
+          "contested": { "GLD": 1, "UUP": 1 },
+          "mixed": { "GLD": 1 }
+        }
+      }
+    },
+    {
+      "id": "north-asia-ai-hardware",
+      "title": "North Asia AI Hardware",
+      "description": "Probability engine for the Japan-Korea-Taiwan hardware stack and the surrounding cross-asset regime.",
+      "subjects": [
+        "Global Macro",
+        "Japan Macro",
+        "China Demand",
+        "Geopolitical Risk",
+        "Market Structure"
+      ],
+      "series": [
+        "QQQ",
+        "TLT",
+        "IEF",
+        "HYG",
+        "UUP",
+        "USO",
+        "GLD",
+        "EWJ",
+        "EWY",
+        "EWT",
+        "SMH",
+        "SOXX",
+        "XLI",
+        "DGS10",
+        "T10YIE",
+        "BAMLH0A0HYM2"
+      ],
+      "driver_series": [
+        "QQQ",
+        "TLT",
+        "HYG",
+        "UUP",
+        "USO",
+        "EWJ",
+        "EWY",
+        "EWT",
+        "SMH",
+        "SOXX",
+        "DGS10",
+        "T10YIE",
+        "BAMLH0A0HYM2"
+      ],
+      "anchor_series": [
+        "EWJ",
+        "EWY",
+        "EWT",
+        "SMH",
+        "SOXX",
+        "QQQ",
+        "TLT",
+        "UUP",
+        "USO"
+      ],
+      "composites": {
+        "north_asia": {
+          "label": "North Asia Equity Composite",
+          "members": ["EWJ", "EWY", "EWT"]
+        },
+        "hardware": {
+          "label": "Hardware Leadership Composite",
+          "members": ["SMH", "SOXX", "QQQ"]
+        },
+        "defense": {
+          "label": "Defense Composite",
+          "members": ["TLT", "GLD", "UUP"]
+        },
+        "energy": {
+          "label": "Energy Pressure Composite",
+          "members": ["USO"]
+        }
+      },
+      "regime_count": {
+        "min": 3,
+        "max": 5
+      },
+      "archetype_count": 10,
+      "state_overlays": {
+        "Global Macro": {
+          "constructive": { "SMH": 3, "SOXX": 3, "QQQ": 2, "TLT": 1, "UUP": -1 },
+          "fragile": { "SMH": -4, "SOXX": -4, "QQQ": -3, "UUP": 2, "GLD": 1, "TLT": 1 },
+          "contested": { "GLD": 1, "UUP": 1 },
+          "mixed": { "QQQ": 1 }
+        },
+        "Japan Macro": {
+          "constructive": { "EWJ": 5, "XLI": 2, "SMH": 1 },
+          "fragile": { "EWJ": -4, "UUP": 2, "USO": 2 },
+          "contested": { "EWJ": 1 },
+          "mixed": { "EWJ": 1 }
+        },
+        "China Demand": {
+          "constructive": { "EWY": 3, "EWT": 4, "SMH": 2, "SOXX": 2, "UUP": -1 },
+          "fragile": { "EWY": -3, "EWT": -4, "SMH": -2, "SOXX": -2, "UUP": 2, "TLT": 1 },
+          "contested": { "UUP": 1 },
+          "mixed": { "EWT": 1 }
+        },
+        "Geopolitical Risk": {
+          "constructive": { "USO": -3, "SMH": 1, "SOXX": 1 },
+          "fragile": { "USO": 6, "UUP": 3, "GLD": 2, "SMH": -3, "SOXX": -3, "EWY": -2, "EWT": -2 },
+          "contested": { "USO": 2, "GLD": 1 },
+          "mixed": { "GLD": 1 }
+        },
+        "Market Structure": {
+          "constructive": { "SMH": 2, "SOXX": 2, "QQQ": 1 },
+          "fragile": { "SMH": -3, "SOXX": -3, "QQQ": -2, "UUP": 1, "TLT": 1 },
+          "contested": { "GLD": 1, "TLT": 1 },
+          "mixed": { "QQQ": 1 }
+        }
+      }
+    }
+  ]
+}

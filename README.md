@@ -22,7 +22,7 @@ The project now has two intended repository lines:
 - a public line for the open reference version of Cato
 - a private line for the personalised working system with seeded self-model doctrine, private corpus material, and captured authored outputs
 
-In the maintainer workflow, day-to-day work happens in the private line and the public repo is a deliberate engine-only release surface. The public line should preserve the same underlying engine architecture and operator-facing workflows as the private line, while stripping private corpus, personal doctrine, and operator-specific memory payloads. See [docs/repo_topology.md](docs/repo_topology.md) and [docs/public_release_policy.md](docs/public_release_policy.md).
+In the maintainer workflow, day-to-day work happens in the private line and the public repo is a deliberate engine-only release surface. The public line should preserve the same underlying engine architecture and operator-facing workflows as the private line, including the scenario engine, while stripping private corpus, personal doctrine, operator-specific memory payloads, and private generated market views. See [docs/repo_topology.md](docs/repo_topology.md), [docs/public_release_policy.md](docs/public_release_policy.md), and [docs/release_runbook.md](docs/release_runbook.md).
 Use `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public` when you want to project the current engine into a separate public-safe worktree without shipping the private corpus.
 
 ## What Exists Today
@@ -46,6 +46,8 @@ The current product is already more than an MVP scaffold. It now includes:
 - zero-API report handoff that stores one canonical model-authored report per topic under `wiki/reports/`
 - a generalized authored-output handoff for memos, decks, surveillance, belief/state/decision surfaces, self-model outputs, and postmortems
 - a working-memory layer with automatic daily logs, due-based current-context refresh, weekly review refresh, and a root `MEMORY.md` mirror
+- a Node-orchestrated, Python-executed scenario engine with Cato-owned market-data refresh, regime inference, intermarket transmission mapping, and Monte Carlo path simulation
+- canonical probability surfaces, scenario diffs, and probability-brief packs grounded in `100,000`-path default runs for report-facing use
 - a compiled self-model artefact under `manifests/self_model.json` plus `wiki/self/current-operating-constitution.md` and command-relevant mode profiles
 - an expanded doctrine corpus covering PM-grade research, macro/intermarket analysis, valuation, trading, sourcing, communication, cognitive augmentation, bias watch, anti-patterns, portfolio construction, workbook audit standards, idea-market discipline, and update discipline
 - retrieval-budget discipline from maps to canonical notes to evidence notes to raw extracts
@@ -88,6 +90,7 @@ That is the difference between a file archive and a thinking instrument.
 - final intellectual outputs are authored through the active terminal model and captured back into Cato
 - top-level substantive output commands now prepare packs and require capture rather than treating deterministic scaffold prose as final
 - the compiled self-model should materially shape authored packs, reports, frontier packs, and decision scaffolds rather than sitting as passive notes
+- forward probabilities are calibrated from market data, while corpus and doctrine shape overlays, priors, and interpretation rather than pretending prose can replace calibration data
 - Cato stays agent-driven rather than embedding external LLM execution directly into the CLI
 
 The last point is deliberate. Cato prepares context, captures outputs, and maintains memory. Codex/GPT remains the higher-order reasoning layer.
@@ -197,9 +200,31 @@ Those pages now explicitly include:
 - what would flip the view
 - current evidence route
 
-### 6. Use The Right Loop
+### 6. Model Forward Paths
 
-There are five main loops.
+The probability layer is now a first-class part of Cato rather than an external side calculation.
+
+The live operating shape is:
+
+- `market-refresh` = pull and normalize cross-asset market data through Cato-managed web fetches
+- `scenario-refresh` = run the Python quant core and write a canonical probability surface into `wiki/probabilities/`
+- `scenario-diff` = compare the latest two scenario snapshots for the same profile
+- `probability-brief` = prepare an authored interpretation pack over the canonical probability surface
+
+The default horizons are `5`, `21`, `63`, and `126` trading days.
+The operational default for canonical scenario work is `100,000` simulated paths.
+
+The quantitative stack is deliberately split:
+
+- Cato owns data acquisition, caching, file layout, and authored-pack preparation
+- Python owns regime inference, transmission mapping, and Monte Carlo path generation
+- the active terminal model authors the final interpreted brief when one is needed
+
+See [docs/scenario_engine.md](docs/scenario_engine.md) for the detailed contract.
+
+### 7. Use The Right Loop
+
+There are several main loops.
 
 Local evidence loop:
 
@@ -232,6 +257,16 @@ Report handoff loop:
 4. fill `model` with the actual terminal session label used for authorship
 5. run `capture-report`
 6. let Cato write or update the canonical report under `wiki/reports/` and archive the previous canonical version
+
+Probability loop:
+
+1. run `market-refresh --profile ...` when cached market history needs refreshing
+2. run `scenario-refresh "topic" --profile ...` to generate the canonical probability surface
+3. run `scenario-diff "topic" --profile ...` when you need to inspect changes between consecutive runs
+4. run `probability-brief "topic" --profile ...`
+5. open the generated authored bundle in `cache/authored-packs/`
+6. let Codex/Claude author the final interpretation
+7. run `capture-authored`
 
 Research handoff loop:
 
@@ -276,6 +311,7 @@ Frontier handoff loop:
 - `wiki/source-notes/` = one-note-per-source grounding layer
 - `wiki/drafts/append-review/` = working draft queue distinct from canonical notes
 - `wiki/reports/` = canonical model-authored reports, one current file per topic
+- `wiki/probabilities/` = canonical probability surfaces from the scenario engine
 - `wiki/memory/` = daily logs, current context, weekly reviews, and memory index
 - `wiki/claims/` = atomic belief ledger
 - `wiki/states/` = current-state pages
@@ -287,6 +323,7 @@ Frontier handoff loop:
 - `wiki/self/current-operating-constitution.md` = compiled current operating constitution
 - `wiki/self/mode-profiles/` = compiled mode-specific profiles used by authored/report/frontier context
 - `outputs/` = generated memos, briefs, decks, and meeting briefs, each now kept as one current file per slug with older runs archived under sibling `archive/` folders, plus legacy archived report runs
+- `raw/market-data/` and `manifests/market-data/series/` = raw pulls and normalized market history used by the scenario engine
 - `logs/` = lint, doctor, and workflow reports
 - `cache/` = frontier packs, claim snapshots, and disposable runtime files
 - `src/` = Node implementation
@@ -317,12 +354,13 @@ The durable knowledge system begins after intentional ingest. That is when evide
 10. Run `.\cato.cmd ask "your question"` to prepare a model-authored memo pack, then complete it with `.\cato.cmd capture-authored .\cache\authored-packs\...\...-capture.json`.
 11. Run `.\cato.cmd report "your topic"` to prepare a final-report pack, then let the active terminal model author the capture bundle and run `.\cato.cmd capture-report .\cache\report-packs\...\...-capture.json`.
 12. For the all-corpus investment route, use `.\cato.cmd report "Current investment summary across all ingested research"` and capture the authored result back through `capture-report`.
-13. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
-14. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` to prepare authored packs for the current world-model surface, then complete them with `capture-authored`.
-15. Run `.\cato.cmd decision-note "topic"`, `.\cato.cmd meeting-brief "Weekly investment meeting brief"`, or `.\cato.cmd red-team "topic"` to prepare authored packs, and use `frontier-pack` / `capture-frontier` when you want a deeper bespoke frontier reasoning route over the same claim/state/decision stack.
-16. Check working memory with `.\cato.cmd memory-status`; use `.\cato.cmd memory-refresh` only when you want to force or override the automatic write-through behaviour, and use `.\cato.cmd capture-memory` only for a deliberate manual replacement note.
-17. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
-18. When you want to update the public engine line, run `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public` and validate that worktree before committing there.
+13. For forward probability work, run `.\cato.cmd market-refresh --profile global-risk-regime`, then `.\cato.cmd scenario-refresh "Global Risk Regime" --profile global-risk-regime`, and use `.\cato.cmd probability-brief "Global Risk Regime" --profile global-risk-regime` when you want a model-authored interpretation pack over the canonical surface.
+14. Run `.\cato.cmd claims-refresh --snapshot` when you want the belief ledger rebuilt.
+15. Run `.\cato.cmd state-refresh "Global Macro"` or `.\cato.cmd regime-brief --set weekly-investment-meeting` to prepare authored packs for the current world-model surface, then complete them with `capture-authored`.
+16. Run `.\cato.cmd decision-note "topic"`, `.\cato.cmd meeting-brief "Weekly investment meeting brief"`, or `.\cato.cmd red-team "topic"` to prepare authored packs, and use `frontier-pack` / `capture-frontier` when you want a deeper bespoke frontier reasoning route over the same claim/state/decision stack.
+17. Check working memory with `.\cato.cmd memory-status`; use `.\cato.cmd memory-refresh` only when you want to force or override the automatic write-through behaviour, and use `.\cato.cmd capture-memory` only for a deliberate manual replacement note.
+18. Run `.\cato.cmd lint` and `.\cato.cmd doctor`.
+19. When you want to update the public engine line, run `.\cato.cmd public-release --to ..\Cato_WisdomEngine_Public`, validate that worktree, and use the release checklist in [docs/release_runbook.md](docs/release_runbook.md) before committing there.
 
 ## Core Commands
 
@@ -342,6 +380,10 @@ Foundation:
 - `.\cato.cmd capture-memory`
 - `.\cato.cmd report`
 - `.\cato.cmd capture-report`
+- `.\cato.cmd market-refresh`
+- `.\cato.cmd scenario-refresh`
+- `.\cato.cmd scenario-diff`
+- `.\cato.cmd probability-brief`
 - `.\cato.cmd deck`
 - `.\cato.cmd lint`
 - `.\cato.cmd doctor`
@@ -390,7 +432,7 @@ Run `.\cato.cmd help` for arguments and options.
 
 Obsidian is optional. It is the reading and navigation layer, not the control surface.
 
-The runtime is Node-first. Repo-local Python wrappers exist so Python-dependent utilities can still be reached from the repo shell, and the PDF vision handoff uses the machine's real Python launcher plus available PDF-rendering libraries to generate page images for Codex/GPT review. Browser automation is treated as an environment capability, not as an in-repo dependency, and `doctor` verifies Playwright/Puppeteer readiness when needed.
+The runtime is Node-first. Repo-local Python wrappers exist so Python-dependent utilities can still be reached from the repo shell, and the PDF vision handoff uses the machine's real Python launcher plus available PDF-rendering libraries to generate page images for Codex/GPT review. The same Python allowance now also underpins the scenario engine, which uses installed scientific packages for regime inference and Monte Carlo path simulation while keeping market-data acquisition inside Cato's CLI. Browser automation is treated as an environment capability, not as an in-repo dependency, and `doctor` verifies Playwright/Puppeteer readiness when needed.
 
 ## What Cato Is Not
 
@@ -426,6 +468,8 @@ If you need the deeper operating detail, read:
 - [docs/authored_output_handoff.md](docs/authored_output_handoff.md)
 - [docs/report_handoff.md](docs/report_handoff.md)
 - [docs/working_memory.md](docs/working_memory.md)
+- [docs/scenario_engine.md](docs/scenario_engine.md)
+- [docs/release_runbook.md](docs/release_runbook.md)
 - [docs/pdf_handoff.md](docs/pdf_handoff.md)
 - [docs/research_handoff.md](docs/research_handoff.md)
 - [docs/frontier_handoff.md](docs/frontier_handoff.md)

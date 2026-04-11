@@ -77,6 +77,11 @@ const OUTPUT_FAMILIES = {
     kind: "decision-note",
     outputDir: "wiki/decisions"
   },
+  "probability-page": {
+    idPrefix: "PROB",
+    kind: "probability-page",
+    outputDir: "wiki/probabilities"
+  },
   "watch-profile": {
     idPrefix: "WATCH",
     kind: "watch-profile",
@@ -114,6 +119,12 @@ const OUTPUT_FAMILIES = {
     idPrefix: "POSTMORTEM",
     kind: "postmortem-note",
     outputDir: "wiki/self/postmortems"
+  },
+  "probability-brief": {
+    idPrefix: "PROBBRIEF",
+    kind: "probability-brief",
+    outputDir: "outputs/briefs",
+    rolling: true
   }
 };
 

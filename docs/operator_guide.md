@@ -70,6 +70,8 @@ The live trigger is:
 
 That keeps refresh low-friction without creating noise every time a terminal opens.
 
+Old lint reports do not update themselves. Treat each file under `logs/lint/` as a point-in-time snapshot and rerun `lint` before reacting to a stale report count.
+
 ## Repository Split
 
 This repo is no longer just one undifferentiated GitHub line.
@@ -317,6 +319,27 @@ Use this when the output should be a final report rather than a deterministic sc
 5. run `capture-report`
 6. let Cato update the canonical report under `wiki/reports/` and archive the previous canonical version
 
+### Probability Loop
+
+Use this when the work needs a forward-looking probability surface rather than only historical synthesis.
+
+1. run `market-refresh --profile ...` when the cached market history needs a fresh pull
+2. run `scenario-refresh "topic" --profile ...`
+3. let Cato call the Python quant core and write the canonical surface under `wiki/probabilities/`
+4. run `scenario-diff "topic" --profile ...` when you need the delta between the latest two runs
+5. run `probability-brief "topic" --profile ...` when you want a model-authored interpretation pack
+6. let Codex/GPT or Claude author the brief in the generated capture bundle
+7. fill `model` with the actual terminal session label used for authorship
+8. run `capture-authored`
+
+Important operating rule:
+
+- the canonical probability surface is deterministic, data-calibrated, and reusable
+- the probability brief is authored judgement over that surface
+- canonical scenario work defaults to `100,000` paths unless there is an explicit override
+
+See [scenario_engine.md](scenario_engine.md) for the detailed model and file layout.
+
 ## Belief -> State -> Decision Stack
 
 The main analytical chain is now:
@@ -369,6 +392,10 @@ Foundation:
 - `capture-memory` = replace an automatically generated current-context or weekly-review note with a manually authored override and update `MEMORY.md`
 - `report` = prepare a final-report pack for the active terminal model
 - `capture-report` = capture the model-authored final report into canonical `wiki/reports/`
+- `market-refresh` = pull and normalize cross-asset market history into Cato-managed local caches
+- `scenario-refresh` = run the probabilistic scenario engine and write a canonical surface under `wiki/probabilities/`
+- `scenario-diff` = compare the latest two scenario snapshots for the same profile
+- `probability-brief` = prepare a model-authored interpretation pack over a canonical probability surface
 - `deck` = prepare a model-authored Marp-friendly deck pack
 
 Recurring generated outputs under `outputs/memos/`, `outputs/briefs/`, `outputs/decks/`, and `outputs/meeting-briefs/` now keep one current file per slug. Older runs move into sibling `archive/<slug>/` folders instead of piling up in the active folder.
@@ -414,6 +441,13 @@ Handoffs:
 - `capture-authored` = import the model-authored result for the common authored-output pack workflow
 - `frontier-pack` = prepare structured context for Codex/GPT
 - `capture-frontier` = write Codex-authored frontier output back into the repo
+
+Quant and probabilities:
+
+- market data enters through Cato-managed web pulls and local caches, not directly through ad hoc Python fetches
+- the quant core runs in Python, but Cato owns orchestration, config, manifests, and canonical markdown outputs
+- probability surfaces are reusable knowledge objects, but they are intentionally excluded from claim/state/report grounding routes to avoid recursive self-reinforcement
+- treat the last run under `wiki/probabilities/` as the current canonical surface, not an old log file or old authored brief
 
 Self-model and health:
 

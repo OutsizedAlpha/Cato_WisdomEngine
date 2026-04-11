@@ -20,6 +20,7 @@ const { resolveWatchSubject } = require("../watch");
 
 const GROUNDED_EXCLUDE_PREFIXES = [
   "outputs/",
+  "wiki/probabilities/",
   "wiki/surveillance/",
   "wiki/_indices/",
   "wiki/_maps/",
@@ -1093,6 +1094,46 @@ function summarizeWatchForPack(watch) {
   };
 }
 
+function extractProbabilitySummary(root, relativePath) {
+  const absolutePath = path.join(root, relativePath);
+  if (!fs.existsSync(absolutePath)) {
+    return null;
+  }
+  const parsed = parseFrontmatter(readText(absolutePath));
+  return {
+    title: parsed.frontmatter.title || path.basename(relativePath, ".md"),
+    relative_path: relativePath,
+    profile_id: parsed.frontmatter.profile_id || "",
+    as_of_date: parsed.frontmatter.as_of_date || "",
+    confidence: parsed.frontmatter.confidence || "",
+    current_regime: extractMarkdownBullets(extractMarkdownSection(parsed.body, "Managed Current Regime")).slice(0, 3),
+    scenario_archetypes: extractMarkdownBullets(extractMarkdownSection(parsed.body, "Managed Scenario Archetypes")).slice(0, 3),
+    transmission: extractMarkdownBullets(extractMarkdownSection(parsed.body, "Managed Transmission Map")).slice(0, 3),
+    data_gaps: extractMarkdownBullets(extractMarkdownSection(parsed.body, "Managed Data Gaps")).slice(0, 3)
+  };
+}
+
+function investmentProbabilityPages(root) {
+  const directory = path.join(root, "wiki", "probabilities");
+  if (!fs.existsSync(directory)) {
+    return [];
+  }
+
+  const preferred = ["global-risk-regime.md", "north-asia-ai-hardware.md"];
+  const available = fs
+    .readdirSync(directory, { withFileTypes: true })
+    .filter((entry) => entry.isFile() && entry.name.toLowerCase().endsWith(".md") && entry.name.toLowerCase() !== "index.md")
+    .map((entry) => entry.name);
+  const ordered = [
+    ...preferred.filter((name) => available.includes(name)),
+    ...available.filter((name) => !preferred.includes(name)).sort((left, right) => left.localeCompare(right))
+  ];
+
+  return ordered
+    .map((fileName) => extractProbabilitySummary(root, path.join("wiki", "probabilities", fileName).replace(/\\/g, "/")))
+    .filter(Boolean);
+}
+
 function buildReportTemplate(topic, route) {
   if (route === "broad_investment_summary") {
     return `# ${topic}
@@ -1100,6 +1141,24 @@ function buildReportTemplate(topic, route) {
 ## Executive Summary
 
 Replace this placeholder with the model-authored executive summary.
+
+## Intermarket Relationship Map
+
+Show the transmission chain and relationship structure.
+Make explicit:
+- what moved first
+- what confirmed
+- what diverged
+- whether divergence is noise, transition, or warning
+- how commodities, rates, FX, credit, and equity leadership interact
+
+## Forward Probability Surface
+
+### Current Regime And Distribution
+
+### 5d / 21d / 63d / 126d Read-Through
+
+### Most Likely Paths And Dangerous Plausible Paths
 
 ## What The Corpus Says
 
@@ -1177,9 +1236,11 @@ function investmentClaims(root, options = {}) {
 function buildInvestmentReportPack(root, topic, options = {}) {
   const claims = investmentClaims(root, options);
   const sections = buildInvestmentSections(root, options);
+  const probabilities = investmentProbabilityPages(root);
   const results = uniqueByRelativePath(sections.flatMap((section) => section.results));
   const localSources = uniqueLocalSources([
     ...results.map((result) => makeLocalSource(result.relativePath, result.title, "evidence")),
+    ...probabilities.map((page) => makeLocalSource(page.relative_path, page.title, "probability-surface")),
     ...claims.map((claim) =>
       makeLocalSource(`wiki/claims/${String(claim.id || "").toLowerCase()}.md`, truncate(claim.claim_text, 96), "claim")
     )
@@ -1199,6 +1260,7 @@ function buildInvestmentReportPack(root, topic, options = {}) {
       canonical_archive_dir: canonicalReportArchiveDir(topic),
       report_policy: "Final report must be authored by the active terminal model. Cato provides memory, retrieval, and structure only.",
       claims: summarizeClaimsForPack(claims),
+      probabilities,
       coverage: {
         section_count: sections.length,
         unique_evidence_surfaces: results.length,
@@ -1294,6 +1356,24 @@ function buildReportPromptMarkdown(pack, capturePath) {
     .slice(0, 8)
     .map((claim) => `- ${claim.claim_text} (${claim.status}, ${claim.confidence})`)
     .join("\n");
+  const probabilityLines = (pack.probabilities || [])
+    .map((page) => {
+      const current = page.current_regime?.length ? page.current_regime.join(" ") : "No current-regime summary extracted.";
+      const archetypes = page.scenario_archetypes?.length ? page.scenario_archetypes.join(" ") : "No archetype summary extracted.";
+      const transmission = page.transmission?.length ? page.transmission.join(" ") : "No transmission summary extracted.";
+      const gaps = page.data_gaps?.length ? page.data_gaps.join(" ") : "No explicit data-gap note.";
+      return `## ${page.title}
+
+- Path: \`${page.relative_path}\`
+- Profile: ${page.profile_id || "n/a"}
+- As of date: ${page.as_of_date || "n/a"}
+- Confidence: ${page.confidence || "n/a"}
+- Current regime: ${current}
+- Archetypes: ${archetypes}
+- Transmission: ${transmission}
+- Data gaps: ${gaps}`;
+    })
+    .join("\n\n");
 
   let routeBlock = "";
   if (pack.route === "broad_investment_summary") {
@@ -1362,7 +1442,20 @@ ${pack.self_model ? `${renderSelfModelMarkdownBlock(pack.self_model)}\n` : ""}
 
 ${claimLines || "- No claim context surfaced."}
 
+${pack.probabilities?.length ? `## Probability Surfaces\n\n${probabilityLines}\n` : ""}
+
 ${routeBlock}
+
+${pack.route === "broad_investment_summary"
+  ? `## Intermarket Discipline
+
+- Do not write the report as six isolated buckets.
+- Weave the relationships between commodities, rates, FX, credit, liquidity, and equity leadership into one regime narrative.
+- Make explicit: what moved first, what confirmed, what diverged, what changed at the margin, and what the transmission chain implies for portfolio leadership and risk.
+- Use the probability surfaces as forward-looking distribution context, not as replacements for grounded evidence.
+- Separate current setup, current price expression, and current risk-reward from the quality of the underlying macro or fundamental story.
+`
+  : ""}
 `;
 }
 

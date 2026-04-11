@@ -61,6 +61,9 @@ function noteKindRelative(relativePath) {
   if (relativePath.startsWith("wiki/decisions/")) {
     return "decision-note";
   }
+  if (relativePath.startsWith("wiki/probabilities/")) {
+    return "probability-page";
+  }
   if (relativePath === "wiki/memory/current-context.md") {
     return "memory-context-page";
   }

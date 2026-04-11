@@ -18,8 +18,10 @@ That means:
 
 - Common substantive authored outputs use their normal top-level command plus `capture-authored`
 - Final reports use `report` plus `capture-report`
+- Probability briefs use `probability-brief` plus `capture-authored`
 - Working memory refreshes automatically by default; `memory-refresh` plus `capture-memory` remain the explicit override path
 - Canonical current reports live under `wiki/reports/`
+- Canonical current probability surfaces live under `wiki/probabilities/`
 - Prior canonical versions are archived under `wiki/reports/archive/`
 - Canonical current-context memory lives under `wiki/memory/current-context.md`, weekly reviews live under `wiki/memory/weekly/`, and the root `MEMORY.md` file is only a mirror of the current context
 - Recurring generated outputs under `outputs/memos/`, `outputs/briefs/`, `outputs/decks/`, and `outputs/meeting-briefs/` now keep one current file per slug and archive older runs under sibling `archive/<slug>/` folders
@@ -29,6 +31,7 @@ That means:
 - Frontier-authored belief/state/decision/meeting outputs use `frontier-pack` plus `capture-frontier`
 - Research imports use `capture-research`
 - PDF vision/OCR extraction uses `pdf-pack` plus `capture-pdf`
+- Canonical probability surfaces are deterministic scenario artefacts grounded in market data; the interpreted probability brief is the authored layer
 
 ## What Still Stays Deterministic
 
@@ -41,6 +44,9 @@ The following are maintenance, retrieval, or structural bookkeeping and may rema
 - `search`
 - `watch-list`
 - `watch-refresh`
+- `market-refresh`
+- `scenario-refresh`
+- `scenario-diff`
 - `claims-refresh`
 - `claim-diff`
 - `state-diff`
@@ -56,6 +62,7 @@ The following direct CLI outputs are useful, but should not be mistaken for fina
 - `surveil`
 - `watch`
 - `why-believe`
+- `probability-brief`
 - direct deterministic state or decision scaffolds created while preparing pack context
 - direct deterministic briefs created while preparing pack context
 - `reflect`

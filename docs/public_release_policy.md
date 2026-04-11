@@ -17,12 +17,14 @@ That means the split is about payload, not about feature-thinning.
 - extracted text, figures, and metadata derived from private sources
 - manifests that describe the private corpus and private operating history
 - private source notes, claims, states, regimes, decisions, reports, and syntheses
+- private probability surfaces, scenario snapshots, and any generated market views grounded in the private corpus or private working state
 - seeded self-model doctrine and operator-specific operating constitution
 - live working-memory surfaces and private output history
 
 ## What Must Ship To The Public Repo
 
 - the CLI and runtime implementation under `src/`, `bin/`, and wrapper commands
+- the scenario engine implementation, configs, tests, and operator docs
 - prompts, policies, schemas, ontology, tests, hooks, roles, and skills
 - architecture and operator documentation
 - starter self-model and working-memory scaffold surfaces

@@ -17,6 +17,7 @@ const { ingest } = require("../src/ingest");
 const { initProject } = require("../src/init");
 const { lintProject } = require("../src/lint");
 const { captureMemory, handleWorkingMemoryAfterCommand, loadMemoryEvents, writeMemoryRefreshPack, workingMemoryStatus } = require("../src/memory");
+const { refreshMarketData } = require("../src/market-data");
 const { capturePdf, writePdfPack } = require("../src/pdf-handoff");
 const { createPostmortem } = require("../src/postmortem");
 const { buildPublicRelease } = require("../src/public-release");
@@ -26,6 +27,7 @@ const { migrateLegacyRollingOutputs, updateManagedNote } = require("../src/resea
 const { captureResearch } = require("../src/research-handoff");
 const { archiveLegacyReportRuns, captureReport, writeReport } = require("../src/report");
 const { retrieveEvidence } = require("../src/retrieval");
+const { refreshScenario, writeProbabilityBrief, writeScenarioDiff } = require("../src/scenario");
 const { searchCorpus } = require("../src/search");
 const { selfIngest } = require("../src/self-ingest");
 const { compileSelfModelArtifacts, resolveSelfModelContext } = require("../src/self-model");
@@ -190,6 +192,7 @@ module.exports = {
   ingest,
   initProject,
   lintProject,
+  refreshMarketData,
   captureMemory,
   handleWorkingMemoryAfterCommand,
   loadMemoryEvents,
@@ -208,6 +211,9 @@ module.exports = {
   captureReport,
   writeReport,
   retrieveEvidence,
+  refreshScenario,
+  writeProbabilityBrief,
+  writeScenarioDiff,
   searchCorpus,
   selfIngest,
   compileSelfModelArtifacts,

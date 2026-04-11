@@ -46,6 +46,7 @@ const PUBLIC_EXCLUDE_PATHS = [
   "wiki/macro",
   "wiki/market-structure",
   "wiki/memory",
+  "wiki/probabilities",
   "wiki/regimes",
   "wiki/reports",
   "wiki/self",
@@ -161,8 +162,46 @@ const PUBLIC_SCAFFOLD_FILES = {
 - Keep the public line engine-only: publish workflow and implementation improvements, not private corpus or operator-specific doctrine.
 - When exporting to the public line, preserve the operating scaffold and templates instead of deleting required context files outright.
 - Public release means payload stripping, not capability stripping: the public repo should keep the same core engine shape while excluding private knowledge and operating history.
+`,
+  "wiki/self/README.md": `# Self-Model
+
+Use this area for principles, heuristics, anti-patterns, and other structured self-notes.
+`,
+  "wiki/self/current-operating-constitution.md": `# Current Operating Constitution
+
+Compiled self-model summary will appear here after compile.
+`,
+  "wiki/self/tension-register.md": `# Tension Register
+
+Track tensions between stated principles and observed behaviour here.
+`,
+  "wiki/self/mode-profiles/investment-research.md": "# Investment Research\n",
+  "wiki/self/mode-profiles/trading.md": "# Trading\n",
+  "wiki/self/mode-profiles/communication.md": "# Communication\n",
+  "wiki/self/index.md": "# Self Index\n",
+  "wiki/memory/index.md": "# Working Memory Index\n",
+  "wiki/memory/current-context.md": `---
+id: MEMORY-SEED-CONTX
+kind: memory-context-page
+title: Current Context
+status: provisional
+memory_date: unrefreshed
+refresh_basis: first_meaningful_cato_use_when_due
+---
+
+# Current Context
+
+Compiled working-memory context will appear here after the first refresh capture.
+`,
+  "wiki/memory/daily/README.md": "# Daily Memory Logs\n",
+  "wiki/memory/weekly/README.md": "# Weekly Reviews\n",
+  "MEMORY.md": `# Memory
+
+This file mirrors the latest compiled working-memory snapshot after memory refresh capture.
 `
 };
+
+const PUBLIC_SCAFFOLD_DIRS = ["inbox", "inbox/drop_here", "inbox/self"];
 
 function resolveTargetDir(root, targetOption = "") {
   const trimmed = String(targetOption || "").trim();
@@ -211,6 +250,9 @@ function removeExcludedPaths(targetDir) {
 }
 
 function writePublicScaffolds(targetDir) {
+  for (const relativeDir of PUBLIC_SCAFFOLD_DIRS) {
+    ensureDir(path.join(targetDir, relativeDir));
+  }
   for (const [relativePath, contents] of Object.entries(PUBLIC_SCAFFOLD_FILES)) {
     const targetPath = path.join(targetDir, relativePath);
     ensureDir(path.dirname(targetPath));
