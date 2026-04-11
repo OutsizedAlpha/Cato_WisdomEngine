@@ -1,6 +1,6 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { spawnSync } = require("node:child_process");
+const { DEFAULT_WEB_USER_AGENT, invokeWebRequest } = require("./http-runtime");
 const { ensureProjectStructure } = require("./project");
 const {
   appendJsonl,
@@ -13,8 +13,7 @@ const {
   writeText
 } = require("./utils");
 
-const MARKET_FETCH_USER_AGENT =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
+const MARKET_FETCH_USER_AGENT = DEFAULT_WEB_USER_AGENT;
 
 function normalizeList(value) {
   if (!value) {
@@ -33,25 +32,6 @@ function normalizeSeriesId(value) {
   return String(value || "")
     .trim()
     .toUpperCase();
-}
-
-function toPowerShellLiteral(value) {
-  return `'${String(value || "").replace(/'/g, "''")}'`;
-}
-
-function runPowerShell(script) {
-  const result = spawnSync("powershell.exe", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", script], {
-    encoding: "utf8",
-    windowsHide: true,
-    maxBuffer: 64 * 1024 * 1024,
-    timeout: 90_000
-  });
-
-  if (result.status !== 0) {
-    throw new Error((result.stderr || result.stdout || "PowerShell market-data fetch failed.").trim());
-  }
-
-  return result.stdout || "";
 }
 
 function marketSourceUrl(definition) {
@@ -87,31 +67,16 @@ function fetchRemoteSeries(definition, url, fetcher) {
   if (typeof fetcher === "function") {
     return fetcher(definition, url);
   }
-
-  const script = `
-$ErrorActionPreference = 'Stop'
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$headers = @{
-  'User-Agent' = ${toPowerShellLiteral(MARKET_FETCH_USER_AGENT)}
-  'Accept' = 'text/csv,application/json,text/plain,*/*'
-}
-$response = Invoke-WebRequest -UseBasicParsing -Uri ${toPowerShellLiteral(url)} -Headers $headers -TimeoutSec 30
-$contentType = ''
-if ($response.Headers -and $response.Headers['Content-Type']) {
-  $contentType = [string]$response.Headers['Content-Type']
-}
-$finalUrl = ''
-if ($response.BaseResponse -and $response.BaseResponse.ResponseUri) {
-  $finalUrl = $response.BaseResponse.ResponseUri.AbsoluteUri
-}
-[pscustomobject]@{
-  content = [string]$response.Content
-  final_url = $finalUrl
-  content_type = $contentType
-} | ConvertTo-Json -Depth 5
-`;
-
-  return JSON.parse(runPowerShell(script).trim() || "{}");
+  return invokeWebRequest({
+    url,
+    headers: {
+      "User-Agent": MARKET_FETCH_USER_AGENT,
+      Accept: "text/csv,application/json,text/plain,*/*"
+    },
+    timeoutSec: 30,
+    timeoutMs: 90_000,
+    maxBuffer: 64 * 1024 * 1024
+  });
 }
 
 function parseCsvLines(content) {

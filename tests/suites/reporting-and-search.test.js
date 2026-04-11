@@ -33,7 +33,16 @@ runTest("phase-2 workflows write reports, decks, surveillance, reflection, princ
       pythonCheck: {
         ok: true,
         message: "Python 3.13.12 (repo-local wrapper active; python.cmd present, py.cmd present)",
-        resolution: path.join(root, "python.cmd")
+        resolution: path.join(root, "python.cmd"),
+        packageCheck: {
+          ok: true,
+          message: "7/7 pinned Python packages satisfied.",
+          requirementsPath: "requirements-quant.txt",
+          packages: [
+            { packageName: "numpy", requiredVersion: "2.4.2", installedVersion: "2.4.2", ok: true },
+            { packageName: "pandas", requiredVersion: "2.3.3", installedVersion: "2.3.3", ok: true }
+          ]
+        }
       },
       browserCheck: {
         ok: true,
@@ -66,6 +75,8 @@ runTest("phase-2 workflows write reports, decks, surveillance, reflection, princ
     assert.match(surveillanceContent, /Managed Snapshot/);
     assert.match(doctorContent, /## Project Health/);
     assert.match(doctorContent, /Python in repo shell:/);
+    assert.match(doctorContent, /Python package contract:/);
+    assert.match(doctorContent, /## Python Package Snapshot/);
     assert.match(doctorContent, /Playwright browser launch:/);
     assert.match(doctorContent, /Puppeteer CLI:/);
   } finally {

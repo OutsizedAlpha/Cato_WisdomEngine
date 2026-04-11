@@ -1,7 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { captureTerminalModelBundle, writePackArtifacts } = require("../handoff-core");
-const { workingMemoryLocalSources } = require("../memory");
+const { makeLocalSource, resolvePackContext, summarizeLocalSources, uniqueLocalSources } = require("../pack-runtime");
 const {
   confidenceLabel,
   evidenceBullets,
@@ -13,7 +13,7 @@ const {
 const { searchClaims } = require("../claims");
 const { parseFrontmatter, stripMarkdownFormatting } = require("../markdown");
 const { searchCorpus } = require("../search");
-const { renderSelfModelMarkdownBlock, resolveSelfModelContext, serializeSelfModelContext } = require("../self-model");
+const { renderSelfModelMarkdownBlock, serializeSelfModelContext } = require("../self-model");
 const { refreshState } = require("../states");
 const { appendJsonl, moveFile, nowIso, readText, relativeToRoot, slugify, truncate, uniquePath, writeText } = require("../utils");
 const { resolveWatchSubject } = require("../watch");
@@ -978,57 +978,6 @@ function canonicalReportArchiveDir(topic) {
   return `wiki/reports/archive/${reportSlug(topic)}`;
 }
 
-function makeLocalSource(pathValue, title, role) {
-  if (!pathValue) {
-    return null;
-  }
-  return {
-    path: String(pathValue).replace(/\\/g, "/"),
-    title: title || path.basename(String(pathValue), path.extname(String(pathValue))),
-    role: role || "context"
-  };
-}
-
-function uniqueLocalSources(entries) {
-  const seen = new Set();
-  const output = [];
-  for (const entry of entries) {
-    if (!entry?.path) {
-      continue;
-    }
-    const key = String(entry.path).replace(/\\/g, "/");
-    if (!key || seen.has(key)) {
-      continue;
-    }
-    seen.add(key);
-    output.push({
-      path: key,
-      title: entry.title || path.basename(key, path.extname(key)),
-      role: entry.role || "context"
-    });
-  }
-  return output;
-}
-
-function selfModelLocalSources(context) {
-  const sources = [
-    makeLocalSource("wiki/self/current-operating-constitution.md", "Current Operating Constitution", "self-model"),
-    ...context.sourceNotes.slice(0, 8).map((note) => makeLocalSource(note.relative_path, note.title, "self-note"))
-  ];
-
-  if (context.applicability.includes("investment") || context.applicability.includes("macro") || context.applicability.includes("valuation")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/investment-research.md", "Investment Research", "mode-profile"));
-  }
-  if (context.applicability.includes("trading")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/trading.md", "Trading", "mode-profile"));
-  }
-  if (context.applicability.includes("writing")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/communication.md", "Communication", "mode-profile"));
-  }
-
-  return uniqueLocalSources(sources);
-}
-
 function summarizeClaimsForPack(claims) {
   return claims.map((claim) => ({
     id: claim.id,
@@ -1348,10 +1297,7 @@ function buildGenericReportPack(root, topic, options = {}) {
 }
 
 function buildReportPromptMarkdown(pack, capturePath) {
-  const localLines = pack.local_sources
-    .slice(0, 24)
-    .map((source) => `- \`${source.path}\`${source.role ? ` (${source.role})` : ""}`)
-    .join("\n");
+  const localLines = summarizeLocalSources(pack.local_sources || [], 24);
   const claimLines = (pack.claims || [])
     .slice(0, 8)
     .map((claim) => `- ${claim.claim_text} (${claim.status}, ${claim.confidence})`)
@@ -1468,16 +1414,14 @@ function writeReport(root, topic, options = {}) {
   const packData = isBroadInvestmentSummaryTopic(normalizedTopic)
     ? buildInvestmentReportPack(root, normalizedTopic, options)
     : buildGenericReportPack(root, normalizedTopic, options);
-  const selfModel = resolveSelfModelContext(root, {
+  const context = resolvePackContext(root, {
     command: "report",
-    topic: normalizedTopic
+    topic: normalizedTopic,
+    baseSources: packData.pack.local_sources || []
   });
+  const selfModel = context.selfModel;
   const packSlug = reportSlug(normalizedTopic);
-  const localSources = uniqueLocalSources([
-    ...(packData.pack.local_sources || []),
-    ...workingMemoryLocalSources(root),
-    ...selfModelLocalSources(selfModel)
-  ]);
+  const localSources = context.localSources;
   const paths = writePackArtifacts(root, {
     cacheDir: path.join("cache", "report-packs"),
     slugSeed: packSlug,

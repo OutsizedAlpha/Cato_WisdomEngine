@@ -3,6 +3,7 @@ const path = require("node:path");
 const { spawnSync } = require("node:child_process");
 const { lintProject } = require("./lint");
 const { STRUCTURE_DIRS } = require("./constants");
+const { probePythonPackages, QUANT_REQUIREMENTS_FILE } = require("./python-runtime");
 const { ensureProjectStructure, listMarkdownNotes, loadSettings } = require("./project");
 const { nowIso, readJson, relativeToRoot, timestampStamp, writeText } = require("./utils");
 
@@ -75,10 +76,13 @@ function checkPythonReadiness(root) {
   const pyWrapperPath = path.join(root, "py.cmd");
   const pythonVersion = runCommand("python", ["--version"], { cwd: root });
   const pyVersion = runCommand("py", ["--version"], { cwd: root });
+  const packageCheck = probePythonPackages(root);
 
   if (process.platform !== "win32") {
     return {
-      ok: pythonVersion.ok,
+      ok: pythonVersion.ok && packageCheck.ok,
+      runtimeOk: pythonVersion.ok,
+      packageCheck,
       message: pythonVersion.ok ? pythonVersion.message : "Python unavailable in this shell.",
       resolution: "non-windows",
       pythonVersion: pythonVersion.message,
@@ -103,6 +107,8 @@ function checkPythonReadiness(root) {
   if (!pythonVersion.ok) {
     return {
       ok: false,
+      runtimeOk: false,
+      packageCheck,
       message: "Python unavailable in the repo shell.",
       resolution: resolvedPython || "unresolved",
       pythonVersion: pythonVersion.message,
@@ -114,10 +120,13 @@ function checkPythonReadiness(root) {
   const versionLabel = pythonVersion.message.replace(/^Python\s+/i, "Python ");
   const viaLabel = repoWrapperActive ? "repo-local wrapper active" : "shell-resolved";
   const wrapperLabel = wrapperNotes.length ? `; ${wrapperNotes.join(", ")}` : "";
+  const packageLabel = packageCheck.packages.length ? `; ${packageCheck.message}` : "";
 
   return {
-    ok: true,
-    message: `${versionLabel} (${viaLabel}${wrapperLabel})`,
+    ok: packageCheck.ok,
+    runtimeOk: true,
+    packageCheck,
+    message: `${versionLabel} (${viaLabel}${wrapperLabel}${packageLabel})`,
     resolution: resolvedPython || "resolved without where.exe output",
     pythonVersion: pythonVersion.message,
     pyVersion: pyVersion.message,
@@ -225,8 +234,11 @@ function runDoctor(root, options = {}) {
   if (!ocrCheck.ok && process.platform === "win32") {
     issues.push(`Windows OCR unavailable: ${ocrCheck.message}`);
   }
-  if (!pythonCheck.ok) {
+  if (pythonCheck.runtimeOk === false) {
     issues.push(`Python unavailable: ${pythonCheck.message}`);
+  }
+  if (pythonCheck.runtimeOk !== false && pythonCheck.packageCheck && !pythonCheck.packageCheck.ok) {
+    issues.push(`Python package contract unavailable: ${pythonCheck.packageCheck.message}`);
   }
   if (!browserCheck.ok) {
     issues.push(`Browser automation unavailable: ${browserCheck.message}`);
@@ -244,6 +256,8 @@ function runDoctor(root, options = {}) {
     `- Git repo present: ${fs.existsSync(path.join(root, ".git")) ? "yes" : "no"}`,
     `- Python in repo shell: ${pythonCheck.message}`,
     `- Python resolution: ${pythonCheck.resolution || "n/a"}`,
+    `- Python package contract: ${pythonCheck.packageCheck?.message || `Not checked against ${QUANT_REQUIREMENTS_FILE}.`}`,
+    `- Python package contract file: ${pythonCheck.packageCheck?.requirementsPath || QUANT_REQUIREMENTS_FILE}`,
     `- Playwright CLI: ${browserCheck.playwrightCli}`,
     `- Playwright browser launch: ${browserCheck.playwrightLaunch}`,
     `- Puppeteer CLI: ${browserCheck.puppeteerCli}`,
@@ -257,6 +271,17 @@ function runDoctor(root, options = {}) {
     `- Markdown outputs: ${outputs}`,
     `- Tracked file hashes: ${Object.keys(fileHashes).length}`,
     `- Default ask output: ${settings.ask?.outputDirectory || "outputs/memos"}`,
+    "",
+    "## Python Package Snapshot",
+    "",
+    ...(pythonCheck.packageCheck?.packages?.length
+      ? pythonCheck.packageCheck.packages.map(
+          (pkg) =>
+            `- ${pkg.packageName}: required ${pkg.requiredVersion || "any"}, installed ${pkg.installedVersion || "missing"}${
+              pkg.ok ? "" : ` (${pkg.reason || "mismatch"})`
+            }`
+        )
+      : ["- No pinned Python package snapshot available."]),
     "",
     "## Lint Snapshot",
     "",

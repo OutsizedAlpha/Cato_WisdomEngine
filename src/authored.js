@@ -5,14 +5,14 @@ const { searchClaims, writeWhyBelieve } = require("./claims");
 const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("./decisions");
 const { writeDeck } = require("./deck");
 const { PLACEHOLDER_MARKER, captureTerminalModelBundle, scaffoldBody, writePackArtifacts } = require("./handoff-core");
-const { workingMemoryLocalSources } = require("./memory");
 const { parseFrontmatter } = require("./markdown");
+const { makeLocalSource, resolvePackContext, summarizeLocalSources, uniqueLocalSources } = require("./pack-runtime");
 const { ensureProjectStructure } = require("./project");
 const { writeReflection } = require("./reflect");
 const { writePrinciplesSnapshot } = require("./principles");
 const { createPostmortem } = require("./postmortem");
 const { writeProbabilityBrief } = require("./scenario");
-const { loadSelfNotes, renderSelfModelMarkdownBlock, resolveSelfModelContext, serializeSelfModelContext } = require("./self-model");
+const { loadSelfNotes, renderSelfModelMarkdownBlock, serializeSelfModelContext } = require("./self-model");
 const { refreshState, writeRegimeBrief } = require("./states");
 const { writeSurveillance } = require("./surveil");
 const { buildWatchProfileArtifacts, createWatchProfile, loadWatchProfiles, resolveWatchSubject } = require("./watch");
@@ -37,38 +37,6 @@ function normalizeList(value) {
     .filter(Boolean);
 }
 
-function uniqueLocalSources(entries) {
-  const seen = new Set();
-  const output = [];
-  for (const entry of entries) {
-    if (!entry?.path) {
-      continue;
-    }
-    const key = String(entry.path).replace(/\\/g, "/");
-    if (!key || seen.has(key)) {
-      continue;
-    }
-    seen.add(key);
-    output.push({
-      path: key,
-      title: entry.title || path.basename(key, path.extname(key)),
-      role: entry.role || "context"
-    });
-  }
-  return output;
-}
-
-function makeLocalSource(pathValue, title, role) {
-  if (!pathValue) {
-    return null;
-  }
-  return {
-    path: String(pathValue).replace(/\\/g, "/"),
-    title: title || path.basename(String(pathValue), path.extname(String(pathValue))),
-    role: role || "context"
-  };
-}
-
 function parseScaffold(root, relativePath, titleFallback = "") {
   const absolutePath = path.join(root, relativePath);
   if (!fs.existsSync(absolutePath)) {
@@ -91,36 +59,15 @@ function inferStatePath(subject) {
 }
 
 function summarizeSources(localSources) {
-  return localSources
-    .slice(0, 18)
-    .map((source) => `- \`${source.path}\`${source.role ? ` (${source.role})` : ""}`)
-    .join("\n");
-}
-
-function selfModelLocalSources(context) {
-  const sources = [
-    makeLocalSource("wiki/self/current-operating-constitution.md", "Current Operating Constitution", "self-model"),
-    ...context.sourceNotes.slice(0, 8).map((note) => makeLocalSource(note.relative_path, note.title, "self-note"))
-  ];
-
-  if (context.applicability.includes("investment") || context.applicability.includes("macro") || context.applicability.includes("valuation")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/investment-research.md", "Investment Research", "mode-profile"));
-  }
-  if (context.applicability.includes("trading")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/trading.md", "Trading", "mode-profile"));
-  }
-  if (context.applicability.includes("writing")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/communication.md", "Communication", "mode-profile"));
-  }
-
-  return uniqueLocalSources(sources);
+  return summarizeLocalSources(localSources);
 }
 
 function attachSelfModel(root, prepared, options = {}) {
-  const context = resolveSelfModelContext(root, {
+  const context = resolvePackContext(root, {
     command: prepared.command,
     topic: prepared.topic,
-    applicability: options.applicability
+    applicability: options.applicability,
+    baseSources: prepared.localSources || []
   });
 
   return {
@@ -128,12 +75,8 @@ function attachSelfModel(root, prepared, options = {}) {
     notes: (prepared.notes || []).concat([
       "The active self-model is part of the command context and should materially shape the authored output."
     ]),
-    localSources: uniqueLocalSources([
-      ...(prepared.localSources || []),
-      ...workingMemoryLocalSources(root),
-      ...selfModelLocalSources(context)
-    ]),
-    selfModel: context
+    localSources: context.localSources,
+    selfModel: context.selfModel
   };
 }
 

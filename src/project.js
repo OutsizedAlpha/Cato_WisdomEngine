@@ -1,6 +1,7 @@
 const fs = require("node:fs");
 const path = require("node:path");
 const { STRUCTURE_DIRS } = require("./constants");
+const { DEFAULT_QUANT_REQUIREMENTS_TEXT, QUANT_REQUIREMENTS_FILE } = require("./python-runtime");
 const { ensureDir, ensureFile, readJson } = require("./utils");
 
 function loadSettings(root) {
@@ -39,11 +40,7 @@ function loadSettings(root) {
   });
 }
 
-function ensureProjectStructure(root) {
-  for (const relativeDir of STRUCTURE_DIRS) {
-    ensureDir(path.join(root, relativeDir));
-  }
-
+function ensureManifestScaffolds(root) {
   ensureFile(path.join(root, "manifests", "sources.jsonl"), "");
   ensureFile(path.join(root, "manifests", "self_notes.jsonl"), "");
   ensureFile(path.join(root, "manifests", "claims.jsonl"), "");
@@ -89,10 +86,9 @@ function ensureProjectStructure(root) {
     ) + "\n"
   );
   ensureFile(path.join(root, "manifests", "file_hashes.json"), "{}\n");
-  ensureFile(
-    path.join(root, "commands", "README.md"),
-    "# Commands\n\nStore reusable invocation patterns or standard operating procedures here.\n"
-  );
+}
+
+function ensureActionLogScaffolds(root) {
   ensureFile(path.join(root, "logs", "actions", "ingest.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "self_ingest.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "claims_refresh.jsonl"), "");
@@ -101,6 +97,9 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "logs", "actions", "frontier_runs.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "market_refresh.jsonl"), "");
   ensureFile(path.join(root, "logs", "actions", "scenario_runs.jsonl"), "");
+}
+
+function ensureIndexScaffolds(root) {
   ensureFile(path.join(root, "wiki", "_indices", "sources.md"), "# Source Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "claims.md"), "# Claim Index\n");
   ensureFile(path.join(root, "wiki", "_indices", "concepts.md"), "# Concept Index\n");
@@ -119,10 +118,35 @@ function ensureProjectStructure(root) {
     path.join(root, "wiki", "_maps", "home.md"),
     "# Cato Map Of Content\n\nThis page is the top-level navigation surface for the knowledge base.\n"
   );
+}
+
+function ensureKnowledgeScaffolds(root) {
   ensureFile(
     path.join(root, "wiki", "unresolved", "README.md"),
     "# Unresolved Register\n\nUse this area for contradictions, missing metadata, extraction gaps, and open questions.\n"
   );
+  ensureFile(path.join(root, "wiki", "macro", "index.md"), "# Macro\n");
+  ensureFile(path.join(root, "wiki", "market-structure", "index.md"), "# Market Structure\n");
+  ensureFile(path.join(root, "wiki", "derivatives", "index.md"), "# Derivatives\n");
+  ensureFile(path.join(root, "wiki", "claims", "index.md"), "# Claim Index\n");
+  ensureFile(path.join(root, "wiki", "claims", "contested.md"), "# Contested Claims\n");
+  ensureFile(path.join(root, "wiki", "states", "index.md"), "# State Index\n");
+  ensureFile(path.join(root, "wiki", "regimes", "index.md"), "# Regime Index\n");
+  ensureFile(path.join(root, "wiki", "decisions", "index.md"), "# Decision Index\n");
+  ensureFile(path.join(root, "wiki", "probabilities", "index.md"), "# Probability Index\n");
+  ensureFile(path.join(root, "wiki", "reports", "index.md"), "# Report Index\n");
+  ensureFile(path.join(root, "wiki", "watch-profiles", "index.md"), "# Watch Profile Index\n");
+  ensureFile(path.join(root, "wiki", "theses", "index.md"), "# Thesis Index\n");
+  ensureFile(path.join(root, "wiki", "surveillance", "index.md"), "# Surveillance Index\n");
+  ensureFile(path.join(root, "wiki", "drafts", "index.md"), "# Draft Workspace Index\n");
+  ensureFile(path.join(root, "wiki", "drafts", "append-review", "index.md"), "# Append And Review Queue\n");
+  ensureFile(
+    path.join(root, "wiki", "glossary", "watch-ontology.md"),
+    "# Watch Ontology\n\nThis page is derived from active watch profiles. Edit the profiles, not this generated summary.\n"
+  );
+}
+
+function ensureSelfModelScaffolds(root) {
   ensureFile(
     path.join(root, "wiki", "self", "README.md"),
     "# Self-Model\n\nUse this area for principles, heuristics, anti-patterns, and other structured self-notes.\n"
@@ -138,16 +162,10 @@ function ensureProjectStructure(root) {
   ensureFile(path.join(root, "wiki", "self", "mode-profiles", "investment-research.md"), "# Investment Research\n");
   ensureFile(path.join(root, "wiki", "self", "mode-profiles", "trading.md"), "# Trading\n");
   ensureFile(path.join(root, "wiki", "self", "mode-profiles", "communication.md"), "# Communication\n");
-  ensureFile(path.join(root, "wiki", "macro", "index.md"), "# Macro\n");
-  ensureFile(path.join(root, "wiki", "market-structure", "index.md"), "# Market Structure\n");
-  ensureFile(path.join(root, "wiki", "derivatives", "index.md"), "# Derivatives\n");
-  ensureFile(path.join(root, "wiki", "claims", "index.md"), "# Claim Index\n");
-  ensureFile(path.join(root, "wiki", "claims", "contested.md"), "# Contested Claims\n");
-  ensureFile(path.join(root, "wiki", "states", "index.md"), "# State Index\n");
-  ensureFile(path.join(root, "wiki", "regimes", "index.md"), "# Regime Index\n");
-  ensureFile(path.join(root, "wiki", "decisions", "index.md"), "# Decision Index\n");
-  ensureFile(path.join(root, "wiki", "probabilities", "index.md"), "# Probability Index\n");
-  ensureFile(path.join(root, "wiki", "reports", "index.md"), "# Report Index\n");
+  ensureFile(path.join(root, "wiki", "self", "index.md"), "# Self Index\n");
+}
+
+function ensureMemoryScaffolds(root) {
   ensureFile(path.join(root, "wiki", "memory", "index.md"), "# Working Memory Index\n");
   ensureFile(
     path.join(root, "wiki", "memory", "current-context.md"),
@@ -167,20 +185,20 @@ Compiled working-memory context will appear here after the first refresh capture
   );
   ensureFile(path.join(root, "wiki", "memory", "daily", "README.md"), "# Daily Memory Logs\n");
   ensureFile(path.join(root, "wiki", "memory", "weekly", "README.md"), "# Weekly Reviews\n");
-  ensureFile(path.join(root, "wiki", "watch-profiles", "index.md"), "# Watch Profile Index\n");
-  ensureFile(path.join(root, "wiki", "theses", "index.md"), "# Thesis Index\n");
-  ensureFile(path.join(root, "wiki", "surveillance", "index.md"), "# Surveillance Index\n");
-  ensureFile(path.join(root, "wiki", "drafts", "index.md"), "# Draft Workspace Index\n");
-  ensureFile(path.join(root, "wiki", "drafts", "append-review", "index.md"), "# Append And Review Queue\n");
-  ensureFile(
-    path.join(root, "wiki", "glossary", "watch-ontology.md"),
-    "# Watch Ontology\n\nThis page is derived from active watch profiles. Edit the profiles, not this generated summary.\n"
-  );
-  ensureFile(path.join(root, "wiki", "self", "index.md"), "# Self Index\n");
   ensureFile(
     path.join(root, "MEMORY.md"),
     "# Memory\n\nThis file mirrors the latest compiled working-memory snapshot after memory refresh capture.\n"
   );
+}
+
+function ensureCommandScaffolds(root) {
+  ensureFile(
+    path.join(root, "commands", "README.md"),
+    "# Commands\n\nStore reusable invocation patterns or standard operating procedures here.\n"
+  );
+}
+
+function ensureQuantScaffolds(root) {
   ensureFile(
     path.join(root, "config", "market_series.json"),
     JSON.stringify(
@@ -205,6 +223,21 @@ Compiled working-memory context will appear here after the first refresh capture
       2
     ) + "\n"
   );
+  ensureFile(path.join(root, QUANT_REQUIREMENTS_FILE), DEFAULT_QUANT_REQUIREMENTS_TEXT);
+}
+
+function ensureProjectStructure(root) {
+  for (const relativeDir of STRUCTURE_DIRS) {
+    ensureDir(path.join(root, relativeDir));
+  }
+  ensureManifestScaffolds(root);
+  ensureActionLogScaffolds(root);
+  ensureCommandScaffolds(root);
+  ensureIndexScaffolds(root);
+  ensureKnowledgeScaffolds(root);
+  ensureSelfModelScaffolds(root);
+  ensureMemoryScaffolds(root);
+  ensureQuantScaffolds(root);
 }
 
 function listMarkdownNotes(root, relativeDir) {

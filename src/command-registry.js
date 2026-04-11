@@ -1,6 +1,7 @@
 const { captureAuthored, writeAuthoredPack } = require("./authored");
 const { diffLatestClaimSnapshots, refreshClaims } = require("./claims");
 const { compileProject } = require("./compile");
+const { applyCommandMiddleware, authoredPackCommand, captureCommand, joinedPositionals, requireValue } = require("./command-runtime");
 const { captureCrystallize, writeCrystallizePack } = require("./crystallize");
 const { runDoctor } = require("./doctor");
 const { captureFrontier, writeFrontierPack } = require("./frontier");
@@ -103,17 +104,6 @@ Options:
 `;
 }
 
-function joinedPositionals(parsed) {
-  return parsed.positionals.join(" ").trim();
-}
-
-function requireValue(value, message) {
-  if (!String(value || "").trim()) {
-    throw new Error(message);
-  }
-  return String(value).trim();
-}
-
 function printSearchResults(results) {
   if (!results.length) {
     console.log("No matches found.");
@@ -141,13 +131,6 @@ function printWatchProfiles(profiles) {
   }
 }
 
-function logAuthoredPack(result) {
-  console.log(`Authored pack: ${result.packPath}`);
-  console.log(`Prompt: ${result.promptPath}`);
-  console.log(`Capture bundle: ${result.capturePath}`);
-  console.log(`Final output path: ${result.outputPath}`);
-}
-
 function logMemoryAutomation(result) {
   if (result?.captured?.length) {
     for (const entry of result.captured) {
@@ -161,30 +144,6 @@ function logMemoryAutomation(result) {
   for (const pack of result.generated) {
     console.log(`Working memory refresh queued (${pack.scope}): ${pack.capturePath}`);
   }
-}
-
-function authoredPackCommand(kind, config = {}) {
-  return {
-    run(root, parsed) {
-      const fallbackTitle = config.fallbackTitle || "";
-      const seed = joinedPositionals(parsed) || fallbackTitle || "";
-      const topic = config.errorMessage ? requireValue(seed, config.errorMessage) : seed;
-      const result = writeAuthoredPack(root, kind, topic, parsed.options);
-      logAuthoredPack(result);
-      return result;
-    }
-  };
-}
-
-function captureCommand(handler, example, renderResult) {
-  return {
-    run(root, parsed) {
-      const bundlePath = requireValue(joinedPositionals(parsed), example);
-      const result = handler(root, bundlePath, parsed.options);
-      renderResult(result, bundlePath);
-      return result;
-    }
-  };
 }
 
 function buildCommandRegistry() {
@@ -387,7 +346,7 @@ function buildCommandRegistry() {
         return result;
       }
     },
-    ask: authoredPackCommand("ask", { errorMessage: 'Ask requires a question. Example: .\\cato.cmd ask "What are the key drivers of X?"' }),
+    ask: authoredPackCommand(writeAuthoredPack, "ask", { errorMessage: 'Ask requires a question. Example: .\\cato.cmd ask "What are the key drivers of X?"' }),
     report: {
       run(root, parsed) {
         const topic = requireValue(joinedPositionals(parsed), 'Report requires a topic. Example: .\\cato.cmd report "Passive flows and liquidity"');
@@ -413,9 +372,10 @@ function buildCommandRegistry() {
         }
       }
     ),
-    deck: authoredPackCommand("deck", { errorMessage: 'Deck requires a topic. Example: .\\cato.cmd deck "AI capex and market structure"' }),
-    surveil: authoredPackCommand("surveil", { errorMessage: 'Surveil requires a subject. Example: .\\cato.cmd surveil "Passive flows"' }),
+    deck: authoredPackCommand(writeAuthoredPack, "deck", { errorMessage: 'Deck requires a topic. Example: .\\cato.cmd deck "AI capex and market structure"' }),
+    surveil: authoredPackCommand(writeAuthoredPack, "surveil", { errorMessage: 'Surveil requires a subject. Example: .\\cato.cmd surveil "Passive flows"' }),
     watch: authoredPackCommand(
+      writeAuthoredPack,
       "watch",
       { errorMessage: 'Watch requires a subject. Example: .\\cato.cmd watch "Middle East" --context "Track escalation risk for the defensive fund."' }
     ),
@@ -545,8 +505,8 @@ function buildCommandRegistry() {
         console.log(`Added: ${result.added}, Removed: ${result.removed}, Contested: ${result.contested}`);
       }
     },
-    "why-believe": authoredPackCommand("why-believe", { errorMessage: 'Why-believe requires a topic. Example: .\\cato.cmd why-believe "US inflation"' }),
-    "state-refresh": authoredPackCommand("state-refresh", { errorMessage: 'State-refresh requires a subject. Example: .\\cato.cmd state-refresh "Global Macro"' }),
+    "why-believe": authoredPackCommand(writeAuthoredPack, "why-believe", { errorMessage: 'Why-believe requires a topic. Example: .\\cato.cmd why-believe "US inflation"' }),
+    "state-refresh": authoredPackCommand(writeAuthoredPack, "state-refresh", { errorMessage: 'State-refresh requires a subject. Example: .\\cato.cmd state-refresh "Global Macro"' }),
     "scenario-refresh": {
       run(root, parsed) {
         const topic = joinedPositionals(parsed) || parsed.options.profile || "global-risk-regime";
@@ -581,7 +541,7 @@ function buildCommandRegistry() {
         return result;
       }
     },
-    "probability-brief": authoredPackCommand("probability-brief", {
+    "probability-brief": authoredPackCommand(writeAuthoredPack, "probability-brief", {
       fallbackTitle: "Probability Brief"
     }),
     "state-diff": {
@@ -592,14 +552,14 @@ function buildCommandRegistry() {
         console.log(`Changed claims: ${result.changed}`);
       }
     },
-    "regime-brief": authoredPackCommand("regime-brief"),
-    "meeting-brief": authoredPackCommand("meeting-brief", { fallbackTitle: "Weekly investment meeting brief" }),
-    "decision-note": authoredPackCommand("decision-note", { errorMessage: 'Decision-note requires a topic. Example: .\\cato.cmd decision-note "Middle East"' }),
-    "red-team": authoredPackCommand("red-team", { errorMessage: 'Red-team requires a topic. Example: .\\cato.cmd red-team "US inflation"' }),
-    "what-changed-for-markets": authoredPackCommand("what-changed-for-markets"),
-    reflect: authoredPackCommand("reflect", { fallbackTitle: "Self Reflection" }),
-    principles: authoredPackCommand("principles", { fallbackTitle: "Principles Snapshot" }),
-    postmortem: authoredPackCommand("postmortem", { errorMessage: 'Postmortem requires a title. Example: .\\cato.cmd postmortem "Q1 satellite ETF review"' }),
+    "regime-brief": authoredPackCommand(writeAuthoredPack, "regime-brief"),
+    "meeting-brief": authoredPackCommand(writeAuthoredPack, "meeting-brief", { fallbackTitle: "Weekly investment meeting brief" }),
+    "decision-note": authoredPackCommand(writeAuthoredPack, "decision-note", { errorMessage: 'Decision-note requires a topic. Example: .\\cato.cmd decision-note "Middle East"' }),
+    "red-team": authoredPackCommand(writeAuthoredPack, "red-team", { errorMessage: 'Red-team requires a topic. Example: .\\cato.cmd red-team "US inflation"' }),
+    "what-changed-for-markets": authoredPackCommand(writeAuthoredPack, "what-changed-for-markets"),
+    reflect: authoredPackCommand(writeAuthoredPack, "reflect", { fallbackTitle: "Self Reflection" }),
+    principles: authoredPackCommand(writeAuthoredPack, "principles", { fallbackTitle: "Principles Snapshot" }),
+    postmortem: authoredPackCommand(writeAuthoredPack, "postmortem", { errorMessage: 'Postmortem requires a title. Example: .\\cato.cmd postmortem "Q1 satellite ETF review"' }),
     doctor: {
       run(root) {
         const result = runDoctor(root);
@@ -619,25 +579,17 @@ function buildCommandRegistry() {
     }
   };
 
-  for (const [command, entry] of Object.entries(registry)) {
-    if (!entry || typeof entry.run !== "function") {
-      continue;
-    }
-    const originalRun = entry.run;
-    entry.run = (root, parsed) => {
-      const result = originalRun(root, parsed);
-      logMemoryAutomation(
-        handleWorkingMemoryAfterCommand(root, {
-          command,
-          parsed,
-          result
-        })
-      );
-      return result;
-    };
-  }
-
-  return registry;
+  return applyCommandMiddleware(registry, ({ command, root, parsed, next }) => {
+    const result = next();
+    logMemoryAutomation(
+      handleWorkingMemoryAfterCommand(root, {
+        command,
+        parsed,
+        result
+      })
+    );
+    return result;
+  });
 }
 
 module.exports = {

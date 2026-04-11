@@ -1,28 +1,9 @@
 const fs = require("node:fs");
 const path = require("node:path");
-const { spawnSync } = require("node:child_process");
+const { DEFAULT_WEB_USER_AGENT, invokeWebRequest } = require("./http-runtime");
 const { ensureDir, nowIso, slugify, uniquePath, writeJson } = require("./utils");
 
-const IMPORT_USER_AGENT =
-  "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0 Safari/537.36";
-
-function toPowerShellLiteral(value) {
-  return `'${String(value || "").replace(/'/g, "''")}'`;
-}
-
-function runPowerShell(script) {
-  const result = spawnSync("powershell.exe", ["-NoProfile", "-ExecutionPolicy", "Bypass", "-Command", script], {
-    encoding: "utf8",
-    windowsHide: true,
-    maxBuffer: 32 * 1024 * 1024
-  });
-
-  if (result.status !== 0) {
-    throw new Error((result.stderr || result.stdout || "PowerShell command failed.").trim());
-  }
-
-  return result.stdout || "";
-}
+const IMPORT_USER_AGENT = DEFAULT_WEB_USER_AGENT;
 
 function normalizeKnownUrl(value) {
   const input = String(value || "").trim();
@@ -106,27 +87,16 @@ function buildDownloadStem(url, title = "", rank = 0) {
 function defaultDownloadRunner(downloadDir, url, options = {}) {
   ensureDir(downloadDir);
   const tempPath = uniquePath(path.join(downloadDir, `${buildDownloadStem(url, options.title, options.rank)}.download`));
-  const script = `
-$ErrorActionPreference = 'Stop'
-[Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-$headers = @{ 'User-Agent' = ${toPowerShellLiteral(IMPORT_USER_AGENT)} }
-$response = Invoke-WebRequest -UseBasicParsing -Uri ${toPowerShellLiteral(url)} -OutFile ${toPowerShellLiteral(tempPath)} -Headers $headers
-$contentType = ''
-if ($response.Headers -and $response.Headers['Content-Type']) {
-  $contentType = [string]$response.Headers['Content-Type']
-}
-$finalUrl = ''
-if ($response.BaseResponse -and $response.BaseResponse.ResponseUri) {
-  $finalUrl = $response.BaseResponse.ResponseUri.AbsoluteUri
-}
-[pscustomobject]@{
-  final_url = $finalUrl
-  content_type = $contentType
-} | ConvertTo-Json -Compress
-`;
 
   try {
-    const metadata = JSON.parse(runPowerShell(script).trim() || "{}");
+    const metadata = invokeWebRequest({
+      url,
+      outFile: tempPath,
+      headers: {
+        "User-Agent": IMPORT_USER_AGENT
+      },
+      maxBuffer: 32 * 1024 * 1024
+    });
     return {
       tempPath,
       finalUrl: normalizeKnownUrl(metadata.final_url) || normalizeKnownUrl(url),

@@ -3,7 +3,7 @@
 ## Runtime
 
 - Node-first CLI with no declared runtime or dev dependencies in `package.json`
-- Python wrappers and PDF tooling remain optional environment helpers
+- Python wrappers and a pinned `requirements-quant.txt` contract define the shared Python runtime for quant/scenario and PDF tooling
 - Browser automation is treated as an environment capability verified by `doctor`
 - The public repo preserves the same engine runtime shape as the private repo; only the private payload is removed.
 

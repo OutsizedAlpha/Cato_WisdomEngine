@@ -48,6 +48,7 @@ The current product is already more than an MVP scaffold. It now includes:
 - a working-memory layer with automatic daily logs, due-based current-context refresh, weekly review refresh, and a root `MEMORY.md` mirror
 - a Node-orchestrated, Python-executed scenario engine with Cato-owned market-data refresh, regime inference, intermarket transmission mapping, and Monte Carlo path simulation
 - canonical probability surfaces, scenario diffs, and probability-brief packs grounded in `100,000`-path default runs for report-facing use
+- a pinned Python runtime contract in `requirements-quant.txt`, validated by `doctor`, so the public and private engines can reproduce the quant and PDF helper layer instead of depending on undocumented machine state
 - a compiled self-model artefact under `manifests/self_model.json` plus `wiki/self/current-operating-constitution.md` and command-relevant mode profiles
 - an expanded doctrine corpus covering PM-grade research, macro/intermarket analysis, valuation, trading, sourcing, communication, cognitive augmentation, bias watch, anti-patterns, portfolio construction, workbook audit standards, idea-market discipline, and update discipline
 - retrieval-budget discipline from maps to canonical notes to evidence notes to raw extracts
@@ -433,6 +434,10 @@ Run `.\cato.cmd help` for arguments and options.
 Obsidian is optional. It is the reading and navigation layer, not the control surface.
 
 The runtime is Node-first. Repo-local Python wrappers exist so Python-dependent utilities can still be reached from the repo shell, and the PDF vision handoff uses the machine's real Python launcher plus available PDF-rendering libraries to generate page images for Codex/GPT review. The same Python allowance now also underpins the scenario engine, which uses installed scientific packages for regime inference and Monte Carlo path simulation while keeping market-data acquisition inside Cato's CLI. Browser automation is treated as an environment capability, not as an in-repo dependency, and `doctor` verifies Playwright/Puppeteer readiness when needed.
+
+For a fresh machine, install the pinned Python helper layer with:
+
+`python -m pip install -r requirements-quant.txt`
 
 ## What Cato Is Not
 

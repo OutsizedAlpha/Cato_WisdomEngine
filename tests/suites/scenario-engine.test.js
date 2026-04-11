@@ -453,6 +453,52 @@ runTest("scenario diff compares consecutive probability snapshots", () => {
   }
 });
 
+runTest("scenario refresh stores immutable run artifacts alongside stable latest aliases", () => {
+  const root = makeTempRepo();
+  try {
+    initProject(root);
+    writeScenarioConfigs(root);
+    seedScenarioContext(root);
+
+    const first = refreshScenario(root, "Test Probability Engine", {
+      profile: "test-probability-engine",
+      fetcher: buildFetcher("base"),
+      paths: 1200,
+      horizons: "5,21",
+      seed: 31
+    });
+    const second = refreshScenario(root, "Test Probability Engine", {
+      profile: "test-probability-engine",
+      fetcher: buildFetcher("shock"),
+      paths: 1200,
+      horizons: "5,21",
+      seed: 31
+    });
+
+    assert.notEqual(first.runId, second.runId);
+    assert.notEqual(first.inputPath, second.inputPath);
+    assert.notEqual(first.outputPath, second.outputPath);
+    assert.ok(fs.existsSync(path.join(root, first.inputPath)));
+    assert.ok(fs.existsSync(path.join(root, first.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, second.inputPath)));
+    assert.ok(fs.existsSync(path.join(root, second.outputPath)));
+    assert.ok(fs.existsSync(path.join(root, second.latestInputPath)));
+    assert.ok(fs.existsSync(path.join(root, second.latestOutputPath)));
+
+    const history = fs
+      .readFileSync(path.join(root, "manifests", "scenario_history.jsonl"), "utf8")
+      .trim()
+      .split(/\r?\n/)
+      .map((line) => JSON.parse(line));
+    assert.equal(history.length, 2);
+    assert.equal(history[1].run_id, second.runId);
+    assert.equal(history[1].input_path, second.inputPath);
+    assert.equal(history[1].output_path, second.outputPath);
+  } finally {
+    fs.rmSync(root, { recursive: true, force: true });
+  }
+});
+
 runTest("probability brief authored pack captures a model-authored output against the probability surface", () => {
   const root = makeTempRepo();
   try {

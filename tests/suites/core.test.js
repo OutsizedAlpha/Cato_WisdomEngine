@@ -11,6 +11,7 @@ runTest("init seeds the project structure and generated indices", () => {
     assert.ok(fs.existsSync(path.join(root, "manifests", "file_hashes.json")));
     assert.ok(fs.existsSync(path.join(root, "wiki", "_indices", "sources.md")));
     assert.ok(fs.existsSync(path.join(root, "wiki", "_maps", "home.md")));
+    assert.ok(fs.existsSync(path.join(root, "requirements-quant.txt")));
     const scenarioProfiles = JSON.parse(fs.readFileSync(path.join(root, "config", "scenario_profiles.json"), "utf8"));
     assert.equal(scenarioProfiles.default_paths, 100000);
   } finally {
@@ -425,6 +426,7 @@ runTest("public release export keeps engine files and excludes private corpus su
       assert.equal(path.resolve(result.targetDir), path.resolve(target));
       assert.ok(fs.existsSync(path.join(target, ".git", "keep")));
       assert.ok(fs.existsSync(path.join(target, "README.md")));
+      assert.ok(fs.existsSync(path.join(target, "requirements-quant.txt")));
       assert.ok(fs.existsSync(path.join(target, "docs", "operator_guide.md")));
       assert.ok(fs.existsSync(path.join(target, "docs", "project_brief.md")));
       assert.ok(fs.existsSync(path.join(target, "docs", "project_map.md")));

@@ -8,6 +8,8 @@
   },
   "scripts": {
     "cato": "node ./bin/cato.js",
+    "doctor": "node ./bin/cato.js doctor",
+    "lint": "node ./bin/cato.js lint",
     "test": "node ./tests/cato.test.js"
   },
   "engines": {

@@ -337,6 +337,7 @@ Important operating rule:
 - the canonical probability surface is deterministic, data-calibrated, and reusable
 - the probability brief is authored judgement over that surface
 - canonical scenario work defaults to `100,000` paths unless there is an explicit override
+- the Python helper layer is part of the engine contract; keep `requirements-quant.txt` current and use `doctor` to confirm the pinned packages are actually present
 
 See [scenario_engine.md](scenario_engine.md) for the detailed model and file layout.
 
@@ -455,6 +456,7 @@ Self-model and health:
 - `principles` = prepare a model-authored principles snapshot pack
 - `postmortem` = prepare a model-authored postmortem note pack
 - `doctor` = check runtime, Python wrappers, browser tooling, OCR readiness, and repo health
+- `doctor` now also checks the pinned Python package contract in `requirements-quant.txt`
 - `lint` = check metadata, drift, backlinks, tags, stale notes, and required managed sections
 
 ## Watch Profiles, Surveillance, And Ontology

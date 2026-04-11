@@ -1042,13 +1042,13 @@ function updateHomePage(root, stats) {
   writeText(homePath, upsertManagedBlock(current, "overview", managed));
 }
 
-function compileProject(root, options = {}) {
-  ensureProjectStructure(root);
+function prepareSourceKnowledge(root, options = {}) {
   let sourceNotes = loadNotes(root, "wiki/source-notes");
   const sourceRoutingBackfills = backfillSourceRouting(root, sourceNotes);
   if (sourceRoutingBackfills) {
     sourceNotes = loadNotes(root, "wiki/source-notes");
   }
+
   const ontology = readJson(path.join(root, "config", "ontology.json"), {});
   const ontologyIndex = buildConceptOntologyIndex(ontology);
   const candidateCounts = candidateFrequencyMap(sourceNotes, ontologyIndex);
@@ -1062,12 +1062,23 @@ function compileProject(root, options = {}) {
   }
   buildSourceIndex(root, sourceNotes);
 
+  return {
+    sourceNotes,
+    sourceRoutingBackfills,
+    sourceKnowledgeBackfills,
+    ontologyIndex,
+    candidateCounts
+  };
+}
+
+function refreshClaimsPhase(root, prepared, options = {}) {
+  let sourceNotes = prepared.sourceNotes;
   let claimSummary = refreshClaims(root, { writeSnapshot: false });
   let claims = loadClaims(root);
   const sourceKnowledgeClaimBackfills = enrichSourceNoteKnowledge(root, sourceNotes, {
     ...options,
-    ontologyIndex,
-    candidateCounts,
+    ontologyIndex: prepared.ontologyIndex,
+    candidateCounts: prepared.candidateCounts,
     claims
   });
   if (sourceKnowledgeClaimBackfills) {
@@ -1077,7 +1088,17 @@ function compileProject(root, options = {}) {
   }
 
   upsertOriginClaimBlocks(root, claims);
-  const conceptMap = buildConceptRecords(sourceNotes, { ...options, ontologyIndex });
+
+  return {
+    sourceNotes,
+    claimSummary,
+    claims,
+    sourceKnowledgeClaimBackfills
+  };
+}
+
+function buildKnowledgeArtifactsPhase(root, sourceNotes, claims, options = {}) {
+  const conceptMap = buildConceptRecords(sourceNotes, { ...options, ontologyIndex: options.ontologyIndex });
   const entityMap = buildEntityRecords(sourceNotes);
   upsertConceptPages(root, conceptMap, claims);
   retireStaleConceptPages(root, conceptMap);
@@ -1087,6 +1108,16 @@ function compileProject(root, options = {}) {
   buildTimelineIndex(root, sourceNotes);
   buildDomainMaps(root, sourceNotes);
   const unresolved = buildUnresolvedRegisters(root, sourceNotes, conceptMap);
+
+  return {
+    conceptMap,
+    entityMap,
+    selfModelSummary,
+    unresolved
+  };
+}
+
+function buildCatalogAndIndicesPhase(root, sourceNotes, claimSummary, knowledge) {
   const claimCount = countCollectionNotes(root, "wiki/claims", { exclude: /\/contested\.md$/i });
   const stateCount = buildCollectionIndex(root, "wiki/states", "State Index");
   const regimeCount = buildCollectionIndex(root, "wiki/regimes", "Regime Index");
@@ -1110,11 +1141,10 @@ function compileProject(root, options = {}) {
 
   updateHomePage(root, {
     sourceNotes: sourceNotes.length,
-    sourceRoutingBackfills,
     claims: claimCount,
     contestedClaims: claimSummary.contested,
-    concepts: conceptMap.size,
-    entities: entityMap.size,
+    concepts: knowledge.conceptMap.size,
+    entities: knowledge.entityMap.size,
     timelines: fs.existsSync(path.join(root, "wiki", "timelines", "source-chronology.md")) ? 1 : 0,
     states: stateCount,
     regimes: regimeCount,
@@ -1123,34 +1153,58 @@ function compileProject(root, options = {}) {
     theses: thesisCount,
     watchProfiles: watchProfileCount,
     surveillance: surveillanceCount,
-    selfNotes: selfModelSummary.noteCount,
+    selfNotes: knowledge.selfModelSummary.noteCount,
     drafts: draftCount,
-    contradictions: unresolved.contradictionCandidates,
-    synthesisCandidates: unresolved.synthesisCandidates,
+    contradictions: knowledge.unresolved.contradictionCandidates,
+    synthesisCandidates: knowledge.unresolved.synthesisCandidates,
     openThreads: openThreadCount
   });
 
   return {
-    sourceNotes: sourceNotes.length,
-    sourceRoutingBackfills,
-    sourceKnowledgeBackfills: sourceKnowledgeBackfills + sourceKnowledgeClaimBackfills,
-    claims: claimCount,
-    contestedClaims: claimSummary.contested,
-    concepts: conceptMap.size,
-    entities: entityMap.size,
+    claimCount,
+    stateCount,
+    regimeCount,
+    decisionCount,
+    probabilityCount,
+    thesisCount,
+    watchProfileCount,
+    surveillanceCount,
+    openThreadCount,
+    draftCount
+  };
+}
+
+function compileProject(root, options = {}) {
+  ensureProjectStructure(root);
+  const prepared = prepareSourceKnowledge(root, options);
+  const claimsPhase = refreshClaimsPhase(root, prepared, options);
+  const knowledge = buildKnowledgeArtifactsPhase(root, claimsPhase.sourceNotes, claimsPhase.claims, {
+    ...options,
+    ontologyIndex: prepared.ontologyIndex
+  });
+  const catalog = buildCatalogAndIndicesPhase(root, claimsPhase.sourceNotes, claimsPhase.claimSummary, knowledge);
+
+  return {
+    sourceNotes: claimsPhase.sourceNotes.length,
+    sourceRoutingBackfills: prepared.sourceRoutingBackfills,
+    sourceKnowledgeBackfills: prepared.sourceKnowledgeBackfills + claimsPhase.sourceKnowledgeClaimBackfills,
+    claims: catalog.claimCount,
+    contestedClaims: claimsPhase.claimSummary.contested,
+    concepts: knowledge.conceptMap.size,
+    entities: knowledge.entityMap.size,
     timelines: 1,
-    statePages: stateCount,
-    regimePages: regimeCount,
-    decisionPages: decisionCount,
-    probabilityPages: probabilityCount,
-    thesisPages: thesisCount,
-    watchProfiles: watchProfileCount,
-    surveillancePages: surveillanceCount,
-    selfNotes: selfModelSummary.noteCount,
-    draftPages: draftCount,
-    openThreads: openThreadCount,
-    contradictionCandidates: unresolved.contradictionCandidates,
-    synthesisCandidates: unresolved.synthesisCandidates
+    statePages: catalog.stateCount,
+    regimePages: catalog.regimeCount,
+    decisionPages: catalog.decisionCount,
+    probabilityPages: catalog.probabilityCount,
+    thesisPages: catalog.thesisCount,
+    watchProfiles: catalog.watchProfileCount,
+    surveillancePages: catalog.surveillanceCount,
+    selfNotes: knowledge.selfModelSummary.noteCount,
+    draftPages: catalog.draftCount,
+    openThreads: catalog.openThreadCount,
+    contradictionCandidates: knowledge.unresolved.contradictionCandidates,
+    synthesisCandidates: knowledge.unresolved.synthesisCandidates
   };
 }
 

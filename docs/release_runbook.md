@@ -45,6 +45,8 @@ Typical private validation path:
 - `node .\bin\cato.js lint`
 - `node .\bin\cato.js doctor`
 
+If the release touched Python-backed helpers, make sure `requirements-quant.txt` is present and the current `doctor` run shows the pinned package contract as satisfied before you push.
+
 Use the heavier checks proportionally. If the work touched the scenario engine or canonical probability/report surfaces, rerun the relevant scenario and report commands before commit.
 
 ## Public Projection Sequence

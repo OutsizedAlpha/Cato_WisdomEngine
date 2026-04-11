@@ -3,11 +3,11 @@ const path = require("node:path");
 const { refreshClaims, searchClaims, writeWhyBelieve } = require("./claims");
 const { writeDecisionNote, writeMeetingBrief, writeRedTeam, writeWhatChangedForMarkets } = require("./decisions");
 const { captureTerminalModelBundle, writePackArtifacts } = require("./handoff-core");
-const { workingMemoryLocalSources } = require("./memory");
 const { parseFrontmatter, sectionContent, stripMarkdownFormatting } = require("./markdown");
+const { makeLocalSource, resolvePackContext, uniqueLocalSources } = require("./pack-runtime");
 const { ensureProjectStructure } = require("./project");
 const { searchCorpus } = require("./search");
-const { renderSelfModelMarkdownBlock, resolveSelfModelContext, serializeSelfModelContext } = require("./self-model");
+const { renderSelfModelMarkdownBlock, serializeSelfModelContext } = require("./self-model");
 const { defaultRegimeSubjects, refreshState, writeRegimeBrief, writeStateDiff } = require("./states");
 const { resolveWatchSubject } = require("./watch");
 const {
@@ -88,57 +88,6 @@ function bundleTitle(topic, mode, explicitTitle = "") {
     return `${topic} frontier state brief`;
   }
   return `${topic} frontier decision brief`;
-}
-
-function uniqueLocalSources(entries) {
-  const seen = new Set();
-  const output = [];
-  for (const entry of entries) {
-    if (!entry || !entry.path) {
-      continue;
-    }
-    const key = String(entry.path).replace(/\\/g, "/");
-    if (!key || seen.has(key)) {
-      continue;
-    }
-    seen.add(key);
-    output.push({
-      path: key,
-      title: entry.title || path.basename(key, path.extname(key)),
-      role: entry.role || "context"
-    });
-  }
-  return output;
-}
-
-function makeLocalSource(pathValue, title, role) {
-  if (!pathValue) {
-    return null;
-  }
-  return {
-    path: String(pathValue).replace(/\\/g, "/"),
-    title: title || path.basename(String(pathValue), path.extname(String(pathValue))),
-    role
-  };
-}
-
-function selfModelLocalSources(context) {
-  const sources = [
-    makeLocalSource("wiki/self/current-operating-constitution.md", "Current Operating Constitution", "self-model"),
-    ...context.sourceNotes.slice(0, 8).map((note) => makeLocalSource(note.relative_path, note.title, "self-note"))
-  ];
-
-  if (context.applicability.includes("investment") || context.applicability.includes("macro") || context.applicability.includes("valuation")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/investment-research.md", "Investment Research", "mode-profile"));
-  }
-  if (context.applicability.includes("trading")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/trading.md", "Trading", "mode-profile"));
-  }
-  if (context.applicability.includes("writing")) {
-    sources.push(makeLocalSource("wiki/self/mode-profiles/communication.md", "Communication", "mode-profile"));
-  }
-
-  return uniqueLocalSources(sources);
 }
 
 function loadNoteSections(root, relativePath, headings) {
@@ -607,15 +556,13 @@ function writeFrontierPack(root, seed, options = {}) {
   const packData = buildPackData(root, topic, mode, options);
   const packSlug = slugify(`${mode}-${packData.topic}`).slice(0, 80) || mode;
   const desiredOutputKind = String(options.kind || outputKindForMode(mode)).toLowerCase();
-  const selfModel = resolveSelfModelContext(root, {
+  const context = resolvePackContext(root, {
     command: "frontier-pack",
-    topic: packData.topic
+    topic: packData.topic,
+    baseSources: packData.localSources || []
   });
-  const localSources = uniqueLocalSources([
-    ...(packData.localSources || []),
-    ...workingMemoryLocalSources(root),
-    ...selfModelLocalSources(selfModel)
-  ]);
+  const selfModel = context.selfModel;
+  const localSources = context.localSources;
   const watch = watchSummary(packData.watch || { profile: null, query: packData.topic });
   const title = bundleTitle(packData.topic, mode, options.title);
   const paths = writePackArtifacts(root, {

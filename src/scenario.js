@@ -1,6 +1,6 @@
 const path = require("node:path");
-const { spawnSync } = require("node:child_process");
 const { parseFrontmatter, toWikiLink } = require("./markdown");
+const { runPythonScript } = require("./python-runtime");
 const { ensureProjectStructure } = require("./project");
 const { updateManagedNote, writeOutputByFamily } = require("./research");
 const { refreshState } = require("./states");
@@ -14,6 +14,7 @@ const {
   readText,
   relativeToRoot,
   slugify,
+  timestampStamp,
   truncate,
   writeJson
 } = require("./utils");
@@ -99,42 +100,47 @@ function loadScenarioSnapshotHistory(root, profileId) {
     .sort((left, right) => String(left.at || "").localeCompare(String(right.at || "")));
 }
 
-function runPythonScenarioEngine(root, inputPayload, options = {}) {
+function createScenarioRunDescriptor(root, inputPayload) {
   const slug = slugify(`${inputPayload.profile.id}-${inputPayload.topic || "scenario"}`).slice(0, 80) || "scenario";
-  const inputPath = path.join(root, "cache", "scenario-runs", `${slug}-input.json`);
-  const outputPath = path.join(root, "cache", "scenario-runs", `${slug}-output.json`);
-  ensureDir(path.dirname(inputPath));
-  writeJson(inputPath, inputPayload);
+  const runId = `${timestampStamp().replace(/[^0-9A-Za-z-]/g, "-")}-${Math.random().toString(36).slice(2, 8)}`;
+  const runDir = path.join(root, "cache", "scenario-runs", slug);
+  ensureDir(runDir);
+  return {
+    runId,
+    runDir,
+    relativeRunDir: relativeToRoot(root, runDir),
+    inputPath: path.join(runDir, `${runId}-input.json`),
+    outputPath: path.join(runDir, `${runId}-output.json`),
+    latestInputPath: path.join(runDir, "latest-input.json"),
+    latestOutputPath: path.join(runDir, "latest-output.json")
+  };
+}
 
+function runPythonScenarioEngine(root, inputPayload, options = {}) {
+  const run = createScenarioRunDescriptor(root, inputPayload);
+  writeJson(run.inputPath, inputPayload);
   const scriptPath = path.join(__dirname, "..", "tools", "run_probability_engine.py");
-  const invocations =
-    process.platform === "win32"
-      ? [{ command: "python", args: [scriptPath, "--input", inputPath, "--output", outputPath] }]
-      : [
-          { command: "python3", args: [scriptPath, "--input", inputPath, "--output", outputPath] },
-          { command: "python", args: [scriptPath, "--input", inputPath, "--output", outputPath] }
-        ];
-
-  let lastError = null;
-  for (const invocation of invocations) {
-    const result = spawnSync(invocation.command, invocation.args, {
-      cwd: root,
-      encoding: "utf8",
-      windowsHide: true,
-      maxBuffer: 64 * 1024 * 1024
-    });
-    if (result.status === 0) {
-      return {
-        result: readJson(outputPath, {}),
-        inputPath: relativeToRoot(root, inputPath),
-        outputPath: relativeToRoot(root, outputPath),
-        runner: invocation.command
-      };
-    }
-    lastError = (result.stderr || result.stdout || `${invocation.command} failed.`).trim();
+  const result = runPythonScript(root, scriptPath, ["--input", run.inputPath, "--output", run.outputPath], {
+    maxBuffer: 64 * 1024 * 1024
+  });
+  if (!result.ok) {
+    throw new Error((result.stderr || result.stdout || result.error?.message || "Probability engine failed.").trim());
   }
 
-  throw new Error(lastError || "Probability engine failed.");
+  const payload = readJson(run.outputPath, {});
+  writeJson(run.latestInputPath, inputPayload);
+  writeJson(run.latestOutputPath, payload);
+
+  return {
+    result: payload,
+    runId: run.runId,
+    runDir: run.relativeRunDir,
+    inputPath: relativeToRoot(root, run.inputPath),
+    outputPath: relativeToRoot(root, run.outputPath),
+    latestInputPath: relativeToRoot(root, run.latestInputPath),
+    latestOutputPath: relativeToRoot(root, run.latestOutputPath),
+    runner: result.runner
+  };
 }
 
 function buildStateOverlay(root, profile, options = {}) {
@@ -357,7 +363,7 @@ function renderDataGaps(model, seriesDefinitions, overlay) {
   return lines.length ? lines.join("\n") : "- No immediate structural data gaps surfaced beyond ordinary market-data refresh discipline.";
 }
 
-function buildScenarioSnapshot(profile, topic, probabilityPath, model, overlay) {
+function buildScenarioSnapshot(profile, topic, probabilityPath, model, overlay, engine = {}) {
   return {
     event: "scenario_refresh",
     at: nowIso(),
@@ -371,6 +377,10 @@ function buildScenarioSnapshot(profile, topic, probabilityPath, model, overlay) 
     horizons: model.horizons || {},
     archetypes: asArray(model.archetypes).slice(0, 10),
     diagnostics: model.diagnostics || {},
+    run_id: engine.runId || "",
+    run_dir: engine.runDir || "",
+    input_path: engine.inputPath || "",
+    output_path: engine.outputPath || "",
     overlay: {
       subjects: overlay.subjects,
       series_bias_bps_per_day: overlay.seriesBiasBpsPerDay
@@ -524,16 +534,20 @@ function refreshScenario(root, topic, options = {}) {
   const page = writeProbabilityPage(root, profile, topic || profile.title, engine.result, overlay, seriesDefinitions, {
     runner: engine.runner
   });
-  const snapshot = buildScenarioSnapshot(profile, topic || profile.title, page.probabilityPath, engine.result, overlay);
+  const snapshot = buildScenarioSnapshot(profile, topic || profile.title, page.probabilityPath, engine.result, overlay, engine);
   appendJsonl(path.join(root, "manifests", "scenario_history.jsonl"), snapshot);
   appendJsonl(path.join(root, "logs", "actions", "scenario_runs.jsonl"), {
     event: "scenario_refresh",
     at: snapshot.at,
     topic: snapshot.topic,
     profile_id: profile.id,
+    run_id: engine.runId,
+    run_dir: engine.runDir,
     probability_path: page.probabilityPath,
     input_path: engine.inputPath,
-    output_path: engine.outputPath
+    output_path: engine.outputPath,
+    latest_input_path: engine.latestInputPath,
+    latest_output_path: engine.latestOutputPath
   });
 
   return {
@@ -543,8 +557,12 @@ function refreshScenario(root, topic, options = {}) {
     sources: page.sources,
     overlay,
     model: engine.result,
+    runId: engine.runId,
+    runDir: engine.runDir,
     inputPath: engine.inputPath,
-    outputPath: engine.outputPath
+    outputPath: engine.outputPath,
+    latestInputPath: engine.latestInputPath,
+    latestOutputPath: engine.latestOutputPath
   };
 }
 

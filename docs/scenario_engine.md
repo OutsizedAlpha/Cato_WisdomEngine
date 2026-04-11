@@ -60,6 +60,10 @@ Primary file:
 
 - `tools/run_probability_engine.py`
 
+Runtime contract:
+
+- `requirements-quant.txt`
+
 ## Four Mathematical Layers
 
 ### 1. Structural Overlay
@@ -119,6 +123,10 @@ Scenario history:
 
 - `manifests/scenario_history.jsonl`
 - `logs/actions/scenario_runs.jsonl`
+- `cache/scenario-runs/<profile-slug>/<run-id>-input.json`
+- `cache/scenario-runs/<profile-slug>/<run-id>-output.json`
+- `cache/scenario-runs/<profile-slug>/latest-input.json`
+- `cache/scenario-runs/<profile-slug>/latest-output.json`
 
 Canonical surfaces:
 
@@ -131,6 +139,7 @@ Operator pack path:
 ## Main Commands
 
 - `.\cato.cmd market-refresh --profile global-risk-regime`
+- `python -m pip install -r requirements-quant.txt`
 - `.\cato.cmd scenario-refresh "Global Risk Regime" --profile global-risk-regime --paths 100000`
 - `.\cato.cmd scenario-diff "Global Risk Regime" --profile global-risk-regime`
 - `.\cato.cmd probability-brief "Global Risk Regime" --profile global-risk-regime --paths 100000`
